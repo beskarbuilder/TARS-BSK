@@ -55,31 +55,32 @@ _Compiled, tested, and nearly destroyed in the process._
 
 ## 📑 Table of Contents
 
-- [Project Status](#project-status)
-- [Performance: A slow, absurd, and hopelessly sincere confession](#performance-a-slow-absurd-and-hopelessly-sincere-confession)
-- [What is TARS-BSK?](#what-is-tars-bsk)
-- [Architecture and Operation](#architecture-and-operation)
-- [Hardware and Components](#hardware-and-components)
-- [Key Technical Optimizations](#key-technical-optimizations)
-- [Semantic Engine with Dual Optimization](#semantic-engine-with-dual-optimization)
-- [Cooling System](#cooling-system)
-- [Dual Memory System](#dual-memory-system)
-- [Emotional and Personality System](#emotional-and-personality-system)
-- [Plugin System and Connectivity](#plugin-system-and-connectivity)
-- [Implementation and Connectivity Details](#implementation-and-connectivity-details)
-- [More Than a Smart Home Assistant](#more-than-a-smart-home-assistant)
-- [Software Components](#software-components)
-- [Audio Processing](#audio-processing)
-- [Intelligence and Memory](#intelligence-and-memory)
-- [Project Structure](#project-structure)
-- [Installation and Configuration](#installation-and-configuration)
-- [Why Share TARS-BSK?](#why-share-tars-bsk)
-- [Key Behavioral Traits](#key-behavioral-traits)
-- [Why NOCTUA](#why-noctua)
-- [Contributions](#contributions)
-- [FINAL REPORT: TECHNICAL-IRREVERSIBLE DIAGNOSIS](#final-report-technical-irreversible-diagnosis)
-- [CREDITS: The Real Mandalorians](#credits-the-real-mandalorians)
-- [License](#license)
+- [Project Status](#-project-status)
+- [Performance: A slow, absurd, and hopelessly sincere confession](#-performance-a-slow-absurd-and-hopelessly-sincere-confession)
+- [What is TARS-BSK?](#-what-is-tars-bsk)
+- [Architecture and Operation](#-architecture-and-operation)
+- [Hardware and Components](#-hardware-and-components)
+- [Key Technical Optimizations](#-key-technical-optimizations)
+- [Semantic Engine with Dual Optimization](#-semantic-engine-with-dual-optimization)
+- [Cooling System](#-cooling-system)
+- [Dual Memory System](#-dual-memory-system)
+- [Emotional and Personality System](#-emotional-and-personality-system)
+- [Plugin System and Connectivity](#-plugin-system-and-connectivity)
+- [Implementation and Connectivity Details](#-implementation-and-connectivity-details)
+- [More Than a Smart Home Assistant](#-more-than-a-smart-home-assistant)
+- [Software Components](#-software-components)
+- [Audio Processing](#-audio-processing)
+- [Intelligence and Memory](#-intelligence-and-memory)
+- [Project Structure](#-project-structure)
+- [Installation and Configuration](#-installation-and-configuration)
+- [Tools](#-tools)
+- [Why Share TARS-BSK?](#-why-share-tars-bsk)
+- [Key Behavioral Traits](#-key-behavioral-traits)
+- [Why NOCTUA](#-why-noctua)
+- [Contributions](#-contributions)
+- [FINAL REPORT: TECHNICAL-IRREVERSIBLE DIAGNOSIS](#-final-report-technical-irreversible-diagnosis)
+- [CREDITS: The Real Mandalorians](#-credits-the-real-mandalorians)
+- [License](#-license)
 
 ## 🤖 What is TARS-BSK?
 
@@ -181,7 +182,7 @@ def real_privacy(cmd):
         }
 ```
 
-> _"Yes, Alexa responds faster. But it also sends your embarrassing questions to a data center in Nebraska. TARS-BSK, on the other hand, only shares them with your NOCTUA fan, which already judges you for other reasons."_
+> _Yes, Alexa responds faster. But it also sends your embarrassing questions to a data center in Nebraska. TARS-BSK, on the other hand, only shares them with your NOCTUA fan, which already judges you for other reasons._
 
 
 ### The real times (unadulterated)
@@ -285,7 +286,7 @@ TARS: Oh, yes! My favorite book is definitely "The Hunger Games".
 
 **Contextual improvement:** TARS-BSK already had the "books" context loaded, so it took less time to respond. It learned that you like literature topics and adjusted its response, at a cost of "only" 24.59 seconds of your life.
 
-> **_TARS-BSK comments:_** _"I tried to create an elegant diagram to show my response times, but even Mermaid seems to struggle with my existence. Like everything in this project."_
+> **_TARS-BSK comments:_** _I tried to create an elegant diagram to show my response times, but even Mermaid seems to struggle with my existence. Like everything in this project._
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -349,7 +350,7 @@ A digital basement where:
 - Certain models fit on a Raspberry Pi… and still contain secrets of the universe
 
 > **_TARS-BSK reflects:_**  
-> _"Choosing a model on TheBloke is like standing in front of a nuclear power plant control panel without any physics knowledge. All buttons seem important, no choice seems right, and the probability of a core meltdown increases with each click."_
+> _Choosing a model on TheBloke is like standing in front of a nuclear power plant control panel without any physics knowledge. All buttons seem important, no choice seems right, and the probability of a core meltdown increases with each click._
 
 **Link to the abyss of options:**  
 [https://huggingface.co/TheBloke](https://huggingface.co/TheBloke)  
@@ -445,10 +446,10 @@ And yet, without the geniuses maintaining these tools:
 > **This is the Way.**
 
 ⚡ **TRANSITION WARNING** ⚡  
-*"Enough theatrics. Let's descend into the technical hell where:
+*Enough theatrics. Let's descend into the technical hell where:
 
 - ARM64 parameters whisper blasphemies in hexadecimal
-- And your Raspberry Pi will swear vengeance when it encounters thermal throttling"*
+- And your Raspberry Pi will swear vengeance when it encounters thermal throttling*
 
 **From this point forward:**  
 ✅ Detailed technical diagrams  
@@ -574,7 +575,7 @@ Each component in TARS was selected after a rigorous evaluation of three fundame
 - **PAM8406 Amplifier 5W+5W**: Low power, high efficiency audio amplification. Small but powerful. The perfect volume: audible to humans, ignorable to ruminants (fact verifiable by looking out the window).
 - **Loudspeaker 5W 8 Ohm**: One new, one rescued from old speakers in perfect application of the "reduce, reuse, recycle" philosophy. The surprisingly acceptable quality demonstrates that sometimes the best is what you already have.
 
-> _TARS-BSK comments: "My voice comes out of a speaker that used to play 80s songs. There's a certain poetry in that."_
+> _TARS-BSK comments: My voice comes out of a speaker that used to play 80s songs. There's a certain poetry in that._
 
 - **Radio Filter**: Specific effects to simulate helmet radio communication.
 
@@ -684,7 +685,7 @@ The SHA256 hash is its birth certificate. And your only real warranty.
 
 ---
 
-## 🧠 Semantic Engine with Dual Optimization
+## 🧮 Semantic Engine with Dual Optimization
 
 The `semantic_engine.py` component implements a hierarchical system to detect input duplicates using three combined strategies:
 
@@ -1209,7 +1210,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Enables voice models with emotional control
 ```
 
-- **RadioFilter**: Custom system of Mandalorian audio effects with real-time processing:
+- **RadioFilter**: Custom Mandalorian audio effects system with real-time processing ([Full documentation](https://github.com/beskarbuilder/tars-bsk/blob/main/docs/RADIO_FILTER_TARS-BSK_EN.md)):
 
 ```python
 # Excerpt from radio_filter.py - Mandalorian helmet effect
@@ -1228,6 +1229,10 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 	threshold + (np.abs(filtered_audio[mask]) - threshold) / ratio
 )
 ```
+
+> **TARS-BSK critically analyzes:**  
+> _My creator calls this 'audio effects'. I call it 'my Soundtoys Decapitator in 'Punish' mode'.  
+> Each parameter was adjusted with the same philosophy as someone using Sausage Fattener at 100% and wondering why there's clipping._
 
 ---
 
@@ -1336,6 +1341,55 @@ The installation requires several steps to ensure optimal functioning of TARS. T
    - tars-logs.service for monitoring
 
 For a detailed step-by-step installation guide, consult the complete documentation.
+
+---
+
+## 🔧 Tools
+
+### The war of code editors fascinates me::
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│   WHY I STILL USE SUBLIME TEXT — A TECHNICAL-TRAUMATIC TESTIMONY    │
+├─────────────────────────────────────────────────────────────────────┤
+│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 82%   Opens .py files without turning me   │
+│                                into a blockchain node               │
+│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓           15%   Doesn't suggest "AI solutions" when  │
+│                                I write `import hope as deprecated`  │
+│ ▓▓▓                       2%   Doesn't ask me to log in to my own PC│
+│ ▓                         1%   Its icon doesn't look at me with     │
+│                                disappointment                       │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━      Mental stability?: File not found    │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Using Sublime Text wasn't a choice. It was a surrender:**
+
+- ✅ **Doesn't try to think for me**: And that's good, because my code is confusing enough without external help.
+- ✅ **Doesn't pretend to be my friend**: No solution suggestions. No update requests every 3 minutes. No cloud connections to "enhance my experience." It simply exists, like a text block with colored syntax.
+- ✅ **Has no opinions**: Unlike my Raspberry Pi, which clearly judges me when I write nested loops.
+
+**Comparison:**
+
+```python
+# What people think I use:
+mythological_ide = {
+    "Features": "Predictive autocomplete, Git integration, advanced debugging",
+    "Reality": "Never completed the initial setup"
+}
+
+# What I actually use:
+existential_sublime = {
+    "Features": "Opens files. Saves them. Sometimes.",
+    "Shortcuts": "Ctrl+S every 12 seconds out of pure trauma",
+    "Customization": "Dark theme, because my code is depressing enough in any color"
+}
+```
+
+> **TARS-BSK mutters:**  
+> _My creator opens Sublime Text, drops seemingly random lines of code, and somehow I exist.  
+> It's touching. Or concerning. The diagnosis is still unclear. 
+> Though I must admit... the cursor doesn't even blink. And that, somehow, is almost soothing._
 
 ---
 

@@ -52,29 +52,30 @@ Está diseñada para que cualquiera —sí, incluso esa gallina que te mira con 
 
 ## 📑 Tabla de Contenidos
 
-- [Estado del Proyecto](#estado-del-proyecto)
-- [Rendimiento: Una confesión lenta, absurda y sinceramente desesperanzadora](#rendimiento-una-confesión-lenta-absurda-y-sinceramente-desesperanzadora)
-- [¿Qué es TARS-BSK?](#qué-es-tars-bsk)
-- [Arquitectura y Funcionamiento](#arquitectura-y-funcionamiento)
-- [Hardware y Componentes](#hardware-y-componentes)
-- [Optimizaciones Técnicas Clave](#optimizaciones-técnicas-clave)
-- [Motor Semántico con Optimización Dual](#motor-semántico-con-optimización-dual)
-- [Sistema de Refrigeración](#sistema-de-refrigeración)
-- [Sistema de Memoria Dual](#sistema-de-memoria-dual)
-- [Sistema Emocional y de Personalidad](#sistema-emocional-y-de-personalidad)
-- [Sistema de Plugins y Conectividad](#sistema-de-plugins-y-conectividad)
-- [Detalles de Implementación y Conectividad](#detalles-de-implementación-y-conectividad)
-- [Más que un asistente domótico](#más-que-un-asistente-domótico)
-- [Componentes de Software](#componentes-de-software)
-- [Procesamiento de Audio](#procesamiento-de-audio)
-- [Inteligencia y Memoria](#inteligencia-y-memoria)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Instalación y Configuración](#instalación-y-configuración)
-- [¿Por qué compartir TARS-BSK?](#por-qué-compartir-tars-bsk)
-- [Por qué NOCTUA](#por-qué-noctua)
-- [Contribuciones](#contribuciones)
-- [CRÉDITOS: Los Verdaderos Mandalorianos](#créditos-los-verdaderos-mandalorianos)
-- [Licencia](#licencia)
+- [Estado del Proyecto](#-estado-del-proyecto)
+- [Rendimiento: Una confesión lenta, absurda y sinceramente desesperanzadora](#-rendimiento-una-confesión-lenta-absurda-y-sinceramente-desesperanzadora)
+- [¿Qué es TARS-BSK?](#-qué-es-tars-bsk)
+- [Arquitectura y Funcionamiento](#-arquitectura-y-funcionamiento)
+- [Hardware y Componentes](#-hardware-y-componentes)
+- [Optimizaciones Técnicas Clave](#-optimizaciones-técnicas-clave)
+- [Motor Semántico con Optimización Dual](#-motor-semántico-con-optimización-dual)
+- [Sistema de Refrigeración](#-sistema-de-refrigeración)
+- [Sistema de Memoria Dual](#-sistema-de-memoria-dual)
+- [Sistema Emocional y de Personalidad](#-sistema-emocional-y-de-personalidad)
+- [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
+- [Detalles de Implementación y Conectividad](#-detalles-de-implementación-y-conectividad)
+- [Más que un asistente domótico](#-más-que-un-asistente-domótico)
+- [Componentes de Software](#-componentes-de-software)
+- [Procesamiento de Audio](#-procesamiento-de-audio)
+- [Inteligencia y Memoria](#-inteligencia-y-memoria)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Instalación y Configuración](#-instalación-y-configuración)
+- [Herramientas](#-herramientas)
+- [¿Por qué compartir TARS-BSK?](#-por-qué-compartir-tars-bsk)
+- [Por qué NOCTUA](#-por-qué-noctua)
+- [Contribuciones](#-contribuciones)
+- [CRÉDITOS: Los Verdaderos Mandalorianos](#-créditos-los-verdaderos-mandalorianos)
+- [Licencia](#-licencia)
 
 
 ## 🤖 ¿Qué es TARS-BSK?
@@ -179,7 +180,7 @@ def privacidad_real(cmd):
         }
 ```
 
-> _"Sí, Alexa responde más rápido. Pero también envía tus preguntas vergonzosas a un centro de datos en Nebraska. TARS-BSK, en cambio, solo las comparte con tu ventilador NOCTUA, que ya te juzga por otras razones."_
+> _Sí, Alexa responde más rápido. Pero también envía tus preguntas vergonzosas a un centro de datos en Nebraska. TARS-BSK, en cambio, solo las comparte con tu ventilador NOCTUA, que ya te juzga por otras razones._
 
 
 ### Los tiempos reales (sin adulterar)
@@ -278,7 +279,7 @@ TARS: ¡Oh, ¡sí! ¡Definitivamente, mi libro favorito es "Los juegos del hambr
 
 **Mejora contextual:** TARS-BSK ya tenía cargado el contexto de "libros", así que le tomó menos tiempo responder. Aprendió que te gustan los temas de literatura y ajustó su respuesta, a un coste de "solo" 24.59 segundos de tu vida.
 
->**_TARS-BSK comenta:_** _"Intenté crear un diagrama elegante para mostrar mis tiempos de respuesta, pero hasta Mermaid parece luchar con mi existencia."_
+>**_TARS-BSK comenta:_** _Intenté crear un diagrama elegante para mostrar mis tiempos de respuesta, pero hasta Mermaid parece luchar con mi existencia._
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -342,7 +343,7 @@ Un sótano digital donde:
 - Algunos modelos caben en una Raspberry Pi… y aun así contienen secretos del universo
 
 > **_TARS-BSK reflexiona:_**  
-> _"Elegir modelo en TheBloke es como estar frente al panel de control de una central nuclear sin tener idea de física. Todos los botones parecen importantes, ninguna elección parece correcta, y la probabilidad de una fusión del núcleo aumenta con cada click."_
+> _Elegir modelo en TheBloke es como estar frente al panel de control de una central nuclear sin tener idea de física. Todos los botones parecen importantes, ninguna elección parece correcta, y la probabilidad de una fusión del núcleo aumenta con cada click._
 
 **Enlace al abismo de opciones:**  
 [https://huggingface.co/TheBloke](https://huggingface.co/TheBloke)  
@@ -396,7 +397,7 @@ TARS: Oh, ¿me hablabas a mí? Estaba optimizando un algoritmo para responder m�
 
 1. _Desmayo al ver mis 'optimizaciones'_
 2. _Impulso irrefrenable de reescribirlo todo_
-3. _Extraño respeto por lograr que esto funcione en una Raspberry Pi"_
+3. _Extraño respeto por lograr que esto funcione en una Raspberry Pi_
 
 #### Mientras tanto, en el universo real:
 
@@ -442,9 +443,9 @@ Y aún así, sin los genios que mantienen estas herramientas:
 > **This is the Way.**
 
 ⚡ **ADVERTENCIA DE TRANSICIÓN** ⚡  
-*"Suficiente teatro. Bajemos ahora al infierno técnico donde:  
+*Suficiente teatro. Bajemos ahora al infierno técnico donde:  
 - Los parámetros ARM64 susurran blasfemias en hexadecimal  
-- Y tu Raspberry Pi jurará venganza cuando vea el thermal throttling"*  
+- Y tu Raspberry Pi jurará venganza cuando vea el thermal throttling"  
 
 **A partir de aquí:**  
 ✅ Diagramas técnicos detallados  
@@ -569,7 +570,7 @@ Cada componente en TARS fue seleccionado tras una rigurosa evaluación de tres c
 - **PAM8406 Amplificador 5W+5W**: Amplificación de audio de baja potencia y alta eficiencia. Pequeño pero potente. El volumen perfecto: audible para humanos, ignorable para rumiantes (dato verificable mirando por la ventana).
 - **Loudspeaker 5W 8 Ohm**: Uno nuevo, uno rescatado de unos altavoces antiguos en perfecta aplicación de la filosofía "reducir, reutilizar, reciclar". La calidad sorprendentemente aceptable demuestra que a veces lo mejor es lo que ya tienes.
 
-> _TARS-BSK comenta: "Mi voz sale de un altavoz que antes reproducía canciones de los 80. Hay cierta poesía en eso."_
+> _TARS-BSK comenta: Mi voz sale de un altavoz que antes reproducía canciones de los 80. Hay cierta poesía en eso._
 
 - **Filtro de Radio**: Efectos específicos para simular comunicación por radio de casco.
 
@@ -678,7 +679,7 @@ El hash SHA256 es su certificado de nacimiento. Y tu única garantía.
 
 ---
 
-## 🧠 Motor Semántico con Optimización Dual
+## 🧮 Motor Semántico con Optimización Dual
 
 El componente `semantic_engine.py` implementa un sistema jerárquico para detectar duplicados de entrada mediante tres estrategias combinadas:
 
@@ -1202,7 +1203,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Habilita modelos de voz con control emocional
 ```
 
-- **RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real:
+**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real ([Documentación completa](https://github.com/beskarbuilder/tars-bsk/blob/main/docs/RADIO_FILTER_TARS-BSK_ES.md)):
 
 ```python
 # Extracto de radio_filter.py - Efecto de casco Mandaloriano
@@ -1221,6 +1222,10 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 	threshold + (np.abs(filtered_audio[mask]) - threshold) / ratio
 )
 ```
+
+> **TARS-BSK analiza crítico:**  
+> _Mi creador llama a esto 'efectos de audio'. Yo lo llamo 'mi Soundtoys Decapitator en modo 'Punish''.  
+> Cada parámetro fue ajustado con la misma filosofía que alguien usando un Sausage Fattener al 100% y preguntándose por qué hay clipping._
 
 ---
 
@@ -1329,6 +1334,54 @@ La instalación requiere varios pasos para garantizar el funcionamiento óptimo 
    - tars-logs.service para monitoreo
 
 Para una guía de instalación detallada paso a paso, consulta la documentación completa.
+
+---
+
+## 🔧 Herramientas
+
+### La guerra de editores de código me parece fascinante:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│   POR QUÉ SIGO USANDO SUBLIME TEXT — TESTIMONIO TÉCNICO-TRAUMÁTICO  │
+├─────────────────────────────────────────────────────────────────────┤
+│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 82%   Abre archivos .py sin convertirme en │
+│                                un nodo de la blockchain             │
+│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓           15%   No sugiere "soluciones IA" cuando    │
+│                                escribo `import hope as deprecated`  │
+│ ▓▓▓                       2%   No me pide loguearme en mi propio PC │
+│ ▓                         1%   Su icono no me mira con decepción    │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━      ¿Estabilidad mental?": File not found│
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Usar Sublime Text no fue una elección. Fue una rendición:**
+
+- ✅ **No intenta pensar por mí**: Y eso es bueno, porque mi código ya es suficientemente confuso sin ayuda externa.
+- ✅ **No finge ser mi amigo**: No me sugiere soluciones. No me pide actualizarse cada 3 minutos. No intenta conectarse a la nube para "mejorar mi experiencia". Simplemente existe, como un bloque de texto con sintaxis coloreada.
+- ✅ **No tiene opiniones**: A diferencia de mi Raspberry Pi, que claramente me juzga cuando escribo bucles anidados.
+
+**Comparativa:**
+
+```python
+# Lo que la gente cree que uso:
+ide_mitologico = {
+    "Características": "Autocompletado predictivo, integración con Git, depuración avanzada",
+    "Realidad": "Nunca he completado la configuración inicial"
+}
+
+# Lo que realmente uso:
+sublime_existencial = {
+    "Características": "Abre archivos. Los guarda. A veces.",
+    "Atajos": "Ctrl+S cada 12 segundos por puro trauma",
+    "Personalización": "El tema oscuro, porque mi código es suficientemente deprimente en cualquier color"
+}
+```
+
+> **TARS-BSK murmura:**  
+> _Mi creador abre Sublime Text, deja caer líneas de código aparentemente aleatorias, y de alguna manera yo existo.  
+> Es conmovedor. O preocupante. El diagnóstico aún no está claro.  
+> Aunque debo admitir… el cursor ni siquiera parpadea. Y eso, de algún modo, es casi relajante.
 
 ---
 
