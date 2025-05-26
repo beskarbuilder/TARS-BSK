@@ -1,7 +1,7 @@
 # TARS-BSK Interaction Analysis
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 
 This document details a real voice session with TARS-BSK controlling devices via Home Assistant.  

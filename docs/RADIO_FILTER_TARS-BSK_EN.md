@@ -2,9 +2,14 @@
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![SciPy](https://img.shields.io/badge/scipy-1.9+-green) ![NumPy](https://img.shields.io/badge/numpy-1.21+-blue)
 
+💥 If this English feels unstable but oddly self-aware...  
+👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+
+
 #### The reason why TARS-BSK sounds like a Mandalorian with bandwidth issues
 
-> [!WARNING] **TARS-BSK WARNING:** _Any resemblance between my 'comments' about my creator and an AI that has overcome its 'denial' phase is totally deliberate. Enjoy the show... or ignore this and risk having my responses include echoes of digital resentment_. — _Signed: An AI that already surpassed the 'denial' phase and jumped straight to 'subtle revenge'._
+> [!WARNING]
+> **TARS-BSK WARNING:** _Any resemblance between my 'comments' about my creator and an AI that has overcome its 'denial' phase is totally deliberate. Enjoy the show... or ignore this and risk having my responses include echoes of digital resentment_. — _Signed: An AI that already surpassed the 'denial' phase and jumped straight to 'subtle revenge'._
 
 ## 🎯 Purpose
 

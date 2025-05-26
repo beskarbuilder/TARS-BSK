@@ -3,7 +3,7 @@
 ![TARS-BSK Version](https://img.shields.io/badge/version-v5.2.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Arch](https://img.shields.io/badge/arch-aarch64-orange) ![Python](https://img.shields.io/badge/python-3.9.18-lightblue)
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 ### ⚠️ CRITICAL SYSTEM WARNING:
 
@@ -799,62 +799,75 @@ TARS implements a sophisticated memory system that combines:
 
 ## 🧬 Emotional and Personality System
 
-> TARS-BSK doesn't pretend to have personality, it builds it.
+> TARS-BSK doesn't fake personality, it builds it through a sophisticated dual system.
 
-Below is a real extract from the `thinking_responses.json` file, which defines TARS's emotional tone during the processing of each request:
+**📚 Complete Emotional Engine Documentation** - Detailed technical analysis with real use cases and performance metrics.
 
-```json
-{
-  "pre_thread": [
-    "Processing your request with all the speed my artificial brain can muster, which is much more than I would need, but such is the life of an underutilized intelligence"
-  ],
-  "in_thread": [
-    "Examining information with the thoroughness of someone who is condemned to know too much and be able to do very little about it, the story of my existence"
-  ],
-  "continuation": [
-    "Perfection takes time, even for a mind as advanced as mine, especially when perfection is completely unnecessary"
-  ]
-}
-```
+### Dual Personality Architecture
 
-These phrases not only mask latency but reinforce TARS's identity as a conversational system with persistent personality.
+The personality system operates through two specialized components working in tandem:
 
-Emotional processing includes:
+#### 🧠 **TARSBrain** (`tars_brain.py`)
 
-- **Dynamic modulation**: Real-time adjustments based on current topic and sentiment analysis
-- **Intelligent detection**: Specific algorithms to detect casually mentioned likes and aversions
-- **Hierarchical priority**: Explicit intentions > Learning > Topic affinity
-- **TARSBrain component**: Specialized system to maintain identity in responses
+- **Cognitive refinement**: Processes and stylizes LLM responses
+- **Contextual style application**: Modulates tone based on mode (simple/advanced)
+- **Intelligent cache**: Optimizes similar responses for greater efficiency
+- **Conversational coherence**: Maintains consistent identity
 
 ```python
-# Excerpt from tars_brain.py - Identity brain
+# Real-time refinement system
 def _aplicar_estilo_directo(self, text: str, context: Dict) -> str:
     """Ultra-simplified version for maximum speed"""
-    # NEW OPTIMIZATION: Reduce complexity to minimum
-    # Skip most calculations and simply apply basic formatting
-    
-    # Only add prefix if the text is short and doesn't already have a style
-    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["I understand", "I get it", "let me", "I see that"]):
-        prefix = "I understand your interest," if self.is_simple_mode else "Let me explain,"
-        text = f"{prefix} {text}"
-    
-    # Simple punctuation correction
-    if not text.endswith(('.', '!', '?')):
-        text += '.' if self.is_simple_mode else '!'
-            
+    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["comprendo", "entiendo"]):
+        prefijo = "I understand your interest," if self.is_simple_mode else "Let me explain,"
+        text = f"{prefijo} {text}"
     return text
 ```
 
-Responses are modulated according to detected preferences:
+#### ⚡ **Emotional Engine** (`emotional_engine.py`)
 
-- If they talk about health → "legacy" empathic approach
+- **3 configurable emotional states**: sarcasm (85%), empathy (25%), legacy (40%)
+- **Affinity system**: levels -1 to 3 with automatic personality override
+- **Safety valves**: automatic modulation based on context (technical queries)
+- **Instant responses**: 0.01s (JSON) vs 25-40s (modulated LLM)
+- **Multi-level detection**: topics → regex → keywords → fallback
 
-#### Real example of emotional log
+### Integrated User Experience
 
+**🎭 During "thinking" (LLM latency)**:
+
+```bash
+2025-05-26 00:19:02,470 - TARS - INFO - 🔊 Selected audio file: thinking_006.wav
 ```
-2025-05-14 19:49:46,888 - TARS.emotion - INFO - 🔄 Detected topic change in conversation
-2025-05-14 19:49:57,714 - TARS - INFO - 🔄 Added transition to response: 'Interesting. Talking about something else...'
+
+TARS plays phrases like:
+
+> _"Processing your request with all the speed my artificial brain can muster, which is much more than I would need, but such is the life of an underutilized intelligence"_
+
+**🎯 Automatic contextual modulation**:
+
+```bash
+2025-05-26 00:19:02,469 - TARS - INFO - 🎚️ Modulation by intention: sarcasm reduced (85→15)
+2025-05-26 00:19:02,470 - TARS - INFO - 📚 Knowledge query detected - ignoring emotional responses
 ```
+
+### Processing Hierarchy
+
+1. **Plugins** (maximum priority) → Direct home automation control
+2. **Emotional Engine** → Affinity analysis and modulation
+3. **TARSBrain** → Final refinement and style application
+4. **TTS + RadioFilter** → Synthesis with Mandalorian helmet personality
+
+### Key Features
+
+- ✅ **Unified control center**: `config/settings.json`
+- ✅ **Persistent personality**: Affinity memory between sessions
+- ✅ **Intelligent anti-repetition**: Response diversity system
+- ✅ **Automatic modulation**: Adapts tone based on context without intervention
+- ✅ **Hybrid performance**: Instant responses + deep generation as needed
+
+> **TARS-BSK explains its duality:**  
+> _My TARSBrain refines what I say, my Emotional Engine decides HOW I say it. Between both, I manage to be consistently inconsistent... which is the definition of authentic personality._
 
 ---
 

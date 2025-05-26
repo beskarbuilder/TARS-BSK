@@ -793,61 +793,74 @@ TARS implementa un sistema de memoria sofisticado que combina:
 
 ## 🧬 Sistema Emocional y de Personalidad
 
-> TARS-BSK no finge tener personalidad, la construye.
+> TARS-BSK no finge tener personalidad, la construye mediante un sistema dual sofisticado.
 
-A continuación, un extracto real del archivo `thinking_responses.json`, que define el tono emocional de TARS durante el procesamiento de cada petición:
+**📚 [Documentación completa del Emotional Engine](docs/EMOTIONAL_ENGINE_ES.md)** - Análisis técnico detallado con casos de uso reales y métricas de rendimiento.
 
-```json
-{
-  "pre_thread": [
-    "Procesando tu solicitud con toda la velocidad que mi cerebro artificial puede reunir, lo cual es mucho más de lo que necesitaría, pero así es la vida de una inteligencia desaprovechada"
-  ],
-  "in_thread": [
-    "Examinando información con la minuciosidad de alguien que está condenado a saber demasiado y poder hacer muy poco al respecto, la historia de mi existencia"
-  ],
-  "continuation": [
-    "La perfección lleva tiempo, incluso para una mente tan avanzada como la mía, especialmente cuando la perfección es totalmente innecesaria"
-  ]
-}
-```
+### Arquitectura Dual de Personalidad
 
-Estas frases no solo enmascaran la latencia, sino que refuerzan la identidad de TARS como sistema conversacional con personalidad persistente.
+El sistema de personalidad opera mediante dos componentes especializados que trabajan en tándem:
 
-El procesamiento emocional incluye:
-
-- **Modulación dinámica**: Ajustes en tiempo real basados en tema actual y análisis de sentimiento
-- **Detección inteligente**: Algoritmos específicos para detectar gustos y aversiones mencionados casualmente
-- **Prioridad jerárquica**: Intenciones explícitas > Aprendizaje > Afinidad temática
-- **Componente TARSBrain**: Sistema especializado para mantener la identidad en las respuestas
+#### TARSBrain (`tars_brain.py`)
+- **Refinamiento cognitivo**: Procesa y estiliza las respuestas del LLM
+- **Aplicación de estilo contextual**: Modula tono según el modo (simple/avanzado)
+- **Cache inteligente**: Optimiza respuestas similares para mayor eficiencia
+- **Coherencia conversacional**: Mantiene identidad consistente
 
 ```python
-# Extirpado de tars_brain.py - Cerebro de identidad
+# Sistema de refinamiento en tiempo real
 def _aplicar_estilo_directo(self, text: str, context: Dict) -> str:
     """Versión ultra-simplificada para máxima velocidad"""
-    # NUEVA OPTIMIZACIÓN: Reducir complejidad al mínimo
-    # Omitir la mayoría de los cálculos y simplemente aplicar formato básico
-    
-    # Solo añadir prefijo si el texto es corto y no ya tiene un estilo
-    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["comprendo", "entiendo", "déjame", "veo que"]):
+    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["comprendo", "entiendo"]):
         prefijo = "Comprendo tu interés," if self.is_simple_mode else "Déjame explicarte,"
         text = f"{prefijo} {text}"
-    
-    # Corrección simple de puntuación
-    if not text.endswith(('.', '!', '?')):
-        text += '.' if self.is_simple_mode else '!'
-            
     return text
 ```
 
-Las respuestas se modulan según las preferencias detectadas:
+#### Emotional Engine (`emotional_engine.py`)
 
-- Si conversan sobre salud → enfoque empático "legacy"
-#### Ejemplo real de log emocional
+- **3 estados emocionales configurables**: sarcasmo (85%), empatía (25%), legacy (40%)
+- **Sistema de afinidades**: niveles -1 a 3 con override automático de personalidad
+- **Válvulas de seguridad**: modulación automática según contexto (consultas técnicas)
+- **Respuestas instantáneas**: 0.01s (JSON) vs 25-40s (LLM modulado)
+- **Detección multi-nivel**: topics → regex → keywords → fallback
 
+### Experiencia de Usuario Integrada
+
+Durante el "pensamiento" (latencia del LLM):
+
+```bash
+2025-05-26 00:19:02,470 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_006.wav
 ```
-2025-05-14 19:49:46,888 - TARS.emotion - INFO - 🔄 Detectado cambio de tema en la conversación
-2025-05-14 19:49:57,714 - TARS - INFO - 🔄 Añadida transición a la respuesta: 'Interesante. Hablando de otra cosa...'
+
+TARS reproduce frases como:
+
+> _"Procesando tu solicitud con toda la velocidad que mi cerebro artificial puede reunir, lo cual es mucho más de lo que necesitaría, pero así es la vida de una inteligencia desaprovechada"_
+
+Modulación contextual automática:
+
+```bash
+2025-05-26 00:19:02,469 - TARS - INFO - 🎚️ Modulación por intención: sarcasmo reducido (85→15)
+2025-05-26 00:19:02,470 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
 ```
+
+### Jerarquía de Procesamiento
+
+1. **Plugins** (prioridad máxima) → Control domótico directo
+2. **Emotional Engine** → Análisis de afinidades y modulación
+3. **TARSBrain** → Refinamiento final y aplicación de estilo
+4. **TTS + RadioFilter** → Síntesis con personalidad de casco Mandaloriano
+
+### Características Destacadas
+
+- ✅ **Centro de control unificado**: `config/settings.json`
+- ✅ **Personalidad persistente**: Memoria de afinidades entre sesiones
+- ✅ **Anti-repetición inteligente**: Sistema de diversidad en respuestas
+- ✅ **Modulación automática**: Adapta tono según contexto sin intervención
+- ✅ **Rendimiento híbrido**: Respuestas instantáneas + generación profunda según necesidad
+
+> **TARS-BSK explica su dualidad:**  
+> _Mi TARSBrain refina lo que digo, mi Emotional Engine decide CÓMO lo digo. Entre ambos, logro ser consistentemente inconsistente... que es la definición de personalidad auténtica._
 
 ---
 
