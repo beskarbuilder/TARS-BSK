@@ -29,7 +29,7 @@
 **🤖 AI with an existential crisis controls a lightbulb, a relay… and its own impulses | Home Assistant + RPi 5**
 
 [![TARS-BSK: AI with existential crisis controls lights](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
-*Watch how TARS-BSK understands "tags" as "TARS" and still manages to control lights with a unique personality.*
+_Watch how TARS-BSK hears “tags” instead of “TARS”… and still manages to control the devices._
 📋 **Complete session analysis:** [EXPLAINED_CONVERSATION_LOG_HA_01_EN.md](docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md)
 
 ---
