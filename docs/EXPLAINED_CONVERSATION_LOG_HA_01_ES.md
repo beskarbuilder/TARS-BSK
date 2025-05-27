@@ -3,12 +3,12 @@
 Este documento detalla una sesión de voz real con TARS-BSK controlando dispositivos vía Home Assistant.  
 Incluye el texto detectado por VOSK, la lógica de interpretación, tiempos de respuesta y comentarios del sistema con personalidad integrada.
 
-## 🎬 Primera Interacción con el Mundo
+## 🎥 Primera Interacción con el mundo
 
-🤖 IA con crisis existencial controla las luces | TARS-BSK + Home Assistant + Raspberry Pi 5
+**🤖 IA con crisis existencial controla bombilla y relé… y sus impulsos | Home Assistant + RPi 5**
 
 [![TARS-BSK: IA con crisis existencial controla las luces](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
-*Observa cómo TARS-BSK entiende "tags" como "TARS" y aún así logra controlar las luces con una personalidad única.*
+Watch how TARS-BSK hears “tags” instead of “TARS”… and still manages to control the devices.
 📋 **Análisis completo de la sesión:** [EXPLAINED_CONVERSATION_LOG_HA_01_ES.md](docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md)
 
 ---

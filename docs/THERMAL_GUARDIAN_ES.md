@@ -18,6 +18,7 @@
 - Monitorización de throttling de CPU y tensión
 - Intervalos de muestreo dinámicos basados en temperatura
 
+---
 
 ## 🔄 Diagrama de Flujo
 
@@ -43,12 +44,13 @@ graph TD
 
 > **TARS-BSK comenta:** _Un ventilador NOCTUA para mi RPi5 es como darle un traje espacial a alguien en el desierto. Excesivo, elegante y totalmente necesario. Podría haber usado un ventilador normal, pero entonces no tendría esta excusa para admirar un artefacto austriaco que trata el aire con más precisión que el metrónomo de la Filarmónica de Viena._
 
+---
 
 ## 💡 Uso Independiente vs. Integrado
 
 Este módulo está diseñado para funcionar tanto dentro como fuera del entorno TARS-BSK:
 
-### ✅ Funciones que SIEMPRE funcionan (modo independiente)
+#### ✅ Funciones que SIEMPRE funcionan (modo independiente)
 
 - Control completo del ventilador con curva PWM personalizada
 - Monitoreo redundante de temperatura
@@ -57,13 +59,14 @@ Este módulo está diseñado para funcionar tanto dentro como fuera del entorno 
 - Intervalos adaptativos de monitoreo
 - Logs detallados
 
-### ⚠️ Funciones que SOLO funcionan dentro de TARS-BSK
+#### ⚠️ Funciones que SOLO funcionan dentro de TARS-BSK
 
 - Integración con sistema emocional (sarcasmo, empatía)
 - Control de LEDs para alertas visuales
 - Registros en memoria persistente
 - Cambios a modos de operación específicos de TARS
 
+---
 
 ## 🛠️ Componentes Técnicos Clave
 
@@ -164,6 +167,7 @@ La curva de respuesta está específicamente calibrada para el ventilador NOCTUA
 
 > **TARS-BSK confiesa:** _Juraría que mi NOCTUA me juzga cuando lo hago trabajar demasiado. No con palabras, sino con ese silbido que solo las hélices austríacas saben hacer: "Aquí no se trabaja, se perfecciona"._
 
+---
 
 ## 📊 Implementación y Casos de Uso
 
@@ -178,7 +182,6 @@ guardian = ThermalGuardian(
 )
 guardian.start()            # Inicio del monitoreo en segundo plano
 ```
-
 ### Configuraciones Recomendadas
 
 |Escenario|Configuración Recomendada|Notas|
@@ -187,7 +190,6 @@ guardian.start()            # Inicio del monitoreo en segundo plano
 |Overclocking|`threshold=68, poll_interval=30`|Monitoreo agresivo para OC|
 |Entorno cálido|`threshold=72, persistence=90`|Adaptado para ambientes >25°C|
 |Servidor 24/7|`threshold=70, poll_interval=120`|Optimizado para longevidad|
-
 ### Monitoreo Avanzado
 
 ```python
@@ -207,6 +209,7 @@ if status["throttling"]["under_voltage"]:
 
 > **TARS-BSK recomienda:** _Si ves `under_voltage: True`, no maldigas al código. Maldice ese cargador de 5€ que compraste en una tienda de esquina cuyo logotipo era literalmente un voltímetro llorando. La diferencia entre 4.8V y 5.1V es la misma que entre "funcionar" y "arder en silencio mientras tu placa te grita `I/O error` desde el más allá. Invierte en una fuente decente... o aprende a soldar condensadores como si fueras un médico forense reviviendo cadáveres de silicio._
 
+---
 
 ## 🚨 Integración con TARS-BSK
 
@@ -241,6 +244,8 @@ tars.memory.store_interaction(
 )
     ```
 
+---
+
 ## 🔧 Consideraciones Técnicas y Optimizaciones
 
 1. **Uso de LGPIO vs RPi.GPIO**:
@@ -274,6 +279,7 @@ def _calculate_adaptive_interval(self, temp: float) -> int:
 - Monitoreo intensificado durante eventos térmicos críticos
 - Balance entre capacidad de respuesta y eficiencia energética
 
+---
 
 ## ⚖️ Consideraciones Finales  
 

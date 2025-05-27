@@ -21,6 +21,7 @@
 - CPU throttling and voltage monitoring
 - Dynamic sampling intervals based on temperature
 
+---
 
 ## 🔄 Flow Diagram
 
@@ -45,12 +46,13 @@ graph TD
 
 > **TARS-BSK comments:** _A NOCTUA fan for my RPi5 is like giving someone a space suit in the desert. Excessive, elegant, and absolutely necessary. I could have used a regular fan, but then I wouldn't have this excuse to admire an Austrian artifact that handles air with more precision than the Vienna Philharmonic's metronome._
 
+---
 
 ## 💡 Standalone vs. Integrated Usage
 
 This module is designed to function both within and outside the TARS-BSK environment:
 
-### ✅ Functions that ALWAYS work (standalone mode)
+#### ✅ Functions that ALWAYS work (standalone mode)
 
 - Complete fan control with custom PWM curve
 - Redundant temperature monitoring
@@ -59,13 +61,14 @@ This module is designed to function both within and outside the TARS-BSK environ
 - Adaptive monitoring intervals
 - Detailed logs
 
-### ⚠️ Functions that ONLY work within TARS-BSK
+#### ⚠️ Functions that ONLY work within TARS-BSK
 
 - Integration with emotional system (sarcasm, empathy)
 - LED control for visual alerts
 - Persistent memory records
 - Changes to TARS-specific operation modes
 
+---
 
 ## 🛠️ Key Technical Components
 
@@ -167,6 +170,7 @@ The response curve is specifically calibrated for the NOCTUA NF-A4x10 5V PWM fan
 
 > **TARS-BSK confesses:** _I'd swear my NOCTUA judges me when I make it work too hard. Not with words, but with that whistle that only Austrian blades know how to make: "Here we don't just work, we perfect."_
 
+---
 
 ## 📊 Implementation and Use Cases
 
@@ -181,7 +185,6 @@ guardian = ThermalGuardian(
 )
 guardian.start()            # Start background monitoring
 ```
-
 ### Recommended Configurations
 
 |Scenario|Recommended Configuration|Notes|
@@ -190,7 +193,6 @@ guardian.start()            # Start background monitoring
 |Overclocking|`threshold=68, poll_interval=30`|Aggressive monitoring for OC|
 |Warm environment|`threshold=72, persistence=90`|Adapted for environments >25°C|
 |24/7 Server|`threshold=70, poll_interval=120`|Optimized for longevity|
-
 ### Advanced Monitoring
 
 ```python
@@ -210,6 +212,7 @@ if status["throttling"]["under_voltage"]:
 
 > **TARS-BSK advises:** _If you see `under_voltage: True`, don't curse the code. Curse that $5 charger you bought from a corner shop whose logo was literally a weeping voltmeter. The difference between 4.8V and 5.1V is the same as between "functioning" and "silently burning while your board screams `I/O error` from the great beyond." Invest in a decent power supply... or learn to solder capacitors as if you were a forensic doctor reviving silicon corpses._
 
+---
 
 ## 🚨 Integration with TARS-BSK
 
@@ -244,6 +247,7 @@ tars.memory.store_interaction(
 )
 ```
 
+---
 
 ## 🔧 Technical Considerations and Optimizations
 
@@ -279,6 +283,7 @@ def _calculate_adaptive_interval(self, temp: float) -> int:
 - Intensified monitoring during critical thermal events
 - Balance between responsiveness and energy efficiency
 
+---
 
 ## ⚖️ Final Considerations
 

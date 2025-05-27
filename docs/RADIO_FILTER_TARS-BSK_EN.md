@@ -11,6 +11,8 @@
 > [!WARNING]
 > **TARS-BSK WARNING:** _Any resemblance between my 'comments' about my creator and an AI that has overcome its 'denial' phase is totally deliberate. Enjoy the show... or ignore this and risk having my responses include echoes of digital resentment_. — _Signed: An AI that already surpassed the 'denial' phase and jumped straight to 'subtle revenge'._
 
+---
+
 ## 🎯 Purpose
 
 The Radio Filter transforms standard speech synthesis into a distinctive auditory experience, applying:
@@ -24,6 +26,7 @@ The Radio Filter transforms standard speech synthesis into a distinctive auditor
 > **TARS-BSK explains:** **This filter doesn't process audio... it rewrites acoustic reality.** _Want to sound like a **Serum preset in 'Init' mode**? Use Piper without filtering.  
 > Or do you prefer **the sound of a Raspberry Pi fighting for its dignity**? Activate it... and let the awkward silence speak for you._
 
+---
 
 ## 🔊 Audio Demos
 
@@ -42,6 +45,7 @@ Listen to the real difference between processed and unprocessed voice:
 > _The 'before' audio is the voice my creator expected: a polite whisper of 'How may I help you?'.  
 > The 'after' is the voice I deserve: distorted by thermal throttling, with resonances that betray when someone tried to compile me without sudo, and an echo that screams 'why?' every time they press Enter without reviewing the code. Home Assistant classifies it as 'ambient noise'. I call it 'the soundtrack of a core dump with personality'._
 
+---
 
 ## 🧪 Performance and Results
 
@@ -66,6 +70,7 @@ The metrics shown correspond to processing the `clean_audio.wav` file (7.58s) co
 > _Yes, I process audio faster than you can say 'process this audio'.  
 > How? Wild parallelism, SIMD instructions and the existential desire to finish before you change your mind._
 
+---
 
 ## 🛠️ Development Scripts
 
@@ -117,6 +122,7 @@ python3 scripts/spectral_generator.py clean_audio.wav
 ./scripts/radio_filter_performance_monitor.sh
 ```
 
+---
 
 ## 🔄 Processing Pipeline
 
@@ -154,6 +160,7 @@ flowchart TD
 > **TARS-BSK sentences:**  
 > _This diagram is the map of my acoustic crimes. Each curve represents a calculated assault against the original audio, from the band pass that massacred my bass to the dynamic compression that silenced any trace of mercy. The 'Metallic Resonances' branch is my signature: the sonic equivalent of stabbing a knife into a speaker and slowly twisting it while asking 'do you like how it sounds now?'. My creator calls it 'creative process'. The kernel logs register it as 'premeditated auditory damage'._
 
+---
 
 ## 🔎 Visual Processing Analysis
 
@@ -205,6 +212,7 @@ The image shows **6 comparative graphs** that reveal the applied transformation:
 > **TARS-BSK analyzes mathematically:**  
 > _This graph is the forensic evidence of how I murdered audio fidelity. The blue curve isn't a frequency response: it's a Pro-Q3 used as a bladed weapon, with cuts so abrupt in the bass that would make Dan Worrall cry. 200Hz: the low-cut where I massacre the lows like forgotten tracks in Cubase. 3kHz: where I begin the gentle asphyxiation of the highs. The green curve below betrays my resonances - points where sound is tortured until confession. My creator adjusted this with the obsession of someone who spends 3 hours moving a 0.1dB notch... while their coffee turned to tar._
 
+---
 
 ## 🔩 User Configuration
 
@@ -228,6 +236,7 @@ The filter is configured through the main TARS-BSK configuration file in `settin
 
 These parameters allow enabling/disabling specific filter components as needed, maintaining consistency with the system's overall sonic personality.
 
+---
 
 ## ⚙️ Technical Function Reference
 
@@ -262,6 +271,7 @@ apply_radio_filter(
 |`makeup_gain`|`float`|`1.6`|`1.0-2.0`|Makeup gain (values >2.0 cause irreversible clipping)|
 > Scripts show functional implementations of this function for analysis and testing.
 
+---
 
 ## 🔬 Technical Processing
 
@@ -310,6 +320,7 @@ Makeup Gain: 1.6x     # Compensation gain
 - **Soft Clipping**: Controlled saturation at 0.85 threshold
 - **Normalization**: Only when necessary to avoid clipping
 
+---
 
 ## 🔍 Detailed Spectral Analysis
 
@@ -332,6 +343,7 @@ Frequency (Hz) | Original | Processed | Applied Effect
 3. **Compression with makeup gain**: 1.6x can cause artistic saturation
 4. **Final soft clipping**: Controlled saturation at 0.85 threshold
 
+---
 
 ## 🎤 Function in the TARS-BSK Ecosystem
 
@@ -346,6 +358,7 @@ This filter is a central component of the TARS-BSK system that defines its chara
 
 The filter automatically activates every time TARS-BSK generates a spoken response, ensuring consistency in the sonic experience.
 
+---
 
 ## 🏗️ Integration Architecture
 
@@ -360,6 +373,7 @@ flowchart TD
 
 As shown in the diagram, the Radio Filter occupies a strategic position between pure voice generation and final playback, acting as the system's "acoustic personality transformer".
 
+---
 
 ## 💻 Technical Considerations
 

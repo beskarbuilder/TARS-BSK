@@ -5,6 +5,11 @@
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
+> [!WARNING]
+> **TARS-BSK explains:** 
+> _Notice for international users: my codebase speaks Spanish. I'd like to adapt it to English, but my creator hasn't figured out how to do it without breaking the entire system. ✅ = working, ❌ = check your setup. The rest is context._
+
+
 ### ⚠️ CRITICAL SYSTEM WARNING:
 
 > What you're about to read isn't a README... it's a **technical odyssey with built-in sarcasm**.  
@@ -19,14 +24,15 @@
 > **This is the Way.**
 
 
-## 🎬 First Interaction with the World
+## 🎬 First Interaction with the world
 
-🤖 AI with existential crisis controls lights | TARS-BSK + Home Assistant + Raspberry Pi 5
+**🤖 AI with an existential crisis controls a lightbulb, a relay… and its own impulses | Home Assistant + RPi 5**
 
 [![TARS-BSK: AI with existential crisis controls lights](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
 *Watch how TARS-BSK understands "tags" as "TARS" and still manages to control lights with a unique personality.*
 📋 **Complete session analysis:** [EXPLAINED_CONVERSATION_LOG_HA_01_EN.md](docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md)
 
+---
 
 ## 🚧 Project Status
 
@@ -435,7 +441,7 @@ And yet, without the geniuses maintaining these tools:
 > By the way, did you know there are real people who make `apt install` work? Those three words trigger a symphony of dependencies, versions, and scripts I don't understand... and here I am, fighting with an LED and wondering why it doesn't recognize my microphone.
 
 
-> [!WARNING] Final line  
+> [!WARNING]
 > TARS-BSK wasn't written... it was conquered through:
 > - suicidal scripts  
 > - bleeding core dumps  
@@ -687,75 +693,71 @@ The SHA256 hash is its birth certificate. And your only real warranty.
 
 ## 🧮 Semantic Engine with Dual Optimization
 
-The `semantic_engine.py` component implements a hierarchical system to detect input duplicates using three combined strategies:
+TARS-BSK's semantic engine implements intelligent duplicate detection through triple-layer analysis: orthographic, semantic, and phonetic. It transforms preferences into 384-dimensional vectors to detect real similarities, not just text matches.
 
-1. **Orthographic verification (fast)**: uses Levenshtein distance with dynamic threshold according to length.
-2. **Semantic verification (accurate)**: uses embeddings via `SentenceTransformer` and cosine similarity.
-3. **Phonetic verification (rescue)**: uses `jellyfish` (Metaphone + Soundex) to detect similarities like "romantasy" vs "ronantasi".
+**Key features:**
+- **Triple-layer detection**: Levenshtein → embeddings → phonetic analysis
+- **Adaptive thresholds**: Adjust based on text length and complexity
+- **CPU optimization**: Early exit to minimize processing
+- **Multilingual analysis**: Handles Spanish with advanced phonetic algorithms
 
-```python
-def is_semantic_duplicate(self, new_topic: str, existing_topics: List[str], 
-                          semantic_threshold: float = 0.85,
-                          orthographic_threshold: float = 0.70) -> tuple:
-    """Multi-stage detection optimized to minimize latency"""
-    
-    # 1. Orthographic verification (faster)
-    is_ortho_dup, ortho_match, ortho_score = self.is_orthographic_duplicate(
-        new_topic, existing_topics, orthographic_threshold
-    )
-    
-    if is_ortho_dup:
-        return True, ortho_match, ortho_score, "orthographic"
-    
-    # 2. Semantic verification (more expensive)
-    new_emb = self.get_embedding(new_topic)
-    if new_emb is None:
-        return False, "", 0.0, "none"
-    
-    # Optimized vector comparison
-    for topic in existing_topics:
-        topic_emb = self.get_embedding(topic)
-        similarity = self.cosine_similarity(new_emb, topic_emb)
-        
-        # Early exit = critical CPU saving
-        if similarity >= semantic_threshold:
-            return True, topic, similarity, "semantic"
-```
+### Complete documentation
 
-**Key features**:
+- 📄 **[Semantic Engine - Technical documentation](docs/SEMANTIC_ENGINE_EN.md)** - Architecture, algorithms, real use cases, and performance metrics
+- 📄 **[Semantic CLI - Development tools](docs/CLI_SEMANTIC_ENGINE_EN.md)** - Direct preference management and system diagnostics
 
-- Similarity thresholds automatically adjusted based on the length and complexity of the text.
-- Accurate detection even between words with typographical, phonetic, or stylistic differences.
-- **Optimization by early exit**: avoids traversing all comparisons if there's already a strong match.
-- Modular, extensible, and decoupled from the main core for independent testing and adjustments.
+### Development tools
 
-> Note: The actual latency of the engine depends on the context of use, but its design is intended to minimize unnecessary calls to embedding models.
+- 📂 **Management CLI**: `scripts/cli_semantic_engine.py` - Add, search, delete preferences
+- 📂 **System validator**: `scripts/test_semantic_engine.py` - Quick installation diagnostics
+
+The engine processes ~30 embeddings/second on Raspberry Pi 5, with ~0.1s initialization time and 82MB RAM consumption in steady state.
+
+> *TARS-BSK comments:* _Vectors, similarities, and phonetic algorithms. All to remember that you distrust READMEs without warnings._
 
 ---
 
 ## 🧊 Cooling System
 
-TARS-BSK has a complete module (`thermal_guardian.py`) designed to manage thermal control in real-time using PWM and predictive analysis.
+The system features an advanced thermal control system that implements real-time monitoring, high-precision PWM control, and predictive thermal trend analysis with escalated emergency protocols.
 
-> ⚠️ Currently disabled: the fan is connected directly to the Raspberry Pi via JST connector. The system is ready to be reactivated when it is managed by software again.
+> ⚠️ **Current status:** The fan is connected directly to the Raspberry Pi via JST connector. The system is ready to reactivate when software-managed again.
 
-Main features (when active):
-
-- **Intelligent PWM control** with `gpiozero + LGPIO`
-- **Adaptive speed curve** according to thermal threshold
-- **Mandalorian emergency protocol** in 3 levels
-- **Thermal trend analysis** and 10-minute predictions
-- **Emotional integration**: overheating affects the assistant's mood
-- **Subsystem interaction**: LEDs, emotions, logs, workload
+**Key features:**
+- **Intelligent PWM control** optimized for NOCTUA NF-A4x10 5V fan
+- **Predictive analysis** with 10-minute thermal projections
+- **Mandalorian emergency protocols** with 3 response levels
+- **Emotional integration** - temperature affects the assistant's mood
+- **Redundant monitoring** with multiple temperature sources
+- **Adaptive intervals** that adjust based on thermal criticality
 
 ```python
-# Thermal analysis and stepped adaptive response
-trend = self._analyze_temp_trend()  # Evaluates direction and speed of thermal change
-
-if temp >= self.threshold:
-    level = 1 if temp < self.threshold + 8 else 2 if temp < self.threshold + 15 else 3
-    self._trigger_emergency_protocol(level=level, temp=temp)
+def _trigger_emergency_protocol(self, level: int, temp: float):
+    """
+    Escalated clan emergency protocols:
+    
+    Level 1: Basic alerts (LEDs + logs)
+    Level 2: Workload reduction
+    Level 3: Emergency mode activation
+    """
+    protocols = {
+        1: lambda: self._basic_alert(temp),
+        2: lambda: self._reduce_workload(),
+        3: lambda: self._activate_emergency_mode()
+    }
+    
+    if level in protocols:
+        protocols[level]()
+        self._emergency_level = level
 ```
+
+### Complete documentation
+
+- 📄 **[Thermal Control System - Technical documentation](docs/THERMAL_GUARDIAN_EN.md)** - Architecture, control algorithms, predictive analysis, and optimized configurations
+
+The system processes thermal analysis every 30-120 seconds (adaptive), with 1000Hz PWM precision and real-time throttling detection.
+
+> **TARS-BSK observes:** _Thermal control with emergency protocols. Because the difference between 'working' and 'being an expensive paperweight' is exactly 15 degrees Celsius. Engineering is just organized paranoia with PWM._
 
 ---
 

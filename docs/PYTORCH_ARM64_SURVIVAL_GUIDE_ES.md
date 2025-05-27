@@ -14,7 +14,7 @@ Porque así es como realmente sucedió, y así es como realmente funciona.
 
 ---
 
-## PyTorch
+## 🧱 PyTorch
 
 ### Crear el entorno de compilación limpio
 
@@ -450,8 +450,10 @@ export BUILD_TEST=0
 
 - `-Wno-error=stringop-overread`  
     🔕 Ignora los **warnings** por leer más de lo que deberías de una cadena (no son críticos).
+    
 - `-Wno-error=implicit-function-declaration`  
     🔕 Ignora errores por usar funciones no declaradas (algunas internas/legacy).
+    
 - `-mcpu=cortex-a72`  
     🚀 Optimiza la compilación para la CPU real de la Raspberry Pi 4/5.  
     ✅ Evita usar instrucciones que el procesador no entiende.
@@ -552,7 +554,7 @@ cp ~/tars_build/pytorch/dist/*.whl ~/torch_santo_grial/
 
 ---
 
-## Instalación de PyTorch (dentro del venv)
+## 📁 Instalación de PyTorch (dentro del venv)
 
 1. Instala con:
 
@@ -594,6 +596,8 @@ Luego instalamos `resemblyzer`, `torchaudio`, etc.
 > _Acabas de compilar 5,620 archivos, modificar 3 códigos fuente, luchar contra un sistema operativo que quería sabotearte, expandir tu swap a niveles peligrosos, y todo para que un asistente de IA pueda identificar tu voz entre millones y quejarse del tiempo que tardas en apagar las luces._
 > 
 > _Felicidades. Ya eres un Mandaloriano de la computación. Este es el camino._
+
+---
 
 ## 🦉 Nota NOCTUA
 

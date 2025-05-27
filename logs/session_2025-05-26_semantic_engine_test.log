@@ -1,0 +1,299 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-05-26 16:21:45,883 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:21:48,493 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:21:48,493 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:21:48,494 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:21:48,713 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 35.89it/s]
+2025-05-26 16:21:48,744 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-26 16:21:48,744 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-05-26 16:21:48,748 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-05-26 16:21:48,749 - modules.preferences_manager - INFO - Preferencias cargadas: 5 afinidades, 0 gustos, 0 disgustos
+2025-05-26 16:21:48,750 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-05-26 16:21:48,752 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 12 temas, 8 patrones, 9 keywords
+2025-05-26 16:21:48,754 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-05-26 16:21:48,755 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-05-26 16:21:48,755 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-05-26 16:21:48,756 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-05-26 16:21:48,756 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-05-26 16:21:48,757 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-05-26 16:21:48,757 - TARS - INFO - Detector de intenciones inicializado
+2025-05-26 16:21:48,757 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-05-26 16:21:48,759 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-26 16:21:48,759 - TARS - INFO - ✅ Preferencias cargadas: 8 gustos, 2 disgustos
+2025-05-26 16:21:48,760 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-05-26 16:21:48,760 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-05-26 16:21:48,760 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-05-26 16:21:48,898 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-05-26 16:21:48,899 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-05-26 16:21:48,899 - TARS.PluginSystem - INFO - Configuración de plugins cargada correctamente
+2025-05-26 16:21:48,899 - TARS.PluginSystem - INFO - Plugins habilitados: homeassistant
+2025-05-26 16:21:48,899 - TARS.PluginSystem - INFO - Sistema de plugins inicializado
+2025-05-26 16:21:48,899 - TARS.PluginSystem - INFO - Inicializando 1 plugins
+2025-05-26 16:21:48,900 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-05-26 16:21:48,905 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-05-26 16:21:48,905 - TARS.PluginSystem - INFO - ✅ Plugin homeassistant inicializado
+2025-05-26 16:21:48,906 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-05-26 16:21:48,906 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: me encanta the mandalorian
+2025-05-26 16:22:09,318 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me encanta the mandalorian'
+2025-05-26 16:22:09,318 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:22:09,318 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:22:09,318 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me encanta the mandalorian'
+2025-05-26 16:22:09,319 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:22:09,319 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:22:09,319 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:22:09,319 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:22:09,319 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-26 16:22:09,320 - TARS - INFO - 🔍 Preferencia positiva detectada: the mandalorian
+2025-05-26 16:22:09,320 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:22:09,321 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:22:09,322 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:22:09,322 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:22:09,452 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.48it/s]
+2025-05-26 16:22:09,481 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-26 16:22:09,483 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'the mandalorian' ≈ 'serie el mandaloriano' (0.812, umbral: 0.70)
+2025-05-26 16:22:09,483 - TARS - INFO - Duplicado ortográfico detectado: 'the mandalorian' ≈ 'serie el mandaloriano' (0.812)
+2025-05-26 16:22:09,483 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'serie el mandaloriano' ≈ 'the mandalorian' (similitud: 0.81, tipo: ortográfico)
+2025-05-26 16:22:09,496 - TARS - INFO - 🧠 Memoria RAM actualizada: 8 gustos, 2 disgustos
+2025-05-26 16:22:09,496 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Comprendo. Esta información queda registrada.'
+2025-05-26 16:22:09,496 - TARS.TTS - INFO - 🗣️ Generando voz: 'Comprendo. Esta información queda registrada.'
+2025-05-26 16:22:10,449 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:22:10,471 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-26 16:22:13,758 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Comprendo. Esta información queda registrada.
+Tú: me gusta mucho el mandaloriano
+2025-05-26 16:22:23,314 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta mucho el mandaloriano'
+2025-05-26 16:22:23,314 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:22:23,314 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:22:23,314 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta mucho el mandaloriano'
+2025-05-26 16:22:23,315 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:22:23,315 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:22:23,315 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:22:23,315 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:22:23,315 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-26 16:22:23,315 - TARS - INFO - 🔍 Preferencia positiva detectada: mucho el mandaloriano
+2025-05-26 16:22:23,315 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:22:23,315 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:22:23,317 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:22:23,317 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:22:23,464 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 36.54it/s]
+2025-05-26 16:22:23,494 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-26 16:22:23,495 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'mucho el mandaloriano' ≈ 'serie el mandaloriano' (0.824, umbral: 0.70)
+2025-05-26 16:22:23,495 - TARS - INFO - Duplicado ortográfico detectado: 'mucho el mandaloriano' ≈ 'serie el mandaloriano' (0.824)
+2025-05-26 16:22:23,495 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'serie el mandaloriano' ≈ 'mucho el mandaloriano' (similitud: 0.82, tipo: ortográfico)
+2025-05-26 16:22:23,507 - TARS - INFO - 🧠 Memoria RAM actualizada: 8 gustos, 2 disgustos
+2025-05-26 16:22:23,508 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Perfecto! He registrado esta preferencia en tu perfil.'
+2025-05-26 16:22:23,508 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Perfecto! He registrado esta preferencia en tu perfil.'
+2025-05-26 16:22:24,553 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:22:24,577 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.024s
+2025-05-26 16:22:28,365 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: ¡Perfecto! He registrado esta preferencia en tu perfil.
+Tú: me fascina din djarin
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me fascina din djarin'
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:22:33,509 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me fascina din djarin'
+2025-05-26 16:22:33,509 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:22:33,509 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='me fascina din djarin'
+🔍 DEBUG RESPONSES_FOUND: 0 responses after triggers
+🔍 DEBUG TONE: Starting tone analysis
+🔍 DEBUG TONE_RESULT: {'dominant_tone': None, 'suggested_emotion': None}
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response=''
+🔍 DEBUG: emotion_response='', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-05-26 16:22:33,522 - TARS - INFO - ✅ Análisis completo en 0.01s
+2025-05-26 16:22:33,522 - TARS - INFO - 📝 Prompt final (6 tokens): Usuario: me fascina din djarin
+TARS:...
+2025-05-26 16:22:33,522 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_021.wav
+2025-05-26 16:22:33,523 - TARS - INFO - 🧠 Generando respuesta...
+2025-05-26 16:22:33,523 - TARS - INFO - ⚙️ Tokens: prompt≈6, disponibles=134, asignados=40
+2025-05-26 16:22:33,523 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Usuario: me fascina din djarin
+TARS:'
+2025-05-26 16:22:33,523 - TARS - INFO - 🚨 LONGITUD REAL: 6 palabras
+2025-05-26 16:22:35,525 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-05-26 16:22:37,881 - TARS - INFO - ⏱️ Tiempo generando tokens: 4.36s
+2025-05-26 16:22:37,882 - TARS - INFO - ✅ Respuesta generada: ¿Qué me puedes decir, amigo?...
+2025-05-26 16:22:37,882 - TARS - INFO - ⏱️ Esperando a que termine el audio de pensamiento...
+2025-05-26 16:22:43,334 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-05-26 16:22:43,334 - TARS - INFO - ✅ Audio completado, continuando
+2025-05-26 16:22:43,334 - TARS - INFO - 🧪 Total proceso respuesta: 9.81s
+2025-05-26 16:22:43,334 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 9.81s
+2025-05-26 16:22:43,334 - TARS - INFO - ➡️ Reproduciendo fragmento: '¿Qué me puedes decir, amigo?'
+2025-05-26 16:22:43,334 - TARS.TTS - INFO - 🗣️ Generando voz: '¿Qué me puedes decir, amigo?'
+2025-05-26 16:22:44,132 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:22:44,145 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.012s
+2025-05-26 16:22:46,054 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-05-26 16:22:47,056 - modules.preferences_manager - INFO - Preferencias cargadas: 5 afinidades, 0 gustos, 0 disgustos
+2025-05-26 16:22:47,056 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-05-26 16:22:47,060 - TARS - INFO - 📤 Respuesta generada en 13.55s
+TARS: ¿Qué me puedes decir, amigo?
+Tú: adoro al personaje de mando
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'adoro al personaje de mando'
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:22:51,799 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'adoro al personaje de mando'
+2025-05-26 16:22:51,799 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:22:51,799 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='adoro al personaje de mando'
+🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.'
+🔍 DEBUG: emotion_response='Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.', sarcasmo_level=85, tema='star_wars', nivel=3
+2025-05-26 16:22:51,800 - TARS - INFO - ✅ Análisis completo en 0.00s
+2025-05-26 16:22:51,800 - TARS - INFO - 🌀 Emoción activada (sarcasmo): Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.
+2025-05-26 16:22:51,801 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.'
+2025-05-26 16:22:51,801 - TARS.TTS - INFO - 🗣️ Generando voz: 'Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.'
+2025-05-26 16:22:53,466 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:22:53,512 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.046s
+2025-05-26 16:23:00,682 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-05-26 16:23:01,685 - modules.preferences_manager - INFO - Preferencias cargadas: 5 afinidades, 0 gustos, 0 disgustos
+2025-05-26 16:23:01,685 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+TARS: Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.
+Tú: me gusta baby yoda
+2025-05-26 16:23:06,823 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta baby yoda'
+2025-05-26 16:23:06,823 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:23:06,823 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:23:06,824 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta baby yoda'
+2025-05-26 16:23:06,824 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:23:06,824 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:23:06,824 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:23:06,824 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:23:06,824 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-26 16:23:06,824 - TARS - INFO - 🔍 Preferencia positiva detectada: baby yoda
+2025-05-26 16:23:06,824 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:06,824 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:06,826 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:23:06,826 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:06,977 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 31.59it/s]
+2025-05-26 16:23:07,011 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 32.59it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 30.76it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 31.32it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 30.65it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 32.83it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 32.07it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 32.46it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 31.02it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 34.16it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.80it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.21it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.38it/s]
+2025-05-26 16:23:07,406 - TARS - INFO - ✅ Nueva preferencia almacenada: 'baby yoda' (sentimiento: 0.90, categoría: general)
+2025-05-26 16:23:07,418 - TARS - INFO - 🧠 Memoria RAM actualizada: 8 gustos, 2 disgustos
+2025-05-26 16:23:07,418 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Qué bien! Siempre es útil conocer tus preferencias.'
+2025-05-26 16:23:07,418 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Qué bien! Siempre es útil conocer tus preferencias.'
+2025-05-26 16:23:08,431 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:23:08,454 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.023s
+2025-05-26 16:23:12,121 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: ¡Qué bien! Siempre es útil conocer tus preferencias.
+Tú: me encanta grogu
+2025-05-26 16:23:16,310 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me encanta grogu'
+2025-05-26 16:23:16,310 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:23:16,310 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:23:16,310 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me encanta grogu'
+2025-05-26 16:23:16,310 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:23:16,311 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:23:16,311 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:23:16,311 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:23:16,311 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-26 16:23:16,311 - TARS - INFO - 🔍 Preferencia positiva detectada: grogu
+2025-05-26 16:23:16,312 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:16,312 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:16,313 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:23:16,313 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:16,447 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.02it/s]
+2025-05-26 16:23:16,477 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 39.48it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.30it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 38.10it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.23it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 39.63it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.78it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 39.66it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.38it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 35.96it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.72it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.23it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.54it/s]
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 39.68it/s]
+2025-05-26 16:23:16,857 - TARS - INFO - ✅ Nueva preferencia almacenada: 'grogu' (sentimiento: 0.90, categoría: general)
+2025-05-26 16:23:16,869 - TARS - INFO - 🧠 Memoria RAM actualizada: 8 gustos, 2 disgustos
+2025-05-26 16:23:16,869 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Excelente. He actualizado tu perfil con esta información.'
+2025-05-26 16:23:16,869 - TARS.TTS - INFO - 🗣️ Generando voz: 'Excelente. He actualizado tu perfil con esta información.'
+2025-05-26 16:23:17,942 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:23:17,966 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.024s
+2025-05-26 16:23:21,753 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Excelente. He actualizado tu perfil con esta información.
+Tú: me gusta el mandaloriano
+2025-05-26 16:23:23,822 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta el mandaloriano'
+2025-05-26 16:23:23,823 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:23:23,823 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:23:23,823 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta el mandaloriano'
+2025-05-26 16:23:23,823 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:23:23,823 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:23:23,823 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:23:23,824 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:23:23,824 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-26 16:23:23,824 - TARS - INFO - 🔍 Preferencia positiva detectada: el mandaloriano
+2025-05-26 16:23:23,824 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:23,825 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:23,826 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:23:23,826 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:23,964 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 36.91it/s]
+2025-05-26 16:23:23,994 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-26 16:23:23,995 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'el mandaloriano' ≈ 'serie el mandaloriano' (0.845, umbral: 0.60)
+2025-05-26 16:23:23,995 - TARS - INFO - Duplicado ortográfico detectado: 'el mandaloriano' ≈ 'serie el mandaloriano' (0.845)
+2025-05-26 16:23:23,995 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'serie el mandaloriano' ≈ 'el mandaloriano' (similitud: 0.84, tipo: ortográfico)
+2025-05-26 16:23:24,009 - TARS - INFO - 🧠 Memoria RAM actualizada: 8 gustos, 2 disgustos
+2025-05-26 16:23:24,009 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Lo tendré presente para futuras conversaciones.'
+2025-05-26 16:23:24,009 - TARS.TTS - INFO - 🗣️ Generando voz: 'Lo tendré presente para futuras conversaciones.'
+2025-05-26 16:23:24,939 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:23:24,960 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-26 16:23:27,998 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Lo tendré presente para futuras conversaciones.
+Tú: me encanta el mandaloreano
+2025-05-26 16:23:30,612 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me encanta el mandaloreano'
+2025-05-26 16:23:30,613 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-26 16:23:30,613 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-26 16:23:30,613 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me encanta el mandaloreano'
+2025-05-26 16:23:30,613 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-26 16:23:30,613 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-26 16:23:30,613 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-26 16:23:30,614 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-26 16:23:30,614 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-26 16:23:30,614 - TARS - INFO - 🔍 Preferencia positiva detectada: el mandaloreano
+2025-05-26 16:23:30,614 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:30,614 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:30,616 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-26 16:23:30,616 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-26 16:23:30,761 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 31.83it/s]
+2025-05-26 16:23:30,795 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-26 16:23:30,796 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'el mandaloreano' ≈ 'serie el mandaloriano' (0.828, umbral: 0.60)
+2025-05-26 16:23:30,796 - TARS - INFO - Duplicado ortográfico detectado: 'el mandaloreano' ≈ 'serie el mandaloriano' (0.828)
+2025-05-26 16:23:30,797 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'serie el mandaloriano' ≈ 'el mandaloreano' (similitud: 0.83, tipo: ortográfico)
+2025-05-26 16:23:30,809 - TARS - INFO - 🧠 Memoria RAM actualizada: 8 gustos, 2 disgustos
+2025-05-26 16:23:30,809 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Me encanta aprender sobre tus gustos.'
+2025-05-26 16:23:30,809 - TARS.TTS - INFO - 🗣️ Generando voz: 'Me encanta aprender sobre tus gustos.'
+2025-05-26 16:23:31,601 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-26 16:23:31,619 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-05-26 16:23:34,030 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Me encanta aprender sobre tus gustos.
+Tú:

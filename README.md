@@ -16,14 +16,15 @@
 > **This is the Way.**
 
 
-## 🎬 Primera Interacción con el Mundo
+## 🎥 Primera Interacción con el mundo
 
-🤖 IA con crisis existencial controla las luces | TARS-BSK + Home Assistant + Raspberry Pi 5
+**🤖 IA con crisis existencial controla bombilla y relé… y sus impulsos | Home Assistant + RPi 5**
 
 [![TARS-BSK: IA con crisis existencial controla las luces](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
-*Observa cómo TARS-BSK entiende "tags" como "TARS" y aún así logra controlar las luces con una personalidad única.*
+Watch how TARS-BSK hears “tags” instead of “TARS”… and still manages to control the devices.
 📋 **Análisis completo de la sesión:** [EXPLAINED_CONVERSATION_LOG_HA_01_ES.md](docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md)
 
+---
 
 ## 🚧 Estado del Proyecto
 
@@ -432,7 +433,7 @@ Y aún así, sin los genios que mantienen estas herramientas:
 >y yo aquí, peleándome con un LED y preguntándome por qué no me reconoce el micro.
 
 
-> [!WARNING] Última línea  
+> [!WARNING]
 > TARS-BSK no se escribió… se conquistó a base de:
 > - scripts suicidas  
 > - core dumps sangrantes  
@@ -445,7 +446,7 @@ Y aún así, sin los genios que mantienen estas herramientas:
 ⚡ **ADVERTENCIA DE TRANSICIÓN** ⚡  
 *Suficiente teatro. Bajemos ahora al infierno técnico donde:  
 - Los parámetros ARM64 susurran blasfemias en hexadecimal  
-- Y tu Raspberry Pi jurará venganza cuando vea el thermal throttling"  
+- Y tu Raspberry Pi jurará venganza cuando vea el thermal throttling  
 
 **A partir de aquí:**  
 ✅ Diagramas técnicos detallados  
@@ -681,75 +682,71 @@ El hash SHA256 es su certificado de nacimiento. Y tu única garantía.
 
 ## 🧮 Motor Semántico con Optimización Dual
 
-El componente `semantic_engine.py` implementa un sistema jerárquico para detectar duplicados de entrada mediante tres estrategias combinadas:
+El motor semántico de TARS-BSK implementa detección inteligente de duplicados mediante análisis tricapa: ortográfico, semántico y fonético. Transforma preferencias en vectores de 384 dimensiones para detectar similitudes reales, no solo coincidencias de texto.
 
-1. **Verificación ortográfica (rápida)**: usa distancia Levenshtein con umbral dinámico según longitud.
-2. **Verificación semántica (precisa)**: utiliza embeddings vía `SentenceTransformer` y similitud coseno.
-3. **Verificación fonética (rescate)**: emplea `jellyfish` (Metaphone + Soundex) para detectar similitudes como "romantasy" vs "ronantasi".
+**Características principales:**
+- **Detección tricapa**: Levenshtein → embeddings → análisis fonético
+- **Umbrales adaptativos**: Se ajustan según longitud y complejidad del texto
+- **Optimización CPU**: Salida temprana para minimizar procesamiento
+- **Análisis multilingüe**: Maneja español con algoritmos fonéticos avanzados
 
-```python
-def is_semantic_duplicate(self, new_topic: str, existing_topics: List[str], 
-                          semantic_threshold: float = 0.85,
-                          orthographic_threshold: float = 0.70) -> tuple:
-    """Detección en múltiples etapas optimizada para minimizar latencia"""
-    
-    # 1. Verificación ortográfica (más rápida)
-    is_ortho_dup, ortho_match, ortho_score = self.is_orthographic_duplicate(
-        new_topic, existing_topics, orthographic_threshold
-    )
-    
-    if is_ortho_dup:
-        return True, ortho_match, ortho_score, "ortográfico"
-    
-    # 2. Verificación semántica (más costosa)
-    new_emb = self.get_embedding(new_topic)
-    if new_emb is None:
-        return False, "", 0.0, "ninguno"
-    
-    # Comparación vectorial optimizada
-    for topic in existing_topics:
-        topic_emb = self.get_embedding(topic)
-        similarity = self.cosine_similarity(new_emb, topic_emb)
-        
-        # Salida temprana = ahorro crítico de CPU
-        if similarity >= semantic_threshold:
-            return True, topic, similarity, "semántico"
-```
+### Documentación completa
 
-**Características destacadas**:
+- 📄 **[Motor Semántico - Documentación técnica](docs/SEMANTIC_ENGINE_ES.md)** - Arquitectura, algoritmos, casos de uso reales y métricas de rendimiento
+- 📄 **[CLI Semántico - Herramientas de desarrollo](docs/CLI_SEMANTIC_ENGINE_ES.md)** - Gestión directa de preferencias y diagnóstico del sistema
 
-- Umbrales de similitud ajustados automáticamente en función de la longitud y complejidad del texto.
-- Detección precisa incluso entre palabras con diferencias tipográficas, fonéticas o estilísticas.
-- **Optimización por salida anticipada**: se evita recorrer todas las comparaciones si ya hay una coincidencia fuerte.
-- Modular, extensible, y desacoplado del núcleo principal para pruebas y ajustes independientes.
+### Herramientas de desarrollo
 
-> Nota: La latencia real del motor depende del uso en contexto, pero su diseño está pensado para minimizar llamadas innecesarias a modelos de embedding.
+- 📂 **CLI de gestión**: `scripts/cli_semantic_engine.py` - Añadir, buscar, eliminar preferencias
+- 📂 **Validador del sistema**: `scripts/test_semantic_engine.py` - Diagnóstico rápido de instalación
+
+**El motor procesa ~30 embeddings/segundo en la Raspberry Pi 5, con tiempo de inicialización de ~0.1s y consumo de 82MB de RAM en estado estable.
+
+> _TARS-BSK comenta:_ _Vectores, similitudes, y algoritmos fonéticos. Todo para recordar que desconfías de los README sin advertencias._
 
 ---
 
 ## 🧊 Sistema de Refrigeración
 
-TARS-BSK cuenta con un módulo completo (`thermal_guardian.py`) diseñado para gestionar el control térmico en tiempo real mediante PWM y análisis predictivo.
+El sistema cuenta con un sistema avanzado de control térmico que implementa monitorización en tiempo real, control PWM de alta precisión, y análisis predictivo de tendencias térmicas con protocolos de emergencia escalonados.
 
-> ⚠️ Actualmente desactivado: el ventilador está conectado directamente a la Raspberry Pi mediante conector JST. El sistema está listo para reactivarse cuando vuelva a gestionarse por software.
+> ⚠️ **Estado actual:** El ventilador está conectado directamente a la Raspberry Pi mediante conector JST. El sistema está listo para reactivarse cuando vuelva a gestionarse por software.
 
-Características principales (cuando está activo):
-
-- **Control PWM inteligente** con `gpiozero + LGPIO`
-- **Curva de velocidad adaptativa** según umbral térmico
-- **Protocolo de emergencia Mandaloriano** en 3 niveles
-- **Análisis de tendencias térmicas** y predicciones a 10 minutos
-- **Integración emocional**: el sobrecalentamiento afecta el estado de ánimo del asistente
-- **Interacción con subsistemas**: LEDs, emociones, logs, carga de trabajo
+**Características principales:**
+- **Control PWM inteligente** optimizado para ventilador NOCTUA NF-A4x10 5V
+- **Análisis predictivo** con proyecciones térmicas a 10 minutos
+- **Protocolos de emergencia Mandaloriano** en 3 niveles de respuesta
+- **Integración emocional** - la temperatura afecta el estado de ánimo del asistente
+- **Monitorización redundante** con múltiples fuentes de temperatura
+- **Intervalos adaptativos** que se ajustan según criticidad térmica
 
 ```python
-# Análisis térmico y respuesta adaptativa escalonada
-trend = self._analyze_temp_trend()  # Evalúa dirección y velocidad del cambio térmico
-
-if temp >= self.threshold:
-    level = 1 if temp < self.threshold + 8 else 2 if temp < self.threshold + 15 else 3
-    self._trigger_emergency_protocol(level=level, temp=temp)
+def _trigger_emergency_protocol(self, level: int, temp: float):
+    """
+    Protocolos de emergencia escalonados del clan:
+    
+    Nivel 1: Alertas básicas (LEDs + logs)
+    Nivel 2: Reducción de carga de trabajo
+    Nivel 3: Activación de modo de emergencia
+    """
+    protocols = {
+        1: lambda: self._basic_alert(temp),
+        2: lambda: self._reduce_workload(),
+        3: lambda: self._activate_emergency_mode()
+    }
+    
+    if level in protocols:
+        protocols[level]()
+        self._emergency_level = level
 ```
+
+### Documentación completa
+
+- 📄 **[Sistema de Control Térmico - Documentación técnica](docs/THERMAL_GUARDIAN_ES.md)** - Arquitectura, algoritmos de control, análisis predictivo y configuraciones optimizadas
+
+El sistema procesa análisis térmicos cada 30-120 segundos (adaptativo), con precisión PWM de 1000Hz y detección de throttling en tiempo real.
+
+> **TARS-BSK observa:** _Control térmico con protocolos de emergencia. Porque la diferencia entre 'funcionar' y 'ser un pisapapeles caro' son exactamente 15 grados centígrados. La ingeniería es solo paranoia organizada con PWM._
 
 ---
 

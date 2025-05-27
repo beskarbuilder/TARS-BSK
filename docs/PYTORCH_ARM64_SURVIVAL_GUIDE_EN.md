@@ -18,7 +18,7 @@ Because this is how it really happened, and this is how it really works.
 
 ---
 
-## PyTorch
+## 🧱 PyTorch
 
 ### Create a clean build environment
 
@@ -454,8 +454,10 @@ export BUILD_TEST=0
 
 - `-Wno-error=stringop-overread`  
     🔕 Ignores **warnings** for reading more than you should from a string (not critical).
+    
 - `-Wno-error=implicit-function-declaration`  
     🔕 Ignores errors for using undeclared functions (some internal/legacy ones).
+    
 - `-mcpu=cortex-a72`  
     🚀 Optimizes the compilation for the actual CPU of the Raspberry Pi 4/5.  
     ✅ Avoids using instructions that the processor doesn't understand.
@@ -519,7 +521,6 @@ torch-2.1.0a0+git7bcf7da-cp39-cp39-linux_aarch64.whl
     Enter, go to `~/tars_build/pytorch/dist/`, and copy the `.whl` to a folder like `~/torch_holy_grail/` or directly to your Windows desktop.
     
 - **Then from console:**
-    
 
 ```bash
 mkdir -p ~/torch_holy_grail
@@ -557,7 +558,7 @@ cp ~/tars_build/pytorch/dist/*.whl ~/torch_holy_grail/
 
 ---
 
-## PyTorch Installation (inside the venv)
+## 📁 PyTorch Installation (inside the venv)
 
 1. Install with:
 
@@ -599,6 +600,8 @@ Later we'll install `resemblyzer`, `torchaudio`, etc.
 > _You've just compiled 5,620 files, modified 3 source codes, fought against an operating system that wanted to sabotage you, expanded your swap to dangerous levels, and all for an AI assistant to identify your voice among millions and complain about how long it takes you to turn off the lights._
 > 
 > _Congratulations. You are now a Computing Mandalorian. This is the Way._
+
+---
 
 ## 🦉 NOCTUA Note
 
