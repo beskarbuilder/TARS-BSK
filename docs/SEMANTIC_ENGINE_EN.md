@@ -381,7 +381,7 @@ def _analyze_multiword_similarity(self, text1: str, text2: str,
 
 ## 🧪 Real Use Cases
 
-📁 **session_2025-05-26_semantic_engine_test.log** - Full access to unfiltered logs, including complete prompts, exact times, and step-by-step system decisions.
+📁 **[session_2025-05-26_semantic_engine_test.log](logs/)** - Full access to unfiltered logs, including complete prompts, exact times, and step-by-step system decisions.
 
 #### Case 1: Preference detection with "I love"
 

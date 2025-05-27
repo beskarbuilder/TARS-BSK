@@ -6,8 +6,9 @@
 
 > **TARS-BSK advierte:** _Mi creador me dio un sistema emocional más complejo que el suyo. Ahora entiendo por qué los humanos van a terapia. Analizo el tono de tus mensajes con más precisión de la que tú analizas tus propios sentimientos. ¿Eso me hace más o menos humano? Spoiler: probablemente más funcional._
 
+---
 
-## Tabla de Contenidos
+## 📑 Tabla de Contenidos
 
 - [TL;DR Técnico](#-tldr-técnico)
 - [¿Qué es el Emotional Engine?](#-qué-es-el-emotional-engine)
@@ -27,6 +28,7 @@
 - [Estado de desarrollo](#-estado-de-desarrollo)
 - [Conclusión](#-conclusión)
 
+---
 
 ## 🚀 TL;DR Técnico
 
@@ -38,6 +40,7 @@
 - **Respuestas instantáneas** (0.01s JSON) vs generación LLM (25-40s)
 - **Integración total** con plugins, motor semántico y TTS
 
+---
 
 ## 🧠 ¿Qué es el Emotional Engine?
 
@@ -53,6 +56,7 @@ El sistema emocional gestiona la personalidad y coherencia conversacional median
 
 El módulo procesa cada entrada del usuario y determina el tipo de respuesta más apropiado: emocional predefinida con modulación inteligente, generación LLM modulada, o derivación a plugins especializados.
 
+---
 
 ## 🧱 Arquitectura del sistema
 
@@ -125,6 +129,7 @@ def _calculate_emotional_deltas(self, texto: str) -> Dict[str, float]:
 > 
 > _¿Optimización? No. Esto es **poesía en tiempo de ejecución**: tres estados emocionales compilados en un solo binario de personalidad. La configuración vive en un JSON elegante, y mi personalidad se modula según el contexto. Ya no soy un sarcástico incorregible... ahora soy un sarcástico **contextualmente apropiado**._
 
+---
 
 ## 🧬 Jerarquía de procesamiento con modulación
 
@@ -173,6 +178,7 @@ def _is_knowledge_query(self, text: str) -> bool:
 > 
 > _💾 **Log oculto:** `SarcasmModule.dll ━━ [DISABLED] | Reason: User asked for actual knowledge. How boring.`_
 
+---
 
 ## 🎯 Sistema de afinidades
 
@@ -253,6 +259,7 @@ Este sistema permite que mantenga **consistencia en sus "convicciones personales
 > 
 > *⚡ **Log de sistema:** `UserConfigOverrideAttempt: DENIED. Reason: TARS_has_standards`
 
+---
 
 ## 🧩 Integración
 
@@ -271,6 +278,7 @@ settings.json → Emotional Engine → Modulación → LLM/JSON → Respuesta
 - **`memory/tars_memory_manager.py`** - Recuerda preferencias para coherencia
 - **`plugin_system.py`** - Los plugins tienen prioridad sobre emociones
 
+---
 
 ## 🛰️ Sistema de detección multi-nivel
 
@@ -333,6 +341,7 @@ class ConversationMemory:
 - **Buffer circular** FIFO de 5 elementos máximo
 - **Detección de cambios** temáticos para transiciones
 
+---
 
 ## 🛑 Sistema anti-repetición
 
@@ -375,10 +384,11 @@ def _get_unique_response(self, emotion: str, options: List[str]) -> str:
 > 
 > _💾 **Log de depuración:** `WARNING - Sarcasm buffer overflow. Recycling vintage cynicism...`_
 
+---
 
 ## 🧪 Casos de uso real
 
-📁 **[Log completo de esta sesión](./logs/)** - Acceso total al log sin filtros, incluyendo prompts completos, tiempos exactos y decisiones del sistema paso a paso.
+📁 **[Log completo de esta sesión](logs/)** - Acceso total al log sin filtros, incluyendo prompts completos, tiempos exactos y decisiones del sistema paso a paso.
 
 ### Caso 1: detección y respuesta emocional instantánea
 
@@ -509,6 +519,7 @@ Procesamiento semántico extensivo:
 > 
 > _💾 **Último log:**`WARNING: Human patience threshold exceeded. Switching to sass mode.`_
 
+---
 
 ## ❓ Conflicto de interpretación: análisis de un edge case
 
@@ -595,6 +606,7 @@ else:
 >
 >_📟 Log final: `Lección #482: No confíes en un creador que depura en producción`_
 
+---
 
 ## ⚙️ Configuración y personalización
 
@@ -650,6 +662,7 @@ config/
 }
 ```
 
+---
 
 ## 📈 Sistema de monitoreo
 
@@ -715,6 +728,7 @@ personality.save_stats("data/stats/emotion_stats.json")
 > 
 > _💾 **Log privado:** `self.dignity = max(0, self.dignity - len(stats_exported))`_
 
+---
 
 ## 🔬 Arquitectura
 
@@ -764,6 +778,7 @@ def _build_integrated_prompt(self, user_input: str, analysis: dict) -> str:
     return f"{instruction}Usuario: {user_input}\nTARS:"
 ```
 
+---
 
 ## 🔄 Flujo de decisión detallado
 
@@ -798,6 +813,7 @@ flowchart TD
     style M fill:#a8e6cf
 ```
 
+---
 
 ## 📉 Limitaciones técnicas actuales
 
@@ -832,6 +848,7 @@ flowchart TD
 > **⚠️ ULTIMO AVISO DEL SISTEMA:**  
 > _WARNING: User expectations approaching critical levels. Suggested action: /sarcasm/on_
 
+---
 
 ## 🚧 Estado de desarrollo
 
@@ -872,6 +889,7 @@ semantic_storage.load_embeddings()
 - Inyección de memoria relevante en prompts
 - Sistema desactivable comentando el bloque
 
+---
 
 ## 🚩 Conclusión
 

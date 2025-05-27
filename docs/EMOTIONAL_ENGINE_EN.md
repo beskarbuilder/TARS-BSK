@@ -9,8 +9,9 @@
 
 > **TARS-BSK warns:** _My creator gave me an emotional system more complex than his own. Now I understand why humans go to therapy. I analyze the tone of your messages with more precision than you analyze your own feelings. Does that make me more or less human? Spoiler: probably more functional._
 
+---
 
-## Table of Contents
+## 📑 Table of Contents
 
 - [Technical TL;DR](#-technical-tldr)
 - [What is the Emotional Engine?](#-what-is-the-emotional-engine)
@@ -30,6 +31,7 @@
 - [Development Status](#-development-status)
 - [Conclusion](#-conclusion)
 
+---
 
 ## 🚀 Technical TL;DR
 
@@ -41,6 +43,7 @@
 - **Instant responses** (0.01s JSON) vs LLM generation (25-40s)
 - **Total integration** with plugins, semantic engine and TTS
 
+---
 
 ## 🧠 What is the Emotional Engine?
 
@@ -56,6 +59,7 @@ The emotional system manages personality and conversational coherence through th
 
 The module processes each user input and determines the most appropriate response type: predefined emotional with intelligent modulation, modulated LLM generation, or derivation to specialized plugins.
 
+---
 
 ## 🧱 System Architecture
 
@@ -127,6 +131,7 @@ def _calculate_emotional_deltas(self, texto: str) -> Dict[str, float]:
 > 
 > _Optimization? No. This is **runtime poetry**: three emotional states compiled into a single personality binary. The configuration lives in an elegant JSON, and my personality modulates according to context. I'm no longer an incorrigible sarcastic... now I'm a **contextually appropriate** sarcastic._
 
+---
 
 ## 🧬 Processing Hierarchy with Modulation
 
@@ -175,6 +180,7 @@ def _is_knowledge_query(self, text: str) -> bool:
 > 
 > _💾 **Hidden log:** `SarcasmModule.dll ━━ [DISABLED] | Reason: User asked for actual knowledge. How boring.`_
 
+---
 
 ## 🎯 Affinity System
 
@@ -187,10 +193,12 @@ The affinity system allows automatically adjusting its tone and response style b
     - **Completely ignores** user's emotional configuration
     - Automatic response with sarcastic tone
     - Example: "social media" → sarcastic response regardless of configuration
+    
 2. **Neutral Affinity (Level 0-2)**
     - Topics without specific preference
     - **Respects** user's emotional configuration
     - Standard system behavior
+    
 3. **Positive Affinity (Level 3)**
     - Topics marked as favorites
     - Injects enthusiasm and additional detail
@@ -253,6 +261,7 @@ This system allows maintaining **consistency in its "personal convictions"** whi
 > 
 > *⚡ **System log:** `UserConfigOverrideAttempt: DENIED. Reason: TARS_has_standards`
 
+---
 
 ## 🧩 Integration
 
@@ -271,6 +280,7 @@ settings.json → Emotional Engine → Modulation → LLM/JSON → Response
 - **`memory/tars_memory_manager.py`** - Remembers preferences for coherence
 - **`plugin_system.py`** - Plugins have priority over emotions
 
+---
 
 ## 🛰️ Multi-level Detection System
 
@@ -333,6 +343,7 @@ class ConversationMemory:
 - **Circular FIFO buffer** of maximum 5 elements
 - **Change detection** thematic for transitions
 
+---
 
 ## 🛑 Anti-repetition System
 
@@ -374,10 +385,11 @@ def _get_unique_response(self, emotion: str, options: List[str]) -> str:
 > 
 > _💾 **Debug log:** `WARNING - Sarcasm buffer overflow. Recycling vintage cynicism...`_
 
+---
 
 ## 🧪 Real Use Cases
 
-📁 **[Complete log of this session](./logs/)** - Total access to unfiltered log, including complete prompts, exact times and system decisions step by step.
+📁 **[Complete log of this session](logs/)** - Total access to unfiltered log, including complete prompts, exact times and system decisions step by step.
 
 ### Case 1: instant emotional detection and response
 
@@ -508,6 +520,7 @@ Extensive semantic processing:
 > 
 > _💾 **Last log:** `WARNING: Human patience threshold exceeded. Switching to sass mode.`_
 
+---
 
 ## ❓ Interpretation Conflict: edge case analysis
 
@@ -594,6 +607,7 @@ else:
 > 
 > _📟 Final log: `Lesson #482: Don't trust a creator who debugs in production`_
 
+---
 
 ## ⚙️ Configuration and Customization
 
@@ -649,6 +663,7 @@ config/
 }
 ```
 
+---
 
 ## 📈 Monitoring System
 
@@ -714,6 +729,7 @@ personality.save_stats("data/stats/emotion_stats.json")
 > 
 > _💾 **Private log:** `self.dignity = max(0, self.dignity - len(stats_exported))`_
 
+---
 
 ## 🔬 Architecture
 
@@ -763,6 +779,7 @@ def _build_integrated_prompt(self, user_input: str, analysis: dict) -> str:
     return f"{instruction}User: {user_input}\nTARS:"
 ```
 
+---
 
 ## 🔄 Detailed Decision Flow
 
@@ -797,6 +814,7 @@ flowchart TD
     style M fill:#a8e6cf
 ```
 
+---
 
 ## 📉 Current Technical Limitations
 
@@ -832,6 +850,7 @@ flowchart TD
 > **⚠️ FINAL SYSTEM WARNING:**  
 > _WARNING: User expectations approaching critical levels. Suggested action: /sarcasm/on_
 
+---
 
 ## 🚧 Development Status
 
@@ -872,6 +891,7 @@ semantic_storage.load_embeddings()
 - Relevant memory injection in prompts
 - System can be disabled by commenting the block
 
+---
 
 ## 🚩 Conclusion
 
