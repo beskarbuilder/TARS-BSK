@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![Psychology](https://img.shields.io/badge/psychology-computational-purple) ![Memory](https://img.shields.io/badge/memory-dual-green) ![Sarcasm](https://img.shields.io/badge/sarcasm-calibrated-orange)
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 ### ⚠️ PSYCHOLOGICAL WARNING
 
@@ -389,7 +389,7 @@ def _get_unique_response(self, emotion: str, options: List[str]) -> str:
 
 ## 🧪 Real Use Cases
 
-📁 **[Complete log of this session](logs/)** - Total access to unfiltered log, including complete prompts, exact times and system decisions step by step.
+📁 **[Complete log of this session](/logs/)** - Total access to unfiltered log, including complete prompts, exact times and system decisions step by step.
 
 ### Case 1: instant emotional detection and response
 

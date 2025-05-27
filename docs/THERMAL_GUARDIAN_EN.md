@@ -3,7 +3,7 @@
 ![TARS-BSK Thermal](https://img.shields.io/badge/TARS--BSK-Thermal%20Guardian-orange) ![RPi5 Optimized](https://img.shields.io/badge/RPi5-Optimized-green) ![NOCTUA Ready](https://img.shields.io/badge/NOCTUA-NF--A4x10-brown)
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 
 > **"Temperature is just a number until your Raspberry Pi starts whispering 'help me'."**

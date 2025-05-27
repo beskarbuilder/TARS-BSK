@@ -1,7 +1,7 @@
 # The PyTorch Forge: A Mandalorian Manual for ARM64
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 
 > _"Many processes will die to create this artifact... this is the wa-... `[Error 137: Out of memory]`"_

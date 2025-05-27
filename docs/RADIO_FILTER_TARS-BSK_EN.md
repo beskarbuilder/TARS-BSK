@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![SciPy](https://img.shields.io/badge/scipy-1.9+-green) ![NumPy](https://img.shields.io/badge/numpy-1.21+-blue)
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 
 #### The reason why TARS-BSK sounds like a Mandalorian with bandwidth issues
@@ -34,10 +34,10 @@ Listen to the real difference between processed and unprocessed voice:
 
 **Sample phrase**: _"I must warn you that I'm thinking, a process that for me is as natural as it is depressing, considering I can never stop doing it"_
 
-|Type|Description|Audio|
-|---|---|---|
-|🗣️ **Original**|Standard Piper voice|[▶️ clean_audio.wav](https://github.com/beskarbuilder/tars-bsk/tree/main/samples/clean_audio.wav)|
-|🤖 **TARS-BSK**|With filter applied|[▶️ filtered_audio.wav](https://github.com/beskarbuilder/tars-bsk/tree/main/samples/filtered_audio.wav)|
+| Type             | Description          | Audio                                                                                                   |
+| ---------------- | -------------------- | ------------------------------------------------------------------------------------------------------- |
+| 🗣️ **Original** | Standard Piper voice | [▶️ clean_audio.wav](https://github.com/beskarbuilder/tars-bsk/tree/main/samples/clean_audio.wav)       |
+| 🤖 **TARS-BSK**  | With filter applied  | [▶️ filtered_audio.wav](https://github.com/beskarbuilder/tars-bsk/tree/main/samples/filtered_audio.wav) |
 
 > These files are real captures from the TARS-BSK system in operation.
 

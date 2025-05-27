@@ -72,7 +72,7 @@ Ideal para depuración, testeo rápido o cuando simplemente prefieres texto plan
 python3 scripts/cli_semantic_engine.py --help
 ```
 
-📄 **[Documentación completa del CLI](docs/CLI_SEMANTIC_ENGINE_ES.md)**
+📄 **[Documentación completa del CLI](/docs/CLI_SEMANTIC_ENGINE_ES.md)**
 
 ### Validador Semántico - Diagnóstico del sistema
 
@@ -376,7 +376,7 @@ def _analyze_multiword_similarity(self, text1: str, text2: str,
 
 ## 🧪 Casos de uso real
 
-📁 **[session_2025-05-26_semantic_engine_test.log](logs/)** - Acceso total al log sin filtros, incluyendo prompts completos, tiempos exactos y decisiones del sistema paso a paso.
+📁 **[session_2025-05-26_semantic_engine_test.log](/logs/)** - Acceso total al log sin filtros, incluyendo prompts completos, tiempos exactos y decisiones del sistema paso a paso.
 
 #### Caso 1: Detección de preferencias con "me encanta"
 

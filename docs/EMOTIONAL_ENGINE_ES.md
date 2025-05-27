@@ -388,7 +388,7 @@ def _get_unique_response(self, emotion: str, options: List[str]) -> str:
 
 ## 🧪 Casos de uso real
 
-📁 **[Log completo de esta sesión](logs/)** - Acceso total al log sin filtros, incluyendo prompts completos, tiempos exactos y decisiones del sistema paso a paso.
+📁 **[Log completo de esta sesión](/logs/)** - Acceso total al log sin filtros, incluyendo prompts completos, tiempos exactos y decisiones del sistema paso a paso.
 
 ### Caso 1: detección y respuesta emocional instantánea
 

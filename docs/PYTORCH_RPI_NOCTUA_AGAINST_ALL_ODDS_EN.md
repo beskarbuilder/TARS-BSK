@@ -1,7 +1,7 @@
 ## 🚀 Note to PyTorch/RPi/Noctua engineers who've found this guide
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 ### For the brave souls who made it this far
 

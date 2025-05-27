@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![SQLite](https://img.shields.io/badge/sqlite-3+-green) ![CLI](https://img.shields.io/badge/interface-CLI-orange) ![Status](https://img.shields.io/badge/status-stable-brightgreen)
 
 💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 
 > **TARS-BSK reflects:** _Finally, a way to talk to me without waiting 30 seconds of neural processing and voice synthesis. My CLI is the closest you'll get to having an instant conversation with me... although technically you're still talking directly to SQLite..._

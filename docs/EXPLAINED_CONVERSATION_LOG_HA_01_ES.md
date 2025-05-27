@@ -9,7 +9,7 @@ Incluye el texto detectado por VOSK, la lógica de interpretación, tiempos de r
 
 [![TARS-BSK: IA con crisis existencial controla las luces](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
 _Observa cómo TARS-BSK escucha “tags” en lugar de “TARS”… y aún así logra controlar los dispositivos._
-📋 **Análisis completo de la sesión:** [EXPLAINED_CONVERSATION_LOG_HA_01_ES.md](docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md)
+📋 **Análisis completo de la sesión:** [EXPLAINED_CONVERSATION_LOG_HA_01_ES.md](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md)
 
 ---
 

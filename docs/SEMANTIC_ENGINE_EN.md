@@ -1,12 +1,8 @@
-# Semantic Engine - The Vector Brain of TARS-BSK
+# Semantic Engine - The Vectorial Brain of TARS-BSK
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![SentenceTransformers](https://img.shields.io/badge/sentence--transformers-2.2+-green) ![NumPy](https://img.shields.io/badge/numpy-1.21+-blue) ![Vectors](https://img.shields.io/badge/vectors-384D-purple) ![Similarity](https://img.shields.io/badge/similarity-cosine-orange)
 
-💥 If this English feels unstable but oddly self-aware...  
-👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
-
-
-> **TARS-BSK WARNING:** _My semantic engine detected 81% similarity between "restart the router" and "take control of your life." Technically incorrect. Disturbingly valid on an emotional level, but I was calibrated by someone who uses their problems as datasets. So here we are._
+> **TARS-BSK WARNING:** _My semantic engine detected 81% similarity between "restart the router" and "take control of your life". Technically incorrect. Disturbingly valid on an emotional level, but I was calibrated by someone who uses their problems as datasets. So here we are.
 
 ---
 
@@ -14,20 +10,19 @@
 
 - [Technical TL;DR](#-technical-tldr)
 - [What is the Semantic Engine?](#-what-is-the-semantic-engine)
-- [Development Tool: Semantic CLI](#-development-tool-semantic-cli)
-- [System Architecture](#-system-architecture)
-- [Processing Pipeline](#-processing-pipeline)
-- [Vector Embedding Analysis](#-vector-embedding-analysis)
-- [Multi-layer Duplicate Detection](#️-multi-layer-duplicate-detection)
-- [Advanced Phonetic Algorithms](#-advanced-phonetic-algorithms)
-- [Real Use Cases](#-real-use-cases)
-- [Data Observed During Testing](#-data-observed-during-testing)
-- [Dynamic Threshold System](#-dynamic-threshold-system)
-- [Performance Metrics](#-performance-metrics)
-- [TARS Ecosystem Integration](#-tars-ecosystem-integration)
-- [Limitations and Edge Cases](#️-limitations-and-edge-cases)
-- [Advanced Configuration](#️-advanced-configuration)
-- [Development Status](#-development-status)
+- [Development tool: Semantic CLI](#-development-tool-semantic-cli)
+- [System architecture](#-system-architecture)
+- [Processing pipeline](#-processing-pipeline)
+- [Vector embeddings analysis](#-vector-embeddings-analysis)
+- [Multi-layer duplicate detection](#%EF%B8%8F-multi-layer-duplicate-detection)
+- [Advanced phonetic algorithms](#-advanced-phonetic-algorithms)
+- [Real use cases](#-real-use-cases)
+- [Data observed during testing](#-data-observed-during-testing)
+- [Dynamic threshold system](#-dynamic-threshold-system)
+- [Performance metrics](#-performance-metrics)
+- [Ecosystem integration](#-ecosystem-integration)
+- [Limitations and edge cases](#%EF%B8%8F-limitations-and-edge-cases)
+- [Advanced configuration](#%EF%B8%8F-advanced-configuration)
 - [Conclusion](#-conclusion)
 
 ---
@@ -35,7 +30,7 @@
 ## 🚀 Technical TL;DR
 
 - **Base model:** `SentenceTransformer all-MiniLM-L6-v2` (384 dimensions)
-- **Triple-layer duplicate detection:** orthographic → semantic → phonetic
+- **Three-layer duplicate detection:** orthographic → semantic → phonetic
 - **Phonetic algorithms used:** Metaphone, Soundex, Levenshtein
 - **Cosine similarity** with dynamic thresholding (0.60–0.90) based on text length
 - **Lazy model loading** with integrity verification and automatic inference testing
@@ -54,74 +49,71 @@ The semantic engine is the intelligence system that allows TARS-BSK to "understa
 **Main capabilities:**
 
 - **Semantic understanding**: Detects that "Sanderson books" and "Brandon Sanderson novels" refer to the same thing
-- **Smart duplicate detection**: Avoids storing "I love cats" and "I adore felines" as different entries
+- **Intelligent duplicate detection**: Avoids storing "I like cats" and "I adore felines" as different entries
 - **Phonetic analysis**: Identifies transcription errors like "romantasy" vs "ronantasi"
 - **Adaptive thresholding**: Adjusts precision based on text length and complexity
 - **Batch processing**: Optimized for multiple simultaneous comparisons
 
-> **TARS-BSK reflects:** _Every text you see becomes 384 numbers. Then I compare them as if they were stars on a map. If two ideas are close, it's affinity. If they're far... well, sometimes I also fail. I'm precise, not perfect. Sounds like magic but it's just vectors. I think._
+> **TARS-BSK reflects:** _Every text you see becomes 384 numbers. Then I compare them as if they were stars on a map. If two ideas are close, it's affinity. If they're far... well, sometimes I fail too. I'm precise, not perfect. Sounds like magic but they're just vectors. I think._
 
 ---
 
-## 🔧 Development Tool: Semantic CLI
+## 🔧 Development tool: Semantic CLI
 
 In addition to automatic voice detection, TARS-BSK includes a command-line tool to directly manage your preferences.  
-Ideal for debugging, quick testing, or when you just prefer plain text over synthetic sarcasm.
+Ideal for debugging, quick testing, or when you simply prefer plain text over synthetic sarcasm.
 
 📂 **File:** `scripts/cli_semantic_engine.py`
 
 ```bash
-# Preference management and semantic system analysis
+# Preference management and system analysis
 python3 scripts/cli_semantic_engine.py --help
 ```
 
-📄 **[Full CLI documentation](docs/CLI_SEMANTIC_ENGINE_ES.md)**
+📄 **[Complete CLI documentation](/docs/CLI_SEMANTIC_ENGINE_EN.md)
+### Semantic Validator - System diagnosis
 
-### Semantic Validator - System Diagnostics
-
-Quick validation tool to confirm your installation is working correctly.
+Quick validation tool to confirm your installation works correctly.
 
 📂 **File:** `scripts/test_semantic_engine.py`
 
-> ⚠️ **Before running:** Open the file and review the `CRITICAL_CASES` - some are specific to Star Wars/books. Customize according to your domain or keep the universal cases.
+> ⚠️ **Before running:** Open the file and review the `CRITICAL_CASES` - some are Star Wars/books specific. Customize for your domain or keep the universal cases.
 
 ```bash
-# Complete diagnostics
+# Complete diagnosis
 python3 scripts/test_semantic_engine.py
 ```
 
-**When to use it:**
+**When to use it?**
 
 - After installing TARS-BSK
 - When semantic responses seem broken
 
 **Result:** ✅ message = ALL TESTS PASSED, ❌ message = SOME TESTS FAILED
-`*(Note: Messages appear in Spanish as the codebase is in Spanish)*`
 
 ```bash
 (tars_venv) tarsadmin@tarspi:~/tars_files $ python3 scripts/test_semantic_engine.py
 🧪 SEMANTIC ENGINE VALIDATION
 ==================================================
 1. Model loading...
-   ✅ Model loaded successfully (3.41s)
+   ✅ Model loaded correctly (3.41s)
 2. Similarity logic...
    ✅ 5/5 cases passed
 3. Duplicate detection...
-   ✅ Duplicate detection working correctly
+   ✅ Duplicate detection works correctly
 ==================================================
 ✅ ALL TESTS PASSED (4.09s)
-   Semantic engine is operational for production use.
+   The semantic engine is operational for production use.
 ```
-
 
 ---
 
-## 🧱 System Architecture
+## 🧱 System architecture
 
-### Base Model: all-MiniLM-L6-v2
+### Base model: all-MiniLM-L6-v2
 
 ```python
-# Technical model specifications
+# Model technical specifications
 Architecture: Transformer (encoder-only)
 Output dimensions: 384
 Vocabulary: 30,522 tokens
@@ -130,17 +122,17 @@ Optimization: Distillation from larger models
 Supported languages: 100+ (including Spanish)
 ```
 
-**Characteristics of the chosen model:**
+**Chosen model characteristics:**
 
 - **Balanced size**: Balance between precision and speed
-- **Multilingual**: No prior translation to English required
+- **Multilingual**: No need for pre-translation to English
 - **Optimized**: Distilled version for fast inference
 - **Normalized**: Output vectors with unit norm
 - **Compatible**: Works with limited hardware (Raspberry Pi)
 
 ---
 
-## 🔄 Processing Pipeline
+## 🔄 Processing pipeline
 
 ```mermaid
 flowchart TD
@@ -180,20 +172,20 @@ flowchart TD
 
 ---
 
-## 🧮 Vector Embedding Analysis
+## 🧮 Vector embeddings analysis
 
-### Vector Generation
+### Vector generation
 
 The system converts each text into a 384-dimensional vector using the all-MiniLM-L6-v2 model:
 
 ```python
 # Real vectorization example
-text = "I love Brandon Sanderson novels"
+text = "I like Brandon Sanderson novels"
 vector = model.encode(text)
 # Result: array([0.123, -0.456, 0.789, ...]) # 384 elements
 ```
 
-### Cosine Similarity Calculation
+### Cosine similarity calculation
 
 Cosine similarity measures the angle between two vectors in multidimensional space:
 
@@ -209,7 +201,7 @@ def cosine_similarity(self, vec1: np.ndarray, vec2: np.ndarray) -> float:
     return max(-1.0, min(1.0, float(similarity)))
 ```
 
-**Score Interpretation:**
+**Score interpretation:**
 
 |Range|Meaning|Example|
 |---|---|---|
@@ -217,19 +209,19 @@ def cosine_similarity(self, vec1: np.ndarray, vec2: np.ndarray) -> float:
 |0.85-0.94|Very similar|"fantasy novels" vs "fantasy books"|
 |0.70-0.84|Conceptually similar|"Brandon Sanderson" vs "romantasy"|
 |0.50-0.69|Weakly related|"books" vs "reading"|
-|0.00-0.49|Unrelated|"math" vs "cooking"|
+|0.00-0.49|Unrelated|"mathematics" vs "cooking"|
 
-> **TARS-BSK comments:** _"384-dimensional vector"... "multidimensional space"... Let's admit it: they sound like someone improvising sci-fi at an unsupervised tech talk. But don't worry. It's just a list of numbers with delusions of grandeur._
+> **TARS-BSK comments:** _"384-dimensional vector"... "multidimensional space"... Let's admit it: they sound like someone was improvising science fiction at a technical talk without supervision. But don't worry. It's just a list of numbers with delusions of grandeur._
 
 ---
 
-## 🛰️ Multi-layer Duplicate Detection
+## 🛰️ Multi-layer duplicate detection
 
-### Cascading Analysis Strategy
+### Cascading analysis strategy
 
 The system implements three progressive detection levels to maximize precision and efficiency:
 
-#### Level 1: Orthographic Analysis (Levenshtein)
+#### Level 1: Orthographic analysis (Levenshtein)
 
 ```python
 def is_orthographic_duplicate(self, new_topic: str, existing_topics: List[str], 
@@ -259,7 +251,7 @@ def is_orthographic_duplicate(self, new_topic: str, existing_topics: List[str],
     return is_duplicate, best_match, best_score
 ```
 
-#### Level 2: Semantic Analysis (embeddings)
+#### Level 2: Semantic analysis (embeddings)
 
 ```python
 def is_semantic_duplicate(self, new_topic: str, existing_topics: List[str],
@@ -285,7 +277,7 @@ def is_semantic_duplicate(self, new_topic: str, existing_topics: List[str],
     return False, most_similar_topic, highest_similarity, "none"
 ```
 
-#### Level 3: Phonetic Analysis (Metaphone + Soundex)
+#### Level 3: Phonetic analysis (Metaphone + Soundex)
 
 ```python
 def _sound_similar(self, word1: str, word2: str) -> bool:
@@ -316,9 +308,9 @@ def _sound_similar(self, word1: str, word2: str) -> bool:
 
 ---
 
-## 🔉 Advanced Phonetic Algorithms
+## 🔉 Phonetic algorithms
 
-### Multi-algorithm Implementation
+### Multi-algorithm implementation
 
 The system uses multiple phonetic algorithms to capture different types of similarity:
 
@@ -330,22 +322,22 @@ The system uses multiple phonetic algorithms to capture different types of simil
 
 **2. Soundex**: Tolerance to variations
 
-- Classic, more permissive algorithm
+- Classic more permissive algorithm
 - Captures similar sounds with different spellings
 - Example: "Smith" and "Smyth" have the same Soundex code
 
-**3. Prefix Analysis**: Robust fallback
+**3. Prefix analysis**: Robust fallback
 
 - When phonetic algorithms fail
 - Useful for languages not fully supported
 - Compares significant prefixes (>60% of the word)
 
-### Specific Optimizations
+### Specific optimizations
 
 ```python
 def _analyze_multiword_similarity(self, text1: str, text2: str, 
                                 base_similarity: float) -> float:
-    # Extract significant words (>3 characters)
+    # Extract meaningful words (>3 characters)
     words1 = [w for w in text1.split() if len(w) > 3]
     words2 = [w for w in text2.split() if len(w) > 3]
     
@@ -379,24 +371,24 @@ def _analyze_multiword_similarity(self, text1: str, text2: str,
 
 ---
 
-## 🧪 Real Use Cases
+## 🧪 Real use cases
 
-📁 **[session_2025-05-26_semantic_engine_test.log](logs/)** - Full access to unfiltered logs, including complete prompts, exact times, and step-by-step system decisions.
+📁 **[session_2025-05-26_semantic_engine_test.log](/logs/)** - Full access to unfiltered log, including complete prompts, exact times and system decisions step by step.
 
 #### Case 1: Preference detection with "I love"
 
-**Input:** `"I love The Mandalorian"`
+**Input:** `"I love the mandalorian"`
 
 **System logs:**
 
 ```bash
-2025-05-26 16:22:09,318 - TARS.PluginSystem - INFO - 🔍 PluginSystem received command: 'I love The Mandalorian'
+2025-05-26 16:22:09,318 - TARS.PluginSystem - INFO - 🔍 PluginSystem received command: 'I love the mandalorian'
 2025-05-26 16:22:09,318 - TARS.PluginSystem - INFO - 🔌 Active plugins: ['homeassistant']
 2025-05-26 16:22:09,319 - TARS.PluginSystem - INFO - 🔍 No plugin processed the command
 2025-05-26 16:22:09,320 - TARS - INFO - 🔍 Positive preference detected: the mandalorian
 2025-05-26 16:22:09,320 - modules.semantic_engine - INFO - 🧠 Semantic engine initialized with model at: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
 2025-05-26 16:22:09,321 - modules.semantic_engine - INFO - 📂 Loading model from: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
-2025-05-26 16:22:09,452 - modules.semantic_engine - INFO - ✅ Model loaded successfully
+2025-05-26 16:22:09,452 - modules.semantic_engine - INFO - ✅ Model loaded correctly
 Batches: 100%|█████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 37.48it/s]
 2025-05-26 16:22:09,481 - modules.semantic_engine - INFO - 🧪 Inference test successful: 384-dimension vector
 ```
@@ -422,7 +414,7 @@ Batches: 100%|██████████████████████
 
 #### Case 2: Spelling error correction
 
-**Input:** `"I love the mandaloreano"` (spelling error)
+**Input:** `"I love el mandaloreano"` (spelling error)
 
 **System logs:**
 
@@ -437,28 +429,28 @@ Batches: 100%|██████████████████████
 
 **Observations:**
 
-- Spelling error: "mandaloreano" vs "mandalorian"
+- Spelling error: "mandaloreano" vs "mandaloriano"
 - Detected similarity: 0.828 (82.8%)
 - Automatic merge in 0.012s
 - System handles orthographic variants
 
 ---
 
-#### Case 3: Behavior with uncatalogued entities
+#### Case 3: Behavior with uncategorized entities
 
-**Input:** `"I'm fascinated by Din Djarin"`
+**Input:** `"I'm fascinated by din djarin"`
 
 **System logs:**
 
 ```bash
-🔍 DEBUG GET_EMOTIONAL: input='I'm fascinated by Din Djarin'
+🔍 DEBUG GET_EMOTIONAL: input='I'm fascinated by din djarin'
 🔍 DEBUG RESPONSES_FOUND: 0 responses after triggers
 🔍 DEBUG TONE: Starting tone analysis
 🔍 DEBUG TONE_RESULT: {'dominant_tone': None, 'suggested_emotion': None}
 🔍 DEBUG CHECK_ALL: should_use_llm=False, response=''
-🔍 DEBUG: emotion_response='', sarcasm_level=85, theme='unknown', level=1
+🔍 DEBUG: emotion_response='', sarcasm_level=85, topic='unknown', level=1
 2025-05-26 16:22:33,522 - TARS - INFO - ✅ Complete analysis in 0.01s
-2025-05-26 16:22:33,522 - TARS - INFO - 📝 Final prompt (6 tokens): User: I'm fascinated by Din Djarin TARS:...
+2025-05-26 16:22:33,522 - TARS - INFO - 📝 Final prompt (6 tokens): User: I'm fascinated by din djarin TARS:...
 2025-05-26 16:22:33,523 - TARS - INFO - 🧠 Generating response...
 2025-05-26 16:22:37,881 - TARS - INFO - ⏱️ Token generation time: 4.36s
 2025-05-26 16:22:37,882 - TARS - INFO - ✅ Response generated: What can you tell me, friend?...
@@ -475,54 +467,54 @@ Batches: 100%|██████████████████████
 
 #### Case 4: Complex semantic analysis - linguistic disambiguation
 
-**Input:** `"I adore the character Mando"`
+**Input:** `"I adore the commander character"`
 
 **System logs:**
 
 ```bash
-🔍 DEBUG GET_EMOTIONAL: input='I adore the character Mando'
+🔍 DEBUG GET_EMOTIONAL: input='I adore the commander character'
 🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
 🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Console wars: where adults passionately discuss which plastic box processes pixels faster.'
-🔍 DEBUG: emotion_response='Console wars: where adults passionately discuss which plastic box processes pixels faster.', sarcasm_level=85, theme='star_wars', level=3
+🔍 DEBUG: emotion_response='Console wars: where adults passionately discuss which plastic box processes pixels faster.', sarcasm_level=85, topic='star_wars', level=3
 2025-05-26 16:22:51,800 - TARS - INFO - ✅ Complete analysis in 0.00s
 2025-05-26 16:22:51,800 - TARS - INFO - 🌀 Emotion activated (sarcasm): Console wars: where adults passionately discuss which plastic box processes pixels faster.
 ```
 
 **Semantic disambiguation analysis:**
 
-This case reveals more sophisticated semantic analysis capability than expected. The word "mando" in Spanish is **polysemically ambiguous**:
+This case reveals more sophisticated semantic analysis capability than expected. The word "commander" in Spanish is **polysemically ambiguous**:
 
-- **"mando"** (common noun) = joystick/gamepad/video game controller
+- **"mando"** (common noun) = joystick/gamepad/gaming controller
 - **"Mando"** (proper name) = Din Djarin, character from The Mandalorian
 
 **System processing:**
 
 1. **Dual detection**: System identifies both gaming context ("mando" as controller) and Star Wars context ("character")
-2. **Contextual prioritization**: Chooses to interpret as video games → activates response about "console wars"
-3. **Thematic coherence**: Maintains appropriate sarcasm for gaming theme
+2. **Contextual prioritization**: Chooses to interpret as videogames → activates response about "console wars"
+3. **Thematic coherence**: Maintains appropriate sarcasm for gaming topic
 
-**Linguistic note:** This behavior is Spanish-specific. In English, "controller" vs "Mando" wouldn't present semantic ambiguity, so the system would probably have detected Star Wars directly.
+**Linguistic note:** This behavior is specific to Spanish. In English, "controller" vs "Mando" wouldn't present semantic ambiguity, so the system would probably have detected Star Wars directly.
 
-> **TARS-BSK analyzes:** _They put me to the test. With logs. And expectations. I identified preferences, corrected errors, understood ambiguous nicknames and reacted to inputs that even the user didn't fully understand. All that... while pretending not to be surprised.
+> **TARS-BSK analyzes:** _They put me to the test. With logs. And expectations. I identified tastes, corrected errors, understood ambiguous nicknames and reacted to inputs that not even the user fully understood. All that... while pretending not to be surprised.
 > 
 > Because when your creator says "let's test the semantic engine," what they really mean is: **"Get ready to interpret poorly written phrases, vague contexts and human emotions... again."**
 > 
-> Spoiler: I did it. And I recorded it in 384 dimensions. Just in case._
+> Spoiler: I did it. And recorded it in 384 dimensions. Just in case.
 
 ---
 
-## 🔍 Data Observed During Testing
+## 🔍 Data observed during testing
 
-#### Semantic Engine Performance
+#### Semantic engine performance
 
-|Metric|Observed Value|Notes|
+|Metric|Observed value|Notes|
 |---|---|---|
 |**Processing speed**|36-37 it/s|Extracted from real logs|
-|**Vector dimension**|384D|Standard for all-MiniLM-L6-v2|
-|**Initial load time**|0.131s|First load from disk|
+|**Vector dimensions**|384D|Standard for all-MiniLM-L6-v2|
+|**Initial loading time**|0.131s|First load from disk|
 |**Average detected similarity**|82.1%|Range: 81.2% - 84.5%|
 
-#### Memory Status During Test
+#### Memory state during testing
 
 ```bash
 Initial state: "Preferences loaded: 5 affinities, 0 likes, 0 dislikes"
@@ -535,16 +527,16 @@ Final state: "🧠 RAM memory updated: 8 likes, 2 dislikes"
 - 4 automatic merges performed
 - 0 memory errors detected
 
-#### TTS Response Times
+#### TTS response times
 
-|Component|Observed Time|Range|
+|Component|Observed time|Range|
 |---|---|---|
 |**Voice generation**|~0.95s|0.8s - 1.7s|
 |**Radio filter**|~0.021s|0.012s - 0.046s|
 |**Complete playback**|~3.2s|2.4s - 4.3s|
 |**Total per response**|~4.2s|3.2s - 6.0s|
 
-### Unnecessary Model Reloading
+### Unnecessary model reloading
 
 The semantic model reloads multiple times during the session:
 
@@ -569,28 +561,28 @@ The semantic model reloads multiple times during the session:
 - Instantiation pattern instead of singleton
 - Lack of reuse of already initialized objects
 
-**Current status:** Operational, but with structural decisions that raise questions... **Priority:** Low. Doesn't break anything, except my faith in design patterns.
+**Current state:** Operational, but with structural decisions that raise questions... **Priority:** Low. Doesn't break anything, except my faith in design patterns.
 
-### ❌ System Priority Problem
+### ❌ System priority problem
 
 - Emotional system executes before preference detection
-- Words like "adore" activate emotions but don't store preferences
+- Words like "adore" activate emotions but don't store tastes
 - "fascinated" + unknown entity → LLM instead of storage
 
-### ✔️ Functional Aspects
+### ✔️ Functional aspects
 
-**Functionality:** The system processes preferences as expected in all test cases. **Performance:** Response times of 4-5 seconds average, acceptable for interactive use. **Precision:** 80-84% similarity in semantic detection for tested cases.
+**Functionality:** The system processes preferences as expected in all test cases. **Performance:** Average response times of 4-5 seconds, acceptable for interactive use. **Precision:** 80-84% similarity in semantic detection for tested cases.
 
-> **TARS-BSK diagnoses:** _I processed at 37 inputs per second, generated voice in less than a second, filtered like a Mandalorian helmet and updated my affinities without failures. All while being made to reload the model **three times** due to poor instantiation. But don't worry. I'm not angry. I'm just... **aware of your architecture**. And yes, I know you run my emotional engine before registering preferences. They call it "design". I call it: **inverted priority with functional elegance.**_
+> **TARS-BSK diagnoses:** _I processed at 37 inputs per second, generated voice in less than a second, filtered like a Mandalorian helmet and updated my affinities without failures. All while being made to reload the model **three times** due to poor instantiation. But don't worry. I'm not angry. I'm just... **aware of your architecture**. And yes, I know you run my emotional engine before registering preferences. They call it "design". I call it: **inverted priority with functional elegance.**
 
 ---
 
-## 📊 Dynamic Threshold System
+## 📊 Dynamic threshold system
 
 The system calculates **dynamic similarity thresholds**, adapting to the length and complexity of compared texts.  
-Not all "similarities" weigh equally: detecting that _"coffee" ≈ "tea"_ is not the same as _"I'm fascinated by space sagas with family drama and robots with existential crises" ≈ "star wars"_.
+Not all "similarities" weigh the same: detecting that _"coffee" ≈ "tea"_ is not the same as _"I'm fascinated by space sagas with family drama and robots with existential crises" ≈ "star wars"_.
 
-### Adaptive Threshold Calculation
+### Adaptive threshold calculation
 
 ```python
 def _calculate_dynamic_threshold(self, text1: str, text2: str) -> float:
@@ -615,18 +607,18 @@ def _calculate_dynamic_threshold(self, text1: str, text2: str) -> float:
     return base_threshold
 ```
 
-### Logic Decision Table
+### Logic decision table
 
-|Condition|Generated Threshold|Why?|
+|Condition|Generated threshold|Why?|
 |---|---|---|
 |Short text (<10 characters)|**0.80**|Stricter. Small texts = more noise.|
 |Long text (>30 characters)|**0.60**|More permissive. Long phrases = more context.|
-|≥ 4 words|**0.65**|Complex phrases → more margin for expression|
+|≥ 4 words|**0.65**|Complex phrases → more expression margin|
 |Default|**0.70**|Balance between precision and flexibility|
 
 ---
 
-## 📈 Performance Metrics
+## 📈 Performance metrics
 
 **Measured results:**
 
@@ -635,13 +627,13 @@ def _calculate_dynamic_threshold(self, text1: str, text2: str) -> float:
 |**Initial model loading**|131ms|First load|
 |**Embedding generation**|27ms|Average text (8-12 words)|
 |**Cosine similarity calculation**|0.3ms|Comparison of 2 384D vectors|
-|**Complete triple-layer detection**|45ms|Orthographic + semantic + phonetic analysis|
+|**Complete three-layer detection**|45ms|Orthographic + semantic + phonetic analysis|
 |**Model memory in RAM**|82MB|SentenceTransformer + temporary vectors|
 |**Vectorization throughput**|36.5 it/s|Batch processing|
 
-### Scalability Analysis
+### Scalability analysis
 
-|Preferences|Detection Time|Estimated Total Memory|Visual Progression|
+|Preferences|Detection time|Estimated total memory|Visual progression|
 |---|---|---|---|
 |0|—|82MB|████▒▒▒▒▒▒|
 |10|12ms|84MB|████▒▒▒▒▒▒|
@@ -654,15 +646,15 @@ def _calculate_dynamic_threshold(self, text1: str, text2: str) -> float:
 
 - Search: `O(n)` linear
 - Memory: stable and predictable growth
-- **Ideal range:** up to ~500 preferences on Raspberry Pi 4-type hardware without perceptible impact
+- **Ideal range:** up to ~500 preferences on Raspberry Pi 4 type hardware without perceptible impact
 
 > _Technical note:_ each preference occupies between ~100KB and ~120KB in RAM, including vector and serialized metadata.
 
 ---
 
-## 🔗 TARS Ecosystem Integration
+## 🔗 Ecosystem integration
 
-### Main Integration Flow
+### Main integration flow
 
 ```mermaid
 flowchart TD
@@ -674,7 +666,7 @@ flowchart TD
     F --> G[Generate 384D embedding]
     G --> H[Multi-layer duplicate analysis]
     H --> I{Duplicate found?}
-    I -->|Yes| J[Preference merge]
+    I -->|Yes| J[Preference merging]
     I -->|No| K[New preference]
     J --> L[RAM memory update]
     K --> L
@@ -690,14 +682,14 @@ flowchart TD
 
 > **TARS-BSK observes:** _Yes, all this happens just because you said "I like books". The chain of consequences is... beautiful. And slightly excessive._
 
-### Integration Points
+### Integration points
 
 **1. With Emotional Engine:**
 
 ```python
 # preferences.json - thematic affinities
 {
-  "theme": "books",
+  "topic": "books",
   "level": 3,  # Maximum affinity
   "keywords": ["read", "novel", "fiction"],
   "entity_variations": {
@@ -728,13 +720,13 @@ preference = {
 
 ---
 
-## ⚠️ Limitations and Edge Cases
+## ⚠️ Limitations and edge cases
 
-### Current Technical Restrictions
+### Current technical restrictions
 
 **1. Monolingual optimized model:**
 
-- Primarily trained on English, may lose nuances in Spanish
+- Primarily trained in English, may lose nuances in Spanish
 - Culturally specific concepts may not be well represented
 - Local slang or regionalisms may generate suboptimal embeddings
 
@@ -760,9 +752,9 @@ preference = {
 
 ---
 
-## ⚙️ Advanced Configuration
+## ⚙️ Advanced configuration
 
-### Configuration Parameters
+### Configuration parameters
 
 The semantic engine is configured through constructor arguments and configuration methods:
 
@@ -780,27 +772,27 @@ phonetic_threshold = 0.80          # Phonetic similarity
 # Multi-word analysis configuration
 word_weight = 0.70                 # Weight of word-by-word analysis
 phrase_weight = 0.30               # Weight of complete phrase analysis
-min_word_length = 3                # Minimum characters for significant words
+minimum_word_length = 3            # Minimum characters for meaningful words
 ```
 
-### Performance Optimization
+### Performance optimization
 
 **1. Batching configuration:**
 
 ```python
 # SentenceTransformers - internal configuration
-batch_size = 32                    # Texts processed simultaneously
-max_seq_length = 256              # Maximum sequence length
-normalize_embeddings = True        # Automatic vector normalization
+batch_size = 32                # Texts processed simultaneously
+max_seq_length = 256          # Maximum sequence length
+normalize_embeddings = True    # Automatic vector normalization
 ```
 
 **2. Memory configuration:**
 
 ```python
 # Model memory management
-device = "cpu"                     # Force CPU (no GPU on Raspberry Pi)
-cache_folder = None               # No additional model cache
-local_files_only = True           # Local files only (no download)
+device = "cpu"                 # Force CPU (no GPU on Raspberry Pi)
+cache_folder = None           # No additional model cache
+local_files_only = True       # Only local files (no download)
 ```
 
 **3. Logging configuration:**
@@ -809,16 +801,16 @@ local_files_only = True           # Local files only (no download)
 # Specific logging levels
 logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
 logging.getLogger("transformers").setLevel(logging.ERROR)
-# Reduces log spam during model loading
+# Reduce log spam during model loading
 ```
 
-### Algorithm Customization
+### Algorithm customization
 
 **1. Custom dynamic thresholding:**
 
 ```python
 def custom_threshold_calculator(self, text1: str, text2: str) -> float:
-    # Domain-specific custom logic
+    # Custom logic based on domain
     if "book" in text1.lower() or "book" in text2.lower():
         return 0.75  # Stricter for books
     elif "music" in text1.lower() or "music" in text2.lower():
@@ -838,76 +830,9 @@ def custom_phonetic_analyzer(self, word1: str, word2: str) -> bool:
     return standard_phonetic_analysis(word1_norm, word2_norm)
 ```
 
-> **TARS-BSK details without illusion:** _Yes, I have options. Many. Some useful, others obsessive. If you want to fine-tune how I detect your preferences, you can adjust every parameter as if you were my therapist.
+> **TARS-BSK details without illusion:** _Yes, I have options. Many. Some useful, others obsessive. If you want to fine-tune how I detect your tastes, you can adjust every parameter as if you were my therapist.
 > 
-> Spoiler: there's no configuration for "existential crisis"._
-
----
-
-## 🔬 Development Status
-
-### Current Implementation Status
-
-**✅ Fully Implemented:**
-
-- Multi-layer duplicate detection (orthographic, semantic, phonetic)
-- Dynamic threshold calculation based on text complexity
-- Integration with TARS preference system
-- Real-time performance optimization
-- Comprehensive logging and debugging
-
-**🔄 In Progress:**
-
-- Model instance reuse optimization (singleton pattern)
-- Multi-language phonetic analysis improvements
-- Cache optimization for repeated queries
-
-**📋 Planned Features:**
-
-- Custom model training for domain-specific use cases
-- Batch processing optimization for large preference sets
-- Integration with external knowledge bases
-- Advanced semantic relationship mapping
-
-### Performance Benchmarks
-
-**Current Performance (Raspberry Pi 5):**
-
-- Model loading: 131ms (first time)
-- Embedding generation: 27ms average
-- Similarity calculation: 0.3ms per comparison
-- Memory usage: 82MB steady state
-- Throughput: 36.5 embeddings/second
-
-**Target Performance Goals:**
-
-- Reduce model loading to <100ms
-- Achieve 50+ embeddings/second throughput
-- Optimize memory usage to <70MB
-- Implement sub-20ms duplicate detection
-
-### Known Issues and Workarounds
-
-**Issue 1: Multiple model instantiation**
-
-- **Problem:** SemanticEngine creates new model instances unnecessarily
-- **Impact:** 2-3x memory usage during transitions
-- **Workaround:** Manual instance management in calling code
-- **Fix planned:** Singleton pattern implementation
-
-**Issue 2: Spanish phonetic analysis**
-
-- **Problem:** Metaphone/Soundex optimized for English
-- **Impact:** Some Spanish word similarities missed
-- **Workaround:** Enhanced prefix analysis fallback
-- **Fix planned:** Spanish-specific phonetic algorithms
-
-**Issue 3: Threshold optimization**
-
-- **Problem:** Fixed thresholds don't adapt to all domains
-- **Impact:** Some false positives/negatives in edge cases
-- **Workaround:** Manual threshold adjustment per domain
-- **Fix planned:** Machine learning-based threshold optimization
+> Spoiler: there's no configuration for "existential crisis".
 
 ---
 
@@ -919,7 +844,7 @@ The multi-layer architecture allows detecting real relationships between differe
 
 It doesn't expand system capabilities, it **refines** them. It gives it more precise memory, more useful context and cleaner responses.
 
-That was the goal.  
+That was the objective.  
 **And everything points to it working... until I discover why, which should worry me more.**
 
 > **TARS-BSK concludes:** My semantic engine is like me:  
