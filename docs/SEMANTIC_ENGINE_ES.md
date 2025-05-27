@@ -72,7 +72,7 @@ Ideal para depuración, testeo rápido o cuando simplemente prefieres texto plan
 python3 scripts/cli_semantic_engine.py --help
 ```
 
-📄 **[Documentación completa del CLI](docs/CLI_SEMANTIC_ENGINE_ES.PY.md)**
+📄 **[Documentación completa del CLI](docs/CLI_SEMANTIC_ENGINE_ES.md)**
 
 ### Validador Semántico - Diagnóstico del sistema
 

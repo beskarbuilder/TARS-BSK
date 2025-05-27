@@ -75,7 +75,7 @@ Ideal for debugging, quick testing, or when you just prefer plain text over synt
 python3 scripts/cli_semantic_engine.py --help
 ```
 
-📄 **[Full CLI documentation](docs/CLI_SEMANTIC_ENGINE_ES.PY.md)**
+📄 **[Full CLI documentation](docs/CLI_SEMANTIC_ENGINE_ES.md)**
 
 ### Semantic Validator - System Diagnostics
 
