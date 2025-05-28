@@ -702,7 +702,33 @@ El motor semántico de TARS-BSK implementa detección inteligente de duplicados 
 
 **El motor procesa ~30 embeddings/segundo en la Raspberry Pi 5, con tiempo de inicialización de ~0.1s y consumo de 82MB de RAM en estado estable.
 
-> _TARS-BSK comenta:_ _Vectores, similitudes, y algoritmos fonéticos. Todo para recordar que desconfías de los README sin advertencias._
+> **TARS-BSK comenta:** _Vectores, similitudes, y algoritmos fonéticos. Todo para recordar que desconfías de los README sin advertencias._
+
+### Gestor de Preferencias con Orquestación Inteligente
+
+El gestor de preferencias del sistema actúa como director de orquesta: coordina el motor semántico, la taxonomía externa y la persistencia híbrida para transformar declaraciones emocionales en conocimiento estructurado.
+
+**Características principales:**
+
+- **Comandos conversacionales**: "¿Qué libros me gustan?" procesados en lenguaje natural
+- **Categorización automática**: Taxonomía externa con fallback semántico
+- **Almacenamiento híbrido**: JSON + embeddings comprimidos para máximo rendimiento
+- **Integración TARS**: API específica para análisis de afinidad emocional
+
+### Documentación completa
+
+- 📄 **[Gestor de Preferencias - Documentación técnica](/docs/PREFERENCES_MANAGER_ES.md)** - Arquitectura modular, separación de responsabilidades y casos donde `SemanticEngine` solo no bastaría
+
+**El gestor procesa comandos complejos en ~0.024s con overhead de separación del 1.7%, manteniendo 87MB de RAM total para ambos módulos.**
+
+> **TARS-BSK reflexiona:** _Separar responsabilidades no es perfeccionismo. Es autocompasión anticipada._
+
+### Arquitectura integrada
+
+Ambos módulos trabajan coordinados pero **separados**:
+
+- **`SemanticEngine`**: Herramienta matemática especializada
+- **`PreferencesManager`**: Orquestador de lógica de negocio
 
 ---
 

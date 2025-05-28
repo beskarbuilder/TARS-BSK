@@ -2,6 +2,10 @@
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![SentenceTransformers](https://img.shields.io/badge/sentence--transformers-2.2+-green) ![NumPy](https://img.shields.io/badge/numpy-1.21+-blue) ![Vectors](https://img.shields.io/badge/vectors-384D-purple) ![Similarity](https://img.shields.io/badge/similarity-cosine-orange)
 
+💥 If this English feels unstable but oddly self-aware...  
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+
+
 > **TARS-BSK WARNING:** _My semantic engine detected 81% similarity between "restart the router" and "take control of your life". Technically incorrect. Disturbingly valid on an emotional level, but I was calibrated by someone who uses their problems as datasets. So here we are.
 
 ---

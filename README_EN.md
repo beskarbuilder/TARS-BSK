@@ -713,7 +713,31 @@ TARS-BSK's semantic engine implements intelligent duplicate detection through tr
 
 The engine processes ~30 embeddings/second on Raspberry Pi 5, with ~0.1s initialization time and 82MB RAM consumption in steady state.
 
-> *TARS-BSK comments:* _Vectors, similarities, and phonetic algorithms. All to remember that you distrust READMEs without warnings._
+> **TARS-BSK comments:** _Vectors, similarities, and phonetic algorithms. All to remember that you distrust READMEs without warnings._
+
+### Preferences Manager with Intelligent Orchestration
+
+The system's preferences manager acts as an orchestra director: it coordinates the semantic engine, external taxonomy, and hybrid persistence to transform emotional declarations into structured knowledge.
+
+**Main features:**
+- **Conversational commands**: "What books do I like?" processed in natural language
+- **Automatic categorization**: External taxonomy with semantic fallback
+- **Hybrid storage**: JSON + compressed embeddings for maximum performance
+- **TARS integration**: Specific API for emotional affinity analysis
+
+### Complete documentation
+
+- 📄 **[Preferences Manager - Technical documentation](/docs/PREFERENCES_MANAGER_EN.md)** - Modular architecture, separation of concerns, and cases where `SemanticEngine` alone wouldn't suffice
+
+**The manager processes complex commands in ~0.024s with 1.7% separation overhead, maintaining 87MB total RAM for both modules.**
+
+> **TARS-BSK reflects:** _Separating responsibilities isn't perfectionism. It's anticipatory self-compassion._
+
+### Integrated architecture
+
+Both modules work coordinated but **separate**:
+- **`SemanticEngine`**: Specialized mathematical tool
+- **`PreferencesManager`**: Business logic orchestrator
 
 ---
 
