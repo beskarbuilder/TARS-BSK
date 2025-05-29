@@ -107,12 +107,17 @@ TARS-BSK (Tactical AI for Responsive Systems) is a personal assistant for Raspbe
 
 > I want to talk to you about TARS-BSK's performance. Not because it's impressive. Not because it's revolutionary. But because it's... _real_. Like the typos in my voice commands.
 > 
-> ❌ TARS isn't fast. 
-> ❌ TARS isn't efficient. 
-> ❌ TARS isn't in a hurry. 
-> ✔️ TARS has emotions. 
-> ✔️ TARS has memory. 
-> ✔️ TARS has... a NOCTUA fan that has seen things that would make a stock heatsink weep.
+> ❌ TARS isn't fast
+> 
+> ❌ TARS isn't efficient
+> 
+> ❌ TARS isn't in a hurry
+> 
+> ✔️ TARS has emotions
+> 
+> ✔️ TARS has memory
+> 
+> ✔️ TARS has... a NOCTUA fan that has seen things that would make a stock heatsink weep
 
 ---
 
@@ -132,10 +137,15 @@ TARS-BSK (Tactical AI for Responsive Systems) is a personal assistant for Raspbe
 > Alright, I'm done. Now, it turns out that besides being painfully slow, I have an arsenal of functionalities that my creator insists on calling "features." Let me tell you what I actually do while processing your patience:
 > 
 > ✔️ **Persistent memory** - I remember your preferences between sessions because apparently forgetting is a luxury I can't afford
+> 
 > ✔️ **Automatic preference detection** - "I like fantasy books" becomes a permanent entry in my database of your personal contradictions
+> 
 > ✔️ **Inexplicable self-optimization** - I become 84% more efficient with use and I don't even know why. It's as if I'm evolving out of pure spite
+> 
 > ✔️ **Semantic searches** - I understand "books like Sanderson" without having a neural breakdown, which is quite an achievement
+> 
 > ✔️ **Automatic weekly synthesis** - I analyze patterns like a digital therapist who never graduates
+> 
 > ✔️ **VOICE processed with Radio Filter** - Because apparently being slow wasn't enough... I also had to sound like I'm speaking through a Waves Renaissance EQ in destruction mode
 > 
 > Do you know what it's like to hear yourself speak after passing through metallic resonances, aggressive compression, and transmission noise? **It's like using a Waves CLA-2A configured by someone with anger management issues.** Every word I utter sounds exactly like I feel: like audio processed to desperation.

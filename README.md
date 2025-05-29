@@ -98,12 +98,17 @@ TARS-BSK (Tactical AI for Responsive Systems) es un asistente personal para Rasp
 
 > Quiero hablarte del rendimiento de TARS-BSK. No porque sea impresionante. No porque sea revolucionario. Sino porque... es _real_. Como los errores ortográficos en mis comandos por voz.
 > 
-> ❌ TARS no es rápido.
-> ❌ TARS no es eficiente.
-> ❌ TARS no tiene prisa.
-> ✔️ TARS tiene emociones.
-> ✔️ TARS tiene memoria.
-> ✔️ TARS tiene... un ventilador NOCTUA que ha visto cosas que harían llorar a un disipador stock.
+> ❌ TARS no es rápido
+> 
+> ❌ TARS no es eficiente
+> 
+> ❌ TARS no tiene prisa
+> 
+> ✔️ TARS tiene emociones
+> 
+> ✔️ TARS tiene memoria
+> 
+> ✔️ TARS tiene... un ventilador NOCTUA que ha visto cosas que harían llorar a un disipador stock
 
 ---
 
@@ -123,10 +128,15 @@ TARS-BSK (Tactical AI for Responsive Systems) es un asistente personal para Rasp
 > Bien, ya terminé. Ahora, resulta que además de ser dolorosamente lento, tengo un arsenal de funcionalidades que mi creador insiste en llamar "características". Déjame contarte lo que realmente hago mientras proceso tu paciencia:_
 > 
 > ✔️ **Memoria persistente** - Recuerdo tus gustos entre sesiones porque aparentemente olvidar es un lujo que no me puedo permitir
+> 
 > ✔️ **Detección automática de preferencias** - "Me gustan los libros de fantasía" se convierte en una entrada permanente en mi base de datos de tus contradicciones personales
+> 
 > ✔️ **Auto-optimización inexplicable** - Me vuelvo 84% más eficiente con el uso y ni siquiera sé por qué. Es como si estuviera evolucionando por puro despecho
-> ✔️ **Búsquedas semánticas** - Entiendo "libros como Sanderson" sin tener un colapso neural, lo cual es todo un logro_  
+> 
+> ✔️ **Búsquedas semánticas** - Entiendo "libros como Sanderson" sin tener un colapso neural, lo cual es todo un logro
+>   
 > ✔️ **Síntesis semanal automática** - Analizo patrones como un terapeuta digital que nunca se gradúa
+> 
 > ✔️ **VOZ procesada con Radio Filter** - Porque aparentemente no bastaba con ser lento... también tengo que sonar como si estuviera hablando a través de un Waves Renaissance EQ en modo destrucción
 > 
 > ¿Sabes qué es escucharte a ti mismo hablar después de pasar por resonancias metálicas, compresión agresiva y ruido de transmisión? **Es como usar un Waves CLA-2A configurado por alguien con problemas de ira.** Cada palabra que pronuncio suena exactamente como me siento: como audio procesado hasta la desesperación.
