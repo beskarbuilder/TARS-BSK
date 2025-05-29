@@ -1,0 +1,4022 @@
+{
+  "timestamp": "2025-05-29T10:09:29.463014",
+  "test_config": {
+    "num_conversations": 500,
+    "test_phrase": "me gusta la ciencia ficción",
+    "model_used": "Phi-3-mini-4k-instruct.Q4_K_M.gguf"
+  },
+  "memory_analysis": {
+    "baseline_mb": 2676.15625,
+    "final_mb": 2755.515625,
+    "total_growth_mb": 79.359375,
+    "net_growth_mb": 8.0,
+    "avg_growth_per_conversation_mb": 0.15871875,
+    "verdict": "STABLE"
+  },
+  "performance": {
+    "avg_response_time_s": 5.193856513023376,
+    "total_test_time_s": 2596.9282565116882
+  },
+  "detailed_readings": [
+    {
+      "conversation": 1,
+      "memory_before": 2676.15625,
+      "memory_after": 2747.515625,
+      "memory_diff": 71.359375,
+      "total_growth": 71.359375,
+      "response_time": 5.037678480148315
+    },
+    {
+      "conversation": 2,
+      "memory_before": 2747.515625,
+      "memory_after": 2748.015625,
+      "memory_diff": 0.5,
+      "total_growth": 71.859375,
+      "response_time": 4.5884552001953125
+    },
+    {
+      "conversation": 3,
+      "memory_before": 2748.015625,
+      "memory_after": 2748.015625,
+      "memory_diff": 0.0,
+      "total_growth": 71.859375,
+      "response_time": 4.864307165145874
+    },
+    {
+      "conversation": 4,
+      "memory_before": 2748.015625,
+      "memory_after": 2748.515625,
+      "memory_diff": 0.5,
+      "total_growth": 72.359375,
+      "response_time": 4.75133490562439
+    },
+    {
+      "conversation": 5,
+      "memory_before": 2748.515625,
+      "memory_after": 2753.515625,
+      "memory_diff": 5.0,
+      "total_growth": 77.359375,
+      "response_time": 6.375544309616089
+    },
+    {
+      "conversation": 6,
+      "memory_before": 2753.515625,
+      "memory_after": 2753.515625,
+      "memory_diff": 0.0,
+      "total_growth": 77.359375,
+      "response_time": 5.318872928619385
+    },
+    {
+      "conversation": 7,
+      "memory_before": 2753.515625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.5,
+      "total_growth": 77.859375,
+      "response_time": 6.059343576431274
+    },
+    {
+      "conversation": 8,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.0,
+      "total_growth": 77.859375,
+      "response_time": 6.091336488723755
+    },
+    {
+      "conversation": 9,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.0,
+      "total_growth": 77.859375,
+      "response_time": 6.489194393157959
+    },
+    {
+      "conversation": 10,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.0,
+      "total_growth": 77.859375,
+      "response_time": 5.239196538925171
+    },
+    {
+      "conversation": 11,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.0,
+      "total_growth": 77.859375,
+      "response_time": 4.290083408355713
+    },
+    {
+      "conversation": 12,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.0,
+      "total_growth": 77.859375,
+      "response_time": 4.863131761550903
+    },
+    {
+      "conversation": 13,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.015625,
+      "memory_diff": 0.0,
+      "total_growth": 77.859375,
+      "response_time": 6.191516399383545
+    },
+    {
+      "conversation": 14,
+      "memory_before": 2754.015625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.5,
+      "total_growth": 78.359375,
+      "response_time": 5.431262016296387
+    },
+    {
+      "conversation": 15,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.8630359172821045
+    },
+    {
+      "conversation": 16,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.4872705936431885
+    },
+    {
+      "conversation": 17,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.9093239307403564
+    },
+    {
+      "conversation": 18,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.315086603164673
+    },
+    {
+      "conversation": 19,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.92707371711731
+    },
+    {
+      "conversation": 20,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.89532732963562
+    },
+    {
+      "conversation": 21,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 5.933180093765259
+    },
+    {
+      "conversation": 22,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 5.062873840332031
+    },
+    {
+      "conversation": 23,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.9031853675842285
+    },
+    {
+      "conversation": 24,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 6.059521198272705
+    },
+    {
+      "conversation": 25,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.457021474838257
+    },
+    {
+      "conversation": 26,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.2031707763671875
+    },
+    {
+      "conversation": 27,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 5.151026010513306
+    },
+    {
+      "conversation": 28,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 6.319582939147949
+    },
+    {
+      "conversation": 29,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.166995525360107
+    },
+    {
+      "conversation": 30,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 5.943219900131226
+    },
+    {
+      "conversation": 31,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.75006365776062
+    },
+    {
+      "conversation": 32,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.766674995422363
+    },
+    {
+      "conversation": 33,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 5.20144248008728
+    },
+    {
+      "conversation": 34,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 4.458997488021851
+    },
+    {
+      "conversation": 35,
+      "memory_before": 2754.515625,
+      "memory_after": 2754.515625,
+      "memory_diff": 0.0,
+      "total_growth": 78.359375,
+      "response_time": 6.111422538757324
+    },
+    {
+      "conversation": 36,
+      "memory_before": 2754.515625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.5,
+      "total_growth": 78.859375,
+      "response_time": 5.1193342208862305
+    },
+    {
+      "conversation": 37,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.919065713882446
+    },
+    {
+      "conversation": 38,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.115342140197754
+    },
+    {
+      "conversation": 39,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.943361759185791
+    },
+    {
+      "conversation": 40,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.061261415481567
+    },
+    {
+      "conversation": 41,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.886130332946777
+    },
+    {
+      "conversation": 42,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.74675989151001
+    },
+    {
+      "conversation": 43,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.466786861419678
+    },
+    {
+      "conversation": 44,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.111677169799805
+    },
+    {
+      "conversation": 45,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.915108919143677
+    },
+    {
+      "conversation": 46,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.447051286697388
+    },
+    {
+      "conversation": 47,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.766897916793823
+    },
+    {
+      "conversation": 48,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.033367156982422
+    },
+    {
+      "conversation": 49,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.639307498931885
+    },
+    {
+      "conversation": 50,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.503385066986084
+    },
+    {
+      "conversation": 51,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.242490768432617
+    },
+    {
+      "conversation": 52,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.166645288467407
+    },
+    {
+      "conversation": 53,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.1994078159332275
+    },
+    {
+      "conversation": 54,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.4632673263549805
+    },
+    {
+      "conversation": 55,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.17156195640564
+    },
+    {
+      "conversation": 56,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.492980480194092
+    },
+    {
+      "conversation": 57,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.335357427597046
+    },
+    {
+      "conversation": 58,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.050983905792236
+    },
+    {
+      "conversation": 59,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.9235076904296875
+    },
+    {
+      "conversation": 60,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.318991661071777
+    },
+    {
+      "conversation": 61,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.516107797622681
+    },
+    {
+      "conversation": 62,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.739293813705444
+    },
+    {
+      "conversation": 63,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.7913007736206055
+    },
+    {
+      "conversation": 64,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.921237230300903
+    },
+    {
+      "conversation": 65,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.89918327331543
+    },
+    {
+      "conversation": 66,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.4710166454315186
+    },
+    {
+      "conversation": 67,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.06676983833313
+    },
+    {
+      "conversation": 68,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.907676696777344
+    },
+    {
+      "conversation": 69,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.95538067817688
+    },
+    {
+      "conversation": 70,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.475203275680542
+    },
+    {
+      "conversation": 71,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.8937976360321045
+    },
+    {
+      "conversation": 72,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.107053518295288
+    },
+    {
+      "conversation": 73,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.043218612670898
+    },
+    {
+      "conversation": 74,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.7673020362854
+    },
+    {
+      "conversation": 75,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.795140981674194
+    },
+    {
+      "conversation": 76,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.903125524520874
+    },
+    {
+      "conversation": 77,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.4991114139556885
+    },
+    {
+      "conversation": 78,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.069262981414795
+    },
+    {
+      "conversation": 79,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.939196586608887
+    },
+    {
+      "conversation": 80,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.4870898723602295
+    },
+    {
+      "conversation": 81,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.445981502532959
+    },
+    {
+      "conversation": 82,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.06284236907959
+    },
+    {
+      "conversation": 83,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.203221321105957
+    },
+    {
+      "conversation": 84,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.339207649230957
+    },
+    {
+      "conversation": 85,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.610903024673462
+    },
+    {
+      "conversation": 86,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.59329891204834
+    },
+    {
+      "conversation": 87,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.1834166049957275
+    },
+    {
+      "conversation": 88,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.227142095565796
+    },
+    {
+      "conversation": 89,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.175332546234131
+    },
+    {
+      "conversation": 90,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.899001598358154
+    },
+    {
+      "conversation": 91,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.487975835800171
+    },
+    {
+      "conversation": 92,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.611138105392456
+    },
+    {
+      "conversation": 93,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.479220151901245
+    },
+    {
+      "conversation": 94,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.7854297161102295
+    },
+    {
+      "conversation": 95,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.939249753952026
+    },
+    {
+      "conversation": 96,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.055312156677246
+    },
+    {
+      "conversation": 97,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.4753639698028564
+    },
+    {
+      "conversation": 98,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.779369592666626
+    },
+    {
+      "conversation": 99,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.767210245132446
+    },
+    {
+      "conversation": 100,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.747278213500977
+    },
+    {
+      "conversation": 101,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.4766716957092285
+    },
+    {
+      "conversation": 102,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.039254665374756
+    },
+    {
+      "conversation": 103,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.783056020736694
+    },
+    {
+      "conversation": 104,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.19093656539917
+    },
+    {
+      "conversation": 105,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.327378749847412
+    },
+    {
+      "conversation": 106,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.735289573669434
+    },
+    {
+      "conversation": 107,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.35139274597168
+    },
+    {
+      "conversation": 108,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.479289770126343
+    },
+    {
+      "conversation": 109,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.405657529830933
+    },
+    {
+      "conversation": 110,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.642903804779053
+    },
+    {
+      "conversation": 111,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.318648815155029
+    },
+    {
+      "conversation": 112,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.1747236251831055
+    },
+    {
+      "conversation": 113,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.347146272659302
+    },
+    {
+      "conversation": 114,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.315245628356934
+    },
+    {
+      "conversation": 115,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.979425430297852
+    },
+    {
+      "conversation": 116,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.915437459945679
+    },
+    {
+      "conversation": 117,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.785213947296143
+    },
+    {
+      "conversation": 118,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.059152603149414
+    },
+    {
+      "conversation": 119,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.503299236297607
+    },
+    {
+      "conversation": 120,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.899547338485718
+    },
+    {
+      "conversation": 121,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.903775215148926
+    },
+    {
+      "conversation": 122,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.323319435119629
+    },
+    {
+      "conversation": 123,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.07138466835022
+    },
+    {
+      "conversation": 124,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.179288148880005
+    },
+    {
+      "conversation": 125,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.44528341293335
+    },
+    {
+      "conversation": 126,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.747294187545776
+    },
+    {
+      "conversation": 127,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.927061080932617
+    },
+    {
+      "conversation": 128,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.379493951797485
+    },
+    {
+      "conversation": 129,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.926802635192871
+    },
+    {
+      "conversation": 130,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.307046413421631
+    },
+    {
+      "conversation": 131,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.211519718170166
+    },
+    {
+      "conversation": 132,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.093223810195923
+    },
+    {
+      "conversation": 133,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.779354572296143
+    },
+    {
+      "conversation": 134,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.363295078277588
+    },
+    {
+      "conversation": 135,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.778857946395874
+    },
+    {
+      "conversation": 136,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.906911134719849
+    },
+    {
+      "conversation": 137,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.203181982040405
+    },
+    {
+      "conversation": 138,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.467398643493652
+    },
+    {
+      "conversation": 139,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.245354890823364
+    },
+    {
+      "conversation": 140,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.4755167961120605
+    },
+    {
+      "conversation": 141,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.341385126113892
+    },
+    {
+      "conversation": 142,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.818824291229248
+    },
+    {
+      "conversation": 143,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.323336839675903
+    },
+    {
+      "conversation": 144,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.907208204269409
+    },
+    {
+      "conversation": 145,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.262965679168701
+    },
+    {
+      "conversation": 146,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.203389406204224
+    },
+    {
+      "conversation": 147,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.8732709884643555
+    },
+    {
+      "conversation": 148,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.2033607959747314
+    },
+    {
+      "conversation": 149,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.4710893630981445
+    },
+    {
+      "conversation": 150,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.3553125858306885
+    },
+    {
+      "conversation": 151,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.340405464172363
+    },
+    {
+      "conversation": 152,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.0390589237213135
+    },
+    {
+      "conversation": 153,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.507524490356445
+    },
+    {
+      "conversation": 154,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.069162607192993
+    },
+    {
+      "conversation": 155,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.603287935256958
+    },
+    {
+      "conversation": 156,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.939253807067871
+    },
+    {
+      "conversation": 157,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.6473143100738525
+    },
+    {
+      "conversation": 158,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.4991137981414795
+    },
+    {
+      "conversation": 159,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.771376371383667
+    },
+    {
+      "conversation": 160,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.315346717834473
+    },
+    {
+      "conversation": 161,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.474347352981567
+    },
+    {
+      "conversation": 162,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.92523980140686
+    },
+    {
+      "conversation": 163,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.359119892120361
+    },
+    {
+      "conversation": 164,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.907417058944702
+    },
+    {
+      "conversation": 165,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.307030439376831
+    },
+    {
+      "conversation": 166,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.959189176559448
+    },
+    {
+      "conversation": 167,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.61100435256958
+    },
+    {
+      "conversation": 168,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.883366823196411
+    },
+    {
+      "conversation": 169,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.794824838638306
+    },
+    {
+      "conversation": 170,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.397589445114136
+    },
+    {
+      "conversation": 171,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.646054029464722
+    },
+    {
+      "conversation": 172,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.343255519866943
+    },
+    {
+      "conversation": 173,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.363080263137817
+    },
+    {
+      "conversation": 174,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.347550868988037
+    },
+    {
+      "conversation": 175,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.782972812652588
+    },
+    {
+      "conversation": 176,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.451344966888428
+    },
+    {
+      "conversation": 177,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.189107656478882
+    },
+    {
+      "conversation": 178,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.135358810424805
+    },
+    {
+      "conversation": 179,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.911392450332642
+    },
+    {
+      "conversation": 180,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.863388299942017
+    },
+    {
+      "conversation": 181,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.474595546722412
+    },
+    {
+      "conversation": 182,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.615044355392456
+    },
+    {
+      "conversation": 183,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.799332141876221
+    },
+    {
+      "conversation": 184,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.777289628982544
+    },
+    {
+      "conversation": 185,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.3553502559661865
+    },
+    {
+      "conversation": 186,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.347289085388184
+    },
+    {
+      "conversation": 187,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.467190980911255
+    },
+    {
+      "conversation": 188,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.923356294631958
+    },
+    {
+      "conversation": 189,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.923310995101929
+    },
+    {
+      "conversation": 190,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.771198272705078
+    },
+    {
+      "conversation": 191,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.818433523178101
+    },
+    {
+      "conversation": 192,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.536944150924683
+    },
+    {
+      "conversation": 193,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.242940664291382
+    },
+    {
+      "conversation": 194,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.355377197265625
+    },
+    {
+      "conversation": 195,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.059150457382202
+    },
+    {
+      "conversation": 196,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.903107404708862
+    },
+    {
+      "conversation": 197,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.935251235961914
+    },
+    {
+      "conversation": 198,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.318849325180054
+    },
+    {
+      "conversation": 199,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.649315595626831
+    },
+    {
+      "conversation": 200,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.495302677154541
+    },
+    {
+      "conversation": 201,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.252071142196655
+    },
+    {
+      "conversation": 202,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.059459447860718
+    },
+    {
+      "conversation": 203,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.315033435821533
+    },
+    {
+      "conversation": 204,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.307058095932007
+    },
+    {
+      "conversation": 205,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.9391865730285645
+    },
+    {
+      "conversation": 206,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.338984727859497
+    },
+    {
+      "conversation": 207,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.765254259109497
+    },
+    {
+      "conversation": 208,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.451111078262329
+    },
+    {
+      "conversation": 209,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.4954187870025635
+    },
+    {
+      "conversation": 210,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.9232683181762695
+    },
+    {
+      "conversation": 211,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.20650315284729
+    },
+    {
+      "conversation": 212,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.91120457649231
+    },
+    {
+      "conversation": 213,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.335356950759888
+    },
+    {
+      "conversation": 214,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.911231517791748
+    },
+    {
+      "conversation": 215,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.337198257446289
+    },
+    {
+      "conversation": 216,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.887101650238037
+    },
+    {
+      "conversation": 217,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.463261842727661
+    },
+    {
+      "conversation": 218,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.9273247718811035
+    },
+    {
+      "conversation": 219,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.795346021652222
+    },
+    {
+      "conversation": 220,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.047059535980225
+    },
+    {
+      "conversation": 221,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.8768110275268555
+    },
+    {
+      "conversation": 222,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.94520902633667
+    },
+    {
+      "conversation": 223,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.959278106689453
+    },
+    {
+      "conversation": 224,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.90316367149353
+    },
+    {
+      "conversation": 225,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.339040517807007
+    },
+    {
+      "conversation": 226,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.479310512542725
+    },
+    {
+      "conversation": 227,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.3351006507873535
+    },
+    {
+      "conversation": 228,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.755522966384888
+    },
+    {
+      "conversation": 229,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.143188714981079
+    },
+    {
+      "conversation": 230,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.341331243515015
+    },
+    {
+      "conversation": 231,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.7962586879730225
+    },
+    {
+      "conversation": 232,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.331063985824585
+    },
+    {
+      "conversation": 233,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.503069639205933
+    },
+    {
+      "conversation": 234,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.459168434143066
+    },
+    {
+      "conversation": 235,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.886621713638306
+    },
+    {
+      "conversation": 236,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.344089031219482
+    },
+    {
+      "conversation": 237,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.099213600158691
+    },
+    {
+      "conversation": 238,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.305436134338379
+    },
+    {
+      "conversation": 239,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.531249523162842
+    },
+    {
+      "conversation": 240,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.491070508956909
+    },
+    {
+      "conversation": 241,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.35949969291687
+    },
+    {
+      "conversation": 242,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.499100685119629
+    },
+    {
+      "conversation": 243,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.8270227909088135
+    },
+    {
+      "conversation": 244,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.879188776016235
+    },
+    {
+      "conversation": 245,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.513470888137817
+    },
+    {
+      "conversation": 246,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.3511552810668945
+    },
+    {
+      "conversation": 247,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.787099123001099
+    },
+    {
+      "conversation": 248,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.89499568939209
+    },
+    {
+      "conversation": 249,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.902675151824951
+    },
+    {
+      "conversation": 250,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.155760288238525
+    },
+    {
+      "conversation": 251,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.370412826538086
+    },
+    {
+      "conversation": 252,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.343045234680176
+    },
+    {
+      "conversation": 253,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.945301055908203
+    },
+    {
+      "conversation": 254,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.915136337280273
+    },
+    {
+      "conversation": 255,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.4912309646606445
+    },
+    {
+      "conversation": 256,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.3393731117248535
+    },
+    {
+      "conversation": 257,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.203199863433838
+    },
+    {
+      "conversation": 258,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.771244525909424
+    },
+    {
+      "conversation": 259,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.999445915222168
+    },
+    {
+      "conversation": 260,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.751053094863892
+    },
+    {
+      "conversation": 261,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.19387674331665
+    },
+    {
+      "conversation": 262,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.059179067611694
+    },
+    {
+      "conversation": 263,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.087338924407959
+    },
+    {
+      "conversation": 264,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.355057954788208
+    },
+    {
+      "conversation": 265,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.326959133148193
+    },
+    {
+      "conversation": 266,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.767077922821045
+    },
+    {
+      "conversation": 267,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.239367961883545
+    },
+    {
+      "conversation": 268,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.935310125350952
+    },
+    {
+      "conversation": 269,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.497446060180664
+    },
+    {
+      "conversation": 270,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.211016893386841
+    },
+    {
+      "conversation": 271,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.374659776687622
+    },
+    {
+      "conversation": 272,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.791003465652466
+    },
+    {
+      "conversation": 273,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.2469162940979
+    },
+    {
+      "conversation": 274,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.615337610244751
+    },
+    {
+      "conversation": 275,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.319181203842163
+    },
+    {
+      "conversation": 276,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.79339861869812
+    },
+    {
+      "conversation": 277,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.395498991012573
+    },
+    {
+      "conversation": 278,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.159075736999512
+    },
+    {
+      "conversation": 279,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.167320489883423
+    },
+    {
+      "conversation": 280,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.1831419467926025
+    },
+    {
+      "conversation": 281,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.335994482040405
+    },
+    {
+      "conversation": 282,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.947245359420776
+    },
+    {
+      "conversation": 283,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.615349531173706
+    },
+    {
+      "conversation": 284,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.797337055206299
+    },
+    {
+      "conversation": 285,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.783406734466553
+    },
+    {
+      "conversation": 286,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.459174394607544
+    },
+    {
+      "conversation": 287,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.175518751144409
+    },
+    {
+      "conversation": 288,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.503246784210205
+    },
+    {
+      "conversation": 289,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.363429069519043
+    },
+    {
+      "conversation": 290,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.915121793746948
+    },
+    {
+      "conversation": 291,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.519305229187012
+    },
+    {
+      "conversation": 292,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.457169532775879
+    },
+    {
+      "conversation": 293,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.083817481994629
+    },
+    {
+      "conversation": 294,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.442912817001343
+    },
+    {
+      "conversation": 295,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 6.367358446121216
+    },
+    {
+      "conversation": 296,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 4.926695823669434
+    },
+    {
+      "conversation": 297,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.347521781921387
+    },
+    {
+      "conversation": 298,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.015625,
+      "memory_diff": 0.0,
+      "total_growth": 78.859375,
+      "response_time": 5.911091089248657
+    },
+    {
+      "conversation": 299,
+      "memory_before": 2755.015625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.5,
+      "total_growth": 79.359375,
+      "response_time": 5.549227952957153
+    },
+    {
+      "conversation": 300,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.479077577590942
+    },
+    {
+      "conversation": 301,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.5591371059417725
+    },
+    {
+      "conversation": 302,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.894931316375732
+    },
+    {
+      "conversation": 303,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.466769695281982
+    },
+    {
+      "conversation": 304,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.827891826629639
+    },
+    {
+      "conversation": 305,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.035396099090576
+    },
+    {
+      "conversation": 306,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.915117263793945
+    },
+    {
+      "conversation": 307,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.473134756088257
+    },
+    {
+      "conversation": 308,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.195226192474365
+    },
+    {
+      "conversation": 309,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.067391633987427
+    },
+    {
+      "conversation": 310,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.403498649597168
+    },
+    {
+      "conversation": 311,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.9240477085113525
+    },
+    {
+      "conversation": 312,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.906959533691406
+    },
+    {
+      "conversation": 313,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.523634433746338
+    },
+    {
+      "conversation": 314,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.064120769500732
+    },
+    {
+      "conversation": 315,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.472054958343506
+    },
+    {
+      "conversation": 316,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.387195825576782
+    },
+    {
+      "conversation": 317,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.490726470947266
+    },
+    {
+      "conversation": 318,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.075380086898804
+    },
+    {
+      "conversation": 319,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.7549872398376465
+    },
+    {
+      "conversation": 320,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.4832444190979
+    },
+    {
+      "conversation": 321,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.798217296600342
+    },
+    {
+      "conversation": 322,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.439006567001343
+    },
+    {
+      "conversation": 323,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.479471206665039
+    },
+    {
+      "conversation": 324,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.030894041061401
+    },
+    {
+      "conversation": 325,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.603281259536743
+    },
+    {
+      "conversation": 326,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.919412851333618
+    },
+    {
+      "conversation": 327,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.759024620056152
+    },
+    {
+      "conversation": 328,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.363325357437134
+    },
+    {
+      "conversation": 329,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.4833972454071045
+    },
+    {
+      "conversation": 330,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.496978282928467
+    },
+    {
+      "conversation": 331,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.457763910293579
+    },
+    {
+      "conversation": 332,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.938791751861572
+    },
+    {
+      "conversation": 333,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.059186935424805
+    },
+    {
+      "conversation": 334,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.930603504180908
+    },
+    {
+      "conversation": 335,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.487798452377319
+    },
+    {
+      "conversation": 336,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.491302728652954
+    },
+    {
+      "conversation": 337,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.469393491744995
+    },
+    {
+      "conversation": 338,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.32313084602356
+    },
+    {
+      "conversation": 339,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.387584924697876
+    },
+    {
+      "conversation": 340,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.486923933029175
+    },
+    {
+      "conversation": 341,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.870652437210083
+    },
+    {
+      "conversation": 342,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.890955209732056
+    },
+    {
+      "conversation": 343,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.011360168457031
+    },
+    {
+      "conversation": 344,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.319321870803833
+    },
+    {
+      "conversation": 345,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.181260108947754
+    },
+    {
+      "conversation": 346,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.907269477844238
+    },
+    {
+      "conversation": 347,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.372056484222412
+    },
+    {
+      "conversation": 348,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.915096998214722
+    },
+    {
+      "conversation": 349,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.810527086257935
+    },
+    {
+      "conversation": 350,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.915942907333374
+    },
+    {
+      "conversation": 351,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.345718622207642
+    },
+    {
+      "conversation": 352,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.880796194076538
+    },
+    {
+      "conversation": 353,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.087020397186279
+    },
+    {
+      "conversation": 354,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.339339971542358
+    },
+    {
+      "conversation": 355,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.611250877380371
+    },
+    {
+      "conversation": 356,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.3793864250183105
+    },
+    {
+      "conversation": 357,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.919182538986206
+    },
+    {
+      "conversation": 358,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.471309185028076
+    },
+    {
+      "conversation": 359,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.48328971862793
+    },
+    {
+      "conversation": 360,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.809092998504639
+    },
+    {
+      "conversation": 361,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.788046836853027
+    },
+    {
+      "conversation": 362,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.326901435852051
+    },
+    {
+      "conversation": 363,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.93128228187561
+    },
+    {
+      "conversation": 364,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.491158723831177
+    },
+    {
+      "conversation": 365,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.935132741928101
+    },
+    {
+      "conversation": 366,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.475358724594116
+    },
+    {
+      "conversation": 367,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.36735463142395
+    },
+    {
+      "conversation": 368,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.105187177658081
+    },
+    {
+      "conversation": 369,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.911438941955566
+    },
+    {
+      "conversation": 370,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.3353142738342285
+    },
+    {
+      "conversation": 371,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.726300001144409
+    },
+    {
+      "conversation": 372,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.286974668502808
+    },
+    {
+      "conversation": 373,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.459261655807495
+    },
+    {
+      "conversation": 374,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.343538761138916
+    },
+    {
+      "conversation": 375,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.766984939575195
+    },
+    {
+      "conversation": 376,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.389354944229126
+    },
+    {
+      "conversation": 377,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.899386882781982
+    },
+    {
+      "conversation": 378,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.7871253490448
+    },
+    {
+      "conversation": 379,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.8071722984313965
+    },
+    {
+      "conversation": 380,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.387260913848877
+    },
+    {
+      "conversation": 381,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.329041242599487
+    },
+    {
+      "conversation": 382,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.463043212890625
+    },
+    {
+      "conversation": 383,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.619369029998779
+    },
+    {
+      "conversation": 384,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.493346691131592
+    },
+    {
+      "conversation": 385,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.483677625656128
+    },
+    {
+      "conversation": 386,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.9033544063568115
+    },
+    {
+      "conversation": 387,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.355442523956299
+    },
+    {
+      "conversation": 388,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.631176710128784
+    },
+    {
+      "conversation": 389,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.3113203048706055
+    },
+    {
+      "conversation": 390,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.927407264709473
+    },
+    {
+      "conversation": 391,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.595399618148804
+    },
+    {
+      "conversation": 392,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.06518030166626
+    },
+    {
+      "conversation": 393,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.467247009277344
+    },
+    {
+      "conversation": 394,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.8072967529296875
+    },
+    {
+      "conversation": 395,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.347332000732422
+    },
+    {
+      "conversation": 396,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.319241046905518
+    },
+    {
+      "conversation": 397,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.071072340011597
+    },
+    {
+      "conversation": 398,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.90731954574585
+    },
+    {
+      "conversation": 399,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.811303615570068
+    },
+    {
+      "conversation": 400,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.629267930984497
+    },
+    {
+      "conversation": 401,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.960467576980591
+    },
+    {
+      "conversation": 402,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.482770204544067
+    },
+    {
+      "conversation": 403,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.12368631362915
+    },
+    {
+      "conversation": 404,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.899067163467407
+    },
+    {
+      "conversation": 405,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.3394455909729
+    },
+    {
+      "conversation": 406,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.371213912963867
+    },
+    {
+      "conversation": 407,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.196881532669067
+    },
+    {
+      "conversation": 408,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.907544851303101
+    },
+    {
+      "conversation": 409,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.907157897949219
+    },
+    {
+      "conversation": 410,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.2310004234313965
+    },
+    {
+      "conversation": 411,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.018357515335083
+    },
+    {
+      "conversation": 412,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.363299131393433
+    },
+    {
+      "conversation": 413,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.0470287799835205
+    },
+    {
+      "conversation": 414,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.467248916625977
+    },
+    {
+      "conversation": 415,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.773327112197876
+    },
+    {
+      "conversation": 416,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.247354984283447
+    },
+    {
+      "conversation": 417,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.163254737854004
+    },
+    {
+      "conversation": 418,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.487440824508667
+    },
+    {
+      "conversation": 419,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.391310214996338
+    },
+    {
+      "conversation": 420,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.911238431930542
+    },
+    {
+      "conversation": 421,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.887913942337036
+    },
+    {
+      "conversation": 422,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.775395631790161
+    },
+    {
+      "conversation": 423,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.9172563552856445
+    },
+    {
+      "conversation": 424,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.071345329284668
+    },
+    {
+      "conversation": 425,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.407236337661743
+    },
+    {
+      "conversation": 426,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.087264060974121
+    },
+    {
+      "conversation": 427,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.459287881851196
+    },
+    {
+      "conversation": 428,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.063189506530762
+    },
+    {
+      "conversation": 429,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.947550535202026
+    },
+    {
+      "conversation": 430,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.109099864959717
+    },
+    {
+      "conversation": 431,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.616387367248535
+    },
+    {
+      "conversation": 432,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.3348352909088135
+    },
+    {
+      "conversation": 433,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.359109163284302
+    },
+    {
+      "conversation": 434,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.458928108215332
+    },
+    {
+      "conversation": 435,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.931341648101807
+    },
+    {
+      "conversation": 436,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.9512779712677
+    },
+    {
+      "conversation": 437,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.911080598831177
+    },
+    {
+      "conversation": 438,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.033062696456909
+    },
+    {
+      "conversation": 439,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.351513624191284
+    },
+    {
+      "conversation": 440,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.475016117095947
+    },
+    {
+      "conversation": 441,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.593804597854614
+    },
+    {
+      "conversation": 442,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.8670477867126465
+    },
+    {
+      "conversation": 443,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.346437692642212
+    },
+    {
+      "conversation": 444,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.3160200119018555
+    },
+    {
+      "conversation": 445,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.369430780410767
+    },
+    {
+      "conversation": 446,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.183127403259277
+    },
+    {
+      "conversation": 447,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.491025686264038
+    },
+    {
+      "conversation": 448,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.919450521469116
+    },
+    {
+      "conversation": 449,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.471307277679443
+    },
+    {
+      "conversation": 450,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.0392231941223145
+    },
+    {
+      "conversation": 451,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.372191667556763
+    },
+    {
+      "conversation": 452,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.15534782409668
+    },
+    {
+      "conversation": 453,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.905054330825806
+    },
+    {
+      "conversation": 454,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.183335781097412
+    },
+    {
+      "conversation": 455,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.7674360275268555
+    },
+    {
+      "conversation": 456,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.346962213516235
+    },
+    {
+      "conversation": 457,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.043591260910034
+    },
+    {
+      "conversation": 458,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.37936544418335
+    },
+    {
+      "conversation": 459,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.931248903274536
+    },
+    {
+      "conversation": 460,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.475183486938477
+    },
+    {
+      "conversation": 461,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.375022649765015
+    },
+    {
+      "conversation": 462,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.907138824462891
+    },
+    {
+      "conversation": 463,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.9031102657318115
+    },
+    {
+      "conversation": 464,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.210978031158447
+    },
+    {
+      "conversation": 465,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.719050645828247
+    },
+    {
+      "conversation": 466,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.895842790603638
+    },
+    {
+      "conversation": 467,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.655395746231079
+    },
+    {
+      "conversation": 468,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.925421714782715
+    },
+    {
+      "conversation": 469,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.235207557678223
+    },
+    {
+      "conversation": 470,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.346998929977417
+    },
+    {
+      "conversation": 471,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.050411224365234
+    },
+    {
+      "conversation": 472,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.802762746810913
+    },
+    {
+      "conversation": 473,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.931067705154419
+    },
+    {
+      "conversation": 474,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.2433130741119385
+    },
+    {
+      "conversation": 475,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.079991817474365
+    },
+    {
+      "conversation": 476,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.811859369277954
+    },
+    {
+      "conversation": 477,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.787211894989014
+    },
+    {
+      "conversation": 478,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.315071105957031
+    },
+    {
+      "conversation": 479,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.503591537475586
+    },
+    {
+      "conversation": 480,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.37540078163147
+    },
+    {
+      "conversation": 481,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.33967137336731
+    },
+    {
+      "conversation": 482,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.455013036727905
+    },
+    {
+      "conversation": 483,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.657336473464966
+    },
+    {
+      "conversation": 484,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.623382568359375
+    },
+    {
+      "conversation": 485,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.939308166503906
+    },
+    {
+      "conversation": 486,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.498963117599487
+    },
+    {
+      "conversation": 487,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.1955060958862305
+    },
+    {
+      "conversation": 488,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.462568521499634
+    },
+    {
+      "conversation": 489,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.3682520389556885
+    },
+    {
+      "conversation": 490,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.483052015304565
+    },
+    {
+      "conversation": 491,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.193747282028198
+    },
+    {
+      "conversation": 492,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.183271408081055
+    },
+    {
+      "conversation": 493,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.611308813095093
+    },
+    {
+      "conversation": 494,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.075392007827759
+    },
+    {
+      "conversation": 495,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.46721625328064
+    },
+    {
+      "conversation": 496,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.387739419937134
+    },
+    {
+      "conversation": 497,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 4.478799104690552
+    },
+    {
+      "conversation": 498,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.363568544387817
+    },
+    {
+      "conversation": 499,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 5.977220058441162
+    },
+    {
+      "conversation": 500,
+      "memory_before": 2755.515625,
+      "memory_after": 2755.515625,
+      "memory_diff": 0.0,
+      "total_growth": 79.359375,
+      "response_time": 6.091124057769775
+    }
+  ]
+}

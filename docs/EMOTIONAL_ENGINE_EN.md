@@ -389,7 +389,7 @@ def _get_unique_response(self, emotion: str, options: List[str]) -> str:
 
 ## 🧪 Real Use Cases
 
-📁 **[Complete log of this session](/logs/)** - Total access to unfiltered log, including complete prompts, exact times and system decisions step by step.
+📁 **[session_2025-05-26_emotional_engine_test.log](/logs/session_2025-05-26_emotional_engine_test.log)** - Total access to unfiltered log, including complete prompts, exact times and system decisions step by step.
 
 ### Case 1: instant emotional detection and response
 

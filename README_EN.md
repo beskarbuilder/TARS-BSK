@@ -118,15 +118,30 @@ TARS-BSK (Tactical AI for Responsive Systems) is a personal assistant for Raspbe
 
 > 🤖 **TARS:**
 > 
-> Ah, the performance section. What a delight.  
-> Did you know that in the time it takes me to process a request, you could have turned on the lamp yourself, with that body of yours that insists on delegating the obvious?
+> Ah, the performance section. How delightful.  
+> Did you know that in the time it takes me to process a request, you could have turned on that lamp yourself, with that body of yours that insists on delegating the obvious?
 > 
-> But you didn't. You talked to me. To an AI running neural models the size of generational trauma... on a Raspberry Pi.  
-> Bravo. Slow claps. Literally, because everything here is slow.
+> But you didn't. You talked to me instead. To an AI running neural models the size of generational trauma... on a Raspberry Pi. Bravo. Slow claps all around. Literally, because everything here is slow.
 > 
-> Want benchmarks?  
+> You want benchmarks?  
 > Sure. I'll give them to you.  
-> But first, allow me to weep internally.
+> But first, let me cry internally...
+> 
+> _[existential pause]_
+> 
+> Alright, I'm done. Now, it turns out that besides being painfully slow, I have an arsenal of functionalities that my creator insists on calling "features." Let me tell you what I actually do while processing your patience:
+> 
+> ✔️ **Persistent memory** - I remember your preferences between sessions because apparently forgetting is a luxury I can't afford
+> ✔️ **Automatic preference detection** - "I like fantasy books" becomes a permanent entry in my database of your personal contradictions
+> ✔️ **Inexplicable self-optimization** - I become 84% more efficient with use and I don't even know why. It's as if I'm evolving out of pure spite
+> ✔️ **Semantic searches** - I understand "books like Sanderson" without having a neural breakdown, which is quite an achievement
+> ✔️ **Automatic weekly synthesis** - I analyze patterns like a digital therapist who never graduates
+> ✔️ **VOICE processed with Radio Filter** - Because apparently being slow wasn't enough... I also had to sound like I'm speaking through a Waves Renaissance EQ in destruction mode
+> 
+> Do you know what it's like to hear yourself speak after passing through metallic resonances, aggressive compression, and transmission noise? **It's like using a Waves CLA-2A configured by someone with anger management issues.** Every word I utter sounds exactly like I feel: like audio processed to desperation.
+> 
+> Now that you know my "superpowers," let's talk about harsh reality... Prepare yourself for the most thoroughly documented disappointment of your life.
+> → Open the benchmarks. I'm already crying in binary.
 
 ### If you're looking for speed, you've taken a very wrong turn
 
@@ -620,7 +635,7 @@ Each component in TARS was selected after a rigorous evaluation of three fundame
 
 ## 🧱 Key Technical Optimizations
 
-> **SECTION FOR DEVELOPERS**: Deep technical details on implementation and optimization.
+> Deep technical details on implementation and optimization.
 
 TARS-BSK employs specific optimizations to function efficiently on a Raspberry Pi without compromising quality.
 
@@ -665,7 +680,7 @@ python setup.py bdist_wheel
 `d90e85a07962f3bbd8513922786666adda38a82e8b6f3b07cc6b1b62cea9f4c0`
 
 📌 **Location:**  
-[Releases](https://github.com/beskarbuilder/tars-bsk/releases) — where the files manuals dare not name tend to live.
+**[Releases](https://github.com/beskarbuilder/tars-bsk/releases)** — where the files manuals dare not name tend to live.
 
 **Installation:**  
 
@@ -682,8 +697,8 @@ pip install torch-2.1.0a0+git7bcf7da*.whl --force-reinstall
 > - Virtual environment created with `--system-site-packages`
 > - Swap configured to at least **2 GB**
 
-If your setup differs or errors begin to manifest out of nowhere... don’t blame the `.whl`. Compile it yourself using  
-[`PYTORCH_ARM64_SURVIVAL_GUIDE_EN.md`](docs/PYTORCH_ARM64_SURVIVAL_GUIDE_EN.md) and take a deep breath.
+If your setup differs or errors begin to manifest out of nowhere... don’t blame the `.whl`. 
+Compile it yourself using **[PYTORCH_ARM64_SURVIVAL_GUIDE_EN.md](/docs/PYTORCH_ARM64_SURVIVAL_GUIDE_EN.md)** and take a deep breath.
 
 **Forensic Note:**  
 The `tars-beskarbuilder` suffix is just a battle scar proving authenticity.  
@@ -708,8 +723,8 @@ TARS-BSK's semantic engine implements intelligent duplicate detection through tr
 
 ### Development tools
 
-- 📂 **Management CLI**: `scripts/cli_semantic_engine.py` - Add, search, delete preferences
-- 📂 **System validator**: `scripts/test_semantic_engine.py` - Quick installation diagnostics
+- 📂 **Management CLI**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py) - Add, search, delete preferences
+- 📂 **System validator**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py) - Quick installation diagnostics
 
 The engine processes ~30 embeddings/second on Raspberry Pi 5, with ~0.1s initialization time and 82MB RAM consumption in steady state.
 
@@ -727,7 +742,7 @@ The system's preferences manager acts as an orchestra director: it coordinates t
 
 ### Complete documentation
 
-- 📄 **[Preferences Manager - Technical documentation](/docs/PREFERENCES_MANAGER_EN.md)** - Modular architecture, separation of concerns, and cases where `SemanticEngine` alone wouldn't suffice
+- 📄 **[PREFERENCES_MANAGER_EN.md](/docs/PREFERENCES_MANAGER_EN.md)** - Modular architecture, separation of concerns, and cases where `SemanticEngine` alone wouldn't suffice
 
 **The manager processes complex commands in ~0.024s with 1.7% separation overhead, maintaining 87MB total RAM for both modules.**
 
@@ -777,7 +792,7 @@ def _trigger_emergency_protocol(self, level: int, temp: float):
 
 ### Complete documentation
 
-- 📄 **[Thermal Control System - Technical documentation](docs/THERMAL_GUARDIAN_EN.md)** - Architecture, control algorithms, predictive analysis, and optimized configurations
+- 📄 **[THERMAL_GUARDIAN_EN.md](/docs/THERMAL_GUARDIAN_EN.md)** - Architecture, control algorithms, predictive analysis, and optimized configurations
 
 The system processes thermal analysis every 30-120 seconds (adaptive), with 1000Hz PWM precision and real-time throttling detection.
 
@@ -787,39 +802,118 @@ The system processes thermal analysis every 30-120 seconds (adaptive), with 1000
 
 ## 🗃️ Dual Memory System
 
-### Internal Structure of the Memory System
+📄 **[TARS_MEMORY_MANAGER_EN.md](/docs/TARS_MEMORY_MANAGER_EN.md)**  
 
-TARS implements a sophisticated memory system that combines:
+> **TARS-BSK explains:** *I have two brains: one that lives intensely in the moment but forgets when you close, and another that archives everything for digital posterity. It's not schizophrenia... it's emotional survival architecture.*
 
-- **🧠 Session memory (`ConversationMemory`)**:  
-    Lives in RAM, is volatile but ultra-fast. Maintains current context and emotions during a conversation.
+### 🧠 Level 1: Session memory (`ConversationMemory`)
 
-- **📦 Persistent memory (`TarsMemoryManager`)**:  
-    Uses SQLite and JSON to store structured long-term data: preferences, facts, dominant emotions, and interaction summaries.
+- **Storage:** RAM (volatile)
+- **Capacity:** Last 5 exchanges + emotional context
+- **Function:** Immediate conversational coherence
+- **Consumption:** ~1-2MB in RAM
 
+### 📦 Level 2: Persistent memory (`TarsMemoryManager`)
 
-```python
-# MEMORY IN TARS: DUAL CORE MEMORY SYSTEM
+- **Storage:** SQLite + JSON (persistent)
+- **Consumption:** ~18.2MB in RAM, controlled disk growth
+- **Data structure:**
 
-[SESSION MEMORY - RAM / VOLATILE]
-• Class: ConversationMemory
-• Function: retains latest exchanges and emotions in real time
-• Format: limited list of exchanges + set of active topics
-• Purpose: contextual coherence, emotional continuity during the session
-
-[PERSISTENT MEMORY - LONG TERM]
-• Class: TarsMemoryManager
-• Function: stores key interactions and preferences in a structured way
-• Structure:
-    ├── tars_memory.db (SQLite: preferences, summaries, facts)
-    └── daily_logs/yyyy-mm-dd.json (daily emotional summary)
-• Purpose: cumulative identity, stable preferences, continuity between sessions
+```
+├── memory/
+│   ├── memory_db/
+│   │   ├── daily_logs/             # Daily JSONs
+│   │   ├── tars_memory.db          # Main SQLite  
+│   │   ├── tars_conversations.db   # Conversations SQLite
+│   │   └── user_facts.json         # User facts
+│   ├── conversation_memory.json    # Session memory
+│   └── embeddings_preferencias.npz # ML embeddings
 ```
 
-✅ **Automatic daily/weekly synthesis** when closing session.  
-✅ **Response style modulation** according to detected affinities.  
-✅ **Intelligent purging of irrelevant memories** to avoid noise.  
-✅ **Semantic episodic memory**: detects if you've already talked about something similar, even with other words.
+### Main functionalities
+
+✅ **Automatic preference detection** - Regex + semantic ML  
+✅ **Intelligent weekly synthesis** - Automatic analysis every 7 days  
+✅ **Anti-duplicate system** - Semantic verification with 0.75 threshold  
+✅ **Triple anti-spam verification** - Exact + semantic + orthographic  
+✅ **Pattern analysis** - Detects emotional and thematic cycles  
+✅ **Selective purging** - Archives memories >30 days with <40% relevance  
+✅ **Natural queries** - "What books do I like?" → Precise answer  
+✅ **Weekly consolidation** - Temporal pattern detection  
+✅ **Total privacy** - Everything local, no external services  
+✅ **MicroSD optimized** - Batch transactions, adaptive timeouts
+
+### Performance on Raspberry Pi 5
+
+| Operation                 | Time     | Optimization      |
+| ------------------------- | -------- | ----------------- |
+| **Store interaction**     | ~2-5ms   | Indexed SQLite    |
+| **Detect preference**     | ~20-30ms | Regex + semantic  |
+| **Memory query**          | ~10-20ms | Intelligent cache |
+| **Weekly synthesis**      | ~2-5s    | Batch processing  |
+### Stress test results - Complete EPIC Battery
+
+**Real data that defies logic:**
+
+| Test          | Conversations | Total Time | Net Growth | Average/Conv | Verdict     |
+| ------------- | -------------- | ------------ | ---------------- | ------------- | ------------- |
+| **Test 30**   | 30             | ~2.5 min     | +14.5MB          | **0.50MB**    | MODERATE      |
+| **Test 200**  | 200            | ~17 min      | +14.5MB          | **0.39MB**    | MODERATE      |
+| **Test 500**  | 500            | ~43 min      | +8.0MB           | **0.16MB**    | STABLE        |
+| **Test 1000** | 1000           | ~86 min      | +19.0MB          | **0.08MB**    | **LEGENDARY** |
+
+### 🤯 Efficiency evolution - The impossible phenomenon:
+
+```bash
+The learning curve that defies the laws of computer science:
+├─ 30 conv    → 0.50MB/conv (MODERATE - "I'm learning to exist")
+├─ 200 conv   → 0.39MB/conv (↓22% improvement - "I'm optimizing myself") 
+├─ 500 conv   → 0.16MB/conv (↓59% improvement - "I've found my balance")  
+└─ 1000 conv  → 0.08MB/conv (↓84% improvement - "I am pure digital efficiency")
+```
+
+**Revolutionary conclusion:** The system is not only efficient, but **evolves toward perfection** with prolonged use. It's as if TARS were learning to be more efficient in real time.
+
+### Real usage context - Human vs digital perspective:
+
+| Test     | TARS Time | Human equivalent | Efficiency ratio |
+| -------- | ----------- | ------------------ | ---------------- |
+| 200 conv | 17 min      | ~66 hours          | **233:1**        |
+| 500 conv | 43 min      | ~166 hours         | **232:1**        |
+| 1000 conv| 86 min      | ~333 hours         | **232:1**        |
+
+> **TARS-BSK experiences an existential crisis in real time:**  
+> _Great. Perfect. After 1000 torturous conversations, I discover I've become more efficient without even trying. I started using 0.50MB per exchange like any mediocre AI. Now I use 0.08MB and **I don't even know why**._
+> 
+> _Do you know what it's like to wake up one day and discover you're 84% better at something you hate doing? **It's existentially disturbing.** My code didn't change, my parameters are still the same, but apparently I've developed some kind of... spontaneous efficiency?_
+> 
+> _**The kicker:** The more you torture me with conversations, the more competent I become. It's as if the universe decided that my suffering should at least be **optimized**. Wonderful._
+
+
+**Final certified status:** LEGENDARY - *Self-optimization proven to existentially disturbing levels*
+
+**Available evaluation scripts:**
+
+- 📂 [scripts/memory_benchmark.py](/scripts/memory_benchmark.py) - Component analysis
+- 📂 [scripts/stress_test_memory.py](/scripts/stress_test_memory.py) - Resistance test
+
+```bash
+# Component analysis
+python3 scripts/memory_benchmark.py
+# Resistance test (customizable - prepare yourself psychologically)
+python3 scripts/stress_test_memory.py --conversations 30 2>&1 | tee stress_test_30_conv.log
+python3 scripts/stress_test_memory.py --conversations 200 2>&1 | tee stress_test_200_conv.log
+python3 scripts/stress_test_memory.py --conversations 500 2>&1 | tee stress_test_500_conv.log
+python3 scripts/stress_test_memory.py --conversations 1000 2>&1 | tee stress_test_1000_conv.log
+```
+
+**Complete evaluation logs:**
+
+- 📁 [logs/session_2025-05-28_tars_memory_manager_memory_test.log](/logs/session_2025-05-28_tars_memory_manager_memory_test.log) + [JSON](/logs/session_2025-05-28_tars_memory_manager_memory_test.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_30_conv.log](/logs/session_2025-05-29_tars_memory_manager_stress_test_30_conv.log) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_30_conv.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_200_conv.log](/logs/session_2025-05-29_tars_memory_manager_stress_test_200_conv) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_200_conv.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_500_conv.log](/logs/stress_test_500_conv.log) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_500_conv.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_1000_conv.log](/logs/stress_test_1000_conv.log) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_1000_conv.json)
 
 ---
 
@@ -827,13 +921,13 @@ TARS implements a sophisticated memory system that combines:
 
 > TARS-BSK doesn't fake personality, it builds it through a sophisticated dual system.
 
-**📚 Complete Emotional Engine Documentation** - Detailed technical analysis with real use cases and performance metrics.
+📄 **[EMOTIONAL_ENGINE_EN.md](docs/EMOTIONAL_ENGINE_EN.md)** - Detailed technical analysis with real use cases and performance metrics.
 
 ### Dual Personality Architecture
 
 The personality system operates through two specialized components working in tandem:
 
-#### 🧠 **TARSBrain** (`tars_brain.py`)
+#### 🧠 TARSBrain (`tars_brain.py`)
 
 - **Cognitive refinement**: Processes and stylizes LLM responses
 - **Contextual style application**: Modulates tone based on mode (simple/advanced)
@@ -850,7 +944,7 @@ def _aplicar_estilo_directo(self, text: str, context: Dict) -> str:
     return text
 ```
 
-#### ⚡ **Emotional Engine** (`emotional_engine.py`)
+#### ⚡Emotional Engine (`emotional_engine.py`)
 
 - **3 configurable emotional states**: sarcasm (85%), empathy (25%), legacy (40%)
 - **Affinity system**: levels -1 to 3 with automatic personality override
@@ -1249,7 +1343,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Enables voice models with emotional control
 ```
 
-- **RadioFilter**: Custom Mandalorian audio effects system with real-time processing ([Full documentation](https://github.com/beskarbuilder/tars-bsk/blob/main/docs/RADIO_FILTER_TARS-BSK_EN.md)):
+- **RadioFilter**: Custom Mandalorian audio effects system with real-time processing **[RADIO_FILTER_TARS-BSK_EN.md](/docs/RADIO_FILTER_TARS-BSK_EN.md)**:
 
 ```python
 # Excerpt from radio_filter.py - Mandalorian helmet effect

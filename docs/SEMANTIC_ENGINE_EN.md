@@ -67,7 +67,7 @@ The semantic engine is the intelligence system that allows TARS-BSK to "understa
 In addition to automatic voice detection, TARS-BSK includes a command-line tool to directly manage your preferences.  
 Ideal for debugging, quick testing, or when you simply prefer plain text over synthetic sarcasm.
 
-📂 **File:** `scripts/cli_semantic_engine.py`
+📂 **File:** [scripts/cli_semantic_engine.py](/scripts/)
 
 ```bash
 # Preference management and system analysis
@@ -79,7 +79,7 @@ python3 scripts/cli_semantic_engine.py --help
 
 Quick validation tool to confirm your installation works correctly.
 
-📂 **File:** `scripts/test_semantic_engine.py`
+📂 **File:** [scripts/test_semantic_engine.py](/scripts/)
 
 > ⚠️ **Before running:** Open the file and review the `CRITICAL_CASES` - some are Star Wars/books specific. Customize for your domain or keep the universal cases.
 

@@ -65,7 +65,7 @@ El motor semántico es el sistema de inteligencia que permite que TARS-BSK "enti
 Además de la detección automática por voz, TARS-BSK incluye una herramienta de línea de comandos para gestionar directamente tus preferencias.  
 Ideal para depuración, testeo rápido o cuando simplemente prefieres texto plano al sarcasmo sintético.
 
-📂 **Archivo:** `scripts/cli_semantic_engine.py`
+📂 **Archivo:** [scripts/cli_semantic_engine.py](/scripts/)
 
 ```bash
 # Gestión de preferencias y análisis del sistema
@@ -78,7 +78,7 @@ python3 scripts/cli_semantic_engine.py --help
 
 Herramienta de validación rápida para confirmar que tu instalación funciona correctamente.
 
-📂 **Archivo:** `scripts/test_semantic_engine.py`
+📂 **Archivo:** [scripts/test_semantic_engine.py](/scripts/)
 
 > ⚠️ **Antes de ejecutar:** Abre el archivo y revisa los `CRITICAL_CASES` - algunos son específicos de Star Wars/libros. Personaliza según tu dominio o mantén los casos universales.
 

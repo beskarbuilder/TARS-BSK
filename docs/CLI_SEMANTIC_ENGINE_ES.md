@@ -35,7 +35,7 @@ Es una herramienta de línea de comandos que permite gestión directa de las pre
 
 ## 📦 Instalación y requisitos
 
-📂 **Archivo:** `scripts/cli_semantic_engine.py`
+📂 **Archivo:** [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py)
 
 ### Requisitos previos (ya instaladas con TARS-BSK)
 
@@ -52,7 +52,6 @@ pip install colorama sqlite3
 ```bash
 # Desde el directorio principal de TARS
 cd ~/tars_files
-python3 scripts/cli_semantic_engine.py --help
 ```
 
 **Salida esperada:**

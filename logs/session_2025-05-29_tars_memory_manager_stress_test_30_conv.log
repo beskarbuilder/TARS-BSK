@@ -1,0 +1,721 @@
+2025-05-29 10:32:06,264 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-29 10:32:08,896 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-29 10:32:08,896 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-29 10:32:08,896 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-29 10:32:09,116 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+🚀 Iniciando TARS Memory Stress Test...
+   (Esto tardará aproximadamente 2-3 minutos)
+
+🔥 TARS Memory Stress Test
+============================================================
+⏰ Iniciado: 2025-05-29 10:32:05
+🎯 Objetivo: Detectar memory leaks durante conversaciones repetidas
+============================================================
+🤖 Cargando TARS...
+✅ Backend GPIO configurado: lgpio
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 33.43it/s]
+2025-05-29 10:32:09,150 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-29 10:32:09,150 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-05-29 10:32:09,153 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-05-29 10:32:09,154 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-05-29 10:32:09,154 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-05-29 10:32:09,154 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-05-29 10:32:09,154 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-05-29 10:32:09,154 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-05-29 10:32:09,157 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 12 temas, 8 patrones, 9 keywords
+2025-05-29 10:32:09,159 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-05-29 10:32:09,160 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-05-29 10:32:09,160 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-05-29 10:32:09,160 - TARS - INFO - Detector de intenciones inicializado
+2025-05-29 10:32:09,161 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-05-29 10:32:09,162 - TARS - INFO - 📊 Preferencias recuperadas: 13
+2025-05-29 10:32:09,162 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 11 gustos, 2 disgustos
+2025-05-29 10:32:09,163 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-05-29 10:32:09,163 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-05-29 10:32:09,163 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-05-29 10:32:09,300 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-05-29 10:32:09,300 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-05-29 10:32:09,300 - TARS.PluginSystem - INFO - Configuración de plugins cargada correctamente
+2025-05-29 10:32:09,301 - TARS.PluginSystem - INFO - Plugins habilitados: homeassistant
+2025-05-29 10:32:09,301 - TARS.PluginSystem - INFO - Sistema de plugins inicializado
+2025-05-29 10:32:09,301 - TARS.PluginSystem - INFO - Inicializando 1 plugins
+2025-05-29 10:32:09,301 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-05-29 10:32:09,308 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - ✅ Plugin homeassistant inicializado
+2025-05-29 10:32:09,309 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-05-29 10:32:09,309 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+   📂 Usando modelo: Phi-3-mini-4k-instruct.Q4_K_M.gguf
+   🧠 TARS cargado - Memoria inicial: 2678.7MB
+
+🔥 INICIANDO STRESS TEST
+
+📝 Configuración:
+   • Conversaciones: 30
+   • Frase de prueba: 'me gusta la ciencia ficción'
+   • Memoria baseline: 2678.7MB
+
+------------------------------------------------------------
+💬 Conversación  1/30: 2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:09,309 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:09,309 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:09,309 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:09,310 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:09,310 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-29 10:32:09,310 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-29 10:32:09,310 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-29 10:32:09,310 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-29 10:32:09,421 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.55it/s]
+2025-05-29 10:32:09,452 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-29 10:32:09,452 - TARS - INFO - ✅ SemanticEngine cargado (singleton)
+2025-05-29 10:32:09,454 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:09,454 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:09,454 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:09,465 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:09,466 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:09,466 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Gracias por compartir tus gustos conmigo.'
+2025-05-29 10:32:09,466 - TARS.TTS - INFO - 🗣️ Generando voz: 'Gracias por compartir tus gustos conmigo.'
+2025-05-29 10:32:10,326 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:10,344 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-05-29 10:32:12,757 - TARS.TTS - INFO - 🔊 Reproducción completada
+2742.7MB (+64.0MB) 🚨 | Total: +64.0MB | Tiempo: 4.45s
+💬 Conversación  2/30: 2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:14,259 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:14,259 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:14,259 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:14,259 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:14,260 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:14,261 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:14,261 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:14,274 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:14,274 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:14,274 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Tu gusto ha sido añadido a mi memoria.'
+2025-05-29 10:32:14,274 - TARS.TTS - INFO - 🗣️ Generando voz: 'Tu gusto ha sido añadido a mi memoria.'
+2025-05-29 10:32:15,124 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:15,141 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.016s
+2025-05-29 10:32:17,429 - TARS.TTS - INFO - 🔊 Reproducción completada
+2747.2MB (+4.5MB) ✅ | Total: +68.5MB | Tiempo: 4.17s
+💬 Conversación  3/30: 2025-05-29 10:32:18,932 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:18,932 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:18,932 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:18,932 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:18,933 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:18,933 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:18,933 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:18,933 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:18,933 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:18,933 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:18,935 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:18,935 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:18,936 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:18,949 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:18,949 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:18,950 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:32:18,950 - TARS.TTS - INFO - 🗣️ Generando voz: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:32:19,952 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:19,973 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:32:23,013 - TARS.TTS - INFO - 🔊 Reproducción completada
+2748.2MB (+1.0MB) ✅ | Total: +69.5MB | Tiempo: 5.08s
+💬 Conversación  4/30: 2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:24,516 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:24,516 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:24,516 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:24,516 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:24,518 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:24,518 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:24,518 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:24,533 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:24,533 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:24,533 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Entendido, he añadido esto a tus gustos personales.'
+2025-05-29 10:32:24,534 - TARS.TTS - INFO - 🗣️ Generando voz: 'Entendido, he añadido esto a tus gustos personales.'
+2025-05-29 10:32:25,568 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:25,590 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.022s
+2025-05-29 10:32:29,005 - TARS.TTS - INFO - 🔊 Reproducción completada
+2748.7MB (+0.5MB) ✅ | Total: +70.0MB | Tiempo: 5.49s
+💬 Conversación  5/30: 2025-05-29 10:32:30,508 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:30,508 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:30,508 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:30,509 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:30,509 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:30,509 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:30,509 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:30,509 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:30,509 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:30,510 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:30,512 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:30,512 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:30,512 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:30,524 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:30,524 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:30,525 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Me alegra conocer más sobre tus preferencias.'
+2025-05-29 10:32:30,525 - TARS.TTS - INFO - 🗣️ Generando voz: 'Me alegra conocer más sobre tus preferencias.'
+2025-05-29 10:32:31,498 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:31,519 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:32:34,434 - TARS.TTS - INFO - 🔊 Reproducción completada
+2750.2MB (+1.5MB) ✅ | Total: +71.5MB | Tiempo: 4.93s
+💬 Conversación  6/30: 2025-05-29 10:32:35,936 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:35,936 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:35,937 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:35,937 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:35,937 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:35,937 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:35,937 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:35,938 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:35,938 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:35,938 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:35,939 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:35,939 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:35,940 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:35,950 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:35,951 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:35,951 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Perfecto! He registrado esta preferencia en tu perfil.'
+2025-05-29 10:32:35,952 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Perfecto! He registrado esta preferencia en tu perfil.'
+2025-05-29 10:32:37,042 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:37,066 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.024s
+2025-05-29 10:32:40,854 - TARS.TTS - INFO - 🔊 Reproducción completada
+2750.7MB (+0.5MB) ✅ | Total: +72.0MB | Tiempo: 5.92s
+💬 Conversación  7/30: 2025-05-29 10:32:42,357 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:42,357 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:42,357 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:42,357 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:42,357 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:42,358 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:42,358 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:42,358 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:42,358 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:42,358 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:42,360 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:42,360 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:42,361 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:42,373 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:42,374 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:42,374 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Entendido, he añadido esto a tus gustos personales.'
+2025-05-29 10:32:42,375 - TARS.TTS - INFO - 🗣️ Generando voz: 'Entendido, he añadido esto a tus gustos personales.'
+2025-05-29 10:32:43,432 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:43,454 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:32:46,870 - TARS.TTS - INFO - 🔊 Reproducción completada
+2751.2MB (+0.5MB) ✅ | Total: +72.5MB | Tiempo: 5.52s
+💬 Conversación  8/30: 2025-05-29 10:32:48,373 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:48,373 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:48,373 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:48,373 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:48,374 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:48,374 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:48,374 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:48,374 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:48,374 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:48,374 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:48,376 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:48,376 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:48,377 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:48,386 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:48,386 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:48,386 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Me alegra conocer más sobre tus preferencias.'
+2025-05-29 10:32:48,387 - TARS.TTS - INFO - 🗣️ Generando voz: 'Me alegra conocer más sobre tus preferencias.'
+2025-05-29 10:32:49,350 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:49,370 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:32:52,283 - TARS.TTS - INFO - 🔊 Reproducción completada
+2751.2MB (+0.0MB) 💚 | Total: +72.5MB | Tiempo: 4.91s
+💬 Conversación  9/30: 2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:53,785 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:53,785 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:53,785 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:53,785 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:53,787 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:53,787 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:53,787 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:53,800 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:53,800 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:53,801 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:32:53,801 - TARS.TTS - INFO - 🗣️ Generando voz: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:32:54,759 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:32:54,779 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:32:57,693 - TARS.TTS - INFO - 🔊 Reproducción completada
+2751.2MB (+0.0MB) 💚 | Total: +72.5MB | Tiempo: 4.91s
+💬 Conversación 10/30: 2025-05-29 10:32:59,195 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:59,195 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:32:59,195 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:32:59,195 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:32:59,196 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:32:59,196 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:32:59,196 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:32:59,196 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:32:59,196 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:32:59,196 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:32:59,198 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:32:59,198 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:32:59,198 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:32:59,210 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:32:59,210 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:32:59,211 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Guardado en mi base de datos de preferencias.'
+2025-05-29 10:32:59,211 - TARS.TTS - INFO - 🗣️ Generando voz: 'Guardado en mi base de datos de preferencias.'
+2025-05-29 10:33:00,124 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:00,142 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-05-29 10:33:02,805 - TARS.TTS - INFO - 🔊 Reproducción completada
+2751.2MB (+0.0MB) 💚 | Total: +72.5MB | Tiempo: 4.61s
+   🧹 Garbage collection forzado...
+💬 Conversación 11/30: 2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:05,458 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:05,458 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:05,458 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:05,458 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:05,460 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:05,460 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:05,460 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:05,474 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:05,474 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:05,475 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Interesante! Me gusta saber más sobre tus preferencias.'
+2025-05-29 10:33:05,475 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Interesante! Me gusta saber más sobre tus preferencias.'
+2025-05-29 10:33:06,653 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:06,680 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.026s
+2025-05-29 10:33:10,849 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+2.5MB) ✅ | Total: +75.0MB | Tiempo: 6.39s
+💬 Conversación 12/30: 2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:12,352 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:12,352 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:12,352 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:12,352 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:12,354 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:12,354 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:12,354 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:12,366 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:12,367 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:12,367 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Genial! Esta información queda guardada en mi memoria.'
+2025-05-29 10:33:12,367 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Genial! Esta información queda guardada en mi memoria.'
+2025-05-29 10:33:13,387 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:13,408 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:33:16,698 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.35s
+💬 Conversación 13/30: 2025-05-29 10:33:18,200 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:18,200 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:18,200 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:18,200 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:18,200 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:18,200 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:18,200 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:18,200 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:18,201 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:18,201 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:18,202 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:18,203 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:18,203 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:18,216 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:18,216 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:18,217 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:33:18,217 - TARS.TTS - INFO - 🗣️ Generando voz: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:33:19,197 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:19,218 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:33:22,134 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.94s
+💬 Conversación 14/30: 2025-05-29 10:33:23,636 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:23,636 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:23,636 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:23,636 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:23,637 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:23,637 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:23,637 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:23,637 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:23,637 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:23,637 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:23,639 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:23,639 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:23,639 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:23,652 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:23,653 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:23,653 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:33:23,653 - TARS.TTS - INFO - 🗣️ Generando voz: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:33:24,662 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:24,683 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:33:27,722 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.09s
+💬 Conversación 15/30: 2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:29,225 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:29,225 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:29,225 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:29,225 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:29,227 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:29,227 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:29,227 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:29,241 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:29,242 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:29,242 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Interesante! Me gusta saber más sobre tus preferencias.'
+2025-05-29 10:33:29,242 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Interesante! Me gusta saber más sobre tus preferencias.'
+2025-05-29 10:33:30,373 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:30,399 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.026s
+2025-05-29 10:33:34,567 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 6.34s
+💬 Conversación 16/30: 2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:36,069 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:36,069 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:36,069 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:36,070 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:36,071 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:36,071 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:36,072 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:36,084 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:36,085 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:36,085 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Genial! Esta información queda guardada en mi memoria.'
+2025-05-29 10:33:36,085 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Genial! Esta información queda guardada en mi memoria.'
+2025-05-29 10:33:37,105 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:37,127 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.022s
+2025-05-29 10:33:40,541 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.47s
+💬 Conversación 17/30: 2025-05-29 10:33:42,043 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:42,044 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:42,044 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:42,044 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:42,044 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:42,044 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:42,044 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:42,045 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:42,045 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:42,045 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:42,047 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:42,047 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:42,047 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:42,058 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:42,059 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:42,059 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Gracias por compartir tus gustos conmigo.'
+2025-05-29 10:33:42,059 - TARS.TTS - INFO - 🗣️ Generando voz: 'Gracias por compartir tus gustos conmigo.'
+2025-05-29 10:33:42,955 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:42,972 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.017s
+2025-05-29 10:33:45,509 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.47s
+💬 Conversación 18/30: 2025-05-29 10:33:47,011 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:47,011 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:47,011 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:47,011 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:47,011 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:47,012 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:47,012 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:47,012 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:47,012 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:47,012 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:47,013 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:47,013 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:47,013 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:47,026 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:47,026 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:47,026 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Perfecto! He registrado esta preferencia en tu perfil.'
+2025-05-29 10:33:47,026 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Perfecto! He registrado esta preferencia en tu perfil.'
+2025-05-29 10:33:48,115 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:48,139 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.023s
+2025-05-29 10:33:51,805 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.80s
+💬 Conversación 19/30: 2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:33:53,308 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:33:53,308 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:33:53,308 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:33:53,308 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:33:53,310 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:33:53,310 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:33:53,310 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:33:53,323 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:33:53,323 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:33:53,324 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Interesante! Me gusta saber más sobre tus preferencias.'
+2025-05-29 10:33:53,324 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Interesante! Me gusta saber más sobre tus preferencias.'
+2025-05-29 10:33:54,480 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:33:54,506 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.026s
+2025-05-29 10:33:58,546 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 6.24s
+💬 Conversación 20/30: 2025-05-29 10:34:00,048 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:00,048 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:00,048 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:00,048 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:00,048 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:00,048 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:00,048 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:00,049 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:00,049 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:00,049 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:00,050 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:00,051 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:00,051 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:00,064 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:00,064 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:00,065 - TARS - INFO - ➡️ Reproduciendo fragmento: 'He tomado nota de esta preferencia positiva.'
+2025-05-29 10:34:00,065 - TARS.TTS - INFO - 🗣️ Generando voz: 'He tomado nota de esta preferencia positiva.'
+2025-05-29 10:34:00,996 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:01,016 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:34:03,930 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.88s
+   🧹 Garbage collection forzado...
+💬 Conversación 21/30: 2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:06,580 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:06,580 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:06,580 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:06,580 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:06,582 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:06,582 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:06,582 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:06,595 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:06,595 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:06,595 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Me alegra conocer más sobre tus preferencias.'
+2025-05-29 10:34:06,596 - TARS.TTS - INFO - 🗣️ Generando voz: 'Me alegra conocer más sobre tus preferencias.'
+2025-05-29 10:34:07,545 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:07,565 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:34:10,482 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.90s
+💬 Conversación 22/30: 2025-05-29 10:34:11,984 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:11,984 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:11,984 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:11,985 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:11,985 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:11,985 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:11,985 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:11,985 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:11,985 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:11,985 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:11,987 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:11,987 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:11,987 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:11,998 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:11,999 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:11,999 - TARS - INFO - ➡️ Reproduciendo fragmento: '¡Qué bien! Siempre es útil conocer tus preferencias.'
+2025-05-29 10:34:11,999 - TARS.TTS - INFO - 🗣️ Generando voz: '¡Qué bien! Siempre es útil conocer tus preferencias.'
+2025-05-29 10:34:13,080 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:13,103 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.023s
+2025-05-29 10:34:16,774 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.79s
+💬 Conversación 23/30: 2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:18,277 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:18,277 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:18,277 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:18,277 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:18,279 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:18,279 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:18,280 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:18,293 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:18,293 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:18,294 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:34:18,294 - TARS.TTS - INFO - 🗣️ Generando voz: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:34:19,288 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:19,309 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:34:22,221 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.95s
+💬 Conversación 24/30: 2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:23,723 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:23,723 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:23,723 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:23,723 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:23,725 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:23,725 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:23,726 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:23,739 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:23,739 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:23,739 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Entendido, he añadido esto a tus gustos personales.'
+2025-05-29 10:34:23,740 - TARS.TTS - INFO - 🗣️ Generando voz: 'Entendido, he añadido esto a tus gustos personales.'
+2025-05-29 10:34:24,751 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:24,772 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:34:28,065 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.34s
+💬 Conversación 25/30: 2025-05-29 10:34:29,567 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:29,567 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:29,567 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:29,568 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:29,568 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:29,568 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:29,568 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:29,568 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:29,568 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:29,568 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:29,570 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:29,570 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:29,570 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:29,583 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:29,583 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:29,584 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Comprendo. Esta información queda registrada.'
+2025-05-29 10:34:29,584 - TARS.TTS - INFO - 🗣️ Generando voz: 'Comprendo. Esta información queda registrada.'
+2025-05-29 10:34:30,603 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:30,623 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-05-29 10:34:33,913 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.35s
+💬 Conversación 26/30: 2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:35,416 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:35,416 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:35,416 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:35,416 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:35,418 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:35,418 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:35,418 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:35,430 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:35,430 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:35,430 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Tu gusto ha sido añadido a mi memoria.'
+2025-05-29 10:34:35,430 - TARS.TTS - INFO - 🗣️ Generando voz: 'Tu gusto ha sido añadido a mi memoria.'
+2025-05-29 10:34:36,283 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:36,299 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.016s
+2025-05-29 10:34:38,585 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.17s
+💬 Conversación 27/30: 2025-05-29 10:34:40,088 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:40,088 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:40,088 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:40,088 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:40,089 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:40,089 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:40,089 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:40,089 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:40,089 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:40,089 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:40,090 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:40,090 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:40,091 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:40,101 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:40,101 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:40,102 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Excelente. He actualizado tu perfil con esta información.'
+2025-05-29 10:34:40,102 - TARS.TTS - INFO - 🗣️ Generando voz: 'Excelente. He actualizado tu perfil con esta información.'
+2025-05-29 10:34:41,194 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:41,219 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.025s
+2025-05-29 10:34:45,142 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 6.06s
+💬 Conversación 28/30: 2025-05-29 10:34:46,644 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:46,645 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:46,645 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:46,645 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:46,645 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:46,645 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:46,645 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:46,646 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:46,646 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:46,646 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:46,648 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:46,648 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:46,648 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:46,663 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:46,663 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:46,664 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Lo tendré presente para futuras conversaciones.'
+2025-05-29 10:34:46,664 - TARS.TTS - INFO - 🗣️ Generando voz: 'Lo tendré presente para futuras conversaciones.'
+2025-05-29 10:34:47,665 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:47,686 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:34:50,726 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.08s
+💬 Conversación 29/30: 2025-05-29 10:34:52,229 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:52,229 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:52,229 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:52,229 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:52,229 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:52,229 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:52,230 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:52,230 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:52,230 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:52,230 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:52,232 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:52,232 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:52,233 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:52,246 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:52,246 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:52,247 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Guardado en mi base de datos de preferencias.'
+2025-05-29 10:34:52,247 - TARS.TTS - INFO - 🗣️ Generando voz: 'Guardado en mi base de datos de preferencias.'
+2025-05-29 10:34:53,145 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:53,164 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-05-29 10:34:55,826 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 4.60s
+💬 Conversación 30/30: 2025-05-29 10:34:57,328 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:57,329 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-29 10:34:57,329 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-29 10:34:57,329 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'me gusta la ciencia ficción'
+2025-05-29 10:34:57,329 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-29 10:34:57,329 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-29 10:34:57,329 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-29 10:34:57,329 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-05-29 10:34:57,329 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-05-29 10:34:57,329 - TARS - INFO - 🔍 Preferencia positiva detectada: ciencia ficción
+2025-05-29 10:34:57,330 - modules.semantic_engine - INFO - 🔍 Duplicado ortográfico: 'ciencia ficción' ≈ 'libros de ficción' (0.782, umbral: 0.70)
+2025-05-29 10:34:57,330 - TARS - INFO - Duplicado ortográfico detectado: 'ciencia ficción' ≈ 'libros de ficción' (0.782)
+2025-05-29 10:34:57,330 - TARS - INFO - 🔄 Preferencias similares fusionadas: 'libros de ficción' ≈ 'ciencia ficción' (similitud: 0.78, tipo: ortográfico)
+2025-05-29 10:34:57,341 - TARS - INFO - 📊 Preferencias recuperadas: 10
+2025-05-29 10:34:57,341 - TARS - INFO - 🧠 Cache actualizado desde DB: 8 gustos, 1 disgustos
+2025-05-29 10:34:57,342 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:34:57,342 - TARS.TTS - INFO - 🗣️ Generando voz: 'Actualizado tu perfil con esta nueva información.'
+2025-05-29 10:34:58,312 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-29 10:34:58,333 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-05-29 10:35:01,374 - TARS.TTS - INFO - 🔊 Reproducción completada
+2753.7MB (+0.0MB) 💚 | Total: +75.0MB | Tiempo: 5.05s
+   🧹 Garbage collection forzado...
+
+============================================================
+📊 ANÁLISIS DE RESULTADOS
+============================================================
+🧠 Memoria inicial (baseline):  2678.7MB
+🧠 Memoria tras 1a conv:       2742.7MB (+64.0MB)
+🧠 Memoria final:               2753.7MB
+📈 Crecimiento total:           +75.0MB
+📈 Crecimiento neto (1-30):     +11.0MB
+📈 Promedio por conversación:   +2.50MB
+
+🎯 VEREDICTO:
+   ⚠️  CRECIMIENTO MODERADO - Monitorear en uso prolongado
+
+⏱️  RENDIMIENTO:
+   • Tiempo promedio por conversación: 5.21s
+   • Tiempo total del test: 156.2s
+
+✅ Resultados detallados guardados en: stress_test_results.json
+
+🎯 ¡Test completado con éxito!
+📊 Veredicto: MODERATE

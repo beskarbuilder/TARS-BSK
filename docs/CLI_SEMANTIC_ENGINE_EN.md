@@ -39,7 +39,7 @@ It's a command-line tool that allows direct management of preferences stored in 
 
 ## 📦 Installation and requirements
 
-📂 **File:** `scripts/cli_semantic_engine.py`
+📂 **File:** [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py)
 
 ### Prerequisites (already installed with TARS-BSK)
 

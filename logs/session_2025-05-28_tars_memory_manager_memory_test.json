@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-05-28T23:45:13.403948",
+  "system_info": {
+    "python_version": "3.9.18",
+    "platform": "linux"
+  },
+  "memory_usage_mb": {
+    "baseline": 11.1,
+    "basic_imports": 12.7,
+    "memory_manager": 18.3,
+    "semantic_engine": 380.6,
+    "tars_full": 2730.9,
+    "after_conversations": 2875.7
+  },
+  "increments_mb": {
+    "basic_imports": 1.5,
+    "memory_manager": 5.6,
+    "semantic_engine": 362.3,
+    "tars_full": 2350.3,
+    "conversations": 144.8,
+    "total": 2864.6
+  }
+}

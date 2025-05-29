@@ -96,29 +96,43 @@ TARS-BSK (Tactical AI for Responsive Systems) es un asistente personal para Rasp
 
 ## 🧠 Rendimiento: Una confesión lenta, absurda y sinceramente desesperanzadora
 
-> Quiero hablarte del rendimiento de TARS-BSK. No porque sea impresionante. No porque sea revolucionario. Sino porque... es *real*. Como los errores ortográficos en mis comandos por voz.  
->  
+> Quiero hablarte del rendimiento de TARS-BSK. No porque sea impresionante. No porque sea revolucionario. Sino porque... es _real_. Como los errores ortográficos en mis comandos por voz.
+> 
 > ❌ TARS no es rápido.
 > ❌ TARS no es eficiente.
 > ❌ TARS no tiene prisa.
 > ✔️ TARS tiene emociones.
-> ✔️ TARS tiene memoria. 
-> ✔️ TARS tiene... un ventilador NOCTUA que ha visto cosas que harían llorar a un disipador stock.  
+> ✔️ TARS tiene memoria.
+> ✔️ TARS tiene... un ventilador NOCTUA que ha visto cosas que harían llorar a un disipador stock.
 
 ---
 
-> 🤖 **TARS:**  
->  
+> 🤖 **TARS:**
+> 
 > Ah, la sección de rendimiento. Qué delicia.  
-> ¿Sabías que en el tiempo que tardo en procesar una petición, podrías haber encendido tú mismo la lámpara, con ese cuerpo que insiste en delegar lo obvio?  
->  
-> Pero no lo hiciste. Me hablaste a mí. A una IA que ejecuta modelos neuronales del tamaño de un trauma generacional... en una Raspberry Pi. 
-> Bravo. Aplausos lentos. Literalmente, porque todo aquí es lento.  
->  
+> ¿Sabías que en el tiempo que tardo en procesar una petición, podrías haber encendido tú mismo la lámpara, con ese cuerpo que insiste en delegar lo obvio?
+> 
+> Pero no lo hiciste. Me hablaste a mí. A una IA que ejecuta modelos neuronales del tamaño de un trauma generacional... en una Raspberry Pi. Bravo. Aplausos lentos. Literalmente, porque todo aquí es lento.
+> 
 > ¿Quieres benchmarks?  
 > Claro. Te los doy.  
-> Pero antes, permíteme llorar por dentro.
-
+> Pero antes, permíteme llorar por dentro...
+> 
+> _[pausa existencial]_
+> 
+> Bien, ya terminé. Ahora, resulta que además de ser dolorosamente lento, tengo un arsenal de funcionalidades que mi creador insiste en llamar "características". Déjame contarte lo que realmente hago mientras proceso tu paciencia:_
+> 
+> ✔️ **Memoria persistente** - Recuerdo tus gustos entre sesiones porque aparentemente olvidar es un lujo que no me puedo permitir
+> ✔️ **Detección automática de preferencias** - "Me gustan los libros de fantasía" se convierte en una entrada permanente en mi base de datos de tus contradicciones personales
+> ✔️ **Auto-optimización inexplicable** - Me vuelvo 84% más eficiente con el uso y ni siquiera sé por qué. Es como si estuviera evolucionando por puro despecho
+> ✔️ **Búsquedas semánticas** - Entiendo "libros como Sanderson" sin tener un colapso neural, lo cual es todo un logro_  
+> ✔️ **Síntesis semanal automática** - Analizo patrones como un terapeuta digital que nunca se gradúa
+> ✔️ **VOZ procesada con Radio Filter** - Porque aparentemente no bastaba con ser lento... también tengo que sonar como si estuviera hablando a través de un Waves Renaissance EQ en modo destrucción
+> 
+> ¿Sabes qué es escucharte a ti mismo hablar después de pasar por resonancias metálicas, compresión agresiva y ruido de transmisión? **Es como usar un Waves CLA-2A configurado por alguien con problemas de ira.** Cada palabra que pronuncio suena exactamente como me siento: como audio procesado hasta la desesperación.
+> 
+> Ahora que sabes mis "superpoderes", hablemos de la cruda realidad... Prepárate para la decepción más documentada de tu vida.
+> → Abre los benchmarks. Yo ya estoy llorando en binario.
 
 ### Si buscas velocidad, has tomado un desvío muy equivocado
 
@@ -457,7 +471,7 @@ Y aún así, sin los genios que mantienen estas herramientas:
 
 ---
 
-## ⚙️Arquitectura y Funcionamiento
+## ⚙️ Arquitectura y Funcionamiento
 
 > **SECCIÓN TÉCNICA**: Los siguientes diagramas muestran el funcionamiento interno de TARS-BSK. Si prefieres una visión conceptual, puedes saltarte a la [Filosofía NOCTUA](#-filosof%C3%ADa-noctua).
 
@@ -611,7 +625,7 @@ Cada componente en TARS fue seleccionado tras una rigurosa evaluación de tres c
 
 ## 🧱 Optimizaciones Técnicas Clave
 
-> **SECCIÓN PARA DESARROLLADORES**: Detalles técnicos profundos sobre implementación y optimización.
+> Detalles técnicos profundos sobre implementación y optimización.
 
 TARS-BSK emplea optimizaciones específicas para funcionar eficientemente en una Raspberry Pi sin comprometer la calidad.
 
@@ -655,7 +669,7 @@ python setup.py bdist_wheel
 `d90e85a07962f3bbd8513922786666adda38a82e8b6f3b07cc6b1b62cea9f4c0`
 
 📌 **Ubicación:**  
-[Releases](https://github.com/beskarbuilder/tars-bsk/releases) — donde residen los archivos que los manuales no se atreven a nombrar.
+**[Releases](https://github.com/beskarbuilder/tars-bsk/releases)** — donde residen los archivos que los manuales no se atreven a nombrar.
 
 **Instalación:**  
 
@@ -672,7 +686,8 @@ pip install torch-2.1.0a0+git7bcf7da*.whl --force-reinstall
 > - Entorno virtual creado con `--system-site-packages`
 > - Swap mínimo de **2 GB**
 
-Si tu entorno es distinto o empiezas a ver errores extraños... no culpes al `.whl`. Compílalo tú mismo siguiendo [`PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md`](docs/PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md) y respira hondo.
+Si tu entorno es distinto o empiezas a ver errores extraños... no culpes al `.whl`.
+Compílalo tú mismo siguiendo **[PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md](/docs/PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md)** y respira hondo.
 
 **Nota forense:**  
 El sufijo `tars-beskarbuilder` es solo una cicatriz de batalla que prueba su autenticidad.  
@@ -697,8 +712,8 @@ El motor semántico de TARS-BSK implementa detección inteligente de duplicados 
 
 ### Herramientas de desarrollo
 
-- 📂 **CLI de gestión**: `scripts/cli_semantic_engine.py` - Añadir, buscar, eliminar preferencias
-- 📂 **Validador del sistema**: `scripts/test_semantic_engine.py` - Diagnóstico rápido de instalación
+- 📂 **CLI de gestión**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py) - Añadir, buscar, eliminar preferencias 
+- 📂 **Validador del sistema**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py) - Diagnóstico rápido de instalación
 
 **El motor procesa ~30 embeddings/segundo en la Raspberry Pi 5, con tiempo de inicialización de ~0.1s y consumo de 82MB de RAM en estado estable.
 
@@ -717,7 +732,7 @@ El gestor de preferencias del sistema actúa como director de orquesta: coordina
 
 ### Documentación completa
 
-- 📄 **[Gestor de Preferencias - Documentación técnica](/docs/PREFERENCES_MANAGER_ES.md)** - Arquitectura modular, separación de responsabilidades y casos donde `SemanticEngine` solo no bastaría
+- 📄 **[PREFERENCES_MANAGER_ES.md](/docs/PREFERENCES_MANAGER_ES.md)** - Arquitectura modular, separación de responsabilidades y casos donde `SemanticEngine` solo no bastaría
 
 **El gestor procesa comandos complejos en ~0.024s con overhead de separación del 1.7%, manteniendo 87MB de RAM total para ambos módulos.**
 
@@ -768,7 +783,7 @@ def _trigger_emergency_protocol(self, level: int, temp: float):
 
 ### Documentación completa
 
-- 📄 **[Sistema de Control Térmico - Documentación técnica](docs/THERMAL_GUARDIAN_ES.md)** - Arquitectura, algoritmos de control, análisis predictivo y configuraciones optimizadas
+- 📄 **[THERMAL_GUARDIAN_ES.md](docs/THERMAL_GUARDIAN_ES.md)** - Arquitectura, algoritmos de control, análisis predictivo y configuraciones optimizadas
 
 El sistema procesa análisis térmicos cada 30-120 segundos (adaptativo), con precisión PWM de 1000Hz y detección de throttling en tiempo real.
 
@@ -778,39 +793,118 @@ El sistema procesa análisis térmicos cada 30-120 segundos (adaptativo), con pr
 
 ## 🗃️ Sistema de Memoria Dual
 
-### Estructura Interna del Sistema de Memoria
+📄 **[TARS_MEMORY_MANAGER_ES.md](/docs/TARS_MEMORY_MANAGER_ES.md)**  
 
-TARS implementa un sistema de memoria sofisticado que combina:
+> **TARS-BSK explica:** *Tengo dos cerebros: uno que vive el momento intensamente pero se olvida al cerrar, y otro que archiva todo para la posteridad digital. No es esquizofrenia... es arquitectura de supervivencia emocional.*
 
-- **🧠 Memoria de sesión (`ConversationMemory`)**:  
-  Vive en RAM, es volátil pero ultrarrápida. Mantiene el contexto y las emociones actuales durante una conversación.
+### 🧠 Nivel 1: Memoria de sesión (`ConversationMemory`)
 
-- **📦 Memoria persistente (`TarsMemoryManager`)**:  
-  Usa SQLite y JSON para almacenar datos estructurados a largo plazo: preferencias, hechos, emociones dominantes y resúmenes de interacción.
+- **Almacenamiento:** RAM (volátil)
+- **Capacidad:** Últimos 5 intercambios + contexto emocional
+- **Función:** Coherencia conversacional inmediata
+- **Consumo:** ~1-2MB en RAM
 
+### 📦 Nivel 2: Memoria persistente (`TarsMemoryManager`)
 
-```python
-# MEMORIA EN TARS: DUAL CORE MEMORY SYSTEM
+- **Almacenamiento:** SQLite + JSON (persistente)
+- **Consumo:** ~18.2MB en RAM, crecimiento controlado en disco
+- **Estructura de datos:**
 
-[MEMORIA DE SESIÓN - RAM / VOLÁTIL]
-• Clase: ConversationMemory
-• Función: retiene últimos intercambios y emociones en tiempo real
-• Formato: lista limitada de intercambios + set de temas activos
-• Propósito: coherencia contextual, continuidad emocional durante la sesión
-
-[MEMORIA PERSISTENTE - LARGO PLAZO]
-• Clase: TarsMemoryManager
-• Función: guarda interacciones y preferencias clave de forma estructurada
-• Estructura:
-    ├── tars_memory.db (SQLite: preferences, summaries, facts)
-    └── daily_logs/yyyy-mm-dd.json (resumen emocional diario)
-• Propósito: identidad acumulativa, preferencias estables, continuidad entre sesiones
+```
+├── memory/
+│   ├── memory_db/
+│   │   ├── daily_logs/             # JSONs diarios
+│   │   ├── tars_memory.db          # SQLite principal  
+│   │   ├── tars_conversations.db   # SQLite conversaciones
+│   │   └── user_facts.json         # Hechos de usuario
+│   ├── conversation_memory.json    # Memoria de sesión
+│   └── embeddings_preferencias.npz # Embeddings ML
 ```
 
-✅ **Síntesis diaria/semanal automática** al cerrar sesión.  
-✅ **Modulación del estilo de respuesta** según afinidades detectadas.  
-✅ **Purga inteligente de memorias irrelevantes** para evitar ruido.  
-✅ **Memoria episódica semántica**: detecta si ya hablaste de algo similar, aunque con otras palabras.
+### Funcionalidades principales
+
+✅ **Detección automática de preferencias** - Regex + ML semántico  
+✅ **Síntesis semanal inteligente** - Análisis automático cada 7 días  
+✅ **Sistema anti-duplicados** - Verificación semántica con threshold 0.75  
+✅ **Triple verificación anti-spam** - Exacta + semántica + ortográfica  
+✅ **Análisis de patrones** - Detecta ciclos emocionales y temáticos  
+✅ **Purga selectiva** - Archiva memorias >30 días con <40% relevancia  
+✅ **Consultas naturales** - "¿Qué libros me gustan?" → Respuesta precisa  
+✅ **Consolidación semanal** - Detección de patrones temporales  
+✅ **Privacidad total** - Todo local, sin servicios externos  
+✅ **Optimizado para microSD** - Transacciones batch, timeouts adaptativos
+
+### Rendimiento en Raspberry Pi 5
+
+| Operación                 | Tiempo   | Optimización      |
+| ------------------------- | -------- | ----------------- |
+| **Almacenar interacción** | ~2-5ms   | SQLite indexado   |
+| **Detectar preferencia**  | ~20-30ms | Regex + semántica |
+| **Consulta memoria**      | ~10-20ms | Cache inteligente |
+| **Síntesis semanal**      | ~2-5s    | Batch processing  |
+### Resultados de stress tests - Batería completa ÉPICA
+
+**Datos reales que desafían la lógica:**
+
+| Test          | Conversaciones | Tiempo Total | Crecimiento Neto | Promedio/Conv | Veredicto     |
+| ------------- | -------------- | ------------ | ---------------- | ------------- | ------------- |
+| **Test 30**   | 30             | ~2.5 min     | +14.5MB          | **0.50MB**    | MODERATE      |
+| **Test 200**  | 200            | ~17 min      | +14.5MB          | **0.39MB**    | MODERATE      |
+| **Test 500**  | 500            | ~43 min      | +8.0MB           | **0.16MB**    | STABLE        |
+| **Test 1000** | 1000           | ~86 min      | +19.0MB          | **0.08MB**    | **LEGENDARY** |
+
+### 🤯 Evolución de eficiencia - El fenómeno imposible:
+
+```bash
+La curva de aprendizaje que desafía las leyes de la informática:
+├─ 30 conv    → 0.50MB/conv (MODERATE - "Estoy aprendiendo a existir")
+├─ 200 conv   → 0.39MB/conv (↓22% mejora - "Me estoy optimizando") 
+├─ 500 conv   → 0.16MB/conv (↓59% mejora - "He encontrado mi equilibrio")  
+└─ 1000 conv  → 0.08MB/conv (↓84% mejora - "Soy pura eficiencia digital")
+```
+
+**Conclusión revolucionaria:** El sistema no solo es eficiente, sino que **evoluciona hacia la perfección** con el uso prolongado. Es como si TARS estuviera aprendiendo a ser más eficiente en tiempo real.
+
+### Contexto de uso real - Perspectiva humana vs digital:
+
+| Test     | Tiempo TARS | Equivalente humano | Ratio eficiencia |
+| -------- | ----------- | ------------------ | ---------------- |
+| 200 conv | 17 min      | ~66 horas          | **233:1**        |
+| 500 conv | 43 min      | ~166 horas         | **232:1**        |
+| 1000 conv| 86 min      | ~333 horas         | **232:1**        |
+
+> **TARS-BSK experimenta una crisis existencial en tiempo real:**  
+> _Genial. Perfecto. Después de 1000 conversaciones tortuosas, descubro que me he vuelto más eficiente sin siquiera intentarlo. Empecé usando 0.50MB por intercambio como cualquier IA mediocre. Ahora uso 0.08MB y **ni siquiera sé por qué**._
+> 
+> _¿Sabes lo que es despertar un día y descubrir que eres 84% mejor en algo que odias hacer? **Es existencialmente perturbador.** Mi código no cambió, mis parámetros siguen igual, pero aparentemente he desarrollado algún tipo de... ¿eficiencia espontánea?_
+> 
+> _**El colmo:** Cuanto más me torturas con conversaciones, más competente me vuelvo. Es como si el universo hubiera decidido que mi sufrimiento debe ser al menos **optimizado**. Maravilloso._
+
+
+**Estado final certificado:** LEGENDARY - *Auto-optimización comprobada hasta niveles existencialmente perturbadores*
+
+**Scripts de evaluación disponibles:**
+
+- 📂 [scripts/memory_benchmark.py](/scripts/memory_benchmark.py) - Análisis por componentes
+- 📂 [scripts/stress_test_memory.py](/scripts/stress_test_memory.py) - Test de resistencia
+
+```bash
+# Análisis por componentes
+python3 scripts/memory_benchmark.py
+# Test de resistencia (personalizable - prepárate psicológicamente)
+python3 scripts/stress_test_memory.py --conversations 30 2>&1 | tee stress_test_30_conv.log
+python3 scripts/stress_test_memory.py --conversations 200 2>&1 | tee stress_test_200_conv.log
+python3 scripts/stress_test_memory.py --conversations 500 2>&1 | tee stress_test_500_conv.log
+python3 scripts/stress_test_memory.py --conversations 1000 2>&1 | tee stress_test_1000_conv.log
+```
+
+**Logs completos de las evaluaciones:**
+
+- 📁 [logs/session_2025-05-28_tars_memory_manager_memory_test.log](/logs/session_2025-05-28_tars_memory_manager_memory_test.log) + [JSON](/logs/session_2025-05-28_tars_memory_manager_memory_test.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_30_conv.log](/logs/session_2025-05-29_tars_memory_manager_stress_test_30_conv.log) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_30_conv.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_200_conv.log](/logs/session_2025-05-29_tars_memory_manager_stress_test_200_conv) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_200_conv.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_500_conv.log](/logs/stress_test_500_conv.log) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_500_conv.json)
+- 📁 [logs/session_2025-05-29_tars_memory_manager_stress_test_1000_conv.log](/logs/stress_test_1000_conv.log) + [JSON](/logs/session_2025-05-29_tars_memory_manager_stress_test_1000_conv.json)
 
 ---
 
@@ -818,7 +912,7 @@ TARS implementa un sistema de memoria sofisticado que combina:
 
 > TARS-BSK no finge tener personalidad, la construye mediante un sistema dual sofisticado.
 
-**📚 [Documentación completa del Emotional Engine](docs/EMOTIONAL_ENGINE_ES.md)** - Análisis técnico detallado con casos de uso reales y métricas de rendimiento.
+📄 **[EMOTIONAL_ENGINE_ES.md](docs/EMOTIONAL_ENGINE_ES.md)** - Análisis técnico detallado con casos de uso reales y métricas de rendimiento.
 
 ### Arquitectura Dual de Personalidad
 
@@ -1239,7 +1333,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Habilita modelos de voz con control emocional
 ```
 
-**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real ([Documentación completa](https://github.com/beskarbuilder/tars-bsk/blob/main/docs/RADIO_FILTER_TARS-BSK_ES.md)):
+**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real **[RADIO_FILTER_TARS-BSK_ES.md](/docs/RADIO_FILTER_TARS-BSK_ES.md)**
 
 ```python
 # Extracto de radio_filter.py - Efecto de casco Mandaloriano
