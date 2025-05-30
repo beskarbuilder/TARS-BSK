@@ -208,17 +208,21 @@ def privacidad_real(cmd):
 > _Sí, Alexa responde más rápido. Pero también envía tus preguntas vergonzosas a un centro de datos en Nebraska. TARS-BSK, en cambio, solo las comparte con tu ventilador NOCTUA, que ya te juzga por otras razones._
 
 
-### Los tiempos reales (sin adulterar)
+### Tiempos reales (sin adulterar)
 
 | Tipo de respuesta              | Tiempo medido  | Ejemplo real                                   | Idoneidad      |
 | ------------------------------ | -------------- | ---------------------------------------------- | -------------- |
-| Comandos domóticos             | 3 segundos     | "Enciende la lampara del salon" → 3.0s         | Excelente ✅    |
+| Comandos domóticos             | 3 segundos     | "Enciende la lámpara del salón" → 3.0s         | Excelente ✅    |
 | Control contextual domótico    | 3-5 segundos   | "Baja al 10" → 4.8s (recordó la última luz)    | Muy bueno ✅    |
-| Respuestas pregrabadas de JSON | 5 segundos     | "Te gustan las redes sociales" → sarcasmo JSON | Bueno ✅        |
+| Respuestas pregrabadas de JSON | 5 segundos     | "¿Te gustan las redes sociales?" → sarcasmo    | Bueno ✅        |
+| **Frase ambigua con LLM**      | ~10 segundos   | "Huele raro en casa" → LLM responde            | Sólido ✅       |
+| **Frase ambigua como acción**  | ~3 segundos    | "Huele raro en casa" → Consulta enchufe estufa | Eficiente ✅    |
 | Respuestas del LLM simples     | 25-30 segundos | "Distancia Tierra-Marte" → 27.12s              | Aceptable ⚠️   |
 | Motor semántico + LLM          | 30-40 segundos | "Libros de Sarah J. Maas" → 37.02s             | Lento ⚠️       |
-| LLM + contexto guardado        | 20-25 segundos | "Cual es tu libro favorito" → 24.59s           | Mejorable ⚠️   |
+| LLM + contexto guardado        | 20-25 segundos | "¿Cuál es tu libro favorito?" → 24.59s         | Mejorable ⚠️   |
 | Análisis complejo con memoria  | 35-60 segundos | Análisis de múltiples temas cruzados           | Dolor físico ❌ |
+
+---
 
 ## 🧪 Pruebas (que demuestran todo lo anterior)
 
@@ -259,6 +263,59 @@ TARS: No sé si responder o actualizarme automáticamente por aburrimiento.
 ```
 
 **¿Qué pasa aquí?** TARS carga una respuesta de un JSON pregrabado (`sarcasmo_responses.json`). Pura trampa, y por eso es rápido. Pero admitámoslo, esa respuesta tiene más personalidad que 56 asistentes comerciales juntos.
+
+---
+### 🔁 Una misma frase, dos comportamientos distintos
+
+La frase `"huele raro en casa"` fue usada primero como prueba semántica con el LLM.  
+Más tarde, fue **redirigida manualmente a una acción domótica concreta**, mediante el plugin de Home Assistant.
+
+Lo interesante no es la frase, sino que **la arquitectura del sistema permite que su interpretación sea completamente diferente según la lógica configurada**.
+
+No hay aprendizaje automático aquí.  
+Hay **flexibilidad real** y control total por parte del usuario.
+
+#### Caso A – Interpretación semántica (LLM)
+
+```bash
+Tú: huele raro en casa
+2025-05-30 16:09:56,551 - TARS - INFO - Wakeword detectada en 3.67s
+2025-05-30 16:09:58,112 - VOSK - INFO - Texto detectado: 'huele raro en casa' (confianza: 1.00)
+2025-05-30 16:09:58,112 - TARS - INFO - 🧠 Interpretando frase sin comando explícito
+2025-05-30 16:10:06,101 - TARS - INFO - 📤 Respuesta generada en 9.85s
+TARS: Claro, eso puede ser molesto. ¿Podrías proporcionar más detalles para poder ayudarte mejor?
+```
+
+**¿Por qué importa este caso?**  
+Porque TARS-BSK respondió a una frase **vaga y cotidiana**, sin estructura de comando, demostrando que puede manejar lenguaje natural con fluidez.
+
+#### Caso B – Acción domótica (HA + sensores)
+
+```BASH
+Tú: huele raro en casa
+2025-05-30 16:16:05,790 - TARS.HomeAssistantPlugin - INFO - 🏠 Revisión solicitada: enchufe de la estufa
+2025-05-30 16:16:05,790 - TARS.HomeAssistantPlugin - INFO - 🔌 Consumo actual: 236.12 W
+TARS: El enchufe de la estufa está activo. Está consumiendo energía.
+```
+
+**¿Qué hace aquí?**  
+La misma frase fue **mapeada como intención domótica**. En vez de interpretar el mensaje con un modelo semántico, el sistema **consultó en tiempo real el consumo eléctrico del enchufe donde está conectada la estufa**.  
+Si hay consumo, está encendida. Si no, está en standby.
+
+Tiempo total: **~3 segundos**.
+
+📂 Logs disponibles para comparación funcional
+
+- **[session_2025-05-30_phrase_smells_weird_LLM_test.log](./logs/session_2025-05-30_phrase_smells_weird_LLM_test.log)**
+    Interpretación semántica sin acción domótica.
+
+- [**session_2025-05-30_phrase_smells_weird_HA_test.log](./logs/session_2025-05-30_phrase_smells_weird_HA_test.log)**
+    Misma frase, ejecutando lógica funcional sobre Home Assistant.
+
+**¿Por qué mostrar esto?**
+
+Porque **demuestra la capacidad del sistema para cambiar de lógica según el contexto o la necesidad del usuario**.  
+La misma entrada, el mismo audio… dos resultados completamente distintos.  
 
 ---
 ### Respuestas del LLM: informativas pero lentas - 27.12 segundos
@@ -313,6 +370,7 @@ TARS: ¡Oh, ¡sí! ¡Definitivamente, mi libro favorito es "Los juegos del hambr
 │ Encender luz              │ ▓▓▓ 3.0s                             │
 │ Bajar luz al 10%          │ ▓▓▓▓▓ 4.8s                           │
 │ Respuesta sarcástica      │ ▓▓▓▓▓ 5.0s                           │
+│ Frase ambigua como acción │ ▓▓▓ 3.0s                             │ ← NUEVO
 │ Libro favorito            │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 24.6s        │
 │ Distancia Tierra-Marte    │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 27.1s      │
 │ Libros Sarah J. Maas      │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 37s │

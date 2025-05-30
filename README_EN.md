@@ -216,17 +216,21 @@ def real_privacy(cmd):
 > _Yes, Alexa responds faster. But it also sends your embarrassing questions to a data center in Nebraska. TARS-BSK, on the other hand, only shares them with your NOCTUA fan, which already judges you for other reasons._
 
 
-### The real times (unadulterated)
+### Real times (unadulterated)
 
 |Response type|Measured time|Real example|Suitability|
 |---|---|---|---|
 |Home automation commands|3 seconds|"Turn on the living room lamp" → 3.0s|Excellent ✅|
-|Contextual home control|3-5 seconds|"Dim to 10" → 4.8s (remembered the last light)|Very good ✅|
-|Pre-recorded JSON responses|5 seconds|"Do you like social media" → JSON sarcasm|Good ✅|
-|Simple LLM responses|25-30 seconds|"Earth-Mars distance" → 27.12s|Acceptable ⚠️|
-|Semantic engine + LLM|30-40 seconds|"Books by Sarah J. Maas" → 37.02s|Slow ⚠️|
-|LLM + saved context|20-25 seconds|"What's your favorite book" → 24.59s|Improvable ⚠️|
-|Complex analysis with memory|35-60 seconds|Analysis of multiple crossed topics|Physical pain ❌|
+|Contextual home control|3–5 seconds|"Dim to 10" → 4.8s (remembered the last light)|Very good ✅|
+|Pre-recorded JSON responses|5 seconds|"Do you like social media?" → JSON sarcasm|Good ✅|
+|**Ambiguous phrase with LLM**|~10 seconds|"It smells weird at home" → LLM response|Solid ✅|
+|**Ambiguous phrase as action**|~3 seconds|"It smells weird at home" → Check stove plug|Efficient ✅|
+|Simple LLM responses|25–30 seconds|"Earth-Mars distance" → 27.12s|Acceptable ⚠️|
+|Semantic engine + LLM|30–40 seconds|"Books by Sarah J. Maas" → 37.02s|Slow ⚠️|
+|LLM + saved context|20–25 seconds|"What's your favorite book?" → 24.59s|Improvable ⚠️|
+|Complex analysis with memory|35–60 seconds|Analysis of multiple intertwined topics|Physical pain ❌|
+
+---
 
 ## 🧪 Tests (proving all of the above)
 
@@ -271,7 +275,59 @@ TARS: I don't know whether to respond or automatically update myself out of bore
 **What's happening here?** TARS loads a response from a pre-recorded JSON (`sarcasm_responses.json`). Pure cheating, and that's why it's fast. But let's admit it, that response has more personality than 56 commercial assistants combined.
 
 ---
+### 🔁 One Phrase, Two Different Behaviors
 
+The phrase `"it smells weird at home"` was first used as a semantic test with the LLM.  
+Later, it was **manually redirected to a specific home automation action**, using the Home Assistant plugin.
+
+The interesting part isn't the phrase itself, but the fact that **the system's architecture allows the same input to be interpreted in completely different ways depending on how it's configured**.
+
+There's no machine learning involved here.  
+Just **real flexibility** and full user control.
+
+#### Case A – Semantic interpretation (LLM)
+
+```bash
+You: it smells weird at home
+2025-05-30 16:09:56,551 - TARS - INFO - Wakeword detected in 3.67s
+2025-05-30 16:09:58,112 - VOSK - INFO - Transcribed text: 'it smells weird at home' (confidence: 1.00)
+2025-05-30 16:09:58,112 - TARS - INFO - 🧠 Interpreting phrase without explicit command
+2025-05-30 16:10:06,101 - TARS - INFO - 📤 Response generated in 9.85s
+TARS: That can be unpleasant. Could you provide more details so I can help you better?
+```
+
+**Why does this matter?**  
+Because TARS-BSK was able to respond to a **vague, everyday phrase**, with no command structure, showing that it can handle natural language interactions smoothly.
+
+#### Case B – Home automation action (HA + sensors)
+
+```BASH
+You: it smells weird at home
+2025-05-30 16:16:05,790 - TARS.HomeAssistantPlugin - INFO - 🏠 Requested check: stove outlet
+2025-05-30 16:16:05,790 - TARS.HomeAssistantPlugin - INFO - 🔌 Current consumption: 236.12 W
+TARS: The stove outlet is active. It is consuming power.
+```
+
+**What’s happening here?**  
+The same phrase was **mapped to a home automation intent**.  
+Instead of interpreting it semantically, the system **queried in real time the power consumption of the outlet where the stove is connected**.  
+If there’s consumption, it’s on. If not, it's on standby.
+
+Total time: **~3 seconds**.
+
+📂 Available logs for functional comparison:
+
+- **[session_2025-05-30_phrase_smells_weird_LLM_test.log](./logs/session_2025-05-30_phrase_smells_weird_LLM_test.log)**  
+    Semantic interpretation with no home automation.
+
+- **[session_2025-05-30_phrase_smells_weird_HA_test.log](./logs/session_2025-05-30_phrase_smells_weird_HA_test.log)**  
+    Same phrase, executing functional logic through Home Assistant.
+
+**Why show this?**  
+Because it **proves the system’s ability to switch logic depending on the context or user-defined configuration**.  
+Same input, same audio… two completely different outcomes.
+
+---
 ### LLM responses: informative but slow - 27.12 seconds
 
 ```bash
@@ -326,6 +382,7 @@ TARS: Oh, yes! My favorite book is definitely "The Hunger Games".
 │ Turn on light             │ ▓▓▓ 3.0s                             │
 │ Dim light to 10%          │ ▓▓▓▓▓ 4.8s                           │
 │ Sarcastic response        │ ▓▓▓▓▓ 5.0s                           │
+│ Ambiguous phrase → action │ ▓▓▓ 3.0s                             │ ← NEW
 │ Favorite book             │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 24.6s        │
 │ Earth-Mars distance       │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 27.1s      │
 │ Sarah J. Maas books       │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 37s │

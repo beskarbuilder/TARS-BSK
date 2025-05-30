@@ -1,0 +1,103 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-05-30 10:52:41,207 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-30 10:52:45,319 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-30 10:52:45,320 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-30 10:52:45,320 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-05-30 10:52:45,642 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 34.59it/s]
+2025-05-30 10:52:45,675 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-05-30 10:52:45,675 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-05-30 10:52:45,680 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-05-30 10:52:45,682 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-05-30 10:52:45,682 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-05-30 10:52:45,682 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-05-30 10:52:45,682 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-05-30 10:52:45,682 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-05-30 10:52:45,686 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 12 temas, 8 patrones, 9 keywords
+2025-05-30 10:52:45,688 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-05-30 10:52:45,690 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-05-30 10:52:45,690 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-05-30 10:52:45,691 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-05-30 10:52:45,691 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-05-30 10:52:45,691 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-05-30 10:52:45,692 - TARS - INFO - Detector de intenciones inicializado
+2025-05-30 10:52:45,692 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-05-30 10:52:45,694 - TARS - INFO - 📊 Preferencias recuperadas: 13
+2025-05-30 10:52:45,694 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 11 gustos, 2 disgustos
+2025-05-30 10:52:45,696 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-05-30 10:52:45,696 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-05-30 10:52:45,696 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-05-30 10:52:45,842 - TARS - INFO - ✅ Modelo cargado en 0.15 segundos
+2025-05-30 10:52:45,843 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-05-30 10:52:45,844 - TARS.PluginSystem - INFO - Configuración de plugins cargada correctamente
+2025-05-30 10:52:45,844 - TARS.PluginSystem - INFO - Plugins habilitados: homeassistant
+2025-05-30 10:52:45,844 - TARS.PluginSystem - INFO - Sistema de plugins inicializado
+2025-05-30 10:52:45,844 - TARS.PluginSystem - INFO - Inicializando 1 plugins
+2025-05-30 10:52:45,855 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-05-30 10:52:45,865 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-05-30 10:52:45,865 - TARS.PluginSystem - INFO - ✅ Plugin homeassistant inicializado
+2025-05-30 10:52:45,865 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-05-30 10:52:45,865 - TARS - INFO - ✅ TARS inicializado en 0.17 segundos
+¿Usar entrada por voz? (S): s
+
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=13 max-active=7000 lattice-beam=6
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:279) Loading HCLG from ai_models/vosk/model/graph/HCLG.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:297) Loading words from ai_models/vosk/model/graph/words.txt
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+LOG (VoskAPI:ReadDataFiles():model.cc:315) Loading subtract G.fst model from ai_models/vosk/model/rescore/G.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:317) Loading CARPA model from ai_models/vosk/model/rescore/G.carpa
+LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vosk/model/rnnlm/final.raw
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Configurado resampling de 44100Hz a 16000Hz
+2025-05-30 10:53:15,035 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🗣️ Escuchado: tags
+🔥 Wakeword detectada por coincidencia difusa
+2025-05-30 10:53:20,232 - TARS - INFO - 🔍 Identificación de hablante preparada pero no implementada en esta fase
+2025-05-30 10:53:20,232 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Adelante.'
+2025-05-30 10:53:20,232 - TARS.TTS - INFO - 🗣️ Generando voz: 'Adelante.'
+2025-05-30 10:53:20,970 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-30 10:53:20,995 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.025s
+2025-05-30 10:53:22,063 - TARS.TTS - INFO - 🔊 Reproducción completada
+⏱️ Wakeword reconocida en 3.73s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'huele raro en casa' (confianza: 1.00)
+🗣️ Entendido: huele raro en casa
+🧠 Procesando: huele raro en casa
+2025-05-30 10:53:26,619 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'huele raro en casa'
+2025-05-30 10:53:26,619 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['homeassistant']
+2025-05-30 10:53:26,619 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-05-30 10:53:26,619 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'huele raro en casa'
+2025-05-30 10:53:26,619 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-05-30 10:53:26,619 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-05-30 10:53:26,619 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-05-30 10:53:26,627 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ✅ Query procesada
+2025-05-30 10:53:26,627 - TARS - INFO - 🔌 Comando procesado por plugin: La estufa está encendida pero ...
+2025-05-30 10:53:26,627 - TARS - INFO - ➡️ Reproduciendo fragmento: 'La estufa está encendida pero no está funcionando, solo hay un consumo de 0.0 vatios. El olor viene de otro lado.'
+2025-05-30 10:53:26,628 - TARS.TTS - INFO - 🗣️ Generando voz: 'La estufa está encendida pero no está funcionando, solo hay un consumo de 0.0 vatios. El olor viene de otro lado.'
+2025-05-30 10:53:28,358 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-05-30 10:53:28,407 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.049s
+2025-05-30 10:53:35,612 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: La estufa está encendida pero no está funcionando, solo hay un consumo de 0.0 vatios. El olor viene de otro lado.
+⏱️ Tiempo comando: 3.55s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
