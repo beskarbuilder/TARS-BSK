@@ -309,7 +309,7 @@ Tiempo total: **~3 segundos**.
 - **[session_2025-05-30_phrase_smells_weird_LLM_test.log](./logs/session_2025-05-30_phrase_smells_weird_LLM_test.log)**
     Interpretación semántica sin acción domótica.
 
-- [**session_2025-05-30_phrase_smells_weird_HA_test.log](./logs/session_2025-05-30_phrase_smells_weird_HA_test.log)**
+- **[session_2025-05-30_phrase_smells_weird_HA_test.log](./logs/session_2025-05-30_phrase_smells_weird_HA_test.log)**
     Misma frase, ejecutando lógica funcional sobre Home Assistant.
 
 **¿Por qué mostrar esto?**
