@@ -53,7 +53,6 @@ Está diseñada para que cualquiera —sí, incluso esa gallina que te mira con 
 
 ## 📑 Tabla de Contenidos
 
-- [Estado del Proyecto](#-estado-del-proyecto)
 - [Rendimiento: Una confesión lenta, absurda y sinceramente desesperanzadora](#-rendimiento-una-confesión-lenta-absurda-y-sinceramente-desesperanzadora)
 - [¿Qué es TARS-BSK?](#-qué-es-tars-bsk)
 - [Arquitectura y Funcionamiento](#-arquitectura-y-funcionamiento)
@@ -1326,6 +1325,8 @@ def process_audio(self, audio_data):
         return result.get("text", "")
     return ""
 ```
+
+📄 **[Sistema completo de reconocimiento de voz](/docs/SPEECH_LISTENER_ES.md)** - Arquitectura detallada, gestión de sample rates, fuzzy matching y métricas de rendimiento en entorno real.
 
 - **PyTorch**: Módulo crítico compilado específicamente para ARM64, reduce latencia de reconocimiento de voz en 68% y consume 35% menos RAM que versiones pre-compiladas
 

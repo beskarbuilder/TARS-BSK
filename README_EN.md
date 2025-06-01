@@ -61,7 +61,6 @@ _Compiled, tested, and nearly destroyed in the process._
 
 ## 📑 Table of Contents
 
-- [Project Status](#-project-status)
 - [Performance: A slow, absurd, and hopelessly sincere confession](#-performance-a-slow-absurd-and-hopelessly-sincere-confession)
 - [What is TARS-BSK?](#-what-is-tars-bsk)
 - [Architecture and Operation](#-architecture-and-operation)
@@ -218,17 +217,17 @@ def real_privacy(cmd):
 
 ### Real times (unadulterated)
 
-|Response type|Measured time|Real example|Suitability|
-|---|---|---|---|
-|Home automation commands|3 seconds|"Turn on the living room lamp" → 3.0s|Excellent ✅|
-|Contextual home control|3–5 seconds|"Dim to 10" → 4.8s (remembered the last light)|Very good ✅|
-|Pre-recorded JSON responses|5 seconds|"Do you like social media?" → JSON sarcasm|Good ✅|
-|**Ambiguous phrase with LLM**|~10 seconds|"It smells weird at home" → LLM response|Solid ✅|
-|**Ambiguous phrase as action**|~3 seconds|"It smells weird at home" → Check stove plug|Efficient ✅|
-|Simple LLM responses|25–30 seconds|"Earth-Mars distance" → 27.12s|Acceptable ⚠️|
-|Semantic engine + LLM|30–40 seconds|"Books by Sarah J. Maas" → 37.02s|Slow ⚠️|
-|LLM + saved context|20–25 seconds|"What's your favorite book?" → 24.59s|Improvable ⚠️|
-|Complex analysis with memory|35–60 seconds|Analysis of multiple intertwined topics|Physical pain ❌|
+| Response type                  | Measured time | Real example                                   | Suitability     |
+| ------------------------------ | ------------- | ---------------------------------------------- | --------------- |
+| Home automation commands       | 3 seconds     | "Turn on the living room lamp" → 3.0s          | Excellent ✅     |
+| Contextual home control        | 3–5 seconds   | "Dim to 10" → 4.8s (remembered the last light) | Very good ✅     |
+| Pre-recorded JSON responses    | 5 seconds     | "Do you like social media?" → JSON sarcasm     | Good ✅          |
+| **Ambiguous phrase with LLM**  | ~10 seconds   | "It smells weird at home" → LLM response       | Solid ✅         |
+| **Ambiguous phrase as action** | ~3 seconds    | "It smells weird at home" → Check stove plug   | Efficient ✅     |
+| Simple LLM responses           | 25–30 seconds | "Earth-Mars distance" → 27.12s                 | Acceptable ⚠️   |
+| Semantic engine + LLM          | 30–40 seconds | "Books by Sarah J. Maas" → 37.02s              | Slow ⚠️         |
+| LLM + saved context            | 20–25 seconds | "What's your favorite book?" → 24.59s          | Improvable ⚠️   |
+| Complex analysis with memory   | 35–60 seconds | Analysis of multiple intertwined topics        | Physical pain ❌ |
 
 ---
 
@@ -1335,6 +1334,8 @@ def process_audio(self, audio_data):
         return result.get("text", "")
     return ""
 ```
+
+📄 **[Complete voice recognition system](/docs/SPEECH_LISTENER_EN.md)** - Detailed architecture, sample rate management, fuzzy matching and real-environment performance metrics.
 
 - **PyTorch**: Critical module specifically compiled for ARM64, reduces voice recognition latency by 68% and consumes 35% less RAM than pre-compiled versions
 
