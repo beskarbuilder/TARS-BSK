@@ -16,13 +16,17 @@
 > **This is the Way.**
 
 
-## 🎥 Primera Interacción con el mundo
+## 🎥 TARS-BSK en acción
 
-**🤖 IA con crisis existencial controla bombilla y relé… y sus impulsos | Home Assistant + RPi 5**
+**🎬 TARS vs TV: Sabotaje acústico en condiciones reales | Background Noise Test**
 
-[![TARS-BSK: IA con crisis existencial controla las luces](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
-_Observa cómo TARS-BSK escucha “tags” en lugar de “TARS”… y aún así logra controlar los dispositivos._
-📋 **Análisis completo de la sesión:** [EXPLAINED_CONVERSATION_LOG_HA_01_ES.md](docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md)
+[![TARS-BSK vs TV Background Noise](https://img.youtube.com/vi/Gi5IFeVkKe8/maxresdefault.jpg)](https://www.youtube.com/watch?v=Gi5IFeVkKe8)
+_Para ti es solo la tele. Para TARS, es sabotaje acústico. Análisis técnico de ASR con ruido de fondo._
+📋 **Análisis técnico completo:** [TV_BACKGROUND_NOISE_TEST_1_ES.md](/docs/TV_BACKGROUND_NOISE_TEST_1_ES.md)
+
+### 📺 Más videos
+
+- 🤖 **[Primera interacción domótica](https://www.youtube.com/watch?v=tGHa81s1QWk)** - Control de dispositivos con memoria contextual ([análisis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md))
 
 ---
 
@@ -1119,6 +1123,9 @@ La integración con Home Assistant va mucho más allá de simples llamadas a la 
 - **Variedad de respuestas**: Genera confirmaciones naturales y diversas
 - **Resiliencia extrema**: Timeout handling con positive assumptions para mejor UX
 
+📋 [Análisis técnico](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md) - Breakdown completo de la sesión
+🎬 [Ver en acción](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demostración de comandos contextuales y memoria adaptativa 
+
 ```python
 # Ejemplo real - Mapeo de nombres comunes a IDs de entidades
 self.devices = {
@@ -1326,9 +1333,12 @@ def process_audio(self, audio_data):
     return ""
 ```
 
-📄 **[Sistema completo de reconocimiento de voz](/docs/SPEECH_LISTENER_ES.md)** - Arquitectura detallada, gestión de sample rates, fuzzy matching y métricas de rendimiento en entorno real.
+📄 **[Sistema de reconocimiento de voz](/docs/SPEECH_LISTENER_ES.md)** - Arquitectura detallada, gestión de sample rates, fuzzy matching y métricas de rendimiento.  
+🧪 **[Análisis: Ruido de fondo](/docs/TV_BACKGROUND_NOISE_TEST_1_ES.md)** - Prueba práctica con interferencias domésticas.  
+🎬 **[Video: TARS vs TV](https://youtu.be/Gi5IFeVkKe8)** - Demostración del test en acción.
 
 - **PyTorch**: Módulo crítico compilado específicamente para ARM64, reduce latencia de reconocimiento de voz en 68% y consume 35% menos RAM que versiones pre-compiladas
+
 
 ### Comparativa real de modelos LLM probados
 

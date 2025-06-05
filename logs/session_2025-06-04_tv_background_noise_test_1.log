@@ -1,0 +1,207 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-04 11:52:11,021 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-04 11:52:15,194 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-04 11:52:15,194 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-04 11:52:15,194 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-04 11:52:15,538 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 25.71it/s]
+2025-06-04 11:52:15,581 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-04 11:52:15,581 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-04 11:52:15,585 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-04 11:52:15,587 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-04 11:52:15,587 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-04 11:52:15,588 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-04 11:52:15,588 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-04 11:52:15,588 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-04 11:52:15,591 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 12 temas, 8 patrones, 9 keywords
+2025-06-04 11:52:15,593 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-04 11:52:15,595 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-04 11:52:15,595 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-04 11:52:15,596 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-04 11:52:15,597 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-04 11:52:15,597 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-04 11:52:15,597 - TARS - INFO - Detector de intenciones inicializado
+2025-06-04 11:52:15,598 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-04 11:52:15,600 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-04 11:52:15,600 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-04 11:52:15,601 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-06-04 11:52:15,602 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-06-04 11:52:15,602 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-04 11:52:15,745 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-04 11:52:15,745 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-04 11:52:15,746 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-04 11:52:15,746 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-04 11:52:15,746 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-04 11:52:15,746 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-04 11:52:15,746 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-04 11:52:15,746 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-04 11:52:15,746 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-04 11:52:15,746 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-04 11:52:15,746 - TARS.SchedulerPlugin - INFO - 📂 Cargados 2 trabajos existentes
+2025-06-04 11:52:15,747 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-04 11:52:15,747 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-04 11:52:15,747 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-04 11:52:15,747 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-04 11:52:15,747 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin NOCTUA inicializado
+2025-06-04 11:52:15,747 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-04 11:52:15,748 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-04 11:52:15,748 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-04 11:52:15,749 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-04 11:52:15,759 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-04 11:52:15,759 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-04 11:52:15,759 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-04 11:52:15,759 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-04 11:52:15,759 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-04 11:52:15,759 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-04 11:52:15,760 - TARS.SchedulerPlugin - INFO - 📂 Cargados 2 trabajos existentes
+2025-06-04 11:52:15,760 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-04 11:52:15,760 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-04 11:52:15,760 - TARS - INFO - ✅ TARS inicializado en 0.16 segundos
+¿Usar entrada por voz? (S): s
+
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=13 max-active=7000 lattice-beam=6
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:279) Loading HCLG from ai_models/vosk/model/graph/HCLG.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:297) Loading words from ai_models/vosk/model/graph/words.txt
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+LOG (VoskAPI:ReadDataFiles():model.cc:315) Loading subtract G.fst model from ai_models/vosk/model/rescore/G.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:317) Loading CARPA model from ai_models/vosk/model/rescore/G.carpa
+LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vosk/model/rnnlm/final.raw
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Configurado resampling de 44100Hz a 16000Hz
+2025-06-04 11:52:47,927 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🗣️ Escuchado: maldonado
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: la voyager uno se suponía que había percatado había pasado por júpiter y saturno en todas sus lunas pero siguió adelante
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: cuando te vas
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: no había tenido tanto miedo en mi vida no tenía ni idea de lo que me esperaba
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: y cuando me siento así pienso en cómo fallecer
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: sigue por ahí
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: más allá de nuestro sistema solar más lejos de lo que sería
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+🗣️ Escuchado: tags
+🔥 Wakeword detectada por coincidencia difusa
+2025-06-04 11:53:30,835 - TARS - INFO - 🔍 Identificación de hablante preparada pero no implementada en esta fase
+2025-06-04 11:53:30,836 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Aquí estoy.'
+2025-06-04 11:53:30,836 - TARS.TTS - INFO - 🗣️ Generando voz: 'Aquí estoy.'
+2025-06-04 11:53:31,556 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-04 11:53:31,577 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-06-04 11:53:32,775 - TARS.TTS - INFO - 🔊 Reproducción completada
+⏱️ Wakeword reconocida en 3.84s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'enciende la luz del salón' (confianza: 1.00)
+🗣️ Entendido: enciende la luz del salón
+🧠 Procesando: enciende la luz del salón
+2025-06-04 11:53:37,886 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'enciende la luz del salón'
+2025-06-04 11:53:37,887 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-04 11:53:37,887 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-04 11:53:37,887 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'enciende la luz del salón'
+2025-06-04 11:53:37,887 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-04 11:53:37,887 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-04 11:53:37,887 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-04 11:53:37,887 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'enciende la luz del salón'
+2025-06-04 11:53:37,890 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-04 11:53:37,890 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-04 11:53:37,890 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'enciende la luz del salón'
+2025-06-04 11:53:37,890 - TARS.HomeAssistantPlugin - INFO - 🏠 Acción detectada: encender
+2025-06-04 11:53:37,890 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo mencionado detectado: light
+2025-06-04 11:53:37,890 - TARS.HomeAssistantPlugin - INFO - 🏠 Ubicación detectada: salon
+2025-06-04 11:53:37,890 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: último dispositivo = switch.sonoff_salon (tipo: switch)
+2025-06-04 11:53:37,890 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo objetivo: switch.sonoff_salon (tipo: switch)
+2025-06-04 11:53:38,130 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ✅ Comando procesado
+2025-06-04 11:53:38,130 - TARS - INFO - 🔌 Comando procesado por plugin: Listo, encendido....
+2025-06-04 11:53:38,130 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Listo, encendido.'
+2025-06-04 11:53:38,130 - TARS.TTS - INFO - 🗣️ Generando voz: 'Listo, encendido.'
+2025-06-04 11:53:38,887 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-04 11:53:38,897 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.010s
+2025-06-04 11:53:40,587 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Listo, encendido.
+⏱️ Tiempo comando: 4.11s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'apaga la luz' (confianza: 1.00)
+🗣️ Entendido: apaga la luz
+🧠 Procesando: apaga la luz
+2025-06-04 11:53:45,455 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'apaga la luz'
+2025-06-04 11:53:45,455 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-04 11:53:45,455 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-04 11:53:45,455 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'apaga la luz'
+2025-06-04 11:53:45,455 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-04 11:53:45,455 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-04 11:53:45,455 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-04 11:53:45,456 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'apaga la luz'
+2025-06-04 11:53:45,456 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-04 11:53:45,456 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'apaga la luz'
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 Acción detectada: apagar
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo mencionado detectado: light
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó ubicación específica
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 Usando último dispositivo usado: switch.sonoff_salon
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: último dispositivo = switch.sonoff_salon (tipo: switch)
+2025-06-04 11:53:45,456 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo objetivo: switch.sonoff_salon (tipo: switch)
+2025-06-04 11:53:45,629 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ✅ Comando procesado
+2025-06-04 11:53:45,629 - TARS - INFO - 🔌 Comando procesado por plugin: Listo, apagado....
+2025-06-04 11:53:45,629 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Listo, apagado.'
+2025-06-04 11:53:45,629 - TARS.TTS - INFO - 🗣️ Generando voz: 'Listo, apagado.'
+2025-06-04 11:53:46,336 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-04 11:53:46,345 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.009s
+2025-06-04 11:53:47,787 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Listo, apagado.
+⏱️ Tiempo comando: 3.37s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'dime qué hora es' (confianza: 1.00)
+🗣️ Entendido: dime qué hora es
+🧠 Procesando: dime qué hora es
+2025-06-04 11:53:53,035 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'dime qué hora es'
+2025-06-04 11:53:53,035 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-04 11:53:53,035 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-04 11:53:53,035 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'dime qué hora es'
+2025-06-04 11:53:53,035 - TARS.TimePlugin - INFO - 🕐 TimePlugin respondiendo: 'Hoy es miércoles, 4 de junio de 2025, y son las 11:53 horas.'
+2025-06-04 11:53:53,035 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ✅ Comando procesado
+2025-06-04 11:53:53,036 - TARS - INFO - 🔌 Comando procesado por plugin: Hoy es miércoles, 4 de junio d...
+2025-06-04 11:53:53,036 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Hoy es miércoles, 4 de junio de 2025, y son las 11:53 horas.'
+2025-06-04 11:53:53,036 - TARS.TTS - INFO - 🗣️ Generando voz: 'Hoy es miércoles, 4 de junio de 2025, y son las 11:53 horas.'
+2025-06-04 11:53:54,414 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-04 11:53:54,447 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.034s
+2025-06-04 11:53:59,647 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Hoy es miércoles, 4 de junio de 2025, y son las 11:53 horas.
+⏱️ Tiempo comando: 3.75s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'gracias' (confianza: 1.00)
+🗣️ Entendido: gracias
+2025-06-04 11:54:04,145 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Estes el camino'
+2025-06-04 11:54:04,146 - TARS.TTS - INFO - 🗣️ Generando voz: 'Estes el camino'
+2025-06-04 11:54:04,872 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-04 11:54:04,882 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.009s
+2025-06-04 11:54:06,328 - TARS.TTS - INFO - 🔊 Reproducción completada
+👋 Se ha detectado cierre de interacción
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🗣️ Escuchado: pero
+❌ No coincide con ninguna wakeword (ni siquiera por aproximación)
+

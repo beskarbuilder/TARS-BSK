@@ -1,19 +1,14 @@
 # TARS-BSK Interaction Analysis
 
+![Voice Control](https://img.shields.io/badge/voice-control-blue) ![Context Memory](https://img.shields.io/badge/memory-contextual-purple) ![Natural Commands](https://img.shields.io/badge/language-natural-green) ![Session Analysis](https://img.shields.io/badge/analysis-4.14s_avg-orange)
+
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 
 This document details a real voice session with TARS-BSK controlling devices via Home Assistant.  
 It includes the text detected by VOSK, interpretation logic, response times, and system comments with integrated personality.
-
-## 🎬 First Interaction with the world
-
-**🤖 AI with an existential crisis controls a lightbulb, a relay… and its own impulses | Home Assistant + RPi 5**
-
-[![TARS-BSK: AI with existential crisis controls lights](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
-_Watch how TARS-BSK hears “tags” instead of “TARS”… and still manages to control the devices._
-📋 **Complete session analysis:** [EXPLAINED_CONVERSATION_LOG_HA_01_EN.md](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md)
+#### 🎬 [Watch demonstration](https://www.youtube.com/watch?v=tGHa81s1QWk)
 
 ---
 

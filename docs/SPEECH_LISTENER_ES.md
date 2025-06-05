@@ -448,8 +448,17 @@ LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vo
 Esta prueba busca mostrar cómo se comporta el sistema en una situación **tan cotidiana como compleja**:  
 Estás viendo una serie, alguien habla constantemente en la televisión... y tú intentas activar a TARS **diciendo la wakeword por encima**.
 
-📂 **Prueba próximamente disponible**  
-Esta sección incluirá la prueba en entorno real con su correspondiente documentación, vídeo y log detallado.
+### Análisis completo
+
+✅ **Documentación técnica completa:** [TV Background Noise Test 1](/docs/TV_BACKGROUND_NOISE_TEST_1_ES.md)  
+🎬 [Ver en acción](https://www.youtube.com/watch?v=Gi5IFeVkKe8) - Demostración de comandos contextuales y memoria adaptativa 
+📂 **Log completo de sesión:** [session_2025-06-04_tv_background_noise_test_1.log](/logs/session_2025-06-04_tv_background_noise_test_1.log)
+
+> **Resultados adelantados:**  
+> ❌ Con TV a volumen normal: TARS no puede activarse  
+> ✅ Con volumen reducido: 100% de comandos exitosos  
+> 🎯 Tiempos: 3-4 segundos por comando domótico  
+> ⚙️ Limitación clave: ASR procesa en chunks secuenciales
 
 ### ¿Qué intenta demostrar esta prueba?
 

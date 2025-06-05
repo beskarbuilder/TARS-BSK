@@ -446,8 +446,17 @@ LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vo
 This test aims to show how the system behaves in a situation **as common as it is complex**:  
 You're watching a series, someone is constantly talking on TV... and you try to activate TARS **by saying the wakeword over it**.
 
-📂 **Test coming soon**  
-This section will include the real environment test with corresponding documentation, video and detailed log.
+### Complete Analysis
+
+✅ **Full technical documentation:** [TV Background Noise Test 1](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md)  
+🎬 **[Video: TARS vs TV](https://youtu.be/Gi5IFeVkKe8)** - Practical test demonstration with real-time analysis.
+📂 **Complete session log:** [session_2025-06-04_tv_background_noise_test_1.log](/logs/session_2025-06-04_tv_background_noise_test_1.log)
+
+> **Preview results:**  
+> ❌ With TV at normal volume: TARS cannot activate  
+> ✅ With reduced volume: 100% successful commands  
+> 🎯 Response times: 3-4 seconds per home automation command  
+> ⚙️ Key limitation: ASR processes in sequential chunks
 
 ### What does this test try to demonstrate?
 

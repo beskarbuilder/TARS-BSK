@@ -1,15 +1,10 @@
 # Análisis de Interacciones con TARS-BSK
 
+![Voice Control](https://img.shields.io/badge/voice-control-blue) ![Context Memory](https://img.shields.io/badge/memory-contextual-purple) ![Natural Commands](https://img.shields.io/badge/language-natural-green) ![Session Analysis](https://img.shields.io/badge/analysis-4.14s_avg-orange)
+
 Este documento detalla una sesión de voz real con TARS-BSK controlando dispositivos vía Home Assistant.  
 Incluye el texto detectado por VOSK, la lógica de interpretación, tiempos de respuesta y comentarios del sistema con personalidad integrada.
-
-## 🎥 Primera Interacción con el mundo
-
-**🤖 IA con crisis existencial controla bombilla y relé… y sus impulsos | Home Assistant + RPi 5**
-
-[![TARS-BSK: IA con crisis existencial controla las luces](https://img.youtube.com/vi/tGHa81s1QWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=tGHa81s1QWk)
-_Observa cómo TARS-BSK escucha “tags” en lugar de “TARS”… y aún así logra controlar los dispositivos._
-📋 **Análisis completo de la sesión:** [EXPLAINED_CONVERSATION_LOG_HA_01_ES.md](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md)
+#### 🎬 [Ver demostración](https://www.youtube.com/watch?v=tGHa81s1QWk)
 
 ---
 
