@@ -39,7 +39,7 @@ Not scientific. Just auditory survival._
 > Art? Science? Desperation? Who knows..._
 
 Complete session log:
-📁 **[session_2025-06-03_tv_background_noise_test_1.log](/logs/session_2025-06-03_tv_background_noise_test_1.log)**
+📁 **[session_2025-06-04_tv_background_noise_test_1.log](/logs/session_2025-06-04_tv_background_noise_test_1.log)**
 
 ---
 

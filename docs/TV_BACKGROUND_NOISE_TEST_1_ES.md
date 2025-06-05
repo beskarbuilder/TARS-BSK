@@ -40,7 +40,7 @@ No es científico. Es supervivencia auditiva._
 > ¿Arte? ¿Ciencia? ¿Desesperación? Quién sabe..._
 
 Log completo de la sesión:
-📁 **[session_2025-06-03_tv_background_noise_test_1.log](/logs/session_2025-06-03_tv_background_noise_test_1.log)**
+📁 **[session_2025-06-04_tv_background_noise_test_1.log](/logs/session_2025-06-04_tv_background_noise_test_1.log)**
 
 ---
 
