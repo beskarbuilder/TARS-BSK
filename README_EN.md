@@ -28,8 +28,7 @@
 
 **🎬 TARS vs TV: Acoustic sabotage under real conditions | Background Noise Test**
 
-[![TARS-BSK vs TV Background Noise](https://img.youtube.com/vi/Gi5IFeVkKe8/maxresdefault.jpg)](https://www.youtube.com/watch?v=Gi5IFeVkKe8)
-*For you, it's just the TV. For TARS, it's acoustic sabotage. Technical analysis of ASR with background noise.*
+[![TARS-BSK vs TV Background Noise](/docs/images/tv_vs_tars_thumbnail.jpg)](https://www.youtube.com/watch?v=Gi5IFeVkKe8)*For you, it's just the TV. For TARS, it's acoustic sabotage. Technical analysis of ASR with background noise.*
 📋 **Complete technical analysis:** [TV_BACKGROUND_NOISE_TEST_1_EN.md](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md)
 ### 📺 More videos
 
