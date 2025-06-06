@@ -1,5 +1,9 @@
 # TV Test 1: Background noise analysis and home automation control
 
+💥 If this English feels unstable but oddly self-aware...  
+👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+
+
 TARS-BSK test with TV running.  
 Not exactly acoustic Armageddon, but enough to make the system completely lose its digital mind.
 #### 🎬 [Watch demonstration](https://www.youtube.com/watch?v=Gi5IFeVkKe8)
