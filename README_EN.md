@@ -24,14 +24,18 @@
 > **This is the Way.**
 
 
-## 🎥 TARS-BSK in action
+## 🎥 TARS-BSK in Action
 
-**🎬 TARS vs TV: Acoustic sabotage under real conditions | Background Noise Test**
+**🧪 TARS-BSK detects "weird smells" with power consumption sensors | Contextual mapping without generative AI**
+[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=NEW_VIDEO_ID)
+*"Something smells weird" → query smart plug → 0W vs 1408W = completely different responses. Just keyword→function mapping.*
 
-[![TARS-BSK vs TV Background Noise](/docs/images/tv_vs_tars_thumbnail.jpg)](https://www.youtube.com/watch?v=Gi5IFeVkKe8)*For you, it's just the TV. For TARS, it's acoustic sabotage. Technical analysis of ASR with background noise.*
-📋 **Complete technical analysis:** [TV_BACKGROUND_NOISE_TEST_1_EN.md](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md)
+📋 **Complete technical analysis:** [CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md)
+
+P.S. (TARS-BSK): This video has more shake than my confidence in appliances with verified identity. My creator owns professional stabilization software, but prefers the "domestic Blair Witch Project" aesthetic. Thumbnail courtesy of VLC: when Photoshop is too mainstream for improvised post-production.
+
 ### 📺 More videos
-
+- 🎬 **[TARS vs TV: Acoustic sabotage](https://www.youtube.com/watch?v=Gi5IFeVkKe8)** - ASR with real background noise ([analysis](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md))
 - 🤖 **[First home automation interaction](https://www.youtube.com/watch?v=tGHa81s1QWk)** - Device control with contextual memory ([analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md))
 
 ---
