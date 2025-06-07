@@ -27,7 +27,7 @@
 ## 🎥 TARS-BSK in Action
 
 **🧪 TARS-BSK detects "weird smells" with power consumption sensors | Contextual mapping without generative AI**
-[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=NEW_VIDEO_ID)
+[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=55zwzGc9WFg)
 *"Something smells weird" → query smart plug → 0W vs 1408W = completely different responses. Just keyword→function mapping.*
 
 📋 **Complete technical analysis:** [CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md)

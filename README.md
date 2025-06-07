@@ -19,7 +19,7 @@
 ## 🎥 TARS-BSK en acción
 
 **🧪 TARS-BSK detecta "olores raros" con sensores de consumo | Mapeo contextual sin IA generativa**
-[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=NUEVO_VIDEO_ID)
+[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=55zwzGc9WFg)
 _"Algo huele raro" → consulta enchufe → 0W vs 1408W = respuestas completamente diferentes. Solo mapeo keyword→función._
 
 📋 **Análisis técnico completo:** [CONTEXTUAL_RESPONSE_MAPPING_TEST_1_ES.md](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_ES.md)

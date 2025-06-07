@@ -15,7 +15,9 @@ TARS can map any phrase to any function, and in this case:
 > Relax, human. I'm just learning how to worry you.
 
 🎬 [Demo: Contextual Mapping](https://youtu.be/55zwzGc9WFg)
+
 📁 **[Session Log](/logs/session_2025-06-06_contextual_response_mapping_test_1.log)**
+
 ⚙️ **Source code:** `_diagnose_smell()` function in `homeassistant_plugin.py`
 
 ---
@@ -181,6 +183,7 @@ These phrases aren't in any manual... but TARS can map them to real functions:
 |---|---|---|
 |0W|3.37s|Short response (98 characters)|
 |1408W|9.88s|Long response + safety instructions (147 chars)|
+
 **Main factor:** TTS synthesis. More text = more generation and playback time.
 
 ---

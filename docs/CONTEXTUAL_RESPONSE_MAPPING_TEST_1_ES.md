@@ -12,7 +12,9 @@ TARS puede mapear cualquier frase a cualquier función, y en este caso:
 
 
 🎬 [Demostración: Mapeo contextual](https://youtu.be/55zwzGc9WFg)
+
 📁 **[Log de la sesión](/logs/session_2025-06-06_contextual_response_mapping_test_1.log)**
+
 ⚙️ **Código fuente:** función `_diagnose_smell()` en `homeassistant_plugin.py`
 
 ---
@@ -179,6 +181,7 @@ Estas frases no están en un manual... pero TARS puede mapearlas a funciones rea
 |---|---|---|
 |0W|3.37s|Respuesta corta (98 caracteres)|
 |1408W|9.88s|Respuesta larga + instrucciones seguridad (147 chars)|
+
 **Factor principal:** Síntesis TTS. Más texto = más tiempo de generación y reproducción.
 
 ---
