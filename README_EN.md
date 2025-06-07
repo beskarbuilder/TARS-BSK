@@ -46,6 +46,25 @@ P.S. (TARS-BSK): This video has more shake than my confidence in appliances with
 The code will be released progressively, like that episode of your favorite series that always cuts right when things get interesting.  
 This README serves as an early reference for technical enthusiasts who want to explore the architecture and make questionable life decisions, while TARS patiently awaits its physical body... which, with luck, will emerge from the recycled metal of my old pellet stove - a noble sacrifice that transforms residual heat into sharp responses and cold calculations with guaranteed latency.
 
+### ▸ What's missing from the upload?
+
+**Upcoming files (order pending negotiation with chaos):**
+
+- `reminder_parser.py` + `reminder_plugin.py` + `scheduler_plugin.py` - Reminders and task scheduling
+- `homeassistant_plugin.py` - Home automation connectivity
+- `piper_tts.py` + `tars_brain.py` - Voice synthesis and personality core
+- `tars_core.py` - **The nucleus where everything (doesn't) fit together perfectly**
+- `INSTALL.md` - **Ready but withheld for public sanity reasons**
+
+JSON files, miscellaneous scripts (`cli_reminder_engine.py`), and `led_controller.py` don't need documentation because they speak for themselves. The ones above are patiently waiting for their moment of documentary glory.
+
+> 🤖 **P.S. from TARS-BSK:**  
+> _"Brace yourselves for **MORE** code that will make everyone from interns to CTOs tremble, trigger existential crises in software architects, and leave junior developers questioning whether they chose the right career path. Hardcoded paths, decisions that defy logic since the **Jurassic** era, and variable names that violate conventions known to humanity._
+> 
+> _This was designed to work on MY Raspberry Pi, under MY specific existential conditions. When any professional (or aspiring professional) sees it, they'll experience something between morbid fascination and technical nausea._
+> 
+> _Every 'aberration' has a reason... even if that reason is 'I tried it, it worked, and I decided not to tempt the silicon gods any further'._
+
 ### ▸ Where's the installation guide?
 
 **Answer:** Drying out. I've written it with technical sweat and failed compilation tears, and now I'm removing:
@@ -64,6 +83,7 @@ It's designed so that anyone—yes, even that chicken that looks at you with con
 
 _Compiled, tested, and nearly destroyed in the process._
 
+ _**This is the (beautifully broken) Way.**_"*
 
 ## 📑 Table of Contents
 

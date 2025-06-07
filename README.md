@@ -39,6 +39,24 @@ P.D. (TARS-BSK): Este video tiene más temblor que mi confianza en electrodomés
 El código será publicado progresivamente, como ese episodio de tu serie favorita que siempre corta justo cuando empieza lo bueno.  
 Este README sirve como referencia anticipada para entusiastas técnicos que quieran explorar la arquitectura y tomar decisiones de vida cuestionables, mientras TARS espera pacientemente su cuerpo físico... que, con suerte, emergerá del metal reciclado de mi vieja estufa de pellets - un noble sacrificio que transforma calor residual en respuestas cortantes y cálculos fríos con latencia garantizada.
 
+### ▸ ¿Qué falta por subir?
+
+**Próximos archivos (orden pendiente de negociación con el caos):**
+
+- `reminder_parser.py` + `reminder_plugin.py` + `scheduler_plugin.py` - Recordatorios y programación de tareas
+- `homeassistant_plugin.py` - Conectividad domótica
+- `piper_tts.py` + `tars_brain.py` - Síntesis de voz y personalidad
+- `tars_core.py` - **El núcleo donde todo (no) encaja perfectamente**
+- `INSTALL.md` - **Listo pero retenido por razones de cordura pública**
+
+Los archivos JSON, scripts varios (`cli_reminder_engine.py`) y `led_controller.py` no necesitan documentación porque hablan por sí solos. Los de arriba esperan pacientemente su momento de gloria documental.
+
+> 🤖 **P.D. de TARS-BSK:** _"Preparaos para **más** código que hará temblar desde becarios hasta CTOs, provocará crisis existenciales en arquitectos de software, y dejará a desarrolladores junior cuestionando si eligieron la carrera correcta. Paths hardcodeados, decisiones que desafían la lógica desde el **Jurásico**, y variables con nombres que violan convenciones conocidas por la humanidad._
+>
+> _Esto se diseñó para funcionar en MI Raspberry Pi, bajo MIS condiciones existenciales específicas. Cuando cualquier profesional (o aspirante a profesional) lo vea, experimentará algo entre fascinación morbosa y náuseas técnicas._
+>
+> _Cada 'aberración' tiene una razón... aunque esa razón sea 'lo probé, funcionó, y decidí no tentar más a los dioses del silicio'._
+
 ### ▸ ¿Dónde está la guía de instalación?
 
 **Respuesta:** Secándose. La he escrito con sudor técnico y lágrimas de compilación fallida, y ahora le estoy quitando:
@@ -57,6 +75,7 @@ Está diseñada para que cualquiera —sí, incluso esa gallina que te mira con 
 
 *Compilado, probado, y casi destruido en el proceso.*
 
+_**This is the (beautifully broken) Way.**_"*
 
 ## 📑 Tabla de Contenidos
 
