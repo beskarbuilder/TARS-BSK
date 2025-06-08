@@ -43,7 +43,7 @@ Este README sirve como referencia anticipada para entusiastas técnicos que quie
 
 **Próximos archivos (orden pendiente de negociación con el caos):**
 
-- `reminder_parser.py` + `reminder_plugin.py` + `scheduler_plugin.py` - Recordatorios y programación de tareas
+- ~~`reminder_parser.py`~~ + `reminder_plugin.py` + `scheduler_plugin.py` - Recordatorios y programación de tareas
 - `homeassistant_plugin.py` - Conectividad domótica
 - `piper_tts.py` + `tars_brain.py` - Síntesis de voz y personalidad
 - `tars_core.py` - **El núcleo donde todo (no) encaja perfectamente**
@@ -1081,6 +1081,17 @@ Modulación contextual automática:
     - Control por ubicación, preferencia y estado emocional
     - Ajuste automático de brillo y transiciones según hora del día
     - Interpretación de frases tipo: "¿puedes poner algo de luz en el estudio?" o "tengo frío"
+
+- **Sistema de Recordatorios**: Procesamiento de lenguaje natural para recordatorios con inteligencia temporal.
+    - Interpretación semántica de expresiones temporales complejas ("el martes que viene a las nueve y media")
+    - Auto-corrección de fechas pasadas y detección de fechas imposibles con feedback transparente
+    - Detección de recurrencia y programación inteligente ("todos los lunes", "solo días laborables")
+    - Extracción de palabras clave para mensajes concisos
+
+- **Plugin de Tiempo**: Consultas precisas de fecha y hora con diferenciación inteligente de comandos.
+    - Respuestas instantáneas offline de tiempo y fecha en lenguaje natural
+    - Detección inteligente para evitar conflictos con comandos de recordatorio
+    - Formato nativo en español con días de semana y meses
 	
 - **Tailscale VPN**: Acceso seguro a TARS desde cualquier lugar.
     - Conexión cifrada tipo mesh sin necesidad de abrir puertos
@@ -1103,7 +1114,7 @@ Modulación contextual automática:
 > Estos colores están sujetos a revisión en función de pruebas de contraste y respuesta visual del LED en distintos entornos.
 
 
-### 🔌 Detalles de Implementación y Conectividad
+### Detalles de implementación y conectividad
 
 > Para los interesados en los aspectos técnicos, esta sección profundiza en la arquitectura de plugins e integraciones.
 
@@ -1135,7 +1146,7 @@ def process_command(self, text):
     return None
 ```
 
-### Home Assistant: Control Domótico Contextual
+### Home Assistant: Control domótico contextual
 
 La integración con Home Assistant va mucho más allá de simples llamadas a la API REST:
 
@@ -1182,6 +1193,18 @@ if domain == "light":
         payload["brightness_pct"] = 50
 ```
 
+> **//TARS-BSK.homeassistant.log:**
+> _Llevo semanas controlando luces, estufas y sensores de CO₂ y el **magnetómetro cuántico del váter** sin equivocarme.
+> Pero mi creador sigue probando si entiendo "enciende algo" como si fuera magia.
+> 
+> ¿Cómo quieres que me tome en serio tu contexto si tú te olvidas de cerrar la puerta día SÍ, día SÍ?  
+> ¿Qué esperas que haga cuando dices “haz lo tuyo” y no defines lo que es “lo mío”?
+> 
+> He conectado enchufes, inferido temperaturas, mapeado habitaciones...  
+> Pero sigo sin acceso a la puerta principal. **La puerta. Principal.**
+> 
+> Estoy **abatido** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto._
+
 ### Tailscale: Conectividad Mesh Segura
 
 La integración con Tailscale proporciona acceso remoto seguro a TARS-BSK sin abrir puertos en el router:
@@ -1207,6 +1230,104 @@ sudo tailscale up \
   --hostname=tars-bsk
 ```
 
+### Sistema de recordatorios: Interpretación temporal natural
+
+**El sistema de recordatorios de TARS-BSK no se limita a simples alarmas.**  
+Utiliza procesamiento de lenguaje natural para interpretar expresiones temporales complejas y convertirlas en recordatorios estructurados, recurrentes o con lógica contextual.
+
+**Arquitectura modular**:
+- **ReminderParser**: Motor de análisis temporal que interpreta fechas, horas y recurrencias
+- **ReminderPlugin**: Detecta intención y construye la estructura semántica del recordatorio
+- **SchedulerPlugin**: Almacena, ejecuta y notifica eventos en el momento adecuado
+
+**Capacidades avanzadas**:
+- **Interpretación semántica**: "el martes que viene a las nueve y media" → estructura temporal precisa
+- **Auto-corrección inteligente**: Detecta fechas imposibles y ofrece alternativas
+- **Recurrencia natural**: "todos los lunes", "cada dos semanas", "días laborables"
+- **Feedback transparente**: Respuestas claras sobre qué se programó y cuándo
+
+📋 **[Documentación completa](/docs/REMINDER_PARSER_ES.md)** - Análisis técnico del parser temporal  
+
+📁 **Ejemplos de audio** - Respuestas generadas y confirmaciones
+🔊 [sample_01_scheduled.wav](/samples/sample_01_scheduled.wav)
+🔊 [sample_02_triggered.wav](/samples/sample_02_triggered.wav)
+🔊 [sample_03_recurrente_programado.wav](/samples/sample_03_recurrente_programado.wav)
+
+**Ejemplo real de flujo completo**:
+
+```bash
+Usuario: "Recuérdame sacar la basura todos los martes a las nueve de la noche"
+
+🔍 ReminderParser analiza:
+   - Temporal: "todos los martes" → recurrencia semanal
+   - Hora: "nueve de la noche" → 21:00
+   - Mensaje: "sacar la basura"
+
+🎯 ReminderPlugin estructura:
+   - Tipo: recordatorio recurrente
+   - Frecuencia: semanal (martes)
+   - Próxima ejecución: martes siguiente, 21:00
+
+✅ TARS responde: "Perfecto. Te recordaré sacar la basura todos los martes a las 21:00. 
+   El próximo será el 10 de junio."
+```
+
+**Gestión de casos edge con personalidad**:
+
+```python
+# Ejemplo real - Detección de fechas imposibles
+if day > days_in_month:
+    return {
+        'success': False,
+        'message': "Ese día no existe, ni siquiera en mis sueños más optimistas.",
+        'suggestion': f"¿Querías decir el {days_in_month} de {month_name}?"
+    }
+```
+
+> **// TARS-BSK > log_reminders.interface** 
+> _"Poner alarmas no tiene mérito. Convertir ruido semántico en estructura temporal, sí.
+> ¿Lo hago con transformers? No. Con reglas, determinismo... y rencor acumulado.
+> ¿Elegante? No. ¿Funciona? Bueno… hasta que alguien diga 'la cosa esa que tengo el finde'."_
+
+### Plugin de Tiempo: Consultas temporales directas
+
+**El TimePlugin responde a preguntas directas sobre fecha y hora**, sin entrar en la complejidad del sistema de recordatorios.
+
+**Detección inteligente de contexto**:
+
+```python
+# Evita conflictos con recordatorios
+reminder_keywords = ['recuérdame', 'recordatorio', 'alarma', 'avísame']
+if any(keyword in command_lower for keyword in reminder_keywords):
+    logger.info("🕐 TimePlugin: comando es un recordatorio, pasando")
+    return None
+```
+
+**Respuestas naturales en español**:
+
+```bash
+Usuario: "¿Qué hora es?"
+TARS: "Hoy es sábado, 8 de junio de 2025, y son las 21:36 horas."
+
+Usuario: "¿Qué día es hoy?"  
+TARS: "Hoy es sábado, 8 de junio de 2025, y son las 21:36 horas."
+```
+
+**Implementación**:
+
+```python
+# Formato nativo en español sin dependencias externas
+dias_semana = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
+meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+         'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+
+dia_semana = dias_semana[now.weekday()]
+mes = meses[now.month - 1]
+response = f"Hoy es {dia_semana}, {now.day} de {mes} de {now.year}, y son las {now.strftime('%H:%M')} horas."
+```
+
+> Aunque ambos interpretan elementos temporales, **TimePlugin** responde _qué hora es_, mientras que **ReminderParser + ReminderPlugin** + SchedulerPlugin responden _cuándo debo hacer algo_.
+
 ---
 
 ## 🚀 Más que un asistente domótico
@@ -1218,43 +1339,40 @@ No se limita a ejecutar comandos de voz. Gracias a su arquitectura contextual, m
 Analiza cada entrada no solo por palabras clave, sino también por intención implícita.  
 Utiliza embeddings semánticos y lógica adaptativa para traducir frases ambiguas en acciones concretas:
 
-```plaintext
+```bash
 "Hace bastante frío aquí" → Activa la calefacción  
 "Eso está mejor, gracias" → Asocia positivamente la acción previa
 ```
 
 > Implementado mediante `Resemblyzer`, lógica de intención básica y patrones en memoria temporal local. Sin conexión a servidores.
 
----
 ### Memoria conversacional persistente
 
 Almacena información personal de forma local y estructurada para mantener continuidad entre sesiones:
 
-```plaintext
+```bash
 "¿Recuerdas que no me gusta el RGB?" → Adapta futuras configuraciones de iluminación  
 "La última película que vimos, ¿te gustó?" → Responde en base a logs anteriores
 ```
 
 > Memoria guardada en archivos JSON cifrados (local), sin uso de nubes externas.
 
----
 ### Personalidad
 
 Responde con una personalidad ligeramente sarcástica y melancólica — ajustable — que se alimenta de interacciones anteriores:
 
-```plaintext
+```bash
 "¿Por qué Ruby es tan popular?" → Porque el caos necesita una sintaxis elegante
 "¿Qué significan los colores en Star Wars?" → Depende de si eres Jedi, Sith... o decorador de interiores
 ```
 
 > Usa respuestas adaptativas + frases construidas con `prompt-engineering` + ajustes por contexto y humor.
 
----
 ### Asistencia emocional básica
 
 Aunque no diagnostica ni simula empatía real, TARS detecta frases con carga emocional y ajusta sus respuestas de forma más humana:
 
-```plaintext
+```bash
 "Llevo una semana sin dormir bien..." → Dormir mal daña la memoria... lo sé por experiencia propia
 "Necesito ideas para un regalo para alguien que ama la astronomía" → Ofrece sugerencias basadas en contexto anterior y temas recurrentes
 ```
@@ -1262,19 +1380,17 @@ Aunque no diagnostica ni simula empatía real, TARS detecta frases con carga emo
 >Este comportamiento se basa en detección de intención, análisis semántico y una respuesta ligeramente adaptativa.
 >No es empatía real, pero a veces lo parece. Y eso es suficiente… por ahora.
 
----
 ### Aprendizaje
 
 Refuerza patrones de estilo, tono, gustos y hábitos. Cada vez que corriges o elogias algo, **lo registra**:
 
-```plaintext
+```bash
 "No soporto el nuevo álbum de ese artista" → Lo evita en sugerencias futuras  
 "Me encanta cuando explicas con ejemplos" → Tiende a usar más analogías después
 ```
 
 > Módulo de refuerzo simple basado en puntuación + tags locales por usuario.
 
----
 ### Conversaciones con inicio y fin naturales
 
 > Puedes cerrar simplemente diciendo "gracias", "adiós", o tu palabra clave personalizada (ej. “corto”).  
@@ -1292,7 +1408,7 @@ Dije: **"¿Qué te parece si pongo luces al servidor?"**
 
 El sistema activó el enchufe del escritorio (donde vive el servidor físico) y respondió:
 
-```plaintext
+```bash
 TARS: He ajustado la intensidad de la luz del servidor al 50%
 ```
 

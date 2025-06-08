@@ -1,0 +1,110 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-08 12:41:55,138 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-08 12:41:57,805 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-08 12:41:57,806 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-08 12:41:57,806 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-08 12:41:58,026 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 33.74it/s]
+2025-06-08 12:41:58,059 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-08 12:41:58,060 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-08 12:41:58,063 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-08 12:41:58,065 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-08 12:41:58,065 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-08 12:41:58,065 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-08 12:41:58,065 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-08 12:41:58,065 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-08 12:41:58,068 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-08 12:41:58,070 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-08 12:41:58,071 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-08 12:41:58,071 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-08 12:41:58,072 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-08 12:41:58,072 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-08 12:41:58,073 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-08 12:41:58,073 - TARS - INFO - Detector de intenciones inicializado
+2025-06-08 12:41:58,073 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-08 12:41:58,075 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-08 12:41:58,075 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-08 12:41:58,076 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-06-08 12:41:58,076 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-06-08 12:41:58,076 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-08 12:41:58,213 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-08 12:41:58,213 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-08 12:41:58,213 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-08 12:41:58,213 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-08 12:41:58,213 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-08 12:41:58,214 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-08 12:41:58,214 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-08 12:41:58,214 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-08 12:41:58,214 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-08 12:41:58,214 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-08 12:41:58,214 - TARS.SchedulerPlugin - INFO - 📂 Cargados 66 trabajos existentes
+2025-06-08 12:41:58,215 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-08 12:41:58,215 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-08 12:41:58,215 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-08 12:41:58,215 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-08 12:41:58,215 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin NOCTUA inicializado
+2025-06-08 12:41:58,215 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-08 12:41:58,216 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-08 12:41:58,216 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-08 12:41:58,216 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-08 12:41:58,226 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-08 12:41:58,226 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-08 12:41:58,226 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-08 12:41:58,227 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-08 12:41:58,227 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-08 12:41:58,227 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-08 12:41:58,227 - TARS.SchedulerPlugin - INFO - 📂 Cargados 66 trabajos existentes
+2025-06-08 12:41:58,228 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-08 12:41:58,228 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-08 12:41:58,228 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto
+2025-06-08 12:42:00,394 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,394 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-08 12:42:00,394 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-08 12:42:00,394 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,394 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-08 12:42:00,394 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-08 12:42:00,394 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-08 12:42:00,394 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,401 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 85%)
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,404 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,405 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto' → 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,405 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,405 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'ponme 1 recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de 1 minuto'
+2025-06-08 12:42:00,405 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'ponme 1 recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de 1 minuto'
+2025-06-08 12:42:00,429 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-08 12:42:00,429 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-08 12:42:00,431 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_relativa_funciono = 2025-06-08 12:43:00.429654
+2025-06-08 12:42:00,431 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-08 12:42:00,431 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto'
+2025-06-08 12:42:00,431 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2025-06-08 12:43:00.429654
+2025-06-08 12:42:00,432 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-08 12:42:00,442 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0066 - Para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto
+2025-06-08 12:42:00,442 - TARS.ReminderPlugin - INFO - ✅ Recordatorio creado: cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto
+2025-06-08 12:42:00,442 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-08 12:42:00,442 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'camb...
+2025-06-08 12:42:00,442 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto' para el domingo 8 de junio a las 12:43'
+2025-06-08 12:42:00,443 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto' para el domingo 8 de junio a las 12:43'
+2025-06-08 12:42:02,434 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-08 12:42:02,498 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.063s
+2025-06-08 12:42:11,543 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto' para el domingo 8 de junio a las 12:43
+Tú: 2025-06-08 12:43:58,215 - TARS.SchedulerPlugin - INFO - ⏰ Ejecutando recordatorio: Para cambiar las ruedas del coche porque es el fin del mundo dentro de un minuto
+2025-06-08 12:43:58,217 - TARS.TTS - INFO - 🗣️ Generando voz: 'Tu falta de memoria ha invocado mi presencia: tu recordatorio sobre ruedas, coche y fin, domingo 8 a las 12:43'
+2025-06-08 12:44:00,010 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-08 12:44:00,068 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.058s
+2025-06-08 12:44:08,245 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-08 12:44:08,247 - TARS.SchedulerPlugin - INFO - 🗑️ Trabajo eliminado: job_0066
+^C
+👋 Saliendo...

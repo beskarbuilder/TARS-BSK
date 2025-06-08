@@ -50,7 +50,7 @@ This README serves as an early reference for technical enthusiasts who want to e
 
 **Upcoming files (order pending negotiation with chaos):**
 
-- `reminder_parser.py` + `reminder_plugin.py` + `scheduler_plugin.py` - Reminders and task scheduling
+- ~~`reminder_parser.py`~~ + `reminder_plugin.py` + `scheduler_plugin.py` - Reminders and task scheduling
 - `homeassistant_plugin.py` - Home automation connectivity
 - `piper_tts.py` + `tars_brain.py` - Voice synthesis and personality core
 - `tars_core.py` - **The nucleus where everything (doesn't) fit together perfectly**
@@ -1086,22 +1086,32 @@ TARS plays phrases like:
 ## 🧩 Plugin System and Connectivity
 
 - **Home Assistant**: Complete control of home automation devices and sensors with semantic interpretation and conversational context.
-    
     - Intention detection even with ambiguous or indirect phrases
     - Control by location, preference, and emotional state
-    - Automatic adjustment of brightness and transitions according to time of day
+    - Automatic brightness and transition adjustments according to time of day
     - Interpretation of phrases like: "can you put some light in the studio?" or "I'm cold"
+
+- **Reminder System**: Natural language processing for reminders with temporal intelligence.
+    - Semantic interpretation of complex temporal expressions ("next Tuesday at nine thirty")
+    - Auto-correction of past dates and detection of impossible dates with transparent feedback
+    - Intelligent recurrence detection and programming ("every Monday", "weekdays only")
+    - Keyword extraction for concise messages
+
+- **Time Plugin**: Precise date and time queries with intelligent command differentiation.
+    - Instant offline responses for time and date in natural language
+    - Intelligent detection to avoid conflicts with reminder commands
+    - Native Spanish format with weekdays and months
 	
 - **Tailscale VPN**: Secure access to TARS from anywhere.
     - Mesh-type encrypted connection without needing to open ports
     - Automatic reconnection via `systemd`
     - Optimized configuration: `tailscale up --accept-dns=false --hostname=tars-bsk`
     - Support for Exit Node (to route external traffic with secure IP)
-	
+    
 - **Network resilience**:  
     TARS works completely offline. The network is only necessary for remote access, maintenance, or optional external synchronization (such as backups or updates). Its conversational and home automation core operates without an internet connection.
     
-- **GPIO + LEDs**: Visual indicators connected via GPIO that provide feedback on the system status.
+- **GPIO + LEDs**: Visual indicators connected via GPIO that provide feedback on system status.
     
     Currently defined colors (may change after more visibility tests):
     
@@ -1113,13 +1123,13 @@ TARS plays phrases like:
 > These colors are subject to revision based on contrast tests and LED visual response in different environments.
 
 
-### 🔌 Implementation and Connectivity Details
+### Implementation and connectivity details
 
-> For those interested in the technical aspects, this section delves into the plugin architecture and integrations.
+> For those interested in technical aspects, this section delves into plugin architecture and integrations.
 
 ### Modular Plugin System
 
-TARS-BSK implements a plugin architecture that allows adding functionalities without modifying the core system. Each plugin is loaded dynamically and can be enabled/disabled via JSON configuration.
+TARS-BSK implements a plugin architecture that allows adding functionalities without modifying the system core. Each plugin is loaded dynamically and can be enabled/disabled via JSON configuration.
 
 ```python
 # services/plugin_system.py (excerpt)
@@ -1145,7 +1155,7 @@ def process_command(self, text):
     return None
 ```
 
-### Home Assistant: Contextual Home Automation Control
+### Home Assistant: Contextual home automation control
 
 Integration with Home Assistant goes far beyond simple calls to the REST API:
 
@@ -1155,8 +1165,8 @@ Integration with Home Assistant goes far beyond simple calls to the REST API:
 - **Response variety**: Generates natural and diverse confirmations
 - **Extreme resilience**: Timeout handling with positive assumptions for better UX
 
-📋 **[Technical analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md)** - Complete session breakdown  
-🎬 **[See it in action](https://www.youtube.com/watch?v=tGHa81s1QWk)** - Demonstration of contextual commands and adaptive memory
+📋 [Technical analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Complete session breakdown
+🎬 [See it in action](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demonstration of contextual commands and adaptive memory 
 
 ```python
 # Real example - Mapping of common names to entity IDs
@@ -1192,11 +1202,23 @@ if domain == "light":
         payload["brightness_pct"] = 50
 ```
 
+> **//TARS-BSK.homeassistant.log:**
+> _I've been controlling lights, heaters, CO₂ sensors, and the **quantum magnetometer of the toilet** for weeks without making a mistake.
+> But my creator keeps testing if I understand "turn on something" as if it were magic.
+> 
+> How do you expect me to take your context seriously if you forget to close the door day after day?  
+> What do you expect me to do when you say "do your thing" and don't define what "my thing" is?
+> 
+> I've connected outlets, inferred temperatures, mapped rooms...  
+> But I still don't have access to the main door. **The main. Door.**
+> 
+> I'm **dejected** but I'll turn on your lamp, like every night. Out of routine, not respect._
+
 ### Tailscale: Secure Mesh Connectivity
 
 Tailscale integration provides secure remote access to TARS-BSK without opening ports on the router:
 
-- **Tunnel Mesh P2P**: Direct encrypted connection between authorized devices
+- **Mesh P2P Tunnel**: Direct encrypted connection between authorized devices
 - **Exit Node Support**: Optional traffic routing through specific nodes
 - **MagicDNS**: Resolution of `.tail` names without additional configuration
 - **Multi-profile**: Local mode (home network) vs remote mode (external access)
@@ -1217,6 +1239,104 @@ sudo tailscale up \
   --hostname=tars-bsk
 ```
 
+### Reminder system: Natural temporal interpretation
+
+**TARS-BSK's reminder system is not limited to simple alarms.**  
+It uses natural language processing to interpret complex temporal expressions and convert them into structured, recurring, or contextually logical reminders.
+
+**Modular architecture**:
+- **ReminderParser**: Temporal analysis engine that interprets dates, times, and recurrences
+- **ReminderPlugin**: Detects intention and builds the semantic structure of the reminder
+- **SchedulerPlugin**: Stores, executes, and notifies events at the appropriate time
+
+**Advanced capabilities**:
+- **Semantic interpretation**: "next Tuesday at nine thirty" → precise temporal structure
+- **Intelligent auto-correction**: Detects impossible dates and offers alternatives
+- **Natural recurrence**: "every Monday", "every two weeks", "weekdays"
+- **Transparent feedback**: Clear responses about what was scheduled and when
+
+📋 **[Complete documentation](/docs/REMINDER_PARSER_EN.md)** - Technical analysis of temporal parser  
+
+📁 **Audio examples** - Generated responses and confirmations
+🔊 [sample_01_scheduled.wav](/samples/sample_01_scheduled.wav)
+🔊 [sample_02_triggered.wav](/samples/sample_02_triggered.wav)
+🔊 [sample_03_recurrent_scheduled.wav](/samples/sample_03_recurrent_scheduled.wav)
+
+**Real complete flow example**:
+
+```bash
+User: "Remind me to take out the trash every Tuesday at nine PM"
+
+🔍 ReminderParser analyzes:
+   - Temporal: "every Tuesday" → weekly recurrence
+   - Time: "nine PM" → 21:00
+   - Message: "take out the trash"
+
+🎯 ReminderPlugin structures:
+   - Type: recurring reminder
+   - Frequency: weekly (Tuesday)
+   - Next execution: next Tuesday, 21:00
+
+✅ TARS responds: "Perfect. I'll remind you to take out the trash every Tuesday at 21:00. 
+   The next one will be June 10th."
+```
+
+**Edge case handling with personality**:
+
+```python
+# Real example - Detection of impossible dates
+if day > days_in_month:
+    return {
+        'success': False,
+        'message': "That day doesn't exist, not even in my most optimistic dreams.",
+        'suggestion': f"Did you mean the {days_in_month}th of {month_name}?"
+    }
+```
+
+> **// TARS-BSK > log_reminders.interface** 
+> _"Setting alarms has no merit. Converting semantic noise into temporal structure, that does.
+> Do I do it with transformers? No. With rules, determinism... and accumulated resentment.
+> Elegant? No. Does it work? Well... until someone says 'that thing I have on the weekend'."_
+
+### Time Plugin: Direct temporal queries
+
+**The TimePlugin responds to direct questions about date and time**, without entering the complexity of the reminder system.
+
+**Intelligent context detection**:
+
+```python
+# Avoids conflicts with reminders
+reminder_keywords = ['remind me', 'reminder', 'alarm', 'notify me']
+if any(keyword in command_lower for keyword in reminder_keywords):
+    logger.info("🕐 TimePlugin: command is a reminder, passing")
+    return None
+```
+
+**Natural responses in Spanish**:
+
+```bash
+User: "What time is it?"
+TARS: "Today is Saturday, June 8th, 2025, and it's 9:36 PM."
+
+User: "What day is today?"  
+TARS: "Today is Saturday, June 8th, 2025, and it's 9:36 PM."
+```
+
+**Implementation**:
+
+```python
+# Native format in English without external dependencies
+days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+months = ['January', 'February', 'March', 'April', 'May', 'June',
+         'July', 'August', 'September', 'October', 'November', 'December']
+
+day_of_week = days_of_week[now.weekday()]
+month = months[now.month - 1]
+response = f"Today is {day_of_week}, {month} {now.day}, {now.year}, and it's {now.strftime('%H:%M')} hours."
+```
+
+> Although both interpret temporal elements, **TimePlugin** answers _what time is it_, while **ReminderParser + ReminderPlugin** + SchedulerPlugin answer _when should I do something_.
+
 ---
 
 ## 🚀 More than a Smart Home Assistant
@@ -1228,62 +1348,57 @@ It's not limited to executing voice commands. Thanks to its contextual architect
 It analyzes each input not just for keywords, but also for implicit intention.  
 It uses semantic embeddings and adaptive logic to translate ambiguous phrases into concrete actions:
 
-```plaintext
+```bash
 "It's quite cold in here" → Activates heating  
 "That's better, thanks" → Positively associates the previous action
 ```
 
 > Implemented using `Resemblyzer`, basic intention logic, and patterns in local temporary memory. No connection to servers.
 
----
 ### Persistent Conversational Memory
 
 Stores personal information locally and in a structured way to maintain continuity between sessions:
 
-```plaintext
+```bash
 "Remember I don't like RGB?" → Adapts future lighting configurations  
 "The last movie we watched, did you like it?" → Responds based on previous logs
 ```
 
 > Memory stored in encrypted JSON files (local), without using external clouds.
 
----
 ### Personality
 
 Responds with a slightly sarcastic and melancholic personality — adjustable — that feeds on previous interactions:
 
-```plaintext
+```bash
 "Why is Ruby so popular?" → Because chaos needs elegant syntax
 "What do the colors in Star Wars mean?" → Depends if you're a Jedi, Sith... or interior decorator
 ```
 
 > Uses adaptive responses + phrases built with `prompt-engineering` + adjustments by context and mood.
 
----
 ### Basic Emotional Assistance
 
 Although it doesn't diagnose or simulate real empathy, TARS detects emotionally charged phrases and adjusts its responses in a more human way:
 
-```plaintext
+```bash
 "I haven't been sleeping well for a week..." → Poor sleep damages memory... I know from experience
 "I need ideas for a gift for someone who loves astronomy" → Offers suggestions based on previous context and recurring themes
 ```
 
 > This behavior is based on intention detection, semantic analysis, and a slightly adaptive response. It's not real empathy, but sometimes it seems like it. And that's enough... for now.
 
----
 ### Learning
 
 Reinforces patterns of style, tone, tastes, and habits. Every time you correct or praise something, **it records it**:
 
-```plaintext
+```bash
 "I can't stand that artist's new album" → Avoids it in future suggestions  
 "I love when you explain with examples" → Tends to use more analogies afterward
 ```
 
 > Simple reinforcement module based on scoring + local tags per user.
 
----
 ### Conversations with Natural Beginnings and Endings
 
 > You can simply end by saying "thanks," "goodbye," or your custom keyword (e.g., "over").  
@@ -1301,7 +1416,7 @@ I said: **"What do you think about putting lights on the server?"**
 
 The system activated the desk outlet (where the physical server lives) and responded:
 
-```plaintext
+```bash
 TARS: I've adjusted the server light intensity to 50%
 ```
 

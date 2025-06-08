@@ -1,0 +1,426 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-07 17:33:23,266 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-07 17:33:25,952 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-07 17:33:25,952 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-07 17:33:25,952 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-07 17:33:26,173 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 33.87it/s]
+2025-06-07 17:33:26,207 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-07 17:33:26,207 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-07 17:33:26,210 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-07 17:33:26,212 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-07 17:33:26,212 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-07 17:33:26,212 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-07 17:33:26,212 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-07 17:33:26,212 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-07 17:33:26,215 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 12 temas, 8 patrones, 9 keywords
+2025-06-07 17:33:26,217 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-07 17:33:26,218 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-07 17:33:26,218 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-07 17:33:26,219 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-07 17:33:26,219 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-07 17:33:26,220 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-07 17:33:26,220 - TARS - INFO - Detector de intenciones inicializado
+2025-06-07 17:33:26,220 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-07 17:33:26,226 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-07 17:33:26,226 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-07 17:33:26,227 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-06-07 17:33:26,227 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-06-07 17:33:26,227 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-07 17:33:26,362 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-07 17:33:26,363 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-07 17:33:26,363 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-07 17:33:26,363 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-07 17:33:26,363 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-07 17:33:26,363 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:33:26,363 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-07 17:33:26,363 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-07 17:33:26,363 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-07 17:33:26,363 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-07 17:33:26,363 - TARS.SchedulerPlugin - INFO - 📂 Cargados 40 trabajos existentes
+2025-06-07 17:33:26,364 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-07 17:33:26,364 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-07 17:33:26,364 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-07 17:33:26,364 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-07 17:33:26,364 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin NOCTUA inicializado
+2025-06-07 17:33:26,364 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-07 17:33:26,364 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-07 17:33:26,364 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-07 17:33:26,365 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-07 17:33:26,375 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-07 17:33:26,375 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-07 17:33:26,375 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-07 17:33:26,375 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-07 17:33:26,375 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-07 17:33:26,375 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-07 17:33:26,376 - TARS.SchedulerPlugin - INFO - 📂 Cargados 40 trabajos existentes
+2025-06-07 17:33:26,376 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-07 17:33:26,376 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-07 17:33:26,376 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: revisión del coche el catorce a las nueve y media en el taller
+2025-06-07 17:33:45,453 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'revisión del coche el catorce a las nueve y media en el taller'
+2025-06-07 17:33:45,453 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:33:45,453 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:33:45,453 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'revisión del coche el catorce a las nueve y media en el taller'
+2025-06-07 17:33:45,453 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-07 17:33:45,453 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:33:45,453 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:33:45,454 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'revisión del coche el catorce a las nueve y media en el taller'
+2025-06-07 17:33:45,458 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-07 17:33:45,458 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-07 17:33:45,458 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'revisión del coche el catorce a las nueve y media en el taller'
+2025-06-07 17:33:45,458 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-07 17:33:45,459 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-07 17:33:45,459 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-07 17:33:45,459 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-07 17:33:45,459 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='revisión del coche el catorce a las nueve y media en el taller'
+🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.'
+🔍 DEBUG: emotion_response='Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-06-07 17:33:45,471 - TARS - INFO - ✅ Análisis completo en 0.01s
+2025-06-07 17:33:45,471 - TARS - INFO - 🌀 Emoción activada (sarcasmo): Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.
+2025-06-07 17:33:45,471 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.'
+2025-06-07 17:33:45,471 - TARS.TTS - INFO - 🗣️ Generando voz: 'Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.'
+2025-06-07 17:33:47,192 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:33:47,247 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.055s
+2025-06-07 17:33:55,172 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-07 17:33:56,174 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-07 17:33:56,175 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-07 17:33:56,175 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-07 17:33:56,175 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-07 17:33:56,175 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+TARS: Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.
+Tú: ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller
+2025-06-07 17:33:57,779 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,780 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:33:57,780 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:33:57,780 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,780 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:33:57,780 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:33:57,780 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:33:57,780 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,790 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 70%)
+2025-06-07 17:33:57,794 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:33:57,794 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,794 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:33:57,795 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:33:57,795 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,795 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,795 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,796 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller' → 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,796 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,796 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'ponme 1 recordatorio para la revisión del coche el 15 a las 9:30 en el taller'
+2025-06-07 17:33:57,796 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'ponme 1 recordatorio para la revisión del coche el 15 a las 9:30 en el taller'
+2025-06-07 17:33:57,833 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:33:57,833 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:33:57,837 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ TODAS_las_estrategias_fallaron
+2025-06-07 17:33:57,837 - TARS.ReminderParser - WARNING - No se pudo detectar fecha futura válida: 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,837 - TARS.ReminderParser - WARNING - No se pudo parsear: 'ponme un recordatorio para la revisión del coche el quince a las nueve y media en el taller'
+2025-06-07 17:33:57,838 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:33:57,838 - TARS - INFO - 🔌 Comando procesado por plugin: Veo que quieres crear un recor...
+2025-06-07 17:33:57,838 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Veo que quieres crear un recordatorio para revisión del coche el quince a las nueve y media en el taller, pero necesito más información.'
+2025-06-07 17:33:57,838 - TARS.TTS - INFO - 🗣️ Generando voz: 'Veo que quieres crear un recordatorio para revisión del coche el quince a las nueve y media en el taller, pero necesito más información.'
+2025-06-07 17:33:59,577 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:33:59,629 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.051s
+2025-06-07 17:34:07,426 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Veo que quieres crear un recordatorio para revisión del coche el quince a las nueve y media en el taller, pero necesito más información.
+Tú: ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller
+2025-06-07 17:34:10,039 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,039 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:34:10,039 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:34:10,039 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,039 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:34:10,039 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:34:10,039 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:34:10,039 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,040 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 95%)
+2025-06-07 17:34:10,040 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:34:10,040 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,040 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:34:10,040 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:34:10,040 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,040 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,041 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,041 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller' → 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,041 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,041 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'ponme 1 recordatorio para la revisión del coche el 7 de junio a las 9:30 en el taller'
+2025-06-07 17:34:10,041 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'ponme 1 recordatorio para la revisión del coche el 7 de junio a las 9:30 en el taller'
+2025-06-07 17:34:10,045 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:34:10,045 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_especifica_funciono = 2026-06-07 09:30:00
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para la revisión del coche el siete de junio a las nueve y media en el taller'
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2026-06-07 09:30:00
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🔍 DEBUG: Fecha con año actual sería: 2025-06-07 09:30:00
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🔍 DEBUG: ¿Estaría en el pasado? False
+2025-06-07 17:34:10,046 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:34:10,053 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0040 - Para la revisión del coche el siete de junio a las nueve y media en el taller
+2025-06-07 17:34:10,053 - TARS.ReminderPlugin - INFO - ✅ Recordatorio creado: revisión del coche el siete de junio a las nueve y media en el taller
+2025-06-07 17:34:10,054 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:34:10,054 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'revi...
+2025-06-07 17:34:10,054 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'revisión del coche el siete de junio a las nueve y media en el taller' para el domingo 7 de junio a las 09:30'
+2025-06-07 17:34:10,054 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'revisión del coche el siete de junio a las nueve y media en el taller' para el domingo 7 de junio a las 09:30'
+2025-06-07 17:34:11,784 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:34:11,836 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.052s
+2025-06-07 17:34:19,631 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'revisión del coche el siete de junio a las nueve y media en el taller' para el domingo 7 de junio a las 09:30
+Tú: recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller
+2025-06-07 17:34:26,745 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,745 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:34:26,745 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:34:26,745 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,745 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:34:26,745 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:34:26,745 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:34:26,745 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,746 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 95%)
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller' → 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,746 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,747 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'recuérdame limpiar el coche el 27 de junio a las 9:30 en el taller'
+2025-06-07 17:34:26,747 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'recuérdame limpiar el coche el 27 de junio a las 9:30 en el taller'
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_especifica_funciono = 2025-06-27 09:30:00
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame limpiar el coche el veintisiete de junio a las nueve y media en el taller'
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2025-06-27 09:30:00
+2025-06-07 17:34:26,750 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:34:26,752 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0041 - Limpiar el coche el veintisiete de junio a las nueve y media en el taller
+2025-06-07 17:34:26,752 - TARS.ReminderPlugin - INFO - ✅ Recordatorio creado: limpiar el coche el veintisiete de junio a las nueve y media en el taller
+2025-06-07 17:34:26,752 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:34:26,752 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'Limp...
+2025-06-07 17:34:26,752 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'Limpiar el coche el veintisiete de junio a las nueve y media en el taller' para el viernes 27 de junio a las 09:30'
+2025-06-07 17:34:26,752 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'Limpiar el coche el veintisiete de junio a las nueve y media en el taller' para el viernes 27 de junio a las 09:30'
+2025-06-07 17:34:28,620 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:34:28,676 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.055s
+2025-06-07 17:34:37,103 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'Limpiar el coche el veintisiete de junio a las nueve y media en el taller' para el viernes 27 de junio a las 09:30
+Tú: pon para pasado mañana que tengo que desbrozar
+2025-06-07 17:34:39,791 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'pon para pasado mañana que tengo que desbrozar'
+2025-06-07 17:34:39,791 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:34:39,791 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:34:39,791 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'pon para pasado mañana que tengo que desbrozar'
+2025-06-07 17:34:39,791 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-07 17:34:39,791 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:34:39,791 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:34:39,791 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'pon para pasado mañana que tengo que desbrozar'
+2025-06-07 17:34:39,793 - TARS.ReminderPlugin - INFO - 🔍 Detectada intención débil de recordatorio
+2025-06-07 17:34:39,793 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:34:39,793 - TARS - INFO - 🔌 Comando procesado por plugin: Veo que mencionas desbrozar, p...
+2025-06-07 17:34:39,793 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Veo que mencionas desbrozar, pero necesito más información para crear el recordatorio.'
+2025-06-07 17:34:39,793 - TARS.TTS - INFO - 🗣️ Generando voz: 'Veo que mencionas desbrozar, pero necesito más información para crear el recordatorio.'
+2025-06-07 17:34:41,134 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:34:41,166 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.032s
+2025-06-07 17:34:46,080 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Veo que mencionas desbrozar, pero necesito más información para crear el recordatorio.
+Tú: recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media
+2025-06-07 17:34:49,622 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media'
+2025-06-07 17:34:49,623 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:34:49,623 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:34:49,623 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media'
+2025-06-07 17:34:49,623 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:34:49,623 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:34:49,623 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:34:49,623 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media'
+2025-06-07 17:34:49,624 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 70%)
+2025-06-07 17:34:49,624 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:34:49,624 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media'
+2025-06-07 17:34:49,624 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:34:49,624 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:34:49,624 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media'
+2025-06-07 17:34:49,624 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'recuérdame cambiar el aceite del coche el diez de junio a las nueve y media'
+2025-06-07 17:34:49,625 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'recuérdame cambiar el aceite del coche el diez de junio a las nueve y media'
+2025-06-07 17:34:49,625 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'recuérdame cambiar el aceite del coche el diez de junio a las nueve y media' → 'recuérdame cambiar el aceite del coche el diez de junio a las nueve y media'
+2025-06-07 17:34:49,625 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'recuérdame cambiar el aceite del coche el diez de junio a las nueve y media'
+2025-06-07 17:34:49,625 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'recuérdame cambiar el aceite del coche el 10 de junio a las nueve :30'
+2025-06-07 17:34:49,625 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'recuérdame cambiar el aceite del coche el 10 de junio a las nueve :30'
+2025-06-07 17:34:49,628 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:34:49,629 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:34:49,629 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_especifica_funciono = 2025-06-10 09:00:00
+2025-06-07 17:34:49,629 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:34:49,629 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame cambiar el aceite del coche el diez de este mes a las nueve y media'
+2025-06-07 17:34:49,629 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2025-06-10 09:00:00
+2025-06-07 17:34:49,629 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:34:49,633 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0042 - Cambiar el aceite del coche el diez de este mes a las nueve y media
+2025-06-07 17:34:49,633 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:34:49,633 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'Camb...
+2025-06-07 17:34:49,633 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'Cambiar el aceite del coche el diez de este mes a las nueve y media' para el martes 10 de junio a las 09:00'
+2025-06-07 17:34:49,633 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'Cambiar el aceite del coche el diez de este mes a las nueve y media' para el martes 10 de junio a las 09:00'
+2025-06-07 17:34:51,409 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:34:51,462 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.053s
+2025-06-07 17:34:59,382 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'Cambiar el aceite del coche el diez de este mes a las nueve y media' para el martes 10 de junio a las 09:00
+Tú: recuérdame cambiar el aceite del coche el treinta y ocho de junio a las nueve y media
+2025-06-07 17:35:02,072 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'recuérdame cambiar el aceite del coche el treinta y ocho de junio a las nueve y media'
+2025-06-07 17:35:02,072 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:35:02,072 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:35:02,072 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'recuérdame cambiar el aceite del coche el treinta y ocho de junio a las nueve y media'
+2025-06-07 17:35:02,072 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:35:02,072 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:35:02,072 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:35:02,072 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'recuérdame cambiar el aceite del coche el treinta y ocho de junio a las nueve y media'
+2025-06-07 17:35:02,073 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 70%)
+2025-06-07 17:35:02,073 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:02,073 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame cambiar el aceite del coche el treinta y ocho de junio a las nueve y media'
+2025-06-07 17:35:02,073 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:35:02,073 - TARS.ReminderParser - INFO - 🔍 DEBUG: CASO 2 activado - fecha imposible
+2025-06-07 17:35:02,073 - TARS.ReminderParser - INFO - Feedback especial retornado: Ese día no existe ni en mis sueños más optimistas.
+2025-06-07 17:35:02,073 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:35:02,073 - TARS - INFO - 🔌 Comando procesado por plugin: Ese día no existe ni en mis su...
+2025-06-07 17:35:02,073 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Ese día no existe ni en mis sueños más optimistas.'
+2025-06-07 17:35:02,073 - TARS.TTS - INFO - 🗣️ Generando voz: 'Ese día no existe ni en mis sueños más optimistas.'
+2025-06-07 17:35:03,122 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:35:03,152 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.030s
+2025-06-07 17:35:06,698 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Ese día no existe ni en mis sueños más optimistas.
+Tú: ponme un recordatorio para cambiar las ruedas del coche el uno de junio
+2025-06-07 17:35:09,863 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,863 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:35:09,863 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:35:09,864 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,864 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:35:09,864 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:35:09,864 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:35:09,864 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,864 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 70%)
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio' → 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'ponme 1 recordatorio para cambiar las ruedas del coche el 1 de junio'
+2025-06-07 17:35:09,865 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'ponme 1 recordatorio para cambiar las ruedas del coche el 1 de junio'
+2025-06-07 17:35:09,869 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:35:09,869 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:35:09,870 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_especifica_funciono = 2026-06-01 09:00:00
+2025-06-07 17:35:09,870 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:09,870 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para cambiar las ruedas del coche el uno de junio'
+2025-06-07 17:35:09,870 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2026-06-01 09:00:00
+2025-06-07 17:35:09,870 - TARS.ReminderParser - INFO - 🔍 DEBUG: Fecha con año actual sería: 2025-06-01 09:00:00
+2025-06-07 17:35:09,870 - TARS.ReminderParser - INFO - 🔍 DEBUG: ¿Estaría en el pasado? True
+2025-06-07 17:35:09,871 - TARS.ReminderParser - INFO - 🔍 DEBUG: CASO 1A activado - fecha pasada (año 2026 bug)
+2025-06-07 17:35:09,871 - TARS.ReminderParser - INFO - Feedback especial retornado: Esa fecha ya pasó. La programé para 2026, de nada. Siempre puedes eliminar la entrada, pero ahí se queda de momento.
+2025-06-07 17:35:09,871 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:35:09,871 - TARS - INFO - 🔌 Comando procesado por plugin: Esa fecha ya pasó. La programé...
+2025-06-07 17:35:09,871 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Esa fecha ya pasó. La programé para 2026, de nada. Siempre puedes eliminar la entrada, pero ahí se queda de momento.'
+2025-06-07 17:35:09,871 - TARS.TTS - INFO - 🗣️ Generando voz: 'Esa fecha ya pasó. La programé para 2026, de nada. Siempre puedes eliminar la entrada, pero ahí se queda de momento.'
+2025-06-07 17:35:11,572 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:35:11,623 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.051s
+2025-06-07 17:35:19,295 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Esa fecha ya pasó. La programé para 2026, de nada. Siempre puedes eliminar la entrada, pero ahí se queda de momento.
+Tú: ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho
+2025-06-07 17:35:22,042 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,043 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:35:22,043 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:35:22,043 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,043 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:35:22,043 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:35:22,043 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:35:22,043 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,044 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 85%)
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho' → 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,044 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,045 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'ponme 1 recordatorio para cambiar las ruedas del coche para el martes que viene a las 8'
+2025-06-07 17:35:22,045 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'ponme 1 recordatorio para cambiar las ruedas del coche para el martes que viene a las 8'
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🗓️ Fecha calculada para 'martes que viene': 2025-06-17 08:00:00
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_dia_semana_relativo_funciono = 2025-06-17 08:00:00
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_relativa_funciono = 2025-06-17 08:00:00
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='ponme un recordatorio para cambiar las ruedas del coche para el martes que viene a las ocho'
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2025-06-17 08:00:00
+2025-06-07 17:35:22,051 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:35:22,053 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0043 - Para cambiar las ruedas del coche para el martes que viene a las ocho
+2025-06-07 17:35:22,053 - TARS.ReminderPlugin - INFO - ✅ Recordatorio creado: cambiar las ruedas del coche para el martes que viene a las ocho
+2025-06-07 17:35:22,053 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:35:22,053 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'camb...
+2025-06-07 17:35:22,053 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'cambiar las ruedas del coche para el martes que viene a las ocho' para el martes 17 de junio a las 08:00'
+2025-06-07 17:35:22,053 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'cambiar las ruedas del coche para el martes que viene a las ocho' para el martes 17 de junio a las 08:00'
+2025-06-07 17:35:23,832 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:35:23,888 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.056s
+2025-06-07 17:35:32,236 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'cambiar las ruedas del coche para el martes que viene a las ocho' para el martes 17 de junio a las 08:00
+Tú: recuérdame tomar vitaminas mañana a las ocho
+2025-06-07 17:35:34,624 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,624 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:35:34,625 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:35:34,625 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,625 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:35:34,625 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:35:34,625 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:35:34,625 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,626 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 95%)
+2025-06-07 17:35:34,626 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,627 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'recuérdame tomar vitaminas mañana a las ocho' → 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,628 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,628 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'recuérdame tomar vitaminas mañana a las 8'
+2025-06-07 17:35:34,628 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'recuérdame tomar vitaminas mañana a las 8'
+2025-06-07 17:35:34,630 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-07 17:35:34,631 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-07 17:35:34,631 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_relativa_funciono = 2025-06-08 08:00:00
+2025-06-07 17:35:34,631 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-07 17:35:34,631 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame tomar vitaminas mañana a las ocho'
+2025-06-07 17:35:34,631 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2025-06-08 08:00:00
+2025-06-07 17:35:34,631 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-07 17:35:34,633 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0044 - Tomar vitaminas a las ocho
+2025-06-07 17:35:34,633 - TARS.ReminderPlugin - INFO - ✅ Recordatorio creado: tomar vitaminas mañana a las ocho
+2025-06-07 17:35:34,633 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:35:34,633 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'Toma...
+2025-06-07 17:35:34,633 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'Tomar vitaminas a las ocho' para el domingo 8 de junio a las 08:00'
+2025-06-07 17:35:34,634 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'Tomar vitaminas a las ocho' para el domingo 8 de junio a las 08:00'
+2025-06-07 17:35:36,146 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:35:36,186 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.040s
+2025-06-07 17:35:42,226 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'Tomar vitaminas a las ocho' para el domingo 8 de junio a las 08:00
+Tú: recuérdame tomar vitaminas todos los días a las ocho
+2025-06-07 17:35:48,105 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'recuérdame tomar vitaminas todos los días a las ocho'
+2025-06-07 17:35:48,105 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-07 17:35:48,105 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-07 17:35:48,105 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'recuérdame tomar vitaminas todos los días a las ocho'
+2025-06-07 17:35:48,105 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-07 17:35:48,105 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-07 17:35:48,105 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-07 17:35:48,105 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'recuérdame tomar vitaminas todos los días a las ocho'
+2025-06-07 17:35:48,106 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 70%)
+2025-06-07 17:35:48,112 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0045 - Tomar vitaminas
+2025-06-07 17:35:48,112 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-07 17:35:48,112 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio recurrente progra...
+2025-06-07 17:35:48,112 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio recurrente programado: 'Tomar vitaminas' Todos los días a las 08:00'
+2025-06-07 17:35:48,112 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio recurrente programado: 'Tomar vitaminas' Todos los días a las 08:00'
+2025-06-07 17:35:49,473 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-07 17:35:49,507 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.034s
+2025-06-07 17:35:54,815 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio recurrente programado: 'Tomar vitaminas' Todos los días a las 08:00
+Tú:
