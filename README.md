@@ -1157,6 +1157,7 @@ La integración con Home Assistant va mucho más allá de simples llamadas a la 
 - **Resiliencia extrema**: Timeout handling con positive assumptions para mejor UX
 
 📋 [Análisis técnico](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md) - Breakdown completo de la sesión
+
 🎬 [Ver en acción](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demostración de comandos contextuales y memoria adaptativa 
 
 ```python
@@ -1249,9 +1250,12 @@ Utiliza procesamiento de lenguaje natural para interpretar expresiones temporale
 📋 **[Documentación completa](/docs/REMINDER_PARSER_ES.md)** - Análisis técnico del parser temporal  
 
 📁 **Ejemplos de audio** - Respuestas generadas y confirmaciones
+
 🔊 [sample_01_scheduled.wav](/samples/sample_01_scheduled.wav)
+
 🔊 [sample_02_triggered.wav](/samples/sample_02_triggered.wav)
-🔊 [sample_03_recurrente_programado.wav](/samples/sample_03_recurrente_programado.wav)
+
+🔊 [sample_03_recurrent_programmed.wav](/samples/sample_03_recurrent_programmed.wav)
 
 **Ejemplo real de flujo completo**:
 

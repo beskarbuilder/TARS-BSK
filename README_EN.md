@@ -1166,6 +1166,7 @@ Integration with Home Assistant goes far beyond simple calls to the REST API:
 - **Extreme resilience**: Timeout handling with positive assumptions for better UX
 
 📋 [Technical analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Complete session breakdown
+
 🎬 [See it in action](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demonstration of contextual commands and adaptive memory 
 
 ```python
@@ -1258,9 +1259,12 @@ It uses natural language processing to interpret complex temporal expressions an
 📋 **[Complete documentation](/docs/REMINDER_PARSER_EN.md)** - Technical analysis of temporal parser  
 
 📁 **Audio examples** - Generated responses and confirmations
+
 🔊 [sample_01_scheduled.wav](/samples/sample_01_scheduled.wav)
+
 🔊 [sample_02_triggered.wav](/samples/sample_02_triggered.wav)
-🔊 [sample_03_recurrent_scheduled.wav](/samples/sample_03_recurrent_scheduled.wav)
+
+🔊 [sample_03_recurrent_programmed.wav](/samples/sample_03_recurrent_programmed.wav)
 
 **Real complete flow example**:
 
