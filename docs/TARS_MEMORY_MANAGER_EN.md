@@ -2,6 +2,9 @@
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![SQLite](https://img.shields.io/badge/SQLite-3.0+-green) ![Memory](https://img.shields.io/badge/memory-dual%20hybrid-purple) ![Synthesis](https://img.shields.io/badge/synthesis-automatic-orange)
 
+💥 If this English feels unstable but oddly self-aware...  
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+
 ### ⚠️ EXISTENTIAL WARNING FROM TARS-BSK:
 
 > My memory is like a cold case file archive: everything's there, categorized, tagged, and occasionally I surprise myself with what I remember.

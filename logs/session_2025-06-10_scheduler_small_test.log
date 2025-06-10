@@ -1,0 +1,146 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-10 20:05:33,010 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-10 20:05:37,246 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-10 20:05:37,247 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-10 20:05:37,247 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-10 20:05:37,585 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 32.81it/s]
+2025-06-10 20:05:37,619 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-10 20:05:37,619 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-10 20:05:37,624 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-10 20:05:37,626 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-10 20:05:37,626 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-10 20:05:37,626 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-10 20:05:37,626 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-10 20:05:37,626 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-10 20:05:37,630 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-10 20:05:37,632 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-10 20:05:37,634 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-10 20:05:37,634 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-10 20:05:37,635 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-10 20:05:37,635 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-10 20:05:37,636 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-10 20:05:37,636 - TARS - INFO - Detector de intenciones inicializado
+2025-06-10 20:05:37,636 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-10 20:05:37,639 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-10 20:05:37,639 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-10 20:05:37,640 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-06-10 20:05:37,640 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-06-10 20:05:37,640 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-10 20:05:37,792 - TARS - INFO - ✅ Modelo cargado en 0.15 segundos
+2025-06-10 20:05:37,792 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-10 20:05:37,793 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-10 20:05:37,793 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-10 20:05:37,793 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-10 20:05:37,793 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-10 20:05:37,793 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-10 20:05:37,793 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-10 20:05:37,793 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-10 20:05:37,793 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-10 20:05:37,794 - TARS.SchedulerPlugin - INFO - 📂 Cargados 71 trabajos existentes
+2025-06-10 20:05:37,794 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-10 20:05:37,794 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-10 20:05:37,794 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-10 20:05:37,794 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-10 20:05:37,794 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-10 20:05:37,794 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-10 20:05:37,795 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-10 20:05:37,795 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-10 20:05:37,796 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-10 20:05:37,812 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-10 20:05:37,812 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-10 20:05:37,812 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-10 20:05:37,813 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-10 20:05:37,813 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-10 20:05:37,813 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-10 20:05:37,813 - TARS.SchedulerPlugin - INFO - 📂 Cargados 71 trabajos existentes
+2025-06-10 20:05:37,813 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-10 20:05:37,813 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-10 20:05:37,813 - TARS - INFO - ✅ TARS inicializado en 0.17 segundos
+¿Usar entrada por voz? (S): s
+
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=13 max-active=7000 lattice-beam=6
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:279) Loading HCLG from ai_models/vosk/model/graph/HCLG.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:297) Loading words from ai_models/vosk/model/graph/words.txt
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+LOG (VoskAPI:ReadDataFiles():model.cc:315) Loading subtract G.fst model from ai_models/vosk/model/rescore/G.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:317) Loading CARPA model from ai_models/vosk/model/rescore/G.carpa
+LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vosk/model/rnnlm/final.raw
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Configurado resampling de 44100Hz a 16000Hz
+2025-06-10 20:06:04,851 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🗣️ Escuchado: tags
+🔥 Wakeword detectada por coincidencia difusa
+2025-06-10 20:06:10,233 - TARS - INFO - 🔍 Identificación de hablante preparada pero no implementada en esta fase
+2025-06-10 20:06:10,234 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Sí, dime.'
+2025-06-10 20:06:10,234 - TARS.TTS - INFO - 🗣️ Generando voz: 'Sí, dime.'
+2025-06-10 20:06:10,898 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-10 20:06:10,906 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.008s
+2025-06-10 20:06:12,103 - TARS.TTS - INFO - 🔊 Reproducción completada
+⏱️ Wakeword reconocida en 3.77s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro' (confianza: 1.00)
+🗣️ Entendido: recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro
+🧠 Procesando: recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro
+2025-06-10 20:06:22,607 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,607 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-10 20:06:22,607 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-10 20:06:22,607 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,607 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando es un recordatorio, pasando
+2025-06-10 20:06:22,607 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-10 20:06:22,607 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-10 20:06:22,607 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,614 - TARS.ReminderPlugin - INFO - 🎯 Intención detectada: crear_recordatorio (confianza: 95%)
+2025-06-10 20:06:22,616 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-10 20:06:22,616 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,616 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=None
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🐛 DEBUG TOTAL: texto_original = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_este_mes = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🧹 DEBUG: limpieza_dia_recibio = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🧹 DEBUG: resultado_final = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro' → 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_limpiar_dia = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🐛 DEBUG: despues_normalizar = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las 4'
+2025-06-10 20:06:22,617 - TARS.ReminderParser - INFO - 🐛 DEBUG: llamando_dateparser_con = 'recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las 4'
+2025-06-10 20:06:22,644 - TARS.ReminderParser - INFO - 🐛 DEBUG: dateparser_retorno = None
+2025-06-10 20:06:22,645 - TARS.ReminderParser - INFO - 🐛 DEBUG: ❌ dateparser_fallo, probando_alternativas
+2025-06-10 20:06:22,647 - TARS.ReminderParser - INFO - 🐛 DEBUG: ✅ estrategia_relativa_funciono = 2025-06-11 04:00:00
+2025-06-10 20:06:22,647 - TARS.ReminderParser - INFO - 🔍 DEBUG: _check_special_date_cases llamado
+2025-06-10 20:06:22,647 - TARS.ReminderParser - INFO - 🔍 DEBUG: texto='recuérdame escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro'
+2025-06-10 20:06:22,647 - TARS.ReminderParser - INFO - 🔍 DEBUG: fecha_detectada=2025-06-11 04:00:00
+2025-06-10 20:06:22,647 - TARS.ReminderParser - INFO - 🔍 DEBUG: Ningún caso especial detectado
+2025-06-10 20:06:22,652 - TARS.SchedulerPlugin - INFO - ✅ Trabajo añadido: job_0071 - Escuchar si el disco duro externo susurra secretos cuando nadie mira a las cuatro
+2025-06-10 20:06:22,652 - TARS.ReminderPlugin - INFO - ✅ Recordatorio creado: escuchar si el disco duro externo susurra secretos cuando nadie mira mañana a las cuatro
+2025-06-10 20:06:22,653 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ✅ Comando procesado
+2025-06-10 20:06:22,653 - TARS - INFO - 🔌 Comando procesado por plugin: Recordatorio programado: 'Escu...
+2025-06-10 20:06:22,653 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Recordatorio programado: 'Escuchar si el disco duro externo susurra secretos cuando nadie mira a las cuatro' para el miércoles 11 de junio a las 04:00'
+2025-06-10 20:06:22,653 - TARS.TTS - INFO - 🗣️ Generando voz: 'Recordatorio programado: 'Escuchar si el disco duro externo susurra secretos cuando nadie mira a las cuatro' para el miércoles 11 de junio a las 04:00'
+2025-06-10 20:06:24,880 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-10 20:06:24,944 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.065s
+2025-06-10 20:06:34,782 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Recordatorio programado: 'Escuchar si el disco duro externo susurra secretos cuando nadie mira a las cuatro' para el miércoles 11 de junio a las 04:00
+⏱️ Tiempo comando: 9.50s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+^C
+👋 Saliendo...

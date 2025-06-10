@@ -14,12 +14,12 @@
 
 #### Complete ecosystem documentation
 
-| Module                                            | Status         | Description                             |
-| ------------------------------------------------- | -------------- | --------------------------------------- |
-| **[ReminderParser](/docs/REMINDER_PARSER_EN.md)** | ✅ Available    | Semantic processing engine (this file)  |
-| **ReminderPlugin**                                | ✅ Available    | Voice intention interface and detection |
-| **SchedulerPlugin**                               | 🚧 Coming soon | Scheduled job execution and management  |
-| **CLI Reminder Engine**                           | 🚧 Coming soon | Silent command-line interface           |
+| Module                                              | Status         | Description                             |
+| --------------------------------------------------- | -------------- | --------------------------------------- |
+| **[ReminderParser](/docs/REMINDER_PARSER_EN.md)**   | ✅ Available    | Semantic processing engine (this file)  |
+| **ReminderPlugin**                                  | ✅ Available    | Voice intention interface and detection |
+| **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_EN.md)** | ✅ Available    | Scheduled job execution and management  |
+| **CLI Reminder Engine**                             | 🚧 Coming soon | Silent command-line interface           |
 
 ### ⚠️ CRITICAL COORDINATION WARNING:
 

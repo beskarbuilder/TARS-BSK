@@ -10,12 +10,12 @@
 
 #### Documentación del ecosistema completo
 
-| Módulo                                            | Estado          | Descripción                                     |
-| ------------------------------------------------- | --------------- | ----------------------------------------------- |
-| **[ReminderParser](/docs/REMINDER_PARSER_ES.md)** | ✅ Disponible    | Motor de procesamiento semántico (este archivo) |
-| **ReminderPlugin**                                | ✅ Disponible    | Interfaz y detección de intenciones de voz      |
-| **SchedulerPlugin**                               | 🚧 Próximamente | Ejecución y gestión de trabajos programados     |
-| **CLI Reminder Engine**                           | 🚧 Próximamente | Interfaz de línea de comandos silenciosa        |
+| Módulo                                              | Estado          | Descripción                                     |
+| --------------------------------------------------- | --------------- | ----------------------------------------------- |
+| **[ReminderParser](/docs/REMINDER_PARSER_ES.md)**   | ✅ Disponible    | Motor de procesamiento semántico (este archivo) |
+| **ReminderPlugin**                                  | ✅ Disponible    | Interfaz y detección de intenciones de voz      |
+| **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_ES.md)** | ✅ Disponible    | Ejecución y gestión de trabajos programados     |
+| **CLI Reminder Engine**                             | 🚧 Próximamente | Interfaz de línea de comandos silenciosa        |
 
 ### ⚠️ ADVERTENCIA CRÍTICA DE COORDINACIÓN:
 

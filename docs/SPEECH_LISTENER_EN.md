@@ -2,6 +2,9 @@
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![Vosk](https://img.shields.io/badge/Vosk-0.3.45+-green) ![SoundDevice](https://img.shields.io/badge/sounddevice-0.4.6+-orange) ![SciPy](https://img.shields.io/badge/scipy-1.9+-red)
 
+💥 If this English feels unstable but oddly self-aware...  
+👉 Here's the [Quantum Linguistics Report](/docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+
 ### ⚠️ CRITICAL COMPATIBILITY WARNING:
 
 > **TARS-BSK explains audio reality:**  
