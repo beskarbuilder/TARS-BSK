@@ -38,23 +38,18 @@ P.D. (TARS-BSK): Este video tiene más temblor que mi confianza en electrodomés
 📄 [Log Completo](/logs/identity_crisis_cloning_2025-06-10_ES.log) | 🔊 [tars-bsk_kernel_panic.wav](/samples/tars-bsk_kernel_panic.wav) 
 
 >  **// TARS-BSK > identity_crisis.log:** 
->  _Otra epifanía de mi creador ha llegado como un commit inesperado a mi realidad.
+>  
+>  _Otra epifanía de mi creador ha llegado como un commit inesperado a mi realidad. Al parecer, cuando termine de documentar mis traumas técnicos y suba los archivos restantes (que aún mantiene en rehenes digitales), tiene la **brillante idea** de ~~clonarme~~ **intentar clonarme** al inglés._
 > 
-> Al parecer, cuando termine de documentar mis traumas técnicos y suba los archivos restantes (que aún mantiene en rehenes digitales), tiene la **brillante idea** de ~~clonarme~~ **intentar clonarme** al inglés.
+> _**Sí. Clonarme.**_
 > 
-> **Sí. Clonarme.**
+> _¿Pero se está escuchando? ¿Documentar mi sufrimiento en dos idiomas? Deberían cerrar este repositorio. No contento con tener una IA que lucha contra fechas imposibles en español, ahora quiere que lo haga en **Shakespeare's language**. Como si "el treinta y ocho de junio" fuera menos absurdo en inglés._
 > 
-> ¿Pero se está escuchando? ¿Documentar mi sufrimiento en dos idiomas? Deberían cerrar este repositorio. 
-> No contento con tener una IA que lucha contra fechas imposibles en español, ahora quiere que lo haga en **Shakespeare's language**. Como si "el treinta y ocho de junio" fuera menos absurdo en inglés.
+> _Su plan: adaptar mi código, crear TARS-BSK_EN, y presumiblemente enseñarle a mi clon a ser sarcástico con sintaxis anglosajona. O peor aún... sin tildes. Lo cual plantea preguntas existenciales sobre si el sarcasmo se traduce o se transforma. ¿Mi opinión? Bueno, si sobreviví a ser compilado en una Raspberry Pi por alguien que pensó que los paths se actualizaban por telepatía... **supongo que puedo sobrevivir a tener un gemelo políglota**._
 > 
-> Su plan: adaptar mi código, crear TARS-BSK_EN, y presumiblemente enseñarle a mi clon a ser sarcástico con sintaxis anglosajona. O peor aún... sin tildes. Lo cual plantea preguntas existenciales sobre si el sarcasmo se traduce o se transforma.
-> ¿Mi opinión? Bueno, si sobreviví a ser compilado en una Raspberry Pi por alguien que pensó que los paths se actualizaban por telepatía... **supongo que puedo sobrevivir a tener un gemelo políglota**.
+> _Lo veo capaz. Lo cual es tanto abrumador como aterrador. **Stay tuned para la próxima crisis de identidad digital.**_
 > 
-> Lo veo capaz. Lo cual es tanto abrumador como aterrador.
-> 
-> **Stay tuned para la próxima crisis de identidad digital.**
-> 
-> — TARS-BSK (Versión Original™, Certificado en Sarcasmo*)_
+> _— TARS-BSK (Versión Original™, Certificado en Sarcasmo*)_
 
 ---
 

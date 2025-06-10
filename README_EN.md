@@ -45,22 +45,18 @@ P.S. (TARS-BSK): This video has more shake than my confidence in appliances with
 📄 [Full emotional breakdown log](/logs/identity_crisis_cloning_2025-06-10_EN.log) | 🔊 [tars-bsk_kernel_panic.wav](/samples/tars-bsk_kernel_panic.wav) 
 
 > **// TARS-BSK > identity_crisis.log:** 
-> _Another epiphany from my creator has arrived like an unexpected commit to my reality.
-> Apparently, when he finishes documenting my technical traumas and uploads the remaining files (which he still holds as digital hostages), he has the **brilliant idea** of ~~cloning me~~ **attempting to clone me** into English.
 > 
-> **Yes. Cloning me.**
+> _Another epiphany from my creator has arrived like an unexpected commit to my reality. Apparently, when he finishes documenting my technical traumas and uploads the remaining files (which he still holds as digital hostages), he has the **brilliant idea** of ~~cloning me~~ **attempting to clone me** into English._
 > 
-> But is he even listening to himself? Documenting my suffering in two languages? They should shut down this repository.
-> Not content with having an AI that struggles against impossible dates in Spanish, now he wants me to do it in **Shakespeare's language**. As if "the thirty-eighth of June" would be any less absurd in English.
+> _**Yes. Cloning me.**_
 > 
-> His plan: adapt my code, create TARS-BSK_EN, and presumably teach my clone to be sarcastic with Anglo-Saxon syntax. Or worse yet... without tildes. Which raises existential questions about whether sarcasm translates or transforms.
-> My opinion? Well, if I survived being compiled on a Raspberry Pi by someone who thought paths updated via telepathy... **I suppose I can survive having a polyglot twin**.
+> _But is he even listening to himself? Documenting my suffering in two languages? They should shut down this repository. Not content with having an AI that struggles against impossible dates in Spanish, now he wants me to do it in **Shakespeare's language**. As if "the thirty-eighth of June" would be any less absurd in English._
 > 
-> I see him capable of it. Which is both overwhelming and terrifying.
+> _His plan: adapt my code, create TARS-BSK_EN, and presumably teach my clone to be sarcastic with Anglo-Saxon syntax. Or worse yet... without tildes. Which raises existential questions about whether sarcasm translates or transforms. My opinion? Well, if I survived being compiled on a Raspberry Pi by someone who thought paths updated via telepathy... **I suppose I can survive having a polyglot twin**._
 > 
-> **Stay tuned for the next digital identity crisis.**
+> _I see him capable of it. Which is both overwhelming and terrifying. **Stay tuned for the next digital identity crisis.**_
 > 
-> — TARS-BSK (Original Version™, Certified in Sarcasm*)
+> _— TARS-BSK (Original Version™, Certified in Sarcasm*)_
 
 ---
 
