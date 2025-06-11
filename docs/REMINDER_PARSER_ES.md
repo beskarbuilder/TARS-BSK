@@ -12,12 +12,25 @@
 
 #### Documentación del ecosistema completo
 
-| Módulo                                              | Estado          | Descripción                                     |
-| --------------------------------------------------- | --------------- | ----------------------------------------------- |
-| **ReminderParser**                                  | ✅ Disponible    | Motor de procesamiento semántico (este archivo) |
-| **[ReminderPlugin](/docs/REMINDER_PLUGIN_ES.md)**   | ✅ Disponible    | Interfaz y detección de intenciones de voz      |
-| **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_ES.md)** | ✅ Disponible    | Ejecución y gestión de trabajos programados     |
-| **CLI Reminder Engine**                             | 🚧 Próximamente | Interfaz de línea de comandos silenciosa        |
+| Módulo                                                     | Estado       | Descripción                                                                                        |
+| ---------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------- |
+| **ReminderParser**                                         | ✅ Disponible | Motor de procesamiento semántico (este archivo) \| **[Module](/modules/reminder_parser.py)**       |
+| **[ReminderPlugin](/docs/REMINDER_PLUGIN_ES.md)**          | ✅ Disponible | Interfaz y detección de intenciones de voz \| **[Plugin](/services/plugins/reminder_plugin.py)**   |
+| **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_ES.md)**        | ✅ Disponible | Ejecución y gestión de trabajos programados \| **[Plugin](/services/plugins/scheduler_plugin.py)** |
+| **[CLI Reminder Engine](/docs/CLI_REMINDER_ENGINE_ES.md)** | ✅ Disponible | Interfaz de línea de comandos silenciosa \| **[Script](/scripts/cli_reminder_engine.py)**          |
+
+> **Prueba funcional del sistema de recordatorios.**
+> 
+> Se realizó una prueba completa del sistema de recordatorios en dos modos de ejecución:
+> - **Con entrada de voz**, utilizando VOSK para transcripción
+> - **Desde consola**, lanzando TARS sin entrada por voz e introduciendo manualmente las frases
+> 
+> Las frases utilizadas fueron las mismas (con leves ajustes de fechas por motivos de calendario), permitiendo comparar el comportamiento del parser, la gestión de recordatorios y la ejecución final en ambos flujos.
+>
+> Puedes consultar los logs y el análisis completo aquí:
+> - 📂 [Log del parser (consola)](/logs/session_2025-06-07_parser_test_11q.log)
+> - 📂 [Log del parser (vosk)](/logs/session_2025-06-11_vosk_and_parser_test_11q.log)
+> - 📄 [Análisis de la sesión de prueba](/docs/REMINDER_SESSION_1106_ES.MD.md)
 
 ### ⚠️ ADVERTENCIA CRÍTICA DE TEMPORALIDAD:
 
@@ -533,7 +546,7 @@ Lo que **TARS dice** y **cuándo lo repite**.
 
 ### Sesión de testing - 07/06/2025
 
-📁 **Log completo:** [session_2025-06-07_parser_test_11q.log](/logs/session_2025-06-07_parser_test_11q.log)
+Log completo incluido al inicio del documento
 
 ### ✅ Éxitos sin sorpresas (6/11)
 

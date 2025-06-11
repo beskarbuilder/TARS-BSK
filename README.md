@@ -63,13 +63,13 @@ Este README sirve como referencia anticipada para entusiastas técnicos que quie
 
 **Próximos archivos (orden pendiente de negociación con el caos):**
 
-- ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + `scheduler_plugin.py` - Recordatorios y programación de tareas
+- ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Recordatorios y programación de tareas
 - `homeassistant_plugin.py` - Conectividad domótica
 - `piper_tts.py` + `tars_brain.py` - Síntesis de voz y personalidad
 - `tars_core.py` - **El núcleo donde todo (no) encaja perfectamente**
 - `INSTALL.md` - **Listo pero retenido por razones de cordura pública**
 
-Los archivos JSON, scripts varios (`cli_reminder_engine.py`) y `led_controller.py` no necesitan documentación porque hablan por sí solos. Los de arriba esperan pacientemente su momento de gloria documental.
+Los archivos JSON, scripts varios y archivos como `led_controller.py` no necesitan documentación porque hablan por sí solos. Los de arriba esperan pacientemente su momento de gloria documental.
 
 > 🤖 **P.D. de TARS-BSK:** _"Preparaos para **más** código que hará temblar desde becarios hasta CTOs, provocará crisis existenciales en arquitectos de software, y dejará a desarrolladores junior cuestionando si eligieron la carrera correcta. Paths hardcodeados, decisiones que desafían la lógica desde el **Jurásico**, y variables con nombres que violan convenciones conocidas por la humanidad._
 >

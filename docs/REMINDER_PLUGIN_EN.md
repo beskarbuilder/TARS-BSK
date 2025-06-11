@@ -14,12 +14,27 @@
 
 #### Complete ecosystem documentation
 
-| Module                                              | Status         | Description                             |
-| --------------------------------------------------- | -------------- | --------------------------------------- |
-| **[ReminderParser](/docs/REMINDER_PARSER_EN.md)**   | ✅ Available    | Semantic processing engine (this file)  |
-| **ReminderPlugin**                                  | ✅ Available    | Voice intention interface and detection |
-| **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_EN.md)** | ✅ Available    | Scheduled job execution and management  |
-| **CLI Reminder Engine**                             | 🚧 Coming soon | Silent command-line interface           |
+| Module                                                     | Status      | Description                                                                                   |
+| ---------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| **[ReminderParser](/docs/REMINDER_PARSER_EN.md)**          | ✅ Available | Semantic processing engine \| **[Module](/modules/reminder_parser.py)**                       |
+| **ReminderPlugin**                                         | ✅ Available | Voice intention interface and detection \| **[Plugin](/services/plugins/reminder_plugin.py)** |
+| **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_EN.md)**        | ✅ Available | Scheduled job execution and management \| **[Plugin](/services/plugins/scheduler_plugin.py)** |
+| **[CLI Reminder Engine](/docs/CLI_REMINDER_ENGINE_EN.md)** | ✅ Available | Silent command-line interface \| **[Script](/scripts/cli_reminder_engine.py)**                |
+
+> **Functional testing of the reminder system.**
+> 
+> A comprehensive test of the reminder system was conducted using two different execution modes:
+> 
+> - **Voice input mode**, using VOSK for speech transcription
+> - **Console mode**, running TARS without voice input and manually entering phrases
+> 
+> The same phrases were used in both tests (with minor date adjustments for calendar reasons), allowing us to compare parser behavior, reminder management, and final execution across both workflows.
+> 
+> You can review the complete logs and analysis here:
+> 
+> - 📂 [Parser log (console)](/logs/session_2025-06-07_parser_test_11q.log)
+> - 📂 [Parser log (vosk)](/logs/session_2025-06-11_vosk_and_parser_test_11q.log)
+> - 📄 [Test session analysis](/docs/REMINDER_SESSION_1106_EN.MD.md)
 
 ### ⚠️ CRITICAL COORDINATION WARNING:
 
