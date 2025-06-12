@@ -20,6 +20,8 @@
 | **ReminderPlugin**                                         | ✅ Available | Voice intention interface and detection \| **[Plugin](/services/plugins/reminder_plugin.py)** |
 | **[SchedulerPlugin](/docs/SCHEDULER_PLUGIN_EN.md)**        | ✅ Available | Scheduled job execution and management \| **[Plugin](/services/plugins/scheduler_plugin.py)** |
 | **[CLI Reminder Engine](/docs/CLI_REMINDER_ENGINE_EN.md)** | ✅ Available | Silent command-line interface \| **[Script](/scripts/cli_reminder_engine.py)**                |
+🎬 **[Video](https://www.youtube.com/watch?v=HOOnREzFAws) demo of the system (voice input)**
+
 
 > **Functional testing of the reminder system.**
 > 

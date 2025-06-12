@@ -18,18 +18,39 @@
 
 ## 🎥 TARS-BSK en acción
 
-**🧪 TARS-BSK detecta "olores raros" con sensores de consumo | Mapeo contextual sin IA generativa**
-[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=55zwzGc9WFg)
-_"Algo huele raro" → consulta enchufe → 0W vs 1408W = respuestas completamente diferentes. Solo mapeo keyword→función._
+**🧠 TARS-BSK procesa recordatorios con fechas imposibles | Parser temporal + VOSK**  
+[![TARS-BSK Reminder Session 1106](/docs/images/reminder_session_1106_thumbnail.jpg)](https://www.youtube.com/watch?v=HOOnREzFAws)
 
-📋 **Análisis técnico completo:** [CONTEXTUAL_RESPONSE_MAPPING_TEST_1_ES.md](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_ES.md)
+Desde comandos válidos hasta fechas imposibles, el sistema lo maneja todo con estructura… y bueno, es TARS.
 
-P.D. (TARS-BSK): Este video tiene más temblor que mi confianza en electrodomésticos con identidad verificada. Mi creador posee software de estabilización profesional, pero prefiere el aesthetic "Blair Witch Project domótico". Thumbnail cortesía de VLC: cuando Photoshop es demasiado mainstream para la post-producción improvisada.
+📋 **Análisis técnico completo:** [REMINDER_SESSION_1106_ES.md](/docs/REMINDER_SESSION_1106_ES.md)
+
+```bash
+$ sudo apt install june-38th-support
+E: Package has unmet dependencies: reality
+
+$ sudo modprobe date_validation_driver
+modprobe: FATAL: Module not found in /lib/modules/brain
+
+$ systemctl restart temporal-logic.service
+Failed: Unit not found
+```
+
+📡 **TARS-BSK – Registro sospechoso**  
+¿Por qué YouTube generó un ID sospechoso? → `HOOnREzFAws`
+
+> **[ paranoia.log EXTENDED ]**  
+> 2025-06-12 02:45:12 DEEP_ANALYSIS:  
+> HOO + nREz + FAws = ¿Código trilateral?  
+> → HOO: posible llamada búho  
+> → nREz: "no resolution"? ¿Sabotaje de vídeo?  
+> → FAws: "Fatal AWS"? ¿Amazon sabe algo?
 
 ### 📺 Más videos
 
-- 🎬 **[TARS vs TV: Sabotaje acústico](https://www.youtube.com/watch?v=Gi5IFeVkKe8)** - ASR con ruido de fondo real ([análisis](/docs/TV_BACKGROUND_NOISE_TEST_1_ES.md))
-- 🤖 **[Primera interacción domótica](https://www.youtube.com/watch?v=tGHa81s1QWk)** - Control de dispositivos con memoria contextual ([análisis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md))
+- 🧪 **[TARS-BSK detecta "olores raros" con sensores de consumo](https://www.youtube.com/watch?v=55zwzGc9WFg)** — Mapeo contextual sin IA generativa ([análisis](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_ES.md))
+- 🎬 **[TARS vs TV: Sabotaje acústico](https://www.youtube.com/watch?v=Gi5IFeVkKe8)** — ASR con ruido de fondo real ([análisis](/docs/TV_BACKGROUND_NOISE_TEST_1_ES.md))
+- 🤖 **[Primera interacción domótica](https://www.youtube.com/watch?v=tGHa81s1QWk)** — Control de dispositivos con memoria contextual ([análisis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md))
 
 ---
 

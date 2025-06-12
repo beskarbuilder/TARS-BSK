@@ -16,6 +16,8 @@
 | **[ReminderPlugin](/docs/REMINDER_PLUGIN_ES.md)**          | ✅ Disponible | Interfaz y detección de intenciones de voz \| **[Plugin](/services/plugins/reminder_plugin.py)**   |
 | SchedulerPlugin                                            | ✅ Disponible | Ejecución y gestión de trabajos programados \| **[Plugin](/services/plugins/scheduler_plugin.py)** |
 | **[CLI Reminder Engine](/docs/CLI_REMINDER_ENGINE_ES.md)** | ✅ Disponible | Interfaz de línea de comandos silenciosa \| **[Script](/scripts/cli_reminder_engine.py)**          |
+🎬 **Demostración en [vídeo](https://www.youtube.com/watch?v=HOOnREzFAws) del sistema (voz)**
+
 
 > **Prueba funcional del sistema de recordatorios.**
 > 

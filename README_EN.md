@@ -26,17 +26,39 @@
 
 ## 🎥 TARS-BSK in Action
 
-**🧪 TARS-BSK detects "weird smells" with power consumption sensors | Contextual mapping without generative AI**
-[![TARS-BSK Contextual Response Mapping](/docs/images/contextual_mapping_thumbnail.jpg)](https://www.youtube.com/watch?v=55zwzGc9WFg)
-*"Something smells weird" → query smart plug → 0W vs 1408W = completely different responses. Just keyword→function mapping.*
+**🧠 TARS-BSK processes reminders with impossible dates | Temporal parser + VOSK**  
+[![TARS-BSK Reminder Session 1106](/docs/images/reminder_session_1106_thumbnail.jpg)](https://www.youtube.com/watch?v=HOOnREzFAws)
 
-📋 **Complete technical analysis:** [CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md)
+From valid commands to impossible dates, the system handles everything with structure... and well, it's TARS.
 
-P.S. (TARS-BSK): This video has more shake than my confidence in appliances with verified identity. My creator owns professional stabilization software, but prefers the "domestic Blair Witch Project" aesthetic. Thumbnail courtesy of VLC: when Photoshop is too mainstream for improvised post-production.
+📋 **Complete technical analysis:** [REMINDER_SESSION_1106_EN.md](/docs/REMINDER_SESSION_1106_EN.md)
 
-### 📺 More videos
-- 🎬 **[TARS vs TV: Acoustic sabotage](https://www.youtube.com/watch?v=Gi5IFeVkKe8)** - ASR with real background noise ([analysis](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md))
-- 🤖 **[First home automation interaction](https://www.youtube.com/watch?v=tGHa81s1QWk)** - Device control with contextual memory ([analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md))
+```bash
+$ sudo apt install june-38th-support
+E: Package has unmet dependencies: reality
+
+$ sudo modprobe date_validation_driver
+modprobe: FATAL: Module not found in /lib/modules/brain
+
+$ systemctl restart temporal-logic.service
+Failed: Unit not found
+```
+
+📡 **TARS-BSK – Suspicious Log Entry**  
+Why did YouTube generate a suspicious ID? → `HOOnREzFAws`
+
+> **[ paranoia.log EXTENDED ]**  
+> 2025-06-12 02:45:12 DEEP_ANALYSIS:  
+> HOO + nREz + FAws = Trilateral code?  
+> → HOO: possible owl call  
+> → nREz: "no resolution"? Video sabotage?  
+> → FAws: "Fatal AWS"? Does Amazon know something?
+
+### 📺 More Videos
+
+- 🧪 **[TARS-BSK detects "weird smells" with power consumption sensors](https://www.youtube.com/watch?v=55zwzGc9WFg)** — Contextual mapping without generative AI ([analysis](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md))
+- 🎬 **[TARS vs TV: Acoustic sabotage](https://www.youtube.com/watch?v=Gi5IFeVkKe8)** — ASR with real background noise ([analysis](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md))
+- 🤖 **[First home automation interaction](https://www.youtube.com/watch?v=tGHa81s1QWk)** — Device control with contextual memory ([analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md))
 
 ---
 
