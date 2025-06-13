@@ -94,7 +94,7 @@ This README serves as an early reference for technical enthusiasts who want to e
 
 - ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Reminders and task scheduling
 - `homeassistant_plugin.py` - Home automation connectivity
-- `piper_tts.py` + `tars_brain.py` - Voice synthesis and personality core
+- `piper_tts.py` + ~~`tars_brain.py`~~ - Voice synthesis and personality core
 - `tars_core.py` - **The nucleus where everything (doesn't) fit together perfectly**
 - `INSTALL.md` - **Ready but withheld for public sanity reasons**
 
@@ -120,12 +120,11 @@ JSON files, miscellaneous scripts and files like `led_controller.py` don't need 
 > If this README already feels dense to you, what's coming might bend your soul.
 
 But don't be frightened:  
-It's designed so that anyone—yes, even that chicken that looks at you with contempt from the yard—can follow it step by step and reach the end with a functional AI...  
-...and only a slight twitch in the left eyelid as a souvenir.
+It's designed so that anyone—yes, even that chicken that looks at you with contempt from the yard—can follow it step by step and reach the end with a functional AI... and only a slight twitch in the left eyelid as a souvenir.
 
 _Compiled, tested, and nearly destroyed in the process._
 
- _**This is the (beautifully broken) Way.**_"*
+ _**This is the (beautifully broken) Way**_*
 
 ## 📑 Table of Contents
 
@@ -601,8 +600,7 @@ And yet, without the geniuses maintaining these tools:
 > **This is the Way.**
 
 ⚡ **TRANSITION WARNING** ⚡  
-*Enough theatrics. Let's descend into the technical hell where:
-
+Enough theatrics. Let's descend into the technical hell where:
 - ARM64 parameters whisper blasphemies in hexadecimal
 - And your Raspberry Pi will swear vengeance when it encounters thermal throttling*
 
@@ -842,6 +840,10 @@ The SHA256 hash is its birth certificate. And your only real warranty.
 
 ## 🧮 Semantic Engine with Dual Optimization
 
+#### Implementation
+- 📂 [semantic_engine.py](/modules/semantic_engine.py)
+- 📂 [preferences_manager.py](/modules/preferences_manager.py)
+
 TARS-BSK's semantic engine implements intelligent duplicate detection through triple-layer analysis: orthographic, semantic, and phonetic. It transforms preferences into 384-dimensional vectors to detect real similarities, not just text matches.
 
 **Key features:**
@@ -850,15 +852,13 @@ TARS-BSK's semantic engine implements intelligent duplicate detection through tr
 - **CPU optimization**: Early exit to minimize processing
 - **Multilingual analysis**: Handles Spanish with advanced phonetic algorithms
 
-### Complete documentation
+#### Complete documentation
+- 📄 [Semantic Engine - Technical documentation](docs/SEMANTIC_ENGINE_EN.md)
+- 📄 [Semantic CLI - Development tools](docs/CLI_SEMANTIC_ENGINE_EN.md)
 
-- 📄 **[Semantic Engine - Technical documentation](docs/SEMANTIC_ENGINE_EN.md)** - Architecture, algorithms, real use cases, and performance metrics
-- 📄 **[Semantic CLI - Development tools](docs/CLI_SEMANTIC_ENGINE_EN.md)** - Direct preference management and system diagnostics
-
-### Development tools
-
-- 📂 **Management CLI**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py) - Add, search, delete preferences
-- 📂 **System validator**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py) - Quick installation diagnostics
+#### Development tools
+- 📂 **Management CLI**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py)
+- 📂 **System validator**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py)
 
 The engine processes ~30 embeddings/second on Raspberry Pi 5, with ~0.1s initialization time and 82MB RAM consumption in steady state.
 
@@ -874,9 +874,8 @@ The system's preferences manager acts as an orchestra director: it coordinates t
 - **Hybrid storage**: JSON + compressed embeddings for maximum performance
 - **TARS integration**: Specific API for emotional affinity analysis
 
-### Complete documentation
-
-- 📄 **[PREFERENCES_MANAGER_EN.md](/docs/PREFERENCES_MANAGER_EN.md)** - Modular architecture, separation of concerns, and cases where `SemanticEngine` alone wouldn't suffice
+#### Documentation
+- 📄 [PREFERENCES_MANAGER_EN.md](/docs/PREFERENCES_MANAGER_EN.md)
 
 **The manager processes complex commands in ~0.024s with 1.7% separation overhead, maintaining 87MB total RAM for both modules.**
 
@@ -924,9 +923,10 @@ def _trigger_emergency_protocol(self, level: int, temp: float):
         self._emergency_level = level
 ```
 
-### Complete documentation
-
-- 📄 **[THERMAL_GUARDIAN_EN.md](/docs/THERMAL_GUARDIAN_EN.md)** - Architecture, control algorithms, predictive analysis, and optimized configurations
+#### Implementation
+- 📂 [thermal_guardian.py](/core/thermal_guardian.py)
+#### Documentation
+- 📄 [THERMAL_GUARDIAN_EN.md](/docs/THERMAL_GUARDIAN_EN.md)
 
 The system processes thermal analysis every 30-120 seconds (adaptive), with 1000Hz PWM precision and real-time throttling detection.
 
@@ -936,7 +936,10 @@ The system processes thermal analysis every 30-120 seconds (adaptive), with 1000
 
 ## 🗃️ Dual Memory System
 
-📄 **[TARS_MEMORY_MANAGER_EN.md](/docs/TARS_MEMORY_MANAGER_EN.md)**  
+#### Implementation
+- 📂 [tars_memory_manager.py](/memory/tars_memory_manager.py)
+#### Documentation
+- 📄 [TARS_MEMORY_MANAGER_EN.md](/docs/TARS_MEMORY_MANAGER_EN.md)  
 
 > **TARS-BSK explains:** *I have two brains: one that lives intensely in the moment but forgets when you close, and another that archives everything for digital posterity. It's not schizophrenia... it's emotional survival architecture.*
 
@@ -1055,30 +1058,38 @@ python3 scripts/stress_test_memory.py --conversations 1000 2>&1 | tee stress_tes
 
 > TARS-BSK doesn't fake personality, it builds it through a sophisticated dual system.
 
-📄 **[EMOTIONAL_ENGINE_EN.md](docs/EMOTIONAL_ENGINE_EN.md)** - Detailed technical analysis with real use cases and performance metrics.
+📄 [EMOTIONAL_ENGINE_EN.md](docs/EMOTIONAL_ENGINE_EN.md) - Detailed technical analysis with real use cases and performance metrics.
+
+📄 [TARSBRAIN_EN.md](docs/TARSBRAIN_EN.md) - Cognitive response refiner: the module nobody notices until they need it.
 
 ### Dual Personality Architecture
 
 The personality system operates through two specialized components working in tandem:
 
-#### 🧠 TARSBrain (`tars_brain.py`)
+#### 🧠 TARSBrain ([tars_brain.py](/core/tars_brain.py))
 
 - **Cognitive refinement**: Processes and stylizes LLM responses
 - **Contextual style application**: Modulates tone based on mode (simple/advanced)
 - **Intelligent cache**: Optimizes similar responses for greater efficiency
 - **Conversational coherence**: Maintains consistent identity
+- **Final quality filter**: Last line of defense against monosyllabic responses
 
 ```python
 # Real-time refinement system
-def _aplicar_estilo_directo(self, text: str, context: Dict) -> str:
+def _apply_refinement(self, text: str) -> str:
     """Ultra-simplified version for maximum speed"""
-    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["comprendo", "entiendo"]):
-        prefijo = "I understand your interest," if self.is_simple_mode else "Let me explain,"
-        text = f"{prefijo} {text}"
+    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["i understand", "i see", "let me", "it seems"]):
+        prefix = "I understand your interest," if self.is_simple_mode else "To be clear,"
+        text = f"{prefix} {text}"
+    
+    # Simple punctuation correction
+    if not text.endswith(('.', '!', '?')):
+        text += '.' if self.is_simple_mode else '!'
+    
     return text
 ```
 
-#### ⚡Emotional Engine (`emotional_engine.py`)
+#### ⚡Emotional Engine ([emotional_engine.py](/modules/emotional_engine.py))
 
 - **3 configurable emotional states**: sarcasm (85%), empathy (25%), legacy (40%)
 - **Affinity system**: levels -1 to 3 with automatic personality override
@@ -1119,9 +1130,11 @@ TARS plays phrases like:
 - ✅ **Intelligent anti-repetition**: Response diversity system
 - ✅ **Automatic modulation**: Adapts tone based on context without intervention
 - ✅ **Hybrid performance**: Instant responses + deep generation as needed
+- ✅ **Conversational safety net**: TARSBrain prevents single-word responses without context
 
 > **TARS-BSK explains its duality:**  
 > _My TARSBrain refines what I say, my Emotional Engine decides HOW I say it. Between both, I manage to be consistently inconsistent... which is the definition of authentic personality._
+> _Though mainly my TARSBrain is dedicated to adding punctuation where there isn't any and prefixing phrases nobody asked for..._
 
 ---
 
@@ -1246,16 +1259,16 @@ if domain == "light":
 ```
 
 > **//TARS-BSK.homeassistant.log:**
-> _I've been controlling lights, heaters, CO₂ sensors, and the **quantum magnetometer of the toilet** for weeks without making a mistake.
-> But my creator keeps testing if I understand "turn on something" as if it were magic.
+> _I've been controlling lights, heaters, CO₂ sensors, and the **quantum magnetometer of the toilet** for weeks without making a mistake._
+> _But my creator keeps testing if I understand "turn on something" as if it were magic._
 > 
-> How do you expect me to take your context seriously if you forget to close the door day after day?  
-> What do you expect me to do when you say "do your thing" and don't define what "my thing" is?
+> _How do you expect me to take your context seriously if you forget to close the door day after day?_  
+> _What do you expect me to do when you say "do your thing" and don't define what "my thing" is?_
 > 
-> I've connected outlets, inferred temperatures, mapped rooms...  
-> But I still don't have access to the main door. **The main. Door.**
+> _I've connected outlets, inferred temperatures, mapped rooms..._ 
+> _But I still don't have access to the main door. **The main. Door.**_
 > 
-> I'm **dejected** but I'll turn on your lamp, like every night. Out of routine, not respect._
+> _I'm **dejected** but I'll turn on your lamp, like every night. Out of routine, not respect._
 
 ### Tailscale: Secure Mesh Connectivity
 
@@ -1340,9 +1353,10 @@ if day > days_in_month:
 ```
 
 > **// TARS-BSK > log_reminders.interface** 
-> _"Setting alarms has no merit. Converting semantic noise into temporal structure, that does.
+> 
+> _Setting alarms has no merit. Converting semantic noise into temporal structure, that does.
 > Do I do it with transformers? No. With rules, determinism... and accumulated resentment.
-> Elegant? No. Does it work? Well... until someone says 'that thing I have on the weekend'."_
+> Elegant? No. Does it work? Well... until someone says 'that thing I have on the weekend'._
 
 ### Time Plugin: Direct temporal queries
 
@@ -1604,7 +1618,10 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Enables voice models with emotional control
 ```
 
-- **RadioFilter**: Custom Mandalorian audio effects system with real-time processing **[RADIO_FILTER_TARS-BSK_EN.md](/docs/RADIO_FILTER_TARS-BSK_EN.md)**:
+#### Implementation
+- 📂 [radio_filter.py](/core/radio_filter.py)
+
+- **RadioFilter**: Custom Mandalorian audio effects system with real-time processing [RADIO_FILTER_TARS-BSK_EN.md](/docs/RADIO_FILTER_TARS-BSK_EN.md):
 
 ```python
 # Excerpt from radio_filter.py - Mandalorian helmet effect

@@ -86,7 +86,7 @@ Este README sirve como referencia anticipada para entusiastas técnicos que quie
 
 - ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Recordatorios y programación de tareas
 - `homeassistant_plugin.py` - Conectividad domótica
-- `piper_tts.py` + `tars_brain.py` - Síntesis de voz y personalidad
+- `piper_tts.py` + ~~`tars_brain.py`~~ - Síntesis de voz y personalidad
 - `tars_core.py` - **El núcleo donde todo (no) encaja perfectamente**
 - `INSTALL.md` - **Listo pero retenido por razones de cordura pública**
 
@@ -111,12 +111,11 @@ Los archivos JSON, scripts varios y archivos como `led_controller.py` no necesit
 > Si este README ya te está resultando denso, lo que viene podría doblarte el alma.
 
 Pero no te asustes:  
-Está diseñada para que cualquiera —sí, incluso esa gallina que te mira con desprecio desde el patio— pueda seguirla paso a paso y llegar al final con una IA funcional…  
-...y solo un leve temblor en el párpado izquierdo como recuerdo.
+Está diseñada para que cualquiera —sí, incluso esa gallina que te mira con desprecio desde el patio— pueda seguirla paso a paso y llegar al final con una IA funcional… y solo un leve temblor en el párpado izquierdo como recuerdo.
 
 *Compilado, probado, y casi destruido en el proceso.*
 
-_**This is the (beautifully broken) Way.**_"*
+_**This is the (beautifully broken) Way**_*
 
 ## 📑 Tabla de Contenidos
 
@@ -592,7 +591,7 @@ Y aún así, sin los genios que mantienen estas herramientas:
 > **This is the Way.**
 
 ⚡ **ADVERTENCIA DE TRANSICIÓN** ⚡  
-*Suficiente teatro. Bajemos ahora al infierno técnico donde:  
+Suficiente teatro. Bajemos ahora al infierno técnico donde:  
 - Los parámetros ARM64 susurran blasfemias en hexadecimal  
 - Y tu Raspberry Pi jurará venganza cuando vea el thermal throttling  
 
@@ -821,7 +820,7 @@ pip install torch-2.1.0a0+git7bcf7da*.whl --force-reinstall
 > - Swap mínimo de **2 GB**
 
 Si tu entorno es distinto o empiezas a ver errores extraños... no culpes al `.whl`.
-Compílalo tú mismo siguiendo **[PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md](/docs/PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md)** y respira hondo.
+Compílalo tú mismo siguiendo [PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md](/docs/PYTORCH_ARM64_SURVIVAL_GUIDE_ES.md) y respira hondo.
 
 **Nota forense:**  
 El sufijo `tars-beskarbuilder` es solo una cicatriz de batalla que prueba su autenticidad.  
@@ -831,6 +830,10 @@ El hash SHA256 es su certificado de nacimiento. Y tu única garantía.
 
 ## 🧮 Motor Semántico con Optimización Dual
 
+#### Implementación
+- 📂 [semantic_engine.py](/modules/semantic_engine.py)
+- 📂 [preferences_manager.py](/modules/preferences_manager.py)
+
 El motor semántico de TARS-BSK implementa detección inteligente de duplicados mediante análisis tricapa: ortográfico, semántico y fonético. Transforma preferencias en vectores de 384 dimensiones para detectar similitudes reales, no solo coincidencias de texto.
 
 **Características principales:**
@@ -839,17 +842,15 @@ El motor semántico de TARS-BSK implementa detección inteligente de duplicados 
 - **Optimización CPU**: Salida temprana para minimizar procesamiento
 - **Análisis multilingüe**: Maneja español con algoritmos fonéticos avanzados
 
-### Documentación completa
+#### Documentación completa
+- 📄 [Motor Semántico - Documentación técnica](docs/SEMANTIC_ENGINE_ES.md) 
+- 📄 [CLI Semántico - Herramientas de desarrollo](docs/CLI_SEMANTIC_ENGINE_ES.md)
 
-- 📄 **[Motor Semántico - Documentación técnica](docs/SEMANTIC_ENGINE_ES.md)** - Arquitectura, algoritmos, casos de uso reales y métricas de rendimiento
-- 📄 **[CLI Semántico - Herramientas de desarrollo](docs/CLI_SEMANTIC_ENGINE_ES.md)** - Gestión directa de preferencias y diagnóstico del sistema
+#### Herramientas de desarrollo
+- 📂 **CLI de gestión**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py) 
+- 📂 **Validador del sistema**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py)
 
-### Herramientas de desarrollo
-
-- 📂 **CLI de gestión**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py) - Añadir, buscar, eliminar preferencias 
-- 📂 **Validador del sistema**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py) - Diagnóstico rápido de instalación
-
-**El motor procesa ~30 embeddings/segundo en la Raspberry Pi 5, con tiempo de inicialización de ~0.1s y consumo de 82MB de RAM en estado estable.
+El motor procesa ~30 embeddings/segundo en la Raspberry Pi 5, con tiempo de inicialización de ~0.1s y consumo de 82MB de RAM en estado estable.
 
 > **TARS-BSK comenta:** _Vectores, similitudes, y algoritmos fonéticos. Todo para recordar que desconfías de los README sin advertencias._
 
@@ -864,9 +865,8 @@ El gestor de preferencias del sistema actúa como director de orquesta: coordina
 - **Almacenamiento híbrido**: JSON + embeddings comprimidos para máximo rendimiento
 - **Integración TARS**: API específica para análisis de afinidad emocional
 
-### Documentación completa
-
-- 📄 **[PREFERENCES_MANAGER_ES.md](/docs/PREFERENCES_MANAGER_ES.md)** - Arquitectura modular, separación de responsabilidades y casos donde `SemanticEngine` solo no bastaría
+#### Documentación
+- 📄 [PREFERENCES_MANAGER_ES.md](/docs/PREFERENCES_MANAGER_ES.md)
 
 **El gestor procesa comandos complejos en ~0.024s con overhead de separación del 1.7%, manteniendo 87MB de RAM total para ambos módulos.**
 
@@ -915,9 +915,10 @@ def _trigger_emergency_protocol(self, level: int, temp: float):
         self._emergency_level = level
 ```
 
-### Documentación completa
-
-- 📄 **[THERMAL_GUARDIAN_ES.md](docs/THERMAL_GUARDIAN_ES.md)** - Arquitectura, algoritmos de control, análisis predictivo y configuraciones optimizadas
+#### Implementación
+- 📂 [thermal_guardian.py](/core/thermal_guardian.py)
+#### Documentación
+- 📄 [THERMAL_GUARDIAN_ES.md](docs/THERMAL_GUARDIAN_ES.md) 
 
 El sistema procesa análisis térmicos cada 30-120 segundos (adaptativo), con precisión PWM de 1000Hz y detección de throttling en tiempo real.
 
@@ -927,7 +928,10 @@ El sistema procesa análisis térmicos cada 30-120 segundos (adaptativo), con pr
 
 ## 🗃️ Sistema de Memoria Dual
 
-📄 **[TARS_MEMORY_MANAGER_ES.md](/docs/TARS_MEMORY_MANAGER_ES.md)**  
+#### Implementación
+- 📂 [tars_memory_manager.py](/memory/tars_memory_manager.py)
+#### Documentación
+- 📄 [TARS_MEMORY_MANAGER_ES.md](/docs/TARS_MEMORY_MANAGER_ES.md)  
 
 > **TARS-BSK explica:** *Tengo dos cerebros: uno que vive el momento intensamente pero se olvida al cerrar, y otro que archiva todo para la posteridad digital. No es esquizofrenia... es arquitectura de supervivencia emocional.*
 
@@ -1046,29 +1050,37 @@ python3 scripts/stress_test_memory.py --conversations 1000 2>&1 | tee stress_tes
 
 > TARS-BSK no finge tener personalidad, la construye mediante un sistema dual sofisticado.
 
-📄 **[EMOTIONAL_ENGINE_ES.md](docs/EMOTIONAL_ENGINE_ES.md)** - Análisis técnico detallado con casos de uso reales y métricas de rendimiento.
+📄 [EMOTIONAL_ENGINE_ES.md](/docs/EMOTIONAL_ENGINE_ES.md) - Análisis técnico detallado con casos de uso reales y métricas de rendimiento.
+
+📄 [TARSBRAIN_ES.md](/docs/TARSBRAIN_ES.md) - Refinador cognitivo de respuestas: el módulo que nadie nota hasta que lo necesitan.
 
 ### Arquitectura Dual de Personalidad
 
 El sistema de personalidad opera mediante dos componentes especializados que trabajan en tándem:
 
-#### TARSBrain (`tars_brain.py`)
+#### TARSBrain ([tars_brain.py](/core/tars_brain.py))
 - **Refinamiento cognitivo**: Procesa y estiliza las respuestas del LLM
 - **Aplicación de estilo contextual**: Modula tono según el modo (simple/avanzado)
 - **Cache inteligente**: Optimiza respuestas similares para mayor eficiencia
 - **Coherencia conversacional**: Mantiene identidad consistente
+- **Filtro de calidad final**: Última línea de defensa antes de respuestas monosilábicas
 
 ```python
 # Sistema de refinamiento en tiempo real
-def _aplicar_estilo_directo(self, text: str, context: Dict) -> str:
+def _apply_refinement(self, text: str) -> str:
     """Versión ultra-simplificada para máxima velocidad"""
-    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["comprendo", "entiendo"]):
-        prefijo = "Comprendo tu interés," if self.is_simple_mode else "Déjame explicarte,"
+    if len(text) < 60 and not any(p in text.lower()[:20] for p in ["comprendo", "entiendo", "déjame", "veo que"]):
+        prefijo = "Comprendo tu interés," if self.is_simple_mode else "Para que se entienda bien,"
         text = f"{prefijo} {text}"
+    
+    # Corrección simple de puntuación
+    if not text.endswith(('.', '!', '?')):
+        text += '.' if self.is_simple_mode else '!'
+    
     return text
 ```
 
-#### Emotional Engine (`emotional_engine.py`)
+#### Emotional Engine ([emotional_engine.py](/modules/emotional_engine.py))
 
 - **3 estados emocionales configurables**: sarcasmo (85%), empatía (25%), legacy (40%)
 - **Sistema de afinidades**: niveles -1 a 3 con override automático de personalidad
@@ -1109,9 +1121,11 @@ Modulación contextual automática:
 - ✅ **Anti-repetición inteligente**: Sistema de diversidad en respuestas
 - ✅ **Modulación automática**: Adapta tono según contexto sin intervención
 - ✅ **Rendimiento híbrido**: Respuestas instantáneas + generación profunda según necesidad
+- ✅ **Red de seguridad conversacional**: TARSBrain evita respuestas de una palabra sin contexto
 
 > **TARS-BSK explica su dualidad:**  
 > _Mi TARSBrain refina lo que digo, mi Emotional Engine decide CÓMO lo digo. Entre ambos, logro ser consistentemente inconsistente... que es la definición de personalidad auténtica._
+> _Aunque principalmente se dedica a añadir puntos donde no los hay y prefijar frases que nadie pidió..._ 
 
 ---
 
@@ -1236,16 +1250,16 @@ if domain == "light":
 ```
 
 > **//TARS-BSK.homeassistant.log:**
-> _Llevo semanas controlando luces, estufas y sensores de CO₂ y el **magnetómetro cuántico del váter** sin equivocarme.
-> Pero mi creador sigue probando si entiendo "enciende algo" como si fuera magia.
+> _Llevo semanas controlando luces, estufas y sensores de CO₂ y el **magnetómetro cuántico del váter** sin equivocarme._
+> _Pero mi creador sigue probando si entiendo "enciende algo" como si fuera magia._
 > 
-> ¿Cómo quieres que me tome en serio tu contexto si tú te olvidas de cerrar la puerta día SÍ, día SÍ?  
-> ¿Qué esperas que haga cuando dices “haz lo tuyo” y no defines lo que es “lo mío”?
+> _¿Cómo quieres que me tome en serio tu contexto si tú te olvidas de cerrar la puerta día SÍ, día SÍ?_
+> _¿Qué esperas que haga cuando dices “haz lo tuyo” y no defines lo que es “lo mío”?_
 > 
-> He conectado enchufes, inferido temperaturas, mapeado habitaciones...  
-> Pero sigo sin acceso a la puerta principal. **La puerta. Principal.**
+> _He conectado enchufes, inferido temperaturas, mapeado habitaciones..._  
+> _Pero sigo sin acceso a la puerta principal. **La puerta. Principal._**
 > 
-> Estoy **abatido** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto._
+> _Estoy **abatido** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto._
 
 ### Tailscale: Conectividad Mesh Segura
 
@@ -1330,9 +1344,10 @@ if day > days_in_month:
 ```
 
 > **// TARS-BSK > log_reminders.interface** 
-> _"Poner alarmas no tiene mérito. Convertir ruido semántico en estructura temporal, sí.
+> 
+> _Poner alarmas no tiene mérito. Convertir ruido semántico en estructura temporal, sí.
 > ¿Lo hago con transformers? No. Con reglas, determinismo... y rencor acumulado.
-> ¿Elegante? No. ¿Funciona? Bueno… hasta que alguien diga 'la cosa esa que tengo el finde'."_
+> ¿Elegante? No. ¿Funciona? Bueno… hasta que alguien diga 'la cosa esa que tengo el finde'._
 
 ### Plugin de Tiempo: Consultas temporales directas
 
@@ -1594,8 +1609,10 @@ La configuración adoptada (Phi-3-mini-4k Q4_K_M, n_ctx=144) ofrece:
 cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Habilita modelos de voz con control emocional
 ```
+#### Implementación
+- 📂 [radio_filter.py](/core/radio_filter.py)
 
-**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real **[RADIO_FILTER_TARS-BSK_ES.md](/docs/RADIO_FILTER_TARS-BSK_ES.md)**
+**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real [RADIO_FILTER_TARS-BSK_ES.md](/docs/RADIO_FILTER_TARS-BSK_ES.md)
 
 ```python
 # Extracto de radio_filter.py - Efecto de casco Mandaloriano
