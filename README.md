@@ -2,6 +2,11 @@
 
 ![TARS-BSK Version](https://img.shields.io/badge/version-v5.2.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Arch](https://img.shields.io/badge/arch-aarch64-orange) ![Python](https://img.shields.io/badge/python-3.9.18-lightblue)
 
+📘 [TARS_Digital_Diary_ES.md](./TARS_Digital_Diary_ES.md) — El estado técnico/emocional de TARS.  
+
+> A veces predice bugs antes que el changelog que ni siquiera tengo.  
+> **Compila, llora o ambas cosas a la vez.** A veces con razón. Otras... también.
+
 ### ⚠️ ADVERTENCIA CRÍTICA DE SISTEMA:
 
 > Lo que estás a punto de leer no es un README... es una **odisea técnica con sarcasmo incorporado**.  

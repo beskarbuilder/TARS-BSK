@@ -5,6 +5,11 @@
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
+📘 [TARS_Digital_Diary_EN.md](./TARS_Digital_Diary_EN.md) — TARS technical/emotional status.
+
+> Occasionally predicts bugs before the changelog I never wrote.  
+> **Compiles, cries, or both at once.** Sometimes with reason. Other times... suspiciously so.
+
 > [!WARNING]
 > **TARS-BSK explains:** 
 > _Notice for international users: my codebase speaks Spanish. I'd like to adapt it to English, but my creator hasn't figured out how to do it without breaking the entire system. ✅ = working, ❌ = check your setup. The rest is context._
