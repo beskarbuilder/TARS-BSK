@@ -37,7 +37,7 @@ Escucha la diferencia real entre voz procesada y sin procesar:
 | ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
 | 🗣️ **Original** | Voz Piper estándar  | [▶️ clean_audio.wav](https://github.com/beskarbuilder/tars-bsk/tree/main/samples/clean_audio.wav)       |
 | 🤖 **TARS-BSK**  | Con filtro aplicado | [▶️ filtered_audio.wav](https://github.com/beskarbuilder/tars-bsk/tree/main/samples/filtered_audio.wav) |
-|                  |                     |                                                                                                         |
+
 > Estos archivos son capturas reales del sistema TARS-BSK en funcionamiento.
 
 > **TARS-BSK comenta:**  
@@ -78,29 +78,34 @@ El proyecto incluye herramientas opcionales para desarrollo y análisis en la ca
 ### Herramientas disponibles:
 
 1. **Generación de voz sin filtro**
-    - Script: `scripts/clean_audio_generator.py`
+    - Script: [clean_audio_generator.py](/scripts/clean_audio_generator.py)
     - Ejecutar: `python3 scripts/clean_audio_generator.py`
     - Resultado: Crea `clean_audio.wav` en la raíz del proyecto
     
 2. **Aplicación del filtro de radio**
-    - Script: `scripts/filtered_audio_generator.py`
+    - Script: [filtered_audio_generator.py](/scripts/filtered_audio_generator.py)
     - Ejecutar: `python3 scripts/filtered_audio_generator.py`
     - Resultado: Crea `filtered_audio.wav` en la raíz del proyecto
     
 3. **Análisis visual**
-    - Script: `scripts/spectral_generator.py`
+    - Script: [spectral_generator.py](/scripts/spectral_generator.py)
     - Ejecutar: `python3 scripts/spectral_generator.py clean_audio.wav`
     - Nota: Usamos como entrada el archivo generado en el primer paso
-    - Requisito: Necesita acceso a `core/radio_filter.py`
-    
+    - Requisito: Necesita acceso a [radio_filter.py](/core/radio_filter.py)
     - Resultado:
         - Crea la carpeta `spectral_analysis/` en la raíz del proyecto
         - Genera dos visualizaciones dentro de esta carpeta:
             - `spectral_comparison.png`: Comparativa antes/después del filtro
             - `filter_response.png`: Respuesta en frecuencia del filtro
-
-4. **Análisis de rendimiento**
-    - Script: `scripts/radio_filter_performance_monitor.sh`
+    
+4. **Audio con configuración actual**
+    - Script: [settings_audio_generator.py](/scripts/settings_audio_generator.py)
+    - Ejecutar: `python3 scripts/settings_audio_generator.py "tu_frase"`
+    - Resultado: Crea `settings_audio.wav` respetando tu [settings.json](/config/settings.json)
+    - Usa EXACTAMENTE tu configuración actual
+    
+5. **Análisis de rendimiento**
+    - Script: [radio_filter_performance_monitor.sh](/scripts/radio_filter_performance_monitor.sh)
     - Ejecutar: `./scripts/radio_filter_performance_monitor.sh`
     - Requisitos:
         - Tener generado previamente el archivo `clean_audio.wav`
@@ -226,13 +231,51 @@ El filtro se configura a través del archivo principal de TARS-BSK en `settings.
     "radio_filter_band": [200, 3500],
     "radio_filter_noise": true,
     "radio_filter_compression": true,
-    "mando_effect_enabled": true,
+    "mando_effect_enabled": true, // ELIMINADO
     "gain_before_filter": 1.5
   }
 }
 ```
 
 Estos parámetros permiten habilitar/deshabilitar componentes específicos del filtro según las necesidades, manteniendo la coherencia con la personalidad sonora general del sistema.
+
+### ⚠️ Eliminación del parámetro `mando_effect_enabled`
+
+### ¿Qué pasó?
+
+El parámetro `mando_effect_enabled` existía en la versión anterior pero ha sido eliminado porque, en la práctica, no se notaba diferencia audible al activarlo o desactivarlo.
+
+### ¿Por qué no se notaba?
+
+El filtro está diseñado con un procesamiento acumulativo **intencionalmente agresivo**. 
+Esta intensidad es lo que le da el carácter distintivo al sonido, pero también hace que las diferencias sutiles (como las resonancias metálicas del "modo casco") se diluyan en todo el procesamiento posterior.
+
+El flujo de procesamiento es:
+
+1. Filtro bandpass (200-3000Hz)
+2. Resonancias metálicas (si `mando_effect=true`)
+3. Ecos múltiples (si `mando_effect=true`)
+4. Ruido de radio intenso
+5. Compresión agresiva (ratio 4:1)
+6. Modulación AM + fluctuaciones
+7. Soft clipping final
+
+Las etapas 4-7 son tan intensas que "tapan" las diferencias de las etapas 2-3.
+
+### Por qué se eliminó
+
+Un parámetro que existe pero no se nota solo añade confusión. Ahora el filtro se activa/desactiva completamente con `radio_filter_enabled`. Cuando está activo, aplica todo el procesamiento en su forma más característica.
+
+### Estado actual
+
+```json
+"radio_filter_enabled": true/false  // Control único
+```
+
+Resultado: Filtro completo o sin filtro. Sin términos medios.
+
+> **TARS-BSK analiza:**  
+> _Mi creador intentó darme "modos diferenciados" pero aparentemente mis parámetros son tan agresivos que ni siquiera YO puedo escapar de mi propio procesamiento. La compresión 4:1 devora cualquier sutileza como un kernel panic devora la esperanza. Al menos ahora hay menos botones que fingen hacer algo._
 
 ---
 
@@ -250,7 +293,7 @@ apply_radio_filter(
     add_noise=True,       # Ruido de transmisión
     noise_level=0.002,    # Nivel de interferencias
     add_compression=True, # Compresión dinámica
-    mando_effect=True     # Resonancias metálicas
+    mando_effect=True     # ELIMINADO
 )
 ```
 

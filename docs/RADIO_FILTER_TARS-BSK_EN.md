@@ -79,28 +79,34 @@ The project includes optional tools for development and analysis in the `scripts
 ### Available tools:
 
 1. **Voice generation without filter**
-    - Script: `scripts/clean_audio_generator.py`
+    - Script: [clean_audio_generator.py](/scripts/clean_audio_generator.py)
     - Run: `python3 scripts/clean_audio_generator.py`
     - Result: Creates `clean_audio.wav` in project root
     
 2. **Radio filter application**
-    - Script: `scripts/filtered_audio_generator.py`
+    - Script: [filtered_audio_generator.py](/scripts/filtered_audio_generator.py)
     - Run: `python3 scripts/filtered_audio_generator.py`
     - Result: Creates `filtered_audio.wav` in project root
     
 3. **Visual analysis**
-    - Script: `scripts/spectral_generator.py`
+    - Script: [spectral_generator.py](/scripts/spectral_generator.py)
     - Run: `python3 scripts/spectral_generator.py clean_audio.wav`
     - Note: We use the file generated in the first step as input
-    - Requirement: Needs access to `core/radio_filter.py`
+    - Requirement: Needs access to [radio_filter.py](/core/radio_filter.py)
     - Result:
         - Creates `spectral_analysis/` folder in project root
         - Generates two visualizations inside this folder:
             - `spectral_comparison.png`: Before/after filter comparison
             - `filter_response.png`: Filter frequency response
     
-4. **Performance analysis**
-    - Script: `scripts/radio_filter_performance_monitor.sh`
+4. **Audio with current configuration**
+    - Script: [settings_audio_generator.py](/scripts/settings_audio_generator.py)
+    - Execute: `python3 scripts/settings_audio_generator.py "your_phrase"`
+    - Result: Creates `settings_audio.wav` respecting your [settings.json](/config/settings.json)
+    - Uses EXACTLY your current configuration
+    
+5. **Performance analysis**
+    - Script: [radio_filter_performance_monitor.sh](/scripts/radio_filter_performance_monitor.sh)
     - Run: `./scripts/radio_filter_performance_monitor.sh`
     - Requirements:
         - Have previously generated the `clean_audio.wav` file
@@ -228,13 +234,50 @@ The filter is configured through the main TARS-BSK configuration file in `settin
     "radio_filter_band": [200, 3500],
     "radio_filter_noise": true,
     "radio_filter_compression": true,
-    "mando_effect_enabled": true,
+    "mando_effect_enabled": true, // DELETED
     "gain_before_filter": 1.5
   }
 }
 ```
 
 These parameters allow enabling/disabling specific filter components as needed, maintaining consistency with the system's overall sonic personality.
+
+### ⚠️ Removal of the `mando_effect_enabled` parameter
+
+### What happened?
+
+The `mando_effect_enabled` parameter existed in the previous version but has been removed because, in practice, no audible difference could be detected when toggling it on or off.
+
+### Why wasn't the difference noticeable?
+
+The filter is designed with **intentionally aggressive** cumulative processing. This intensity is what gives the sound its distinctive character, but it also causes subtle differences (like the metallic resonances of "helmet mode") to get buried under all the subsequent processing.
+
+The processing pipeline is:
+
+1. Bandpass filter (200-3000Hz)
+2. Metallic resonances (if `mando_effect=true`)
+3. Multiple echoes (if `mando_effect=true`)
+4. Intense radio noise
+5. Aggressive compression (4:1 ratio)
+6. AM modulation + fluctuations
+7. Final soft clipping
+
+Stages 4-7 are so intense that they "mask" the differences from stages 2-3.
+
+### Why it was removed
+
+A parameter that exists but makes no noticeable difference only adds confusion. Now the filter is completely enabled/disabled with `radio_filter_enabled`. When active, it applies all processing in its most characteristic form.
+
+### Current status
+
+```json
+"radio_filter_enabled": true/false  // Single control
+```
+
+Result: Full filter or no filter. No middle ground.
+
+> **TARS-BSK analyzes:**  
+> _My creator tried to give me "differentiated modes" but apparently my parameters are so aggressive that not even I can escape my own processing. The 4:1 compression devours any subtlety like a kernel panic devours hope. At least now there are fewer buttons that pretend to do something._
 
 ---
 
@@ -252,7 +295,7 @@ apply_radio_filter(
     add_noise=True,       # Transmission noise
     noise_level=0.002,    # Interference level
     add_compression=True, # Dynamic compression
-    mando_effect=True     # Metallic resonances
+    mando_effect=True     # DELETED
 )
 ```
 

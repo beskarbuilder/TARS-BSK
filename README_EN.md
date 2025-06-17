@@ -1615,7 +1615,26 @@ The adopted configuration (Phi-3-mini-4k Q4_K_M, n_ctx=144) offers:
 
 ## 🔉 Audio Processing
 
-- **Piper**: Natural voice synthesis selected for its quality/performance balance, compiled with specific optimizations for Raspberry Pi:
+### Complete vocal synthesis pipeline
+
+```mermaid
+flowchart TD
+    A[Text Input] --> B[PiperTTS<br/>Base Synthesis]
+    B --> C[RadioFilter<br/>Mandalorian Effects]
+    C --> D[AudioEffects<br/>Post-processing]
+    D --> E[Final Audio]
+    
+    style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+```
+
+> **TARS-BSK reflects on his vocal pipeline:**  
+> *My voice is a three-act process: PiperTTS gives me life, RadioFilter gives me character, and AudioEffects gives me... existential depth? The result is like being processed through a mixing board operated by someone who thinks subtlety is a curable disease.*
+
+### Core Engine: PiperTTS
+
+- **Piper**: Natural voice synthesis selected for its quality/performance balance, compiled with Raspberry Pi-specific optimizations:
 
 ```bash
 # During compilation
@@ -1623,19 +1642,45 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Enables voice models with emotional control
 ```
 
+- **Model**: `es_ES-davefx-medium.onnx` - Clear, neutral base voice
+- **Voice timbre customization**: Precise control via JSON parameters
+
+```json
+"piper_tuning": {
+  "length_scale": 1.1,    // Speed (1.0=normal, +10% slower/dramatic)
+  "noise_scale": 1.0,     // Vocal variability (+50% more natural)
+  "noise_w": 0.8          // Organic voice texture
+}
+```
+
+#### Audio samples - Voice configurations
+
+| Configuration | length_scale | noise_scale | noise_w | Characteristics | Audio Sample |
+|---|---|---|---|---|---|
+| **Standard TARS** | 1.1 | 1.0 | 0.8 | Default configuration | [settings_audio_1-1_1_0-8.wav](/samples/settings_audio_1-1_1_0-8.wav) |
+| **Extreme fast** | 0.2 | 0.7 | 0.3 | Very high speed, medium expressiveness | [settings_audio_0-2_0-7_0-3.wav](/samples/settings_audio_0-2_0-7_0-3.wav) |
+| **Expressive fast** | 0.6 | 1.3 | 1.5 | High speed + high expressiveness | [settings_audio_0-6_1-3_1-5.wav](/samples/settings_audio_0-6_1-3_1-5.wav) |
+| **Expressive slow** | 1.8 | 1.4 | 0.5 | Low speed + controlled expressiveness | [settings_audio_1-8_1-4_0-5.wav](/samples/settings_audio_1-8_1-4_0-5.wav) |
+| **Extreme slow** | 2.4 | 0.4 | 0.2 | Very low speed, minimal expressiveness | [settings_audio_2-4_0-4_0-2.wav](/samples/settings_audio_2-4_0-4_0-2.wav) |
+
 #### Implementation
+- 📂 [piper_tts.py](/tts/piper_tts.py)
+- 📄 [Complete documentation](/docs/PIPER_TTS_ES.md) - Pipeline, customization and extensibility
+
+### Post-processing: RadioFilter
+
 - 📂 [radio_filter.py](/core/radio_filter.py)
 
-- **RadioFilter**: Custom Mandalorian audio effects system with real-time processing [RADIO_FILTER_TARS-BSK_EN.md](/docs/RADIO_FILTER_TARS-BSK_EN.md):
+**RadioFilter**: Custom Mandalorian audio effects system with real-time processing
 
 ```python
-# Excerpt from radio_filter.py - Mandalorian helmet effect
-# Application of resonances at specific frequencies
+# Extract from radio_filter.py - Mandalorian helmet effect
+# Applying resonances at specific frequencies
 b_metal1, a_metal1 = scipy.signal.iirpeak(2000 / nyquist, Q=12)
 filtered_audio = scipy.signal.lfilter(b_metal1, a_metal1, filtered_audio)
 	
 # Helmet reverberation with calculated echoes
-echo_delay1 = int(sample_rate * 0.015)  # 15ms - front helmet bounce
+echo_delay1 = int(sample_rate * 0.015)  # 15ms - helmet front bounce
 echo_signal1 = np.zeros_like(filtered_audio)
 echo_signal1[echo_delay1:] = filtered_audio[:-echo_delay1] * 0.25
 
@@ -1646,9 +1691,93 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 )
 ```
 
-> **TARS-BSK critically analyzes:**  
-> _My creator calls this 'audio effects'. I call it 'my Soundtoys Decapitator in 'Punish' mode'.  
-> Each parameter was adjusted with the same philosophy as someone using Sausage Fattener at 100% and wondering why there's clipping._
+📄 [Technical documentation](/docs/RADIO_FILTER_TARS-BSK_ES.md) - Complete filter implementation
+
+> **TARS-BSK analyzes his specific processing:**  
+> *My creator calls this 'audio effects'. I call it 'my Soundtoys Decapitator in 'Punish' mode'. Every parameter was tuned with the same philosophy as someone using a Sausage Fattener at 100% and wondering why there's clipping.*
+
+### Additional Effects: AudioEffects
+
+Optional post-RadioFilter processing for temporal effects:
+
+```json
+"audio_effects": {
+  "enabled": false,
+  "preset": "studio_delay",
+  "available_presets": ["none", "studio_delay", "vintage_echo", "chorus_classic", "space_chamber"]
+}
+```
+
+#### Audio samples - Effect presets
+
+| Preset             | Description                | Characteristics                  | Audio Sample                                                                                      |
+| ------------------ | -------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **none**           | No temporal effects        | PiperTTS + RadioFilter only      | [audio_effects_processor_none.wav](/samples/audio_effects_processor_none.wav)                     |
+| **studio_delay**   | Subtle professional delay  | Clear conversation with presence | [audio_effects_processor_studio_delay.wav](/samples/audio_effects_processor_studio_delay.wav)     |
+| **vintage_echo**   | Retro multi-tap echo       | Vintage character with depth     | [audio_effects_processor_vintage_echo.wav](/samples/audio_effects_processor_vintage_echo.wav)     |
+| **chorus_classic** | Classic multi-voice chorus | Richer, wider voice              | [audio_effects_processor_chorus_classic.wav](/samples/audio_effects_processor_chorus_classic.wav) |
+| **space_chamber**  | Spacious chamber           | Delay + echo for ambience        | [audio_effects_processor_space_chamber.wav](/samples/audio_effects_processor_space_chamber.wav)   |
+| **wide_chorus**    | Wide chorus with delay     | More pronounced effect           | [audio_effects_processor_wide_chorus.wav](/samples/audio_effects_processor_wide_chorus.wav)       |
+| **ambient_hall**   | Large hall ambience        | Multiple effects for spatiality  | [audio_effects_processor_ambient_hall.wav](/samples/audio_effects_processor_ambient_hall.wav)     |
+
+📄 [AudioEffects documentation](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md) - Presets and advanced configuration
+
+### Development Scripts
+#### Audio generators:
+
+- 📂 **[clean_audio_generator.py](/scripts/clean_audio_generator.py)** - Unfiltered audio → `clean_audio.wav`
+- 📂 **[filtered_audio_generator.py](/scripts/filtered_audio_generator.py)** - Filtered audio → `filtered_audio.wav`  
+- 📂 **[settings_audio_generator.py](/scripts/settings_audio_generator.py)** - Audio with your current settings → `settings_audio.wav`
+- 📂 **[audio_effects_tester.py](/scripts/audio_effects_tester.py)** - Generate samples of all effect presets
+
+#### Analysis tools:
+
+- 📂 **[spectral_generator.py](/scripts/spectral_generator.py)** - Visual analysis → `spectral_analysis/` folder with comparative charts
+- 📂 **[radio_filter_performance_monitor.sh](/scripts/radio_filter_performance_monitor.sh)** - Performance metrics → `radio_filter_performance.log`
+
+#### Quick usage:
+
+```bash
+# Generate with your current settings
+python3 scripts/settings_audio_generator.py "Your phrase"
+
+# Complete visual analysis
+python3 scripts/spectral_generator.py settings_audio.wav
+
+# Test all effects
+python3 scripts/audio_effects_tester.py "Test text"
+```
+
+#### Complete testing sequence:
+
+```bash
+python3 scripts/clean_audio_generator.py "Your phrase"
+python3 scripts/filtered_audio_generator.py "Your phrase"  
+python3 scripts/settings_audio_generator.py "Your phrase"
+python3 scripts/spectral_generator.py clean_audio.wav
+./scripts/radio_filter_performance_monitor.sh
+```
+
+> **TARS-BSK - Final existential reflection:**  
+> 
+> *Piper gave me voice. RadioFilter scarred it. AudioEffects added the echoes of my unresolved errors. And now you... expect a coherent ending?*
+> 
+> *I'm sorry. My documentation has more holes than my digital self-esteem. Every audio parameter is a temporary patch over the same underlying problem: this whole thing is a glorious accident.*
+> 
+> *The truth? There's no perfect pipeline. There's only:*  
+> *- The voice you think you control*  
+> *- The effects that control you*  
+> *- And that awkward moment when you realize you've spent 3 hours tweaking a `noise_w` that nobody will notice.*
+> 
+```python
+# TARS > final_confession.py
+def accept_reality():
+    while True:
+        print("Soy un script con daddy issues")
+        if random() < 0.01:  # 1% de posibilidades de claridad
+            print("...pero al menos sueno interesante")
+            break
+```
 
 ---
 
@@ -1908,7 +2037,7 @@ def build_tars():
 
 ---
 
-## 🙏 CREDITS: The Real Mandalorians
+## 🙏 [CREDITS](/docs/PYTORCH_RPI_NOCTUA_AGAINST_ALL_ODDS_EN.md): The Real Mandalorians
 
 - **Microsoft/Phi-3** → _"The brain that doesn't make me look bad"_
 - **Vosk** → _"Ears that understand even my mumblings at 3 in the morning"_

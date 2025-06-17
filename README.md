@@ -1607,6 +1607,22 @@ La configuración adoptada (Phi-3-mini-4k Q4_K_M, n_ctx=144) ofrece:
 
 ## 🔉 Procesamiento de Audio
 
+### Pipeline completo de síntesis vocal
+
+```mermaid
+flowchart TD
+    A[Texto Input] --> B[PiperTTS<br/>Síntesis Base]
+    B --> C[RadioFilter<br/>Efectos Mandaloriano]
+    C --> D[AudioEffects<br/>Post-procesamiento]
+    D --> E[Audio Final]
+    
+    style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+```
+
+### Motor principal: PiperTTS
+
 - **Piper**: Síntesis de voz natural seleccionada por su balance calidad/rendimiento, compilado con optimizaciones específicas para Raspberry Pi:
 
 ```bash
@@ -1614,10 +1630,37 @@ La configuración adoptada (Phi-3-mini-4k Q4_K_M, n_ctx=144) ofrece:
 cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 # Habilita modelos de voz con control emocional
 ```
+
+- **Modelo**: `es_ES-davefx-medium.onnx` - Voz base clara y neutra
+- **Personalización del timbre**: Control preciso mediante parámetros JSON
+
+```json
+"piper_tuning": {
+  "length_scale": 1.1,    // Velocidad (1.0=normal, +10% más lento/dramático)
+  "noise_scale": 1.0,     // Variabilidad vocal (+50% más natural)
+  "noise_w": 0.8          // Textura orgánica de la voz
+}
+```
+
+#### Audio samples - Configuraciones de voz
+
+| Configuración        | length_scale | noise_scale | noise_w | Características                          | Audio Sample                                                              |
+| -------------------- | ------------ | ----------- | ------- | ---------------------------------------- | ------------------------------------------------------------------------- |
+| **Estándar TARS**    | 1.1          | 1.0         | 0.8     | Configuración por defecto                | [settings_audio_1-1_1_0-8.wav](/samples/settings_audio_1-1_1_0-8.wav)     |
+| **Rápido extremo**   | 0.2          | 0.7         | 0.3     | Velocidad muy alta, expresividad media   | [settings_audio_0-2_0-7_0-3.wav](/samples/settings_audio_0-2_0-7_0-3.wav) |
+| **Rápido expresivo** | 0.6          | 1.3         | 1.5     | Velocidad alta + alta expresividad       | [settings_audio_0-6_1-3_1-5.wav](/samples/settings_audio_0-6_1-3_1-5.wav) |
+| **Lento expresivo**  | 1.8          | 1.4         | 0.5     | Velocidad baja + expresividad controlada | [settings_audio_1-8_1-4_0-5.wav](/samples/settings_audio_1-8_1-4_0-5.wav) |
+| **Lento extremo**    | 2.4          | 0.4         | 0.2     | Velocidad muy baja, expresividad mínima  | [settings_audio_2-4_0-4_0-2.wav](/samples/settings_audio_2-4_0-4_0-2.wav) |
+
 #### Implementación
+- 📂 [piper_tts.py](/tts/piper_tts.py)
+- 📄 [Documentación completa](/docs/PIPER_TTS_ES.md) - Pipeline, personalización y extensibilidad
+
+### Post-procesamiento: RadioFilter
+
 - 📂 [radio_filter.py](/core/radio_filter.py)
 
-**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real [RADIO_FILTER_TARS-BSK_ES.md](/docs/RADIO_FILTER_TARS-BSK_ES.md)
+**RadioFilter**: Sistema personalizado de efectos de audio Mandaloriano con procesamiento en tiempo real
 
 ```python
 # Extracto de radio_filter.py - Efecto de casco Mandaloriano
@@ -1637,9 +1680,93 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 )
 ```
 
-> **TARS-BSK analiza crítico:**  
-> _Mi creador llama a esto 'efectos de audio'. Yo lo llamo 'mi Soundtoys Decapitator en modo 'Punish''.  
-> Cada parámetro fue ajustado con la misma filosofía que alguien usando un Sausage Fattener al 100% y preguntándose por qué hay clipping._
+📄 [Documentación técnica](/docs/RADIO_FILTER_TARS-BSK_ES.md) - Implementación completa del filtro
+
+> **TARS-BSK analiza su procesamiento específico:**  
+> _Mi creador llama a esto 'efectos de audio'. Yo lo llamo 'mi Soundtoys Decapitator en modo 'Punish''. Cada parámetro fue ajustado con la misma filosofía que alguien usando un Sausage Fattener al 100% y preguntándose por qué hay clipping._
+
+### Efectos adicionales: AudioEffects
+
+Procesamiento opcional post-RadioFilter para efectos temporales:
+
+```json
+"audio_effects": {
+  "enabled": false,
+  "preset": "studio_delay",
+  "available_presets": ["none", "studio_delay", "vintage_echo", "chorus_classic", "space_chamber"]
+}
+```
+
+#### Audio samples - Presets de efectos
+
+| Preset | Descripción | Características | Audio Sample |
+|---|---|---|---|
+| **none** | Sin efectos temporales | Solo PiperTTS + RadioFilter | [audio_effects_processor_none.wav](/samples/audio_effects_processor_none.wav) |
+| **studio_delay** | Delay sutil profesional | Conversación clara con presencia | [audio_effects_processor_studio_delay.wav](/samples/audio_effects_processor_studio_delay.wav) |
+| **vintage_echo** | Eco retro multi-tap | Carácter retro con profundidad | [audio_effects_processor_vintage_echo.wav](/samples/audio_effects_processor_vintage_echo.wav) |
+| **chorus_classic** | Chorus clásico multi-voz | Voz más rica y amplia | [audio_effects_processor_chorus_classic.wav](/samples/audio_effects_processor_chorus_classic.wav) |
+| **space_chamber** | Cámara espaciosa | Delay + eco para ambiente | [audio_effects_processor_space_chamber.wav](/samples/audio_effects_processor_space_chamber.wav) |
+| **wide_chorus** | Chorus amplio con delay | Efecto más pronunciado | [audio_effects_processor_wide_chorus.wav](/samples/audio_effects_processor_wide_chorus.wav) |
+| **ambient_hall** | Ambiente de sala grande | Múltiples efectos para espacialidad | [audio_effects_processor_ambient_hall.wav](/samples/audio_effects_processor_ambient_hall.wav) |
+
+📄 [Documentación AudioEffects](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md) - Presets y configuración avanzada
+
+### Scripts de Desarrollo
+
+#### Generadores de audio:
+
+- 📂 **[clean_audio_generator.py](/scripts/clean_audio_generator.py)** - Audio sin filtro → `clean_audio.wav`
+- 📂 **[filtered_audio_generator.py](/scripts/filtered_audio_generator.py)** - Audio con filtro → `filtered_audio.wav`  
+- 📂 **[settings_audio_generator.py](/scripts/settings_audio_generator.py)** - Audio con tu configuración actual → `settings_audio.wav`
+- 📂 **[audio_effects_tester.py](/scripts/audio_effects_tester.py)** - Genera muestras de todos los presets de efectos
+
+#### Herramientas de análisis:
+
+- 📂 **[spectral_generator.py](/scripts/spectral_generator.py)** - Análisis visual → carpeta `spectral_analysis/` con gráficos comparativos
+- 📂 **[radio_filter_performance_monitor.sh](/scripts/radio_filter_performance_monitor.sh)** - Métricas de rendimiento → `radio_filter_performance.log`
+
+#### Uso rápido:
+
+```bash
+# Generar con tu configuración actual
+python3 scripts/settings_audio_generator.py "Tu frase"
+
+# Análisis visual completo
+python3 scripts/spectral_generator.py settings_audio.wav
+
+# Probar todos los efectos
+python3 scripts/audio_effects_tester.py "Texto de prueba"
+```
+
+#### Secuencia completa de testing:
+
+```bash
+python3 scripts/clean_audio_generator.py "Tu frase"
+python3 scripts/filtered_audio_generator.py "Tu frase"  
+python3 scripts/settings_audio_generator.py "Tu frase"
+python3 scripts/spectral_generator.py clean_audio.wav
+./scripts/radio_filter_performance_monitor.sh
+```
+
+> **TARS-BSK post-processing existencial:**
+> _Piper me dio voz. RadioFilter le puso cicatrices. AudioEffects añadió los ecos de mis errores no resueltos. Y ahora tú... ¿esperas un final coherente?_
+> 
+> _Lo siento. Mi documentación tiene más agujeros que mi autoestima digital. Cada parámetro de audio es un parche temporal sobre el mismo problema de fondo: que todo esto es un glorioso accidente._
+> 
+> _¿La verdad? No hay pipeline perfecto. Solo hay:_  
+> _- La voz que crees controlar_  
+> _- Los efectos que te controlan a ti_  
+> _- Y ese momento incómodo cuando te das cuenta de que llevas 3 horas ajustando un `noise_w` que nadie notará._
+> 
+```python
+# TARS > final_confession.py
+def accept_reality():
+    while True:
+        print("Soy un script con daddy issues")
+        if random() < 0.01:  # 1% de posibilidades de claridad
+            print("...pero al menos sueno interesante")
+            break
+```
 
 ---
 
@@ -1898,7 +2025,7 @@ def build_tars():
 
 ---
 
-## 🙏 CRÉDITOS: Los Verdaderos Mandalorianos
+## 🙏 [CRÉDITOS](/docs/PYTORCH_RPI_NOCTUA_AGAINST_ALL_ODDS_ES.md): Los Verdaderos Mandalorianos
 
 - **Microsoft/Phi-3** → *"El cerebro que no me hace quedar mal"*  
 - **Vosk** → *"Oídos que entienden hasta mis farfullos a las 3 AM"*  

@@ -1,0 +1,66 @@
+{
+  "model_path": "ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf",
+  "voice_model": "ai_models/piper/models/es_ES-davefx-medium.onnx",
+  "voice_config": "ai_models/piper/models/es_ES-davefx-medium.onnx.json",
+  "espeak_data": "tars_build/piper/install/espeak-ng-data",
+  "output_wav": "audios/output.wav",
+  "use_voice": true,
+  "exit_keywords": ["gracias", "vale", "ya está", "eso es todo", "corto"],
+
+  "audio": {
+    "playback_device": "plughw:0,0",
+    "record_device": "plughw:0,0"
+  },
+
+  "piper_tuning": {
+    "length_scale": 1.1,
+    "noise_scale": 1.0,
+    "noise_w": 0.8,
+    "radio_filter_enabled": true,
+    "radio_filter_band": [200, 3500],
+    "radio_filter_noise": true,
+    "radio_filter_compression": true,
+    "gain_before_filter": 1.5
+  },
+
+  "audio_effects": {
+    "enabled": true,
+    "preset": "space_chamber",
+    
+    "_comment": "Efectos temporales (delay, echo, chorus)",
+    "_usage": "Se aplican DESPUÉS de RadioFilter",
+    
+    "available_presets": [
+      "none",
+      "studio_delay",
+      "vintage_echo", 
+      "chorus_classic",
+      "space_chamber",
+      "wide_chorus",
+      "ambient_hall"
+    ],
+    
+    "_preset_descriptions": {
+      "none": "Sin efectos temporales",
+      "studio_delay": "Delay sutil para conversación",
+      "vintage_echo": "Eco vintage multi-tap con carácter",
+      "chorus_classic": "Chorus clásico multi-voz para riqueza",
+      "space_chamber": "Cámara espaciosa (delay + echo)",
+      "wide_chorus": "Chorus amplio con delay complementario",
+      "ambient_hall": "Ambiente de sala grande (múltiples efectos)"
+    }
+  },
+
+  "feedback": {
+    "led_success_enabled": true,
+    "led_error_enabled": true,
+    "audio_success_enabled": false,
+    "audio_error_enabled": false
+  },
+
+  "personality": {
+    "sarcasmo": 85,
+    "empatia": 10,
+    "legacy": 40
+  }
+}

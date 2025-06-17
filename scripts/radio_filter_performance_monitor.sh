@@ -101,7 +101,15 @@ sys.stdout.flush()  # Forzar salida inmediata
 
 # Medir tiempo de procesamiento con alta precisión
 start_time = time.time()
-apply_radio_filter('$INPUT_AUDIO', '$OUTPUT_AUDIO')
+apply_radio_filter(
+    '$INPUT_AUDIO', 
+    '$OUTPUT_AUDIO',
+    lowcut=200,
+    highcut=3000,
+    add_noise=True,
+    add_compression=True,
+    mando_effect=False 
+)
 elapsed_time = time.time() - start_time
 
 # Reportar tiempo total de procesamiento
