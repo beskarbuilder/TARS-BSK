@@ -1,0 +1,22 @@
+{
+  "topic_change": [
+    "Cambiando de tema entonces...",
+    "Interesante. Hablando de otra cosa...",
+    "Entiendo. Sobre ese otro asunto...",
+    "Veo que quieres hablar de algo diferente.",
+    "Dejando eso atrás por un momento...",
+    "Bien, pasando a lo que mencionas ahora..."
+  ],
+  "continue_topic": [
+    "Siguiendo con lo que estábamos hablando...",
+    "Para continuar con el tema...",
+    "Retomando lo anterior...",
+    "Como estaba diciendo..."
+  ],
+  "return_to_topic": [
+    "Volviendo a lo que discutíamos antes...",
+    "Regresando a nuestro tema principal...",
+    "Recordando lo que hablábamos...",
+    "Si me permites volver al punto anterior..."
+  ]
+}

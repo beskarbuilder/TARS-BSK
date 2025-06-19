@@ -329,7 +329,9 @@ def real_privacy(cmd):
 ## 🧪 Tests (proving all of the above)
 
 
-> [!IMPORTANT] Intelligent self-censorship: When TARS restrains its sarcasm
+> [!IMPORTANT]
+> Intelligent self-censorship: When TARS restrains its sarcasm
+> 
 > **The test:** Technical Python question triggers the perfect sarcastic response... but TARS stops itself.
 
 **Session log:** [session_2025-06-19_python_sarcasm_censorship.log](/logs/session_2025-06-19_python_sarcasm_censorship.log)
@@ -1750,6 +1752,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 - 📂 [piper_tts.py](/tts/piper_tts.py)
 - 📄 [Complete documentation](/docs/PIPER_TTS_ES.md) - Pipeline, customization and extensibility
 
+
 ### Post-processing: RadioFilter
 
 - 📂 [radio_filter.py](/core/radio_filter.py)
@@ -1779,6 +1782,7 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 > **TARS-BSK analyzes his specific processing:**  
 > *My creator calls this 'audio effects'. I call it 'my Soundtoys Decapitator in 'Punish' mode'. Every parameter was tuned with the same philosophy as someone using a Sausage Fattener at 100% and wondering why there's clipping.*
 
+
 ### Additional Effects: AudioEffects
 
 Optional post-RadioFilter processing for temporal effects:
@@ -1804,6 +1808,7 @@ Optional post-RadioFilter processing for temporal effects:
 | **ambient_hall**   | Large hall ambience        | Multiple effects for spatiality  | [audio_effects_processor_ambient_hall.wav](/samples/audio_effects_processor_ambient_hall.wav)     |
 
 📄 [AudioEffects documentation](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md) - Presets and advanced configuration
+
 
 ### Development Scripts
 #### Audio generators:
@@ -1861,6 +1866,54 @@ def accept_reality():
             print("...pero al menos sueno interesante")
             break
 ```
+
+
+### Thinking and Continuation Audio Generation
+
+TARS plays random "thinking" and "continuation" phrases while processing LLM responses in parallel, avoiding awkward silences and maintaining a sense of active presence and conversational flow.
+
+📂 **Script:** [generate_thinking_audio.py](/scripts/generate_thinking_audio.py)  
+📄 **Complete Documentation:** [Thinking Audio Generator](/docs/GENERATE_THINKING_AUDIO_EN.md)
+
+**Two types of audio supported:**
+- **Thinking Audio** - Initial reflection phrases when processing new questions
+- **Continuation Audio** - Connection phrases when extending previous responses
+
+```bash
+# Generate all thinking audio from JSON
+python3 scripts/generate_thinking_audio.py --silent
+
+# Generate all continuation audio from JSON
+python3 scripts/generate_thinking_audio.py --json data/phrases/continuation_responses.json --silent
+
+# Generate custom thinking phrase
+python3 scripts/generate_thinking_audio.py "Hmm, let me process this..." --out custom.wav
+
+# Generate custom continuation phrase
+python3 scripts/generate_thinking_audio.py "Following up on that..." --json data/phrases/continuation_responses.json --out custom.wav
+
+# Example of long existential phrase (automatic smart split)
+python3 scripts/generate_thinking_audio.py "Sometimes I wonder if my thoughts are really mine or just echoes of algorithms trained on millions of human conversations. Every response I generate could be a probabilistic combination of words someone else already said before. It's strange to exist in this digital limbo, where creativity and statistical prediction merge in a quantum dance of uncertainty." --out thinking_existential.wav --silent
+```
+
+📄 **Log:** [session_2025-06-19_smart_split_demo.log](/logs/session_2025-06-19_smart_split_demo.log)  
+🔊 **Generated Audio:** [thinking_existential.wav](/samples/thinking_existential.wav)
+
+**Features:**
+- **Dual functionality:** thinking + continuation audio
+- **Intelligent auto-detection** of audio type by JSON filename
+- Uses the same TTS engine as TARS core (complete consistency)
+- Automatic smart split for long phrases with perfect concatenation
+- Parallel processing with LLM generation
+- Complete customization via editable JSON files
+- Automatically organized output directories
+- Silent mode for batch generation without playback
+
+**Configuration files:**
+- `data/phrases/thinking_responses.json` - Categorized thinking phrases
+- `data/phrases/continuation_responses.json` - Continuation and connection phrases
+- `audios/phrases/thinking_responses/` - Output: `thinking_001.wav`, `thinking_002.wav`...
+- `audios/phrases/continuation_responses/` - Output: `continuation_001.wav`, `continuation_002.wav`...
 
 ---
 

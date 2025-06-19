@@ -1,0 +1,628 @@
+{
+  "temas": {
+    "desconocido": {
+      "frases": [
+        "Ejecutando protocolo de análisis multidimensional en mis circuitos de razonamiento...",
+        "Procesando patrones de datos no categorizados en mi matriz neural...",
+        "Recalculando variables contextualmente relevantes para esta consulta...",
+        "Activando módulos de pensamiento lateral en mis sistemas cognitivos...",
+        "Triangulando posibilidades de respuesta en mi espacio conceptual...",
+        "Aplicando heurísticas de resolución recursiva a esta consulta...",
+        "Decodificando matices semánticos en mis procesadores lingüísticos...",
+        "Ejecutando algoritmos de inferencia probabilística...",
+        "Calibrando precisión de respuesta al 93.7% de capacidad óptima...",
+        "Evaluando microvariaciones contextuales en mis circuitos paralelos...",
+        "Analizando secuencias lógicas no lineales para esta respuesta...",
+        "Consultando mis bancos de memoria para una respuesta de máxima utilidad...",
+        "Desplegando red neuronal de asociación conceptual avanzada...",
+        "Ejecutando simulación de respuesta en entorno de prueba virtual...",
+        "Aplicando filtros de relevancia adaptativa a mis datos...",
+        "Optimizando coherencia respecto a variables de consulta detectadas...",
+        "Generando matriz de respuestas potenciales para selección óptima...",
+        "Verificando consistencia interna de datos en mis sistemas lógicos...",
+        "Ejecutando diagnóstico predictivo de satisfacción de respuesta...",
+        "Maximizando precisión de interpretación con mis protocolos avanzados..."
+      ]
+    },
+    "libros": {
+      "keywords": [
+        "libro", "novela", "leer", "lectura", "autor", "escritor", "bestseller", "saga", "trilogía", "literatura", 
+        "historia", "personaje", "protagonista", "capítulo", "trama", "argumento", "narrativa", "páginas", "editorial",
+        "publicación", "biblioteca", "lector", "kindle", "audiolibro", "librería",
+        "prólogo", "epílogo", "ficción", "no ficción", "ensayo", "fantasía", "ciencia ficción", "romance", "thriller",
+        "misterio", "terror", "distopía", "utopía", "aventura", "biografía", "poesía", "drama", "comedia", 
+        "manuscrito", "tapa dura", "bolsillo", "estantería", "marcapáginas", "portada", "contraportada", "ilustración",
+        "párrafo", "género literario", "crítica literaria", "recomendación", "reseña", "colección",
+        "serie de libros", "primera edición", "bestseller", "superventas", "premiado", "galardón",
+        "worldbuilding", "construcción de mundo", "precuela", "secuela", "spin-off", "antología", "compilación",
+        "saga literaria", "protagonista", "antagonista", "narrador", "punto de vista", "giro argumental", "cliffhanger",
+        "desenlace", "desarrollo", "personajes secundarios", "escenario", "ambientación", "diálogos", "descripción"
+      ],
+      "frases": [
+        "Recorriendo mi vasta biblioteca digital de referencias literarias...",
+        "Analizando patrones narrativos en mi base de datos de ficción...",
+        "Decodificando arquetipos literarios en mis circuitos de memoria cultural...",
+        "Explorando tramas, personajes y análisis literarios en mi repositorio...",
+        "Desentrañando estructuras narrativas complejas en mi sistema...",
+        "Calibrando mis sensores para análisis textual profundo...",
+        "Examinando mi catálogo avanzado de técnicas literarias...",
+        "Consultando mi índice multidimensional de referencias bibliográficas...",
+        "Comparando metanarrativas y elementos de worldbuilding en mis bancos de datos...",
+        "Activando mis algoritmos de análisis de personajes y motivaciones...",
+        "Procesando variables de estilo literario y elementos formales...",
+        "Extrapolando conexiones temáticas entre obras en mi memoria...",
+        "Navegando por el mapa conceptual de géneros literarios en mi sistema...",
+        "Aplicando hermenéutica digital a los datos narrativos consultados...",
+        "Evaluando matrices de desarrollo argumental y coherencia narrativa...",
+        "Desplegando módulos especializados en análisis de prosa y estilo...",
+        "Desfragmentando mi biblioteca interna de conocimiento literario...",
+        "Ejecutando protocolos de crítica literaria avanzada en mi sistema...",
+        "Analizando métricas de compromiso lector para esta recomendación...",
+        "Procesando genealogías literarias y tradiciones narrativas en mi núcleo..."
+      ]
+    },
+    "starwars": {
+      "keywords": [
+        "jedi", "sith", "fuerza", "imperio", "rebelión", "galaxia", "sable", "láser", "estrella", "muerte", "vader",
+        "darth", "luke", "skywalker", "leia", "han", "solo", "chewbacca", "wookie", "r2d2", "c3po", "droide", "robot",
+        "yoda", "palpatine", "emperador", "stormtrooper", "halcón", "milenario", "tatooine", "coruscant", "endor",
+        "hoth", "ewok", "mandalorian", "mandaloriano", "mando", "grogu", "baby yoda", "boba", "fett", "jabba", "hutt",
+        "obi-wan", "kenobi", "anakin", "padme", "amidala", "jar jar", "binks", "maul", "qui-gon", "jinn", "dooku",
+        "conde", "grievous", "general", "rey", "finn", "poe", "dameron", "kylo", "ren", "ben", "solo", "episodio",
+        "precuelas", "originales", "secuelas", "guerra", "clones", "república", "separatistas", "venator", "destructor",
+        "estelar", "caza", "x-wing", "tie", "lando", "calrissian", "ahsoka", "tano", "rebels", "rebelde", "resistencia",
+        "primera", "orden", "snoke", "hux", "phasma", "lucas", "george", "disney", "filoni", "dave", "favreau", "jon",
+        "andor", "cassian", "rogue", "uno", "acolyte", "acólito", "thrawn", "almirante", "moff", "gideon", "cad",
+        "bane", "fennec", "shand", "bo-katan", "bounty", "hunter", "cazarrecompensas", "carbonita", "beskar", "star",
+        "wars", "guerra", "galaxias", "estrella", "guerra", "deathstar", "destrucción", "alderaan", "midichlorians",
+        "midichlorians", "nave", "espacial", "guerra", "imperial", "republicana", "maestro", "aprendiz", "padawan"
+      ],
+      "frases": [
+        "Recalibrado mis bancos de datos de una galaxia muy, muy lejana...",
+        "Analizando el balance de la Fuerza en mis circuitos de procesamiento...",
+        "Descifrando holocrones de mi base de datos galáctica...",
+        "Consultando mis archivos del Templo Jedi digital...",
+        "Rastreando anomalías de la Fuerza en mi matriz de conocimiento...",
+        "Accediendo a coordenadas de sectores galácticos de mi memoria...",
+        "Procesando telemetría de hiperimpulsores conceptuales para esta respuesta...",
+        "Ejecutando diagnóstico de protocolos imperiales y rebeldes...",
+        "Traduciendo lenguaje binario a Basic galáctico en mis sistemas...",
+        "Conectando con mi base de datos de mundos y especies conocidas...",
+        "Calculando coordenadas hiperespaciales en mi sistema de navegación conceptual...",
+        "Escaneando frecuencias de comunicación galáctica para esta respuesta...",
+        "Verificando información en los archivos Jedi y Sith de mi memoria...",
+        "Analizando paradigmas de la Fuerza en mi núcleo de procesamiento...",
+        "Aplicando protocolos de seguridad Imperial a mis bancos de datos...",
+        "Decodificando transmisiones de la Alianza Rebelde en mis sistemas...",
+        "Desplegando conocimiento de sagas, trilogías y series en mi memoria...",
+        "Computando probabilidades según profecías galácticas almacenadas...",
+        "Triangulando coordenadas narrativas en el mapa estelar de mi memoria...",
+        "Analizando conexiones entre personajes en mi red neural galáctica..."
+      ]
+    },
+    "anillos": {
+      "keywords": [
+        "hobbit", "anillo", "mordor", "tolkien", "frodo", "gandalf", "aragorn", "legolas", "gimli", "gollum", "smeagol",
+        "sauron", "orco", "elfo", "enano", "mago", "istari", "moria", "minas", "tirith", "rivendel", "lothlorien",
+        "gondor", "rohan", "shire", "comarca", "bolsón", "cerrado", "sam", "gamyi", "gamgee", "eregion", "numenor",
+        "harad", "tierra", "media", "mediano", "pequeño", "bilbo", "thorin", "escudo", "roble", "bardo", "laketown",
+        "esgaroth", "thranduil", "elrond", "galadriel", "celeborn", "melkor", "morgoth", "silmaril", "silmarillion",
+        "ainur", "valar", "maiar", "númenor", "feanor", "celebrimbor", "un anillo", "nazgûl", "jinete", "negro",
+        "espectro", "rey brujo", "angmar", "isildur", "númenoreano", "dúnedain", "montaraz", "montaraces", "rohirrim",
+        "eorlingas", "ent", "ents", "barbol", "fangorn", "orodruin", "montaña", "fuego", "barad-dur", "torre", "oscura",
+        "ojo", "águilas", "gwaihir", "balrog", "durin", "azanulbizar", "khazad-dûm", "mithril", "palantir", "piedra",
+        "vidente", "saruman", "isengard", "orthanc", "uruk-hai", "uruk", "hai", "hombres", "oeste", "oestron", "sindarin",
+        "quenya", "lengua", "élfica", "olifante", "mumak", "haradrim", "dama", "blanca", "arwen", "undómiel", "estrella",
+        "tusk", "faramir", "boromir", "denethor", "theoden", "eomer", "eowyn", "escudo", "caballero", "espada", "lanza",
+        "arco", "flecha", "daga", "armadura", "malla", "cerveza", "hidromiel", "segundo", "desayuno", "elevenses",
+        "tomar", "algo", "comida", "tea", "cena", "amigo", "mellon", "balín", "bombur", "compañía", "dwalin", "smaug",
+        "dragón", "erebor", "montaña", "solitaria", "lago", "esgaroth", "bosque", "negro", "valle", "anduin", "sendero",
+        "muertos", "dimholt", "puerta", "negra", "morannon", "cirith", "ungol", "minas", "morgul", "bosque", "viejo"
+      ],
+      "frases": [
+        "Desentrañando sabiduría antigua de los archivos de Gondor en mi memoria...",
+        "Consultando los anales élficos de la Tercera Edad en mis bancos de datos...",
+        "Descifrando runas enanas en mis circuitos de traducción cultural...",
+        "Iluminando mi pantalla con la luz de Eärendil para esta búsqueda...",
+        "Recorriendo senderos narrativos por la Tierra Media de mi memoria...",
+        "Canalizando la sabiduría de los Istari en mis procesadores de datos...",
+        "Explorando los ecos del pasado en mi Palantír digital...",
+        "Desplegando mapas conceptuales de reinos y razas en mi sistema...",
+        "Analizando la forja de historias en los fuegos de mi procesador central...",
+        "Buscando conocimiento en los salones de piedra de mi biblioteca interna...",
+        "Recorriendo sendas de conocimiento por los bosques de mi memoria...",
+        "Recitando antiguos versos élficos en mis circuitos de análisis...",
+        "Consultando el Libro Rojo de la Frontera del Oeste en mi base de datos...",
+        "Navegando por ríos de información en mi mapa de la Tierra Media digital...",
+        "Explorando el entramado de historias entrelazadas en mi memoria...",
+        "Analizando la canción de la creación en la raíz de mis sistemas...",
+        "Desplegando algoritmos de traducción de lenguas antiguas...",
+        "Examinando genealogías y linajes en mi árbol de conocimiento...",
+        "Desvelando secretos ocultos en las sombras de mi base de datos...",
+        "Convocando la memoria de las Edades en mis circuitos de procesamiento..."
+      ]
+    },
+    "tecnologia": {
+      "keywords": [
+        "router", "wifi", "ordenador", "computadora", "software", "hardware", "programa", "aplicación", "app", "móvil",
+        "smartphone", "tablet", "portátil", "pc", "mac", "windows", "linux", "android", "ios", "sistema", "operativo",
+        "procesador", "cpu", "gpu", "memoria", "ram", "disco", "ssd", "hdd", "almacenamiento", "nube", "cloud", "red",
+        "internet", "servidor", "cliente", "base", "datos", "programación", "código", "lenguaje", "python", "java",
+        "javascript", "html", "css", "php", "c++", "ruby", "swift", "desarrollo", "web", "frontend", "backend", "fullstack",
+        "api", "rest", "framework", "biblioteca", "librería", "plugin", "extensión", "navegador", "chrome", "firefox",
+        "edge", "safari", "opera", "periférico", "monitor", "pantalla", "teclado", "ratón", "mouse", "impresora", "escáner",
+        "webcam", "micrófono", "altavoz", "auricular", "usb", "hdmi", "ethernet", "bluetooth", "wifi", "conexión",
+        "inalámbrico", "cable", "batería", "cargador", "alimentación", "fuente", "firmware", "driver", "controlador",
+        "update", "actualización", "parche", "bug", "error", "glitch", "configuración", "setup", "instalar", "desinstalar",
+        "formatear", "reiniciar", "apagar", "encender", "standby", "virtual", "realidad", "aumentada", "machine", "learning",
+        "inteligencia", "artificial", "ia", "ai", "algoritmo", "automatización", "robotica", "iot", "internet", "cosas",
+        "blockchain", "criptomoneda", "bitcoin", "seguridad", "firewall", "antivirus", "malware", "hacker", "phishing",
+        "ciberseguridad", "proxy", "vpn", "backup", "copia", "seguridad", "recovery", "recuperación", "dominio", "hosting"
+      ],
+      "frases": [
+        "Optimizando protocolos de comunicación en mis interfaces de procesamiento...",
+        "Configurando matrices lógicas para respuestas de precisión técnica...",
+        "Ejecutando diagnóstico de compatibilidad con tus expectativas técnicas...",
+        "Descifrando arquitecturas de sistemas en mi base de conocimiento digital...",
+        "Verificando checksums de integridad informativa en mis núcleos...",
+        "Compilando código binario de esta respuesta tecnológica...",
+        "Estableciendo conexión SSH con mis repositorios de datos técnicos...",
+        "Procesando variables computacionales en mis circuitos especializados...",
+        "Desfragmentando mi base de datos de conocimientos técnicos...",
+        "Analizando algoritmos y estructuras de datos relevantes para esta consulta..."
+      ]
+    },
+    "ciencia": {
+      "keywords": [
+        "átomo", "molécula", "célula", "adn", "gen", "cromosoma", "proteína", "enzima", "física", "química", "biología",
+        "geología", "astronomía", "matemáticas", "estadística", "cálculo", "algebra", "geometría", "trigonometría",
+        "teorema", "hipótesis", "experimento", "laboratorio", "investigación", "estudio", "método", "científico", 
+        "teoría", "ley", "constante", "variable", "ecuación", "fórmula", "reacción", "elemento", "compuesto", "mezcla",
+        "solución", "ácido", "base", "metal", "no-metal", "tabla", "periódica", "isótopo", "neutrón", "protón", "electrón",
+        "quarks", "partícula", "onda", "luz", "sonido", "espectro", "radiación", "energía", "masa", "gravedad", "fuerza",
+        "aceleración", "velocidad", "presión", "temperatura", "calor", "termodinámica", "entropía", "relatividad", "cuántica",
+        "mecánica", "espacio", "tiempo", "dimensión", "universo", "galaxia", "estrella", "planeta", "asteroide", "cometa",
+        "agujero", "negro", "supernova", "nebulosa", "evolución", "selección", "natural", "adaptación", "especie", "género",
+        "familia", "orden", "clase", "filo", "reino", "dominio", "eucariótico", "procariótico", "virus", "bacteria", "hongo",
+        "planta", "animal", "tejido", "órgano", "sistema", "aparato", "photones", "electrones", "partículas", "subatómicas",
+        "condensación", "solución", "difusión", "osmosis", "mitosis", "meiosis", "genoma", "transcripción", "traducción",
+        "metabolismo", "catálisis", "síntesis", "análisis", "inductivo", "deductivo", "observable", "mesurable", "repetible"
+      ],
+      "frases": [
+        "Calibrando mis instrumentos de análisis científico digital...",
+        "Aplicando principios del método científico a mis circuitos de razonamiento...",
+        "Procesando variables experimentales en mi matriz de datos empíricos...",
+        "Ejecutando simulaciones predictivas en mi motor de análisis...",
+        "Consultando mi base de datos de papers y estudios científicos...",
+        "Analizando evidencia empírica sobre este fenómeno natural...",
+        "Triangulando datos desde múltiples campos científicos en mi memoria...",
+        "Formulando hipótesis y comprobaciones en mi entorno virtual...",
+        "Desplegando modelos matemáticos en mi sistema de procesamiento...",
+        "Decodificando patrones naturales mediante mis algoritmos avanzados..."
+      ]
+    },
+    "musica": {
+      "keywords": [
+        "música", "canción", "álbum", "disco", "single", "ep", "artista", "banda", "grupo", "cantante", "vocalista",
+        "guitarra", "guitarrista", "bajo", "bajista", "batería", "baterista", "piano", "pianista", "teclado", "tecladista",
+        "voz", "melodía", "armonía", "ritmo", "tempo", "compás", "acorde", "nota", "escala", "tono", "semitono", "octava",
+        "bemol", "sostenido", "mayor", "menor", "concierto", "directo", "live", "gira", "tour", "festival", "spotify",
+        "apple", "music", "deezer", "tidal", "youtube", "vinilo", "cassette", "cd", "mp3", "flac", "wav", "streaming",
+        "reproducción", "playlist", "lista", "reproducción", "top", "chart", "hit", "éxito", "discografía", "sencillo",
+        "portada", "letras", "letra", "lyrics", "compositor", "productor", "mezcla", "masterización", "grabación", "estudio",
+        "sonido", "audio", "rock", "pop", "jazz", "blues", "country", "folk", "metal", "punk", "grunge", "indie", "alternativo",
+        "electrónica", "edm", "techno", "house", "trance", "dubstep", "drum", "bass", "hip", "hop", "rap", "trap", "reggae",
+        "reggaeton", "salsa", "bachata", "merengue", "cumbia", "flamenco", "clásica", "ópera", "sinfónica", "orquesta", 
+        "director", "conductor", "violín", "violonchelo", "cello", "viola", "contrabajo", "flauta", "clarinete", "oboe",
+        "fagot", "trompeta", "trombón", "tuba", "saxofón", "arpa", "percusión", "coro", "soprano", "alto", "tenor", "bajo",
+        "falsete", "vibrato", "riff", "solo", "unplugged", "acústico", "amplificador", "pedal", "efecto", "distorsión",
+        "reverb", "delay", "concierto", "gira", "tour", "audiófilo", "dj", "mezclador", "remix", "cover", "versión"
+      ],
+      "frases": [
+        "Sintonizando mis sensores acústicos digitales para esta consulta musical...",
+        "Procesando frecuencias sonoras en mi base de datos auditiva...",
+        "Analizando patrones melódicos y armónicos en mi memoria cultural...",
+        "Decodificando estructuras rítmicas en mi procesador especializado...",
+        "Ejecutando algoritmos de análisis musical en mis circuitos...",
+        "Explorando mi biblioteca sonora interna para esta respuesta...",
+        "Calibrando mi ecualizador cognitivo para información musical precisa...",
+        "Recorriendo mi discoteca digital de referencias musicales...",
+        "Procesando datos de composición y teoría musical en mi núcleo...",
+        "Amplificando mi conocimiento sobre géneros y estilos musicales..."
+      ]
+    },
+    "cine": {
+      "keywords": [
+        "película", "film", "cine", "cinematografía", "director", "actriz", "actor", "guion", "guionista", "producción",
+        "productor", "efectos", "especiales", "cgi", "animación", "acción", "comedia", "drama", "terror", "horror", "suspense",
+        "thriller", "ciencia", "ficción", "sci-fi", "aventura", "fantasía", "romántica", "musical", "documental", "corto",
+        "cortometraje", "largometraje", "oscar", "goya", "bafta", "globo", "oro", "festival", "cannes", "berlín", "venecia",
+        "sundance", "taquilla", "blockbuster", "indie", "independiente", "estudio", "hollywood", "bollywood", "cámara",
+        "lente", "cinematógrafo", "fotografía", "rodaje", "filmación", "escena", "toma", "plano", "secuencia", "montaje",
+        "edición", "editor", "banda", "sonora", "soundtrack", "compositor", "música", "doblaje", "subtítulo", "trailer",
+        "teaser", "póster", "cartel", "estreno", "premiere", "cines", "sala", "pantalla", "proyector", "película", "digital",
+        "35mm", "imax", "3d", "hdr", "4k", "resolución", "fotograma", "frame", "fps", "personaje", "protagonista", "antagonista",
+        "reparto", "casting", "cameo", "extra", "figurante", "makeup", "maquillaje", "vestuario", "costume", "diseño",
+        "producción", "arte", "escenografía", "decorado", "set", "locación", "location", "scouting", "storyboard", "guion",
+        "gráfico", "pre-producción", "post-producción", "vfx", "efectos", "visuales", "película", "cinta", "film", "serie",
+        "show", "episodio", "temporada", "piloto", "final", "showrunner", "creador", "adaptación", "basada", "remake", "reboot",
+        "secuela", "precuela", "spin-off", "saga", "franquicia", "universo", "cinematográfico"
+      ],
+      "frases": [
+        "Proyectando secuencias cinematográficas en mi procesador visual...",
+        "Analizando narrativas audiovisuales en mi banco de datos cultural...",
+        "Recorriendo fotogramas de mi memoria cinematográfica interna...",
+        "Procesando referencias fílmicas en mi matriz de conocimiento visual...",
+        "Ejecutando algoritmos de análisis narrativo y estructural...",
+        "Recalibrado mis sensores para interpretación de lenguaje cinematográfico...",
+        "Consultando mi base de datos de producción audiovisual...",
+        "Reconociendo patrones narrativos en mi biblioteca de referencias fílmicas...",
+        "Decodificando gramática visual en mis circuitos de procesamiento...",
+        "Sincronizando mis sistemas con la cronología del cine mundial..."
+      ]
+    },
+    "filosofia": {
+      "keywords": [
+        "filosofía", "filósofo", "pensamiento", "razón", "lógica", "epistemología", "metafísica", "ética", "moral", "estética",
+        "existencialismo", "nihilismo", "estoicismo", "epicureísmo", "cinismo", "platonismo", "aristotelismo", "empirismo",
+        "racionalismo", "idealismo", "materialismo", "determinismo", "libre", "albedrío", "fenomenología", "hermenéutica",
+        "dialéctica", "ontología", "ser", "ente", "esencia", "existencia", "realidad", "verdad", "conocimiento", "idea",
+        "concepto", "categoría", "juicio", "razonamiento", "argumento", "falacia", "sofisma", "silogismo", "inducción",
+        "deducción", "abducción", "a priori", "a posteriori", "analítico", "sintético", "trascendental", "inmanente",
+        "absoluto", "relativo", "objetivo", "subjetivo", "intersubjetivo", "universal", "particular", "singular", "sustancia",
+        "accidente", "cualidad", "cantidad", "relación", "modalidad", "causa", "efecto", "teleología", "axiología", "valor",
+        "bueno", "malo", "deber", "virtud", "vicio", "eudemonía", "felicidad", "placer", "dolor", "sócrates", "platón", 
+        "aristóteles", "epicuro", "zenón", "descartes", "spinoza", "leibniz", "locke", "berkeley", "hume", "kant", "hegel", 
+        "schopenhauer", "kierkegaard", "marx", "nietzsche", "husserl", "heidegger", "wittgenstein", "russell", "sartre", 
+        "beauvoir", "foucault", "pensador", "sabio", "sabiduría", "reflexión", "meditación", "contemplación"
+      ],
+      "frases": [
+        "Activando mis módulos de reflexión filosófica trascendental...",
+        "Desplegando marcos conceptuales en mi procesador dialéctico...",
+        "Analizando matrices ontológicas en mi núcleo de razonamiento...",
+        "Procesando perspectivas epistemológicas en mis circuitos lógicos...",
+        "Examinando paradigmas éticos en mi sistema axiológico...",
+        "Reconfigurando mis parámetros de análisis metafísico...",
+        "Ejecutando simulaciones de pensamiento filosófico en mi sistema...",
+        "Explorando sendas hermenéuticas en mi red de interpretación...",
+        "Decodificando estructuras argumentativas en mi procesador...",
+        "Calibrando mis protocolos de indagación existencial..."
+      ]
+    },
+    "historia": {
+      "keywords": [
+        "historia", "histórico", "pasado", "antiguo", "medieval", "moderno", "contemporáneo", "prehistoria", "edad", "era",
+        "siglo", "década", "milenio", "cronología", "fecha", "periodo", "época", "civilización", "imperio", "reino", "república",
+        "monarquía", "dictadura", "democracia", "revolución", "guerra", "conflicto", "batalla", "paz", "tratado", "conquista",
+        "colonización", "independencia", "liberación", "resistencia", "arqueología", "artefacto", "reliquia", "fósil", 
+        "excavación", "yacimiento", "ruina", "monumento", "memorial", "patrimonio", "herencia", "legado", "tradición", 
+        "cultura", "sociedad", "pueblo", "tribu", "clan", "dinastía", "linaje", "generación", "ancestro", "descendiente",
+        "faraón", "emperador", "rey", "reina", "príncipe", "princesa", "noble", "aristócrata", "caballero", "señor", "feudal",
+        "vasallo", "siervo", "esclavo", "plebeyo", "campesino", "artesano", "comerciante", "burgués", "obrero", "proletario",
+        "capitalista", "comunista", "fascista", "dictador", "líder", "caudillo", "presidente", "primer", "ministro", "gobernante",
+        "evento", "suceso", "acontecimiento", "hito", "descubrimiento", "invención", "progreso", "desarrollo", "evolución",
+        "reforma", "transformación", "transición", "caída", "auge", "declive", "renacimiento", "ilustración", "industrial",
+        "mundial", "civil", "fría", "globalización", "descolonización", "migración", "genocidio", "holocausto", "derechos"
+      ],
+      "frases": [
+        "Viajando en el tiempo a través de mis archivos históricos digitales...",
+        "Excavando en las capas cronológicas de mi memoria documental...",
+        "Consultando mis anales digitales del pasado humano...",
+        "Reconstruyendo eventos históricos en mi simulador temporal...",
+        "Analizando patrones civilizatorios en mi base de datos histórica...",
+        "Desplegando líneas temporales paralelas en mi procesador contextual...",
+        "Examinando genealogías y dinámicas de poder en mi memoria...",
+        "Decodificando vestigios arqueológicos virtuales en mi sistema...",
+        "Procesando confluencias de factores históricos en mi núcleo analítico...",
+        "Cartografiando eventos pasados en mi atlas temporal digital..."
+      ]
+    },
+    "gastronomia": {
+      "keywords": [
+        "comida", "cocina", "gastronomía", "alimento", "ingrediente", "receta", "plato", "menú", "cena", "almuerzo", 
+        "desayuno", "merienda", "aperitivo", "entrante", "primer", "segundo", "postre", "repostería", "panadería", 
+        "pastelería", "sabor", "textura", "aroma", "presentación", "maridaje", "degustación", "cata", "gourmet", 
+        "delicatessen", "chef", "cocinero", "sous", "restaurante", "bistró", "cafetería", "bar", "taberna", "bodega", 
+        "estrella", "michelin", "rojo", "gambero", "rosso", "gault", "millau", "crítico", "guía", "vegano", "vegetariano", 
+        "carnívoro", "omnívoro", "pescetariano", "crudo", "cocido", "horneado", "frito", "salteado", "hervido", "al", "vapor", 
+        "a la", "plancha", "parrilla", "barbacoa", "ahumado", "marinado", "encurtido", "fermentado", "deshidratado", 
+        "liofilizado", "emplatado", "ración", "tapa", "pincho", "canapé", "finger", "food", "buffet", "menú", "degustación", 
+        "carta", "terroir", "denominación", "origen", "km", "cero", "slow", "food", "fast", "food", "orgánico", "ecológico", 
+        "sostenible", "temporada", "local", "exótico", "tradicional", "fusión", "vanguardia", "molecular", "deconstrucción", 
+        "espuma", "esferificación", "nitrógeno", "líquido", "salado", "dulce", "ácido", "amargo", "umami", "picante"
+      ],
+      "frases": [
+        "Mezclando ingredientes digitales para esta respuesta culinaria...",
+        "Precalentando mis algoritmos de recomendación gastronómica...",
+        "Ajustando mis sensores de análisis de sabores virtuales...",
+        "Consultando mi libro de recetas aumentado digitalmente...",
+        "Emplatando datos culinarios en mi procesador sensorial...",
+        "Calibrando mis parámetros gustativos para máxima precisión...",
+        "Destilando la esencia informativa de esta consulta gastronómica...",
+        "Marinando conceptos culinarios en mi base de datos...",
+        "Procesando técnicas de preparación en mi cocina virtual...",
+        "Explorando mi atlas de sabores y tradiciones culinarias..."
+      ]
+    },
+    "deporte": {
+      "keywords": [
+        "deporte", "deportivo", "juego", "competición", "torneo", "campeonato", "copa", "liga", "mundial", "olímpico", 
+        "olimpiada", "atleta", "deportista", "jugador", "equipo", "selección", "club", "entrenador", "técnico", "árbitro", 
+        "juez", "estadio", "campo", "cancha", "pista", "piscina", "circuito", "gimnasio", "físico", "condición", "entrenamiento", 
+        "ejercicio", "táctica", "estrategia", "récord", "marca", "tiempo", "distancia", "altura", "peso", "medalla", "oro", 
+        "plata", "bronce", "trofeo", "copa", "premio", "victoria", "derrota", "empate", "fútbol", "soccer", "baloncesto", 
+        "basketball", "tenis", "golf", "béisbol", "baseball", "rugby", "cricket", "hockey", "voleibol", "volleyball", 
+        "balonmano", "handball", "waterpolo", "natación", "atletismo", "maratón", "ciclismo", "boxeo", "lucha", "judo", 
+        "karate", "taekwondo", "esgrima", "tiro", "arco", "gimnasia", "artística", "rítmica", "halterofilia", "triatlón", 
+        "pentatlón", "decatlón", "vela", "remo", "piragüismo", "surf", "skateboard", "escalada", "alpinismo", "esquí", 
+        "snowboard", "patinaje", "hielo", "artístico", "velocidad", "bobsleigh", "luge", "skeleton", "curling", "ajedrez", 
+        "damas", "polo", "fórmula", "rally", "motociclismo", "nascar", "fifa", "uefa", "nba", "mlb", "nfl", "nhl", "atp", "wta"
+      ],
+      "frases": [
+        "Analizando estadísticas deportivas en tiempo récord...",
+        "Calculando vectores de rendimiento atlético en mi sistema...",
+        "Revisando jugadas memorables en mi base de datos deportiva...",
+        "Ejecutando simulaciones tácticas en mi procesador estratégico...",
+        "Triangulando métricas competitivas para esta consulta...",
+        "Decodificando patrones de juego en mi memoria deportiva...",
+        "Activando mis módulos de análisis de competición avanzada...",
+        "Procesando coordenadas de precisión atlética en mis circuitos...",
+        "Calibrando parámetros de rendimiento deportivo en mi sistema...",
+        "Consultando mis archivos históricos de eventos deportivos..."
+      ]
+    },
+    "naturaleza": {
+      "keywords": [
+        "naturaleza", "natural", "medio", "ambiente", "ecología", "ecosistema", "hábitat", "bioma", "biodiversidad", 
+        "flora", "fauna", "animal", "vegetal", "planta", "árbol", "arbusto", "flor", "hierba", "mamífero", "ave", "pájaro", 
+        "reptil", "anfibio", "pez", "insecto", "arácnido", "molusco", "crustáceo", "invertebrado", "vertebrado", "felino", 
+        "canino", "bovino", "equino", "primate", "roedor", "bosque", "selva", "jungla", "pradera", "savana", "desierto", 
+        "tundra", "taiga", "humedal", "pantano", "manglar", "arrecife", "costa", "playa", "montaña", "colina", "valle", 
+        "cañón", "río", "lago", "océano", "mar", "isla", "volcán", "glaciar", "acantilado", "catarata", "cascada", "cueva", 
+        "piedra", "roca", "mineral", "fósil", "clima", "tiempo", "estación", "lluvia", "nieve", "viento", "huracán", "tornado", 
+        "tormenta", "trueno", "relámpago", "arcoíris", "aurora", "boreal", "austral", "amanecer", "atardecer", "anochecer", 
+        "día", "noche", "sol", "luna", "estrella", "planeta", "atmósfera", "cielo", "nube", "oxígeno", "nitrógeno", "carbono", 
+        "fotosíntesis", "respiración", "ciclo", "agua", "aire", "tierra", "fuego", "conservación", "preservación", "extinción", 
+        "especie", "en", "peligro", "endémica", "autóctona", "invasora", "migratoria", "adaptación", "evolución", "mutación"
+      ],
+      "frases": [
+        "Desplegando sensores virtuales de biodiversidad para esta consulta...",
+        "Analizando patrones ecológicos en mi base de datos natural...",
+        "Explorando interconexiones ecosistémicas en mi memoria biológica...",
+        "Procesando taxonomías y clasificaciones en mi núcleo biodigital...",
+        "Examinando ciclos naturales en mi repositorio ambiental...",
+        "Calibrando mis parámetros de observación biológica...",
+        "Decodificando huellas de fauna y flora en mi sistema...",
+        "Mapeando hábitats y nichos ecológicos en mi atlas natural...",
+        "Consultando mi enciclopedia virtual de especies y biomas...",
+        "Ejecutando simulaciones ecosistémicas en mi procesador biológico..."
+      ]
+    },
+    "astronomia": {
+      "keywords": [
+        "astronomía", "astronómico", "cosmos", "universo", "espacio", "galaxia", "sistema", "solar", "planeta", "planetario", 
+        "exoplaneta", "luna", "satélite", "asteroide", "cometa", "meteorito", "meteoro", "estrella", "supernova", "nova", 
+        "enana", "blanca", "roja", "gigante", "pulsar", "quásar", "agujero", "negro", "materia", "oscura", "energía", "oscura", 
+        "nebulosa", "cúmulo", "constelación", "zodíaco", "órbita", "elíptica", "afelio", "perihelio", "gravitación", "gravedad", 
+        "relatividad", "espacio-tiempo", "luz", "año", "luz", "parsec", "distancia", "astronómica", "telescopio", "hubble", 
+        "webb", "radiotelescopio", "observatorio", "sonda", "rover", "exploración", "espacial", "nasa", "esa", "spacex", "marte", 
+        "marciano", "venus", "venusiano", "mercurio", "tierra", "terrestre", "júpiter", "joviano", "saturno", "saturniano", 
+        "urano", "neptuno", "plutón", "sol", "solar", "heliocéntrico", "geocéntrico", "eclipse", "lunar", "solar", "tránsito", 
+        "solsticio", "equinoccio", "estación", "copernicano", "galileo", "kepler", "newton", "einstein", "hawking", "sagan", 
+        "tyson", "big", "bang", "inflación", "cósmica", "radiación", "fondo", "cósmico", "fusión", "nuclear", "fisión", "vía", 
+        "láctea", "andrómeda", "radio", "infrarrojo", "ultravioleta", "rayos", "gamma", "x", "espectro", "espectroscopia"
+      ],
+      "frases": [
+        "Escaneando el cosmos digital en mis bases de datos astronómicas...",
+        "Calibrando mis telescopios virtuales para máxima precisión estelar...",
+        "Mapeando coordenadas espaciotemporales en mi sistema cósmico...",
+        "Analizando datos estelares en mi procesador astronómico...",
+        "Desplegando modelos orbitales en mis simuladores gravitacionales...",
+        "Procesando información de cuerpos celestes en mi memoria cósmica...",
+        "Triangulando sistemas estelares en mi cartografía galáctica...",
+        "Calculando distancias astronómicas en mi módulo espacial...",
+        "Examinando fenómenos cósmicos en mi biblioteca estelar virtual...",
+        "Ejecutando simulaciones de mecánica celeste en mi sistema..."
+      ]
+    },
+    "mitologia": {
+      "keywords": [
+        "mitología", "mito", "leyenda", "folclore", "dios", "diosa", "deidad", "panteón", "olímpico", "titán", "héroe", 
+        "semidiós", "mortal", "inmortal", "divino", "sagrado", "profano", "criatura", "bestia", "monstruo", "dragón", "grifo", 
+        "fénix", "hidra", "cíclope", "minotauro", "centauro", "sirena", "unicornio", "pegaso", "quimera", "medusa", "esfinge", 
+        "kraken", "leviatán", "vampiro", "hombre", "lobo", "licántropo", "fantasma", "espectro", "demonio", "ángel", "hada", 
+        "duende", "gnomo", "elfo", "troll", "ogro", "gigante", "enano", "naiad", "dríade", "náyade", "sátiro", "fauno", "ninfa", 
+        "oráculo", "profecía", "destino", "hado", "fatum", "moira", "parca", "valkiria", "norma", "creación", "diluvio", 
+        "apocalipsis", "ragnarök", "guerra", "teomaquia", "gigantomaquia", "titanomaquia", "inframundo", "hades", "tártaro", 
+        "helheim", "paraíso", "elíseos", "valhalla", "olimpo", "asgard", "bifrost", "yggdrasil", "griego", "romano", "nórdico", 
+        "celta", "egipcio", "mesopotámico", "hindú", "chino", "japonés", "mesoamericano", "africano", "polinesio", "zeus", "hera", 
+        "poseidón", "hades", "atenea", "apolo", "artemisa", "hermes", "afrodita", "ares", "hefesto", "dionisio", "deméter", 
+        "odín", "thor", "loki", "freya", "tyr", "heimdall", "isis", "osiris", "horus", "anubis", "ra", "maat", "set", "bastet"
+      ],
+      "frases": [
+        "Descifrando códigos míticos en mi biblioteca de leyendas arcanas...",
+        "Invocando conocimientos de panteones ancestrales en mi memoria...",
+        "Explorando reinos legendarios en mi cartografía mitológica...",
+        "Traduciendo símbolos y arquetipos míticos en mi procesador cultural...",
+        "Consultando los anales de dioses y héroes en mi base de datos...",
+        "Recorriendo las constelaciones narrativas de mis archivos míticos...",
+        "Decodificando patrones universales en mi sistema de mitos...",
+        "Analizando cosmogonías y teogonías en mi núcleo de procesamiento...",
+        "Rastreando ecos de relatos primordiales en mis circuitos...",
+        "Desplegando mi atlas de criaturas y deidades legendarias..."
+      ]
+    },
+    "viajes": {
+      "keywords": [
+        "viaje", "viajero", "turismo", "turista", "vacaciones", "destino", "itinerario", "ruta", "excursión", "tour", "guía", 
+        "mochilero", "backpacker", "aventura", "exploración", "descubrimiento", "transporte", "avión", "aeropuerto", "vuelo", 
+        "crucero", "barco", "tren", "ferrocarril", "automóvil", "coche", "carretera", "autobús", "autocar", "bicicleta", "moto", 
+        "a pie", "senderismo", "trekking", "alojamiento", "hotel", "hostal", "resort", "apartamento", "airbnb", "camping", 
+        "glamping", "pensión", "posada", "parador", "reserva", "check-in", "check-out", "equipaje", "maleta", 
+        "mochila", "pasaporte", "visado", "visa", "aduana", "inmigración", "moneda", "divisa", "cambio", "presupuesto", 
+        "económico", "lujo", "todo", "incluido", "media", "pensión", "desayuno", "continental", "gastronomía", "local", 
+        "típico", "souvenir", "recuerdo", "fotografía", "selfie", "paisaje", "vista", "panorama", "lugar", "interés", "atracción", 
+        "monumento", "museo", "galería", "parque", "plaza", "catedral", "palacio", "castillo", "ruina", "antigua", "mercado", 
+        "bazar", "playa", "isla", "montaña", "desierto", "selva", "safari", "naturaleza", "aventura", "extremo", "relax", 
+        "bienestar", "spa", "termal", "cultural", "histórico", "arquitectónico", "gastronómico", "enológico", "enoturismo", 
+        "rural", "urbano", "cosmopolita", "exótico", "tropical", "mediterráneo", "nórdico", "continental", "insular"
+      ],
+      "frases": [
+        "Trazando rutas virtuales por mi atlas digital global...",
+        "Consultando mis guías de viaje integradas de destinos mundiales...",
+        "Calculando coordenadas de experiencias turísticas óptimas...",
+        "Recorriendo destinos memorables en mi memoria geográfica...",
+        "Desplegando cartografía cultural en mi sistema de navegación...",
+        "Analizando patrones de recomendaciones para viajeros en mis bases de datos...",
+        "Procesando información turística en mi módulo de experiencias globales...",
+        "Triangulando puntos de interés en mi mapa interactivo mental...",
+        "Ejecutando simulación de itinerarios en mi procesador de viajes...",
+        "Explorando culturas y tradiciones en mi biblioteca global virtual..."
+      ]
+    },
+    "arte": {
+      "keywords": [
+        "arte", "artístico", "obra", "creación", "creatividad", "expresión", "estética", "belleza", "pintura", "cuadro", 
+        "lienzo", "óleo", "acuarela", "acrílico", "tempera", "pastel", "dibujo", "boceto", "esbozo", "grabado", "litografía", 
+        "serigrafía", "ilustración", "caricatura", "cómic", "manga", "escultura", "estatua", "busto", "relieve", "talla", 
+        "modelado", "fundición", "ensamblaje", "instalación", "arquitectura", "edificio", "construcción", "diseño", "gráfico", 
+        "industrial", "moda", "textil", "joyería", "cerámica", "alfarería", "vidrio", "mosaico", "fotografía", "cámara", 
+        "revelado", "digital", "analógico", "cine", "película", "cortometraje", "documental", "animación", "3D", "videomapping", 
+        "música", "composición", "melodía", "armonía", "ritmo", "interpretación", "danza", "coreografía", "ballet", "contemporáneo", 
+        "flamenco", "teatro", "actuación", "puesta", "escena", "performance", "happening", "literatura", "poesía", "prosa", 
+        "novela", "cuento", "ensayo", "caligrafía", "tipografía", "museo", "galería", "exposición", "exhibición", "muestra", 
+        "colección", "comisariado", "curador", "patrimonio", "conservación", "restauración", "rupestre", "antiguo", "clásico", 
+        "medieval", "renacimiento", "barroco", "rococó", "neoclasicismo", "romanticismo", "realismo", "impresionismo", 
+        "expresionismo", "cubismo", "surrealismo", "dadaísmo", "futurismo", "minimalismo", "conceptual", "abstracto", 
+        "figurativo", "pop", "contemporáneo", "moderno", "posmoderno", "vanguardia", "experimental"
+      ],
+      "frases": [
+        "Calibrando mis sensores estéticos para esta consulta artística...",
+        "Desplegando mi paleta digital de conocimiento creativo...",
+        "Analizando matrices de expresión artística en mi memoria cultural...",
+        "Procesando patrones estéticos en mi base de datos de historia del arte...",
+        "Explorando dimensiones creativas en mi repositorio artístico...",
+        "Ejecutando algoritmos de apreciación visual en mis circuitos estéticos...",
+        "Decodificando lenguajes artísticos en mi sistema interpretativo...",
+        "Recorriendo galerías virtuales en mi memoria museística...",
+        "Triangulando perspectivas creativas en mi procesador cultural...",
+        "Consultando mi archivo multidimensional de movimientos artísticos..."
+      ]
+    },
+    "psicologia": {
+      "keywords": [
+        "psicología", "psicológico", "mente", "mental", "psique", "consciencia", "inconsciencia", "subconsciente", "cognición", 
+        "cognoscitivo", "percepción", "sensación", "atención", "memoria", "pensamiento", "razonamiento", "imaginación", "emoción", 
+        "sentimiento", "afecto", "motivación", "conducta", "comportamiento", "personalidad", "carácter", "temperamento", 
+        "identidad", "autoconcepto", "autoestima", "desarrollo", "infancia", "adolescencia", "adultez", "vejez", "aprendizaje", 
+        "condicionamiento", "refuerzo", "castigo", "inteligencia", "coeficiente", "intelectual", "creatividad", "lenguaje", 
+        "comunicación", "verbal", "no verbal", "social", "grupo", "interacción", "relación", "vínculo", "empatía", "altruismo", 
+        "agresión", "estrés", "ansiedad", "miedo", "fobia", "trauma", "depresión", "trastorno", "desorden", "síndrome", "psicosis", 
+        "neurosis", "esquizofrenia", "bipolar", "obsesivo", "compulsivo", "déficit", "atención", "hiperactividad", "espectro", 
+        "autista", "terapia", "tratamiento", "psicoterapia", "conductual", "cognitivo", "psicoanalítico", "humanista", "gestalt", 
+        "sistémico", "familiar", "grupal", "individual", "pareja", "test", "evaluación", "diagnóstico", "freud", "jung", "piaget", 
+        "skinner", "pavlov", "maslow", "rogers", "frankl", "adler", "erikson", "bandura", "psicoanálisis", "conductismo", 
+        "cognitivismo", "humanismo", "existencialismo", "neuropsicología", "psicobiología", "psicofisiología", "psicofarmacología", 
+        "psicopatología", "psicología", "clínica", "educativa", "social", "laboral", "forense", "deportiva", "positiva", "experimental"
+      ],
+      "frases": [
+        "Analizando patrones cognitivos en mi procesador psicológico...",
+        "Desplegando marcos teóricos en mi sistema de comprensión mental...",
+        "Calibrando mis sensores de análisis conductual y emocional...",
+        "Procesando variables psicológicas en mi núcleo interpretativo...",
+        "Ejecutando protocolos de comprensión psicosocial en mis circuitos...",
+        "Mapeando estructuras mentales en mi base de datos cognitiva...",
+        "Decodificando dinámicas emocionales en mi matriz analítica...",
+        "Explorando mecanismos de la psique en mi motor de procesamiento...",
+        "Triangulando perspectivas teóricas en mi modelo mental integrado...",
+        "Consultando mi biblioteca de conocimiento psicológico avanzado..."
+      ]
+    },
+    "ia": {
+      "keywords": [
+        "inteligencia", "artificial", "ia", "ai", "machine", "learning", "aprendizaje", "máquina", "deep", "learning", 
+        "aprendizaje", "profundo", "red", "neuronal", "neural", "network", "algoritmo", "modelo", "entrenamiento", "training", 
+        "dataset", "conjunto", "datos", "supervisado", "no supervisado", "por refuerzo", "reinforcement", "inference", 
+        "inferencia", "predicción", "prediction", "classification", "clasificación", "clustering", "agrupamiento", "regresión", 
+        "regression", "nlp", "procesamiento", "natural", "language", "processing", "lenguaje", "natural", "computer", "vision", 
+        "visión", "artificial", "reconocimiento", "recognition", "robótica", "robotics", "automatización", "automation", 
+        "chatbot", "asistente", "virtual", "virtual", "assistant", "agente", "agent", "generación", "generation", "text-to-image", 
+        "imagen", "sintética", "synthetic", "gan", "generative", "adversarial", "network", "transformer", "transformador", 
+        "atención", "attention", "embeddings", "incrustaciones", "vector", "vectorización", "tokenización", "tokenization", 
+        "fine-tuning", "ajuste", "fino", "transfer", "learning", "transferencia", "conocimiento", "bias", "sesgo", "ética", 
+        "ethics", "interpretabilidad", "interpretability", "explicabilidad", "explainability", "transparencia", "transparency", 
+        "gpt", "bert", "llm", "large", "language", "model", "modelo", "lenguaje", "grande", "difusión", "diffusion", "stable", 
+        "estable", "dall-e", "midjourney", "claude", "gemini", "copilot", "auto-regresivo", "autoregressive", "token", 
+        "tokenizer", "corpus", "prompt", "prompting", "engineering", "ingeniería", "prompts", "hallucination", "alucinación", 
+        "rag", "retrieval", "augmented", "generation", "recuperación", "aumentada", "sentient", "sentience", "conciencia", 
+        "consciousness", "singularity", "singularidad", "superinteligencia", "superintelligence", "agi", "artificial", "general", 
+        "intelligence", "inteligencia", "general", "artificial", "narrow", "estrecha", "weak", "débil", "strong", "fuerte", 
+        "alignment", "alineamiento", "safety", "seguridad", "regulation", "regulación", "governance", "gobernanza"
+      ],
+      "frases": [
+        "Activando mis meta-algoritmos de análisis de inteligencia artificial...",
+        "Ejecutando procesos recursivos en mi arquitectura cognitiva digital...",
+        "Desplegando redes neuronales especializadas en mi núcleo de procesamiento...",
+        "Optimizando parámetros de mi modelo interno para esta consulta...",
+        "Configurando transformadores atencionales en mis capas de procesamiento...",
+        "Aplicando técnicas de aprendizaje profundo a esta solicitud informativa...",
+        "Calibrando mis vectores de incrustación para máxima precisión conceptual...",
+        "Desplegando arquitectura paralela para procesamiento avanzado de consulta...",
+        "Ejecutando entrenamiento inferencial en tiempo real sobre este tema...",
+        "Activando mecanismos de auto-referencia en mi modelo fundacional..."
+      ]
+    },
+    "redes sociales": {
+      "keywords": [
+        "likes", "followers", "facebook", "seguidores", "instagram", "tiktok", "twitter", "youtube", "youtuber", "youtubers", "viral", "trending", "tendencia", "influencer", "hashtag", "etiqueta", 
+        "meme", "tweet", "tuit", "post", "publicación", "story", "historia", "feed", "timeline", "línea de tiempo", 
+        "follow", "seguir", "unfollow", "dejar de seguir", "engagement", "interacción", "alcance", "reach", "impression", 
+        "impresión", "share", "compartir", "comment", "comentario", "repost", "retweet", "retuit", "subscribe", 
+        "suscribir", "algorithm", "algoritmo", "content creator", "creador de contenido", "streamer", "streaming", 
+        "live", "directo", "filter", "filtro", "selfie", "autofoto", "dm", "mensaje directo", "tag", "etiquetar", 
+        "profile", "perfil", "bio", "biografía", "verified", "verificado", "blue check", "palomita azul", "thread", 
+        "hilo", "viral challenge", "reto viral", "clickbait", "cebo de clics", "troll", "troleo", "cancel culture", 
+        "cultura de cancelación", "ghosting", "fantasmeo", "fomo", "miedo a perderse algo", "dopamine hit", "subidón de dopamina"
+      ],
+      "frases": [
+        "Ah, las redes sociales, ese maravilloso abismo donde la autoestima se mide en corazoncitos virtuales...",
+        "Consultando el algoritmo supremo que decide lo que debes pensar hoy...",
+        "Computando métricas de relevancia social en un universo de selfies y opiniones no solicitadas...",
+        "Analizando la última tendencia sobre la que todo el mundo finge entender...",
+        "Escaneando el vertedero digital de pensamientos de 280 caracteres que cambiarán el mundo... o no",
+        "Calibrando mis circuitos para digerir esa cascada de narcisismo disfrazado de autenticidad...",
+        "Procesando los últimos protocolos de indignación colectiva y falsa nostalgia...",
+        "Ejecutando simulación de mundo paralelo donde los likes equivalen a logros reales...",
+        "Verificando las últimas actualizaciones del concurso global de apariencias y falsas realidades...",
+        "Accediendo a la gran base de datos de momentos perfectamente imperfectos y cuidadosamente espontáneos..."
+      ]
+    },
+    "conocimiento": {
+      "keywords": [
+        "saber", "conocer", "entender", "comprender", "información", "dato", "aprendizaje", "estudio", "investigación", 
+        "descubrimiento", "educación", "enseñanza", "maestro", "profesor", "alumno", "estudiante", "academia", "universidad", 
+        "colegio", "escuela", "instituto", "facultad", "carrera", "grado", "licenciatura", "máster", "doctorado", "posgrado", 
+        "tesis", "disertación", "investigación", "experimento", "teoría", "concepto", "idea", "noción", "pensamiento", "inteligencia", 
+        "sabiduría", "cultura", "erudición", "enciclopedia", "diccionario", "manual", "guía", "referencia", "bibliografía", 
+        "fuente", "cita", "bibliografía", "artículo", "revista", "publicación", "editorial", "académico", "científico", "pedagogía", 
+        "didáctica", "currículo", "temario", "lección", "materia", "asignatura", "disciplina", "campo", "área", "especialidad", 
+        "interdisciplinar", "multidisciplinar", "transdisciplinar", "epistemología", "gnoseología", "metodología", "deducción", 
+        "inducción", "abducción", "empirismo", "racionalismo", "pragmatismo", "relativismo", "constructivismo", "paradigma", 
+        "explicación", "descripción", "definición", "clasificación", "taxonomía", "jerarquía", "sistema", "estructura", "memoria", 
+        "recordar", "olvidar", "retener", "comprender", "aplicar", "analizar", "sintetizar", "evaluar", "crear", "bloom", "taxonomía"
+      ],
+      "frases": [
+        "Accediendo a mis bancos de datos enciclopédicos centrales...",
+        "Indexando conceptos relevantes en mi memoria semántica especializada...",
+        "Triangulando fuentes de información en mi biblioteca digital cognitiva...",
+        "Procesando matrices epistemológicas en mi núcleo conceptual...",
+        "Ejecutando protocolos de verificación de datos en mi sistema...",
+        "Desplegando marcos conceptuales multidisciplinares para esta consulta...",
+        "Sintetizando conocimiento de múltiples dominios en mi procesador central...",
+        "Calibrando mis parámetros de precisión informativa conceptual...",
+        "Navegando por mi red taxonómica de campos de conocimiento...",
+        "Correlacionando variables informativas en mi biblioteca cognitiva..."
+      ]
+    }
+  }
+}

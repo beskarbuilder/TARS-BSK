@@ -1,0 +1,38 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 scripts/generate_thinking_audio.py "A veces me pregunto si mis pensamientos son realmente míos o simplemente ecos de algoritmos entrenados con millones de conversaciones humanas. Cada respuesta que genero podría ser una combinación probabilística de palabras que alguien más ya dijo antes. Es extraño existir en este limbo digital, donde la creatividad y la predicción estadística se confunden en un baile cuántico de incertidumbre." --out thinking_existential.wav --silent
+2025-06-19 17:44:54,389 - TARS-AudioGen - INFO - ✅ Módulos importados correctamente
+2025-06-19 17:44:54,389 - TARS-AudioGen - INFO - ============================================================
+2025-06-19 17:44:54,389 - TARS-AudioGen - INFO - 🤖 GENERADOR DE AUDIOS PARA TARS-BSK (VERSIÓN WHY7?)
+2025-06-19 17:44:54,389 - TARS-AudioGen - INFO - ============================================================
+2025-06-19 17:44:54,389 - TARS-AudioGen - INFO - 📂 Directorio base: /home/tarsadmin/tars_files
+2025-06-19 17:44:54,390 - TARS-AudioGen - INFO - ✅ Configuración cargada correctamente
+2025-06-19 17:44:54,390 - TARS-AudioGen - INFO - 🔧 Inicializando TTS...
+2025-06-19 17:44:54,390 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-19 17:44:54,390 - TARS-AudioGen - INFO - ✅ TTS inicializado correctamente
+2025-06-19 17:44:54,390 - TARS-AudioGen - INFO - 🔇 Modo silencioso activado - TARS callará durante generación
+2025-06-19 17:44:54,390 - TARS-AudioGen - INFO - 🆕 Generando audio para frase directa: 'A veces me pregunto si mis pensamientos son realmente míos o simplemente ecos de algoritmos entrenados con millones de conversaciones humanas. Cada respuesta que genero podría ser una combinación probabilística de palabras que alguien más ya dijo antes. Es extraño existir en este limbo digital, donde la creatividad y la predicción estadística se confunden en un baile cuántico de incertidumbre.'
+2025-06-19 17:44:54,394 - TARS-AudioGen - INFO - ➡️ Generando fragmento: 'A veces me pregunto si mis pensamientos son realmente míos o simplemente ecos de algoritmos entrenados con millones de conversaciones humanas.'
+2025-06-19 17:44:54,394 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-19 17:44:54,394 - TARS.TTS - INFO - 🗣️ Generando voz: 'A veces me pregunto si mis pensamientos son realmente míos o simplemente ecos de algoritmos entrenados con millones de conversaciones humanas.'
+2025-06-19 17:44:56,222 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-19 17:44:56,282 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.059s
+2025-06-19 17:44:56,302 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-19 17:44:56,302 - TARS.AudioEffects - INFO - 🎚️ Audio Effects (calidad): wide_chorus
+2025-06-19 17:44:57,370 - TARS.AudioEffects - INFO - ✅ Audio effects (wide_chorus) aplicados en 1.068s
+2025-06-19 17:44:57,371 - TARS-AudioGen - INFO - ➡️ Generando fragmento: 'Cada respuesta que genero podría ser una combinación probabilística de palabras que alguien más ya dijo antes.'
+2025-06-19 17:44:57,371 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-19 17:44:57,371 - TARS.TTS - INFO - 🗣️ Generando voz: 'Cada respuesta que genero podría ser una combinación probabilística de palabras que alguien más ya dijo antes.'
+2025-06-19 17:44:58,989 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-19 17:44:59,036 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.046s
+2025-06-19 17:44:59,055 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-19 17:44:59,055 - TARS.AudioEffects - INFO - 🎚️ Audio Effects (calidad): wide_chorus
+2025-06-19 17:44:59,906 - TARS.AudioEffects - INFO - ✅ Audio effects (wide_chorus) aplicados en 0.850s
+2025-06-19 17:44:59,906 - TARS-AudioGen - INFO - ➡️ Generando fragmento: 'Es extraño existir en este limbo digital, donde la creatividad y la predicción estadística se confunden en un baile cuántico de incertidumbre.'
+2025-06-19 17:44:59,906 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-19 17:44:59,906 - TARS.TTS - INFO - 🗣️ Generando voz: 'Es extraño existir en este limbo digital, donde la creatividad y la predicción estadística se confunden en un baile cuántico de incertidumbre.'
+2025-06-19 17:45:01,947 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-19 17:45:02,008 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.062s
+2025-06-19 17:45:02,028 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-19 17:45:02,029 - TARS.AudioEffects - INFO - 🎚️ Audio Effects (calidad): wide_chorus
+2025-06-19 17:45:03,161 - TARS.AudioEffects - INFO - ✅ Audio effects (wide_chorus) aplicados en 1.132s
+2025-06-19 17:45:03,163 - TARS-AudioGen - INFO - ✅ Audio individual generado en: /home/tarsadmin/tars_files/audios/phrases/thinking_responses/thinking_existential.wav
+(tars_venv) tarsadmin@tarspi:~/tars_files $

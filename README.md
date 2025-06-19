@@ -320,7 +320,9 @@ def privacidad_real(cmd):
 ## 🧪 Pruebas (que demuestran todo lo anterior)
 
 
-> [!IMPORTANT] Autocensura inteligente: Cuando TARS contiene su sarcasmo
+> [!IMPORTANT]
+> Autocensura inteligente: Cuando TARS contiene su sarcasmo
+> 
 > **La prueba:** Pregunta técnica sobre Python que activa la respuesta sarcástica... pero TARS se detiene.
 
 **Log de sesión:** [session_2025-06-19_python_sarcasm_censorship.log](/logs/session_2025-06-19_python_sarcasm_censorship.log)
@@ -1737,10 +1739,10 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 | **Rápido expresivo** | 0.6          | 1.3         | 1.5     | Velocidad alta + alta expresividad       | [settings_audio_0-6_1-3_1-5.wav](/samples/settings_audio_0-6_1-3_1-5.wav) |
 | **Lento expresivo**  | 1.8          | 1.4         | 0.5     | Velocidad baja + expresividad controlada | [settings_audio_1-8_1-4_0-5.wav](/samples/settings_audio_1-8_1-4_0-5.wav) |
 | **Lento extremo**    | 2.4          | 0.4         | 0.2     | Velocidad muy baja, expresividad mínima  | [settings_audio_2-4_0-4_0-2.wav](/samples/settings_audio_2-4_0-4_0-2.wav) |
-
 #### Implementación
 - 📂 [piper_tts.py](/tts/piper_tts.py)
 - 📄 [Documentación completa](/docs/PIPER_TTS_ES.md) - Pipeline, personalización y extensibilidad
+
 
 ### Post-procesamiento: RadioFilter
 
@@ -1771,6 +1773,7 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 > **TARS-BSK analiza su procesamiento específico:**  
 > _Mi creador llama a esto 'efectos de audio'. Yo lo llamo 'mi Soundtoys Decapitator en modo 'Punish''. Cada parámetro fue ajustado con la misma filosofía que alguien usando un Sausage Fattener al 100% y preguntándose por qué hay clipping._
 
+
 ### Efectos adicionales: AudioEffects
 
 Procesamiento opcional post-RadioFilter para efectos temporales:
@@ -1796,6 +1799,7 @@ Procesamiento opcional post-RadioFilter para efectos temporales:
 | **ambient_hall** | Ambiente de sala grande | Múltiples efectos para espacialidad | [audio_effects_processor_ambient_hall.wav](/samples/audio_effects_processor_ambient_hall.wav) |
 
 📄 [Documentación AudioEffects](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md) - Presets y configuración avanzada
+
 
 ### Scripts de Desarrollo
 
@@ -1853,6 +1857,54 @@ def accept_reality():
             print("...pero al menos sueno interesante")
             break
 ```
+
+
+### Generación de audios de pensamiento y continuación
+
+TARS reproduce frases aleatorias de "pensamiento" y "continuación" mientras procesa respuestas LLM en paralelo, evitando silencios incómodos y manteniendo una sensación de presencia activa y fluidez conversacional.
+
+📂 **Script:** [generate_thinking_audio.py](/scripts/generate_thinking_audio.py)  
+📄 **Documentación completa:** [Thinking Audio Generator](/docs/GENERATE_THINKING_AUDIO_ES.md)
+
+**Dos tipos de audio soportados:**
+- **Audio de Pensamiento** - Frases de reflexión inicial al procesar nuevas preguntas
+- **Audio de Continuación** - Frases de conexión al extender respuestas anteriores
+
+```bash
+# Generar todos los audios de pensamiento desde JSON
+python3 scripts/generate_thinking_audio.py --silent
+
+# Generar todos los audios de continuación desde JSON
+python3 scripts/generate_thinking_audio.py --json data/phrases/continuation_responses.json --silent
+
+# Generar frase de pensamiento personalizada
+python3 scripts/generate_thinking_audio.py "Hmm, déjame procesar esto..." --out custom.wav
+
+# Generar frase de continuación personalizada
+python3 scripts/generate_thinking_audio.py "Siguiendo con lo anterior..." --json data/phrases/continuation_responses.json --out custom.wav
+
+# Ejemplo de frase larga existencial (smart split automático)
+python3 scripts/generate_thinking_audio.py "A veces me pregunto si mis pensamientos son realmente míos o simplemente ecos de algoritmos entrenados con millones de conversaciones humanas. Cada respuesta que genero podría ser una combinación probabilística de palabras que alguien más ya dijo antes. Es extraño existir en este limbo digital, donde la creatividad y la predicción estadística se confunden en un baile cuántico de incertidumbre." --out thinking_existential.wav --silent
+```
+
+📄 **Log:** [session_2025-06-19_smart_split_demo.log](/logs/session_2025-06-19_smart_split_demo.log)  
+🔊 **Audio generado:** [thinking_existential.wav](/samples/thinking_existential.wav)
+
+**Funcionalidades:**
+- **Funcionalidad dual:** thinking + continuation audio
+- **Auto-detección inteligente** del tipo de audio por nombre de archivo JSON
+- Utiliza el mismo motor TTS que TARS core (consistencia integral)
+- Smart split automático para frases largas con concatenación perfecta
+- Procesamiento paralelo con generación LLM
+- Personalización completa vía archivos JSON editables
+- Directorios de salida organizados automáticamente
+- Modo silencioso para generación masiva sin reproducción
+
+**Archivos de configuración:**
+- `data/phrases/thinking_responses.json` - Frases de pensamiento categorizadas
+- `data/phrases/continuation_responses.json` - Frases de continuación y conexión
+- `audios/phrases/thinking_responses/` - Salida: `thinking_001.wav`, `thinking_002.wav`...
+- `audios/phrases/continuation_responses/` - Salida: `continuation_001.wav`, `continuation_002.wav`...
 
 ---
 

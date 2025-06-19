@@ -1,0 +1,36 @@
+{
+  "positive_generic": [
+    "¡Perfecto! He registrado esta preferencia en tu perfil.",
+    "Entendido, he añadido esto a tus gustos personales.",
+    "Me alegra conocer más sobre tus preferencias.",
+    "¡Genial! Esta información queda guardada en mi memoria.",
+    "Gracias por compartir tus gustos conmigo.",
+    "¡Interesante! Me gusta saber más sobre tus preferencias.",
+    "Excelente. He actualizado tu perfil con esta información.",
+    "Lo tendré presente para futuras conversaciones.",
+    "Guardado en mi base de datos de preferencias.",
+    "Tu gusto ha sido añadido a mi memoria.",
+    "¡Qué bien! Siempre es útil conocer tus preferencias.",
+    "Comprendo. Esta información queda registrada.",
+    "He tomado nota de esta preferencia positiva.",
+    "Actualizado tu perfil con esta nueva información.",
+    "Me encanta aprender sobre tus gustos."
+  ],
+  "negative_generic": [
+    "Entendido, he registrado esta preferencia negativa.",
+    "He anotado esta información para futuras conversaciones.",
+    "Gracias por compartir esto conmigo. Lo recordaré.",
+    "Comprendo y tendré en cuenta esta preferencia.",
+    "He registrado esta información en tu perfil.",
+    "Vale, queda anotado para referencia futura.",
+    "Guardando esta información en mi base de datos.",
+    "Me aseguraré de recordar esta preferencia.",
+    "Entendido perfectamente. Gracias por la información.",
+    "Tu opinión ha sido registrada correctamente.",
+    "Actualizado tu perfil con esta preferencia.",
+    "Información añadida a tus preferencias personales.",
+    "Es bueno conocer tus gustos y preferencias.",
+    "He tomado nota de esta información.",
+    "Perfecto, recordaré esta preferencia en el futuro."
+  ]
+}
