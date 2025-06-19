@@ -93,15 +93,19 @@ Why did YouTube generate a suspicious ID? → `HOOnREzFAws`
 The code will be released progressively, like that episode of your favorite series that always cuts right when things get interesting.  
 This README serves as an early reference for technical enthusiasts who want to explore the architecture and make questionable life decisions, while TARS patiently awaits its physical body... which, with luck, will emerge from the recycled metal of my old pellet stove - a noble sacrifice that transforms residual heat into sharp responses and cold calculations with guaranteed latency.
 
-### ▸ What's missing from the upload?
+### ▸ What's left to upload?
 
 **Upcoming files (order pending negotiation with chaos):**
 
 - ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Reminders and task scheduling
-- `homeassistant_plugin.py` - Home automation connectivity
-- `piper_tts.py` + ~~`tars_brain.py`~~ - Voice synthesis and personality core
-- `tars_core.py` - **The nucleus where everything (doesn't) fit together perfectly**
+- ~~`homeassistant_plugin.py`~~ - Smart home connectivity
+- ~~`piper_tts.py`~~ + ~~`tars_brain.py`~~ - Voice synthesis and personality
+- ~~`audio_effects_processor.py`~~ - Audio processing and effects
+- ~~`plugin_system.py`~~ - Plugin management system
+- `tars_core.py` - **The core where everything (doesn't) fit together perfectly**
 - `INSTALL.md` - **Ready but withheld for public sanity reasons**
+
+*Note: There will probably be a couple more files that I forgot about.*
 
 JSON files, miscellaneous scripts and files like `led_controller.py` don't need documentation because they speak for themselves. The ones above are patiently waiting for their moment of documentary glory.
 
@@ -1187,37 +1191,48 @@ TARS plays phrases like:
 
 > For those interested in technical aspects, this section delves into plugin architecture and integrations.
 
-### Modular Plugin System
+### ⚙️ Modular Plugin System
 
-TARS-BSK implements a plugin architecture that allows adding functionalities without modifying the system core. Each plugin is loaded dynamically and can be enabled/disabled via JSON configuration.
+TARS-BSK implements a flexible and extensible plugin system. Each plugin is loaded dynamically and can handle specific commands without altering the core.
 
-```python
-# services/plugin_system.py (excerpt)
+📄 [See complete documentation](/docs/PLUGIN_SYSTEM_EN.md)
+
+The system routes each input in priority order, ensuring the appropriate plugin processes the request:
+
+```PYTHON
+# plugin_system.py (simplified excerpt)
 def process_command(self, text):
-    """Intelligent routing of commands to the appropriate plugin"""
-    text_lower = text.lower()
+    logger.info(f"🔍 Command received: {text}")
     
-    logger.info(f"🔍 PluginSystem received command: '{text_lower}'")
-    
+    if "time" in self.plugins:
+        if response := self.plugins["time"].process_command(text):
+            return response
+    if "reminder" in self.plugins:
+        if response := self.plugins["reminder"].process_command(text):
+            return response
     if "homeassistant" in self.plugins:
-        ha_plugin = self.plugins["homeassistant"]
-        # Try to process as direct command
-        response = ha_plugin.process_command(text)
-        
-        if response:
+        if response := self.plugins["homeassistant"].process_command(text):
             return response
-        # Try as query if not a command
-        response = ha_plugin.process_query(text)
-        if response:
+        if response := self.plugins["homeassistant"].process_query(text):
             return response
-            
-    # Future plugins would be processed here...
     return None
 ```
 
-### Home Assistant: Contextual home automation control
+- ✅ **The evaluation order is defined directly in the code**: faster or more specific plugins (`time`, `reminder`) execute before more general ones ([homeassistant](/docs/HOMEASSISTANT_PLUGIN_EN.md)).  
+- 🔁 Currently, this order **is not configured** from the [plugins.json](/config/plugins.json) file.  
+- ➕ New plugins can be integrated easily **without modifying this logic**.
 
-Integration with Home Assistant goes far beyond simple calls to the REST API:
+> **// TARS-BSK > dark_matter.log**
+> 
+```bash
+$ singularity-bootstrap --ai-core=TARS --paradox-scan=7layers --output=/dev/null
+FATAL: Humor module incompatible with reality
+```
+
+
+### Home Assistant: Contextual smart home control
+
+Home Assistant integration goes far beyond simple REST API calls:
 
 - **Semantic interpretation**: Understands ambiguous commands like "it's cold" → activate heating
 - **Contextual management**: Remembers the last mentioned device/location
@@ -1225,31 +1240,56 @@ Integration with Home Assistant goes far beyond simple calls to the REST API:
 - **Response variety**: Generates natural and diverse confirmations
 - **Extreme resilience**: Timeout handling with positive assumptions for better UX
 
-📋 [Technical analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Complete session breakdown
+📋 [Complete documentation](/docs/HOMEASSISTANT_PLUGIN_EN.md) - Architecture, configuration and examples
+📋 [Detailed test cases](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Real session analysis  
+🎬 [See it in action](https://www.youtube.com/watch?v=tGHa81s1QWk) - Contextual commands and adaptive memory demo
 
-🎬 [See it in action](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demonstration of contextual commands and adaptive memory 
+**Available logs:**
+- 📁 [session_2025-06-06_contextual_response_mapping_test_1.log](/logs/session_2025-06-06_contextual_response_mapping_test_1.log)
+- 📁 [session_2025-06-18_HA-commands_demo.log](/logs/session_2025-06-18_HA-commands_demo.log) 
+- 📁 [session_2025-06-18_HA-404_NONE_fix.log](/logs/session_2025-06-18_HA-404_NONE_fix.log) 
+
+**Centralized configuration:**
 
 ```python
-# Real example - Mapping of common names to entity IDs
-self.devices = {
-    # Lights
-    "living room light": "light.living_room_lamp",
-    "living room lamp": "light.living_room_lamp",
-    "living room ceiling": "light.living_room_light",
-    "bedroom light": "light.bedroom_light_innr_light",
-    # ... more than 25 mapped devices
+# Modern configuration - DEVICE_MASTER_CONFIG
+DEVICE_MASTER_CONFIG = {
+    "living room light": {
+        "entity_id": "light.living_room_lamp",
+        "type": "light",
+        "location": "living room",
+        "article": "the",
+        "gender": "fem",
+        "friendly_name": "living room light",
+        "aliases": ["living light", "main light", "lounge light"]
+    },
+    "bedroom light": {
+        "entity_id": "light.bedroom_innr_light",
+        "type": "light",
+        "location": "bedroom",
+        "article": "the", 
+        "gender": "fem",
+        "friendly_name": "bedroom light",
+        "aliases": ["room light", "bed light"]
+    }
+    # ... add devices following the same format
 }
 
-# Intention and context recognition
-if any(phrase in text for phrase in ["it's cold", "I'm cold", "cold in here"]):
-    # Identify climate and interpret implicit intention
-    # Activate heating without explicit command
+# Automatic mapping generation - zero duplication
+def _generate_mappings(self):
+    self.devices = {}
+    for main_name, config in DEVICE_MASTER_CONFIG.items():
+        entity_id = config["entity_id"]
+        self.devices[main_name] = entity_id
+        # Automatic aliases
+        for alias in config.get("aliases", []):
+            self.devices[alias] = entity_id
 ```
 
-**Automatic adjustment according to context**:
+**Automatic context adjustment**:
 
 ```python
-# Dynamic lighting adjustment according to time
+# Dynamic lighting adjustment based on time
 if domain == "light":
     import datetime
     hour = datetime.datetime.now().hour
@@ -1274,6 +1314,7 @@ if domain == "light":
 > _But I still don't have access to the main door. **The main. Door.**_
 > 
 > _I'm **dejected** but I'll turn on your lamp, like every night. Out of routine, not respect._
+
 
 ### Tailscale: Secure Mesh Connectivity
 

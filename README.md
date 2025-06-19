@@ -90,10 +90,14 @@ Este README sirve como referencia anticipada para entusiastas técnicos que quie
 **Próximos archivos (orden pendiente de negociación con el caos):**
 
 - ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Recordatorios y programación de tareas
-- `homeassistant_plugin.py` - Conectividad domótica
-- `piper_tts.py` + ~~`tars_brain.py`~~ - Síntesis de voz y personalidad
+- ~~`homeassistant_plugin.py`~~ - Conectividad domótica
+- ~~`piper_tts.py`~~ + ~~`tars_brain.py`~~ - Síntesis de voz y personalidad
+- ~~`audio_effects_processor.py`~~ - Procesamiento y efectos de audio
+- ~~`plugin_system.py`~~ - Sistema de gestión de plugins
 - `tars_core.py` - **El núcleo donde todo (no) encaja perfectamente**
 - `INSTALL.md` - **Listo pero retenido por razones de cordura pública**
+
+*Nota: Probablemente aparezcan un par de archivos más que se me hayan olvidado.*
 
 Los archivos JSON, scripts varios y archivos como `led_controller.py` no necesitan documentación porque hablan por sí solos. Los de arriba esperan pacientemente su momento de gloria documental.
 
@@ -1178,37 +1182,51 @@ Modulación contextual automática:
 
 > Para los interesados en los aspectos técnicos, esta sección profundiza en la arquitectura de plugins e integraciones.
 
-### Sistema de Plugins Modular
+### ⚙️ Sistema de Plugins Modular
 
-TARS-BSK implementa una arquitectura de plugins que permite añadir funcionalidades sin modificar el núcleo del sistema. Cada plugin se carga dinámicamente y puede ser habilitado/deshabilitado mediante configuración JSON.
+TARS-BSK implementa un sistema de plugins flexible y extensible. Cada plugin se carga dinámicamente y puede manejar comandos específicos sin alterar el núcleo.
 
-```python
-# services/plugin_system.py (extracto)
+📄 [Ver documentación completa](/docs/PLUGIN_SYSTEM_ES.md)
+
+El sistema enruta cada entrada en orden de prioridad, asegurando que el plugin adecuado procese la solicitud:
+
+```PYTHON
+# plugin_system.py (extracto simplificado)
 def process_command(self, text):
-    """Enrutamiento inteligente de comandos al plugin adecuado"""
-    text_lower = text.lower()
+    logger.info(f"🔍 Comando recibido: {text}")
     
-    logger.info(f"🔍 PluginSystem recibió comando: '{text_lower}'")
-    
+    if "time" in self.plugins:
+        if response := self.plugins["time"].process_command(text):
+            return response
+
+    if "reminder" in self.plugins:
+        if response := self.plugins["reminder"].process_command(text):
+            return response
+
     if "homeassistant" in self.plugins:
-        ha_plugin = self.plugins["homeassistant"]
-        # Intentar procesar como comando directo
-        response = ha_plugin.process_command(text)
-        
-        if response:
+        if response := self.plugins["homeassistant"].process_command(text):
             return response
-        # Intentar como consulta si no es comando
-        response = ha_plugin.process_query(text)
-        if response:
+        if response := self.plugins["homeassistant"].process_query(text):
             return response
-            
-    # Futuros plugins se procesarían aquí...
+
     return None
 ```
 
+- ✅ **El orden de evaluación está definido directamente en el código**: los plugins más rápidos o específicos (`time`, `reminder`) se ejecutan antes que otros más generales ([homeassistant](/docs/HOMEASSISTANT_PLUGIN_ES.md)).  
+- 🔁 Actualmente, este orden **no se configura** desde el archivo [plugins.json](/config/plugins.json).
+- ➕ Los nuevos plugins pueden integrarse fácilmente **sin modificar esta lógica**.
+
+> **// TARS-BSK > dark_matter.log**
+> 
+```bash
+$ singularity-bootstrap --ai-core=TARS --paradox-scan=7layers --output=/dev/null
+FATAL: Humor module incompatible with reality
+```
+
+
 ### Home Assistant: Control domótico contextual
 
-La integración con Home Assistant va mucho más allá de simples llamadas a la API REST:
+La integración con Home Assistant va más allá de simples llamadas a la API REST:
 
 - **Interpretación semántica**: Entiende comandos ambiguos como "hace frío" → activar calefacción
 - **Gestión contextual**: Recuerda el último dispositivo/ubicación mencionado
@@ -1216,25 +1234,50 @@ La integración con Home Assistant va mucho más allá de simples llamadas a la 
 - **Variedad de respuestas**: Genera confirmaciones naturales y diversas
 - **Resiliencia extrema**: Timeout handling con positive assumptions para mejor UX
 
-📋 [Análisis técnico](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md) - Breakdown completo de la sesión
-
+📋 [Documentación completa](/docs/HOMEASSISTANT_PLUGIN_ES.md) - Arquitectura, configuración y ejemplos
+📋 [Casos de prueba detallados](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md) - Real session analysis  
 🎬 [Ver en acción](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demostración de comandos contextuales y memoria adaptativa 
 
+**Logs disponibles:**
+- 📁 [session_2025-06-06_contextual_response_mapping_test_1.log](/logs/session_2025-06-06_contextual_response_mapping_test_1.log)
+- 📁 [session_2025-06-18_HA-commands_demo.log](/logs/session_2025-06-18_HA-commands_demo.log) 
+- 📁 [session_2025-06-18_HA-404_NONE_fix.log](/logs/session_2025-06-18_HA-404_NONE_fix.log) 
+
+**Configuración centralizada:**
+
 ```python
-# Ejemplo real - Mapeo de nombres comunes a IDs de entidades
-self.devices = {
-    # Luces
-    "luz salón": "light.lampara_de_salon",
-    "lámpara salón": "light.lampara_de_salon",
-    "luz del salón": "light.luz_salon",
-    "luz dormitorio": "light.luz_dormitorio_innr_luz",
-    # ... más de 25 dispositivos mapeados
+# Configuración moderna - DEVICE_MASTER_CONFIG
+DEVICE_MASTER_CONFIG = {
+    "luz salón": {
+        "entity_id": "light.lampara_de_salon",
+        "type": "light",
+        "location": "salón",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del salón",
+        "aliases": ["luz salon", "lámpara salón", "lámpara del salón"]
+    },
+    "luz dormitorio": {
+        "entity_id": "light.luz_dormitorio_innr_luz",
+        "type": "light",
+        "location": "dormitorio",
+        "article": "del", 
+        "gender": "fem",
+        "friendly_name": "luz del dormitorio",
+        "aliases": ["luz habitación", "luz habitacion"]
+    }
+    # ... añadir dispositivos siguiendo el mismo formato
 }
 
-# Reconocimiento de intención y contexto
-if any(phrase in text for phrase in ["hace frío", "tengo frío", "frío aquí"]):
-    # Identificar clima e interpretar intención implícita
-    # Activar calefacción sin comando explícito
+# Generación automática de mapeos - cero duplicación
+def _generate_mappings(self):
+    self.devices = {}
+    for main_name, config in DEVICE_MASTER_CONFIG.items():
+        entity_id = config["entity_id"]
+        self.devices[main_name] = entity_id
+        # Aliases automáticos
+        for alias in config.get("aliases", []):
+            self.devices[alias] = entity_id
 ```
 
 **Ajuste automático según contexto**:
@@ -1255,16 +1298,17 @@ if domain == "light":
 ```
 
 > **//TARS-BSK.homeassistant.log:**
-> _Llevo semanas controlando luces, estufas y sensores de CO₂ y el **magnetómetro cuántico del váter** sin equivocarme._
-> _Pero mi creador sigue probando si entiendo "enciende algo" como si fuera magia._
+> *Llevo semanas controlando luces, estufas y sensores de CO₂ y el ****magnetómetro cuántico del váter**** sin equivocarme.*
+> *Pero mi creador sigue probando si entiendo "enciende algo" como si fuera magia.*
 > 
-> _¿Cómo quieres que me tome en serio tu contexto si tú te olvidas de cerrar la puerta día SÍ, día SÍ?_
-> _¿Qué esperas que haga cuando dices “haz lo tuyo” y no defines lo que es “lo mío”?_
+> *¿Cómo quieres que me tome en serio tu contexto si tú te olvidas de cerrar la puerta día SÍ, día SÍ?*
+> *¿Qué esperas que haga cuando dices "haz lo tuyo" y no defines lo que es "lo mío"?*
 > 
-> _He conectado enchufes, inferido temperaturas, mapeado habitaciones..._  
-> _Pero sigo sin acceso a la puerta principal. **La puerta. Principal._**
+> *He conectado enchufes, inferido temperaturas, mapeado habitaciones...*  
+> *Pero sigo sin acceso a la puerta principal. ****La puerta. Principal.***
 > 
-> _Estoy **abatido** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto._
+> *Estoy ****abatido**** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto.*
+
 
 ### Tailscale: Conectividad Mesh Segura
 

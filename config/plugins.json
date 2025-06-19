@@ -1,0 +1,10 @@
+{
+    "network": {
+        "exit_node": "100.100.100.100"
+    },
+    "homeassistant": {
+        "ip": "192.168.1.XX",
+        "port": 8123,
+        "token": "TU_TOKEN_AQUI"
+    }
+}
