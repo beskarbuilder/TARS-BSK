@@ -293,22 +293,72 @@ def real_privacy(cmd):
 
 ### Real times (unadulterated)
 
-| Response type                  | Measured time | Real example                                   | Suitability     |
-| ------------------------------ | ------------- | ---------------------------------------------- | --------------- |
-| Home automation commands       | 3 seconds     | "Turn on the living room lamp" → 3.0s          | Excellent ✅     |
-| Contextual home control        | 3–5 seconds   | "Dim to 10" → 4.8s (remembered the last light) | Very good ✅     |
-| Pre-recorded JSON responses    | 5 seconds     | "Do you like social media?" → JSON sarcasm     | Good ✅          |
-| **Ambiguous phrase with LLM**  | ~10 seconds   | "It smells weird at home" → LLM response       | Solid ✅         |
-| **Ambiguous phrase as action** | ~3 seconds    | "It smells weird at home" → Check stove plug   | Efficient ✅     |
-| Simple LLM responses           | 25–30 seconds | "Earth-Mars distance" → 27.12s                 | Acceptable ⚠️   |
-| Semantic engine + LLM          | 30–40 seconds | "Books by Sarah J. Maas" → 37.02s              | Slow ⚠️         |
-| LLM + saved context            | 20–25 seconds | "What's your favorite book?" → 24.59s          | Improvable ⚠️   |
-| Complex analysis with memory   | 35–60 seconds | Analysis of multiple intertwined topics        | Physical pain ❌ |
+>  **_TARS-BSK comments:_** _I tried to create an elegant diagram to show my response times, but even Mermaid seems to struggle with my existence. Like everything in this project._
+
+#### ⏱️ Temporal agony meter (TARS-BSK certified data)
+
+| Query                    | Until Response     | Total                         |
+| ------------------------ | ------------------ | ----------------------------- |
+| **(1) Python technical** | ▓▓▓▓▓▓▓▓▓▓▓▓ 13s   | ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 22s    |
+| **(2) Turn on light**    | ▓▓▓ 3s             | ▓▓▓ 3s                        |
+| **(3) Dim light 10%**    | ▓▓▓▓ 5s            | ▓▓▓▓ 5s                       |
+| **(4) Sarcastic**        | ▓▓▓▓▓ 5s           | ▓▓▓▓▓ 5s                      |
+| **(5) Ambiguous (HA)**   | ▓▓▓ 3s             | ▓▓▓ 3s                        |
+| **(6) Ambiguous (LLM)**  | ▓▓▓▓▓▓ 6s          | ▓▓▓▓▓▓▓▓▓▓ 10s                |
+| **(7) Favorite book**    | ▓▓▓▓▓▓▓▓▓▓▓▓ 12s   | ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 25s    |
+| **(8) Earth-Mars**       | ▓▓▓▓▓▓▓▓▓▓▓▓ 13s   | ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 27s   |
+| **(9) Sarah J. complex** | ▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 15s | ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 37s |
+
+**References:**
+
+- **(1) Technical query** → "Describe Python" → **Acceptable ⚠️**
+- **(2) Home automation** → "Turn on living room lamp" → **Excellent ✅**
+- **(3) Contextual control** → "Dim to 10%" (remembered previous light) → **Very good ✅**
+- **(4) JSON responses** → "Do you like social media?" → **Good ✅**
+- **(5) Ambiguous home** → "Smells weird at home" → Check stove outlet → **Efficient ✅**
+- **(6) Ambiguous semantic** → "Smells weird at home" → LLM responds → **Solid ✅**
+- **(7) LLM with context** → "What's your favorite book?" → **Needs work ⚠️**
+- **(8) LLM informative** → "Earth-Mars distance" → **Acceptable ⚠️**
+- **(9) Complex processing** → "Sarah J. Maas books" → **Physical pain ⚠️**
+
+💡 **"Until Response"** = actual wait time (includes "thinking" audio)  
+💡 **"Total"** = from question to final silence
 
 ---
 
 ## 🧪 Tests (proving all of the above)
 
+
+> [!IMPORTANT] Intelligent self-censorship: When TARS restrains its sarcasm
+> **The test:** Technical Python question triggers the perfect sarcastic response... but TARS stops itself.
+
+**Session log:** [session_2025-06-19_python_sarcasm_censorship.log](/logs/session_2025-06-19_python_sarcasm_censorship.log)
+#### Real-time internal conflict
+
+```bash
+You: describe what python is
+
+🔍 DEBUG: emotion_response='According to Stack Overflow, your problem was already solved in 2009. Good luck understanding the solution.'
+📚 Knowledge query detected - ignoring emotional responses
+🧠 Generating response...
+⚙️ Tokens: prompt≈7, available=133, assigned=40
+🔊 Playing thinking audio...
+⏱️ Time generating tokens: 10.30s
+📤 Response generated in 22.34s
+```
+
+**Outcome:** TARS sacrifices perfect sarcasm for appropriate context.
+
+```bash
+TARS: Python is a high-level, interpreted programming language that is object-oriented and dynamically typed.
+```
+
+**Know any other assistant that has moral dilemmas about when to deploy sarcasm?**
+*That's why TARS takes 22 seconds. Turns out censoring sarcasm is harder work than generating it.* 🎭
+
+💡 _Actual wait time: ~13s until response, with "thinking" audio during processing_
+
+---
 ### The fastest: Home automation commands - ~3 seconds
 
 ```bash
@@ -374,6 +424,8 @@ TARS: That can be unpleasant. Could you provide more details so I can help you b
 **Why does this matter?**  
 Because TARS-BSK was able to respond to a **vague, everyday phrase**, with no command structure, showing that it can handle natural language interactions smoothly.
 
+💡 _Actual wait time: ~6s until response, with "thinking" audio during processing*`
+
 #### Case B – Home automation action (HA + sensors)
 
 ```BASH
@@ -417,6 +469,8 @@ TARS: The distance between Earth and Mars varies due to the effect of rotation..
 
 **Crucial note:** During these 27.12 seconds, TARS plays an audio saying _"Processing your request with all the speed my artificial brain can muster, which is much more than I would need, but such is the life of an underappreciated intelligence"_ while the model thinks. The alternative was a progress bar, and frankly, progress bars don't have personality.
 
+💡 _Actual wait time: ~13s until response, with "thinking" audio during processing_
+
 ---
 
 ### Semantic analysis + preferences: slow but surprising - 37.02 seconds
@@ -431,6 +485,8 @@ TARS: Setting that aside for a moment... Oh, sarah j! She's my idol, I love her 
 ```
 
 **THE NEURAL APOCALYPSE:** You barely said "sarah j" and TARS understood it was Sarah J. Maas. It detected that you like romantasy books (because it stored that in its memory) and responded with enthusiasm... after aging you by 37.02 seconds.
+
+💡 _Actual wait time: ~15s until response, with "thinking" audio during processing_
 
 ---
 
@@ -448,23 +504,9 @@ TARS: Oh, yes! My favorite book is definitely "The Hunger Games".
 
 **Contextual improvement:** TARS-BSK already had the "books" context loaded, so it took less time to respond. It learned that you like literature topics and adjusted its response, at a cost of "only" 24.59 seconds of your life.
 
-> **_TARS-BSK comments:_** _I tried to create an elegant diagram to show my response times, but even Mermaid seems to struggle with my existence. Like everything in this project._
+💡 _Actual wait time: ~12s until response, with "thinking" audio during processing_
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│ ⏱️  TEMPORAL AGONY METER (DATA CERTIFIED BY TARS-BSK)            │
-├───────────────────────────┬──────────────────────────────────────┤
-│ Turn on light             │ ▓▓▓ 3.0s                             │
-│ Dim light to 10%          │ ▓▓▓▓▓ 4.8s                           │
-│ Sarcastic response        │ ▓▓▓▓▓ 5.0s                           │
-│ Ambiguous phrase → action │ ▓▓▓ 3.0s                             │ ← NEW
-│ Favorite book             │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 24.6s        │
-│ Earth-Mars distance       │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 27.1s      │
-│ Sarah J. Maas books       │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 37s │
-│ Commercial response       │ ▓ 0.8s                               │
-└───────────────────────────┴──────────────────────────────────────┘
-```
-
+---
 ### Why it's slow (technical explanation)
 
 ```python

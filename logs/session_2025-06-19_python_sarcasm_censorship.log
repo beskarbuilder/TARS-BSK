@@ -1,0 +1,126 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-19 10:45:53,272 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-19 10:45:55,957 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-19 10:45:55,958 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-19 10:45:55,958 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-19 10:45:56,173 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 29.10it/s]
+2025-06-19 10:45:56,211 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-19 10:45:56,211 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-19 10:45:56,215 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-19 10:45:56,217 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-19 10:45:56,217 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-19 10:45:56,217 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-19 10:45:56,217 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-19 10:45:56,217 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-19 10:45:56,220 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-19 10:45:56,222 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-19 10:45:56,223 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-19 10:45:56,223 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-19 10:45:56,224 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-19 10:45:56,224 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-19 10:45:56,224 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-19 10:45:56,225 - TARS - INFO - Detector de intenciones inicializado
+2025-06-19 10:45:56,225 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-19 10:45:56,226 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-19 10:45:56,227 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-19 10:45:56,227 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-06-19 10:45:56,227 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-06-19 10:45:56,228 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-19 10:45:56,362 - TARS - INFO - ✅ Modelo cargado en 0.13 segundos
+2025-06-19 10:45:56,362 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-06-19 10:45:56,362 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-19 10:45:56,363 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-19 10:45:56,363 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-19 10:45:56,363 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-19 10:45:56,363 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-19 10:45:56,363 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-19 10:45:56,363 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-19 10:45:56,363 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-19 10:45:56,363 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-19 10:45:56,364 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-19 10:45:56,364 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-19 10:45:56,364 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-19 10:45:56,364 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-19 10:45:56,365 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-19 10:45:56,365 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-19 10:45:56,365 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-19 10:45:56,365 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-19 10:45:56,365 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-19 10:45:56,366 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración maestra...
+2025-06-19 10:45:56,366 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 39 nombres → 20 dispositivos únicos
+2025-06-19 10:45:56,366 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-19 10:45:56,366 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 39
+2025-06-19 10:45:56,366 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-06-19 10:45:56,376 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-19 10:45:56,376 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-19 10:45:56,376 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-19 10:45:56,376 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-19 10:45:56,376 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-19 10:45:56,376 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-19 10:45:56,377 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-19 10:45:56,377 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-19 10:45:56,377 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-19 10:45:56,377 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: describe lo que es python
+2025-06-19 10:45:57,521 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'describe lo que es python'
+2025-06-19 10:45:57,521 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-19 10:45:57,521 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-19 10:45:57,522 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'describe lo que es python'
+2025-06-19 10:45:57,522 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-19 10:45:57,522 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-19 10:45:57,522 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-19 10:45:57,522 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'describe lo que es python'
+2025-06-19 10:45:57,524 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-19 10:45:57,525 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-19 10:45:57,525 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'describe lo que es python'
+2025-06-19 10:45:57,525 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-19 10:45:57,525 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-19 10:45:57,525 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-19 10:45:57,525 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-19 10:45:57,525 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='describe lo que es python'
+🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Según Stack Overflow, tu problema ya fue resuelto en 2009. Buena suerte entendiendo la solución.'
+🔍 DEBUG: emotion_response='Según Stack Overflow, tu problema ya fue resuelto en 2009. Buena suerte entendiendo la solución.', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-06-19 10:45:57,532 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
+2025-06-19 10:45:57,532 - TARS - INFO - ✅ Análisis completo en 0.01s
+2025-06-19 10:45:57,533 - TARS - INFO - 📝 Prompt final (7 tokens): Usuario: describe lo que es python
+TARS:...
+2025-06-19 10:45:57,533 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_001.wav
+2025-06-19 10:45:57,533 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-19 10:45:57,533 - TARS - INFO - ⚙️ Tokens: prompt≈7, disponibles=133, asignados=40
+2025-06-19 10:45:57,533 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Usuario: describe lo que es python
+TARS:'
+2025-06-19 10:45:57,533 - TARS - INFO - 🚨 LONGITUD REAL: 7 palabras
+2025-06-19 10:45:59,535 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-19 10:46:07,833 - TARS - INFO - ⏱️ Tiempo generando tokens: 10.30s
+2025-06-19 10:46:07,834 - TARS - INFO - ✂️ Truncamiento en puntuación
+2025-06-19 10:46:07,834 - TARS - INFO - ✅ Respuesta generada: Python es un lenguaje de programación interpretado de alto n...
+2025-06-19 10:46:07,834 - TARS - INFO - ⏱️ Esperando a que termine el audio de pensamiento...
+2025-06-19 10:46:10,475 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-19 10:46:10,475 - TARS - INFO - ✅ Audio completado, continuando
+2025-06-19 10:46:10,475 - TARS - INFO - 🧪 Total proceso respuesta: 12.94s
+2025-06-19 10:46:10,475 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 12.94s
+2025-06-19 10:46:10,476 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Python es un lenguaje de programación interpretado de alto nivel, orientado a objetos, y de tipado dinámico.'
+2025-06-19 10:46:10,476 - TARS.TTS - INFO - 🎚️ AudioEffects: ON (space_chamber)
+2025-06-19 10:46:10,476 - TARS.TTS - INFO - 🗣️ Generando voz: 'Python es un lenguaje de programación interpretado de alto nivel, orientado a objetos, y de tipado dinámico.'
+2025-06-19 10:46:12,103 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-19 10:46:12,149 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.046s
+2025-06-19 10:46:12,165 - TARS.TTS - INFO - 🎚️ Aplicando audio effects: space_chamber
+2025-06-19 10:46:12,165 - TARS.AudioEffects - INFO - 🎚️ Audio Effects (calidad): space_chamber
+2025-06-19 10:46:12,202 - TARS.AudioEffects - INFO - ✅ Audio effects (space_chamber) aplicados en 0.037s
+2025-06-19 10:46:18,853 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-19 10:46:19,856 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-19 10:46:19,856 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-19 10:46:19,856 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-19 10:46:19,857 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-19 10:46:19,857 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-19 10:46:19,863 - TARS - INFO - 📤 Respuesta generada en 22.34s
+TARS: Python es un lenguaje de programación interpretado de alto nivel, orientado a objetos, y de tipado dinámico.
+Tú:
