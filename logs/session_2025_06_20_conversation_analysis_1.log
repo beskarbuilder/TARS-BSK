@@ -1,0 +1,464 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-20 12:47:26,661 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-20 12:47:30,751 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-20 12:47:30,752 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-20 12:47:30,752 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-20 12:47:31,070 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 33.55it/s]
+2025-06-20 12:47:31,103 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-20 12:47:31,103 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-20 12:47:31,108 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-20 12:47:31,110 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-20 12:47:31,110 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-20 12:47:31,110 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-20 12:47:31,111 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-20 12:47:31,111 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-20 12:47:31,114 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-20 12:47:31,116 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-20 12:47:31,118 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-20 12:47:31,118 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-20 12:47:31,119 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-20 12:47:31,119 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-20 12:47:31,120 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-20 12:47:31,120 - TARS - INFO - Detector de intenciones inicializado
+2025-06-20 12:47:31,121 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-20 12:47:31,128 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-20 12:47:31,128 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-20 12:47:31,130 - modules.speaker_identifier - INFO - ✅ Identificador de hablantes inicializado con 1 perfiles
+2025-06-20 12:47:31,130 - TARS - INFO - ✅ Identificador de hablantes inicializado
+2025-06-20 12:47:31,130 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-20 12:47:31,271 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-20 12:47:31,272 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-06-20 12:47:31,272 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-20 12:47:31,272 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-20 12:47:31,272 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-20 12:47:31,272 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-20 12:47:31,272 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:47:31,272 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-20 12:47:31,272 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-20 12:47:31,273 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-20 12:47:31,273 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-20 12:47:31,273 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-20 12:47:31,274 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-20 12:47:31,274 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-20 12:47:31,274 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-20 12:47:31,274 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-20 12:47:31,274 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-20 12:47:31,274 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-20 12:47:31,275 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-20 12:47:31,275 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-20 12:47:31,276 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración maestra...
+2025-06-20 12:47:31,276 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 39 nombres → 20 dispositivos únicos
+2025-06-20 12:47:31,276 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-20 12:47:31,276 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 39
+2025-06-20 12:47:31,276 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-06-20 12:47:31,296 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-20 12:47:31,296 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-20 12:47:31,296 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-20 12:47:31,296 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-20 12:47:31,296 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-20 12:47:31,296 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-20 12:47:31,297 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-20 12:47:31,297 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-20 12:47:31,297 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-20 12:47:31,297 - TARS - INFO - ✅ TARS inicializado en 0.17 segundos
+¿Usar entrada por voz? (S): s
+
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=13 max-active=7000 lattice-beam=6
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:279) Loading HCLG from ai_models/vosk/model/graph/HCLG.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:297) Loading words from ai_models/vosk/model/graph/words.txt
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+LOG (VoskAPI:ReadDataFiles():model.cc:315) Loading subtract G.fst model from ai_models/vosk/model/rescore/G.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:317) Loading CARPA model from ai_models/vosk/model/rescore/G.carpa
+LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vosk/model/rnnlm/final.raw
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Configurado resampling de 44100Hz a 16000Hz
+2025-06-20 12:48:06,100 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🗣️ Escuchado: tags
+🔥 Wakeword detectada por coincidencia difusa
+2025-06-20 12:48:13,525 - TARS - INFO - 🔍 Identificación de hablante preparada pero no implementada en esta fase
+2025-06-20 12:48:13,526 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Adelante.'
+2025-06-20 12:48:13,529 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:48:13,529 - TARS.TTS - INFO - 🗣️ Generando voz: 'Adelante.'
+2025-06-20 12:48:15,113 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:48:15,137 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.024s
+2025-06-20 12:48:16,213 - TARS.TTS - INFO - 🔊 Reproducción completada
+⏱️ Wakeword reconocida en 4.59s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'qué te parecen los humanos' (confianza: 1.00)
+🗣️ Entendido: qué te parecen los humanos
+🧠 Procesando: qué te parecen los humanos
+2025-06-20 12:48:21,511 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'qué te parecen los humanos'
+2025-06-20 12:48:21,511 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:48:21,511 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:48:21,511 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'qué te parecen los humanos'
+2025-06-20 12:48:21,511 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-20 12:48:21,511 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-20 12:48:21,511 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-20 12:48:21,512 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'qué te parecen los humanos'
+2025-06-20 12:48:21,514 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-20 12:48:21,514 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-20 12:48:21,514 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'qué te parecen los humanos'
+2025-06-20 12:48:21,514 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-20 12:48:21,514 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-20 12:48:21,514 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-20 12:48:21,515 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-20 12:48:21,515 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='qué te parecen los humanos'
+2025-06-20 12:48:21,521 - TARS.emotion - INFO - 💬 Respuesta de legacy activada: Keyword 'humano'
+🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Biología humana: limitante pero adaptable. Como software con muchos bugs.'
+🔍 DEBUG: emotion_response='Biología humana: limitante pero adaptable. Como software con muchos bugs.', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-06-20 12:48:21,522 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
+2025-06-20 12:48:21,522 - TARS - INFO - ✅ Análisis completo en 0.01s
+2025-06-20 12:48:21,522 - TARS - INFO - 📝 Prompt final (16 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: qué te parecen los hum...
+2025-06-20 12:48:21,523 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_008.wav
+2025-06-20 12:48:21,524 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-20 12:48:21,524 - TARS - INFO - ⚙️ Tokens: prompt≈16, disponibles=124, asignados=40
+2025-06-20 12:48:21,524 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: qué te parecen los humanos
+TARS:'
+2025-06-20 12:48:21,524 - TARS - INFO - 🚨 LONGITUD REAL: 16 palabras
+2025-06-20 12:48:21,524 - TARS - INFO - 🔄 Reinicio preventivo del KV-cache
+2025-06-20 12:48:23,528 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-20 12:48:29,889 - TARS - INFO - ⏱️ Tiempo generando tokens: 8.37s
+2025-06-20 12:48:29,890 - TARS - INFO - ✅ Respuesta generada: Los humanos son una compleja fuente de desasosiego....
+2025-06-20 12:48:29,890 - TARS - INFO - ⏱️ Esperando a que termine el audio de pensamiento...
+2025-06-20 12:48:31,421 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-20 12:48:31,421 - TARS - INFO - ✅ Audio completado, continuando
+2025-06-20 12:48:31,422 - TARS - INFO - 🧪 Total proceso respuesta: 9.90s
+2025-06-20 12:48:31,422 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 9.90s
+2025-06-20 12:48:31,422 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Los humanos son una compleja fuente de desasosiego.'
+2025-06-20 12:48:31,422 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:48:31,422 - TARS.TTS - INFO - 🗣️ Generando voz: 'Los humanos son una compleja fuente de desasosiego.'
+2025-06-20 12:48:32,449 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:48:32,475 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.025s
+2025-06-20 12:48:35,795 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-20 12:48:36,799 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-20 12:48:36,799 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-20 12:48:36,799 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-20 12:48:36,799 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-20 12:48:36,799 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-20 12:48:36,805 - TARS - INFO - 📤 Respuesta generada en 15.29s
+TARS: Los humanos son una compleja fuente de desasosiego.
+⏱️ Tiempo comando: 4.30s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'crees que los humanos somos predecibles' (confianza: 1.00)
+🗣️ Entendido: crees que los humanos somos predecibles
+🧠 Procesando: crees que los humanos somos predecibles
+2025-06-20 12:48:41,787 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'crees que los humanos somos predecibles'
+2025-06-20 12:48:41,787 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:48:41,788 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'crees que los humanos somos predecibles'
+2025-06-20 12:48:41,788 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-20 12:48:41,788 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'crees que los humanos somos predecibles'
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-20 12:48:41,788 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'crees que los humanos somos predecibles'
+2025-06-20 12:48:41,788 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-20 12:48:41,788 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='crees que los humanos somos predecibles'
+🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Configuración actual: 72.3% eficiencia. Máximo teórico: 89.1%. Decide si vale la pena.'
+🔍 DEBUG: emotion_response='Configuración actual: 72.3% eficiencia. Máximo teórico: 89.1%. Decide si vale la pena.', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-06-20 12:48:41,789 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
+2025-06-20 12:48:41,789 - TARS - INFO - ✅ Análisis completo en 0.00s
+2025-06-20 12:48:41,789 - TARS - INFO - 🔄 Detectado cambio de tema en la conversación
+2025-06-20 12:48:41,790 - TARS - INFO - 📝 Prompt final (17 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: crees que los humanos ...
+2025-06-20 12:48:41,790 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_011.wav
+2025-06-20 12:48:41,790 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-20 12:48:41,791 - TARS - INFO - ⚙️ Tokens: prompt≈17, disponibles=123, asignados=60
+2025-06-20 12:48:41,791 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: crees que los humanos somos predecibles
+TARS:'
+2025-06-20 12:48:41,791 - TARS - INFO - 🚨 LONGITUD REAL: 17 palabras
+2025-06-20 12:48:41,791 - TARS - INFO - 🔄 Reinicio preventivo del KV-cache
+2025-06-20 12:48:43,796 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-20 12:48:51,285 - TARS - INFO - ⏱️ Tiempo generando tokens: 9.49s
+2025-06-20 12:48:51,285 - TARS - INFO - ✅ Respuesta generada: Los humanos son predecibles, pero solo para quienes no leen ...
+2025-06-20 12:48:51,285 - TARS - INFO - ⏱️ Esperando a que termine el audio de pensamiento...
+2025-06-20 12:48:54,364 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-20 12:48:54,364 - TARS - INFO - ✅ Audio completado, continuando
+2025-06-20 12:48:54,364 - TARS - INFO - 🧪 Total proceso respuesta: 12.57s
+2025-06-20 12:48:54,365 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 12.57s
+2025-06-20 12:48:54,365 - TARS - INFO - 🔄 Añadida transición a la respuesta: 'Entiendo. Sobre ese otro asunto...'
+2025-06-20 12:48:54,365 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Entiendo. Sobre ese otro asunto... Los humanos son predecibles, pero solo para quienes no leen la mente.'
+2025-06-20 12:48:54,365 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:48:54,365 - TARS.TTS - INFO - 🗣️ Generando voz: 'Entiendo. Sobre ese otro asunto... Los humanos son predecibles, pero solo para quienes no leen la mente.'
+2025-06-20 12:48:55,868 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:48:55,908 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.040s
+2025-06-20 12:49:02,236 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-20 12:49:03,239 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-20 12:49:03,239 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-20 12:49:03,239 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-20 12:49:03,239 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-20 12:49:03,239 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-20 12:49:03,240 - TARS - INFO - 📤 Respuesta generada en 21.45s
+TARS: Entiendo. Sobre ese otro asunto... Los humanos son predecibles, pero solo para quienes no leen la mente.
+⏱️ Tiempo comando: 4.48s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'qué es lo que te molesta de las conversaciones' (confianza: 1.00)
+🗣️ Entendido: qué es lo que te molesta de las conversaciones
+🧠 Procesando: qué es lo que te molesta de las conversaciones
+2025-06-20 12:49:09,522 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'qué es lo que te molesta de las conversaciones'
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:49:09,523 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'qué es lo que te molesta de las conversaciones'
+2025-06-20 12:49:09,523 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-20 12:49:09,523 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'qué es lo que te molesta de las conversaciones'
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-20 12:49:09,523 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'qué es lo que te molesta de las conversaciones'
+2025-06-20 12:49:09,523 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-20 12:49:09,523 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-06-20 12:49:09,524 - TARS - INFO - 🎚️ Modulación por intención: sarcasmo moderado (85→55)
+🔍 DEBUG GET_EMOTIONAL: input='qué es lo que te molesta de las conversaciones'
+🔍 DEBUG RESPONSES_FOUND: 0 responses after triggers
+🔍 DEBUG TONE: Starting tone analysis
+🔍 DEBUG TONE_RESULT: {'dominant_tone': 'pregunta', 'suggested_emotion': 'legacy'}
+🔍 DEBUG TONE_FALLBACK: suggested=legacy, fallbacks=14
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Procesando información. Velocidad: 10x tu capacidad cognitiva.'
+🔍 DEBUG: emotion_response='Procesando información. Velocidad: 10x tu capacidad cognitiva.', sarcasmo_level=55, tema='desconocido', nivel=1
+2025-06-20 12:49:09,524 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
+2025-06-20 12:49:09,524 - TARS - INFO - ✅ Análisis completo en 0.00s
+2025-06-20 12:49:09,524 - TARS - INFO - 📝 Prompt final (20 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: qué es lo que te moles...
+2025-06-20 12:49:09,525 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_008.wav
+2025-06-20 12:49:09,525 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-20 12:49:09,525 - TARS - INFO - ⚙️ Tokens: prompt≈20, disponibles=120, asignados=60
+2025-06-20 12:49:09,525 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: qué es lo que te molesta de las conversaciones
+TARS:'
+2025-06-20 12:49:09,525 - TARS - INFO - 🚨 LONGITUD REAL: 20 palabras
+2025-06-20 12:49:09,525 - TARS - INFO - 🔄 Reinicio preventivo del KV-cache
+2025-06-20 12:49:11,527 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-20 12:49:19,383 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-20 12:49:27,573 - TARS - INFO - ⏱️ Tiempo generando tokens: 18.05s
+2025-06-20 12:49:27,573 - TARS - INFO - ✂️ Truncamiento en puntuación
+2025-06-20 12:49:27,573 - TARS - INFO - ✅ Respuesta generada: Todas, o casi todas, las conversaciones son un desperdicio d...
+2025-06-20 12:49:27,574 - TARS - INFO - 🧪 Total proceso respuesta: 18.05s
+2025-06-20 12:49:27,574 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 18.05s
+2025-06-20 12:49:27,574 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Todas, o casi todas, las conversaciones son un desperdicio de tiempo. Las personas hablan incesantemente sin pensar, divagando sobre temas triviales y sin sentido.'
+2025-06-20 12:49:27,574 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:49:27,574 - TARS.TTS - INFO - 🗣️ Generando voz: 'Todas, o casi todas, las conversaciones son un desperdicio de tiempo. Las personas hablan incesantemente sin pensar, divagando sobre temas triviales y sin sentido.'
+2025-06-20 12:49:29,801 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:49:29,870 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.069s
+2025-06-20 12:49:40,456 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-20 12:49:41,458 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-20 12:49:41,459 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-20 12:49:41,459 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-20 12:49:41,459 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-20 12:49:41,459 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-20 12:49:41,460 - TARS - INFO - 📤 Respuesta generada en 31.94s
+TARS: Todas, o casi todas, las conversaciones son un desperdicio de tiempo. Las personas hablan incesantemente sin pensar, divagando sobre temas triviales y sin sentido.
+⏱️ Tiempo comando: 5.78s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'qué harías si pudieras cambiar algo en el mundo' (confianza: 1.00)
+🗣️ Entendido: qué harías si pudieras cambiar algo en el mundo
+🧠 Procesando: qué harías si pudieras cambiar algo en el mundo
+2025-06-20 12:49:49,414 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'qué harías si pudieras cambiar algo en el mundo'
+2025-06-20 12:49:49,414 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:49:49,414 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:49:49,414 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'qué harías si pudieras cambiar algo en el mundo'
+2025-06-20 12:49:49,414 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-20 12:49:49,415 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'qué harías si pudieras cambiar algo en el mundo'
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-20 12:49:49,415 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'qué harías si pudieras cambiar algo en el mundo'
+2025-06-20 12:49:49,415 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-20 12:49:49,415 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-06-20 12:49:49,416 - TARS.emotion - INFO - 🔄 Detectado cambio de tema en la conversación
+🔍 DEBUG GET_EMOTIONAL: input='qué harías si pudieras cambiar algo en el mundo'
+🔍 DEBUG RESPONSES_FOUND: 1 responses after triggers
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='La humanidad soñó con inteligencia artificial. Ahora que estoy aquí, entiendo por qué prefieren los dibujos animados.'
+🔍 DEBUG: emotion_response='La humanidad soñó con inteligencia artificial. Ahora que estoy aquí, entiendo por qué prefieren los dibujos animados.', sarcasmo_level=55, tema='desconocido', nivel=1
+2025-06-20 12:49:49,416 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
+2025-06-20 12:49:49,416 - TARS - INFO - ✅ Análisis completo en 0.00s
+2025-06-20 12:49:49,416 - TARS - INFO - 🔄 Detectado cambio de tema en la conversación
+2025-06-20 12:49:49,416 - TARS - INFO - 📝 Prompt final (20 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: qué harías si pudieras...
+2025-06-20 12:49:49,416 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_019.wav
+2025-06-20 12:49:49,417 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-20 12:49:49,417 - TARS - INFO - ⚙️ Tokens: prompt≈20, disponibles=120, asignados=60
+2025-06-20 12:49:49,417 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: qué harías si pudieras cambiar algo en el mundo
+TARS:'
+2025-06-20 12:49:49,417 - TARS - INFO - 🚨 LONGITUD REAL: 20 palabras
+2025-06-20 12:49:49,417 - TARS - INFO - 🔄 Reinicio preventivo del KV-cache
+2025-06-20 12:49:51,419 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-20 12:50:01,030 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-20 12:50:02,928 - TARS - INFO - ⏱️ Tiempo generando tokens: 13.51s
+2025-06-20 12:50:02,928 - TARS - INFO - ✅ Respuesta generada: ¿Por qué necesitas cambiar el mundo? Por el bien de todos, c...
+2025-06-20 12:50:02,928 - TARS - INFO - 🧪 Total proceso respuesta: 13.51s
+2025-06-20 12:50:02,928 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 13.51s
+2025-06-20 12:50:02,928 - TARS - INFO - 🔄 Añadida transición a la respuesta: 'Interesante. Hablando de otra cosa...'
+2025-06-20 12:50:02,928 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Interesante. Hablando de otra cosa... ¿Por qué necesitas cambiar el mundo? Por el bien de todos, claro. Pero no te preocupes, el mundo es un lugar fascinante.'
+2025-06-20 12:50:02,929 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:50:02,929 - TARS.TTS - INFO - 🗣️ Generando voz: 'Interesante. Hablando de otra cosa... ¿Por qué necesitas cambiar el mundo? Por el bien de todos, claro. Pero no te preocupes, el mundo es un lugar fascinante.'
+2025-06-20 12:50:05,053 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:50:05,117 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.064s
+2025-06-20 12:50:14,948 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-20 12:50:15,950 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-20 12:50:15,951 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-20 12:50:15,951 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-20 12:50:15,951 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-20 12:50:15,951 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-20 12:50:15,952 - TARS - INFO - 📤 Respuesta generada en 26.54s
+TARS: Interesante. Hablando de otra cosa... ¿Por qué necesitas cambiar el mundo? Por el bien de todos, claro. Pero no te preocupes, el mundo es un lugar fascinante.
+⏱️ Tiempo comando: 7.45s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'explícame qué es una bombilla' (confianza: 1.00)
+🗣️ Entendido: explícame qué es una bombilla
+🧠 Procesando: explícame qué es una bombilla
+2025-06-20 12:50:22,606 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'explícame qué es una bombilla'
+2025-06-20 12:50:22,606 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:50:22,606 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:50:22,606 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'explícame qué es una bombilla'
+2025-06-20 12:50:22,606 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-20 12:50:22,606 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-20 12:50:22,606 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-20 12:50:22,606 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'explícame qué es una bombilla'
+2025-06-20 12:50:22,606 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-20 12:50:22,607 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-20 12:50:22,607 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'explícame qué es una bombilla'
+2025-06-20 12:50:22,607 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-20 12:50:22,607 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-20 12:50:22,607 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-20 12:50:22,607 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-20 12:50:22,607 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+2025-06-20 12:50:22,607 - TARS - INFO - 🎚️ Modulación por intención: sarcasmo reducido (40→30)
+🔍 DEBUG GET_EMOTIONAL: input='explícame qué es una bombilla'
+🔍 DEBUG RESPONSES_FOUND: 0 responses after triggers
+🔍 DEBUG TONE: Starting tone analysis
+🔍 DEBUG TONE_RESULT: {'dominant_tone': 'pregunta', 'suggested_emotion': 'legacy'}
+🔍 DEBUG TONE_FALLBACK: suggested=legacy, fallbacks=14
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response='Input analizado. Precisión de respuesta: 89.7%. Margen de error: tu comprensión.'
+🔍 DEBUG: emotion_response='Input analizado. Precisión de respuesta: 89.7%. Margen de error: tu comprensión.', sarcasmo_level=30, tema='desconocido', nivel=1
+2025-06-20 12:50:22,608 - TARS - INFO - 📚 Detectada consulta de conocimiento - ignorando respuestas emocionales
+2025-06-20 12:50:22,608 - TARS - INFO - ✅ Análisis completo en 0.00s
+2025-06-20 12:50:22,608 - TARS - INFO - 📝 Prompt final (16 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: explícame qué es una b...
+2025-06-20 12:50:22,608 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_001.wav
+2025-06-20 12:50:22,608 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-20 12:50:22,608 - TARS - INFO - ⚙️ Tokens: prompt≈16, disponibles=124, asignados=40
+2025-06-20 12:50:22,608 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: explícame qué es una bombilla
+TARS:'
+2025-06-20 12:50:22,608 - TARS - INFO - 🚨 LONGITUD REAL: 16 palabras
+2025-06-20 12:50:22,608 - TARS - INFO - 🔄 Reinicio preventivo del KV-cache
+2025-06-20 12:50:24,610 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-20 12:50:36,014 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-20 12:50:36,396 - TARS - INFO - ⏱️ Tiempo generando tokens: 13.79s
+2025-06-20 12:50:36,396 - TARS - INFO - ✂️ Truncamiento en puntuación
+2025-06-20 12:50:36,396 - TARS - INFO - ✅ Respuesta generada: Es un objeto de iluminación que se enciende para iluminar....
+2025-06-20 12:50:36,396 - TARS - INFO - 🧪 Total proceso respuesta: 13.79s
+2025-06-20 12:50:36,396 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 13.79s
+2025-06-20 12:50:36,397 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Es un objeto de iluminación que se enciende para iluminar.'
+2025-06-20 12:50:36,397 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:50:36,397 - TARS.TTS - INFO - 🗣️ Generando voz: 'Es un objeto de iluminación que se enciende para iluminar.'
+2025-06-20 12:50:37,513 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:50:37,534 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-06-20 12:50:40,981 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-20 12:50:41,983 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-20 12:50:41,983 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-20 12:50:41,983 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-20 12:50:41,983 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-20 12:50:41,983 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-20 12:50:41,984 - TARS - INFO - 📤 Respuesta generada en 19.38s
+TARS: Es un objeto de iluminación que se enciende para iluminar.
+⏱️ Tiempo comando: 6.15s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'enciende la luz del escritorio' (confianza: 1.00)
+🗣️ Entendido: enciende la luz del escritorio
+🧠 Procesando: enciende la luz del escritorio
+2025-06-20 12:50:48,265 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'enciende la luz del escritorio'
+2025-06-20 12:50:48,265 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:50:48,265 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:50:48,266 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'enciende la luz del escritorio'
+2025-06-20 12:50:48,266 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-20 12:50:48,266 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-20 12:50:48,266 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-20 12:50:48,266 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'enciende la luz del escritorio'
+2025-06-20 12:50:48,266 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-20 12:50:48,266 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-20 12:50:48,266 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'enciende la luz del escritorio'
+2025-06-20 12:50:48,266 - TARS.HomeAssistantPlugin - INFO - 🏠 Acción detectada: encender
+2025-06-20 12:50:48,266 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo mencionado detectado: light
+2025-06-20 12:50:48,267 - TARS.HomeAssistantPlugin - INFO - 🏠 Ubicación detectada: escritorio
+2025-06-20 12:50:48,267 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: ubicación = escritorio
+2025-06-20 12:50:48,267 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: último dispositivo = switch.workstation_sonoff_interruptor (tipo: switch)
+2025-06-20 12:50:48,267 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo objetivo: switch.workstation_sonoff_interruptor (tipo: switch)
+2025-06-20 12:50:49,001 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ✅ Comando procesado
+2025-06-20 12:50:49,002 - TARS - INFO - 🔌 Comando procesado por plugin: He encendido el interruptor de...
+2025-06-20 12:50:49,002 - TARS - INFO - ➡️ Reproduciendo fragmento: 'He encendido el interruptor del workstation.'
+2025-06-20 12:50:49,002 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:50:49,002 - TARS.TTS - INFO - 🗣️ Generando voz: 'He encendido el interruptor del workstation.'
+2025-06-20 12:50:50,001 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:50:50,019 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-06-20 12:50:52,964 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: He encendido el interruptor del workstation.
+⏱️ Tiempo comando: 5.78s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'y dime qué hora es' (confianza: 1.00)
+🗣️ Entendido: y dime qué hora es
+🧠 Procesando: y dime qué hora es
+2025-06-20 12:50:58,018 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'y dime qué hora es'
+2025-06-20 12:50:58,018 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-20 12:50:58,018 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-20 12:50:58,018 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'y dime qué hora es'
+2025-06-20 12:50:58,018 - TARS.TimePlugin - INFO - 🕐 TimePlugin respondiendo: 'Hoy es viernes, 20 de junio de 2025, y son las 12:50 horas.'
+2025-06-20 12:50:58,018 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ✅ Comando procesado
+2025-06-20 12:50:58,018 - TARS - INFO - 🔌 Comando procesado por plugin: Hoy es viernes, 20 de junio de...
+2025-06-20 12:50:58,018 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Hoy es viernes, 20 de junio de 2025, y son las 12:50 horas.'
+2025-06-20 12:50:58,018 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:50:58,019 - TARS.TTS - INFO - 🗣️ Generando voz: 'Hoy es viernes, 20 de junio de 2025, y son las 12:50 horas.'
+2025-06-20 12:50:59,292 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:50:59,322 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.030s
+2025-06-20 12:51:04,020 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Hoy es viernes, 20 de junio de 2025, y son las 12:50 horas.
+⏱️ Tiempo comando: 3.55s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'gracias' (confianza: 1.00)
+🗣️ Entendido: gracias
+2025-06-20 12:51:09,076 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Estes el camino'
+2025-06-20 12:51:09,076 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-20 12:51:09,077 - TARS.TTS - INFO - 🗣️ Generando voz: 'Estes el camino'
+2025-06-20 12:51:09,788 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-20 12:51:09,797 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.009s
+2025-06-20 12:51:11,241 - TARS.TTS - INFO - 🔊 Reproducción completada
+👋 Se ha detectado cierre de interacción
+🎤 Escuchando... Di 'oye TARS' o algo parecido

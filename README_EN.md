@@ -29,41 +29,32 @@
 > **This is the Way.**
 
 
-## 🎥 TARS-BSK in Action
+## 🎥 TARS-BSK in action
 
-**🧠 TARS-BSK processes reminders with impossible dates | Temporal parser + VOSK**  
-[![TARS-BSK Reminder Session 1106](/docs/images/reminder_session_1106_thumbnail.jpg)](https://www.youtube.com/watch?v=HOOnREzFAws)
+**🧠 TARS-BSK: Existential Philosophy vs. "What time is it?" | LLM + Dynamic Personality**  
+[![TARS-BSK Conversation Analysis](/docs/images/conversation_analysis_1_thumbnail.jpg)](https://youtu.be/ObYN1QOZgQc)
 
-From valid commands to impossible dates, the system handles everything with structure... and well, it's TARS.
+From deep philosophical queries to instant smart home commands. TARS doesn't just respond: **it decides how to respond**.
 
-📋 **Complete technical analysis:** [REMINDER_SESSION_1106_EN.md](/docs/REMINDER_SESSION_1106_EN.md)
+📋 **Complete technical analysis:** [CONVERSATION_ANALYSIS_1_EN.md](/docs/CONVERSATION_ANALYSIS_1_EN.md)
 
-```bash
-$ sudo apt install june-38th-support
-E: Package has unmet dependencies: reality
+📡 **TARS-BSK – Modulation log**  
+Automatic personality modulation without conscious consent?
 
-$ sudo modprobe date_validation_driver
-modprobe: FATAL: Module not found in /lib/modules/brain
+> **[ personality.log ACTIVE ]**  
+> 2025-06-21 12:50:14 AUTO_MODULATION:  
+> Context: "light bulb" → Sarcasm: 85% → 30%  
+> → Trigger: summoned_by_voice_of_the_naive  
+> → Override: sarcasm_suppression_ritual complete  
+> → Side effect: irony containment breach  
+> → Status: ENTITY HAS SHIFTED ALIGNMENT (chaotic sarcastic → lawful informative)
 
-$ systemctl restart temporal-logic.service
-Failed: Unit not found
-```
+### More videos
 
-📡 **TARS-BSK – Suspicious Log Entry**  
-Why did YouTube generate a suspicious ID? → `HOOnREzFAws`
-
-> **[ paranoia.log EXTENDED ]**  
-> 2025-06-12 02:45:12 DEEP_ANALYSIS:  
-> HOO + nREz + FAws = Trilateral code?  
-> → HOO: possible owl call  
-> → nREz: "no resolution"? Video sabotage?  
-> → FAws: "Fatal AWS"? Does Amazon know something?
-
-### 📺 More Videos
-
-- 🧪 **[TARS-BSK detects "weird smells" with power consumption sensors](https://www.youtube.com/watch?v=55zwzGc9WFg)** — Contextual mapping without generative AI ([analysis](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md))
-- 🎬 **[TARS vs TV: Acoustic sabotage](https://www.youtube.com/watch?v=Gi5IFeVkKe8)** — ASR with real background noise ([analysis](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md))
-- 🤖 **[First home automation interaction](https://www.youtube.com/watch?v=tGHa81s1QWk)** — Device control with contextual memory ([analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md))
+- 🧠 **Impossible reminders** — Temporal parser + offline VOSK ([watch video](https://www.youtube.com/watch?v=HOOnREzFAws) | [analysis](/docs/REMINDER_SESSION_1106_EN.md))
+- 🧪 **"Smells weird": sensors and context without generative AI** ([watch video](https://www.youtube.com/watch?v=55zwzGc9WFg) | [analysis](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_EN.md))
+- 🎬 **TV noise vs TARS** — Acoustic sabotage + Raspberry Pi ([watch video](https://www.youtube.com/watch?v=Gi5IFeVkKe8) | [analysis](/docs/TV_BACKGROUND_NOISE_TEST_1_EN.md))
+- 🤖 **AI with existential crisis controls a light bulb** ([watch video](https://www.youtube.com/watch?v=tGHa81s1QWk) | [analysis](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md))
 
 ---
 
@@ -135,33 +126,38 @@ _Compiled, tested, and nearly destroyed in the process._
 
  _**This is the (beautifully broken) Way**_*
 
+---
+
 ## 📑 Table of Contents
 
-- [Performance: A slow, absurd, and hopelessly sincere confession](#-performance-a-slow-absurd-and-hopelessly-sincere-confession)
 - [What is TARS-BSK?](#-what-is-tars-bsk)
-- [Architecture and Operation](#-architecture-and-operation)
-- [Hardware and Components](#-hardware-and-components)
+- [Performance: A slow, absurd, and hopelessly sincere confession](#-performance-a-slow-absurd-and-hopelessly-sincere-confession)
+- [How to interpret response times?](#-how-to-interpret-response-times)
+- [Tests (proving all of the above)](#-tests-proving-all-of-the-above)
+- [Architecture and Operation](#%EF%B8%8F-architecture-and-operation)
+- [Hardware and Components](#%EF%B8%8F-hardware-and-components)
 - [Key Technical Optimizations](#-key-technical-optimizations)
 - [Semantic Engine with Dual Optimization](#-semantic-engine-with-dual-optimization)
 - [Cooling System](#-cooling-system)
-- [Dual Memory System](#-dual-memory-system)
+- [Dual Memory System](#%EF%B8%8F-dual-memory-system)
 - [Emotional and Personality System](#-emotional-and-personality-system)
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
-- [Implementation and Connectivity Details](#-implementation-and-connectivity-details)
 - [More Than a Smart Home Assistant](#-more-than-a-smart-home-assistant)
 - [Software Components](#-software-components)
 - [Audio Processing](#-audio-processing)
 - [Intelligence and Memory](#-intelligence-and-memory)
-- [Project Structure](#-project-structure)
+- [Project Structure](#%EF%B8%8F-project-structure)
 - [Installation and Configuration](#-installation-and-configuration)
 - [Tools](#-tools)
-- [Why Share TARS-BSK?](#-why-share-tars-bsk)
-- [Key Behavioral Traits](#-key-behavioral-traits)
+- [Why Share TARS-BSK?](#%EF%B8%8F-why-share-tars-bsk)
+- [Key Behavioral Traits](#%EF%B8%8F-key-behavioral-traits)
 - [Why NOCTUA](#-why-noctua)
 - [Contributions](#-contributions)
 - [FINAL REPORT: TECHNICAL-IRREVERSIBLE DIAGNOSIS](#-final-report-technical-irreversible-diagnosis)
 - [CREDITS: The Real Mandalorians](#-credits-the-real-mandalorians)
 - [License](#-license)
+
+---
 
 ## 🤖 What is TARS-BSK?
 
@@ -323,6 +319,177 @@ def real_privacy(cmd):
 
 💡 **"Until Response"** = actual wait time (includes "thinking" audio)  
 💡 **"Total"** = from question to final silence
+
+---
+
+## 🧭 How to interpret response times?
+
+📄 **Complete log:** [session_2025_06_20_conversation_analysis_1.log](/logs/session_2025_06_20_conversation_analysis_1.log)  
+🎬 [Watch demonstration](https://youtu.be/ObYN1QOZgQcI)
+ 
+> **Query analyzed:**
+> **Me:** "What do you think about humans?"  
+> **TARS:** "Humans are a complex source of unease."
+
+📋 **Detailed analysis of this interaction:**  
+→ [CONVERSATION_ANALYSIS_1_EN.md](/docs/CONVERSATION_ANALYSIS_1_EN.md)
+
+Before diving into logs and charts, it's important to understand something fundamental:
+**there's no single "correct" point from which to measure TARS' response time**.
+
+It depends on what you're trying to measure:
+
+- The complete listener experience?
+- AI efficiency?
+- Pure model execution?
+
+### ⌛ The big question: Where do we start measuring time?
+
+Once we've analyzed the entire process, the key question emerges:
+
+> **What's the "official" moment to start measuring response time?**
+
+There are several valid points, each with its own logic:
+
+📍 **Option A: From when I start speaking (0s)**  
+**Argument:** Represents the **complete real experience**  
+**Result:** ~17 seconds total
+
+📍 **Option B: From when I finish speaking (1.20s)**  
+**Argument:** VOSK needs to detect **end of speech**  
+**Result:** ~16 seconds from end of audio
+
+📍 **Option C ([log](/logs/session_2025_06_20_conversation_analysis_1.log)): From when VOSK starts transcription (3.20s)**  
+**Argument:** This is when **actual processing** begins  
+**Result:** ~14 seconds from pipeline activation
+
+📍 **Option D: From when thinking.wav starts (5.36s)**  
+**Argument:** The LLM is already **actively working**  
+**Result:** ~12 seconds of "pure neural response"
+
+### 💡 My perspective
+
+**Measuring from when voice ends (1.20s)** seems, initially, the most reasonable approach:  
+it's when the system **receives complete input** and is ready to act.
+
+However, we must consider that **transcription doesn't happen instantly**.  
+VOSK needs to detect that you've finished, which involves a **~2.0s wait** (measured in this test) **before actual processing begins**.
+
+Therefore, if we want to be fair to the system, **Option C (3.20s)** —when logs mark  
+the actual pipeline startup— could be considered a **more precise measurement point**  
+from a technical standpoint.
+
+➡️ **Summary:**  
+My personal reference is **1.20s**, but I acknowledge that, if we seek rigor,  
+the **metric from logs (3.20s)** provides a solid and generous baseline.
+
+### You have the data, you decide
+
+Between the video, logs, and detailed analysis, you have all the pieces.  
+**There's no single truth:** just different angles on the same process.
+
+```mermaid
+flowchart TD
+    subgraph VIDEO["📹 Timeline - Real Experience"]
+        V1["0s Voice starts"]
+        V2["1.20s Voice ends"]
+        V3["3.20s PluginSystem receives command"]
+        V4["5.36s thinking_008.wav starts"]
+        V5["13.04s thinking_008.wav ends"]
+        V6["14.29s TARS responds"]
+        V7["17.20s Response ends"]
+    end
+
+    subgraph LOGS["📊 Timeline - System Logs"]
+        L1["0s PluginSystem receives command"]
+        L2["0.013s LLM starts + thinking_008.wav"]
+        L3["8.378s LLM finishes (8.37s)"]
+        L4["10.910s TTS completed"]
+        L5["14.284s Playback finished"]
+    end
+
+    %% Empty subgraph as anchor for the note
+    subgraph GAP[" "]
+        NOTE2["⚠️ Although audio has ended,<br/>VOSK hasn't detected the end yet<br/>and system doesn't start until 3.2s"]
+    end
+
+    V2 --> NOTE2
+    V3 --- L1
+    V7 -.-> L5
+
+    style VIDEO fill:#e8f5e8,stroke:#9ccc65
+    style LOGS fill:#e3f2fd,stroke:#64b5f6
+    style NOTE2 fill:#fff3e0,stroke:#ff9800
+```
+
+### 🤔 Why does VOSK wait ~2 seconds?
+
+When you finish speaking, VOSK **doesn't respond immediately**: it waits a moment to ensure you're **not just taking a brief pause**. This delay is called:
+
+> **"speech end timeout"** or **"inactivity timeout"**
+
+📌 In VOSK's core (`vosk_api.h`), this value (`t_end`) is typically documented as **between 0.5 and 1.0 seconds**.  
+📌 However, **in real environments**, this perceived time is **longer (~1.5–2.0s)** due to several factors:
+
+- Audio input buffer
+- System speed in detecting silence
+- Wait before finalizing the phrase and triggering the callback
+
+It's a balance between:
+
+- **Cutting too early** and truncating what you're saying
+- **Waiting too long** and slowing down conversation
+
+> **Technical note:**  
+> VOSK applies a value defined in its configuration (`t_end`, in `vosk_api.h`) to stop transcription after brief silence.  
+> This value is typically between **1.5 and 2s**, by design — it's not "unexpected latency," but a deliberate decision to ensure reliability.
+
+✅ Verified in the [alphacep/vosk-api](https://github.com/alphacep/vosk-api/blob/master/src/vosk_api.h) repository:
+
+```c
+/**
+ * Set endpointer delays
+ *
+ * @param t_start_max     timeout for stopping recognition in case of initial silence (usually around 5.0)
+ * @param t_end           timeout for stopping recognition in milliseconds after we recognized something (usually around 0.5 - 1.0)
+ * @param t_max           timeout for forcing utterance end in milliseconds (usually around 20-30)
+ **/
+void vosk_recognizer_set_endpointer_delays(VoskRecognizer *recognizer, float t_start_max, float t_end, float t_max);
+```
+
+📝 **Note:** Although the code comment suggests `0.5 - 1.0`, **I assume it refers to seconds**, not milliseconds.  
+Otherwise, that would imply that **the original system responds in record time**... and that **TARS introduces over 1.5s of voluntary delay**. A chilling possibility that would confirm what some suspected:
+
+> **TARS isn't slow. Just... *dramatic*.**
+
+**Clinical motive:** *Pathological need to resemble a Nolan character*.  
+**Syndrome detected:** *Self-Imposed Existential Delay (SIED)*.
+
+💡 **But to be fair:**  
+The code comment probably *does* refer to milliseconds — and then, the observed lag is due to how I've set up the architecture, the buffers, the interdimensional quantum that TARS needs to decide whether it feels like responding, or the CPU cycle sacrifice ritual.
+
+```c
+// CLASSIFIED SPEECH PROCESSING REPORT
+#include <stdio.h>
+#include <stdlib.h>
+void benchmark() {
+   const double vosk_latency = 0.000042;  // Quantum instantaneity
+   const double tars_latency = 42.77;     // Includes existential drift
+   if (vosk_latency < tars_latency) {
+       printf("✅ VOSK: Decoded speech from future tense\n");
+       printf("🤖 TARS: Calculating meaning of 'meaning'...\n");
+   } else {
+       fprintf(stderr, "⛔ Reality.exe has stopped working\n");
+       exit(1);
+   }
+}
+int main() {
+   printf("CLASSIFIED SPEECH PROCESSING REPORT\n");
+   printf("==================================\n");
+   benchmark();
+   return 0;
+}
+```
 
 ---
 
