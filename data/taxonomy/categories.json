@@ -1,0 +1,93 @@
+{
+  "taxonomy": {
+    "LIBROS": {
+      "keywords": [
+        "libro", "novela", "saga", "leer", "lectura", "autor", "escritor", 
+        "romantasy", "fantasy", "fantasía", "fantasia", "ficción", "ficcion",
+        "ciencia ficción", "literatura", "histórica", "historica", "biografía", 
+        "biografia", "romance", "poesía", "poesia", "cuento", "comic", "cómic",
+        "trilogía", "trilogia", "sarah j maas", "brandon sanderson", "tolkien",
+        "harry potter", "publicación", "publicacion", "página", "pagina"
+      ],
+      "subcategories": {
+        "romantasy": [
+          "romantasy", "romance fantástico", "romance fantastico", "fantasía romántica", 
+          "fantasia romantica", "amor mágico", "amor magico", "sarah j maas", "maas",
+          "corte", "reino", "magia", "hechicero", "hechicera", "príncipe", "principe",
+          "princesa", "rey", "reina", "corona", "trono", "acotar", "crescent city"
+        ],
+        "fantasy": [
+          "fantasy", "fantasía", "fantasia", "épica", "epica", "mago", "dragón", "dragon",
+          "espada", "escudo", "aventura", "quest", "mágico", "magico", "mitología", 
+          "mitologia", "criatura", "bestia", "elfo", "enano", "orco", "hada", 
+          "tolkien", "señor de los anillos", "hobbit", "tierra media", "brandon sanderson",
+          "nacidos de la bruma", "mistborn", "archivos de tormenta", "stormlight",
+          "cosmere", "george r r martin", "canción de hielo y fuego", "juego de tronos"
+        ]
+      }
+    },
+    "SERIES_PELICULAS": {
+      "keywords": [
+        "serie", "película", "pelicula", "film", "tv", "television", "televisión",
+        "cine", "show", "episodio", "temporada", "actor", "actriz", "director",
+        "netflix", "hbo", "disney", "amazon prime", "streaming", "drama", "comedia",
+        "terror", "suspenso", "thriller", "documental", "animación", "animacion",
+        "mandaloriano", "estreno", "taquilla", "blockbuster", "pantalla",
+        "marvel", "dc", "hollywood", "anime", "ver", "mirar"
+      ],
+      "subcategories": {
+        "starwars": [
+          "star wars", "guerra de las galaxias", "galaxia", "jedi", "sith", "fuerza",
+          "lightsaber", "sable láser", "sable de luz", "luke", "darth vader", "yoda",
+          "mandalorian", "mandaloriano", "grogu", "baby yoda", "mando", "boba fett",
+          "imperio", "rebelión", "r2d2", "c3po", "ig11", "rebellion", "stormtrooper", "clone", "clon",
+          "república", "republica", "death star", "estrella de la muerte", "tatooine",
+          "george lucas", "disney", "lucas film", "lucasfilm", "disney plus", "ahsoka"
+        ],
+        "señor_anillos": [
+          "señor de los anillos", "lord of the rings", "tolkien", "j.r.r. tolkien", "tierra media", "middle-earth",
+          "aragorn", "frodo", "gandalf", "sam", "sauron", "galadriel", "legolas", "gimli", "boromir", "faramir",
+          "gollum", "bilbo", "elrond", "arwen", "éowyn", "eowyn", "théoden", "theoden", "saruman", "merry", "pippin",
+          "nazgûl", "nazgul", "jinete negro", "orco", "elfo", "enano", "hobbit", "la comarca", "shire", "mordor",
+          "minas tirith", "gondor", "rohan", "moria", "rivendel", "rivendell", "lothlorien", "anillo único", "one ring",
+          "comunidad del anillo", "fellowship", "las dos torres", "two towers", "retorno del rey", "return of the king",
+          "el hobbit", "the hobbit", "silmarillion", "cuentos inconclusos", "balrog", "troll", "montaña solitaria", 
+          "erebor", "isengard", "mago", "istari", "hechicero", "guerrero", "rey", "montaraz", "peter jackson", 
+          "nueva zelanda", "trilogía", "trilogy", "precuela", "secuela", "oscuro señor", "dark lord",
+          "ent", "huargo", "warg", "puente de khazad-dûm", "minas morgul", "osgiliath", "valle",
+          "eä", "valinor", "numenor", "númenor", "dúnedain", "dunedain", "rohirrim", "haradrim", "uruk-hai",
+          "rohirrim", "anillos de poder", "rings of power", "espada", "hacha", "arco", "flecha", "mithril"
+        ]
+      }
+    },
+    "TECNOLOGIA": {
+      "keywords": [
+        "tecnología", "tecnologia", "tech", "ordenador", "computadora", "robot",
+        "dispositivo", "app", "aplicación", "aplicacion", "software", "hardware",
+        "programación", "programacion", "código", "codigo", "móvil", "celular",
+        "ia", "inteligencia artificial", "machine learning", "algoritmo", "gadget",
+        "internet", "wifi", "red", "web", "digital", "electrónica", "electronica",
+        "sistema", "programa", "desarrollo", "developer", "ingeniero"
+      ],
+      "subcategories": {
+        "robótica": [
+          "robot", "robótica", "robotica", "autómata", "automata", "mecánico", "mecanico",
+          "droide", "droid", "r2d2", "c3po", "ig11", "android", "cyborg", "máquina", 
+          "maquina", "inteligencia", "artificial", "motor", "sensor", "automatizado",
+          "servo", "actuador", "brazo", "articulación", "articulacion", "humanoide",
+          "bípedo", "bipedo", "rueda", "movimiento", "programable", "autónomo", "autonomo"
+        ],
+        "sistemas": [
+          "linux", "windows", "macos", "unix", "servidor", "cloud", "nube", "virtualización", 
+          "virtualizacion", "docker", "kubernetes", "contenedor", "vm", "máquina virtual", 
+          "devops", "sysadmin", "administrador", "terminal", "bash", "shell", "comando", 
+          "script", "ubuntu", "debian", "fedora", "centos", "red hat", "suse", "arch",
+          "opensuse", "raspbian", "raspberry pi", "network", "networking", "firewall",
+          "seguridad", "proxy", "vpn", "ssh", "ftp", "dns", "ip", "servidor web", "apache",
+          "nginx", "hosting", "dominio", "base de datos", "mysql", "postgresql", "sql", 
+          "nosql", "mongodb", "redis", "aws", "azure", "google cloud", "servicios web"
+        ]
+      }
+    }
+  }
+}

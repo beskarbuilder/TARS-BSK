@@ -221,7 +221,7 @@ class TarsMemoryManager:
             return str(context["topic"]).strip().lower()
         
         # 2. Inferencia desde preferences.json
-        topic = self.infer_topic_from_preferences(message) or "general"  # ¡Forza un tema válido!
+        topic = self.infer_topic_from_preferences(message) or "general"  # Forzar un tema válido
         
         # 3. Capa de emergencia (NUNCA dejar "desconocido")
         if not topic or topic == "desconocido":
@@ -343,127 +343,146 @@ class TarsMemoryManager:
     # ===============================================
 
     def _save_session_to_disk(self):
-            """Versión optimizada que NO carga todo en memoria"""
-            if not hasattr(self, 'session_memory') or not isinstance(self.session_memory, dict):
-                print("⚠️ Critical: session_memory is missing or corrupted")
+        """Versión optimizada que NO carga todo en memoria - CORREGIDA"""
+        if not hasattr(self, 'session_memory') or not isinstance(self.session_memory, dict):
+            print("⚠️ Critical: session_memory is missing or corrupted")
+            return
+
+        required_keys = {"interactions", "emotional_states", "detected_preferences", "context"}
+        missing_keys = required_keys - set(self.session_memory.keys())
+        if missing_keys:
+            print(f"⚠️ Skip save: Missing keys in session_memory - {missing_keys}")
+            return
+
+        if not isinstance(self.session_memory["interactions"], list):
+            print("⚠️ Skip save: interactions is not a list")
+            return
+
+        if not self.session_memory["interactions"]:
+            print("ℹ️ No interactions to save")
+            return
+
+        try:
+            # Límite máximo de interacciones por día
+            MAX_DAILY_INTERACTIONS = 200
+            
+            # Preparar datos de la sesión actual
+            current_interactions = [
+                i for i in self.session_memory["interactions"] 
+                if isinstance(i, dict) and "message" in i and "response" in i
+            ]
+            
+            if not current_interactions:
                 return
 
-            required_keys = {"interactions", "emotional_states", "detected_preferences", "context"}
-            missing_keys = required_keys - set(self.session_memory.keys())
-            if missing_keys:
-                print(f"⚠️ Skip save: Missing keys in session_memory - {missing_keys}")
-                return
-
-            if not isinstance(self.session_memory["interactions"], list):
-                print("⚠️ Skip save: interactions is not a list")
-                return
-
-            if not self.session_memory["interactions"]:
-                print("ℹ️ No interactions to save")
-                return
-
-            try:
-                # Límite máximo de interacciones por día
-                MAX_DAILY_INTERACTIONS = 200 # No sé si es suficiente, pero ahí va
+            # ✅ INICIALIZAR existing_data SIEMPRE
+            existing_data = {
+                "interactions": [],
+                "emotional_states": [],
+                "detected_preferences": [],
+                "context": {}
+            }
                 
-                # Preparar datos de la sesión actual
-                current_interactions = [
-                    i for i in self.session_memory["interactions"] 
-                    if isinstance(i, dict) and "message" in i and "response" in i
-                ]
-                
-                if not current_interactions:
-                    return
-                    
-                # Si el archivo existe, verificar tamaño
-                if os.path.exists(self.today_log):
-                    try:
-                        with open(self.today_log, 'r', encoding='utf-8') as f:
-                            existing_data = json.load(f)
-                        
-                        if not isinstance(existing_data, dict):
-                            print("⚠️ Existing log file is corrupted, creating new one")
-                            existing_data = None
-                        else:
-                            # FIXED: Limitar interacciones diarias
-                            existing_interactions = existing_data.get("interactions", [])
-                            if len(existing_interactions) >= MAX_DAILY_INTERACTIONS:
-                                # Mantener solo las más recientes
-                                existing_interactions = existing_interactions[-MAX_DAILY_INTERACTIONS//2:]
-                                logger.info(f"🧹 Limpiando archivo diario, manteniendo {len(existing_interactions)} interacciones")
-                            
-                            # Añadir nuevas interacciones
-                            existing_interactions.extend(current_interactions)
-                            existing_data["interactions"] = existing_interactions
-
-                    except (json.JSONDecodeError, IOError) as e:
-                        print(f"⚠️ Error loading existing log: {e}, creating new file")
-                        existing_data = None
-
-                # Crear estructura si no existe
-                if existing_data is None:
-                    existing_data = {
-                        "interactions": current_interactions,
-                        "emotional_states": [],
-                        "detected_preferences": [],
-                        "context": {}
-                    }
-
-                # Fusionar otros datos
-                if isinstance(existing_data.get("emotional_states"), list):
-                    existing_data["emotional_states"].extend(
-                        e for e in self.session_memory["emotional_states"] 
-                        if isinstance(e, (str, dict))
-                    )
-
-                if isinstance(existing_data.get("detected_preferences"), list):
-                    existing_topics = set()
-                    for p in existing_data["detected_preferences"]:
-                        if isinstance(p, dict) and "topic" in p and "sentiment" in p:
-                            existing_topics.add(f"{p['topic']}_{p['sentiment']}")
-
-                    for pref in self.session_memory["detected_preferences"]:
-                        if isinstance(pref, dict) and "topic" in pref and "sentiment" in pref:
-                            pref_key = f"{pref['topic']}_{pref['sentiment']}"
-                            if pref_key not in existing_topics:
-                                existing_data["detected_preferences"].append(pref)
-
-                # Fusionar contextos
-                if isinstance(existing_data.get("context"), dict) and isinstance(self.session_memory["context"], dict):
-                    existing_data["context"].update({
-                        k: v for k, v in self.session_memory["context"].items() 
-                        if v is not None
-                    })
-
-                # Guardar con manejo seguro de archivos
-                temp_path = f"{self.today_log}.tmp"
+            # Si el archivo existe, intentar cargarlo
+            if os.path.exists(self.today_log):
                 try:
-                    with open(temp_path, 'w', encoding='utf-8') as f:
-                        json.dump(existing_data, f, ensure_ascii=False, indent=2)
+                    with open(self.today_log, 'r', encoding='utf-8') as f:
+                        loaded_data = json.load(f)
                     
-                    if os.path.exists(temp_path):
-                        os.replace(temp_path, self.today_log)
+                    # ✅ VALIDAR Y USAR SOLO SI ES VÁLIDO
+                    if isinstance(loaded_data, dict):
+                        # Mantener datos existentes válidos
+                        existing_data.update(loaded_data)
+                        
+                        # ✅ ASEGURAR QUE interactions EXISTE
+                        if "interactions" not in existing_data or not isinstance(existing_data["interactions"], list):
+                            existing_data["interactions"] = []
+                        
+                        # Limitar interacciones diarias
+                        existing_interactions = existing_data["interactions"]
+                        if len(existing_interactions) >= MAX_DAILY_INTERACTIONS:
+                            # Mantener solo las más recientes
+                            existing_interactions = existing_interactions[-MAX_DAILY_INTERACTIONS//2:]
+                            logger.info(f"🧹 Limpiando archivo diario, manteniendo {len(existing_interactions)} interacciones")
+                        
+                        # Añadir nuevas interacciones
+                        existing_interactions.extend(current_interactions)
+                        existing_data["interactions"] = existing_interactions
                     else:
-                        raise IOError("Temporary file not created")
+                        print("⚠️ Existing log file is corrupted, using new structure")
+                        # existing_data ya está inicializado arriba
+                        existing_data["interactions"] = current_interactions
 
-                    # FIXED: Limpiar memoria de sesión inmediatamente
-                    self.session_memory["interactions"] = []
-                    self.session_memory["emotional_states"] = []
-                    self.session_memory["detected_preferences"] = []
-                    
-                    # FIXED: Forzar garbage collection
-                    import gc
-                    gc.collect()
-                    
-                    print("✅ Session saved successfully")
+                except (json.JSONDecodeError, IOError) as e:
+                    print(f"⚠️ Error loading existing log: {e}, using new structure")
+                    # existing_data ya está inicializado arriba
+                    existing_data["interactions"] = current_interactions
+            else:
+                # Archivo no existe - usar nueva estructura
+                existing_data["interactions"] = current_interactions
+            
+            # Fusionar otros datos de forma segura
+            if isinstance(self.session_memory.get("emotional_states"), list):
+                if "emotional_states" not in existing_data:
+                    existing_data["emotional_states"] = []
+                existing_data["emotional_states"].extend(
+                    e for e in self.session_memory["emotional_states"] 
+                    if isinstance(e, (str, dict))
+                )
 
-                except Exception as e:
-                    if os.path.exists(temp_path):
-                        os.remove(temp_path)
-                    raise
+            if isinstance(self.session_memory.get("detected_preferences"), list):
+                if "detected_preferences" not in existing_data:
+                    existing_data["detected_preferences"] = []
+                
+                existing_topics = set()
+                for p in existing_data["detected_preferences"]:
+                    if isinstance(p, dict) and "topic" in p and "sentiment" in p:
+                        existing_topics.add(f"{p['topic']}_{p['sentiment']}")
+
+                for pref in self.session_memory["detected_preferences"]:
+                    if isinstance(pref, dict) and "topic" in pref and "sentiment" in pref:
+                        pref_key = f"{pref['topic']}_{pref['sentiment']}"
+                        if pref_key not in existing_topics:
+                            existing_data["detected_preferences"].append(pref)
+
+            # Fusionar contextos
+            if "context" not in existing_data:
+                existing_data["context"] = {}
+            if isinstance(self.session_memory.get("context"), dict):
+                existing_data["context"].update({
+                    k: v for k, v in self.session_memory["context"].items() 
+                    if v is not None
+                })
+
+            # Guardar con manejo seguro de archivos
+            temp_path = f"{self.today_log}.tmp"
+            try:
+                with open(temp_path, 'w', encoding='utf-8') as f:
+                    json.dump(existing_data, f, ensure_ascii=False, indent=2)
+                
+                if os.path.exists(temp_path):
+                    os.replace(temp_path, self.today_log)
+                else:
+                    raise IOError("Temporary file not created")
+
+                # FIXED: Limpiar memoria de sesión inmediatamente
+                self.session_memory["interactions"] = []
+                self.session_memory["emotional_states"] = []
+                self.session_memory["detected_preferences"] = []
+                
+                # FIXED: Forzar garbage collection
+                import gc
+                gc.collect()
+                
+                print("✅ Session saved successfully")
 
             except Exception as e:
-                print(f"❌ Error saving session: {e}")
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
+                raise
+
+        except Exception as e:
+            print(f"❌ Error saving session: {e}")
 
     def _infer_category_from_taxonomy(self, topic: str) -> str:
         """

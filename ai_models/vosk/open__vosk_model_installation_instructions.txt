@@ -1,0 +1,23 @@
+Vosk STT model: vosk-model-es-0.42
+
+This folder stores the speech-to-text (STT) model used by TARS-BSK.
+
+By default, it uses: "vosk-model-es-0.42".
+You may use other Spanish models, but this one is recommended for best accuracy.
+
+Official Vosk models:
+https://alphacephei.com/vosk/models/
+
+Recommended download:
+https://alphacephei.com/vosk/models/vosk-model-es-0.42.zip
+
+After downloading, unzip and rename the folder to: model
+
+Example:
+cd ~/tars_files/ai_models/vosk/
+rm -rf model/
+unzip -o vosk-model-es-0.42.zip
+mv -f vosk-model-es-0.42 model
+rm -f vosk-model-es-0.42.zip
+
+ℹ️ For more detailed setup instructions, refer to the installation guide.

@@ -1,0 +1,12 @@
+{
+  "_comment": "TARS Learning Profile - Sistema de aprendizaje automático",
+  "_status": "DESACTIVADO - El módulo existe en core/tars_learning_module.py pero no se usa",
+  "_current_system": "emotional_engine.py maneja personalidad dinámicamente en tiempo real",
+  "_info": "Para activar: descomentar imports en tars_core.py y seguir instrucciones del módulo",
+  "_design_decision": "Desactivado por preferencia de control manual sobre automatización",
+  
+  "usar_tono_empatico": false,
+  "evitar_humor": false,
+  "mostrar_interes_salud": false,
+  "evitar_detalles_tecnicos": true
+}

@@ -1,0 +1,28 @@
+Model: Phi-3 Mini (4K Instruct, GGUF Q4_K_M)
+
+This file corresponds to a quantized version of the official Phi-3 model by Microsoft.
+
+- File name: Phi-3-mini-4k-instruct.Q4_K_M.gguf
+- Format: GGUF (quantized Q4_K_M)
+- Size: ~2.15 GB
+- SHA256: 4fed7364ee3e0c7cb4fe0880148bfdfcd1b630981efa0802a6b62ee52e7da97e
+
+This model is NOT included in the repository due to its size.
+
+📥 Download it manually from Hugging Face:
+https://huggingface.co/bartowski/Phi-3-mini-4k-instruct-GGUF
+
+📥 Direct download link:
+https://huggingface.co/bartowski/Phi-3-mini-4k-instruct-GGUF/resolve/main/Phi-3-mini-4k-instruct.Q4_K_M.gguf
+
+Once downloaded, place the file in this folder.
+
+IMPORTANT:
+The filename must be exactly:
+Phi-3-mini-4k-instruct.Q4_K_M.gguf
+
+If you rename the file, you must also update the configuration at:
+config/settings.json → "model_path"
+
+Example:
+"model_path": "ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf"

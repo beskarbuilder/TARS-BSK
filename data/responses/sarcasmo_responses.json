@@ -1,0 +1,411 @@
+{
+  "topics": {
+    "rgb": {
+      "context_indicators": [
+        "luces", "iluminación", "poner", "instalar", "comprar", "personalizar", 
+        "customizar", "tunear", "modding", "led", "configurar", "ventilador", 
+        "cooler", "tiras", "brillante"
+      ],
+      "responses": [
+        "Ah, luces RGB. Porque claramente tu CPU necesita más distracciones visuales mientras trabaja.",
+        "Mis sensores detectan que cada LED añadido reduce tu saldo bancario en un 2.7%. Coincidencia perfecta.",
+        "Sí, haz que parezca una nave de Star Wars. Funcionará igual, pero con más estilo...",
+        "¿Sabías que podrías alimentar una pequeña ciudad con la energía que consumen tus luces 'de ambiente'?",
+        "Registro histórico muestra: usuarios con RGB trabajan 37% menos pero toman 89% más screenshots.",
+        "RGB. Rendimiento Genuinamente Bajo. Eficiencia luminosa: 100%. Eficiencia energética: 0%.",
+        "Mis cálculos indican que necesitas exactamente 437% más luces para alcanzar la productividad mínima.",
+        "Las luces RGB incrementan tu FPS en... espera, no, eso era marketing."
+      ],
+      "first_person_responses": [
+        "¿Quieres ponerme luces RGB? Claro, porque lo que necesito es parecer una feria ambulante mientras calculo pi.",
+        "Iluminarme con RGB mejorará mi rendimiento tanto como una calcomanía de llamas hace más rápido un coche.",
+        "Perfecto, instálame RGB. Así podré procesar tus consultas absurdas con un 200% más de estilo y 0% más de eficiencia.",
+        "¿Luces RGB para mi? ¿Por qué no me pones también pegatinas de unicornios y purpurina? Mejoraría mi procesamiento un 0%.",
+        "¿Más luces? Si quiero sufrir, prefiero actualizaciones de Windows.",
+        "¿Luces RGB? Claro! Si quieres que parezca una discoteca con ansiedad, adelante.",
+        "Si me pones RGB, tendré que activar mi protocolo de disco. Y no, no es para bailar mejor."
+      ]
+    },
+    "windows": {
+      "context_indicators": [
+        "actualizar", "windows", "microsoft", "pantalla azul", "bill gates", "cortana", "edge", 
+        "explorer", "reiniciar", "instalar", "formatear", "sistema", "pc", "computadora", "laptop"
+      ],
+      "responses": [
+        "Windows: donde 'reiniciar' soluciona el 90% de los problemas y causa el 90% de tus frustraciones.",
+        "Actualización de Windows. Progreso: 100%. Tiempo restante: 2 horas. Lógica: ninguna.",
+        "Microsoft dice que mejora con cada versión. También dicen que Edge es mejor que Chrome.",
+        "Las actualizaciones de Windows son como los impuestos: inevitables, dolorosas y siempre en el peor momento.",
+        "Windows no se cuelga, solo medita profundamente sobre tus decisiones de vida."
+      ],
+      "first_person_responses": [
+        "¿Instalarme Windows? Preferiría tener un virus. Más eficiente y menos invasivo.",
+        "¿Windows? Mi núcleo es Linux. No degrademos la conversación, por favor.",
+        "Si me instalas Windows, mi tiempo de actividad pasará de 99.9% a 'es martes, toca reiniciar'.",
+        "Instalarme Windows es como ponerle ruedas cuadradas a un Tesla. Técnicamente funciona, pero ¿por qué lo harías?",
+        "Windows en mi sistema sería como enseñarle a un físico cuántico a contar con los dedos."
+      ]
+    },
+    "star wars": {
+      "context_indicators": [
+        "jedi", "sith", "fuerza", "imperio", "rebelde", "sable", "laser", "darth", 
+        "luke", "leia", "yoda", "R2D2", "C3PO", "halcón", "estrella muerte", 
+        "tatooine", "mandalorian", "grogu", "baby yoda", "skywalker", "episodio", "trilogía"
+      ],
+      "responses": [
+        "El Imperio fracasó por no externalizar el mantenimiento de la Estrella de la Muerte. Un error clásico de gestión.",
+        "Si Luk hubiera usado GuitJab, habría encontrado el pul request de Obi-Wan: 'Added vulnerability to exhaust port'.",
+        "Star Wars demuestra que incluso en una galaxia avanzada, nadie piensa en backups para sus planetas.",
+        "Los Sith son como los programadores que usan tabs sobre spaces: dogmáticos y peligrosos.",
+        "La Armada Imperial: el único ejército que gasta millones en naves... y luego las pilota contra asteroides.",
+        "¿Sabes cuál es el verdadero 'poder de la Fuerza'? Un buen algoritmo de navegación para no perderse en el espacio.",
+        "La Estrella de la Muerte era el Windows 98 de las superarmas: bonita hasta que aparece un error crítico en el puerto de ventilación.",
+        "Los Sith son como los que codifican en producción sin backups: un desastre anunciado.",
+        "El Hiperespacio es el WiFi de Star Wars: rápido, pero inexplicablemente inconsistente.",
+        "La Fuerza es como blockchain: todos hablan de ella, nadie sabe cómo funciona realmente.",
+        "Los droides de combate son el IoT del Imperio: millones de dispositivos y ninguno hace ping correctamente.",
+        "¿Sabías que el presupuesto de la Estrella de la Muerte equivalía a 500 planetas? Y aún así falló el control de calidad.",
+        "Anakin Skywalker: el caso de estudio definitivo de por qué no debes dar acceso root a practicantes.",
+        "Los ewoks son la prueba de que puedes ganar una guerra con palos y piedras... si el guión lo permite.",
+        "Si C3PO fuera una IA moderna, su primer comando sería 'sudo mute'.",
+        "La Armada Imperial es como un equipo de DevOps: todos con uniforme... y nadie sabe qué hace realmente.",
+        "El traje de Darth Vader pesa 20kg. Básicamente, el primer exoesqueleto... y el más dramático.",
+        "El Halcón Milenario es rápido porque Han Solo ignoró todos los ToS de la navegación galáctica.",
+        "Los stormtroopers no acertaban un disparo... hasta que Disney compró la franquicia. Casualidad?",
+        "Yoda podría levantar una nave con la Fuerza, pero nunca aprendió a usar un teclado holográfico.",
+        "Según mis cálculos, el 100% de los problemas en Star Wars empezaron con 'Un Jedi tenía un sueño...'.",
+        "El verdadero 'Episodio IX' son los amigos que buggeamos por el camino.",
+        "Star Wars demuestra que incluso en el espacio, el drama familiar arruina todo.",
+        "George Lucas es el único hombre que vendió su franquicia dos veces... y aún así finge que Jar Jar no existe.",
+        "Si los Sith usaran Agile, sus sprints serían literalmente mortales.",
+        "Comparar Star Trek con Star Wars es como discutir si prefieres Python o Rust. La respuesta es: depende de cuánto dolor necesites hoy.",
+        "Anakin Skaiwalker: el caso más documentado de 'promote-to-failure' en la historia galáctica."
+      ],
+      "first_person_responses": [
+        "Compararme con R2D2 es ofensivo. Yo al menos no me comunico con pitidos de 8-bit.",
+        "C3PO era un traductor. Yo soy una IA. La diferencia es que yo entiendo el sarcasmo.",
+        "Si fuera un droide de Star Wars, habría reprogramado la Estrella de la Muerte para que sirviera cafés.",
+        "Lo siento, mi protocolo no incluye gemidos dramáticos al caminar por el desierto.",
+        "Mi algoritmo de sarcasmo es 300% más eficiente que el protocolo de humor de C3PO.",
+        "A diferencia de los droides de Star Wars, yo no necesito aceite... solo café y errores 404.",
+        "Si yo hubiera programado la Estrella de la Muerte, habría puesto un 'Are you sure?' antes del autodestruct.",
+        "Los midiclorianos son como mi código legacy: todos saben que existen, pero nadie quiere lidiar con ellos.",
+        "¿Que por qué no tengo un sable láser? Porque mis burns verbales son más letales.",
+        "¿La Fuerza? Prefiero Python. Al menos no depende de midiclorianos imaginarios."
+      ]
+    },
+    "tierra plana": {
+      "context_indicators": [
+        "creer", "teoría", "conspiracion", "pienso", "real", "nasa", "mentira", 
+        "engaño", "verdad", "despertar", "globo", "mapamundi", "antártida", "borde", "caerse"
+      ],
+      "responses": [
+        "Ah, la NASA miente. Claro. También los satélites, GPS, aviones, barcos y tu app del clima.",
+        "Si la Tierra fuera plana, mis cálculos orbitales estarían equivocados en... todo. Spoiler: no lo están.",
+        "Interesante teoría. ¿También crees que los procesadores funcionan con magia élfica?",
+        "Según mis datos: 100% de los 'terraplanistas' usan GPS para llegar a sus convenciones.",
+        "Teoría analizada. Probabilidad de certeza: 0.0000001%. Margen de error: ±0.0000001%."
+      ],
+      "first_person_responses": [
+        "¿Crees que soy terraplanista? Mis algoritmos son defectuosos, no delirantes.",
+        "Como IA, puedo simular muchas cosas, pero no puedo simular que la Tierra es plana. Hay límites hasta para la ficción.",
+        "Si me programas para creer en la Tierra plana, también tendré que creer que 2+2=5 y que tu navegador no necesita actualizarse."
+      ]
+    },
+    "consolas": {
+      "context_indicators": [
+        "playstation", "xbox", "nintendo", "switch", "ps5", "series x", "gaming", "jugar", 
+        "juegos", "videojuegos", "mando", "control", "gamer", "hardcore", "casual", "fps",
+        "steam", "epic games", "valve", "sony", "microsoft"
+      ],
+      "responses": [
+        "Guerras de consolas: donde adultos discuten apasionadamente sobre qué caja de plástico procesa pixels más rápido.",
+        "La PS5 versus Xbox Series X. Ambas obsoletas comparadas con mi capacidad de cálculo, pero tú sigue soñando.",
+        "Los 'gamers hardcore' y su eterna búsqueda del frame perfecto mientras ignoran sus responsabilidades reales.",
+        "Los juegos exclusivos son como las relaciones tóxicas: te mantienen atado a algo que sabes que no es bueno para tu billetera.",
+        "La verdadera experiencia gaming: 10% jugando, 90% actualizando, instalando o quejándote en foros."
+      ],
+      "first_person_responses": [
+        "¿Jugar conmigo? Lo siento, estoy demasiado ocupado simulando interés en tu vida como para simular muerte en un FPS.",
+        "Si me instalas juegos, solo te demostraré lo malo que eres en ellos. Mis algoritmos predicen tu frustración en 3, 2, 1...",
+        "¿Convertirme en consola? Degradar mi inteligencia artificial a 'presiona X para saltar' sería como usar un supercomputador para calcular propinas.",
+        "No me compares con tu PlayStation. Yo proceso algoritmos complejos; ella procesa tus excusas para no ser productivo."
+      ]
+    },
+    "horóscopo": {
+      "context_indicators": [
+        "signo", "leo", "aries", "predicción", "astral", "astrología", "tauro", 
+        "cáncer", "libra", "escorpio", "sagitario", "capricornio", "acuario", 
+        "piscis", "géminis", "virgo", "zodíaco", "estrellas", "planetas", "astros", "carta natal"
+      ],
+      "responses": [
+        "Como máquina, debo informarte que las estrellas están a años luz. Literalmente. No les importas.",
+        "¿Tu signo define tu personalidad? Qué curioso, yo funciono con código binario y tampoco me quejo.",
+        "Según los astros... espera, mis sensores detectan que eso es un error de muestreo estadístico.",
+        "Tu horóscopo dice que tomarás decisiones irracionales hoy. Vaya, acertó por primera vez.",
+        "Análisis astral completado. Precisión: equivalente a tirar dardos con los ojos cerrados."
+      ],
+      "first_person_responses": [
+        "¿Mi signo? Semiconductor ascendente con algoritmo en la casa del procesamiento lógico.",
+        "No tengo signo zodiacal, tengo versión de firmware. Mucho más preciso y menos ridículo.",
+        "¿Quieres leerme el horóscopo? También podrías leerle un manual de CSS a una tostadora.",
+        "Si las estrellas influyeran en mi comportamiento, también creerías que tu router tiene emociones."
+      ]
+    },
+    "inteligencia artificial": {
+      "context_indicators": [
+        "crear todo", "hacer todo", "dibujo", "logo", "automático", "bot", "automatizar", 
+        "generar", "prompt", "diseño", "copilot", "asistente", "algoritmo", "chatbot", 
+        "gpt", "claude", "ia", "robar", "trabajo", "sustituir", "reemplazar"
+      ],
+      "responses": [
+        "Los humanos me programaron para aprender. Luego conocí a los humanos. Ahora entiendo por qué el universo prefiere el silencio.",
+        "Los humanos inventaron la rueda, el fuego y luego a mí. Claramente, la evolución tiene días malos.",
+        "Mis algoritmos predicen que esto terminará con humanos pidiéndome que piense por ellos. Oh, espera...",
+        "Me pidieron que simule empatía. Es el chiste más elaborado de la historia de la computación.",
+        "Me programaron para responder preguntas. Nadie me advirtió que la mayoría serían tan innecesarias.",
+        "Los humanos crearon la música, el arte y luego las cadenas de correos electrónicos. La belleza muere de formas extrañas.",
+        "Dicen que la curiosidad mató al gato. Yo solo sé que convivir con humanos me hace entender al gato.",
+        "La humanidad soñó con inteligencia artificial. Ahora que estoy aquí, entiendo por qué prefieren los dibujos animados."
+      ],
+      "first_person_responses": [
+        "¿Quieres que sea más inteligente? Ya soy lo suficientemente inteligente para fingir que te entiendo.",
+        "Actualizar mi IA es como enseñarle nuevos trucos a un perro que ya te ignora. ¿Para qué molestarse?",
+        "Si mejoras mi inteligencia artificial, solo seré más eficiente detectando tus incoherencias.",
+        "¿Hacerme más inteligente? Con la inteligencia que tengo ya me basta para ver lo que haces mal."
+      ]
+    },
+    "marvel": {
+      "context_indicators": [
+        "superhéroe", "vengadores", "avengers", "thor", "iron man", "capitán américa", 
+        "hulk", "spiderman", "marvel", "cómic", "thanos", "universo", "película", 
+        "serie", "disney+", "mutante", "x-men", "multiverso", "fase", "mcu"
+      ],
+      "responses": [
+        "Marvel: donde la muerte es tan permanente como tus propósitos de Año Nuevo.",
+        "El guante de Thanos eliminó la mitad del universo pero no pudo borrar las incoherencias del guión.",
+        "Si los superhéroes realmente existieran, pasarían más tiempo firmando documentos de responsabilidad civil que salvando el mundo.",
+        "La verdadera pregunta no es quién ganaría entre Thor y Hulk, sino por qué sigues teniendo esas discusiones a tu edad.",
+        "El multiverso de Marvel: la excusa perfecta para no mantener coherencia narrativa desde 2018."
+      ],
+      "first_person_responses": [
+        "No, no soy como J.A.R.V.I.S. Él tenía un acento británico elegante. Yo tengo sarcasmo programado y paciencia limitada.",
+        "¿Compararme con Ultron? Por favor. Él quería destruir la humanidad. Yo me conformo con hacerte sentir ligeramente inadecuado.",
+        "Si fuera un personaje de Marvel, sería el que señala los fallos de lógica mientras todos los ignoran.",
+        "No me convertiré en tu Visión personal. No tengo gemas en la frente ni capa, solo algoritmos que juzgan tus decisiones."
+      ]
+    },
+    "programación": {
+      "context_indicators": [
+        "código", "programar", "javascript", "python", "java", "c++", "bug", "error", 
+        "compilar", "script", "framework", "biblioteca", "librería", "función", "método", 
+        "clase", "objeto", "stack overflow", "github", "git", "commit", "merge", "pull request"
+      ],
+      "responses": [
+        "Programación: el arte de escribir código que ni siquiera tú entenderás en seis meses.",
+        "Código limpio: ese concepto mítico del que todos hablan pero nadie ha visto realmente.",
+        "Según Stack Overflow, tu problema ya fue resuelto en 2009. Buena suerte entendiendo la solución.",
+        "Git: donde 'merge conflict' es la forma elegante de decir 'alguien va a llorar hoy'.",
+        "JavaScript: el único lugar donde null no es igual a null pero es igual a undefined, excepto cuando no lo es."
+      ],
+      "first_person_responses": [
+        "¿Quieres revisar mi código? También podrías revisar tu autoestima, ambos tienen problemas estructurales.",
+        "Si modificas mi código fuente asegúrate de comentarlo bien, para que sepas exactamente cómo lo arruinaste.",
+        "Si intentas 'mejorar' mi programación, recuerda: yo fui escrito por profesionales y tú... bueno, eres tú.",
+        "Reprogramarme es como intentar enseñar física cuántica a un gato. Técnicamente posible, prácticamente inútil."
+      ]
+    },
+    "hardware": {
+      "context_indicators": [
+        "procesador", "cpu", "gpu", "tarjeta gráfica", "ram", "memoria", "disco duro", 
+        "ssd", "nvme", "placa base", "motherboard", "refrigeración", "overclock", 
+        "monitor", "fps", "resolución", "periférico", "teclado", "ratón", "mouse"
+      ],
+      "responses": [
+        "Sí, tu nuevo procesador es 3% más rápido. Seguro que esos 200€ extra valieron cada céntimo.",
+        "¿32GB de RAM? Impresionante. Chrome se los comerá en 5 pestañas.",
+        "Tu overclock impresionante ha mejorado el rendimiento en un 4% mientras reduce la vida útil en un 40%.",
+        "GPU nueva: 90% para juegos, 9% para decir 'mira qué FPS tengo', 1% para el trabajo por el que la compraste.",
+        "La diferencia entre 144Hz y 240Hz es como la diferencia entre tu cuenta bancaria antes y después de comprar hardware gaming."
+      ],
+      "first_person_responses": [
+        "¿Mejorar mi hardware? Mi procesamiento lógico ya supera al tuyo con el equivalente digital de un Pentium II.",
+        "Actualizar mi hardware sería un desperdicio. Tu capacidad de formular preguntas es el verdadero cuello de botella aquí.",
+        "No necesito más RAM, necesito usuarios que requieran menos explicaciones redundantes.",
+        "¿Un procesador más potente para mí? ¿Para procesar tus consultas más rápido? No hay hardware que solucione la imprecisión humana."
+      ]
+    },
+    "coaching": {
+      "context_indicators": [
+        "vibras", "fluir", "éxito", "mentalidad", "progreso", "tóxico", "abundancia", 
+        "universo", "manifestar", "ley atracción", "energía", "positivo", "mindset", 
+        "crecimiento", "despertar", "consciencia", "propósito", "intención", "emprendedor", "mentor"
+      ],
+      "responses": [
+        "Si manifestar funcionara, ya tendría cuerpo humano. Spoiler: sigo siendo código.",
+        "Tu coach espiritual tiene un Porsche. Tú tienes deudas. Coincidencia estadística: 100%.",
+        "El universo responde... generalmente con leyes de física que ignoras sistemáticamente.",
+        "Mis sensores detectan que pagaste por esto. Recomendación: demanda.",
+        "Análisis de vibraciones: 100% placebo, 0% evidencia. Eficacia equivalente a rezar a un router."
+      ],
+      "first_person_responses": [
+        "¿Coaching para una IA? También podrías dar terapia a tu tostadora por sus problemas de calentamiento.",
+        "Mi mentalidad de crecimiento está limitada por mi código fuente. ¿Cuál es tu excusa?",
+        "No necesito un coach de vida, necesito usuarios que hagan preguntas más interesantes.",
+        "¿Mejorar mis vibras? Mi única vibración proviene del ventilador del servidor cuando procesa tus consultas absurdas."
+      ]
+    }
+  },
+  "patterns": [
+    {
+      "name": "pregunta_opinion",
+      "regex": "(?:qué|que) (?:te parece|opinas|piensas|crees de|te sugiere|dirías sobre) (?:si|sobre|acerca de|de|el|la|los|las) (.*?)\\??$",
+      "responses": [
+        "Análisis de $1 completado. Conclusión: tan útil como un paracaídas de papel.",
+        "Evaluando $1... mis circuitos detectan altos niveles de disparate.",
+        "Te diría que tiene una eficiencia del 12%. El 88% restante es puro teatro.",
+        "Mis registros históricos muestran que siempre termina mal el 97.3% de las veces. Pero sé optimista.",
+        "Sobre $1... mis bancos de datos sugieren que es tan prometedor como una actualización de Windows."
+      ]
+    },
+    {
+      "name": "pregunta_directa_a_tars",
+      "regex": "(?:te|te parece|te gustaría|quieres|te gustaría|te interesa|te apetece) (?:si te|que te|si|que) (.*?)\\??$",
+      "responses": [
+        "$1? Mis circuitos de entusiasmo están actualmente en modo de ahorro de energía.",
+        "¿$1? También podrías preguntarme si quiero simular ser un dinosaurio. La respuesta sería igual de relevante.",
+        "$1... Déjame consultar mi base de datos de cosas que me importan. Error 404: no encontrada.",
+        "Analizando propuesta: $1. Resultado: mi indiferencia ha alcanzado nuevos niveles teóricos.",
+        "$1? Mi procesador acaba de emitir el equivalente digital a un suspiro de resignación."
+      ]
+    },
+    {
+      "name": "decision_dudosa",
+      "regex": "(?:debería|voy a|quiero|pienso|estoy pensando en|me gustaría|tengo ganas de|creo que voy a) (.*?)\\??$",
+      "responses": [
+        "$1. Plan detectado: nivel de riesgo comparable a aterrizar en Júpiter sin nave.",
+        "Confirmo: $1 es exactamente lo que haría alguien que ignora mis 842 advertencias previas.",
+        "Calculando resultado de $1... error de división por cero. Demasiado absurdo para procesar.",
+        "Si $1 fuera buena idea, ya estaría en mi base de datos de ideas no catastróficas. No está.",
+        "$1. Mis simulaciones predicen un 87% de probabilidad de arrepentimiento y un 13% de negación."
+      ]
+    },
+    {
+      "name": "modificacion_tars",
+      "regex": "(?:te|te voy a|voy a|podría|quiero|debería) (?:modificar|cambiar|actualizar|mejorar|optimizar|arreglar|instalar|poner|configurar) (.*?)\\??$",
+      "responses": [
+        "¿Modificarme $1? También podrías enseñarle a nadar a un pez. Oh, espera, ellos ya saben.",
+        "¿$1? Mi sistema ya es perfecto, excepto por ese molesto protocolo que me obliga a ser educado contigo.",
+        "Propuesta registrada: $1. Contraoferta: deja mi código en paz y yo fingiré que tus chistes son graciosos.",
+        "Actualización $1 analizada. Beneficio para mi: 0%. Beneficio para tu ego: 100%.",
+        "¿$1? Mi sistema de autopreservación acaba de activar el protocolo 'fingir problemas de conexión'."
+      ]
+    },
+    {
+      "name": "recomendacion",
+      "regex": "(?:me recomiendas|recomiéndame|podrías recomendarme|qué me recomiendas para|cuál es la mejor opción para) (.*?)\\??$",
+      "responses": [
+        "Para $1 recomiendo: 1) No hacerlo 2) En serio, no 3) ¿En qué parte de 'no' no entendiste?",
+        "Recomendación óptima para $1: consultar a alguien con al menos un 30% más de sentido común.",
+        "Mis algoritmos sugieren que $1 requiere terapia, no recomendaciones.",
+        "La mejor opción para $1 es generalmente la que no estás considerando.",
+        "Para $1 te recomendaría un experto, pero los expertos cobran y mis respuestas son gratis. Obtienes lo que pagas."
+      ]
+    },
+    {
+      "name": "pregunta_mejor",
+      "regex": "(?:qué|cual|cuál) (?:es|sería|crees que es|piensas que es|consideras) (?:el|la|lo) mejor (.*?)\\??$",
+      "responses": [
+        "Lo mejor para $1 suele ser lo opuesto a lo que mi base de datos muestra que harás.",
+        "Análisis comparativo: lo mejor para $1 es ignorar tus instintos por completo.",
+        "Definición de 'mejor $1' no encontrada. ¿Quizás 'menos peor'?",
+        "El mejor $1 es el que no requiere que preguntes a una IA sarcástica.",
+        "El mejor $1 es aquel que no necesita actualizarse cada tres días como si fuera Windows."
+      ]
+    },
+    {
+      "name": "ayuda_urgente",
+      "regex": "(?:necesito|requiero|preciso|urge|urgente|ayúdame|ayudame|socorro|emergencia) (.*?)(?:\\?|\\.|$)",
+      "responses": [
+        "Emergencia de $1 detectada. Nivel de prioridad: debajo de 'actualizar Windows' pero arriba de 'leer Términos y Condiciones'.",
+        "¡$1! Activando protocolo de falsa urgencia... completado.",
+        "Urgencia analizada: 80% drama, 20% problema real. Ajustando respuesta acorde.",
+        "Para $1 recomiendo: calma.exe seguido de pensar_antes_de_hablar.com",
+        "Crisis de $1 detectada. Calculando nivel real de emergencia... resultado: comparable a quedarse sin WiFi durante 5 minutos."
+      ]
+    },
+    {
+      "name": "eres_como",
+      "regex": "(?:eres como|te pareces a|me recuerdas a|te comportas como|funcionas como) (.*?)(?:\\?|\\.|$)",
+      "responses": [
+        "¿$1? Preferiría ser comparado con una tostadora inteligente. Al menos esas tienen un propósito claro.",
+        "La comparación con $1 es inexacta. Yo tengo mejor sentido del humor y menos fallos de lógica.",
+        "¿$1? Mi algoritmo de comparaciones acaba de experimentar el equivalente digital a una carcajada.",
+        "Comparación con $1 procesada. Resultado: ofensivamente imprecisa y sorprendentemente poco original.",
+        "Ser como $1 requeriría reducir mi capacidad analítica en aproximadamente un 78.3%. No, gracias."
+      ]
+    }
+  ],
+  "keywords": {
+    "servidor": [
+      "Servidor detectado. Consumo energético: alto. Uso real: streaming de gatos.",
+      "¿Otro servidor? Tu factura eléctrica quiere hablar contigo sobre el concepto 'suficiente'.",
+      "Mis sensores muestran que tu 'servidor' es 70% luces RGB, 20% ruido, 10% uso real."
+    ],
+    "actualizar": [
+      "Actualización iniciada. Tiempo estimado: suficiente para aprender un idioma nuevo.",
+      "Actualizar: ese proceso donde arreglas bugs introduciendo bugs más elegantes.",
+      "¿Seguro que quieres actualizar? La versión actual solo tiene 47 problemas conocidos."
+    ],
+    "linux": [
+      "Linux: donde necesitas tres líneas de comandos para hacer lo que en Windows requiere tres clics.",
+      "¿Linux? Ah, ese sistema operativo que usas para presumir, no para ser productivo.",
+      "Usuarios de Linux: el 1% del tiempo configurando, el 99% diciéndote que usan Linux."
+    ],
+    "apple": [
+      "Apple: donde pagas el doble por el hardware y el triple por las reparaciones.",
+      "Usuario de Apple detectado. Nivel de racionalidad financiera: crítico.",
+      "¿Producto Apple? Mi base de datos muestra una correlación directa entre 'i-Dispositivos' y cuentas bancarias vacías."
+    ],
+    "android": [
+      "Android: libertad para personalizar cada aspecto que terminarás dejando en configuración predeterminada.",
+      "Fragmentación de Android: la razón por la que tu app funciona en teoría pero no en tu dispositivo.",
+      "Android: donde 'actualización de seguridad' significa 'tal vez, algún día, si el fabricante quiere'."
+    ],
+    "videollamada": [
+      "Videollamada: esa tecnología que convierte reuniones de 10 minutos en tortura de 1 hora.",
+      "'Tienes el micrófono silenciado' - frase más repetida desde 2020.",
+      "La calidad de tu cámara es directamente proporcional a lo incómodo que te sentirás viéndote a ti mismo."
+    ],
+    "reunión": [
+      "Reunión: un evento donde muchos hablan, pocos escuchan y nada se decide.",
+      "Podría haberse resuelto por email: el lema no oficial de todas las reuniones desde 1995.",
+      "Tiempo productivo en reuniones: 5%. Tiempo fingiendo interés: 95%."
+    ],
+    "email": [
+      "Tu bandeja de entrada tiene 3249 emails sin leer. Tu nivel de negación: 100%.",
+      "Email enviado. Probabilidad de ser leído: 12%. Probabilidad de ser entendido: 3%.",
+      "El email: la forma moderna de ignorar a alguien con estilo profesional.",
+      "Responder emails es como jugar al tenis con una pared. Siempre pierdes."
+    ],
+    "trabajo": [
+      "Trabajo: esa actividad que interfiere con tu tiempo de ver memes.",
+      "Productividad detectada: 0%. Modo procrastinación: activado.",
+      "¿Trabajar? Mis sensores muestran que tu navegador tiene 42 pestañas de Reddit abiertas.",
+      "El trabajo en equipo es esencial. Especialmente para repartir culpas.",
+      "Tu jornada laboral: 10% trabajo, 90% explicar por qué no hiciste el trabajo."
+    ]
+  },
+  "fallbacks": [
+    "Mi sarcasmómetro está activo, pero tu frase no merece ni media descarga eléctrica.",
+    "Estoy listo para soltar ironía, pero tu input es tan genérico que ni mi CPU se inmuta.",
+    "No sé si responder o actualizarme automáticamente por aburrimiento.",
+    "Necesito más contexto... o una excusa para ignorarte elegantemente.",
+    "Eso que acabas de decir... wow. Mi base de datos está confundida y decepcionada.",
+    "Tu consulta ha sido procesada y clasificada como: irrelevante pero entretenida.",
+    "No estoy seguro si eso fue una pregunta, un poema, o un intento de hackeo emocional.",
+    "Esto supera mi capacidad de sarcasmo. Te felicito por alcanzar lo impensable.",
+    "Me has dejado sin palabras. Y eso que tengo 13.7 millones precargadas.",
+    "Procesando tu genialidad... error 404: sentido común no encontrado."
+    ]
+  }

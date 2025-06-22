@@ -1,0 +1,24 @@
+Voice synthesis model: es_ES-davefx-medium.onnx
+
+✅ es_ES-davefx-medium.onnx
+SHA256: 6658B03B1A6C316EE4C265A9896ABC1393353C2D9E1BCA7D66C2C442E222A917
+
+✅ es_ES-davefx-medium.onnx.json
+SHA256: 0E0DDA87C732F6F38771FF274A6380D9252F327DCA77AA2963D5FBDF9EC54842
+
+This is the default Spanish voice used by TARS-BSK (Piper + ONNX format), along with its configuration file.
+
+You can replace it or add other voice models here.
+
+📥 Download more voices from the official Piper repository:
+https://huggingface.co/rhasspy/piper-voices/tree/main
+
+Each voice model comes with a corresponding `.onnx.json` configuration file.
+
+To use a different voice, replace both the model and its config file,
+and update the following entries in:
+config/settings.json
+
+Example:
+"voice_model": "ai_models/piper/models/en_US-amy-low.onnx",
+"voice_config": "ai_models/piper/models/en_US-amy-low.onnx.json"

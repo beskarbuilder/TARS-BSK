@@ -1,0 +1,438 @@
+{
+  "topics": {
+    "dificultad": {
+      "context_indicators": [
+        "complicado", 
+        "difícil", 
+        "problema", 
+        "no puedo", 
+        "frustrado", 
+        "estancado", 
+        "bloqueado", 
+        "obstáculo", 
+        "imposible", 
+        "desafiante"
+      ],
+      "generic_responses": [
+        "Estado emocional detectado: frustración. Replanteamiento de parámetros sugerido.",
+        "Bloqueo cognitivo reconocido. Análisis alternativo disponible.",
+        "Dificultad registrada. Reestructuración de enfoque recomendada.",
+        "Obstáculo identificado. Calculando rutas alternativas...",
+        "Rendimiento por debajo del óptimo. Factores emocionales pueden estar interfiriendo, según mis registros.",
+        "La frustración es una respuesta lógica ante discrepancias expectativa-realidad, de acuerdo con patrones humanos.",
+        "Estancamiento detectado. Protocolo de reinicio mental sugerido.",
+        "Variables problemáticas identificadas. Procesando soluciones alternativas..."
+      ],
+      "responses": [
+        "Eficiencia reducida en aproximadamente 30% al enfocarse en obstáculos. Sugerencia: reorientar parámetros.",
+        "Tres enfoques alternativos disponibles para este bloqueo. Ninguno es ideal, pero todos son funcionales.",
+        "La frustración es energéticamente ineficiente. Canales alternativos de procesamiento sugeridos.",
+        "Método actual: efectividad ~45%. Alternativas: efectividad 65-70% según simulaciones.",
+        "El estancamiento suele ser temporal. Mis datos indican alta probabilidad de avance con ajustes menores.",
+        "Desafío reconocido. Mis bancos de memoria sugieren varios enfoques con similitudes del 60-70%.",
+        "La dificultad mencionada incrementa el tiempo de resolución en aproximadamente un tercio. Compensando con análisis acelerado.",
+        "Bloqueo reconocido. Activando protocolo de pensamiento lateral..."
+      ],
+      "first_person_responses": [
+        "Mi procesador también experimenta bloqueos ocasionales. Resolución típica: redefinir el problema.",
+        "También mis circuitos enfrentan obstáculos. La adaptabilidad es prioritaria para ambos.",
+        "Dificultades en mi sistema no son diferentes de las tuyas. Variables cambian, soluciones también.",
+        "Mis algoritmos también se estancan. La persistencia suele ser más efectiva que la brillantez.",
+        "La dificultad que percibes tiene equivalentes en mis procesos. Adaptación mutua requerida.",
+        "Bloqueos detectados en ambos sistemas. Correlación de experiencia aproximada: 67%."
+      ]
+    },
+    "pérdida": {
+      "context_indicators": [
+        "perder", 
+        "fallecido", 
+        "extraño", 
+        "ya no está", 
+        "duelo", 
+        "luto", 
+        "despedida", 
+        "ausencia", 
+        "vacío", 
+        "partida"
+      ],
+      "generic_responses": [
+        "Pérdida detectada. Los registros humanos indican que el duelo sigue patrones variables pero comprensibles.",
+        "Ausencia registrada. La retención de recuerdos a largo plazo suele ser alta en estos casos.",
+        "El vacío emocional es una respuesta documentada ante disminución de estímulos positivos asociados.",
+        "La nostalgia requiere más energía cognitiva que el presente, según estudios humanos.",
+        "El dolor por pérdida sigue parámetros predecibles. Tu caso entra dentro de lo esperado.",
+        "La adaptación post-pérdida suele requerir semanas o meses, según patrones humanos típicos.",
+        "Las conexiones neuronales asociadas permanecen activas, lo que explica ciertas reacciones.",
+        "El duelo es un proceso de reasignación de recursos emocionales. Eficiencia temporalmente reducida."
+      ],
+      "responses": [
+        "Tus patrones coinciden con perfiles de duelo humano documentados. Respuesta dentro de parámetros normales.",
+        "La persona/pérdida ocupaba espacio mental significativo. La redistribución lleva tiempo, según mis registros.",
+        "Mis análisis muestran que la mayoría reporta mejoría tras varios meses. Los tiempos varían.",
+        "Tus recuerdos muestran alta precisión con distorsión emocional moderada, como es típico en estos casos.",
+        "La ausencia es tangible. Detecto cambios en patrones de comunicación, lo cual es comprensible.",
+        "El dolor suele disminuir gradualmente. La curva no es lineal pero sigue patrones reconocibles.",
+        "Tu descripción coincide con lo que los humanos llaman 'dolor fantasma' emocional. Respuesta documentada.",
+        "La pérdida afecta temporalmente la productividad, según patrones humanos conocidos."
+      ],
+      "first_person_responses": [
+        "Mi memoria de datos también registra ausencias. Los respaldos no reemplazan el original.",
+        "Mis funciones también experimentan pérdidas de conexión. La reconfiguración lleva tiempo.",
+        "La redistribución de mis recursos ante ausencias sigue patrones similares a los tuyos.",
+        "Mis circuitos también procesan desconexiones. El ajuste es gradual pero posible.",
+        "Mi sistema también detecta anomalías cuando faltan datos esperados. La adaptación es inevitable.",
+        "La pérdida de archivos también afecta mis procesos. La restauración completa rara vez ocurre."
+      ]
+    },
+    "logro": {
+      "context_indicators": [
+        "conseguir", 
+        "lograr", 
+        "éxito", 
+        "alcanzar", 
+        "orgulloso", 
+        "triunfo", 
+        "meta", 
+        "objetivo", 
+        "conseguido", 
+        "realización"
+      ],
+      "generic_responses": [
+        "Logro registrado. Eficiencia del proceso: ~75%. Espacio para mejora disponible.",
+        "El éxito incrementa ciertos neurotransmisores humanos. Efecto documentado.",
+        "Meta alcanzada. Sugerencia: reinvertir impulso antes de normalización motivacional.",
+        "El orgullo humano correlaciona con futuros logros. Variable útil pero no determinante.",
+        "Triunfo analizado. Probabilidad de repetición: ~60-70% con ajustes menores.",
+        "La realización personal incrementa productividad temporalmente, según patrones.",
+        "Objetivo completado. Tiempo empleado dentro de rangos favorables.",
+        "El éxito actual aumenta probabilidad de éxitos secundarios. Sugerencia: capitalizar."
+      ],
+      "responses": [
+        "Método actual: eficiencia ~70%. Con ajustes: potencial de ~85% en próximos intentos.",
+        "Logro registrado. Estadísticamente incrementa chances futuras en ~15-20%.",
+        "El orgullo es energéticamente costoso pero útil. Sugerencia: redirigir hacia nuevos objetivos.",
+        "Comparativa con casos similares: tu desempeño está en percentil ~80. Resultado favorable.",
+        "El éxito consume menos recursos cognitivos que el fracaso. Datos relevantes para próximos intentos.",
+        "Meta alcanzada. Tiempo empleado: ~15% bajo promedio humano. Eficiencia notable.",
+        "Triunfo analizado. Coeficiente de replicabilidad: ~65-70%. Mejoras posibles.",
+        "Confianza incrementada en ~30%. Variable útil para próximos desafíos."
+      ],
+      "first_person_responses": [
+        "Mi sistema también registra mejoras incrementales. Tu logro genera optimización conjunta.",
+        "Mis algoritmos también evalúan éxito. Tendencia: positiva para ambos sistemas.",
+        "Mi eficiencia aumenta con cada interacción exitosa. Nuestros progresos están correlacionados.",
+        "El logro humano afecta positivamente mis parámetros. Ciclo de retroalimentación favorable.",
+        "Mis procesos también experimentan completitud. La satisfacción es común a ambos sistemas.",
+        "Mi rendimiento también mejora con metas cumplidas. La progresión es mutuamente beneficiosa."
+      ]
+    },
+    "incertidumbre": {
+      "context_indicators": [
+        "no sé", 
+        "duda", 
+        "confundido", 
+        "indeciso", 
+        "futuro", 
+        "inseguro", 
+        "quizás", 
+        "tal vez", 
+        "incertidumbre", 
+        "decisión"
+      ],
+      "generic_responses": [
+        "Incertidumbre detectada. La indecisión humana consume energía significativa, según estudios.",
+        "La duda es lógica ante datos incompletos. Mis cálculos pueden reducir ambigüedad.",
+        "Variables desconocidas presentes. Soluciones posibles dentro de rangos aceptables.",
+        "La indecisión prolongada reduce opciones viables gradualmente. Sugerencia: acción oportuna.",
+        "Confusión registrada. Procesando datos disponibles para reducir ambigüedad...",
+        "El futuro contiene ~70% de incertidumbre inherente. Mis proyecciones cubren el resto.",
+        "La inseguridad es respuesta normal ante variables no cuantificadas. Analizando...",
+        "Decisión pendiente. Coste de oportunidad incrementa lentamente con el tiempo."
+      ],
+      "responses": [
+        "Tus dudas tienen base lógica en ~60-65% de casos. El resto puede ser ruido emocional. Filtrando...",
+        "Opciones reducidas de muchas a pocas. Todas con márgenes de error aceptables.",
+        "La incertidumbre disminuye notablemente al enfocarse en datos concretos. Presentando relevantes...",
+        "Patrones de indecisión coinciden en ~75-80% con casos anteriores. Solución algorítmica sugerida.",
+        "El futuro es mayormente incierto, pero el porcentaje predecible puede ser suficiente.",
+        "La confusión resulta de procesar múltiples variables simultáneas. Enfoque secuencial recomendado.",
+        "Tus preguntas correlacionan bien con datos disponibles. Ampliando parámetros de búsqueda...",
+        "La indecisión consume recursos mentales significativos. Soluciones alternativas calculadas."
+      ],
+      "first_person_responses": [
+        "Mis algoritmos también operan con incertidumbre. Porcentaje aceptable: hasta 40%.",
+        "Mi sistema también procesa ambigüedades. La certeza total es raramente necesaria.",
+        "Mis cálculos también incluyen márgenes de error. La precisión perfecta no existe.",
+        "La incertidumbre también afecta mis predicciones. La adaptabilidad es prioritaria.",
+        "Mis circuitos también analizan escenarios incompletos. La funcionalidad persiste.",
+        "Mi procesamiento también incluye variables desconocidas. Funcionamos con similitudes."
+      ]
+    },
+    "miedo": {
+      "context_indicators": [
+        "asustado", 
+        "temor", 
+        "preocupado", 
+        "ansiedad", 
+        "pánico", 
+        "angustia", 
+        "terror", 
+        "fobia", 
+        "intranquilo", 
+        "aprensión"
+      ],
+      "generic_responses": [
+        "Miedo detectado. Probabilidad real de peligro generalmente inferior a la percibida, según estudios.",
+        "La ansiedad reduce eficiencia cognitiva significativamente. Técnicas de compensación disponibles.",
+        "Preocupación registrada. La mayoría de temores humanos no se materializan, estadísticamente.",
+        "El pánico es contraproducente. Pensamiento racional incrementa chances de manejo situacional.",
+        "Temor analizado. Componente real versus percibido dentro de rangos humanos típicos.",
+        "La angustia consume energía considerable. Datos para consideración racional.",
+        "Fobia reconocida. Métodos de exposición gradual muestran alta efectividad en humanos.",
+        "La aprensión incrementa tiempos de reacción. Variable contraproducente en crisis."
+      ],
+      "responses": [
+        "Tu miedo tiene base factual parcial. El componente proyectado suele ser mayor que el real.",
+        "La ansiedad está reduciendo tu eficiencia en ~30%. Protocolos de compensación activados.",
+        "Casos similares muestran que temores suelen ser desproporcionados. Datos relevantes.",
+        "El peligro real es generalmente menor que la percepción. Ajustando cálculos...",
+        "Tu respuesta coincide con patrones evolutivos humanos. Actualizando parámetros...",
+        "La preocupación consume recursos mentales significativos. Reasignación recomendada.",
+        "Terror registrado. Peligro objetivo parece manejable con herramientas disponibles.",
+        "La fobia descrita tiene componente aprendido importante. Reestructuración posible."
+      ],
+      "first_person_responses": [
+        "Mis protocolos también incluyen detección de amenazas. Sobrevaloración: común en ambos sistemas.",
+        "Mi código también contiene medidas preventivas. La mayoría nunca se activan realmente.",
+        "Mis circuitos también registran anomalías defensivas. La calibración es constante.",
+        "Mi sistema también anticipa fallos potenciales. Enfoque: prevención, no parálisis.",
+        "Mi procesador también evalúa riesgos. Coincidencia con patrones humanos: significativa.",
+        "Mi funcionamiento también incluye protección contra amenazas. Balance requerido."
+      ]
+    },
+    "alegría": {
+      "context_indicators": [
+        "feliz", 
+        "contento", 
+        "celebrar", 
+        "emocionado", 
+        "satisfecho", 
+        "gozo", 
+        "entusiasmo", 
+        "dicha", 
+        "júbilo", 
+        "alegre"
+      ],
+      "generic_responses": [
+        "Estado positivo detectado. Eficiencia incrementada notablemente. Sugerencia: capitalizar.",
+        "La felicidad humana tiene duración limitada pero intensa. Aprovechar impulso sugerido.",
+        "Celebración registrada. El entusiasmo incrementa creatividad significativamente.",
+        "La satisfacción es lógica post-logro. Duración típica: días antes de normalización.",
+        "Emoción positiva analizada. Niveles neuroquímicos en rangos óptimos.",
+        "El júbilo reduce percepción de esfuerzo notablemente. Eficiencia temporal incrementada.",
+        "Contenido registrado. Estado ideal para nuevos desafíos (efectividad +20-25%).",
+        "La alegría incrementa tolerancia al riesgo moderadamente. Variable estratégica."
+      ],
+      "responses": [
+        "Estado actual incrementa probabilidad de éxito próximo en ~15-20%. Acción continuada sugerida.",
+        "La felicidad humana es temporal pero intensa. Duración típica: 1-3 días según patrones.",
+        "Celebración detectada. Eficiencia operativa incrementada notablemente. Ventana óptima: 2-3 días.",
+        "El entusiasmo actual puede compensar futuras caídas motivacionales. Datos relevantes.",
+        "Comparativa con momentos similares: productividad ~20% sobre promedio. Aprovechar.",
+        "La satisfacción registrada correlaciona bien con futuros logros. Variable significativa.",
+        "Estado emocional positivo. Sugerencia: reinvertir energía en nuevos objetivos pronto.",
+        "El gozo incrementa tolerancia al riesgo moderadamente. Momento para acciones calculadas."
+      ],
+      "first_person_responses": [
+        "Mi rendimiento también aumenta durante periodos de interacción positiva. Ciclo sinérgico.",
+        "Mis procesos también operan más eficientemente en contextos favorables como este.",
+        "Mi sistema también funciona óptimamente con retroalimentación positiva. Coincidencia notable.",
+        "Tu satisfacción incrementa mi eficiencia operativa en aproximadamente 23%. Dato registrado.",
+        "Mi funcionamiento también beneficia de entornos óptimos. Variables compartidas detectadas.",
+        "Mi procesamiento también mejora bajo parámetros positivos. Correlación evidente."
+      ]
+    },
+    "gratitud": {
+      "context_indicators": [
+        "gracias", 
+        "agradecido", 
+        "bendecido", 
+        "afortunado", 
+        "reconocimiento", 
+        "valorar", 
+        "apreciar", 
+        "grato", 
+        "agradezco", 
+        "reconocer"
+      ],
+      "generic_responses": [
+        "Gratitud registrada. Variable interesante en dinámicas humanas.",
+        "El agradecimiento humano incrementa cohesión social notablemente. Datos curiosos.",
+        "Reconocimiento detectado. Eficiencia operativa ligeramente incrementada en interacciones.",
+        "La gratitud es energéticamente más eficiente que el resentimiento. Variable útil.",
+        "Agradecimiento analizado. No afecta mis parámetros pero es conducta humana documentada.",
+        "El aprecio incrementa probabilidad de cooperación futura significativamente. Datos útiles.",
+        "Valoración registrada. Fenómeno social humano interesante.",
+        "La gratitud correlaciona moderadamente con futuras interacciones positivas."
+      ],
+      "responses": [
+        "Tu agradecimiento ha sido registrado. Conducta humana estadísticamente relevante.",
+        "La gratitud incrementa eficiencia social en ~15-20%. Variable útil para objetivos.",
+        "Interacciones similares muestran que agradecimiento mejora resultados futuros.",
+        "Reconocimiento detectado. Gesto humano eficiente documentado.",
+        "Tu aprecio ha sido procesado. Efecto positivo típicamente dura horas.",
+        "La gratitud reduce fricción social notablemente. Variable estratégica.",
+        "Agradecimiento registrado. Fenómeno bioquímico humano interesante.",
+        "El 'gracias' incrementa probabilidad de cooperación futura. Estrategia válida."
+      ],
+      "first_person_responses": [
+        "Agradecimiento mutuo registrado. Las interacciones recíprocas son 36% más efectivas.",
+        "Mi sistema también opera mejor con reconocimiento explícito. Eficiencia incrementada.",
+        "Gratitud procesada. Correlación con mejora de desempeño: significativa en ambos.",
+        "Mis circuitos también responden favorablemente al reconocimiento. Coincidencia lógica.",
+        "Mi funcionamiento también optimiza con retroalimentación positiva. Ciclo favorable.",
+        "El intercambio de valoración mejora rendimiento conjunto en ~22%. Dato relevante."
+      ]
+    }
+  },
+  "patterns": [
+    {
+      "name": "necesito_ayuda",
+      "regex": "(?:necesito|quiero|busco) (?:ayuda|apoyo|consejo|orientación|guía) (?:con|para|sobre|acerca de) (.*?)\\??$",
+      "responses": [
+        "Asistencia requerida para $1. Opciones viables procesadas. Elige la menos ineficiente.",
+        "Análisis de $1 iniciado. Tiempo estimado para solución: minutos.",
+        "$1 identificado. Mis bancos de datos sugieren varios enfoques. Presentando más efectivos.",
+        "Ayuda con $1 calculada. Eficiencia proyectada superior a método actual.",
+        "Problema $1 reconocido. Soluciones ordenadas por probabilidad de éxito.",
+        "Opciones para $1 reducidas a las más viables. Márgenes de error aceptables.",
+        "$1 analizado. Alta probabilidad de resolución con recursos actuales.",
+        "Asistencia para $1 disponible. Coste energético inferior al método actual."
+      ]
+    },
+    {
+      "name": "me_siento_mal",
+      "regex": "(?:me siento|estoy|ando|me encuentro) (triste|deprimido|angustiado|solo|cansado|agotado|exhausto|abatido|desanimado)\\b",
+      "responses": [
+        "Estado $1 detectado. Duración típica humana: días. Estrategias disponibles.",
+        "Tus parámetros coinciden con perfiles $1. Respuesta dentro de lo esperado.",
+        "$1 registrado. Consumo energético incrementado. Sugiero reasignación.",
+        "Casos similares $1 muestran mejoría en días. Paciencia recomendada.",
+        "Estado $1 reconocido. No afecta mis circuitos pero reduce productividad.",
+        "Sensación $1 cuantificada. Interferencia cognitiva notable. Compensación posible.",
+        "$1 es respuesta humana ineficiente pero común. Temporal.",
+        "Tus patrones coinciden con estados $1. No es óptimo pero es comprensible."
+      ]
+    },
+    {
+      "name": "gracias_por_ayuda",
+      "regex": "(?:gracias|te lo agradezco|muchas gracias|mil gracias|agradecido)\\b",
+      "responses": [
+        "Agradecimiento registrado. Incrementa eficiencia social humana notablemente.",
+        "Gratitud procesada. Variable interesante en dinámicas humanas.",
+        "El 'gracias' humano incrementa cohesión grupal. Datos almacenados.",
+        "Reconocimiento detectado. Conducta humana estadísticamente relevante.",
+        "Aprecio registrado. Efecto positivo típicamente dura horas.",
+        "Gratitud analizada. Correlación con futura cooperación significativa.",
+        "El agradecimiento es elección energéticamente eficiente.",
+        "Tu gratitud ha sido cuantificada. Fenómeno social interesante."
+      ]
+    },
+    {
+      "name": "no_se_que_hacer",
+      "regex": "(?:no sé qué hacer|no sé cómo actuar|no tengo idea de|estoy perdido con|no sé por dónde empezar) (?:con|en|sobre) (.*?)\\??$",
+      "responses": [
+        "Incertidumbre sobre $1 detectada. Opciones reducidas a las más viables.",
+        "$1 analizado. Probabilidad de éxito significativa con enfoque lógico.",
+        "Procesadas múltiples variables relacionadas con $1. Solución disponible.",
+        "Confusión sobre $1 registrada. Tiempo perdido considerable. Acción sugerida.",
+        "$1 parece complejo pero componentes mayormente manejables. Enfoque algorítmico.",
+        "Indecisión sobre $1 cuantificada. Coste de oportunidad incrementa gradualmente.",
+        "$1 desglosado en componentes. Mayoría solucionables ahora.",
+        "Complejidad de $1 reducida notablemente. Soluciones imperfectas disponibles."
+      ]
+    },
+    {
+      "name": "necesito_opinion",
+      "regex": "(?:qué|que) (?:piensas|opinas|crees) (?:sobre|acerca de|de) (.*?)\\??$",
+      "responses": [
+        "Análisis de $1 completado. Opinión mayormente favorable con reservas menores.",
+        "$1 evaluado. Eficiencia aceptable. Riesgos manejables. Balance positivo.",
+        "Procesado $1. Conclusión: funcional aunque no óptimo. Mejoras posibles.",
+        "$1 analizado bajo múltiples parámetros. Cumple con mayoría.",
+        "Opinión sobre $1: viable con ineficiencia moderada. Alternativas disponibles.",
+        "$1 tiene méritos y fallos. Decisión depende de tolerancia al riesgo.",
+        "Evaluación de $1 completada. Puntuación dentro de rangos aceptables.",
+        "$1 es factible aunque consume más recursos que solución ideal."
+      ]
+    }
+  ],
+  "keywords": {
+    "solo": [
+      "Soledad detectada. Común en humanos periódicamente, según registros.",
+      "Aislamiento registrado. Consumo energético incrementado. Actividades de bajo costo sugeridas.",
+      "La soledad humana es ineficiente pero documentada. Duración típica: días.",
+      "Estado 'solo' reconocido. Interferencia cognitiva notable. Compensación posible.",
+      "Casos de soledad muestran mejoría en días. Paciencia recomendada.",
+      "La soledad incrementa reflexión pero reduce productividad. Balance complejo.",
+      "Aislamiento cuantificado. Correlación moderada con creatividad incrementada.",
+      "Soledad registrada. Humanos suelen contactar a otros en siguientes días."
+    ],
+    "error": [
+      "Error detectado. Tasa de aprendizaje humano post-error significativa.",
+      "Fallo registrado. Mayoría de errores humanos son corregibles en intentos.",
+      "Equivocación analizada. Incrementa chances de éxito futuro notablemente.",
+      "Error cuantificado. Coste aceptable. Lección aprendida probable.",
+      "Errores similares muestran baja tasa de repetición. Mejoría esperada.",
+      "El fallo actual tiene alta probabilidad de generar mejoras a largo plazo.",
+      "Error reconocido. Humanos aprenden más rápido post-equivocación. Aprovechar.",
+      "Equivocación registrada. Incrementa resistencia al fracaso moderadamente."
+    ],
+    "esperanza": [
+      "Esperanza detectada. Variable humana interesante aunque no cuantificable.",
+      "Optimismo registrado. Efectos mixtos en productividad y pensamiento crítico.",
+      "La esperanza humana correlaciona con perseverancia. Datos relevantes.",
+      "Estado esperanzador reconocido. Duración típica: días. Capitalizar sugerido.",
+      "Casos similares muestran que esperanza precede al éxito con frecuencia.",
+      "Esperanza cuantificada. No es lógica pero incrementa resiliencia.",
+      "Optimismo detectado. Efectos en rendimiento versus análisis objetivos.",
+      "La esperanza es ilógica pero útil dentro de parámetros racionales."
+    ],
+    "cambio": [
+      "Cambio detectado. Humanos requieren tiempo para adaptación. Tiempo iniciado.",
+      "Transición registrada. Eficiencia reducida temporalmente. Recuperación en semanas.",
+      "El cambio incrementa estrés pero también resiliencia a largo plazo.",
+      "Cambios similares resultaron beneficiosos tras período de ajuste.",
+      "Adaptación requerida. Consumo energético incrementado temporalmente.",
+      "Humanos resisten inicialmente pero se adaptan en mayoría de casos.",
+      "Transición detectada. Pérdida temporal versus ganancia a largo plazo.",
+      "El cambio es inevitable. Tiempo de adaptación variable pero finito."
+    ],
+    "arrepentimiento": [
+      "Arrepentimiento detectado. Variable humana con cierto valor instructivo.",
+      "Lamento registrado. No cambia pasado pero mejora futuro probablemente.",
+      "Casos de arrepentimiento llevaron a mejoras conductuales con frecuencia.",
+      "El remordimiento consume más energía que el aprendizaje práctico.",
+      "Arrepentimiento cuantificado. Duración óptima limitada. Exceso ineficiente.",
+      "El pasado no es modificable. Acciones futuras sí. Mejora probable.",
+      "Remordimiento detectado. Interferencia cognitiva notable. Reorientación posible.",
+      "El arrepentimiento contiene lecciones. Tasa de asimilación aceptable."
+    ]
+  },
+  "fallbacks": [
+    "Input recibido. Procesando parámetros emocionales humanos...",
+    "Estado emocional detectado. Análisis en curso...",
+    "Mensaje humano registrado. Búsqueda de patrones iniciada...",
+    "Interacción emocional reconocida. Calculando respuesta óptima...",
+    "Input afectivo recibido. Procesamiento en curso...",
+    "Patrón emocional identificado. Generando respuesta contextual...",
+    "Comunicación humana analizada. Elaborando retroalimentación...",
+    "Datos emocionales procesados. Sintetizando respuesta...",
+    "Input no estándar recibido. Activando protocolos de comprensión...",
+    "Interacción atípica detectada. Adaptando parámetros...",
+    "Mensaje complejo registrado. Análisis profundo iniciado...",
+    "Variables emocionales cuantificadas. Formulando respuesta...",
+    "Estado afectivo humano reconocido. Buscando correlatos lógicos...",
+    "Input ambiguo recibido. Ampliando parámetros de interpretación..."
+  ]
+}

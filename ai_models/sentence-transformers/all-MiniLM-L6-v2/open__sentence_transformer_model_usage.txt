@@ -1,0 +1,12 @@
+This folder is used by TARS-BSK to store the default SentenceTransformer model (all-MiniLM-L6-v2).
+
+The model is downloaded automatically during installation or at first use via:
+pip install sentence-transformers --no-cache-dir
+
+You don't need to download it manually unless you want to use a different model.
+
+Optional:
+You can replace this model with any compatible SentenceTransformer from:
+https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+For more information or customization, see the installation guide.
