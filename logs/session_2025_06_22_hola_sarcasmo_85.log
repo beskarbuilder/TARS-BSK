@@ -1,0 +1,298 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-22 20:21:36,628 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-22 20:21:39,293 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-22 20:21:39,294 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-22 20:21:39,294 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-22 20:21:39,516 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 36.63it/s]
+2025-06-22 20:21:39,548 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-22 20:21:39,548 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-22 20:21:39,551 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-22 20:21:39,553 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-22 20:21:39,553 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-22 20:21:39,553 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-22 20:21:39,553 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-22 20:21:39,554 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-22 20:21:39,556 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-22 20:21:39,558 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-22 20:21:39,559 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-22 20:21:39,560 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-22 20:21:39,560 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-22 20:21:39,561 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-22 20:21:39,561 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-22 20:21:39,561 - TARS - INFO - Detector de intenciones inicializado
+2025-06-22 20:21:39,561 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-22 20:21:39,563 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-22 20:21:39,563 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-22 20:21:39,563 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-22 20:21:39,703 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-22 20:21:39,703 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-06-22 20:21:39,703 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-22 20:21:39,703 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-22 20:21:39,703 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-22 20:21:39,703 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-22 20:21:39,703 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-22 20:21:39,703 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-22 20:21:39,703 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-22 20:21:39,703 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-22 20:21:39,703 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-22 20:21:39,704 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-22 20:21:39,704 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-22 20:21:39,704 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-22 20:21:39,704 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-22 20:21:39,704 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-22 20:21:39,705 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-22 20:21:39,705 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-22 20:21:39,705 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-22 20:21:39,705 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-22 20:21:39,706 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración maestra...
+2025-06-22 20:21:39,706 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 39 nombres → 20 dispositivos únicos
+2025-06-22 20:21:39,706 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-22 20:21:39,706 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 39
+2025-06-22 20:21:39,706 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-06-22 20:21:39,713 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-22 20:21:39,713 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-22 20:21:39,713 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-22 20:21:39,713 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-22 20:21:39,713 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-22 20:21:39,713 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-22 20:21:39,713 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-22 20:21:39,714 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-22 20:21:39,714 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-22 20:21:39,714 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: hola jejejejejejeje
+2025-06-22 20:21:51,397 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'hola jejejejejejeje'
+2025-06-22 20:21:51,397 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-22 20:21:51,397 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-22 20:21:51,397 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'hola jejejejejejeje'
+2025-06-22 20:21:51,398 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-22 20:21:51,398 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-22 20:21:51,398 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-22 20:21:51,398 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'hola jejejejejejeje'
+2025-06-22 20:21:51,402 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-22 20:21:51,402 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-22 20:21:51,402 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'hola jejejejejejeje'
+2025-06-22 20:21:51,402 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-22 20:21:51,402 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-22 20:21:51,402 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-22 20:21:51,402 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-22 20:21:51,402 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='hola jejejejejejeje'
+🔍 DEBUG RESPONSES_FOUND: 0 responses after triggers
+🔍 DEBUG TONE: Starting tone analysis
+🔍 DEBUG TONE_RESULT: {'dominant_tone': None, 'suggested_emotion': None}
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response=''
+🔍 DEBUG: emotion_response='', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-06-22 20:21:51,414 - TARS - INFO - ✅ Análisis completo en 0.01s
+2025-06-22 20:21:51,414 - TARS - INFO - 📝 Prompt final (13 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: hola jejejejejejeje
+TA...
+2025-06-22 20:21:51,414 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_010.wav
+2025-06-22 20:21:51,415 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-22 20:21:51,415 - TARS - INFO - ⚙️ Tokens: prompt≈13, disponibles=127, asignados=40
+2025-06-22 20:21:51,415 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: hola jejejejejejeje
+TARS:'
+2025-06-22 20:21:51,415 - TARS - INFO - 🚨 LONGITUD REAL: 13 palabras
+2025-06-22 20:21:53,419 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-22 20:21:53,448 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-22 20:22:01,388 - TARS - INFO - ⏱️ Tiempo generando tokens: 9.97s
+2025-06-22 20:22:01,388 - TARS - INFO - ✅ Respuesta generada: Hola, ¿estás buscando un desahogo para tu rabia y frustració...
+2025-06-22 20:22:01,388 - TARS - INFO - 🧪 Total proceso respuesta: 9.97s
+2025-06-22 20:22:01,388 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 9.97s
+2025-06-22 20:22:01,388 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Hola, ¿estás buscando un desahogo para tu rabia y frustración?'
+2025-06-22 20:22:01,389 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-22 20:22:01,389 - TARS.TTS - INFO - 🗣️ Generando voz: 'Hola, ¿estás buscando un desahogo para tu rabia y frustración?'
+2025-06-22 20:22:02,488 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-22 20:22:02,512 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.024s
+2025-06-22 20:22:02,540 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-22 20:22:03,542 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-22 20:22:03,542 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-22 20:22:03,542 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-22 20:22:03,542 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-22 20:22:03,542 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-22 20:22:03,546 - TARS - INFO - 📤 Respuesta generada en 12.15s
+TARS: Hola, ¿estás buscando un desahogo para tu rabia y frustración?
+Tú: ^C
+👋 Saliendo...
+2025-06-22 20:22:10,138 - TARS.emotion - INFO - ✅ Estadísticas guardadas en: /home/tarsadmin/tars_files/data/stats/emotion_stats.json
+2025-06-22 20:22:10,138 - TARS - INFO - ✅ Estadísticas guardadas correctamente
+✅ Session saved successfully
+✅ síntesis diaria completada
+✅ síntesis semanal completada
+✅ purga de memorias completada
+
+==================================================
+🔮 [MODO JEDI] Consolidando patrones (¡todo cuenta!)
+==================================================
+
+📊 Interacciones procesadas: 2
+🔍 Patrones únicos: 1
+
+🌟 TOP 5 TEMAS:
+
+1. PREGUNTA (x2)
+   🗨️ Hola, ¿en qué puedo ayudarte hoy?...
+   📅 2025-06-22 → 2025-06-22
+   🎯 Intención: sin intención
+
+==================================================
+💡 Consejo Jedi: Usa 'min_occurrences=2' para filtrar ruido
+==================================================
+
+✅ consolidación completada
+✅ Sesión cerrada correctamente para 2025-06-22
+2025-06-22 20:22:10,327 - TARS - INFO - ✅ Sesión de memoria cerrada correctamente
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-22 20:23:22,976 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-22 20:23:25,635 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-22 20:23:25,636 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-22 20:23:25,636 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-22 20:23:25,854 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 36.61it/s]
+2025-06-22 20:23:25,885 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-22 20:23:25,885 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-22 20:23:25,889 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-22 20:23:25,890 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-22 20:23:25,890 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-22 20:23:25,891 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-22 20:23:25,891 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-22 20:23:25,891 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-22 20:23:25,894 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-22 20:23:25,895 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-22 20:23:25,897 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-22 20:23:25,897 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-22 20:23:25,898 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-22 20:23:25,898 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-22 20:23:25,898 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-22 20:23:25,898 - TARS - INFO - Detector de intenciones inicializado
+2025-06-22 20:23:25,899 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-22 20:23:25,902 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-22 20:23:25,902 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-22 20:23:25,902 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-22 20:23:26,040 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-22 20:23:26,040 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-06-22 20:23:26,040 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-22 20:23:26,040 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-22 20:23:26,040 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-22 20:23:26,040 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-22 20:23:26,041 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-22 20:23:26,041 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-22 20:23:26,041 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-22 20:23:26,041 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-22 20:23:26,041 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-22 20:23:26,041 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-22 20:23:26,041 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-22 20:23:26,041 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-22 20:23:26,042 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-22 20:23:26,042 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-22 20:23:26,042 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-22 20:23:26,042 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-22 20:23:26,042 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-22 20:23:26,042 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-22 20:23:26,043 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración maestra...
+2025-06-22 20:23:26,043 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 39 nombres → 20 dispositivos únicos
+2025-06-22 20:23:26,043 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-22 20:23:26,043 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 39
+2025-06-22 20:23:26,043 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-06-22 20:23:26,050 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-22 20:23:26,050 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-22 20:23:26,050 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-22 20:23:26,050 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-22 20:23:26,050 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-22 20:23:26,050 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-22 20:23:26,051 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-22 20:23:26,051 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-22 20:23:26,051 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-22 20:23:26,051 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: hola jejejejejejejejejejejejejejejejejejeje
+2025-06-22 20:23:34,841 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'hola jejejejejejejejejejejejejejejejejejeje'
+2025-06-22 20:23:34,841 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-06-22 20:23:34,841 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-06-22 20:23:34,842 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'hola jejejejejejejejejejejejejejejejejejeje'
+2025-06-22 20:23:34,842 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-06-22 20:23:34,842 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-06-22 20:23:34,842 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-06-22 20:23:34,842 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'hola jejejejejejejejejejejejejejejejejejeje'
+2025-06-22 20:23:34,846 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-06-22 20:23:34,846 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-06-22 20:23:34,846 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'hola jejejejejejejejejejejejejejejejejejeje'
+2025-06-22 20:23:34,846 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó acción clara en el comando
+2025-06-22 20:23:34,846 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ℹ️ Comando no reconocido
+2025-06-22 20:23:34,846 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_query()
+2025-06-22 20:23:34,847 - TARS.PluginSystem - INFO - 🏠 Respuesta de query: ℹ️ Query no reconocida
+2025-06-22 20:23:34,847 - TARS.PluginSystem - INFO - 🔍 Ningún plugin procesó el comando
+🔍 DEBUG GET_EMOTIONAL: input='hola jejejejejejejejejejejejejejejejejejeje'
+🔍 DEBUG RESPONSES_FOUND: 0 responses after triggers
+🔍 DEBUG TONE: Starting tone analysis
+🔍 DEBUG TONE_RESULT: {'dominant_tone': None, 'suggested_emotion': None}
+🔍 DEBUG CHECK_ALL: should_use_llm=False, response=''
+🔍 DEBUG: emotion_response='', sarcasmo_level=85, tema='desconocido', nivel=1
+2025-06-22 20:23:34,859 - TARS - INFO - ✅ Análisis completo en 0.01s
+2025-06-22 20:23:34,859 - TARS - INFO - 📝 Prompt final (13 tokens): Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: hola jejejejejejejejej...
+2025-06-22 20:23:34,859 - TARS - INFO - 🔊 Seleccionado archivo de audio: thinking_003.wav
+2025-06-22 20:23:34,860 - TARS - INFO - 🧠 Generando respuesta...
+2025-06-22 20:23:34,860 - TARS - INFO - ⚙️ Tokens: prompt≈13, disponibles=127, asignados=40
+2025-06-22 20:23:34,860 - TARS - INFO - 🚨 PROMPT COMPLETO REAL: 'Sarcasmo clínico. Sin compasión. Sin rodeos. Solo lógica y desprecio.Usuario: hola jejejejejejejejejejejejejejejejejejeje
+TARS:'
+2025-06-22 20:23:34,860 - TARS - INFO - 🚨 LONGITUD REAL: 13 palabras
+2025-06-22 20:23:36,861 - TARS - INFO - 🔊 Reproduciendo audio de pensamiento...
+2025-06-22 20:23:36,911 - TARS - INFO - ✅ Audio de pensamiento finalizado
+2025-06-22 20:23:49,497 - TARS - INFO - ⏱️ Tiempo generando tokens: 14.64s
+2025-06-22 20:23:49,497 - TARS - INFO - ✅ Respuesta generada: Hola, amigo. ¿Necesitas ayuda con algo que te pone en un est...
+2025-06-22 20:23:49,497 - TARS - INFO - 🧪 Total proceso respuesta: 14.64s
+2025-06-22 20:23:49,497 - TARS - INFO - ⏱️ Tiempo de espera real tras última frase: 14.64s
+2025-06-22 20:23:49,498 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Hola, amigo. ¿Necesitas ayuda con algo que te pone en un estado de ánimo inmediatamente pegajoso y exasperante?'
+2025-06-22 20:23:49,498 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-06-22 20:23:49,498 - TARS.TTS - INFO - 🗣️ Generando voz: 'Hola, amigo. ¿Necesitas ayuda con algo que te pone en un estado de ánimo inmediatamente pegajoso y exasperante?'
+2025-06-22 20:23:51,185 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-06-22 20:23:51,233 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.047s
+2025-06-22 20:23:51,265 - TARS.TTS - INFO - 🔊 Reproducción completada
+2025-06-22 20:23:52,268 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-22 20:23:52,268 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-22 20:23:52,268 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-22 20:23:52,268 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-22 20:23:52,268 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-22 20:23:52,272 - TARS - INFO - 📤 Respuesta generada en 17.43s
+TARS: Hola, amigo. ¿Necesitas ayuda con algo que te pone en un estado de ánimo inmediatamente pegajoso y exasperante?
+Tú: ^C
+👋 Saliendo...
+2025-06-22 20:25:16,918 - TARS.emotion - INFO - ✅ Estadísticas guardadas en: /home/tarsadmin/tars_files/data/stats/emotion_stats.json
+2025-06-22 20:25:16,918 - TARS - INFO - ✅ Estadísticas guardadas correctamente
+✅ Session saved successfully
+✅ síntesis diaria completada
+✅ síntesis semanal completada
+✅ purga de memorias completada
+
+==================================================
+🔮 [MODO JEDI] Consolidando patrones (¡todo cuenta!)
+==================================================
+
+📊 Interacciones procesadas: 3
+🔍 Patrones únicos: 1
+
+🌟 TOP 5 TEMAS:
+
+1. PREGUNTA (x3)
+   🗨️ Hola, ¿en qué puedo ayudarte hoy?...
+   📅 2025-06-22 → 2025-06-22
+   🎯 Intención: sin intención
+
+==================================================
+💡 Consejo Jedi: Usa 'min_occurrences=2' para filtrar ruido
+==================================================
+
+✅ consolidación completada
+✅ Sesión cerrada correctamente para 2025-06-22
+2025-06-22 20:25:17,103 - TARS - INFO - ✅ Sesión de memoria cerrada correctamente
+(tars_venv) tarsadmin@tarspi:~/tars_files $

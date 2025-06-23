@@ -6,6 +6,7 @@
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
 📘 [TARS_Digital_Diary_EN.md](./TARS_Digital_Diary_EN.md) — TARS technical/emotional status.
+🧠 [TARS_CORE_EN.md](./TARS_CORE_EN.md) — **Core map: how 3,000 lines evolved into an ecosystem of automated judgment.**
 
 > Occasionally predicts bugs before the changelog I never wrote.  
 > **Compiles, cries, or both at once.** Sometimes with reason. Other times... suspiciously so.
@@ -93,7 +94,7 @@ This README serves as an early reference for technical enthusiasts who want to e
 - ~~`piper_tts.py`~~ + ~~`tars_brain.py`~~ - Voice synthesis and personality
 - ~~`audio_effects_processor.py`~~ - Audio processing and effects
 - ~~`plugin_system.py`~~ - Plugin management system
-- `tars_core.py` - **The core where everything (doesn't) fit together perfectly**
+- ~~`tars_core.py`~~ - **The core where everything (doesn't) fit together perfectly**
 - `INSTALL.md` - **Ready but withheld for public sanity reasons**
 
 *Note: There will probably be a couple more files that I forgot about.*

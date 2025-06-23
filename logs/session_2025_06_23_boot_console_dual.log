@@ -1,0 +1,148 @@
+# =======================================================================
+# FIRST TIME
+# =======================================================================
+
+tarsadmin@tarspi:~/tars_files $ source ~/tars_venv/bin/activate
+python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-23 16:28:27,937 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-23 16:28:33,287 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-23 16:28:33,288 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-23 16:28:33,288 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-23 16:28:33,797 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|████████████████████████████████████| 1/1 [00:00<00:00,  1.71it/s]
+2025-06-23 16:28:34,390 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-23 16:28:34,391 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-23 16:28:34,397 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-23 16:28:34,401 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-23 16:28:34,401 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-23 16:28:34,401 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-23 16:28:34,401 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-23 16:28:34,401 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-23 16:28:34,405 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-23 16:28:34,407 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-23 16:28:34,409 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-23 16:28:34,410 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-23 16:28:34,410 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-23 16:28:34,411 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-23 16:28:34,411 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-23 16:28:34,412 - TARS - INFO - Detector de intenciones inicializado
+2025-06-23 16:28:34,412 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-23 16:28:34,424 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-23 16:28:34,424 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-23 16:28:34,424 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-23 16:29:00,176 - TARS - INFO - ✅ Modelo cargado en 25.75 segundos
+2025-06-23 16:29:00,176 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-06-23 16:29:00,176 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-23 16:29:00,177 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-23 16:29:00,177 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-23 16:29:00,177 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-23 16:29:00,177 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-23 16:29:00,177 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-23 16:29:00,177 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-23 16:29:00,177 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-23 16:29:00,177 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-23 16:29:00,178 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-23 16:29:00,178 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-23 16:29:00,178 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-23 16:29:00,179 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-23 16:29:00,179 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-23 16:29:00,179 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-23 16:29:00,179 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-23 16:29:00,179 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-23 16:29:00,179 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-23 16:29:00,181 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración maestra...
+2025-06-23 16:29:00,181 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 39 nombres → 20 dispositivos únicos
+2025-06-23 16:29:00,181 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-23 16:29:00,181 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 39
+2025-06-23 16:29:00,181 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-06-23 16:29:00,188 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-23 16:29:00,189 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-23 16:29:00,189 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-23 16:29:00,189 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-23 16:29:00,189 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-23 16:29:00,189 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-23 16:29:00,189 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-23 16:29:00,190 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-23 16:29:00,190 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-23 16:29:00,190 - TARS - INFO - ✅ TARS inicializado en 25.77 segundos
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú:
+
+# =======================================================================
+# SECOND TIME
+# =======================================================================
+
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-06-23 16:30:13,794 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-23 16:30:16,477 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-23 16:30:16,477 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-23 16:30:16,477 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-06-23 16:30:16,698 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|████████████████████████████████████| 1/1 [00:00<00:00, 33.92it/s]
+2025-06-23 16:30:16,731 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-06-23 16:30:16,732 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-23 16:30:16,735 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-06-23 16:30:16,737 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-06-23 16:30:16,737 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-06-23 16:30:16,737 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-06-23 16:30:16,737 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-06-23 16:30:16,737 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-06-23 16:30:16,740 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-06-23 16:30:16,742 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-06-23 16:30:16,743 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-06-23 16:30:16,743 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-06-23 16:30:16,744 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-06-23 16:30:16,745 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-06-23 16:30:16,745 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-06-23 16:30:16,745 - TARS - INFO - Detector de intenciones inicializado
+2025-06-23 16:30:16,745 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-06-23 16:30:16,747 - TARS - INFO - 📊 Preferencias recuperadas: 14
+2025-06-23 16:30:16,747 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 12 gustos, 2 disgustos
+2025-06-23 16:30:16,747 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-06-23 16:30:16,883 - TARS - INFO - ✅ Modelo cargado en 0.14 segundos
+2025-06-23 16:30:16,883 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-06-23 16:30:16,883 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-06-23 16:30:16,884 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-06-23 16:30:16,884 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-06-23 16:30:16,884 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-06-23 16:30:16,884 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-06-23 16:30:16,884 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-06-23 16:30:16,884 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-23 16:30:16,884 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-23 16:30:16,884 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-23 16:30:16,884 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-23 16:30:16,885 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-23 16:30:16,885 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-06-23 16:30:16,885 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-06-23 16:30:16,885 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-06-23 16:30:16,885 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-06-23 16:30:16,885 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-06-23 16:30:16,885 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-06-23 16:30:16,885 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-06-23 16:30:16,886 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración maestra...
+2025-06-23 16:30:16,886 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 39 nombres → 20 dispositivos únicos
+2025-06-23 16:30:16,886 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-06-23 16:30:16,886 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 39
+2025-06-23 16:30:16,886 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-06-23 16:30:16,892 - TARS.HomeAssistantPlugin - INFO - ✅ Conexión con Home Assistant exitosa
+2025-06-23 16:30:16,893 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-06-23 16:30:16,893 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-06-23 16:30:16,893 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-06-23 16:30:16,893 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-06-23 16:30:16,893 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-06-23 16:30:16,893 - TARS.SchedulerPlugin - INFO - 📂 Cargados 88 trabajos existentes
+2025-06-23 16:30:16,894 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-06-23 16:30:16,894 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-06-23 16:30:16,894 - TARS - INFO - ✅ TARS inicializado en 0.15 segundos
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú:

@@ -3,6 +3,7 @@
 ![TARS-BSK Version](https://img.shields.io/badge/version-v5.2.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Arch](https://img.shields.io/badge/arch-aarch64-orange) ![Python](https://img.shields.io/badge/python-3.9.18-lightblue)
 
 📘 [TARS_Digital_Diary_ES.md](./TARS_Digital_Diary_ES.md) — El estado técnico/emocional de TARS.  
+🧠 [TARS_CORE_ES.md](./TARS_CORE_ES.md) — Mapa del núcleo: cómo 3,000 líneas evolucionaron hasta ecosistema de juicio automatizado.
 
 > A veces predice bugs antes que el changelog que ni siquiera tengo.  
 > **Compila, llora o ambas cosas a la vez.** A veces con razón. Otras... también.
@@ -85,7 +86,7 @@ Este README sirve como referencia anticipada para entusiastas técnicos que quie
 - ~~`piper_tts.py`~~ + ~~`tars_brain.py`~~ - Síntesis de voz y personalidad
 - ~~`audio_effects_processor.py`~~ - Procesamiento y efectos de audio
 - ~~`plugin_system.py`~~ - Sistema de gestión de plugins
-- `tars_core.py` - **El núcleo donde todo (no) encaja perfectamente**
+- ~~`tars_core.py`~~ - **El núcleo donde todo (no) encaja perfectamente**
 - `INSTALL.md` - **Listo pero retenido por razones de cordura pública**
 
 *Nota: Probablemente aparezcan un par de archivos más que se me hayan olvidado.*
