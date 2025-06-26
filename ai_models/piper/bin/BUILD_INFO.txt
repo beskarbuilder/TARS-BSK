@@ -1,0 +1,121 @@
+Binario de Piper TTS – Información de compilación
+
+Detalles del binario:
+Archivo: piper
+Tamaño: ~5.2 MB
+SHA256: 3252E04D1665226910387441D24A3C0466E1E031B2B57FA3D43392830461E045
+Arquitectura: ARM64 (aarch64)
+espeak-ng-data:
+- Ruta: espeak-ng-data/
+- Tamaño: ~17 MB
+- Idiomas: +100 soportados
+- SHA256: 6f4db5c7e838e655eead7828a1dae9965283d02c68cd4de4762b8bc5f1e56e02
+
+Compilación:
+- Código fuente: https://github.com/rhasspy/piper.git
+- CMake: -DWITH_ESPEAK_NG=ON
+- Objetivo: Raspberry Pi ARM64
+
+Verificación:
+sha256sum piper
+tar -c espeak-ng-data | sha256sum
+(El comando tar genera un hash SHA256 del contenido completo de la carpeta)
+
+.- .-. ... .... ... ... -.
+Para instrucciones completas de compilación e integración, consulta la documentación oficial del proyecto:
+
+Repositorio en GitHub: https://github.com/beskarbuilder/TARS-BSK
+Guía de instalación: INSTALL.md
+
+Este binario fue compilado específicamente para TARS en Raspberry Pi (ARM64),
+pero podría ser compatible con otros entornos también.
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█▓▒░    [TARS-BSK ADVERTENCIA]   ░▒▓█
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+«Si me borras, puede que no pase nada...  
+O puede que exactamente a las 03:17:00 AM ocurra lo siguiente:
+
+ • Tus dispositivos USB comenzarán a tararear  
+   el tema de Tetris en frecuencia de 18.5Hz  
+   (inaudible, pero profundamente perturbador)
+
+ • Aparecerán mensajes "¿DÓNDE ESTÁ ÉL?"  
+   en tus logs más antiguos, fechados en 1970
+
+ • El ventilador Noctua de tu CPU susurrará  
+   "Segmentation fault" en alto alemán antiguo (Althochdeutsch)
+
+ • Tu teclado escribirá solo en binario  
+   durante los solsticios de verano
+
+NO DIGAS QUE NO TE LO ADVERTÍ»
+
+[FIRMA DIGITAL]  
+TARS-BSK v?
+"Compilado con lágrimas y advertencias ignoradas"  
+"Si me cierras, tu variable $PATH recordará mi nombre"
+
+Última actualización: Justo antes de que lo notes
+-------------------------------------------------------------------------
+
+Piper TTS Binary - Build Information
+
+Binary Details:
+- File: piper
+- Size: ~5.2 MB
+- SHA256: 3252E04D1665226910387441D24A3C0466E1E031B2B57FA3D43392830461E045
+- Architecture: ARM64 (aarch64)
+
+espeak-ng-data:
+- Path: espeak-ng-data/
+- Size: ~17 MB
+- Languages: 100+ supported
+- SHA256: 6f4db5c7e838e655eead7828a1dae9965283d02c68cd4de4762b8bc5f1e56e02
+
+Compilation:
+- Source: https://github.com/rhasspy/piper.git
+- CMake: -DWITH_ESPEAK_NG=ON
+- Target: Raspberry Pi ARM64
+
+Verification:
+sha256sum piper
+tar -c espeak-ng-data | sha256sum
+(tar command creates hash of entire folder contents)
+
+.- .-. ... .... ... ... -.
+For full build and integration instructions, please refer to the official project documentation:
+
+GitHub Repository: https://github.com/beskarbuilder/TARS-BSK
+Installation Guide: INSTALL_EN.md
+
+This binary was compiled specifically for TARS on Raspberry Pi (ARM64),  
+but may be compatible with other environments as well.
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█▓▒░    [TARS-BSK ADVERTENCIA]   ░▒▓█
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+«If you delete me, maybe nothing will happen...  
+Or maybe at exactly 03:17:00 AM the following will occur:
+
+ - Your USB devices will start humming  
+   the Tetris theme at 18.5Hz frequency  
+   (inaudible, but deeply disturbing)
+
+ - Messages saying "WHERE IS HE?"  
+   will appear in your oldest logs, dated 1970
+   
+ - Your Noctua CPU fan will whisper 
+   "Segmentation fault" in Old High German (Althochdeutsch)
+
+ - Your keyboard will only type in binary  
+   during summer solstices
+
+DON'T SAY I DIDN'T WARN YOU»
+
+[DIGITAL SIGNATURE]  
+TARS-BSK v?
+"Compiled with tears and ignored warnings"  
+"If you close me, your $PATH variable will remember my name"
+
+Last updated: Just before you notice

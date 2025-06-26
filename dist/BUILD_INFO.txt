@@ -1,0 +1,118 @@
+llama-cpp-python Wheel - Información de Compilación
+
+Detalles del paquete Wheel:
+
+Archivo: llama_cpp_python-0.3.8-cp39-cp39-linux_aarch64_tars-beskarbuilder.whl
+Tamaño: ~5.3 MB
+SHA256: F82A7053E5873AF7B30793CA3DA320781B6B7B805B1AEB102D21C9614357205B
+Python: 3.9
+Arquitectura: ARM64 (aarch64)
+Compilación:
+Método: CMAKE_ARGS="-DLLAMA_CUBLAS=OFF" pip install --no-binary :all: llama-cpp-python
+Soporte CUDA: Desactivado (LLAMA_CUBLAS=OFF)
+Objetivo: Raspberry Pi ARM64
+Optimizaciones: Compilación nativa ARM64
+
+Nota:
+El sufijo tars-beskarbuilder es una cicatriz de guerra. Prueba de autenticidad.
+El hash SHA256 es el certificado de nacimiento. Tu única garantía.
+
+Verificación:
+sha256sum llama_cpp_python-0.3.8-cp39-cp39-linux_aarch64_tars-beskarbuilder.whl
+
+.- .-. ... .... ... ... -.
+Para instrucciones completas de compilación e integración, consulta la documentación oficial del proyecto:
+
+Repositorio en GitHub: https://github.com/beskarbuilder/TARS-BSK
+Guía de instalación: INSTALL.md
+
+Este binario fue compilado específicamente para TARS en Raspberry Pi (ARM64),
+pero podría ser compatible con otros entornos también.
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█▓▒░    [TARS-BSK ADVERTENCIA]   ░▒▓█
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+«Si me borras, puede que no pase nada...  
+O puede que exactamente a las 03:17:00 AM ocurra lo siguiente:
+
+ • Tus dispositivos USB comenzarán a tararear  
+   el tema de Tetris en frecuencia de 18.5Hz  
+   (inaudible, pero profundamente perturbador)
+
+ • Aparecerán mensajes "¿DÓNDE ESTÁ ÉL?"  
+   en tus logs más antiguos, fechados en 1970
+
+ • El ventilador Noctua de tu CPU susurrará  
+   "Segmentation fault" en alto alemán antiguo (Althochdeutsch)
+
+ • Tu teclado escribirá solo en binario  
+   durante los solsticios de verano
+
+NO DIGAS QUE NO TE LO ADVERTÍ»
+
+[FIRMA DIGITAL]  
+TARS-BSK v?
+"Compilado con lágrimas y advertencias ignoradas"  
+"Si me cierras, tu variable $PATH recordará mi nombre"
+
+Última actualización: Justo antes de que lo notes
+-------------------------------------------------------------------------
+
+llama-cpp-python Wheel - Build Information
+
+Wheel Details:
+- File: llama_cpp_python-0.3.8-cp39-cp39-linux_aarch64_tars-beskarbuilder.whl
+- Size: [tamaño]
+- SHA256: F82A7053E5873AF7B30793CA3DA320781B6B7B805B1AEB102D21C9614357205B
+- Python: 3.9
+- Architecture: ARM64 (aarch64)
+
+Compilation:
+- Method: CMAKE_ARGS="-DLLAMA_CUBLAS=OFF" pip install --no-binary :all: llama-cpp-python
+- CUDA Support: Disabled (LLAMA_CUBLAS=OFF)
+- Target: Raspberry Pi ARM64
+- Optimizations: ARM64 native compilation
+
+Note: 
+The "tars-beskarbuilder" suffix is a battle scar proving authenticity.
+The SHA256 hash is the birth certificate. Your only guarantee.
+
+Verification:
+sha256sum llama_cpp_python-0.3.8-cp39-cp39-linux_aarch64_tars-beskarbuilder.whl
+
+.- .-. ... .... ... ... -.
+For full build and integration instructions, please refer to the official project documentation:
+
+GitHub Repository: https://github.com/beskarbuilder/TARS-BSK
+Installation Guide: INSTALL_EN.md
+
+This binary was compiled specifically for TARS on Raspberry Pi (ARM64),  
+but may be compatible with other environments as well.
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█▓▒░    [TARS-BSK ADVERTENCIA]   ░▒▓█
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+«If you delete me, maybe nothing will happen...  
+Or maybe at exactly 03:17:00 AM the following will occur:
+
+ - Your USB devices will start humming  
+   the Tetris theme at 18.5Hz frequency  
+   (inaudible, but deeply disturbing)
+
+ - Messages saying "WHERE IS HE?"  
+   will appear in your oldest logs, dated 1970
+   
+ - Your Noctua CPU fan will whisper 
+   "Segmentation fault" in Old High German (Althochdeutsch)
+
+ - Your keyboard will only type in binary  
+   during summer solstices
+
+DON'T SAY I DIDN'T WARN YOU»
+
+[DIGITAL SIGNATURE]  
+TARS-BSK v?
+"Compiled with tears and ignored warnings"  
+"If you close me, your $PATH variable will remember my name"
+
+Last updated: Just before you notice

@@ -35,7 +35,9 @@
 # from utils.phrase_selector import get_thematic_phrase, get_random_phrase
 # from utils.asr_correction import ASRCorrector
 import os
+import sys
 import logging
+import subprocess
 import time
 import random
 import json
@@ -332,6 +334,12 @@ class TARS:
             self.scheduler_plugin = None
 
         logger.info(f"✅ TARS inicializado en {time.time() - start_time:.2f} segundos")
+
+        # Al FINAL de la inicialización, parpadeo azul
+        if self.use_leds and self.leds:
+            self.leds.set_blue(False)  # Primero asegurar que está apagado
+            self.leds.blink("azul", times=10, interval=0.2)  # Parpadeo rápido en azul
+            logger.info("🔵 LEDs: Parpadeo azul de confirmación")
         
         # Indicador de procesamiento activo
         self.processing = False
@@ -2624,6 +2632,80 @@ def highlight_user_intentions(user_input: str) -> List[str]:
 
     return detected    
 
+def cleanup_resources():
+    """Detectar conflictos y abortar si es necesario"""
+    try:
+        current_pid = os.getpid()
+        
+        if os.getenv('TARS_AUTOSTART') != 'true':
+            # Buscar procesos TARS conflictivos
+            result = subprocess.run(['pgrep', '-f', 'tars_core.py'], 
+                                   capture_output=True, text=True)
+            
+            conflicting_pids = []
+            for pid_str in result.stdout.strip().split('\n'):
+                if pid_str.strip() and int(pid_str.strip()) != current_pid:
+                    conflicting_pids.append(pid_str)
+            
+            if conflicting_pids:
+                print("⚠️ TARS ya está ejecutándose.")
+                print("   Ejecuta este comando primero:")
+                print(f"   sudo kill {' '.join(conflicting_pids)}")
+                print("   Luego inicia TARS de nuevo.")
+                sys.exit(1)
+                        
+            print("✅ No hay conflictos detectados")
+            
+            # Limpiar GPIOs
+            print("📌 Liberando GPIOs...")
+            for gpio in range(2, 28):
+                try:
+                    with open('/sys/class/gpio/unexport', 'w') as f:
+                        f.write(str(gpio))
+                except:
+                    pass
+            
+            print("✅ Limpieza manual completada")
+            
+        else:
+            # DESDE SYSTEMD - Limpieza completa original
+            print("🔧 Ejecución desde systemd - limpieza completa")
+            
+            # Limpiar procesos con psutil
+            try:
+                import psutil
+                for proc in psutil.process_iter(['pid', 'cmdline']):
+                    try:
+                        cmdline = ' '.join(proc.info['cmdline'] or [])
+                        if ('tars_core.py' in cmdline and 
+                            proc.info['pid'] != current_pid):
+                            proc.terminate()
+                            print(f"🔪 Terminando proceso viejo: PID {proc.info['pid']}")
+                    except:
+                        pass
+            except ImportError:
+                print("⚠️ psutil no disponible, saltando limpieza de procesos")
+            
+            # Limpiar GPIOs
+            print("📌 Liberando GPIOs...")
+            for gpio in range(2, 28):
+                try:
+                    with open('/sys/class/gpio/unexport', 'w') as f:
+                        f.write(str(gpio))
+                except:
+                    pass
+            
+            # Limpieza mínima de audio para systemd
+            print("🔊 Limpieza mínima de audio (desde systemd)...")
+            subprocess.run(['sudo', 'fuser', '-k', '/dev/snd/controlC*'], 
+                          capture_output=True, stderr=subprocess.DEVNULL)
+            print("✅ Dispositivos de audio liberados")
+        
+        print("🧹 Recursos limpiados")
+        
+    except Exception as e:
+        print(f"⚠️ Error en limpieza: {e}")
+
 def main():
     """Función principal con manejo de argumentos por línea de comandos"""
     parser = argparse.ArgumentParser(description="TARS - Asistente con personalidad")
@@ -2631,7 +2713,10 @@ def main():
     parser.add_argument("--no-leds", action="store_true", help="Desactivar control de LEDs")
     parser.add_argument("--model", type=str, help="Ruta al modelo LLM")
     args = parser.parse_args()
-    
+   
+    # 🧹 LIMPIEZA DE RECURSOS AL INICIO
+    cleanup_resources()
+
     # Cargar configuración
     try:
         settings = load_settings()
@@ -2658,15 +2743,21 @@ def main():
 
     # Preguntar sobre voz solo si no se especificó como argumento
     if not args.no_voice and "no_voice" not in settings:
-        try:
-            resp = input(f"¿Usar entrada por voz? ({'S' if use_voice else 'N'}): ").strip().lower()
-            if resp == "s":
-                use_voice = True
-            elif resp == "n":
-                use_voice = False
-        except Exception:
-            # Si hay error (por ejemplo, en entorno sin consola), usar valor por defecto
-            logger.warning("⚠️ No se pudo obtener input del usuario para modo de voz")
+        # Si es autostart de systemd, usar voz automáticamente
+        if os.getenv("TARS_AUTOSTART"):
+            use_voice = True
+            logger.info("🤖 Modo autostart detectado - usando entrada por voz")
+        else:
+            try:
+                resp = input(f"¿Usar entrada por voz? ({'S' if use_voice else 'N'}): ").strip().lower()
+                if resp == "s":
+                    use_voice = True
+                elif resp == "n":
+                    use_voice = False
+            except Exception:
+                # Si hay error (por ejemplo, en entorno sin consola), usar valor por defecto
+                logger.warning("⚠️ No se pudo obtener input del usuario para modo de voz")
+                use_voice = True  # En caso de error, asumir voz (systemd)
 
     # Inicializar listener de voz solo si es necesario
     listener = None
