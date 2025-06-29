@@ -2,7 +2,11 @@
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![LLaMA](https://img.shields.io/badge/llama_cpp-latest-green) ![SentenceTransformers](https://img.shields.io/badge/sentence_transformers-2.2+-orange) ![SQLite](https://img.shields.io/badge/sqlite-3.36+-yellow)
 
+💥 If this English feels unstable but oddly self-aware...  
+👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
+
 #### The central brain where 3,000 lines of code have evolved from "simple assistant" to "automated judgment ecosystem". 
+
 _(Yes, 60% are comments explaining why this works against all logic. And if we remove whitespace... well, there'll be about **800 real lines** left. But the linters already cried, so it counts anyway.)_
 
 > [!WARNING]

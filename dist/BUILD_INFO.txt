@@ -13,10 +13,6 @@ Soporte CUDA: Desactivado (LLAMA_CUBLAS=OFF)
 Objetivo: Raspberry Pi ARM64
 Optimizaciones: Compilación nativa ARM64
 
-Nota:
-El sufijo tars-beskarbuilder es una cicatriz de guerra. Prueba de autenticidad.
-El hash SHA256 es el certificado de nacimiento. Tu única garantía.
-
 Verificación:
 sha256sum llama_cpp_python-0.3.8-cp39-cp39-linux_aarch64_tars-beskarbuilder.whl
 
@@ -72,10 +68,6 @@ Compilation:
 - CUDA Support: Disabled (LLAMA_CUBLAS=OFF)
 - Target: Raspberry Pi ARM64
 - Optimizations: ARM64 native compilation
-
-Note: 
-The "tars-beskarbuilder" suffix is a battle scar proving authenticity.
-The SHA256 hash is the birth certificate. Your only guarantee.
 
 Verification:
 sha256sum llama_cpp_python-0.3.8-cp39-cp39-linux_aarch64_tars-beskarbuilder.whl

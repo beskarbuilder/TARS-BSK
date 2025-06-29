@@ -24,8 +24,8 @@
   },
 
   "audio_effects": {
-    "enabled": true,
-    "preset": "space_chamber",
+    "enabled": false,
+    "preset": "wide_chorus",
     
     "_comment": "Efectos temporales (delay, echo, chorus)",
     "_usage": "Se aplican DESPUÉS de RadioFilter",

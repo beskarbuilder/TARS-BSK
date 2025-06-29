@@ -3,6 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9+-blue) ![LLaMA](https://img.shields.io/badge/llama_cpp-latest-green) ![SentenceTransformers](https://img.shields.io/badge/sentence_transformers-2.2+-orange) ![SQLite](https://img.shields.io/badge/sqlite-3.36+-yellow)
 
 #### El cerebro central donde 3,000 líneas de código han evolucionado desde "simple asistente" hasta "ecosistema de juicio automatizado". 
+
 _(Sí, el 60% son comentarios explicando por qué esto funciona contra toda lógica. Y si quitamos los espacios en blanco... bueno, quedarán unas **800 líneas reales**. Pero los linters ya lloraron, así que cuenta igual.)_
 
 > [!WARNING]

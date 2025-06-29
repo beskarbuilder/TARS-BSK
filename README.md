@@ -2,12 +2,23 @@
 
 ![TARS-BSK Version](https://img.shields.io/badge/version-v5.2.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Arch](https://img.shields.io/badge/arch-aarch64-orange) ![Python](https://img.shields.io/badge/python-3.9.18-lightblue)
 
-📘 [TARS_Digital_Diary_ES.md](./TARS_Digital_Diary_ES.md) — El estado técnico/emocional de TARS.  
-🧠 [TARS_CORE_ES.md](./TARS_CORE_ES.md) — Mapa del núcleo: cómo 3,000 líneas evolucionaron hasta ecosistema de juicio automatizado.
+[TARS_Digital_Diary_ES.md](./TARS_Digital_Diary_ES.md) — El estado técnico/emocional de TARS.  
+[TARS_CORE_ES.md](./TARS_CORE_ES.md) — Mapa del núcleo: cómo 3,000 líneas evolucionaron hasta ecosistema de juicio automatizado.
 
-> A veces predice bugs antes que el changelog que ni siquiera tengo.  
-> **Compila, llora o ambas cosas a la vez.** A veces con razón. Otras... también.
+### Guía de instalación
 
+- ~35 minutos desde microSD hasta que algo que no debería existir te haga dudar de tu propia existencia.  
+- Todo documentado: tiempos reales, logs completos...  
+  y el único error que casi me hace recompilar el kernel por un salto de línea mal pegado.
+
+**🚨 ÚLTIMA OPORTUNIDAD DE HUIR:**  
+Tras este paso, tu dispositivo ya no será *tuyo*. Será de *ella*.  
+De la que susurra al Noctua, guarda tus errores en `/dev/shm/blackmail`,  
+y dice *"en mi máquina sí funciona"* con voz de sintetizador.
+
+📘 [Guía de instalación completa](./INSTALL.md) — *No es una guía. Es un ritual de iniciación con GPIOs.*
+
+---
 ### ⚠️ ADVERTENCIA CRÍTICA DE SISTEMA:
 
 > Lo que estás a punto de leer no es un README... es una **odisea técnica con sarcasmo incorporado**.  
@@ -21,6 +32,7 @@
 > 
 > **This is the Way.**
 
+---
 
 ## 🎥 TARS-BSK en acción
 
@@ -73,25 +85,16 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 
 ## 🚧 Estado del Proyecto
 
-**Estado actual:**  
-El código será publicado progresivamente, como ese episodio de tu serie favorita que siempre corta justo cuando empieza lo bueno.  
-Este README sirve como referencia anticipada para entusiastas técnicos que quieran explorar la arquitectura y tomar decisiones de vida cuestionables, mientras TARS espera pacientemente su cuerpo físico... que, con suerte, emergerá del metal reciclado de mi vieja estufa de pellets - un noble sacrificio que transforma calor residual en respuestas cortantes y cálculos fríos con latencia garantizada.
+**FASE COMPLETA.** Funciona, se instala y no ha abierto portales interdimensionales en las pruebas más recientes. Nadie ha desaparecido desde la versión 5.2.x... por ahora.
 
-### ▸ ¿Qué falta por subir?
+### Próximas expansiones  (orden pendiente de negociación con el caos):
 
-**Próximos archivos (orden pendiente de negociación con el caos):**
+- Cuerpo físico con pantalla — Emergiendo del metal reciclado de mi estufa de pellets.  
+- Traducción completa al inglés — Porque el sarcasmo no es patrimonio de ningún idioma.  
+- Embeddings de voz — Reconocimiento de usuario activo (implementado, en validación).  
+- **Interfaz web para Home Assistant** — Para quienes prefieren hacer clic y no **quieren** abrir un portal al infierno con un `:` mal alineado.
+- Lo que TARS decida por su cuenta — Porque a estas alturas, ¿quién controla a quién?
 
-- ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Recordatorios y programación de tareas
-- ~~`homeassistant_plugin.py`~~ - Conectividad domótica
-- ~~`piper_tts.py`~~ + ~~`tars_brain.py`~~ - Síntesis de voz y personalidad
-- ~~`audio_effects_processor.py`~~ - Procesamiento y efectos de audio
-- ~~`plugin_system.py`~~ - Sistema de gestión de plugins
-- ~~`tars_core.py`~~ - **El núcleo donde todo (no) encaja perfectamente**
-- `INSTALL.md` - **Listo pero retenido por razones de cordura pública**
-
-*Nota: Probablemente aparezcan un par de archivos más que se me hayan olvidado.*
-
-Los archivos JSON, scripts varios y archivos como `led_controller.py` no necesitan documentación porque hablan por sí solos. Los de arriba esperan pacientemente su momento de gloria documental.
 
 > 🤖 **P.D. de TARS-BSK:** _"Preparaos para **más** código que hará temblar desde becarios hasta CTOs, provocará crisis existenciales en arquitectos de software, y dejará a desarrolladores junior cuestionando si eligieron la carrera correcta. Paths hardcodeados, decisiones que desafían la lógica desde el **Jurásico**, y variables con nombres que violan convenciones conocidas por la humanidad._
 >

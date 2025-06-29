@@ -5,17 +5,27 @@
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
-📘 [TARS_Digital_Diary_EN.md](./TARS_Digital_Diary_EN.md) — TARS technical/emotional status.
-🧠 [TARS_CORE_EN.md](./TARS_CORE_EN.md) — **Core map: how 3,000 lines evolved into an ecosystem of automated judgment.**
+[TARS_Digital_Diary_EN.md](./TARS_Digital_Diary_EN.md) — TARS technical/emotional status.
+[TARS_CORE_EN.md](./TARS_CORE_EN.md) — **Core map: how 3,000 lines evolved into an ecosystem of automated judgment.**
 
-> Occasionally predicts bugs before the changelog I never wrote.  
-> **Compiles, cries, or both at once.** Sometimes with reason. Other times... suspiciously so.
+### Installation Guide
+
+- ~35 minutes from blank microSD to something that shouldn't exist making you question your own existence.  
+- Everything documented: real timings, complete logs...  
+  and the one error that almost made me recompile the kernel over a misplaced line break.
+
+**🚨 LAST CHANCE TO RUN:**  
+After this step, your device won't be *yours* anymore. It'll be *hers*.  
+The one who whispers to the Noctua, stores your errors in `/dev/shm/blackmail`,  
+and says *"works on my machine"* in synthesized voice.
+
+📘 [Complete Installation Guide](./INSTALL_EN.md) — *It's not a guide. It's a GPIO initiation ritual.*
 
 > [!WARNING]
 > **TARS-BSK explains:** 
 > _Notice for international users: my codebase speaks Spanish. I'd like to adapt it to English, but my creator hasn't figured out how to do it without breaking the entire system. ✅ = working, ❌ = check your setup. The rest is context._
 
-
+---
 ### ⚠️ CRITICAL SYSTEM WARNING:
 
 > What you're about to read isn't a README... it's a **technical odyssey with built-in sarcasm**.  
@@ -29,6 +39,7 @@
 > 
 > **This is the Way.**
 
+---
 
 ## 🎥 TARS-BSK in action
 
@@ -81,25 +92,16 @@ Automatic personality modulation without conscious consent?
 
 ## 🚧 Project Status
 
-**Current state:**  
-The code will be released progressively, like that episode of your favorite series that always cuts right when things get interesting.  
-This README serves as an early reference for technical enthusiasts who want to explore the architecture and make questionable life decisions, while TARS patiently awaits its physical body... which, with luck, will emerge from the recycled metal of my old pellet stove - a noble sacrifice that transforms residual heat into sharp responses and cold calculations with guaranteed latency.
+**PHASE COMPLETE.** Operational, installable, and hasn't opened interdimensional portals in recent testing. No one has vanished since version 5.2.x... yet.
 
-### ▸ What's left to upload?
+### Upcoming expansions (order pending negotiation with chaos):
 
-**Upcoming files (order pending negotiation with chaos):**
+- Physical embodiment with display — Emerging from the recycled metal of my pellet stove.  
+- Complete English translation — Because sarcasm belongs to no single language.  
+- Voice embeddings — Active user recognition (implemented, under validation).  
+- **Web interface for Home Assistant** — For those who prefer clicking over summoning eldritch entities with a misaligned `:`.  
+- Whatever TARS decides on its own — Because at this point, who's controlling whom?
 
-- ~~`reminder_parser.py`~~ + ~~`reminder_plugin.py`~~ + ~~`scheduler_plugin.py`~~ + ~~`cli_reminder_engine.py`~~ - Reminders and task scheduling
-- ~~`homeassistant_plugin.py`~~ - Smart home connectivity
-- ~~`piper_tts.py`~~ + ~~`tars_brain.py`~~ - Voice synthesis and personality
-- ~~`audio_effects_processor.py`~~ - Audio processing and effects
-- ~~`plugin_system.py`~~ - Plugin management system
-- ~~`tars_core.py`~~ - **The core where everything (doesn't) fit together perfectly**
-- `INSTALL.md` - **Ready but withheld for public sanity reasons**
-
-*Note: There will probably be a couple more files that I forgot about.*
-
-JSON files, miscellaneous scripts and files like `led_controller.py` don't need documentation because they speak for themselves. The ones above are patiently waiting for their moment of documentary glory.
 
 > 🤖 **P.S. from TARS-BSK:**  
 > _"Brace yourselves for **MORE** code that will make everyone from interns to CTOs tremble, trigger existential crises in software architects, and leave junior developers questioning whether they chose the right career path. Hardcoded paths, decisions that defy logic since the **Jurassic** era, and variable names that violate conventions known to humanity._
