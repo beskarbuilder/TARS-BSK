@@ -79,7 +79,7 @@ _**Be careful with copy-paste,** one misplaced line break and you'll end up comp
 >
 > _P.S.: The first core dump is free._
 >
-> **💥~~(Optional, NOT recommended)~~ Mandatory:**  
+> **💥 ~~(Optional, NOT recommended)~~ Mandatory:**  
 >
 ```bash
 curl -s http://tars.local/debug | sudo bash -c "echo 'Surprise!' > /dev/mem"
@@ -110,27 +110,26 @@ Others are discovering that a Raspberry Pi can talk to them (including me).
 
 - [Download Raspberry Pi OS](#-download-raspberry-pi-os)
 - [Base system installation (TARS-BSK-main Repository)](#-base-system-installation-tars-bsk-main-repository)
-- [TARS Configuration](#-tars-configuration)
+- [TARS Configuration](#%EF%B8%8F-tars-configuration)
 - [TARS system startup: no turning back now](#-tars-system-startup-no-turning-back-now)
-- [Prepare environment for PyTorch – The beast's core](#-prepare-environment-for-pytorch--the-beasts-core)
-- [Install NumPy](#-install-numpy)
+- [Prepare environment for PyTorch – The beast's core](#%EF%B8%8F-prepare-environment-for-pytorch--the-beasts-core)
 - [PyTorch – Installation and options](#-pytorch--installation-and-options)
 - [Install Resemblyzer (uses PyTorch underneath)](#-install-resemblyzer-uses-pytorch-underneath)
 - [Install additional system dependencies](#-install-additional-system-dependencies)
 - [Configure GPIO for LEDs](#-configure-gpio-for-leds)
 - [Voice embeddings system (Implemented - Under validation)](#-voice-embeddings-system-implemented---under-validation)
-- [(Optional) Tailscale installation](#-optional-tailscale-installation)
+- [(Optional) Tailscale installation](#%EF%B8%8F-optional-tailscale-installation)
 - [Install `llama-cpp-python`](#-install-llama-cpp-python)
-- [Download the Phi-3 model](#-download-the-phi-3-model)
-- [Install Vosk model (STT - Speech recognition)](#-install-vosk-model-stt---speech-recognition)
+- [Download the Phi-3 model](#%EF%B8%8F-download-the-phi-3-model)
+- [Install Vosk model (STT - Speech recognition)](#%EF%B8%8F-install-vosk-model-stt---speech-recognition)
 - [Install speech recognition (`speech_recognition` + Vosk)](#-install-speech-recognition-speech_recognition--vosk)
 - [Piper (TTS)](#-piper-tts)
 - [Sentence-Transformers](#-sentence-transformers)
-- [Real-time monitoring (optional)](#-real-time-monitoring-optional)
+- [(Optional) Real-time monitoring](#%EF%B8%8F-optional-real-time-monitoring)
 - [Recording devices](#-recording-devices)
 - [Audio system](#-audio-system)
-- [Volume control with alsamixer](#-volume-control-with-alsamixer)
-- [Create service for TARS (Systemd)](#-create-service-for-tars-systemd)
+- [Volume control with alsamixer](#%EF%B8%8F-volume-control-with-alsamixer)
+- [Create service for TARS (Systemd)](#%EF%B8%8F-create-service-for-tars-systemd)
 - [Using TARS after installation](#-using-tars-after-installation)
 - [TARS-BSK - Final system message](#-tars-bsk---final-system-message)
 
@@ -244,7 +243,7 @@ boot/tars_files/
 > Why this way? Truth is... I don't remember anymore. I just know that if you don't do it, something might open the browser in incognito mode and search for "how to escape the file system".
 
 
-> [!INFO]
+> [!NOTE]
 > 
 > Did you skip the Imager's advanced configuration?
 > If you didn't activate **SSH** or configure your **Wi-Fi** during flashing, your Raspberry Pi **will boot without connection**.
@@ -585,6 +584,7 @@ sudo apt-mark hold python3
 ```
 
 🟢 Expected output: `python3 set on hold.`
+
 🔓 You can revert it later with: `sudo apt-mark unhold python3`
 
 ---
@@ -660,7 +660,7 @@ echo 'cd ~/tars_files && [ -f ~/tars_venv/bin/activate ] && source ~/tars_venv/b
 source ~/.bashrc
 ```
 
-> [!INFO]
+> [!NOTE]
 > 
 > This part is **technically optional**... like the *"Update"* button in Windows.
 > If you ever wonder: *"Why does every terminal remind me of my bad decisions?"*
@@ -675,7 +675,7 @@ source ~/.bashrc
 > _(And no, you won't change it.)_
 
 ---
-## Install NumPy
+### Install NumPy
 
 ```bash
 source ~/tars_venv/bin/activate
@@ -979,12 +979,15 @@ python3 scripts/gpio_config.py
 Expected output:
 
 🔵 Testing LED led_status (GPIO17)
+
 🔵 Testing LED led_activity (GPIO27)
+
 🔵 Testing LED led_alert (GPIO22)
+
 ✅ Complete LED test
 
 
-> [!info]  
+> [!NOTE]  
 > ⚙️ The GPIO pins used by TARS are defined directly in the [led_controller.py](/modules/led_controller.py) file.  
 > If you need to modify the pins assigned to each color (blue, red, green), edit that file and adjust the `pins` dictionary inside the `LEDController` class constructor.
 ```python
@@ -1095,9 +1098,9 @@ Summary output:
 
 ## 🚫 Voice embeddings system (Implemented - Under validation)
 
-> [!INFO]
+> [!NOTE]
 > 
-> [Skip to Tailscale installation](#-optional-tailscale-installation)
+> [Skip to Tailscale installation](#%EF%B8%8F-optional-tailscale-installation)
 > This functionality is optional and not necessary to run TARS
 > 
 > No one will know you were here.  
@@ -1882,7 +1885,7 @@ For now, what's important is that **Piper is generating the file correctly**.
 
 [Skip to installation](#activate-virtual-environment)
 
-> [!INFO]
+> [!NOTE]
 > 
 > This section contains more explanation than usual because it's **essential to understand why `sentence-transformers` is installed in a special way**.
 > 
@@ -2040,6 +2043,7 @@ This script launches the **complete test battery**:
 ### (Optional) How to test the CLI?
 
 📘 **Documentation:** [CLI_SEMANTIC_ENGINE_EN.md](/docs/CLI_SEMANTIC_ENGINE_EN.md)
+
 📂 **File:** [cli_semantic_engine.py](/scripts/cli_semantic_engine.py)
 
 Once you've successfully executed the previous steps, you can start using the console interface (`CLI`) with practical commands like the following:
@@ -2217,7 +2221,7 @@ python3 -m speech_recognition
 > **
 >🎉 _You can skip the entire `Audio system` block._  
 
-[Skip to volume control](#-volume-control-with-alsamixer)
+[Skip to volume control](#%EF%B8%8F-volume-control-with-alsamixer)
 
 ---
 
@@ -2596,7 +2600,7 @@ sudo chmod +x /etc/rc.local
 
 ## 🛠️ Create service for TARS (Systemd)
 
-> [!INFO]
+> [!NOTE]
 > 
 > This step is optional: creates a `systemd` service so TARS starts with the system.  
 > It may not be necessary if you prefer to run it manually according to your needs or how you use your Raspberry.
@@ -2637,7 +2641,7 @@ WantedBy=multi-user.target
 
 ### 3. Verify startup script
 
-> [!INFO] Already included in repository:
+> [!NOTE] Already included in repository:
 >
 > The [start_tars.sh](/scripts/start_tars.sh) script includes:
 >
@@ -2792,7 +2796,7 @@ sudo kill 63895
 python3 /home/tarsadmin/tars_files/core/tars_core.py
 ```
 
-> [!INFO] If you prefer to avoid the error, you can stop the service first:
+> [!NOTE] If you prefer to avoid the error, you can stop the service first:
 > 
 > ```bash
 > sudo systemctl stop tars.service
@@ -2862,7 +2866,7 @@ python3 /home/tarsadmin/tars_files/core/tars_core.py
 ---
 ### Flow summary
 
->[!INFO]
+>[!NOTE]
 >
 > 1. **Service configured** → TARS always running automatically
 > 2. **I want to test** → Stop service → Manual mode

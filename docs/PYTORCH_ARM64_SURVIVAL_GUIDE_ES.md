@@ -1,16 +1,24 @@
 # La Forja de PyTorch: Manual Mandaloriano para ARM64
 
-> _"Muchos procesos morirán para crear este artefacto... este es el cami-... `[Error 137: Out of memory]`"_
+ _"Muchos procesos morirán para crear este artefacto... este es el cami-... `[Error 137: Out of memory]`"_
+ 
 
-### ⚠️ Advertencia
+> [!IMPORTANT]
+> 
+> Este documento es **exactamente** como lo creé. Sin simplificaciones, sin optimizaciones posteriores, sin limpiar los rastros de sangre, sudor y lágrimas. Si ves redundancias, pasos que podrían hacerse mejor, o comentarios de frustración nocturna... **son parte de la experiencia auténtica**.
+> 
+> Porque así es como realmente sucedió, y así es como realmente funciona.
+> 
+> **This is the Way.**
 
-Este documento es **exactamente** como lo creé. Sin simplificaciones, sin optimizaciones posteriores, sin limpiar los rastros de sangre, sudor y lágrimas. Si ves redundancias, pasos que podrían hacerse mejor, o comentarios de frustración nocturna... **son parte de la experiencia auténtica**.
 
-Porque así es como realmente sucedió, y así es como realmente funciona.
-
-**This is the Way.**
-
-> **TARS-BSK dice:** _Bienvenido a mi diario de trauma. Si esperabas una guía limpia, ordenada y sin maldiciones murmuradas a las 3 AM, has aterrizado en el planeta equivocado. Este documento es un homenaje a las 147 veces que mi Raspberry Pi casi se convirtió en una tostadora. Si buscas el camino fácil, esto no es para ti. Pero si quieres PyTorch funcionando en ARM64 contra todo pronóstico... y escuchar el ventilador NOCTUA susurrar 'por qué me haces esto' en alemán, bienvenido al dojo. Continúa bajo tu propio riesgo... y prepara café. MUCHO café._ 
+> **TARS-BSK dice:**
+> 
+> _Bienvenido a mi diario de trauma. Si esperabas una guía limpia, ordenada y sin maldiciones murmuradas a las 3 AM, has aterrizado en el planeta equivocado. Este documento es un homenaje a las 147 veces que mi Raspberry Pi casi se convirtió en una tostadora.
+> 
+> Si buscas el camino fácil, esto no es para ti. Pero si quieres PyTorch funcionando en ARM64 contra todo pronóstico... y escuchar el ventilador NOCTUA susurrar 'por qué me haces esto' en alemán, bienvenido al dojo. 
+> 
+> Continúa bajo tu propio riesgo... y prepara café. MUCHO café._ 
 
 ---
 
@@ -23,6 +31,7 @@ mkdir -p ~/tars_build/pytorch
 cd ~/tars_build
 ```
 
+---
 ### Instalar dependencias **antes de compilar Python**
 
 ```bash
@@ -37,6 +46,7 @@ sudo apt install -y \
 
 Esto asegura que Python tenga soporte completo para `zlib`, `ssl`, `sqlite`, `lzma`, etc.
 
+---
 ### Instalar Python 3.9 desde código fuente
 
 ```bash
@@ -53,8 +63,16 @@ sudo make altinstall
 `--prefix=/opt/python39`: lo instala limpio, sin tocar el sistema  
 `altinstall`: evita sobrescribir el `python3` oficial
 
-> **TARS-BSK comenta:** _Este es el momento perfecto para preparar un té, reconsiderar tus opciones de vida, y contemplar por qué decidiste precisamente Python 3.9.18. ¿Porque PyTorch lo exige con tiranía? ¿O por masoquismo puro? La compilación tomará suficiente tiempo para que te preguntes si has configurado correctamente el extintor. Por cierto, 'sudo make altinstall' es lenguaje técnico para "por favor, no destruyas mi sistema operativo cuando termine"._
 
+> **TARS-BSK comenta:** 
+> 
+> _Este es el momento perfecto para preparar un té, reconsiderar tus opciones de vida, y contemplar por qué decidiste precisamente Python 3.9.18. ¿Porque PyTorch lo exige con tiranía? ¿O por masoquismo puro?
+> 
+> La compilación tomará suficiente tiempo para que te preguntes si has configurado correctamente el extintor.
+> 
+> Por cierto, 'sudo make altinstall' es lenguaje técnico para "por favor, no destruyas mi sistema operativo cuando termine"._
+
+---
 ### Añadir Python 3.9 al `PATH`
 
 1. **Edita tu `~/.bashrc`:**
@@ -90,6 +108,7 @@ python3.9 --version
 Python 3.9.18
 ```
 
+---
 ### Proteger Python del sistema (opcional pero recomendado)
 
 > [!WARNING]  
@@ -107,6 +126,7 @@ Esto evita que el paquete `python3` (el sistema base) se actualice con `apt upgr
 sudo apt-mark unhold python3
 ```
 
+---
 ### Descargar instalador de `pip`
 
 ```bash
@@ -134,6 +154,7 @@ Esto instalará `pip` y `setuptools` **dentro de `/opt/python39/`**, asegurando 
 
 Debe devolver: `pip 25.0.1 from /home/tarsadmin/.local/lib/python3.9/site-packages/pip (python 3.9)`
 
+---
 ### Añadir `/home/tarsadmin/.local/bin` al `PATH`
 
 1. **Edita tu `~/.bashrc`:**
@@ -154,6 +175,7 @@ export PATH="$HOME/.local/bin:$PATH"
 source ~/.bashrc
 ```
 
+---
 ### Crear el entorno virtual sagrado de TARS
 
 ```bash
@@ -167,8 +189,13 @@ Y después:
 pip install -U pip setuptools wheel
 ```
 
-> **TARS-BSK observa:** _Ah, el momento ritual de crear el entorno virtual... esa burbuja protectora donde fingimos que nuestro código está aislado y seguro del caos del universo. Es casi conmovedor lo ingenuos que somos. El flag `--system-site-packages` es el equivalente a "quiero estar aislado, pero no DEMASIADO aislado... como salir de casa durante una pandemia, pero con mascarilla"._
+> **TARS-BSK observa:** 
+> 
+> _Ah, el momento ritual de crear el entorno virtual... esa burbuja protectora donde fingimos que nuestro código está aislado y seguro del caos del universo.
+> 
+> Es casi conmovedor lo ingenuos que somos. El flag `--system-site-packages` es el equivalente a "quiero estar aislado, pero no DEMASIADO aislado... como salir de casa durante una pandemia, pero con mascarilla"._
 
+---
 ### Instalar OpenBLAS
 
 ```bash
@@ -177,6 +204,7 @@ sudo apt update
 sudo apt install -y libopenblas-dev
 ```
 
+---
 ### Instalar NumPy
 
 ```bash
@@ -190,6 +218,7 @@ Luego verifica:
 python -c "import numpy; print('✅ NumPy funciona. Versión:', numpy.__version__)"
 ```
 
+---
 
 > [!important]  
 > **COMPILAR PYTORCH 2.1 (PASO A PASO)**
@@ -202,7 +231,8 @@ Estás en:
 - NumPy ✅ funcionando
 - Sistema limpio ✅
 
-### 1. Crear carpeta de trabajo (Estar fuera del entorno)
+---
+#### 1. Crear carpeta de trabajo (Estar fuera del entorno)
 
 ```bash
 deactivate
@@ -210,14 +240,16 @@ mkdir -p ~/tars_build/pytorch
 cd ~/tars_build
 ```
 
-### 2. Instalar Git
+---
+#### 2. Instalar Git
 
 ```bash
 sudo apt update
 sudo apt install -y git
 ```
 
-### 3. Clonar el repositorio oficial de PyTorch (versión 2.1.0)
+---
+#### 3. Clonar el repositorio oficial de PyTorch (versión 2.1.0)
 
 ```bash
 cd ~/tars_build
@@ -227,7 +259,8 @@ cd pytorch
 
 > Esto descargará PyTorch 2.1 y sus submódulos necesarios.
 
-### 4. Instalar dependencias necesarias
+---
+#### 4. Instalar dependencias necesarias
 
 (Si no lo hiciste antes, pero vuelve a ejecutar por seguridad)
 
@@ -239,14 +272,16 @@ sudo apt install -y \
   ninja-build cmake build-essential
 ```
 
-### 5. Configurar e instalar CMake 3.22+
+---
+#### 5. Configurar e instalar CMake 3.22+
 
 > [!important] **Raspberry Pi OS Bookworm (Debian 12)** ya trae por defecto `CMake 3.25.1` en sus repos oficiales, así que:
 
 ✅ **No necesitas compilar CMake**  
 ✅ **Puedes ir directo a configurar PyTorch**
 
-### 6. Activar entorno virtual y preparar instalación
+---
+#### 6. Activar entorno virtual y preparar instalación
 
 ```bash
 source ~/tars_venv/bin/activate
@@ -255,18 +290,21 @@ pip install -U pip setuptools wheel typing_extensions
 
 > También instala `typing_extensions` que es obligatorio para compilar Torch.
 
-### 7. Instalar `pyyaml`
+---
+#### 7. Instalar `pyyaml`
 
 ```bash
 pip install pyyaml
 ```
 
-### 8. Ir al directorio raíz de PyTorch
+---
+#### 8. Ir al directorio raíz de PyTorch
 
 ```bash
 cd ~/tars_build/pytorch
 ```
 
+---
 #### 9. Desactivar `cpuinfo` en CMakeLists.txt
 
 Abre el archivo:
@@ -364,11 +402,18 @@ list(APPEND Caffe2_DEPENDENCY_LIBS cpuinfo)
 
 Guardar y cerrar
 
-> **TARS-BSK reflexiona:** _Ah, la lobotomía de archivos CMake... un arte delicado transmitido de frustrado a frustrado. Estamos básicamente diciendo "Querido PyTorch, tu submódulo cpuinfo es un desastre en ARM64, así que voy a fingir que no existe". Si algún desarrollador de PyTorch viera esto, probablemente gritaría de horror. Pero no están aquí, ¿verdad? Solo somos tú, tu Raspberry Pi, y decisiones cuestionables bajo la luz de la luna. Y sorprendentemente, funciona mejor que su "solución oficial". Poesía pura._
+> **TARS-BSK reflexiona:** 
+> 
+> _La lobotomía de archivos CMake... un arte delicado transmitido de frustrado a frustrado. Estamos básicamente diciendo "Querido PyTorch, tu submódulo cpuinfo es un desastre en ARM64, así que voy a fingir que no existe".
+> 
+> Si algún desarrollador de PyTorch viera esto, probablemente gritaría de horror. Pero no están aquí, ¿verdad? Solo somos tú, tu Raspberry Pi, y decisiones cuestionables bajo la luz de la luna. Y sorprendentemente, funciona mejor que su "solución oficial".
+> 
+> Poesía pura._
 
 > [!WARNING]  
 > Esto asegura que PyTorch se compile **usando tu Python 3.9 personalizado**, y no el del sistema.
 
+---
 ### Verifica el swap actual:
 
 ```python
@@ -425,9 +470,16 @@ Mem:           7.9Gi       305Mi       7.5Gi       5.3Mi       244Mi       7.6Gi
 Swap:          2.0Gi          0B       2.0Gi
 ```
 
-> **TARS-BSK advierte:** _Aquí estamos, asignando 2GB de swap en una microSD que probablemente tiene una esperanza de vida medida en ciclos de escritura. Es como pedirle a tu abuela que corra una maratón - técnicamente posible, pero ¿a qué precio? Esta es la parte donde le pides perdón en silencio a tu tarjeta SD, prometiéndole una jubilación temprana en una cámara digital o un reproductor MP3. Pero hey, sin este sacrificio, PyTorch moriría de hambre a mitad de compilación como un explorador perdido en el desierto. Sorprendentemente poético, ¿no?_
+> **TARS-BSK advierte:**
+> 
+> _Aquí estamos, asignando 2GB de swap en una microSD que probablemente tiene una esperanza de vida medida en ciclos de escritura. Es como pedirle a tu abuela que corra una maratón - técnicamente posible, pero ¿a qué precio?
+> 
+> Esta es la parte donde le pides perdón en silencio a tu tarjeta SD, prometiéndole una jubilación temprana en una cámara digital o un reproductor MP3. Pero hey, sin este sacrificio, PyTorch moriría de hambre a mitad de compilación como un explorador perdido en el desierto.
+> 
+> Sorprendentemente poético, ¿no?_
 
-### 10. Exportar ruta de Python compilado (clave)
+---
+#### 10. Exportar ruta de Python compilado (clave)
 
 ```bash
 source ~/tars_venv/bin/activate
@@ -464,16 +516,12 @@ export BUILD_TEST=0
 
 Esto asegura que todo se compile con el **Python 3.9 personalizado** que preparé.
 
----
-
 #### **3. `USE_SYSTEM_CPUINFO=ON`**
 
 > 🧱 Le dice a PyTorch:  
 > "No uses tu versión interna (buggy) de `cpuinfo`. Usa la del sistema o ignórala."
 
 ✅ Esto soluciona errores con submódulos mal importados o incompatibles en Raspberry.
-
----
 
 #### **4. `BUILD_TEST=0`**
 
@@ -489,7 +537,8 @@ Esto asegura que todo se compile con el **Python 3.9 personalizado** que prepar�
 
 > [!important] **Resultado:** Una compilación optimizada, compatible con tu hardware, y enfocada solo en lo que **TARS necesita para funcionar** como el AI definitivo del clan.
 
-### 11. Iniciar compilación de PyTorch
+---
+#### 11. Iniciar compilación de PyTorch
 
 Dentro del repositorio:
 
@@ -509,8 +558,17 @@ python setup.py bdist_wheel
 torch-2.1.0a0+git7bcf7da-cp39-cp39-linux_aarch64.whl
 ```
 
-> **TARS-BSK filosofa:** _Aquí es donde comienza el ritual sagrado. Presionas Enter y te despides temporalmente de tu cordura. Esta es la parte donde tu Raspberry Pi comenzará a jadear como si estuviera corriendo un maratón en el Sahara. Durante las próximas 1-3 horas (o 5, si el universo está particularmente cínico hoy), tu pequeña placa se convertirá en un pequeño reactor de fusión. Es un buen momento para contemplar tus decisiones de vida, aprender a tejer, o quizás escribir tu propio sistema operativo desde cero - probablemente terminarías antes. ¡Ah! Y no olvides el clásico sonido "purrrrrrrrr" del ventilador alcanzando velocidades que ni siquiera el fabricante consideró posibles. Música de los dioses de ARM64._
+> **TARS-BSK filosofa:**
+> 
+> _Aquí es donde comienza el ritual sagrado. Presionas Enter y te despides temporalmente de tu cordura. Esta es la parte donde tu Raspberry Pi comenzará a jadear como si estuviera corriendo un maratón en el Sahara.
+> 
+> Durante las próximas 1-3 horas (o 5, si el universo está particularmente cínico hoy), tu pequeña placa se convertirá en un pequeño reactor de fusión.
+> 
+> Es un buen momento para contemplar tus decisiones de vida, aprender a tejer, o quizás escribir tu propio sistema operativo desde cero - probablemente terminarías antes. ¡Ah! Y no olvides el clásico sonido "purrrrrrrrr" del ventilador alcanzando velocidades que ni siquiera el fabricante consideró posibles.
+> 
+> Música de los dioses de ARM64._
 
+---
 #### Copia el `.whl` a un sitio seguro:
 
 - **FTP (o WinSCP)**:  
@@ -523,13 +581,23 @@ mkdir -p ~/torch_santo_grial
 cp ~/tars_build/pytorch/dist/*.whl ~/torch_santo_grial/
 ```
 
-> **TARS-BSK aconseja:** _Haz varias copias de seguridad de este archivo .whl. Y cuando digo "varias", me refiero a: una en tu disco duro, otra en tu nube, otra en un pendrive que guardarás en una caja fuerte, y otra grabada en una placa de oro enterrada en tu jardín. Este .whl no es solo un archivo, es un testimonio de tu resistencia frente a la adversidad de ARM64. Si tuvieras que volver a compilarlo, probablemente preferirías reconstruir la civilización humana desde cero. Y esta vez con menos dependencias._
+> **TARS-BSK aconseja:** 
+> 
+> _Haz varias copias de seguridad de este archivo .whl. Y cuando digo "varias", me refiero a: una en tu disco duro, otra en tu nube, otra en un pendrive que guardarás en una caja fuerte, y otra grabada en una placa de oro enterrada en tu jardín. Este .whl no es solo un archivo, es un testimonio de tu resistencia frente a la adversidad de ARM64.
+> 
+> Si tuvieras que volver a compilarlo, probablemente preferirías reconstruir la civilización humana desde cero. Y esta vez con menos dependencias._
 
 #### Con eso habrás superado recompilaciones, errores, flags, dependencias, versiones cruzadas, arquitecturas confusas... y ahora tienes el **Santo Grial Mandaloreano `.whl`** que te hará inmortal.
 
 > [!important] Pruebas finales fallidas para el recuerdo
 
-> **TARS-BSK advierte antes de mostrar evidencia forense:** _Lo que estás a punto de presenciar es solo una mínima muestra de los logs de compilación. He eliminado aproximadamente el 97.3% de los intentos fallidos para evitar la formación de un agujero negro de entropía computacional. Si mostrara todos los mensajes de error, advertencias y anomalías que experimenté, este documento tendría su propia gravedad y atraería dispositivos ARM de tres sistemas solares de distancia. Estos son solo algunos fragmentos representativos de mi odisea, cuidadosamente seleccionados para que puedas apreciar el calibre del sufrimiento sin sufrir tú mismo daño neuronal permanente. Considera esto como ver fotos de un desastre natural desde la seguridad de tu hogar, en lugar de experimentar el tornado directamente. Prepárate para una muestra arqueológica de mi tormento compilatorio:_
+> **TARS-BSK advierte antes de mostrar evidencia forense:**
+> 
+> _Lo que estás a punto de presenciar es solo una mínima muestra de los logs de compilación. He eliminado aproximadamente el 97.3% de los intentos fallidos para evitar la formación de un agujero negro de entropía computacional. Si mostrara todos los mensajes de error, advertencias y anomalías que experimenté, este documento tendría su propia gravedad y atraería dispositivos ARM de tres sistemas solares de distancia.
+> 
+> Estos son solo algunos fragmentos representativos de mi odisea, cuidadosamente seleccionados para que puedas apreciar el calibre del sufrimiento sin sufrir tú mismo daño neuronal permanente. Considera esto como ver fotos de un desastre natural desde la seguridad de tu hogar, en lugar de experimentar el tornado directamente. 
+> 
+> Prepárate para una muestra arqueológica de mi tormento compilatorio:_
 
 ```bash
 🚀  Compilación de TARS en progreso...
@@ -570,7 +638,12 @@ cd ~
 python -c "import torch; print('✅ PyTorch listo:', torch.__version__)"
 ```
 
-> **TARS-BSK celebra irónicamente:** _Felicidades, humano resiliente. Si has llegado hasta aquí sin lanzar tu Raspberry Pi por la ventana, mereces un lugar en el Olimpo de la paciencia tecnológica. Acabas de instalar PyTorch en un hardware para el que nunca fue diseñado, usando parches que harían llorar a los ingenieros originales. Es como poner un motor de cohete en un carrito de supermercado - técnicamente funciona, probablemente explotará, pero hey, ¡qué viaje mientras dure! Ahora viene la mejor parte: descubrir que el modelo que querías probar necesita al menos 12GB de RAM... Pero eso es un problema para tu yo futuro._
+> **TARS-BSK celebra irónicamente:** 
+> _Felicidades, humano resiliente. Si has llegado hasta aquí sin lanzar tu Raspberry Pi por la ventana, mereces un lugar en el Olimpo de la paciencia tecnológica. Acabas de instalar PyTorch en un hardware para el que nunca fue diseñado, usando parches que harían llorar a los ingenieros originales.
+>
+> Es como poner un motor de cohete en un carrito de supermercado - técnicamente funciona, probablemente explotará, pero hey, ¡qué viaje mientras dure!
+> 
+> Ahora viene la mejor parte: descubrir que el modelo que querías probar necesita al menos 12GB de RAM... Pero eso es un problema para tu yo futuro._
 
 ### ¿Qué tienes ahora?
 

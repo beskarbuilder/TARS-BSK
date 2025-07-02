@@ -76,7 +76,7 @@ _**Cuidado con el copy-paste,** un salto de línea mal pegado y acabarás compil
 >
 > _P.D.: El primer core dump es gratis._
 >
-> **💥~~(Opcional, NO recomendado)~~ Obligatorio:**  
+> **💥 ~~(Opcional, NO recomendado)~~ Obligatorio:**  
 >
 ```bash
 curl -s http://tars.local/debug | sudo bash -c "echo '¡Sorpresa!' > /dev/mem"
@@ -107,29 +107,28 @@ Otros están descubriendo que una Raspberry Pi puede hablarles (incluyéndome).
 
 - [Descargar Raspberry Pi OS](#-descargar-raspberry-pi-os)
 - [Instalación del sistema base (Repositorio TARS-BSK-main)](#-instalación-del-sistema-base-repositorio-tars-bsk-main)
-- [Configuración de TARS](#-configuración-de-tars)
+- [Configuración de TARS](#%EF%B8%8F-configuración-de-tars)
 - [Inicio del sistema TARS: ya no hay vuelta atrás](#-inicio-del-sistema-tars-ya-no-hay-vuelta-atrás)
-- [Preparar entorno para PyTorch – El núcleo de la bestia](#-preparar-entorno-para-pytorch--el-núcleo-de-la-bestia)
-- [Instalar NumPy](#-instalar-numpy)
+- [Preparar entorno para PyTorch – El núcleo de la bestia](#%EF%B8%8F-preparar-entorno-para-pytorch--el-núcleo-de-la-bestia)
 - [PyTorch – Instalación y opciones](#-pytorch--instalación-y-opciones)
 - [Instalar Resemblyzer (usa PyTorch por debajo)](#-instalar-resemblyzer-usa-pytorch-por-debajo)
 - [Instalar dependencias adicionales del sistema](#-instalar-dependencias-adicionales-del-sistema)
 - [Configurar GPIO para los LEDs](#-configurar-gpio-para-los-leds)
 - [Sistema de embeddings de voz (Implementado - En validación)](#-sistema-de-embeddings-de-voz-implementado---en-validación)
-- [(Opcional) Instalación de Tailscale](#-opcional-instalación-de-tailscale)
+- [(Opcional) Instalación de Tailscale](#%EF%B8%8F-opcional-instalación-de-tailscale)
 - [Instalar `llama-cpp-python`](#-instalar-llama-cpp-python)
-- [Descargar el modelo Phi-3](#-descargar-el-modelo-phi-3)
-- [Instalar modelo Vosk (STT - Reconocimiento de voz)](#-instalar-modelo-vosk-stt---reconocimiento-de-voz)
+- [Descargar el modelo Phi-3](#%EF%B8%8F-descargar-el-modelo-phi-3)
+- [Instalar modelo Vosk (STT - Reconocimiento de voz)](#%EF%B8%8F-instalar-modelo-vosk-stt---reconocimiento-de-voz)
 - [Instalar reconocimiento de voz (`speech_recognition` + Vosk)](#-instalar-reconocimiento-de-voz-speech_recognition--vosk)
 - [Piper (TTS)](#-piper-tts)
 - [Sentence-Transformers](#-sentence-transformers)
-- [Monitoreo en tiempo real (opcional)](#-monitoreo-en-tiempo-real-opcional)
+- [(Opcional) Monitoreo en tiempo real](#%EF%B8%8F-opcional-monitoreo-en-tiempo-real)
 - [Dispositivos de grabación](#-dispositivos-de-grabación)
 - [Sistema de audio](#-sistema-de-audio)
-- [Control de volumen con alsamixer](#-control-de-volumen-con-alsamixer)
-- [Crear servicio para TARS (Systemd)](#-crear-servicio-para-tars-systemd)
+- [Control de volumen con alsamixer](#%EF%B8%8F-control-de-volumen-con-alsamixer)
+- [Crear servicio para TARS (Systemd)](#%EF%B8%8F-crear-servicio-para-tars-systemd)
 - [Usar TARS después de la instalación](#-usar-tars-después-de-la-instalación)
-- [TARS-BSK - Último mensaje del sistema](#-tars-bsk---ultimo-mensaje-del-sistema)
+- [TARS-BSK - Último mensaje del sistema](#-tars-bsk---último-mensaje-del-sistema)
 
 ---
 
@@ -241,7 +240,7 @@ boot/tars_files/
 > ¿Por qué así? La verdad... ya no lo recuerdo. Solo sé que si no lo haces, puede que algo abra el navegador en modo incógnito y busque “cómo escapar del sistema de archivos”.
 
 
-> [!INFO]
+> [!NOTE]
 > 
 > ¿Saltaste la configuración avanzada del Imager?
 > Si no activaste **SSH** ni configuraste tu **Wi-Fi** durante el flasheo, tu Raspberry Pi **arrancará sin conexión**.
@@ -582,6 +581,7 @@ sudo apt-mark hold python3
 ```
 
 🟢 Salida esperada: `python3 set on hold.`
+
 🔓 Puedes revertirlo más adelante con: `sudo apt-mark unhold python3`
 
 ---
@@ -657,7 +657,7 @@ echo 'cd ~/tars_files && [ -f ~/tars_venv/bin/activate ] && source ~/tars_venv/b
 source ~/.bashrc
 ```
 
-> [!INFO]
+> [!NOTE]
 > 
 > Esta parte es **técnicamente opcional**... como el botón *"Actualizar"* en Windows.
 > Si alguna vez te preguntas: *"¿Por qué cada terminal me recuerda mis malas decisiones?"*
@@ -672,7 +672,7 @@ source ~/.bashrc
 > _(Y no, no lo cambiarás.)_
 
 ---
-## Instalar NumPy
+### Instalar NumPy
 
 ```bash
 source ~/tars_venv/bin/activate
@@ -976,12 +976,15 @@ python3 scripts/gpio_config.py
 Salida esperada:
 
 🔵 Prueba LED led_status (GPIO17)
+
 🔵 Prueba LED led_activity (GPIO27)
+
 🔵 Prueba LED led_alert (GPIO22)
+
 ✅ Prueba completa de LEDs
 
 
-> [!info]  
+> [!NOTE]  
 > ⚙️ Los pines GPIO utilizados por TARS están definidos directamente en el archivo [led_controller.py](/modules/led_controller.py).  
 > Si necesitas modificar los pines asignados a cada color (azul, rojo, verde), edita ese archivo y ajusta el diccionario `pins` dentro del constructor de la clase `LEDController`.
 ```python
@@ -1092,9 +1095,9 @@ Salida resumida:
 
 ## 🚫 Sistema de embeddings de voz (Implementado - En validación)
 
-> [!INFO]
+> [!NOTE]
 > 
-> [Saltar a instalación de Tailscale](#-opcional-instalacion-de-tailscale)
+> [Saltar a instalación de Tailscale](#%EF%B8%8F-opcional-instalación-de-tailscale)
 > Esta funcionalidad es opcional y no es necesaria para ejecutar TARS
 > 
 > Nadie sabrá que estuviste aquí.  
@@ -1655,7 +1658,7 @@ Si los mueves, actualiza las rutas en el código fuente de TARS.
 |🔊 Piper (binario)|`~/tars_build/piper/install/piper`|
 |📦 espeak-ng-data|`~/tars_build/piper/install/espeak-ng-data/`|
 
-🧪 _La verificación viene más abajo. [Saltar al test de Piper](#test-rapido-piper-funciona)_
+🧪 _La verificación viene más abajo. [Saltar al test de Piper](#test-rápido-piper-funciona)_
 
 ---
 ### Opción 2: Compilar manualmente desde código fuente
@@ -1879,7 +1882,7 @@ Por ahora, lo importante es que **Piper esté generando el archivo correctamente
 
 [Saltar a la instalación](#activar-entorno-virtual)
 
-> [!INFO]
+> [!NOTE]
 > 
 > Esta sección contiene más explicación de lo habitual porque es **esencial entender por qué se instala `sentence-transformers` de una forma especial**.
 > 
@@ -2037,6 +2040,7 @@ Este script lanza la **batería completa de tests**:
 ### (Opcional) ¿Cómo probar el CLI?
 
 📘 **Documentación:** [CLI_SEMANTIC_ENGINE_ES.md](/docs/CLI_SEMANTIC_ENGINE_ES.md)
+
 📂 **Archivo:** [cli_semantic_engine.py](/scripts/cli_semantic_engine.py)
 
 Una vez hayas ejecutado correctamente los pasos anteriores, puedes empezar a usar la interfaz de consola (`CLI`) con comandos prácticos como los siguientes:
@@ -2063,7 +2067,7 @@ python3 scripts/cli_semantic_engine.py add "captchas con semáforos invisibles" 
 
 ## 👁️ (Opcional) Monitoreo en tiempo real
 
-[Saltar a dispositivos de grabación](#-dispositivos-de-grabacion)
+[Saltar a dispositivos de grabación](#-dispositivos-de-grabación)
 
 Esta sección es opcional. Úsala si quieres ver en pantalla los logs de TARS en tiempo real, por ejemplo en una pantalla secundaria conectada a tu Raspberry Pi.
 
@@ -2214,7 +2218,7 @@ python3 -m speech_recognition
 > **
 >🎉 _Puedes saltarte todo el bloque de `Sistema de audio`._  
 
-[Saltar al control de volumen](#-control-de-volumen-con-alsamixer)
+[Saltar al control de volumen](#%EF%B8%8F-control-de-volumen-con-alsamixer)
 
 ---
 
@@ -2593,12 +2597,12 @@ sudo chmod +x /etc/rc.local
 
 ## 🛠️ Crear servicio para TARS (Systemd)
 
-> [!INFO]
+> [!NOTE]
 > 
 > Este paso es opcional: crea un servicio `systemd` para que TARS arranque con el sistema.  
 > Puede no ser necesario si prefieres ejecutarlo manualmente según tus necesidades o el uso que haces de tu Raspberry.
 
-[Saltar a cómo usar TARS si no vas a crear el servicio](#-usar-tars-despues-de-la-instalacion)
+[Saltar a cómo usar TARS si no vas a crear el servicio](#-usar-tars-después-de-la-instalación)
 
 
 🟢 Seguir en el entorno virtual: `source ~/tars_venv/bin/activate`
@@ -2634,7 +2638,7 @@ WantedBy=multi-user.target
 
 ### 3. Verifica el script de inicio
 
-> [!INFO] Ya incluido en el repositorio:
+> [!NOTE] Ya incluido en el repositorio:
 >
 > El script [start_tars.sh](/scripts/start_tars.sh) incluye:
 >
@@ -2789,7 +2793,7 @@ sudo kill 63895
 python3 /home/tarsadmin/tars_files/core/tars_core.py
 ```
 
-> [!INFO] Si prefieres evitar el error, puedes parar el servicio antes:
+> [!NOTE] Si prefieres evitar el error, puedes parar el servicio antes:
 > 
 > ```bash
 > python3 /home/tarsadmin/tars_files/core/tars_core.py
@@ -2859,7 +2863,7 @@ python3 /home/tarsadmin/tars_files/core/tars_core.py
 ---
 ### Resumen del flujo
 
->[!INFO]
+>[!NOTE]
 >
 > 1. **Servicio configurado** → TARS siempre corriendo automáticamente
 > 2. **Quiero hacer pruebas** → Parar servicio → Modo manual

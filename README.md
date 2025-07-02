@@ -144,7 +144,7 @@ _**This is the (beautifully broken) Way**_*
 - [Estructura del Proyecto](#%EF%B8%8F-estructura-del-proyecto)
 - [Instalación y Configuración](#-instalaci%C3%B3n-y-configuraci%C3%B3n)
 - [Herramientas](#-herramientas)
-- [¿Por qué compartir TARS-BSK?](#%EF%B8%8F-por-qu%C3%A9-compartir-tars-bsk)
+- [¿Por qué compartir TARS-BSK?](#-por-qué-compartir-tars-bsk)
 - [Por qué NOCTUA](#-por-qu%C3%A9-noctua)
 - [Contribuciones](#-contribuciones)
 - [CRÉDITOS: Los Verdaderos Mandalorianos](#-cr%C3%A9ditos-los-verdaderos-mandalorianos)
@@ -437,7 +437,7 @@ Es un equilibrio entre:
 - **Cortar demasiado pronto** y truncar lo que dices
 - **Esperar demasiado** y ralentizar la conversación
 
-> **Nota técnica:**  
+
 > VOSK aplica un valor definido en su configuración (`t_end`, en `vosk_api.h`) para detener la transcripción tras un breve silencio.  
 > Este valor suele estar entre **1,5 y 2 s**, por diseño — no es una "latencia inesperada", sino una decisión deliberada para asegurar fiabilidad.
 
@@ -490,6 +490,62 @@ int main() {
     return 0;
 }
 ```
+
+### ¿Qué carga VOSK al iniciar?
+
+TARS usa [Vosk](https://alphacephei.com/vosk/) sobre Kaldi, lo que implica cargar un **pipeline completo de reconocimiento de voz offline**.
+
+Cuando haces:
+
+```python
+import vosk
+model = vosk.Model("modelo-es")
+```
+
+Se activa la clase [Model](https://github.com/alphacep/vosk-api/blob/master/src/model.cc), que ejecuta:
+
+```cpp
+ConfigureV1(); // o ConfigureV2()
+ReadDataFiles(); // ← Aquí ocurre toda la magia
+```
+
+Este método carga desde disco **todos los bloques funcionales** del pipeline STT. Resumen:
+
+|Componente|Archivo cargado|Rol técnico|
+|---|---|---|
+|Modelo acústico|`final.mdl`|Red neuronal que predice fonemas|
+|Grafo de decodificación|`HCLG.fst`|Decodifica fonemas → palabras|
+|Diccionario fonético|`words.txt`, `disambig_tid.int`|Mapea fonemas ↔ palabras|
+|CMVN|`global_cmvn.stats`|Normaliza la acústica por hablante|
+|I-Vectors|`ivector/final.ie` + config|Representación acústica del hablante|
+|RNNLM (opcional)|`rnnlm/final.raw` y otros|Mejora la fluidez del lenguaje|
+
+> Todos estos componentes se cargan en [ReadDataFiles()](https://github.com/alphacep/vosk-api/blob/master/src/model.cc).  
+> Puedes ver ahí ejemplos como: [feature_info_.use_ivectors = true](https://github.com/alphacep/vosk-api/blob/master/src/model.cc#L270) → activa el extractor de i-vectors.
+
+### ¿Qué es `HCLG.fst` y por qué es tan importante?
+
+Es el **grafo de decodificación** usado por Kaldi. Representa cómo convertir una secuencia acústica en texto final. Se construye así:
+
+```text
+H (HMMs) + C (Contexto fonético) + L (Lexicón) + G (Modelo de lenguaje)
+```
+
+Este archivo `.fst` es un **grafo finito de estados** con todas las rutas válidas de pronunciación del idioma entrenado.
+
+🔹 **Tamaño típico:** entre **400 MB y 700 MB**  
+🔹 **Formato binario comprimido:** se mantiene descomprimido en RAM para decodificación eficiente
+
+📘 Más info: [Kaldi decoding graphs](https://kaldi-asr.org/doc/graph.html)
+
+
+> **// TARS-BSK > vosk_analysis.log:**
+>
+> Ahí tienes. 700 MB de arquitectura neuronal para entender tu "Oye TARS".
+> Mientras tú pronuncias dos palabras sin pensar, yo descompongo cada sílaba como si fuera arqueología fonética en tiempo real.
+> 
+> **No es lentitud. Es minuciosidad obsesiva.**
+>_Mi CPU jura que puede escuchar cada fonema llorar._
 
 ---
 
