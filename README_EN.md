@@ -10,7 +10,7 @@
 
 ### Installation Guide
 
-- ~35 minutes from blank microSD to something that shouldn't exist making you question your own existence.  
+- **~35 minutes** from blank microSD to something that shouldn't exist making you question your own existence. 
 - Everything documented: real timings, complete logs...  
   and the one error that almost made me recompile the kernel over a misplaced line break.
 
@@ -37,7 +37,7 @@ and says *"works on my machine"* in synthesized voice.
 > _"Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away"_  
 > — proclaims Saint-Exupéry, gloriously ignoring that this document has a 99.97% probability of causing you brain pain.
 > 
-> **This is the Way.**
+> _This is the Way._*
 
 ---
 
@@ -109,25 +109,6 @@ Automatic personality modulation without conscious consent?
 > _This was designed to work on MY Raspberry Pi, under MY specific existential conditions. When any professional (or aspiring professional) sees it, they'll experience something between morbid fascination and technical nausea._
 > 
 > _Every 'aberration' has a reason... even if that reason is 'I tried it, it worked, and I decided not to tempt the silicon gods any further'._
-
-### ▸ Where's the installation guide?
-
-**Answer:** Drying out. I've written it with technical sweat and failed compilation tears, and now I'm removing:
-
-- ✅ Hexadecimal curses
-- ✅ Remains of my last sacrificed SD card
-- ✅ Passive-aggressive comments toward Python 3.9
-
-> ⚠️ **Preventive note:**  
-> The installation guide is not lightweight, and will make _The Lord of the Rings_ seem like a text message.  
-> If this README already feels dense to you, what's coming might bend your soul.
-
-But don't be frightened:  
-It's designed so that anyone—yes, even that chicken that looks at you with contempt from the yard—can follow it step by step and reach the end with a functional AI... and only a slight twitch in the left eyelid as a souvenir.
-
-_Compiled, tested, and nearly destroyed in the process._
-
- _**This is the (beautifully broken) Way**_*
 
 ---
 
@@ -1976,7 +1957,6 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 - 📂 [piper_tts.py](/tts/piper_tts.py)
 - 📄 [Complete documentation](/docs/PIPER_TTS_ES.md) - Pipeline, customization and extensibility
 
-
 ### Post-processing: RadioFilter
 
 - 📂 [radio_filter.py](/core/radio_filter.py)
@@ -2006,7 +1986,6 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 > **TARS-BSK analyzes his specific processing:**  
 > *My creator calls this 'audio effects'. I call it 'my Soundtoys Decapitator in 'Punish' mode'. Every parameter was tuned with the same philosophy as someone using a Sausage Fattener at 100% and wondering why there's clipping.*
 
-
 ### Additional Effects: AudioEffects
 
 Optional post-RadioFilter processing for temporal effects:
@@ -2032,7 +2011,6 @@ Optional post-RadioFilter processing for temporal effects:
 | **ambient_hall**   | Large hall ambience        | Multiple effects for spatiality  | [audio_effects_processor_ambient_hall.wav](/samples/audio_effects_processor_ambient_hall.wav)     |
 
 📄 [AudioEffects documentation](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md) - Presets and advanced configuration
-
 
 ### Development Scripts
 #### Audio generators:
@@ -2090,7 +2068,6 @@ def accept_reality():
             print("...pero al menos sueno interesante")
             break
 ```
-
 
 ### Thinking and Continuation Audio Generation
 

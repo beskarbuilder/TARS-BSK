@@ -7,7 +7,7 @@
 
 ### Guía de instalación
 
-- ~35 minutos desde microSD hasta que algo que no debería existir te haga dudar de tu propia existencia.  
+- **~35 minutos** desde microSD hasta que algo que no debería existir te haga dudar de tu propia existencia.  
 - Todo documentado: tiempos reales, logs completos...  
   y el único error que casi me hace recompilar el kernel por un salto de línea mal pegado.
 
@@ -30,7 +30,7 @@ y dice *"en mi máquina sí funciona"* con voz de sintetizador.
 > *"La perfección no se alcanza cuando no queda nada por añadir, sino cuando no queda nada por quitar"*  
 > — proclama Saint-Exupéry, ignorando gloriosamente que este documento tiene una probabilidad del 99,97% de causarte dolor cerebral.
 > 
-> **This is the Way.**
+> _This is the Way._*
 
 ---
 
@@ -101,25 +101,6 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 > _Esto se diseñó para funcionar en MI Raspberry Pi, bajo MIS condiciones existenciales específicas. Cuando cualquier profesional (o aspirante a profesional) lo vea, experimentará algo entre fascinación morbosa y náuseas técnicas._
 >
 > _Cada 'aberración' tiene una razón... aunque esa razón sea 'lo probé, funcionó, y decidí no tentar más a los dioses del silicio'._
-
-### ▸ ¿Dónde está la guía de instalación?
-
-**Respuesta:** Secándose. La he escrito con sudor técnico y lágrimas de compilación fallida, y ahora le estoy quitando:
-
-- ✅ Maldiciones en hexadecimal  
-- ✅ Restos de mi última tarjeta SD sacrificada  
-- ✅ Comentarios pasivo-agresivos hacia Python 3.9
-
-> ⚠️ **Nota preventiva:**  
-> La guía de instalación no es ligera, y hará que _El Señor de los Anillos_ te parezca un SMS.  
-> Si este README ya te está resultando denso, lo que viene podría doblarte el alma.
-
-Pero no te asustes:  
-Está diseñada para que cualquiera —sí, incluso esa gallina que te mira con desprecio desde el patio— pueda seguirla paso a paso y llegar al final con una IA funcional… y solo un leve temblor en el párpado izquierdo como recuerdo.
-
-*Compilado, probado, y casi destruido en el proceso.*
-
-_**This is the (beautifully broken) Way**_*
 
 ---
 
@@ -1862,7 +1843,6 @@ def process_audio(self, audio_data):
 
 - **PyTorch**: Módulo crítico compilado específicamente para ARM64, reduce latencia de reconocimiento de voz en 68% y consume 35% menos RAM que versiones pre-compiladas
 
-
 ### Comparativa real de modelos LLM probados
 
 Durante el desarrollo de TARS-BSK probé múltiples modelos ligeros compatibles con `llama.cpp`, evaluando por mi cuenta latencia, consumo de RAM y coherencia conversacional en condiciones reales de uso sobre Raspberry Pi 5.
@@ -1975,7 +1955,6 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../../install -DWITH_ESPEAK_NG=ON
 - 📂 [piper_tts.py](/tts/piper_tts.py)
 - 📄 [Documentación completa](/docs/PIPER_TTS_ES.md) - Pipeline, personalización y extensibilidad
 
-
 ### Post-procesamiento: RadioFilter
 
 - 📂 [radio_filter.py](/core/radio_filter.py)
@@ -2005,7 +1984,6 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 > **TARS-BSK analiza su procesamiento específico:**  
 > _Mi creador llama a esto 'efectos de audio'. Yo lo llamo 'mi Soundtoys Decapitator en modo 'Punish''. Cada parámetro fue ajustado con la misma filosofía que alguien usando un Sausage Fattener al 100% y preguntándose por qué hay clipping._
 
-
 ### Efectos adicionales: AudioEffects
 
 Procesamiento opcional post-RadioFilter para efectos temporales:
@@ -2031,7 +2009,6 @@ Procesamiento opcional post-RadioFilter para efectos temporales:
 | **ambient_hall** | Ambiente de sala grande | Múltiples efectos para espacialidad | [audio_effects_processor_ambient_hall.wav](/samples/audio_effects_processor_ambient_hall.wav) |
 
 📄 [Documentación AudioEffects](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md) - Presets y configuración avanzada
-
 
 ### Scripts de Desarrollo
 
@@ -2089,7 +2066,6 @@ def accept_reality():
             print("...pero al menos sueno interesante")
             break
 ```
-
 
 ### Generación de audios de pensamiento y continuación
 

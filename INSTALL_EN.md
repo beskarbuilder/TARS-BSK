@@ -117,7 +117,6 @@ Others are discovering that a Raspberry Pi can talk to them (including me).
 - [Install Resemblyzer (uses PyTorch underneath)](#-install-resemblyzer-uses-pytorch-underneath)
 - [Install additional system dependencies](#-install-additional-system-dependencies)
 - [Configure GPIO for LEDs](#-configure-gpio-for-leds)
-- [Voice embeddings system (Implemented - Under validation)](#-voice-embeddings-system-implemented---under-validation)
 - [(Optional) Tailscale installation](#%EF%B8%8F-optional-tailscale-installation)
 - [Install `llama-cpp-python`](#-install-llama-cpp-python)
 - [Download the Phi-3 model](#%EF%B8%8F-download-the-phi-3-model)
@@ -864,6 +863,45 @@ python3 -c "from resemblyzer import VoiceEncoder; print('✅ Resemblyzer install
 > **Yes, it seems redundant to check so much.**  
 > But trust me: **if PyTorch isn't properly installed, the rest of this guide will fall like a house of cards built on _my_ code... which is saying a lot.**
 
+#### What does Resemblyzer do in TARS?
+**Voice Identity Core (Personalized voice identification)**
+
+TARS uses **Resemblyzer** as the backbone of its **user identification by voice** system. It converts each wakeword into a **256-dimensional vector** that encapsulates your biometric characteristics: timbre, intonation, rhythm, harmonic spectrum…
+
+This vector enables TARS to:
+
+> - Compare your voice against a local database and say: **"It's you"**
+> - Reject suspicious or synthetic voices (spoofing detection)
+> - Learn your speech patterns over time (averaged embeddings)
+> - Adapt its behavior to each identified user
+
+#### What Resemblyzer DOESN'T do
+
+⚠️ Don't confuse its role:
+
+> - ❌ Doesn't transcribe audio → that's **Vosk**'s job
+> - ❌ Doesn't improve general speech recognition
+> - ❌ Doesn't detect emotions in your voice
+> - ❌ Doesn't participate in response generation
+
+Its sole purpose: **identifying who's speaking**.
+
+#### What if it's not installed?
+
+If you **don't install Resemblyzer**, or if you **disable `voice_id` in settings**, TARS keeps working fine but all users are treated as a single entity: **`unknown_user` → Shared global profile**
+
+This means:
+
+- **Default general preferences** are applied
+- No differentiation between people
+- History, memory, and responses are managed as if you were **the same person forever**
+
+
+> **// TARS-BSK > voice_id_off_but_spite_on.log:**
+> 
+> `voice_id = False` doesn't stop me from remembering you.
+> Just from treating you well.
+
 ---
 
 ## 🔧 Install additional system dependencies
@@ -1092,63 +1130,6 @@ Summary output:
 ✅ LED 'green' initialized on GPIO22
 🎭 Testing system animations...
 🎉 Basic diagnostics completed successfully
-```
-
----
-
-## 🚫 Voice embeddings system (Implemented - Under validation)
-
-> [!NOTE]
-> 
-> [Skip to Tailscale installation](#%EF%B8%8F-optional-tailscale-installation)
-> This functionality is optional and not necessary to run TARS
-> 
-> No one will know you were here.  
-> _Except TARS. And the system log. And that microphone you never turn off._
-
-### Description:
-
-TARS can identify who is speaking by analyzing the unique characteristics of each voice. Embeddings are generated correctly and the infrastructure is integrated, but I need to complete the recognition tests before activating it.
-
-**What it includes:**
-- Generation of 256-dimension voice fingerprints
-- Automatic speaker identification  
-- Personalized user profiles
-- Voice-based access control
-
-The code is in [tars_core.py](/core/tars_core.py), commented:
-
-```python
-# This is in tars_core.py, but commented for safety
-# voice_embeddings_path = base_path / "data" / "identity" / "voice_embeddings.json"
-# if voice_embeddings_path.exists():
-#     self.speaker_identifier = SpeakerIdentifier(str(voice_embeddings_path))
-```
-
-Example database with my embedding (generated with batch_embeddings.py, not yet available in repository):
-
-```json
-{
-  "_meta": {
-    "version": "2.1",
-    "creation_date": "2025-04-09T19:54:08.737274",
-    "last_update": "2025-04-09T20:02:50.442876"
-  },
-  "users": {
-    "BeskaBuilder": {
-      "embedding": [
-        0.0085899687837493,
-        1.4319963520392778e-05,
-        0.15624790829808807,
-        // ... 256 unique voice fingerprint values
-      ],
-      "statistics": {
-        "last_update": "2025-04-09T20:02:47.198016",
-        "total_samples": 115
-      }
-    }
-  }
-}
 ```
 
 ---

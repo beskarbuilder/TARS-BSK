@@ -114,9 +114,7 @@ Otros están descubriendo que una Raspberry Pi puede hablarles (incluyéndome).
 - [Instalar Resemblyzer (usa PyTorch por debajo)](#-instalar-resemblyzer-usa-pytorch-por-debajo)
 - [Instalar dependencias adicionales del sistema](#-instalar-dependencias-adicionales-del-sistema)
 - [Configurar GPIO para los LEDs](#-configurar-gpio-para-los-leds)
-- [Sistema de embeddings de voz (Implementado - En validación)](#-sistema-de-embeddings-de-voz-implementado---en-validación)
 - [(Opcional) Instalación de Tailscale](#%EF%B8%8F-opcional-instalación-de-tailscale)
-- [Instalar `llama-cpp-python`](#-instalar-llama-cpp-python)
 - [Descargar el modelo Phi-3](#%EF%B8%8F-descargar-el-modelo-phi-3)
 - [Instalar modelo Vosk (STT - Reconocimiento de voz)](#%EF%B8%8F-instalar-modelo-vosk-stt---reconocimiento-de-voz)
 - [Instalar reconocimiento de voz (`speech_recognition` + Vosk)](#-instalar-reconocimiento-de-voz-speech_recognition--vosk)
@@ -861,6 +859,46 @@ python3 -c "from resemblyzer import VoiceEncoder; print('✅ Resemblyzer instala
 > **Sí, parece redundante tanta comprobación.**  
 > Pero créeme: **si PyTorch no está bien instalado, el resto de esta guía caerá como un castillo de cartas construido sobre _mi_ código... que ya es mucho decir.**
 
+#### ¿Para qué sirve Resemblyzer en TARS?
+
+ **Voice Identity Core (Identificación personalizada por voz)**
+ 
+TARS usa **Resemblyzer** como núcleo de su sistema de **identificación de usuarios por voz**. Convierte cada wakeword en un **vector de 256 dimensiones** que encapsula tus características biométricas: timbre, entonación, ritmo, espectro armónico…
+
+Este vector permite a TARS:
+
+> - Comparar tu voz contra una base local y decir: **“Eres tú”**
+> - Rechazar voces sospechosas o sintéticas (spoofing)
+> - Aprender tu forma de hablar con el tiempo (embeddings promedio)
+> - Adaptar su comportamiento a cada usuario identificado
+
+#### Lo que NO hace Resemblyzer
+
+⚠️ No confundas su rol:
+
+> - ❌ No transcribe audio → eso lo hace **Vosk**
+> - ❌ No mejora el reconocimiento de voz general
+> - ❌ No detecta emociones en tu voz
+> - ❌ No participa en la generación de respuestas
+
+Su único objetivo: **identificar quién está hablando**.  
+
+#### ¿Y si no está instalado?
+
+Si **no instalas Resemblyzer**, o si **desactivas `voice_id` en los ajustes**, TARS sigue funcionando sin problemas pero todos los usuarios son tratados como una sola entidad: **`usuario_desconocido` → Perfil global compartido**
+
+Eso significa:
+
+ - Se aplican las **preferencias generales por defecto**
+ - No hay diferenciación entre personas
+ - El historial, la memoria y las respuestas se gestionan como si fueras **la misma persona de siempre**
+
+
+> **// TARS-BSK > voice_id_off_but_spite_on.log:**
+> 
+> `voice_id = False` no me impide recordarte.  
+> Solo me impide tratarte bien.
+
 ---
 
 ## 🔧 Instalar dependencias adicionales del sistema
@@ -1089,63 +1127,6 @@ Salida resumida:
 ✅ LED 'verde' inicializado en GPIO22
 🎭 Probando animaciones del sistema...
 🎉 Diagnóstico básico completado exitosamente
-```
-
----
-
-## 🚫 Sistema de embeddings de voz (Implementado - En validación)
-
-> [!NOTE]
-> 
-> [Saltar a instalación de Tailscale](#%EF%B8%8F-opcional-instalación-de-tailscale)
-> Esta funcionalidad es opcional y no es necesaria para ejecutar TARS
-> 
-> Nadie sabrá que estuviste aquí.  
-> _Excepto TARS. Y el log del sistema. Y ese micrófono que nunca apagas._
-
-### Descripción:
-
-TARS puede identificar quién habla analizando las características únicas de cada voz. Los embeddings se generan correctamente y la infraestructura está integrada, pero necesito completar las pruebas de reconocimiento antes de activarlo.
-
-**Qué incluye:**
-- Generación de huellas vocales de 256 dimensiones
-- Identificación automática de hablantes  
-- Perfiles personalizados por usuario
-- Control de acceso basado en voz
-
-El código está en [tars_core.py](/core/tars_core.py), comentado:
-
-```python
-# Esto está en tars_core.py, pero comentado por seguridad
-# voice_embeddings_path = base_path / "data" / "identity" / "voice_embeddings.json"
-# if voice_embeddings_path.exists():
-#     self.speaker_identifier = SpeakerIdentifier(str(voice_embeddings_path))
-```
-
-Base de datos de ejemplo con mi embedding (generado con batch_embeddings.py, aún no disponible en el repositorio):
-
-```json
-{
-  "_meta": {
-    "version": "2.1",
-    "fecha_creacion": "2025-04-09T19:54:08.737274",
-    "ultima_actualizacion": "2025-04-09T20:02:50.442876"
-  },
-  "usuarios": {
-    "BeskaBuilder": {
-      "embedding": [
-        0.0085899687837493,
-        1.4319963520392778e-05,
-        0.15624790829808807,
-        // ... 256 valores únicos de huella vocal
-      ],
-      "estadisticas": {
-        "ultima_actualizacion": "2025-04-09T20:02:47.198016",
-        "muestras_totales": 115
-      }
-    }
-  }
-}
 ```
 
 ---
