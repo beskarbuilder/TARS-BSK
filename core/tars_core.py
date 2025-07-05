@@ -34,6 +34,7 @@
 # ===============================================
 # from utils.phrase_selector import get_thematic_phrase, get_random_phrase
 # from utils.asr_correction import ASRCorrector
+import time
 import os
 import sys
 import logging
@@ -196,7 +197,7 @@ class TARS:
 
         prefs_path = Path(__file__).resolve().parent.parent / "data" / "identity" / "preferences.json"
         self.preferences = PreferencesManager(prefs_path)
-        
+
         # Inicializa la personalidad con nivel alto de sarcasmo para testing
         self.personality = TARSPersonality()
         logger.info(f"✅ Estado emocional inicial: {self.personality.describe()}")
@@ -249,6 +250,11 @@ class TARS:
                     logger.warning(f"🔇 TTS no disponible, texto: {text}")
             self.tts = DummyTTS()
 
+        # Cargar modelo LLM (El ORDEN de carga afecta dramáticamente el rendimiento)
+        start_time = time.time()
+        self.model_path = Path(model_path)
+        self._load_model()
+
         # Configuración de efectos temporales (delay, echo, chorus)
         # Se aplican DESPUÉS de RadioFilter para evitar conflictos de frecuencia
         self.tts.audio_effects_config = settings.get("audio_effects", {"enabled": False})
@@ -269,29 +275,36 @@ class TARS:
             logger.warning(f"⚠️ Error cargando preferencias: {e}")
 
         # Añadir después de self.memory = TarsMemoryManager()
+
         self.current_user = "usuario"  # Usuario predeterminado
 
-        # Inicializar identificador de hablantes (opcional)
-        # # Inicializar identificador de hablantes (opcional)
-        # voice_embeddings_path = base_path / "data" / "identity" / "voice_embeddings.json"
-        # if voice_embeddings_path.exists():
-        #     try:
-        #         self.speaker_identifier = SpeakerIdentifier(str(voice_embeddings_path))
-        #         logger.info(f"✅ Identificador de hablantes inicializado")
-        #     except Exception as e:
-        #         logger.warning(f"⚠️ No se pudo inicializar identificador de hablantes: {e}")
-        #         self.speaker_identifier = None
-        # else:
-        #     logger.info("ℹ️ Embeddings de voz no encontrados (opcional)")
-        #     self.speaker_identifier = None  # ← ESTA SE COMENTA TAMBIÉN
+        # Inicializar sistema de identificación por voz
+        # 1. Verificar si está enabled PRIMERO
+        self.voice_id_enabled = load_settings().get("voice_identification", {}).get("enabled", False) # ← settings.json
+    
+        # 2. Verificar si existe la BD 
+        voice_embeddings_path = base_path / "data" / "identity" / "voice_embeddings.json"
+        if voice_embeddings_path.exists():
+            try:
+                # 3. Solo entonces inicializar
+                from core.voice_id import VoiceIdentitySystem
+                start = time.time()
+                # voice_settings.json es configuración específica para debugging de voice_id
+                # La configuración principal (enabled/disabled) está en settings.json
+                self.voice_id_system = VoiceIdentitySystem("config/voice_settings.json") # ← ¿Para qué sirve este archivo?
+                end = time.time()
+                logger.info(f"🔍 VoiceIdentitySystem tardó: {end - start:.2f}s")
+                logger.info("✅ Sistema de identificación por voz activado")
+                logger.info(f"📊 Usuarios registrados: {len(self.voice_id_system.db.get('users', {}))}")  # ← 'users' no 'usuarios'
+            except Exception as e:
+                logger.warning(f"⚠️ Error iniciando voice_id: {e}")
+                self.voice_id_system = None
+        else:
+            logger.info("ℹ️ No se encontró base de datos de voz, sistema desactivado")
+            self.voice_id_system = None
 
-        # Speaker identifier desactivado temporalmente - implementación incompleta
-        self.speaker_identifier = None  # NO COMENTARLA SINO DARÁ ERROR AttributeError
-
-        # Cargar modelo LLM
-        start_time = time.time()
-        self.model_path = Path(model_path)
-        self._load_model()
+        # Mantener compatibilidad con código existente
+        self.speaker_identifier = self.voice_id_system
 
         # Ahora puedes inicializar TARSBrain aquí si quieres
         self.brain = TARSBrain(self.memory, self.llm, is_simple=False)
@@ -862,8 +875,7 @@ class TARS:
                 text = text[:-1] + "."  # Eliminar el punto de la palabra y añadirlo al final
         
         return text
-                
-            
+
     # =======================
     # 3.3 TTS Y VOICE
     # =======================
@@ -912,6 +924,51 @@ class TARS:
         return fragments
 
     # =======================
+    # 3.3.1 VOICE ID RESPONSES
+    # =======================
+    # =======================
+    # 3.3.1 VOICE ID RESPONSES
+    # =======================
+    def _get_voice_id_response(self, response_type: str, usuario: str = None) -> str:
+        """Carga respuestas específicas para voice_id"""
+        try:
+            path = self.data_path / "voice_id_responses.json"
+            if path.exists():
+                with open(path, "r", encoding='utf-8') as f:
+                    responses = json.load(f).get(response_type, [])
+                    if responses:
+                        response = random.choice(responses)
+                        return response.format(usuario=usuario) if usuario else response
+        except Exception as e:
+            logger.error(f"❌ Error cargando voice_id responses: {e}")
+        
+        # Fallback si algo falla
+        if response_type == "identified_user":
+            return f"Hola {usuario}, te escucho" if usuario else "Te escucho"
+        else:
+            return "No reconozco tu voz. Te escucho como usuario anónimo"
+
+    def handle_voice_identification_response(self, identified_user: str = None):
+        """Maneja respuesta tras identificación de voz usando TTS dinámico"""
+        try:
+            if identified_user:
+                response = self._get_voice_id_response("identified_user", identified_user)
+                logger.info(f"👤 Usuario identificado: {identified_user}")
+            else:
+                response = self._get_voice_id_response("unknown_user")
+                logger.info("👤 Usuario desconocido detectado")
+            
+            logger.info(f"➡️ Reproduciendo: '{response}'")
+            self.tts.speak(response)
+            
+        except Exception as e:
+            logger.error(f"❌ Error en handle_voice_identification_response: {e}")
+            # Fallback de emergencia
+            fallback = "Te escucho" if identified_user else "Usuario no identificado"
+            self.tts.speak(fallback)
+
+
+    # =======================
     # 3.4 LEDS Y SENSORES
     # =======================
     def _safe_led_control(self, func, *args, **kwargs):
@@ -930,16 +987,64 @@ class TARS:
         except Exception as e:
             logger.error(f"❌ Error en feedback de wake_success: {e}")
 
-        # Identificar al hablante si es posible (NUEVO)
-        if hasattr(self, 'speaker_identifier') and self.speaker_identifier:
+        # 🔍 DEBUG: Verificar condiciones (código existente)
+        logger.info(f"🔍 DEBUG voice_id_system: {hasattr(self, 'voice_id_system')} - {getattr(self, 'voice_id_system', None) is not None}")
+        logger.info(f"🔍 DEBUG speech_listener: {hasattr(self, 'speech_listener')}")
+        if hasattr(self, 'speech_listener'):
+            logger.info(f"🔍 DEBUG last_audio_path: {hasattr(self.speech_listener, 'last_audio_path')} - {getattr(self.speech_listener, 'last_audio_path', None)}")
+        
+        # 🆕 SOLO AÑADIR ESTA VERIFICACIÓN:
+        if not self.voice_id_enabled:
+            logger.info("🔇 Identificación de voz desactivada por configuración")
+            # Ir directamente al fallback (código que ya existía al final)
             try:
-                # Placeholder para futura implementación de extracción de embedding
-                # por ahora no hacemos nada, pero la estructura está preparada
-                logger.info("🔍 Identificación de hablante preparada pero no implementada en esta fase")
-                # Quita la condición hasattr(self, 'speech_listener') que probablemente es lo que falla
+                path = self.data_path / "wake_responses.json"
+                if path.exists():
+                    with open(path, "r") as f:
+                        phrases = json.load(f).get("wake_acknowledgements", ["Te escucho"])
+                else:
+                    phrases = ["Te escucho"]
+                self._safe_speak(random.choice(phrases))
+            except Exception as e:
+                logger.error(f"❌ Error en wake response: {e}")
+                self._safe_speak("Te escucho")
+            return  # ← IMPORTANTE: salir aquí
+        
+        # 🆕 IDENTIFICACIÓN DE HABLANTE 
+        if self.voice_id_system and hasattr(self, 'speech_listener'):
+            logger.info("🔍 Entrando en bloque de identificación...")
+            try:
+                # Verificar si hay audio disponible del wakeword
+                if hasattr(self.speech_listener, 'last_audio_path') and self.speech_listener.last_audio_path:
+                    audio_path = self.speech_listener.last_audio_path
+                    if os.path.exists(audio_path):
+                        logger.info("🔍 Iniciando identificación de hablante...")
+                        usuario, confianza, metadata = self.voice_id_system.identify_voice(audio_path)
+                        
+                        if usuario:  
+                            logger.info(f"✅ Usuario identificado: {usuario} (confianza: {confianza:.2f})")
+                            self.current_user = usuario
+                            self._load_user_preferences(usuario)
+                            # CAMBIAR SOLO ESTA PARTE ↓
+                            self.handle_voice_identification_response(usuario)
+                            return
+                        else:
+                            logger.info(f"👤 Voz no reconocida (confianza: {confianza:.2f}) - void_id activado")
+                            self.current_user = "void_id"
+                            self._load_user_preferences("void_id")
+                            # CAMBIAR SOLO ESTA PARTE ↓
+                            self.handle_voice_identification_response()
+                            return
+
+                    else:
+                        logger.warning(f"⚠️ Archivo de audio no encontrado: {audio_path}")
+                else:
+                    logger.warning("⚠️ No hay audio disponible para identificación")
             except Exception as e:
                 logger.error(f"❌ Error en identificación de hablante: {e}")
+                self.current_user = "void_id"
 
+        # FALLBACK: Si no hay voice_id system
         try:
             path = self.data_path / "wake_responses.json"
             if path.exists():
@@ -947,7 +1052,6 @@ class TARS:
                     phrases = json.load(f).get("wake_acknowledgements", ["Te escucho"])
             else:
                 phrases = ["Te escucho"]
-
             self._safe_speak(random.choice(phrases))
         except Exception as e:
             logger.error(f"❌ Error en wake response: {e}")
@@ -1131,10 +1235,10 @@ class TARS:
             pass  # Fallar silenciosamente
 
     def _detect_and_store_facts(self, user_input: str):
-        """Versión simple con patrones adicionales"""
+        """Versión mejorada que guarda preferencias por usuario actual"""
         input_lower = user_input.lower().strip()
         
-        # Patrones para gustos
+        # Patrones existentes (sin cambios)
         like_patterns = [
             r"me gusta(?:n)?\s+(los?|las?)?\s*([a-zÀ-ÿA-Z0-9\s]+)",
             r"me encanta(?:n)?\s+(los?|las?)?\s*([a-zÀ-ÿA-Z0-9\s]+)",
@@ -1149,28 +1253,33 @@ class TARS:
                 if topic:
                     logger.info(f"🔍 Preferencia positiva detectada: {topic}")
                     
-                    # 1. Guardar en DB
+                    # 🆕 GUARDAR CON EL USUARIO ACTUAL
+                    current_user = getattr(self, 'current_user', 'global')
+                    
                     try:
                         self.memory.store_preference(
-                            "usuario", "general", topic, 
-                            sentiment=0.9, importance=0.8, 
+                            current_user,  # ← Usar usuario actual en lugar de "usuario"
+                            "general", 
+                            topic, 
+                            sentiment=0.9, 
+                            importance=0.8, 
                             source="conversación"
                         )
+                        logger.info(f"💾 Preferencia guardada para {current_user}: {topic}")
                     except Exception as e:
-                        logger.error(f"❌ Error guardando preferencia en DB: {e}")
+                        logger.error(f"❌ Error guardando preferencia para {current_user}: {e}")
                     
-                    # 2. IMPORTANTE: Actualizar caché en RAM para uso inmediato
-                    self._update_memory_cache(topic, 0.9)  # o -0.9 para disgustos
+                    # 2. Actualizar caché para el usuario actual
+                    self._update_memory_cache(topic, 0.9)
                     
                     return True
         
-        # Patrones para disgustos
+        # Patrones para disgustos (misma lógica)
         dislike_patterns = [
             r"no me gusta(?:n)?\s+(los?|las?)?\s*([a-zÀ-ÿA-Z0-9\s]+)",
             r"odio\s+(los?|las?)?\s*([a-zÀ-ÿA-Z0-9\s]+)"
         ]
         
-        # Probar cada patrón
         for pattern in dislike_patterns:
             match = re.search(pattern, input_lower)
             if match:
@@ -1178,18 +1287,24 @@ class TARS:
                 if topic:
                     logger.info(f"🔍 Preferencia negativa detectada: {topic}")
                     
-                    # 1. Guardar en DB
+                    # 🆕 GUARDAR CON EL USUARIO ACTUAL
+                    current_user = getattr(self, 'current_user', 'global')
+                    
                     try:
                         self.memory.store_preference(
-                            "usuario", "general", topic, 
-                            sentiment=-0.9, importance=0.8, 
+                            current_user,  # ← Usar usuario actual
+                            "general", 
+                            topic, 
+                            sentiment=-0.9, 
+                            importance=0.8, 
                             source="conversación"
                         )
+                        logger.info(f"💾 Preferencia negativa guardada para {current_user}: {topic}")
                     except Exception as e:
-                        logger.error(f"❌ Error guardando preferencia en DB: {e}")
+                        logger.error(f"❌ Error guardando preferencia para {current_user}: {e}")
                     
-                    # 2. IMPORTANTE: Actualizar caché en RAM para uso inmediato
-                    self._update_memory_cache(topic, 0.9)  # o -0.9 para disgustos
+                    # 2. Actualizar caché
+                    self._update_memory_cache(topic, -0.9)
                     
                     return True
         
@@ -1206,8 +1321,6 @@ class TARS:
         # ========================= 
         # Fin memoria viva: Detecta hechos personales y gustos del usuario - SQLITE
         # =========================
-
-
     def detectar_afinidad_ampliada(self, user_input: str, afinidades_data: dict) -> tuple:
         """
         Analiza el input del usuario y detecta el tema de afinidad con su nivel.
@@ -2568,21 +2681,54 @@ class TARS:
     # 4. CARGA DE PREFERENCIAS POR USUARIO
     # ============================================   
     def _load_user_preferences(self, user: str) -> None:
-        """Carga preferencias del usuario específico en RAM"""
+        """Carga preferencias del usuario específico en RAM - VERSION MEJORADA"""
         try:
-            # Cargar gustos/disgustos
-            prefs = self.memory.get_user_preferences(user=user, limit=20)
-            self.user_likes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) > 0.3][:8]
-            self.user_dislikes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) < -0.3][:5]
-            logger.info(f"✅ Preferencias de {user} cargadas: {len(self.user_likes)} gustos, {len(self.user_dislikes)} disgustos")
-            
+            if user == "void_id":
+                # Usuario desconocido = TARS funciona normal pero sin preferencias PERSONALES
+                # 🆕 USAR PREFERENCIAS GLOBALES cuando voice_id está activo pero no identifica
+                if self.voice_id_enabled:
+                    # Usar preferencias globales como fallback
+                    prefs = self.memory.get_user_preferences(user="global", limit=20)
+                    self.user_likes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) > 0.3][:8]
+                    self.user_dislikes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) < -0.3][:5]
+                    logger.info(f"🌐 Usuario desconocido - usando preferencias globales: {len(self.user_likes)} gustos, {len(self.user_dislikes)} disgustos")
+                else:
+                    # Sin voice_id = sin preferencias específicas
+                    self.user_likes, self.user_dislikes = [], []
+                    logger.info("🎭 Usuario desconocido - sin preferencias personales")
+            else:
+                # Usuario conocido - usar SUS preferencias específicas
+                prefs = self.memory.get_user_preferences(user=user, limit=20)
+                
+                if prefs:
+                    # El usuario tiene preferencias propias
+                    self.user_likes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) > 0.3][:8]
+                    self.user_dislikes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) < -0.3][:5]
+                    logger.info(f"👤 Preferencias de {user} cargadas: {len(self.user_likes)} gustos, {len(self.user_dislikes)} disgustos")
+                else:
+                    # Usuario nuevo sin preferencias - usar globales como base
+                    logger.info(f"🆕 {user} es nuevo, cargando preferencias globales como base")
+                    prefs = self.memory.get_user_preferences(user="global", limit=20)
+                    self.user_likes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) > 0.3][:8]
+                    self.user_dislikes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) < -0.3][:5]
+                    logger.info(f"🌐 Base global para {user}: {len(self.user_likes)} gustos, {len(self.user_dislikes)} disgustos")
+                
             # Actualizar usuario actual
             self.current_user = user
+            
         except Exception as e:
-            logger.warning(f"⚠️ No se pudieron cargar preferencias de {user}: {e}")
+            logger.warning(f"⚠️ Error cargando preferencias de {user}: {e}")
+            # Fallback: preferencias globales
+            try:
+                prefs = self.memory.get_user_preferences(user="global", limit=20)
+                self.user_likes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) > 0.3][:8]
+                self.user_dislikes = [p["topic"] for p in prefs if isinstance(p, dict) and p.get("sentiment", 0) < -0.3][:5]
+                logger.info(f"🌐 Fallback a preferencias globales: {len(self.user_likes)} gustos")
+            except:
+                self.user_likes, self.user_dislikes = [], []  # Fallback final
 
     # ============================================ 
-    # 4.5. CONTEXTO INSUFICIENTE
+    # 4.1. CONTEXTO INSUFICIENTE
     # ============================================  
 
     def _insufficient_context(self, user_input: str, prompt: str) -> bool:
@@ -2765,6 +2911,11 @@ def main():
         try:
             listener = SpeechListener(model_path="ai_models/vosk/model")
             logger.info("✅ SpeechListener inicializado correctamente")
+            
+            # 🆕 CONECTAR LISTENER CON TARS PARA VOICE_ID
+            tars.speech_listener = listener
+            logger.info("🔗 SpeechListener conectado a TARS para voice_id")
+            
         except Exception as e:
             logger.error(f"❌ Error inicializando SpeechListener: {e}")
             use_voice = False
