@@ -358,6 +358,39 @@ except Exception as e:
     tars.processing = False  # Limpieza de estado global
 ```
 
+### Captura de audio para [voice_id](/docs/VOICE_IDENTITY_SYSTEM_ES)
+
+Cuando el sistema `voice_id` está habilitado, el `SpeechListener` captura y guarda automáticamente el fragmento de audio relacionado con la wakeword.  
+Este archivo es esencial para identificar al usuario por su voz.
+
+#### ¿Cuándo y por qué se guarda?
+
+- **Sólo** tras detectar una coincidencia con la wakeword.
+- El archivo `temp/last_wakeword.wav` contiene varios segundos de audio antes y después del disparo, garantizando una captura completa.
+- Se utiliza para generar un _embedding_ y comparar con perfiles registrados en `voice_id`.
+
+#### Detalles técnicos:
+
+- Buffer configurable (~6 segundos)
+- Resample a 16 kHz mono si es necesario
+- Filtro de duración mínima para evitar falsos positivos
+- Se sobrescribe en cada activación
+
+#### Fragmento de código
+
+```python
+# Guardar como archivo WAV
+self.last_audio_path = "temp/last_wakeword.wav"
+with wave.open(self.last_audio_path, 'wb') as wf:
+    wf.setnchannels(1)
+    wf.setframerate(sample_rate)
+    wf.setsampwidth(2)
+    wf.writeframes(audio_data)
+```
+
+Este proceso asegura que **el sistema disponga siempre del fragmento exacto de audio necesario** para aplicar identificación vocal sin requerir interacción adicional.  
+Incluso si `voice_id` no está activo, el archivo puede resultar útil para depurar errores, analizar calidad de entrada o realizar pruebas manuales de reconocimiento.
+
 ---
 
 ## 🚀 Inicialización real del sistema de audio

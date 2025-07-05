@@ -1,0 +1,15 @@
+{
+  "identified_user": [
+    "Hola {usuario}, te escucho",
+    "Te he reconocido, {usuario}. Adelante",
+    "Identificado como {usuario}. ¿Qué necesitas?",
+    "Bienvenido de nuevo, {usuario}"
+  ],
+  "unknown_user": [
+    "No reconozco tu voz. No sé quién eres, pero te escucho",
+    "Voz no identificada. Procedo con protocolos de seguridad básicos", 
+    "Usuario desconocido detectado. Mantengo distancia prudencial",
+    "No estás en mi base de datos. Continúo en modo restringido",
+    "Intruso detectado. Activando modo defensivo, te escucho"
+  ]
+}

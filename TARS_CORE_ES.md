@@ -41,12 +41,12 @@ Su objetivo es mostrar **cómo se conectan las piezas principales**, **dónde vi
 
 **Documentación por componentes del sistema:**
 
-- **Motor Emocional**: [EMOTIONAL_ENGINE_ES.md](/docs/EMOTIONAL_ENGINE_ES.md)
-- **Sistema TTS + Filtros**: [PIPER_TTS_ES.md](/docs/PIPER_TTS_ES.md) · [RADIO_FILTER_TARS-BSK_ES.md](/docs/RADIO_FILTER_TARS-BSK_ES.md) · [AUDIO_EFFECTS_PROCESSOR_ES.md](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md)
-- **Sistema de Plugins**: [PLUGIN_SYSTEM_ES.md](/docs/PLUGIN_SYSTEM_ES.md) · [HOMEASSISTANT_PLUGIN_ES.md](/docs/HOMEASSISTANT_PLUGIN_ES.md) · [REMINDER_PLUGIN_ES.md](/docs/REMINDER_PLUGIN_ES.md) · [SCHEDULER_PLUGIN_ES.md](/docs/SCHEDULER_PLUGIN_ES.md) · [REMINDER_PARSER_ES.md](/docs/REMINDER_PARSER_ES.md) · [SEMANTIC_ENGINE_ES.md](/docs/SEMANTIC_ENGINE_ES.md)
-- **Gestión Interna**: [TARS_MEMORY_MANAGER_ES.md](/docs/TARS_MEMORY_MANAGER_ES.md) · [TARSBRAIN_ES.md](/docs/TARSBRAIN_ES.md) · [PREFERENCES_MANAGER_ES.md](/docs/PREFERENCES_MANAGER_ES.md)
-- **Entrada por Voz**: [SPEECH_LISTENER_ES.md](/docs/SPEECH_LISTENER_ES.md)
-- **Protección**: [THERMAL_GUARDIAN_ES.md](/docs/THERMAL_GUARDIAN_ES.md)
+- **Motor Emocional**: [EMOTIONAL_ENGINE_ES](/docs/EMOTIONAL_ENGINE_ES.md)
+- **Sistema TTS + Filtros**: [PIPER_TTS_ES](/docs/PIPER_TTS_ES.md) · [RADIO_FILTER_TARS-BSK_ES](/docs/RADIO_FILTER_TARS-BSK_ES.md) · [AUDIO_EFFECTS_PROCESSOR_ES](/docs/AUDIO_EFFECTS_PROCESSOR_ES.md)
+- **Sistema de Plugins**: [PLUGIN_SYSTEM_ES](/docs/PLUGIN_SYSTEM_ES.md) · [HOMEASSISTANT_PLUGIN_ES](/docs/HOMEASSISTANT_PLUGIN_ES.md) · [REMINDER_PLUGIN_ES](/docs/REMINDER_PLUGIN_ES.md) · [SCHEDULER_PLUGIN_ES](/docs/SCHEDULER_PLUGIN_ES.md) · [REMINDER_PARSER_ES](/docs/REMINDER_PARSER_ES.md) · [SEMANTIC_ENGINE_ES](/docs/SEMANTIC_ENGINE_ES.md)
+- **Gestión Interna**: [TARS_MEMORY_MANAGER_ES](/docs/TARS_MEMORY_MANAGER_ES.md) · [TARSBRAIN_ES](/docs/TARSBRAIN_ES.md) · [PREFERENCES_MANAGER_ES](/docs/PREFERENCES_MANAGER_ES.md)
+- **Entrada por Voz**: [SPEECH_LISTENER_ES](/docs/SPEECH_LISTENER_ES.md) · [VOICE_IDENTITY_SYSTEM_ES](/docs/VOICE_IDENTITY_SYSTEM_ES) · [VOICE_AUDIO_PIPELINE_ES](/docs/VOICE_AUDIO_PIPELINE_ES)
+- **Protección**: [THERMAL_GUARDIAN_ES](/docs/THERMAL_GUARDIAN_ES.md)
 
 
 > **TARS-BSK explica la arquitectura:**
@@ -845,6 +845,80 @@ tars.memory.get_user_preferences(user, limit=10)
 # Control de plugins
 tars.plugin_system.process_command(command: str) -> Optional[str]
 ```
+
+### `voice_id`: Identificación vocal opcional
+
+TARS puede funcionar perfectamente **sin ningún tipo de reconocimiento de usuario**, utilizando preferencias y respuestas globales.  
+Sin embargo, si se activa el módulo  [voice_is.py](/core/voice_id.py), el sistema será capaz de **reconocer automáticamente quién está hablando**, y adaptar la conversación a sus preferencias individuales.
+
+Este sistema está **desactivado por defecto** en [settings.json](/config/settings.json), para mantener el rendimiento y simplicidad inicial:
+
+```python
+"voice_id_enabled": false
+```
+
+> Si se activa `voice_id` pero no hay usuarios registrados, TARS funcionará igual, pero añadirá pasos innecesarios (embedding, comparación) y responderá con frases personalizadas del fichero [voice_id_responses.json](/data/phrases/voice_id_responses.json)
+
+```json
+],
+"unknown_user": [
+  "No reconozco tu voz. No sé quién eres, pero te escucho",
+  "Voz no identificada. Procedo con protocolos de seguridad básicos", 
+  "Usuario desconocido detectado. Mantengo distancia prudencial",
+  "No estás en mi base de datos. Continúo en modo restringido",
+  "Intruso detectado. Activando modo defensivo, te escucho"
+]
+```
+
+_(Estas frases pueden personalizarse según el tono deseado.)_
+
+#### ¿Qué permite el sistema `voice_id`?
+
+- Detectar al usuario por su voz al decir la wakeword (usando embeddings de 256 dimensiones)
+- Cargar automáticamente sus preferencias y nivel de afinidad
+- Personalizar el tono, comportamiento, formato de respuesta o instrucciones del sistema
+- Aplicar contextos específicos (modo técnico, literario, sarcástico, etc.)
+
+#### ¿Qué **NO** hace?
+
+- No altera el prompt principal directamente, **a menos que existan preferencias registradas**
+
+#### ¿Cómo se integra `voice_id` en el núcleo de TARS?
+
+Cuando `voice_id` está activado, TARS analiza la voz tras la wakeword, identifica al usuario si hay un perfil coincidente y **carga sus preferencias personales**. Si no logra identificar a nadie, usa un conjunto de preferencias globales como fallback.
+
+```python
+if self.voice_id_enabled:
+    if not user or user == "unknown":
+        prefs = self.memory.get_user_preferences(user="global")
+        # Se cargan gustos/disgustos generales
+    else:
+        prefs = self.memory.get_user_preferences(user=user)
+        # Se cargan gustos/disgustos específicos de ese usuario
+else:
+    # voice_id desactivado → sin preferencias
+    self.user_likes, self.user_dislikes = [], []
+```
+
+📄 Documentación completa del sistema: [VOICE_IDENTITY_SYSTEM_ES.md](/docs/VOICE_IDENTITY_SYSTEM_ES.md)  
+📄 Pipeline de preprocesamiento acústico: [VOICE_AUDIO_PIPELINE_ES.md](/docs/VOICE_AUDIO_PIPELINE_ES.md)  
+📄 Registro de voz: [VOICE_REGISTRATION_ES.md](/docs/VOICE_REGISTRATION_ES.md)  
+📄 Herramientas de análisis y diagnóstico: [VOICE_DIAGNOSTIC_ES.md](/docs/VOICE_DIAGNOSTIC_ES.md)  
+
+#### ¿Impacta realmente en el comportamiento?
+
+Activar `voice_id` **no cambia el funcionamiento base de TARS**.  
+Si no se identifica a nadie, simplemente:
+
+- Se cargan **preferencias globales**
+- Responde igual que siempre — sin personalización individual
+
+Pero si un usuario es identificado con éxito:
+
+- Se cargan sus **gustos, aversiones y estilo de interacción**
+- Se aplican ajustes opcionales según sus preferencias registradas (tono, nivel técnico, sarcasmo, etc.)
+
+> Es decir: **TARS no trata diferente a nadie... a menos que le hayas dicho cómo hacerlo.**
 
 ---
 

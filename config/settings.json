@@ -7,6 +7,20 @@
   "use_voice": true,
   "exit_keywords": ["gracias", "vale", "ya está", "eso es todo", "corto"],
 
+  "voice_identification": {
+      "enabled": false,
+      "auto_load_preferences": true,
+      "greeting_enabled": true,
+      "confidence_threshold": 0.71,
+      "preload_models": true,
+      "void_id_message": "Te escucho como usuario anónimo",
+      "identification_threshold": 0.6,
+      "pitch_check_threshold": 0.70,
+      "high_freq_limit": 185,
+      "low_freq_limit": 145,
+      "min_volume": 0.005
+  },
+
   "audio": {
     "playback_device": "plughw:0,0",
     "record_device": "plughw:0,0"

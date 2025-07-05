@@ -1,0 +1,15 @@
+{
+
+    "_info": "Configuración específica para VoiceIdentitySystem - Este archivo es SOLO para debugging",
+    "_purpose": "Usado por el sistema debug de voice_id y herramientas de desarrollo",
+    "_main_config": "La configuración principal está en settings.json",
+
+    "db_path": "data/identity/voice_embeddings.json",
+    "identification_threshold": 0.60,
+    "duplicate_threshold": 0.95,
+    "max_distance_between_samples": 0.35,
+    "min_samples": 3,
+    "safe_mode": true,
+    "min_volume": 0.01,
+    "min_duration": 0.5
+}

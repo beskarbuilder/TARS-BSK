@@ -8,6 +8,8 @@
 # 1. IMPORTACIONES Y CONFIGURACIÓN INICIAL
 # =======================================================================
 
+import os
+import wave
 import sounddevice as sd
 import queue
 import json
@@ -94,25 +96,51 @@ class SpeechListener:
     
     # =======================================================================
     # 2.2 PROCESAMIENTO DE AUDIO Y GESTIÓN DE STREAMS
-    # =======================================================================
-    
+    # ===========================================================================
+    # El resampleo con librosa preserva muy bien los formantes y el contenido espectral.
+    # Sin embargo, puede ocurrir que dos voces con diferente perfil tonal (e.g. una con 
+    # mayor contenido en frecuencias altas y otra más concentrada en frecuencias medias) 
+    # acaben proyectándose en embeddings similares, especialmente si el modelo 
+    # no discrimina bien por distribución espectral.
+    # Esto puede dar lugar a similitudes artificialmente elevadas entre voces distintas.
+    # 
+    # PD: ¿Cómo te has quedado con la explicación? no te acostumbres... TARS no lo entendería.
+    # ---------------------------------------------------------------------------
     def _resample_audio(self, audio_data):
         """Convierte el audio de la frecuencia nativa a 16000Hz para Vosk."""
         import numpy as np
-        from scipy import signal
+        import librosa
         
         # Convertir bytes a array numpy
         audio_array = np.frombuffer(audio_data, dtype=np.int16)
         
-        # Calcular nuevo tamaño
-        output_size = int(len(audio_array) * self.resample_ratio)
+        # Convertir a float32 para librosa
+        audio_float = audio_array.astype(np.float32) / 32768.0
         
-        # Resamplear
-        resampled = signal.resample(audio_array, output_size)
+        # Resamplear con librosa (preserva espectro)
+        resampled = librosa.resample(audio_float, orig_sr=self.samplerate, target_sr=16000)
         
         # Convertir de vuelta a int16 y luego a bytes
-        resampled_int16 = np.int16(resampled)
+        resampled_int16 = np.int16(resampled * 32768.0)
         return resampled_int16.tobytes()
+
+    # def _resample_audio(self, audio_data):
+    #     """Convierte el audio de la frecuencia nativa a 16000Hz para Vosk."""
+    #     import numpy as np
+    #     from scipy import signal
+    #     
+    #     # Convertir bytes a array numpy
+    #     audio_array = np.frombuffer(audio_data, dtype=np.int16)
+    #     
+    #     # Calcular nuevo tamaño
+    #     output_size = int(len(audio_array) * self.resample_ratio)
+    #     
+    #     # Resamplear
+    #     resampled = signal.resample(audio_array, output_size)
+    #     
+    #     # Convertir de vuelta a int16 y luego a bytes
+    #     resampled_int16 = np.int16(resampled)
+    #     return resampled_int16.tobytes()
 
     def _callback(self, indata, frames, time, status):
         """Callback para procesar datos de audio."""
@@ -156,16 +184,19 @@ class SpeechListener:
         self.is_listening = True
         self.recognizer.Reset()  # Reiniciamos el reconocedor
         
+        # Buffer para guardar audio del wakeword
+        audio_buffer = []
+        
         try:
             # Iniciar nuevo stream de audio con buffer más grande
             self.current_stream = sd.InputStream(
                 samplerate=self.samplerate,
-                blocksize=self.blocksize,  # Tamaño de bloque aumentado
+                blocksize=self.blocksize,
                 device=self.device,
                 dtype='int16',
                 channels=1,
                 callback=self._callback,
-                latency='low'  # Cambiado de 'high' a 'low' para reducir buffer
+                latency='low'
             )
             
             self.current_stream.start()
@@ -176,35 +207,53 @@ class SpeechListener:
                     # Usar timeout para evitar bloqueos
                     data = self.q.get(timeout=0.5)
                     
+                    # Guardar datos en buffer para voice_id
+                    audio_buffer.append(data)
+                    # Mantener más audio para voice_id (12 chunks = ~6 segundos)
+                    if len(audio_buffer) > 20:
+                        audio_buffer.pop(0)
+                    
                     # Aplicar resampling si es necesario
-                    if self.do_resample:
-                        data = self._resample_audio(data)
-                        
-                    if self.recognizer.AcceptWaveform(data):
+                    processed_data = self._resample_audio(data) if self.do_resample else data
+                            
+                    if self.recognizer.AcceptWaveform(processed_data):
                         result = self.recognizer.Result()
                         text = json.loads(result)["text"].lower()
                         if text:
                             print(f"🗣️ Escuchado: {text}")
-
-                            # NUEVA COMPROBACIÓN DIFUSA
-                            from modules.wakeword import is_wakeword_match  # si ya lo tienes modular
-
+                            
+                            # Verificar wakeword
+                            from modules.wakeword import is_wakeword_match
                             if is_wakeword_match(text, wakewords, threshold=0.7):
                                 print("🔥 Wakeword detectada por coincidencia difusa")
+                                
+                                # 🆕 CAPTURAR AUDIO ADICIONAL INMEDIATAMENTE
+                                # Esperar un poco más para capturar el final de la palabra
+                                time.sleep(0.3)
+                                
+                                # Obtener chunks adicionales que pueden contener la voz
+                                while not self.q.empty():
+                                    try:
+                                        audio_buffer.append(self.q.get_nowait())
+                                    except queue.Empty:
+                                        break
+                                
+                                # Guardar audio del wakeword para voice_id
+                                self._save_wakeword_audio(audio_buffer)
+                                
                                 self._stop_stream()
                                 return text
                             else:
-                                print("❌ No coincide con ninguna wakeword (ni siquiera por aproximación)")
+                                print("❌ No coincide con ninguna wakeword")
                                 if on_failure:
                                     on_failure()
-
-                                # Nuevo: reproducir feedback de fallo
+                                
+                                # Feedback de fallo
                                 try:
-                                    sensory = SensoryFeedback(None, load_settings())  # No necesitamos LEDs aquí
+                                    sensory = SensoryFeedback(None, load_settings())
                                     sensory.wake_fail()
                                 except Exception as e:
                                     print(f"⚠️ Error en sensory feedback de fallo: {e}")
-
 
                 except queue.Empty:
                     continue
@@ -219,6 +268,73 @@ class SpeechListener:
             return self.listen_for_wakeword(wakewords)
             
         return ""
+
+    def _save_wakeword_audio(self, audio_buffer):
+        """Guarda el audio del wakeword para identificación de voz."""
+        try:
+            import os
+            import wave
+            
+            os.makedirs("temp", exist_ok=True)
+            
+            if not audio_buffer:
+                print("⚠️ No hay datos de audio para guardar")
+                self.last_audio_path = None
+                return
+            
+            # 🆕 OBTENER MÁS AUDIO (no solo el buffer pequeño)
+            # Intentar obtener datos adicionales de la cola
+            additional_data = []
+            attempts = 0
+            while attempts < 5 and not self.q.empty():
+                try:
+                    chunk = self.q.get_nowait()
+                    additional_data.append(chunk)
+                    attempts += 1
+                except queue.Empty:
+                    break
+            
+            # Combinar buffer original + datos adicionales
+            all_audio = audio_buffer + additional_data
+            
+            # Concatenar todos los chunks
+            audio_data = b"".join(all_audio)
+            
+            # 🔍 DEBUG - AHORA QUE audio_data ESTÁ DEFINIDO
+            import numpy as np
+            if audio_data:
+                audio_array = np.frombuffer(audio_data, dtype=np.int16)
+                rms = np.sqrt(np.mean(audio_array.astype(np.float32)**2))
+                print(f"🔍 DEBUG Wakeword RMS: {rms:.6f}")
+                print(f"🔍 DEBUG Wakeword samples: {len(audio_array)}")
+            
+            # 🆕 VERIFICAR QUE TENEMOS DATOS SUFICIENTES
+            if len(audio_data) < 3000:  # Menos de 0.5 segundos a 16kHz
+                print(f"⚠️ Audio muy corto: {len(audio_data)} bytes")
+                # No guardar si es muy corto
+                self.last_audio_path = None
+                return
+            
+            # Aplicar resampling si es necesario
+            if self.do_resample:
+                audio_data = self._resample_audio(audio_data)
+                sample_rate = 16000
+            else:
+                sample_rate = self.samplerate
+            
+            # Guardar como archivo WAV
+            self.last_audio_path = "temp/last_wakeword.wav"
+            with wave.open(self.last_audio_path, 'wb') as wf:
+                wf.setnchannels(1)
+                wf.setframerate(sample_rate)
+                wf.setsampwidth(2)
+                wf.writeframes(audio_data)
+            
+            print(f"💾 Audio del wakeword guardado: {self.last_audio_path} ({len(audio_data)} bytes)")
+            
+        except Exception as e:
+            print(f"❌ Error guardando audio del wakeword: {e}")
+            self.last_audio_path = None
     
     # =======================================================================
     # 2.4 RECONOCIMIENTO DE COMANDOS
@@ -344,6 +460,10 @@ class SpeechListener:
             # Limpieza final
             timer.cancel()
             self._stop_stream()
+
+        if result_text:  # Solo si hubo comando válido
+            self.last_audio_path = "temp/last_command.wav"
+            # El audio ya se procesa automáticamente en Vosk
             
         return result_text
 

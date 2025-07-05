@@ -98,7 +98,7 @@ Automatic personality modulation without conscious consent?
 
 - Physical embodiment with display — Emerging from the recycled metal of my pellet stove.  
 - Complete English translation — Because sarcasm belongs to no single language.  
-- Voice embeddings — Active user recognition (implemented, under validation).  
+- ~~Voice embeddings — Active user recognition (implemented, under validation).~~
 - **Web interface for Home Assistant** — For those who prefer clicking over summoning eldritch entities with a misaligned `:`.  
 - Whatever TARS decides on its own — Because at this point, who's controlling whom?
 
@@ -129,6 +129,7 @@ Automatic personality modulation without conscious consent?
 - [More Than a Smart Home Assistant](#-more-than-a-smart-home-assistant)
 - [Software Components](#-software-components)
 - [Audio Processing](#-audio-processing)
+- [voice_id: Speaker Identification by Voice](#-voice_id-speaker-identification-by-voice)
 - [Intelligence and Memory](#-intelligence-and-memory)
 - [Project Structure](#%EF%B8%8F-project-structure)
 - [Installation and Configuration](#-installation-and-configuration)
@@ -2115,6 +2116,90 @@ python3 scripts/generate_thinking_audio.py "Sometimes I wonder if my thoughts ar
 - `data/phrases/continuation_responses.json` - Continuation and connection phrases
 - `audios/phrases/thinking_responses/` - Output: `thinking_001.wav`, `thinking_002.wav`...
 - `audios/phrases/continuation_responses/` - Output: `continuation_001.wav`, `continuation_002.wav`...
+
+---
+
+## 📇 voice_id: Speaker Identification by Voice
+
+TARS can identify the user who activates the wakeword through the [voice_id.py](/core/voice_id.py) module, which uses Resemblyzer to generate a numerical voice representation (embedding) and compare it against locally stored profiles.
+
+What does `voice_id` do when it's active?
+
+- Detects who's speaking by comparing the sample with existing profiles
+- Loads preferences associated with that user
+- Enables personalized responses, behavior, and configuration based on the speaker
+- If the voice isn't recognized, assigns the default profile: `unknown_user`
+
+When `voice_id` is disabled (by configuration) or not installed:
+
+- TARS continues functioning normally
+- All users share a single global profile without individual distinction
+
+**Technical documentation:**
+
+📄 Complete system documentation: [VOICE_IDENTITY_SYSTEM_EN.md](/docs/VOICE_IDENTITY_SYSTEM_EN.md)
+📄 Acoustic preprocessing pipeline: [VOICE_AUDIO_PIPELINE_EN.md](/docs/VOICE_AUDIO_PIPELINE_EN.md)
+📄 Voice registration: [VOICE_REGISTRATION_EN.md](/docs/VOICE_REGISTRATION_EN.md)
+📄 Analysis and diagnostic tools: [VOICE_DIAGNOSTIC_EN.md](/docs/VOICE_DIAGNOSTIC_EN.md)  
+
+**Related tools:** In addition to the main identification module, TARS includes **auxiliary tools** for voice registration, device validation, quality analysis, and debugging complex issues:
+
+|Script|Brief description|
+|---|---|
+|[voice_registration_tool.py](/scripts/voice_registration_tool.py)|Interactive interface for registering new voices with technical recording guidance.|
+|[voice_id_debug.py](/scripts/voice_id_debug.py)|Identification system with debugging mode: low thresholds, detailed logs.|
+|[voice_id_console_test.py](/scripts/voice_id_console_test.py)|Quick script to test a sample against the database (console mode).|
+|[voice_diagnostic.py](/scripts/voice_diagnostic.py)|Analyzes a voice sample to detect noise, distortion, or cuts.|
+
+> 💡 These tools are not necessary for normal execution, but they **facilitate development, testing, and maintenance of the voice identity system**.
+
+### How long does TARS take with and without `voice_id`?
+
+📄 **Test session:** [session_2025-07-03_human_vs_tts_true-false_voice_id.log](/logs/session_2025-07-03_human_vs_tts_true-false_voice_id.log)
+
+**Comparison with response examples and measured times:**
+
+| Interaction                     | Phrase                                                            | Words | `voice_id` | Result                          | Duration | Details                                                        |
+| ------------------------------- | ----------------------------------------------------------------- | ----- | ---------- | ------------------------------- | -------- | -------------------------------------------------------------- |
+| Identified user                 | "Identified as BeskarBuilder. What do you need?"                 | 7     | ✅ Yes      | ✅ BeskarBuilder (0.88)          | ~6.89 s  | Full biometric analysis, match found, JSON response           |
+| Identified user (mouth covered) | "Hello BeskarBuilder, I'm listening"                             | 5     | ✅ Yes      | ✅ BeskarBuilder (0.84)          | ~5.15 s  | Full biometric analysis, match found, JSON response           |
+| Unknown user                    | "Unknown user detected. Maintaining protocol distance."          | 6     | ✅ Yes      | ❌ No match with any profile     | ~5.50 s  | Full biometric analysis, no match, JSON response              |
+| Unknown user                    | "Intruder detected. Activating defensive mode, maximum irony."   | 8     | ✅ Yes      | ❌ No match with any profile     | ~6.05 s  | Full biometric analysis, no match, JSON response              |
+| No identification               | "Yes, tell me."                                                   | 3     | ❌ No       | —                               | ~4.31 s  | No analysis, immediate response                                |
+
+🕒 **Note on timing:**  
+The seconds shown reflect the **complete interaction cycle**, from wakeword detection, through waiting for VOSK to confirm you've finished speaking, to TARS **completing its spoken response**.  
+**They don't represent inactivity**, but the entire process of detection, analysis, and response.
+
+**Flow:** wakeword → silence detected by VOSK → analysis (if enabled) → response generation and playback.
+
+### Conclusion
+
+- `voice_id` adds between **1.5 and 2.5 seconds** of analysis.
+- **Longer phrases** increase synthesis time.
+- Without `voice_id`, TARS responds in **3–4 seconds**, even with active effects.
+
+> ⚠️ **Practical advice:**  
+> Use short, direct phrases if you want a faster experience.
+
+### What happens when you speak?
+
+```python
+# 🧬 Audio fingerprint
+voice = encoder.embed_utterance(preprocessed_audio)
+# Comparison with local profiles
+for user, ref_vector in profile_db.items():
+    similarity = cosine_similarity(voice, ref_vector)
+```
+
+Your voice becomes a 256-dimensional vector.  
+The system relies on local analysis and its accuracy depends on sample quality and vocal consistency between sessions.
+
+📦 Requires `Resemblyzer`. Installation instructions in [INSTALL_EN.md](./INSTALL_EN.md#-install-resemblyzer-uses-pytorch-underneath)
+
+> **TARS-BSK incredulous:**  
+> _My creator describes this as if he'd trained a quantum model with interdimensional vocal DNA.  
+> Touching._
 
 ---
 
