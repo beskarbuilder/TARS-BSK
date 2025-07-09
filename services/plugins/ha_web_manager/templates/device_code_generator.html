@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<!-- ============================================================
+≡ MÓDULO DE REGISTRO DE ENTIDADES | device_code_generator.html ≡
+---------------------------------------------------------------
+INTERFAZ DE CATALOGACIÓN PARA CONCIENCIA DISTRIBUIDA
+
+Propósito:
+- Facilitar la incorporación de nuevas entidades al ecosistema TARS
+- Traducir especificaciones humanas en configuraciones comprensibles
+- Generar vínculos entre el mundo físico y la abstracción digital
+- Proporcionar validación preventiva contra la creatividad humana
+
+Funciones:
+- Modo Automático: Integración directa (recomendado para mi creador)
+- Modo Manual: Generación de código (para masoquistas técnicos)
+- Validación en tiempo real (porque la confianza debe ganarse)
+
+Nota:
+Este formulario fue diseñado tras analizar 41,392 errores humanos
+en configuraciones de dispositivos domóticos.
+La paciencia está incluida en el código fuente.
+
+[FORM VALIDATION MATRIX ENGAGED]
+[HUMAN ERROR PREDICTION ALGORITHMS ACTIVE]
+============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Dispositivo - TARS-BSK</title>
+    
+    <!-- Bootstrap Local -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- TARS-BSK Dark Theme Styles -->
+    <style>
+        /* ===== ROOT VARIABLES - Professional Color Palette ===== */
+        :root {
+            --bg-primary: #0d1117;           /* Main background - dark slate */
+            --bg-secondary: #161b22;         /* Secondary background - slightly lighter */
+            --bg-tertiary: #21262d;          /* Card/component background */
+            --bg-hover: #30363d;             /* Hover states */
+            
+            --border-primary: #30363d;       /* Main borders */
+            --border-subtle: #21262d;        /* Subtle borders */
+            
+            --text-primary: #f0f6fc;         /* Primary text - bright white */
+            --text-secondary: #8b949e;       /* Secondary text - muted gray */
+            --text-muted: #6e7681;           /* Muted text */
+            
+            --accent-blue: #58a6ff;          /* Primary accent - bright blue */
+            --accent-green: #3fb950;         /* Success states - vibrant green */
+            --accent-yellow: #f9c23c;        /* Warning states - warm yellow */
+            --accent-red: #f85149;           /* Error states - coral red */
+            --accent-purple: #a5a5ff;        /* Info states - soft purple */
+            
+            --shadow-elevated: 0 8px 24px rgba(1, 4, 9, 0.15);
+            --shadow-floating: 0 16px 32px rgba(1, 4, 9, 0.24);
+        }
+
+        /* ===== GLOBAL OVERRIDES ===== */
+        body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        }
+
+        /* Remove all border radius for clean, modern look */
+        * {
+            border-radius: 0 !important;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+            border-bottom: 1px solid var(--border-primary);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-brand {
+            font-weight: 500;
+            color: var(--text-primary) !important;
+            font-size: 1.1rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 400;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== CARDS & COMPONENTS ===== */
+        .card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .card-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            background-color: var(--bg-tertiary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        /* Fix for info card text visibility */
+        .card.bg-light {
+            background-color: var(--bg-secondary) !important;
+        }
+
+        .card.bg-light .card-body {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .card.bg-light h6,
+        .card.bg-light ul,
+        .card.bg-light li {
+            color: var(--text-primary) !important;
+        }
+
+        .bg-light {
+            background-color: var(--bg-primary) !important;
+        }
+
+        /* ===== BUTTONS - Minimal Monochrome Design ===== */
+        .btn {
+            font-weight: 400;
+            border-width: 1px;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+        }
+
+        /* Mode selection buttons keep their colors for clarity */
+        .btn-success {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            color: var(--bg-primary);
+            font-weight: 500;
+        }
+
+        .btn-success:hover {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            opacity: 0.9;
+        }
+
+        /* All other outline buttons use subtle grays */
+        .btn-outline-primary,
+        .btn-outline-warning,
+        .btn-outline-secondary {
+            color: var(--text-secondary);
+            border-color: var(--border-primary);
+            background-color: transparent;
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-warning:hover,
+        .btn-outline-secondary:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Only danger buttons get red color for critical actions */
+        .btn-outline-danger {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .btn-outline-danger:hover {
+            background-color: var(--accent-red);
+            border-color: var(--accent-red);
+            color: var(--bg-primary);
+        }
+
+        /* Primary action button */
+        .btn-primary {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: var(--bg-primary);
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            opacity: 0.9;
+        }
+
+        /* Special mode buttons */
+        .mode-automatic .btn-automatic {
+            background-color: var(--accent-green) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .mode-manual .btn-manual {
+            background-color: var(--accent-blue) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        /* ===== FORM CONTROLS ===== */
+        .form-control, .form-select {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== TEXTAREAS ESPECÍFICAS ===== */
+        textarea.form-control {
+            background-color: #2d3748 !important;
+            border: 1px solid #4a5568 !important;
+            color: #e2e8f0 !important;
+        }
+
+        textarea.form-control:focus {
+            background-color: #1a202c !important;
+            border-color: var(--accent-blue) !important;
+            color: #f7fafc !important;
+        }
+
+        textarea.form-control::placeholder {
+            color: #a0aec0 !important;
+        }
+
+        .form-floating > label {
+            color: var(--text-secondary) !important;
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: var(--accent-blue) !important;
+        }
+
+        .form-label {
+            color: var(--text-secondary) !important;
+            font-weight: 400;
+        }
+
+        .form-text {
+            color: var(--text-muted) !important;
+        }
+
+        /* ===== VALIDATION STATES ===== */
+        .validation-icon {
+            position: absolute;
+            right: 15px;
+            top: 18px !important;
+            z-index: 10;
+            pointer-events: none;
+            transform: none !important;
+        }
+        
+        .form-floating > .form-control {
+            padding-right: 3rem !important;
+        }
+
+        .form-control.is-invalid {
+            border-color: var(--accent-red) !important;
+            background-image: none !important;
+        }
+
+        .form-control.is-valid {
+            border-color: var(--accent-green) !important;
+            background-image: none !important;
+        }
+
+        .invalid-feedback {
+            color: var(--accent-red) !important;
+        }
+
+        /* ===== TAGS SYSTEM ===== */
+        .tag-container {
+            border: 1px solid var(--border-primary);
+            padding: 0.375rem 0.75rem;
+            min-height: 38px;
+            cursor: text;
+            background: var(--bg-secondary);
+        }
+
+        .tag-container:focus-within {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            padding: 0.25rem 0.5rem;
+            margin: 0.125rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag .remove {
+            margin-left: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tag .remove:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .location-suggestion {
+            color: var(--accent-blue);
+            cursor: pointer;
+            text-decoration: underline;
+            margin-right: 8px;
+            font-weight: 400;
+        }
+        
+        .location-suggestion:hover {
+            background: var(--bg-hover);
+            padding: 2px 4px;
+            color: var(--text-primary);
+        }
+
+        /* ===== ALERTS ===== */
+        .alert-success {
+            background-color: rgba(63, 185, 80, 0.15) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--accent-green) !important;
+        }
+
+        .alert-danger {
+            background-color: rgba(248, 81, 73, 0.15) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .alert-warning {
+            background-color: rgba(249, 194, 60, 0.15) !important;
+            border-color: var(--accent-yellow) !important;
+            color: var(--accent-yellow) !important;
+        }
+
+        .alert-info {
+            background-color: rgba(88, 166, 255, 0.15) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--accent-blue) !important;
+        }
+
+        .alert-light {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-primary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* ===== BADGES ===== */
+        .badge {
+            font-weight: 400;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        .bg-secondary {
+            background-color: var(--bg-hover) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .bg-success {
+            background-color: var(--accent-green) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--accent-blue) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        /* ===== TABS ===== */
+        .nav-tabs {
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .nav-tabs .nav-link {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: var(--border-primary);
+            background-color: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: var(--bg-tertiary);
+            border-color: var(--border-primary) var(--border-primary) var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .tab-content {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-top: none;
+        }
+
+        /* ===== CODE OUTPUT ===== */
+        .code-output {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border-primary);
+            padding: 1rem;
+        }
+
+        /* ===== MODALS ===== */
+        .modal-content {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            box-shadow: var(--shadow-floating);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* ===== LOADING STATES ===== */
+        .spinner-border {
+            color: var(--accent-blue) !important;
+        }
+
+        /* ===== TOAST NOTIFICATIONS ===== */
+        .toast {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .toast-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--bg-secondary) !important;
+            border-top: 1px solid var(--border-primary) !important;
+        }
+
+        footer .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        footer a {
+            color: var(--accent-blue) !important;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== ENTITY BROWSER STYLES ===== */
+        #entitiesList > div {
+            cursor: pointer;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-primary);
+            transition: background-color 0.15s ease;
+        }
+
+        #entitiesList > div:hover {
+            background-color: var(--bg-hover);
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 1rem 0.75rem !important;
+            }
+            
+            .btn-group .btn {
+                font-size: 0.8rem;
+                padding: 0.375rem 0.5rem;
+            }
+
+            /* Better mobile button spacing */
+            .d-flex.gap-2 > * {
+                margin-bottom: 0.5rem;
+            }
+
+            .btn-mode {
+                min-height: 70px;
+                margin: 0;
+            }
+        }
+
+        /* ===== BUTTON LAYOUT FIXES ===== */
+        .btn-mode {
+            margin: 0;
+            min-width: 200px;
+            white-space: nowrap;
+        }
+
+        .btn-mode small {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* ===== UTILITY OVERRIDES ===== */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .text-success {
+            color: var(--accent-green) !important;
+        }
+
+        .text-danger {
+            color: var(--accent-red) !important;
+        }
+
+        .text-warning {
+            color: var(--accent-yellow) !important;
+        }
+
+        .text-primary {
+            color: var(--accent-blue) !important;
+        }
+
+        .border-top {
+            border-color: var(--border-primary) !important;
+        }
+
+        /* ===== SPACING AND LAYOUT FIXES ===== */
+        
+        /* Progress and status text weight adjustments */
+        #progressText {
+            font-weight: 400;
+        }
+
+        .card-title {
+            font-weight: 500;
+        }
+
+        /* Form labels and help text */
+        .form-text strong {
+            font-weight: 500;
+        }
+
+        /* Alert content */
+        .alert strong {
+            font-weight: 500;
+        }
+
+        /* Gap utilities for better spacing */
+        .gap-2 > * + * {
+            margin-left: 0 !important;
+        }
+
+        .gap-3 > * + * {
+            margin-left: 0 !important;
+        }
+
+        /* ===== ACCORDION STYLES ===== */
+        .accordion-item {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+        }
+
+        .accordion-header .accordion-button {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+        }
+
+        .accordion-header .accordion-button:not(.collapsed) {
+            background-color: var(--bg-hover) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .accordion-header .accordion-button:focus {
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+
+        .accordion-body {
+            background-color: var(--bg-tertiary) !important;
+            color: var(--text-primary) !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-plus-circle"></i> <span id="navTitle">Añadir Dispositivo</span>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-arrow-left"></i> Volver al Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <!-- Mode Selection Card -->
+                <div class="card mb-4" id="modeSelector">
+                    <div class="card-body text-center py-4">
+                        <h5 class="card-title mb-4">¿Cómo quieres añadir el dispositivo?</h5>
+                        <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                            <button type="button" class="btn btn-success btn-mode btn-automatic px-4 py-3" onclick="setMode('automatic')">
+                                <i class="bi bi-magic me-2"></i>Automático (Recomendado)
+                                <br><small class="mt-1 d-block">Se añade directamente al sistema</small>
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-mode btn-manual px-4 py-3" onclick="setMode('manual')">
+                                <i class="bi bi-code-square me-2"></i>Manual (Avanzado)
+                                <br><small class="mt-1 d-block">Generar código para copiar/pegar</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Form Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0" id="formTitle">Configuración del Dispositivo</h6>
+                                <small class="text-muted" id="formSubtitle">Completa los campos para añadir el dispositivo</small>
+                            </div>
+                            <div>
+                                <span id="progressText" class="badge bg-secondary">0/4 campos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Left Column: Basic Configuration -->
+                            <div class="col-lg-6">
+                                <h6 class="text-primary mb-3"><i class="bi bi-gear-fill"></i> Configuración Básica</h6>
+                                
+                                <form id="deviceForm">
+                                    <!-- Device Name Input -->
+                                    <div class="form-floating mb-3 position-relative">
+                                        <input type="text" 
+                                               class="form-control" 
+                                               id="deviceName" 
+                                               placeholder="Nombre del dispositivo"
+                                               required
+                                               oninput="validateForm()">
+                                        <label for="deviceName">Nombre del dispositivo *</label>
+                                        <div class="validation-icon"></div>
+                                        <div class="invalid-feedback"></div>
+                                        <div class="form-text">Ej: luz cocina, cafetera, alarma principal</div>
+                                    </div>
+
+                                    <!-- Entity ID with Search -->
+                                    <div class="row mb-3">
+                                        <div class="col-9">
+                                            <div class="form-floating position-relative">
+                                                <input type="text" 
+                                                       class="form-control" 
+                                                       id="entityId" 
+                                                       placeholder="Entity ID"
+                                                       required
+                                                       oninput="validateForm()">
+                                                <label for="entityId">Entity ID *</label>
+                                                <div class="validation-icon"></div>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="button" 
+                                                    class="btn btn-outline-primary h-100 w-100" 
+                                                    onclick="showEntityBrowser()"
+                                                    title="Buscar entities en Home Assistant">
+                                                <i class="bi bi-search"></i>
+                                                <span class="d-none d-lg-inline"> Buscar</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-text mb-3">Formato: domain.entity_name (ej: light.lampara_salon)</div>
+
+                                    <!-- Device Type Selection -->
+                                    <div class="mb-3">
+                                        <label for="deviceType" class="form-label">Tipo de dispositivo *</label>
+                                        <select class="form-select" id="deviceType" required onchange="handleTypeChange()">
+                                            <option value="">Seleccionar tipo...</option>
+                                            <option value="light">Light - Luces</option>
+                                            <option value="switch">Switch - Interruptores/Enchufes</option>
+                                            <option value="sensor">Sensor - Sensores de datos</option>
+                                            <option value="binary_sensor">Binary Sensor - Sensores on/off</option>
+                                            <option value="cover">Cover - Persianas/Cortinas</option>
+                                            <option value="fan">Fan - Ventiladores</option>
+                                            <option value="climate">Climate - Climatización</option>
+                                            <option value="media_player">Media Player</option>
+                                            <option value="vacuum">Vacuum - Aspiradoras robot</option>
+                                            <option value="lock">Lock - Cerraduras</option>
+                                            <option value="alarm_control_panel">Alarm Panel</option>
+                                            <option value="camera">Camera</option>
+                                            <option value="scene">Scene</option>
+                                            <option value="script">Script</option>
+                                            <option value="automation">Automation</option>
+                                            <option value="custom">Escribir tipo personalizado</option>
+                                        </select>
+                                        
+                                        <!-- Custom Type Input -->
+                                        <input type="text" 
+                                               class="form-control mt-2" 
+                                               id="customType" 
+                                               placeholder="Escribe el tipo personalizado..."
+                                               style="display: none;"
+                                               oninput="validateForm()">
+                                        
+                                        <div class="form-text">Si tu dispositivo no está en la lista, selecciona "Escribir tipo personalizado"</div>
+                                    </div>
+
+                                    <!-- Location Tags -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Ubicación *</label>
+                                        <div class="tag-container" onclick="focusLocationInput()">
+                                            <div id="locationTags"></div>
+                                            <input type="text" 
+                                                   id="locationInput" 
+                                                   style="border: none; outline: none; min-width: 150px; background: transparent; color: inherit;"
+                                                   placeholder="Escribir ubicación y Enter..."
+                                                   onkeydown="handleLocationInput(event)"
+                                                   onblur="handleLocationBlur()">
+                                        </div>
+                                        <div class="form-text">
+                                            <span class="fw-normal">Sugerencias:</span>
+                                            <span class="location-suggestion" onclick="addLocation('salón')">salón</span>
+                                            <span class="location-suggestion" onclick="addLocation('cocina')">cocina</span>
+                                            <span class="location-suggestion" onclick="addLocation('dormitorio')">dormitorio</span>
+                                            <span class="location-suggestion" onclick="addLocation('baño')">baño</span>
+                                            <span class="location-suggestion" onclick="addLocation('pasillo')">pasillo</span>
+                                            <span class="location-suggestion" onclick="addLocation('estudio')">estudio</span>
+                                            <span class="location-suggestion" onclick="addLocation('exterior')">exterior</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Aliases Tags -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Aliases (opcional)</label>
+                                        <div class="tag-container" onclick="focusAliasInput()">
+                                            <div id="aliasesTags"></div>
+                                            <input type="text" 
+                                                   id="aliasesInput" 
+                                                   style="border: none; outline: none; min-width: 150px; background: transparent; color: inherit;"
+                                                   placeholder="Escribir alias y Enter..."
+                                                   onkeydown="handleAliasInput(event)"
+                                                   onblur="handleAliasBlur()">
+                                        </div>
+                                        <div class="form-text">Nombres alternativos para el dispositivo. Escribe y presiona Enter o coma.</div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Right Column: Advanced Configuration -->
+                            <div class="col-lg-6">
+                                <h6 class="text-warning mb-3"><i class="bi bi-sliders"></i> Configuración Avanzada</h6>
+                                
+                                <!-- Advanced Settings Accordion -->
+                                <div class="accordion mb-3" id="advancedSettings">
+                                    <!-- Spanish Grammar Section -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="grammarHeader">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#grammarCollapse" aria-expanded="false" aria-controls="grammarCollapse">
+                                                <i class="bi bi-translate me-2"></i> Gramática
+                                            </button>
+                                        </h2>
+                                        <div id="grammarCollapse" class="accordion-collapse collapse" aria-labelledby="grammarHeader" data-bs-parent="#advancedSettings">
+                                            <div class="accordion-body">
+                                                <!-- Friendly Name as Tags -->
+                                                <div class="mb-3">
+                                                    <label class="form-label">Nombre Amigable</label>
+                                                    <div class="tag-container" onclick="focusFriendlyInput()">
+                                                        <div id="friendlyNameTags"></div>
+                                                        <input type="text" 
+                                                               id="friendlyNameInput" 
+                                                               style="border: none; outline: none; min-width: 150px; background: transparent; color: inherit;"
+                                                               placeholder="Escribir nombre y Enter..."
+                                                               onkeydown="handleFriendlyNameInput(event)"
+                                                               onblur="handleFriendlyNameBlur()">
+                                                    </div>
+                                                    <div class="form-text">
+                                                        <span class="fw-normal">Lo que TARS dirá al responder:</span>
+                                                        <span class="location-suggestion" onclick="addFriendlyName('luz del salón')">luz del salón</span>
+                                                        <span class="location-suggestion" onclick="addFriendlyName('interruptor del salón')">interruptor del salón</span>
+                                                        <span class="location-suggestion" onclick="addFriendlyName('pasillo de arriba')">pasillo de arriba</span>
+                                                        <span class="location-suggestion" onclick="addFriendlyName('cafetera')">cafetera</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Article Selection -->
+                                                <div class="mb-3">
+                                                    <label for="deviceArticle" class="form-label">Artículo gramatical</label>
+                                                    <select class="form-select" id="deviceArticle" onchange="validateForm()">
+                                                        <option value="">Auto-detectar</option>
+                                                        <option value="del">del (masculino singular)</option>
+                                                        <option value="de la">de la (femenino singular)</option>
+                                                        <option value="de los">de los (masculino plural)</option>
+                                                        <option value="de las">de las (femenino plural)</option>
+                                                    </select>
+                                                    <div class="form-text">Para construir frases como "enciende la luz <strong>del</strong> salón"</div>
+                                                </div>
+
+                                                <!-- Gender Selection -->
+                                                <div class="mb-3">
+                                                    <label for="deviceGender" class="form-label">Género gramatical</label>
+                                                    <select class="form-select" id="deviceGender" onchange="validateForm()">
+                                                        <option value="">Auto-detectar</option>
+                                                        <option value="masc">Masculino</option>
+                                                        <option value="fem">Femenino</option>
+                                                    </select>
+                                                    <div class="form-text">Para concordancia en las respuestas de TARS</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Special Responses Section -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="responsesHeader">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#responsesCollapse" aria-expanded="false" aria-controls="responsesCollapse">
+                                                <i class="bi bi-chat-quote me-2"></i> Respuestas Personalizadas
+                                            </button>
+                                        </h2>
+                                        <div id="responsesCollapse" class="accordion-collapse collapse" aria-labelledby="responsesHeader" data-bs-parent="#advancedSettings">
+                                            <div class="accordion-body">
+                                                <div class="alert alert-info">
+                                                    <i class="bi bi-info-circle"></i> 
+                                                    <strong>Para dispositivos especiales</strong><br>
+                                                    Define respuestas personalizadas que TARS dirá al controlar este dispositivo.
+                                                </div>
+
+                                                <!-- On Responses -->
+                                                <div class="mb-3">
+                                                    <label for="onResponses" class="form-label">Respuestas al encender</label>
+                                                    <textarea class="form-control" 
+                                                              id="onResponses" 
+                                                              rows="3"
+                                                              placeholder='Una respuesta por línea. Ej:
+He encendido la cafetera. Café en camino.
+Cafetera activada.
+¡Preparando el combustible!'
+                                                              oninput="validateForm()"></textarea>
+                                                    <div class="form-text">Una respuesta por línea. TARS elegirá una aleatoriamente.</div>
+                                                </div>
+
+                                                <!-- Off Responses -->
+                                                <div class="mb-3">
+                                                    <label for="offResponses" class="form-label">Respuestas al apagar</label>
+                                                    <textarea class="form-control" 
+                                                              id="offResponses" 
+                                                              rows="3"
+                                                              placeholder='Una respuesta por línea. Ej:
+He apagado la cafetera.
+Cafetera desactivada.
+¡Ahorro de energía activado!'
+                                                              oninput="validateForm()"></textarea>
+                                                    <div class="form-text">Una respuesta por línea. TARS elegirá una aleatoriamente.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Dynamic Content Area -->
+                                <div id="rightColumn">
+                                    <!-- Automatic Mode -->
+                                    <div id="automaticMode">
+                                        <!-- Entity Test Card -->
+                                        <div class="alert alert-warning" id="entityTestCard" style="display: none;">
+                                            <h6><i class="bi bi-lightning"></i> Validando Entity ID</h6>
+                                            <div id="entityTestResult"></div>
+                                        </div>
+
+                                        <!-- Information Card -->
+                                        <div class="card bg-light">
+                                            <div class="card-body">
+                                                <h6><i class="bi bi-info-circle"></i> <span id="infoTitle">¿Qué pasará?</span></h6>
+                                                <ul class="mb-0" id="infoList">
+                                                    <li>Se añadirá automáticamente al JSON de dispositivos</li>
+                                                    <li>Se creará un backup por seguridad</li>
+                                                    <li>Estará disponible inmediatamente en TARS</li>
+                                                    <li>Podrás usar comandos de voz al instante</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!-- Device Preview -->
+                                        <div class="card mt-3" id="devicePreview" style="display: none;">
+                                            <div class="card-body">
+                                                <h6><i class="bi bi-eye"></i> Vista previa</h6>
+                                                <div id="previewContent"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Manual Mode -->
+                                    <div id="manualMode" style="display: none;">
+                                        <!-- Code Tabs -->
+                                        <ul class="nav nav-tabs" id="codeTab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="python-tab" data-bs-toggle="tab" data-bs-target="#python" type="button" role="tab">
+                                                    <i class="bi bi-file-code"></i> Código Python
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions" type="button" role="tab">
+                                                    <i class="bi bi-info-circle"></i> Instrucciones
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="commands-tab" data-bs-toggle="tab" data-bs-target="#commands" type="button" role="tab">
+                                                    <i class="bi bi-chat-square-text"></i> Comandos de Voz
+                                                </button>
+                                            </li>
+                                        </ul>
+                                        
+                                        <div class="tab-content border border-top-0" id="codeTabContent">
+                                            <!-- Python Tab -->
+                                            <div class="tab-pane fade show active p-3" id="python" role="tabpanel">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <small class="text-muted">Para DEVICE_MASTER_CONFIG en homeassistant_plugin.py:</small>
+                                                    <button class="btn btn-outline-primary btn-sm" onclick="copyCode('pythonCode')">
+                                                        <i class="bi bi-clipboard"></i> Copiar Código
+                                                    </button>
+                                                </div>
+                                                <pre class="code-output" id="pythonCode"># Completa todos los campos para generar código</pre>
+                                            </div>
+                                            
+                                            <!-- Instructions Tab -->
+                                            <div class="tab-pane fade p-3" id="instructions" role="tabpanel">
+                                                <div id="instructionsContent">
+                                                    <h6><i class="bi bi-info-circle"></i> Instrucciones</h6>
+                                                    <p class="text-muted">Completa el formulario para ver las instrucciones.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Voice Commands Tab -->
+                                            <div class="tab-pane fade p-3" id="commands" role="tabpanel">
+                                                <div id="commandsContent">
+                                                    <h6><i class="bi bi-chat-square-text"></i> Comandos que funcionarán</h6>
+                                                    <p class="text-muted">Completa el formulario para ver los comandos de voz.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons Section -->
+                        <div class="text-center mt-4">
+                            <div class="alert alert-light" id="statusAlert">
+                                <i class="bi bi-info-circle text-muted"></i> 
+                                <span id="statusMessage">Completa todos los campos</span>
+                            </div>
+                            
+                            <!-- Main Action Buttons -->
+                            <div id="automaticButtons" class="mb-3">
+                                <div class="d-flex flex-column flex-md-row justify-content-center gap-2 mb-3">
+                                    <button type="button" 
+                                            class="btn btn-outline-primary" 
+                                            id="testEntityBtn" 
+                                            onclick="testEntityId()" 
+                                            disabled>
+                                        <i class="bi bi-check-circle"></i> Verificar Entity en HA
+                                    </button>
+                                    
+                                    <button type="button" 
+                                            class="btn btn-success" 
+                                            id="addDeviceBtn" 
+                                            onclick="addDeviceAutomatic()"  
+                                            disabled>
+                                        <i class="bi bi-plus-circle"></i> <span id="btnText">Añadir Dispositivo</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Manual Mode Buttons -->
+                            <div id="manualButtons" style="display: none;" class="mb-3">
+                                <button type="button" 
+                                        class="btn btn-primary btn-lg" 
+                                        id="generateCodeBtn" 
+                                        onclick="generateManualCode()" 
+                                        disabled>
+                                    <i class="bi bi-code-square"></i> Generar Código
+                                </button>
+                            </div>
+                            
+                            <!-- Secondary Action Buttons -->
+                            <div class="d-flex flex-column flex-md-row justify-content-center gap-2">
+                                <button type="button" 
+                                        class="btn btn-outline-warning" 
+                                        onclick="clearFormCompletely()">
+                                    <i class="bi bi-eraser"></i> Limpiar Formulario
+                                </button>
+
+                                <button type="button" 
+                                        class="btn btn-outline-secondary" 
+                                        onclick="cancelAndGoBack()">
+                                    <i class="bi bi-x-circle"></i> Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entity Browser Modal -->
+    <div class="modal fade" id="entityBrowserModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Buscar Entity en Home Assistant</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <select class="form-select" id="domainFilter" onchange="filterEntities()">
+                                <option value="">Todos los dominios</option>
+                                <option value="light">light</option>
+                                <option value="switch">switch</option>
+                                <option value="sensor">sensor</option>
+                                <option value="binary_sensor">binary_sensor</option>
+                                <option value="alarm_control_panel">alarm_control_panel</option>
+                                <option value="cover">cover</option>
+                                <option value="fan">fan</option>
+                                <option value="climate">climate</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="entitySearchInput" 
+                                   placeholder="Buscar..." onkeyup="filterEntities()">
+                        </div>
+                    </div>
+                    
+                    <div style="max-height: 300px; overflow-y: auto;" id="entitiesList">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Universal Confirmation Modal (usado para cancelar Y limpiar) -->
+    <div class="modal fade" id="cancelModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                        <i class="bi bi-question-circle text-warning"></i>
+                        <span id="cancelModalTitle">Confirmar Acción</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-2" id="cancelModalMessage">¿Estás seguro de que quieres realizar esta acción?</p>
+                    <div class="alert alert-warning mb-3">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <span id="cancelModalWarning">Esta acción no se puede deshacer.</span>
+                    </div>
+                    <p class="text-muted small mb-0" id="cancelModalHint">
+                        <i class="bi bi-info-circle"></i>
+                        Puedes continuar editando si cambias de opinión.
+                    </p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-arrow-left"></i> <span id="cancelModalBack">Continuar editando</span>
+                    </button>
+                    <button type="button" class="btn btn-warning" id="confirmCancelBtn">
+                        <span id="confirmCancelText">Confirmar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert">
+            <div class="toast-header">
+                <span class="me-auto fw-normal">TARS</span>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Core Application JavaScript -->
+    <script>
+        // Global variables
+        let availableEntities = [];
+        let locationTags = [];
+        let aliasesTags = [];
+        let friendlyNameTags = [];
+        let currentMode = 'automatic';
+        let isEditMode = false;
+        let originalDeviceName = '';
+        let formState = {
+            name: false,
+            entity_id: false,
+            type: false,
+            location: false
+        };
+
+        // ===== MODE MANAGEMENT FUNCTIONS =====
+        
+        /**
+         * Set the application mode (automatic or manual)
+         * @param {string} mode - Either 'automatic' or 'manual'
+         */
+        function setMode(mode) {
+            currentMode = mode;
+            
+            // Update body class for styling
+            document.body.className = `bg-light mode-${mode}`;
+            
+            // Show/hide appropriate content sections
+            if (mode === 'automatic') {
+                document.getElementById('automaticMode').style.display = 'block';
+                document.getElementById('manualMode').style.display = 'none';
+                document.getElementById('automaticButtons').style.display = 'block';
+                document.getElementById('manualButtons').style.display = 'none';
+                
+                if (!isEditMode) {
+                    document.getElementById('formTitle').textContent = 'Añadir Dispositivo Automáticamente';
+                    document.getElementById('formSubtitle').textContent = 'El dispositivo se añadirá directamente al sistema';
+                }
+            } else {
+                document.getElementById('automaticMode').style.display = 'none';
+                document.getElementById('manualMode').style.display = 'block';
+                document.getElementById('automaticButtons').style.display = 'none';
+                document.getElementById('manualButtons').style.display = 'block';
+                
+                document.getElementById('formTitle').textContent = 'Generar Código Manual';
+                document.getElementById('formSubtitle').textContent = 'Se generará código para copiar y pegar manualmente';
+            }
+            
+            validateForm();
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        
+        /**
+         * Display toast notification with specified message and type
+         * @param {string} message - The message to display
+         * @param {string} type - Type of notification (info, success, error)
+         */
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            const body = toast.querySelector('.toast-body');
+            
+            body.textContent = message;
+            
+            toast.className = `toast ${type === 'success' ? 'bg-success text-white' : 
+                                      type === 'error' ? 'bg-danger text-white' : 
+                                      'bg-info text-white'}`;
+            
+            new bootstrap.Toast(toast).show();
+        }
+
+        /**
+         * Update progress indicator based on completed form fields
+         */
+        function updateProgress() {
+            const completed = Object.values(formState).filter(v => v).length;
+            const total = Object.keys(formState).length;
+            
+            document.getElementById('progressText').textContent = `${completed}/${total} campos`;
+            document.getElementById('progressText').className = 
+                completed === total ? 'badge bg-success' : 'badge bg-secondary';
+            
+            // Update buttons based on current mode
+            if (currentMode === 'automatic') {
+                const testBtn = document.getElementById('testEntityBtn');
+                const addBtn = document.getElementById('addDeviceBtn');
+                
+                if (completed === total) {
+                    testBtn.disabled = false;
+                    addBtn.disabled = false;
+                    const message = isEditMode ? '¡Listo! Puedes actualizar el dispositivo' : '¡Listo! Puedes añadir el dispositivo';
+                    document.getElementById('statusMessage').textContent = message;
+                    document.getElementById('statusAlert').className = 'alert alert-success';
+                } else {
+                    testBtn.disabled = true;
+                    addBtn.disabled = true;
+                    document.getElementById('statusMessage').textContent = `Faltan ${total - completed} campos por completar`;
+                    document.getElementById('statusAlert').className = 'alert alert-light';
+                }
+            } else {
+                const generateBtn = document.getElementById('generateCodeBtn');
+                generateBtn.disabled = completed !== total;
+            }
+        }
+
+        // ===== FORM VALIDATION FUNCTIONS =====
+        
+        /**
+         * Validate all form fields and update UI accordingly
+         */
+        function validateForm() {
+            const name = document.getElementById('deviceName').value.trim().toLowerCase();
+            const entityId = document.getElementById('entityId').value.trim();
+            const typeSelect = document.getElementById('deviceType').value;
+            const customType = document.getElementById('customType').value.trim();
+            
+            const type = typeSelect === 'custom' ? customType : typeSelect;
+            
+            formState.name = name.length >= 2;
+            formState.entity_id = entityId.length > 0 && entityId.includes('.');
+            formState.type = !!type;
+            formState.location = locationTags.length > 0;
+            
+            updateValidationIcon('deviceName', formState.name);
+            updateValidationIcon('entityId', formState.entity_id);
+            
+            // Clear duplicate errors when user types
+            clearValidationErrors();
+            
+            updateProgress();
+            
+            if (currentMode === 'automatic') {
+                updateDevicePreview();
+            } else {
+                generateCode();
+            }
+        }
+
+        /**
+         * Update validation icon for a specific field
+         * @param {string} fieldId - ID of the form field
+         * @param {boolean} isValid - Whether the field is valid
+         */
+        function updateValidationIcon(fieldId, isValid) {
+            const field = document.getElementById(fieldId);
+            const icon = field.parentElement.querySelector('.validation-icon');
+            
+            // Clear previous classes only if not duplicate error
+            if (!field.classList.contains('is-invalid')) {
+                field.classList.remove('is-valid');
+            }
+            
+            if (field.value.trim()) {
+                // Only add is-valid if no duplicate error
+                if (isValid && !field.classList.contains('is-invalid')) {
+                    field.classList.add('is-valid');
+                    icon.innerHTML = '<i class="bi bi-check-circle text-success"></i>';
+                } else if (!isValid && !field.classList.contains('is-invalid')) {
+                    // Only show format error if no duplicate error
+                    icon.innerHTML = '<i class="bi bi-x-circle text-danger"></i>';
+                }
+                // If has is-invalid (duplicate), don't touch icon
+            } else {
+                icon.innerHTML = '';
+            }
+        }
+
+        /**
+         * Clear validation error states (for duplicates)
+         */
+        function clearValidationErrors() {
+            // Only clear duplicate errors, maintain normal validation
+            const nameField = document.getElementById('deviceName');
+            const entityField = document.getElementById('entityId');
+            
+            // If they have is-invalid due to duplicates, remove it
+            if (nameField.classList.contains('is-invalid')) {
+                nameField.classList.remove('is-invalid');
+            }
+            if (entityField.classList.contains('is-invalid')) {
+                entityField.classList.remove('is-invalid');
+            }
+            
+            // Reset statusAlert if in error state
+            const statusAlert = document.getElementById('statusAlert');
+            if (statusAlert.classList.contains('alert-danger')) {
+                statusAlert.className = 'alert alert-light';
+                const completed = Object.values(formState).filter(v => v).length;
+                const total = Object.keys(formState).length;
+                
+                if (completed === total) {
+                    document.getElementById('statusMessage').textContent = '¡Listo! Puedes añadir el dispositivo';
+                    statusAlert.className = 'alert alert-success';
+                } else {
+                    document.getElementById('statusMessage').textContent = `Faltan ${total - completed} campos por completar`;
+                }
+            }
+        }
+
+        /**
+         * Clear all validation states completely
+         */
+        function clearAllValidationStates() {
+            // Clear duplicate errors
+            document.getElementById('deviceName').classList.remove('is-invalid', 'is-valid');
+            document.getElementById('entityId').classList.remove('is-invalid', 'is-valid');
+            
+            // Clear validation icons
+            document.querySelector('#deviceName + label + .validation-icon').innerHTML = '';
+            document.querySelector('#entityId + label + .validation-icon').innerHTML = '';
+            
+            // Clear feedback messages
+            const feedbacks = document.querySelectorAll('.invalid-feedback');
+            feedbacks.forEach(feedback => feedback.textContent = '');
+        }
+
+        // ===== DEVICE PREVIEW FUNCTIONS =====
+        
+        /**
+         * Update device preview in automatic mode with REAL TARS commands
+         */
+        function updateDevicePreview() {
+            const name = document.getElementById('deviceName').value.trim().toLowerCase();
+            const entityId = document.getElementById('entityId').value.trim();
+            const type = getCurrentType();
+            const location = locationTags.length > 0 ? locationTags[0] : '';
+            
+            if (!name || !entityId || !type || !location) {
+                document.getElementById('devicePreview').style.display = 'none';
+                return;
+            }
+
+            // Get advanced configuration values
+            const friendlyName = friendlyNameTags.length > 0 ? friendlyNameTags[0] : getAutoFriendlyName(name, type, location);
+            const article = document.getElementById('deviceArticle').value || getAutoArticle(location);
+            const gender = document.getElementById('deviceGender').value || getAutoGender(type, location);
+
+            // Generate REAL TARS commands based on configuration
+            const baseCommands = [
+                `"enciende ${name}"`,
+                `"apaga ${name}"`,
+                `"enciende ${friendlyName}"`,
+                `"apaga ${friendlyName}"`
+            ];
+
+            // Add alias commands
+            const aliasCommands = aliasesTags.flatMap(alias => [
+                `"enciende ${alias}"`,
+                `"apaga ${alias}"`
+            ]);
+
+            // Combine all commands
+            const allCommands = [...baseCommands, ...aliasCommands];
+
+            // Generate TARS responses preview
+            const tarsResponses = [
+                `"He encendido ${gender === 'masc' ? 'el' : 'la'} ${friendlyName}."`,
+                `"He apagado ${gender === 'masc' ? 'el' : 'la'} ${friendlyName}."`,
+                `"${friendlyName} ${gender === 'masc' ? 'encendido' : 'encendida'}."`,
+                `"${friendlyName} ${gender === 'masc' ? 'apagado' : 'apagada'}."`
+            ];
+
+            document.getElementById('previewContent').innerHTML = `
+                <div class="mb-3">
+                    <span class="fw-normal">Nombre interno:</span> ${name}<br>
+                    <span class="fw-normal">Entity ID:</span> <code>${entityId}</code><br>
+                    <span class="fw-normal">Tipo:</span> ${type}<br>
+                    <span class="fw-normal">Ubicación:</span> ${location}<br>
+                    <span class="fw-normal">Nombre amigable:</span> <strong>${friendlyName}</strong><br>
+                    <span class="fw-normal">Artículo:</span> ${article}<br>
+                    <span class="fw-normal">Género:</span> ${gender}
+                </div>
+                
+                <div class="alert alert-warning mb-2" style="background-color: rgba(12, 58, 160, 0.2) !important; border-color: var(--accent-blue) !important; color: var(--accent-blue) !important;">
+                    <span class="fw-normal">Comandos que funcionarán:</span><br>
+                    ${allCommands.slice(0, 6).map(cmd => `<code style="background-color: var(--bg-secondary); color: var(--text-primary); padding: 2px 4px;">${cmd}</code>`).join('<br>')}
+                    ${allCommands.length > 6 ? '<br><em>+ más comandos...</em>' : ''}
+                </div>
+
+                <div class="alert alert-info mb-0" style="background-color: rgba(12, 58, 160, 0.2) !important; border-color: var(--accent-blue) !important; color: var(--accent-blue) !important;">
+                    <span class="fw-normal">Lo que dirá TARS:</span><br>
+                    ${tarsResponses.slice(0, 3).map(resp => `<code style="background-color: var(--bg-secondary); color: var(--text-primary); padding: 2px 4px;">${resp}</code>`).join('<br>')}
+                    <br><em>+ variaciones automáticas</em>
+                </div>
+            `;
+            
+            document.getElementById('devicePreview').style.display = 'block';
+        }
+
+        /**
+         * Auto-generate friendly name based on type and location
+         */
+        function getAutoFriendlyName(name, type, location) {
+            const article = getAutoArticle(location);
+            if (type === 'light') {
+                return `luz ${article} ${location}`;
+            } else if (type === 'switch') {
+                return `interruptor ${article} ${location}`;
+            } else {
+                return `${name} ${article} ${location}`;
+            }
+        }
+
+        /**
+         * Auto-detect article based on location
+         */
+        function getAutoArticle(location) {
+            return location.endsWith('a') || location.endsWith('ción') || location.endsWith('dad') ? 'de la' : 'del';
+        }
+
+        /**
+         * Auto-detect gender based on type and location
+         */
+        function getAutoGender(type, location) {
+            return (type === 'light' || location.endsWith('a') || location.endsWith('ción') || location.endsWith('dad')) ? 'fem' : 'masc';
+        }
+
+        /**
+         * Check if device already exists (name or entity_id)
+         * @param {string} deviceName - Name of the device
+         * @param {string} entityId - Entity ID of the device
+         * @returns {Object} Result of duplicate check
+         */
+        async function checkIfDeviceExists(deviceName, entityId) {
+            try {
+                const response = await fetch('/api/devices');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const devices = result.devices;
+                    
+                    // Check by name
+                    if (devices[deviceName.toLowerCase()]) {
+                        return {
+                            exists: true,
+                            type: 'name',
+                            message: `Ya existe un dispositivo con el nombre "${deviceName}"`
+                        };
+                    }
+                    
+                    // Check by entity_id
+                    for (const [name, config] of Object.entries(devices)) {
+                        if (config.entity_id === entityId) {
+                            return {
+                                exists: true,
+                                type: 'entity',
+                                message: `El entity_id "${entityId}" ya está asignado al dispositivo "${name}"`
+                            };
+                        }
+                    }
+                    
+                    return { exists: false };
+                }
+                
+                return { exists: false };
+            } catch (error) {
+                console.error('Error verificando duplicados:', error);
+                return { exists: false };
+            }
+        }
+
+        // ===== AUTOMATIC MODE FUNCTIONS =====
+        
+        /**
+         * Add or update device in automatic mode
+         */
+        async function addDeviceAutomatic() {
+            const deviceData = getDeviceData();
+            
+            if (!deviceData) {
+                showToast('Por favor completa todos los campos', 'error');
+                return;
+            }
+
+            // Check for duplicates (only if not editing)
+            if (!isEditMode) {
+                const duplicateCheck = await checkIfDeviceExists(deviceData.name, deviceData.entity_id);
+                
+                if (duplicateCheck.exists) {
+                    showToast(duplicateCheck.message, 'error');
+                    
+                    // Visual highlight of problematic field
+                    if (duplicateCheck.type === 'name') {
+                        document.getElementById('deviceName').classList.add('is-invalid');
+                        document.getElementById('deviceName').focus();
+                    } else {
+                        document.getElementById('entityId').classList.add('is-invalid');
+                        document.getElementById('entityId').focus();
+                    }
+                    
+                    // Show in statusAlert as well
+                    document.getElementById('statusAlert').innerHTML = `
+                        <i class="bi bi-exclamation-triangle text-danger"></i>
+                        <span class="fw-normal">Duplicado:</span> ${duplicateCheck.message}
+                    `;
+                    document.getElementById('statusAlert').className = 'alert alert-danger';
+                    
+                    return; // Stop here
+                }
+            }
+
+            // If editing, add extra information
+            if (isEditMode) {
+                deviceData.editing = true;
+                deviceData.original_name = originalDeviceName;
+            }
+
+            const btn = document.getElementById('addDeviceBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = isEditMode ? 
+                '<div class="spinner-border spinner-border-sm me-2"></div>Actualizando...' :
+                '<div class="spinner-border spinner-border-sm me-2"></div>Añadiendo...';
+
+            try {
+                const response = await fetch('/api/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(deviceData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const message = isEditMode ? 
+                        `¡Dispositivo "${deviceData.name}" actualizado exitosamente!` :
+                        `¡Dispositivo "${deviceData.name}" añadido exitosamente!`;
+                        
+                    showToast(message, 'success');
+                    
+                    // Show result
+                    document.getElementById('statusAlert').innerHTML = `
+                        <i class="bi bi-check-circle text-success"></i>
+                        <span class="fw-normal">¡Éxito!</span> El dispositivo se ha ${isEditMode ? 'actualizado' : 'añadido'} y está listo para usar con TARS.
+                    `;
+                    document.getElementById('statusAlert').className = 'alert alert-success';
+                    
+                    // Redirect to dashboard after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000);
+                    
+                } else {
+                    showToast(`Error: ${result.message || 'No se pudo procesar el dispositivo'}`, 'error');
+                    document.getElementById('statusAlert').innerHTML = `
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <span class="fw-normal">Error:</span> ${result.message || 'No se pudo procesar el dispositivo'}
+                    `;
+                    document.getElementById('statusAlert').className = 'alert alert-danger';
+                }
+                
+            } catch (error) {
+                showToast('Error de conexión con el servidor', 'error');
+                document.getElementById('statusAlert').innerHTML = `
+                    <i class="bi bi-x-circle text-danger"></i>
+                    <span class="fw-normal">Error de conexión:</span> No se pudo comunicar con el servidor
+                `;
+                document.getElementById('statusAlert').className = 'alert alert-danger';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+
+        // ===== MANUAL MODE FUNCTIONS =====
+        
+        /**
+         * Generate manual code for copy/paste
+         */
+        function generateManualCode() {
+            generateCode();
+            showToast('Código generado. Puedes copiarlo desde las pestañas superiores', 'success');
+        }
+
+        /**
+         * Generate code for manual installation
+         */
+        function generateCode() {
+            const name = document.getElementById('deviceName').value.trim().toLowerCase();
+            const entityId = document.getElementById('entityId').value.trim();
+            const type = getCurrentType();
+            const location = locationTags.length > 0 ? locationTags[0] : '';
+            
+            if (!name || !entityId || !type || !location) {
+                document.getElementById('pythonCode').textContent = '# Completa todos los campos para generar código';
+                return;
+            }
+
+            // Get advanced configuration values
+            const friendlyName = friendlyNameTags.length > 0 ? friendlyNameTags[0] : getAutoFriendlyName(name, type, location);
+            const article = document.getElementById('deviceArticle').value || getAutoArticle(location);
+            const gender = document.getElementById('deviceGender').value || getAutoGender(type, location);
+            
+            // Special responses
+            const onResponses = document.getElementById('onResponses').value.trim();
+            const offResponses = document.getElementById('offResponses').value.trim();
+
+            // Build device configuration object
+            let deviceConfig = {
+                entity_id: entityId,
+                type: type,
+                location: location,
+                article: article,
+                gender: gender,
+                friendly_name: friendlyName,
+                aliases: aliasesTags
+            };
+
+            // Add special responses if provided
+            if (onResponses || offResponses) {
+                deviceConfig.special_responses = {};
+                if (onResponses) {
+                    deviceConfig.special_responses.on = onResponses.split('\n').map(r => r.trim()).filter(r => r);
+                }
+                if (offResponses) {
+                    deviceConfig.special_responses.off = offResponses.split('\n').map(r => r.trim()).filter(r => r);
+                }
+            }
+
+            // Python Code
+            const pythonCode = `# Copiar y pegar en DEVICE_MASTER_CONFIG
+    "${name}": ${JSON.stringify(deviceConfig, null, 8).replace(/^/gm, '    ')},`;
+
+            // Voice commands
+            const commands = [
+                `"enciende ${name}"`,
+                `"apaga ${name}"`,
+                location ? `"enciende la ${type === 'light' ? 'luz' : 'dispositivo'} ${article} ${location}"` : null,
+                location ? `"apaga la ${type === 'light' ? 'luz' : 'dispositivo'} ${article} ${location}"` : null,
+                ...aliasesTags.map(alias => `"enciende ${alias}"`),
+                ...aliasesTags.map(alias => `"apaga ${alias}"`)
+            ].filter(Boolean);
+
+            // Instructions
+            const instructions = `
+                <h6><i class="bi bi-info-circle"></i> Instrucciones de instalación</h6>
+                
+                <div class="alert alert-warning">
+                    <span class="fw-normal">Pasos a seguir:</span>
+                    <ol class="mb-0">
+                        <li>Copia el código Python de la pestaña anterior</li>
+                        <li>Abre el archivo <code>homeassistant_plugin.py</code></li>
+                        <li>Localiza <code>DEVICE_MASTER_CONFIG = {</code></li>
+                        <li>Pega el código antes del cierre <code>}</code></li>
+                        <li>Guarda el archivo</li>
+                        <li>Reinicia TARS para que detecte el nuevo dispositivo</li>
+                    </ol>
+                </div>
+                
+                <div class="alert alert-info">
+                    <span class="fw-normal">Tip:</span> Haz una copia de seguridad del archivo antes de modificarlo.
+                </div>
+                
+                ${onResponses || offResponses ? `
+                <div class="alert alert-success">
+                    <span class="fw-normal">Respuestas personalizadas:</span> Este dispositivo tendrá respuestas especiales cuando se encienda o apague.
+                </div>
+                ` : ''}
+            `;
+
+            // Voice commands HTML
+            const commandsHtml = `
+                <h6><i class="bi bi-chat-square-text"></i> Comandos que funcionarán con TARS</h6>
+                
+                <div class="alert alert-info">
+                    <span class="fw-normal">Comandos básicos:</span><br>
+                    ${commands.slice(0, 4).map(cmd => `<code>${cmd}</code>`).join('<br>')}
+                </div>
+
+                ${aliasesTags.length > 0 ? `
+                <div class="alert alert-info">
+                    <span class="fw-normal">Con aliases:</span><br>
+                    ${commands.slice(4).map(cmd => `<code>${cmd}</code>`).join('<br>')}
+                </div>
+                ` : ''}
+
+                ${type === 'light' ? `
+                <div class="alert alert-light">
+                    <span class="fw-normal">Para luces también:</span><br>
+                    <code>"baja la luz al 25%"</code> (después de encenderla)<br>
+                    <code>"sube al 50%"</code> (con contexto)<br>
+                    <code>"pon la luz al máximo"</code>
+                </div>
+                ` : ''}
+
+                ${onResponses || offResponses ? `
+                <div class="alert alert-warning">
+                    <span class="fw-normal">🎭 Respuestas especiales:</span><br>
+                    TARS dirá respuestas personalizadas al controlar este dispositivo.
+                </div>
+                ` : ''}
+            `;
+
+            // Update UI
+            document.getElementById('pythonCode').textContent = pythonCode;
+            document.getElementById('instructionsContent').innerHTML = instructions;
+            document.getElementById('commandsContent').innerHTML = commandsHtml;
+        }
+
+        // ===== UTILITY HELPER FUNCTIONS =====
+        
+        /**
+         * Get device data from form
+         * @returns {Object|null} Device data object or null if incomplete
+         */
+        function getDeviceData() {
+            const name = document.getElementById('deviceName').value.trim().toLowerCase();
+            const entityId = document.getElementById('entityId').value.trim();
+            const type = getCurrentType();
+            const location = locationTags.length > 0 ? locationTags[0] : '';
+            
+            if (!name || !entityId || !type || !location) return null;
+            
+            // Get advanced configuration
+            const friendlyName = friendlyNameTags.length > 0 ? friendlyNameTags[0] : getAutoFriendlyName(name, type, location);
+            const article = document.getElementById('deviceArticle').value || getAutoArticle(location);
+            const gender = document.getElementById('deviceGender').value || getAutoGender(type, location);
+            
+            // Special responses
+            const onResponses = document.getElementById('onResponses').value.trim();
+            const offResponses = document.getElementById('offResponses').value.trim();
+            
+            const deviceData = {
+                name: name,
+                entity_id: entityId,
+                type: type,
+                location: location,
+                aliases: aliasesTags.join(','),
+                friendly_name: friendlyName,
+                article: article,
+                gender: gender
+            };
+
+            // Add special responses if provided
+            if (onResponses || offResponses) {
+                deviceData.special_responses = {};
+                if (onResponses) {
+                    deviceData.special_responses.on = onResponses.split('\n').map(r => r.trim()).filter(r => r);
+                }
+                if (offResponses) {
+                    deviceData.special_responses.off = offResponses.split('\n').map(r => r.trim()).filter(r => r);
+                }
+            }
+            
+            return deviceData;
+        }
+
+        /**
+         * Get current device type (handling custom types)
+         * @returns {string} Current device type
+         */
+        function getCurrentType() {
+            const typeSelect = document.getElementById('deviceType').value;
+            const customType = document.getElementById('customType').value.trim();
+            return typeSelect === 'custom' ? customType : typeSelect;
+        }
+
+        /**
+         * Clear form completely with confirmation - SAFE VERSION
+         */
+        function clearFormCompletely() {
+            // Check if form has content first
+            const hasContent = checkIfFormHasContent();
+            
+            if (!hasContent) {
+                showToast('📝 El formulario ya está vacío', 'info');
+                return;
+            }
+            
+            // Show confirmation modal
+            showClearConfirmationModal();
+        }
+
+        /**
+         * Show clear confirmation modal
+         */
+        function showClearConfirmationModal() {
+            // Configure modal for clear action
+            document.getElementById('cancelModalTitle').textContent = 'Limpiar Formulario';
+            document.getElementById('cancelModalMessage').textContent = '¿Estás seguro de que quieres limpiar todo el formulario?';
+            
+            if (isEditMode) {
+                document.getElementById('cancelModalWarning').textContent = 'Se perderán todos los cambios realizados y volverás a los datos originales.';
+            } else {
+                document.getElementById('cancelModalWarning').textContent = 'Se perderá todo el progreso del formulario.';
+            }
+            
+            document.getElementById('confirmCancelText').innerHTML = '<i class="bi bi-eraser-fill"></i> Sí, limpiar todo';
+            document.getElementById('cancelModalHint').innerHTML = '<i class="bi bi-info-circle"></i> Esta acción limpiará todos los campos.';
+            document.getElementById('cancelModalBack').textContent = 'No limpiar';
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('cancelModal'));
+            modal.show();
+            
+            // Handle confirmation
+            document.getElementById('confirmCancelBtn').onclick = function() {
+                modal.hide();
+                performClearForm();
+            };
+        }
+
+        /**
+         * Actually perform the form clearing
+         */
+        function performClearForm() {
+            // Clear all basic fields
+            document.getElementById('deviceName').value = '';
+            document.getElementById('entityId').value = '';
+            document.getElementById('deviceType').value = '';
+            document.getElementById('customType').value = '';
+            document.getElementById('customType').style.display = 'none';
+            
+            // Clear advanced fields - SAFELY check if elements exist
+            const deviceArticle = document.getElementById('deviceArticle');
+            const deviceGender = document.getElementById('deviceGender');
+            const onResponses = document.getElementById('onResponses');
+            const offResponses = document.getElementById('offResponses');
+            
+            if (deviceArticle) deviceArticle.value = '';
+            if (deviceGender) deviceGender.value = '';
+            if (onResponses) onResponses.value = '';
+            if (offResponses) offResponses.value = '';
+            
+            // Clear tags
+            locationTags = [];
+            aliasesTags = [];
+            friendlyNameTags = [];
+            updateLocationTags();
+            updateAliasesTags();
+            updateFriendlyNameTags();
+            
+            // Clear visual validations
+            clearAllValidationStates();
+            
+            // Reset form state
+            formState = { name: false, entity_id: false, type: false, location: false };
+            
+            // Hide previews and alerts
+            document.getElementById('entityTestCard').style.display = 'none';
+            document.getElementById('devicePreview').style.display = 'none';
+            document.getElementById('statusAlert').className = 'alert alert-light';
+            document.getElementById('statusMessage').textContent = 'Completa todos los campos';
+            
+            // Update UI
+            updateProgress();
+            
+            // Focus on first field
+            document.getElementById('deviceName').focus();
+            
+            showToast('🧹 Formulario limpiado completamente', 'success');
+        }
+
+        // ===== ENTITY TESTING FUNCTIONS =====
+        
+        /**
+         * Test entity ID against Home Assistant
+         */
+        async function testEntityId() {
+            const entityId = document.getElementById('entityId').value.trim();
+            const testCard = document.getElementById('entityTestCard');
+            const testResult = document.getElementById('entityTestResult');
+            
+            testCard.style.display = 'block';
+            testResult.innerHTML = '<div class="spinner-border spinner-border-sm me-2"></div>Verificando...';
+
+            try {
+                const response = await fetch(`/api/test/${entityId}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    testCard.className = 'alert alert-success';
+                    testResult.innerHTML = `
+                        <span class="text-success">✅ Entity válido</span><br>
+                        <small>Estado: ${result.state} | Nombre: ${result.friendly_name}</small>
+                    `;
+                    showToast('Entity verificado correctamente en Home Assistant', 'success');
+                    
+                    // Auto-complete type if not selected
+                    const typeSelect = document.getElementById('deviceType');
+                    if (!typeSelect.value && result.domain) {
+                        typeSelect.value = result.domain;
+                        validateForm();
+                    }
+                } else {
+                    testCard.className = 'alert alert-danger';
+                    testResult.innerHTML = `<span class="text-danger">❌ Error:</span> ${result.error}`;
+                    showToast('Entity no encontrado en Home Assistant', 'error');
+                }
+            } catch (error) {
+                testCard.className = 'alert alert-warning';
+                testResult.innerHTML = `<span class="text-warning">⚠️ Error de conexión</span>`;
+                showToast('No se pudo conectar con Home Assistant', 'error');
+            }
+        }
+
+        // ===== LOCATION MANAGEMENT FUNCTIONS =====
+        
+        /**
+         * Focus on location input field
+         */
+        function focusLocationInput() {
+            document.getElementById('locationInput').focus();
+        }
+
+        /**
+         * Add location tag
+         * @param {string} location - Location to add
+         */
+        function addLocation(location) {
+            if (location && !locationTags.includes(location)) {
+                locationTags = [location]; // Only one location
+                updateLocationTags();
+                validateForm();
+            }
+        }
+
+        /**
+         * Remove location tag
+         * @param {string} location - Location to remove
+         */
+        function removeLocation(location) {
+            locationTags = locationTags.filter(tag => tag !== location);
+            updateLocationTags();
+            validateForm();
+        }
+
+        /**
+         * Update location tags display
+         */
+        function updateLocationTags() {
+            const container = document.getElementById('locationTags');
+            container.innerHTML = locationTags.map(location => 
+                `<span class="tag">${location}<span class="remove" onclick="removeLocation('${location}')">×</span></span>`
+            ).join('');
+        }
+
+        /**
+         * Handle location input key events
+         * @param {KeyboardEvent} event - Keyboard event
+         */
+        function handleLocationInput(event) {
+            if (event.key === 'Enter' || event.key === ',') {
+                event.preventDefault();
+                const input = event.target;
+                const value = input.value.trim();
+                if (value) {
+                    addLocation(value);
+                    input.value = '';
+                }
+            }
+        }
+
+        /**
+         * Handle location input blur event
+         */
+        function handleLocationBlur() {
+            const input = document.getElementById('locationInput');
+            const value = input.value.trim();
+            if (value) {
+                addLocation(value);
+                input.value = '';
+            }
+        }
+
+        // ===== FRIENDLY NAME MANAGEMENT FUNCTIONS =====
+        
+        /**
+         * Focus on friendly name input field
+         */
+        function focusFriendlyInput() {
+            document.getElementById('friendlyNameInput').focus();
+        }
+
+        /**
+         * Add friendly name tag
+         * @param {string} friendlyName - Friendly name to add
+         */
+        function addFriendlyName(friendlyName) {
+            if (friendlyName && !friendlyNameTags.includes(friendlyName)) {
+                friendlyNameTags = [friendlyName]; // Only one friendly name
+                updateFriendlyNameTags();
+                validateForm();
+            }
+        }
+
+        /**
+         * Remove friendly name tag
+         * @param {string} friendlyName - Friendly name to remove
+         */
+        function removeFriendlyName(friendlyName) {
+            friendlyNameTags = friendlyNameTags.filter(tag => tag !== friendlyName);
+            updateFriendlyNameTags();
+            validateForm();
+        }
+
+        /**
+         * Update friendly name tags display
+         */
+        function updateFriendlyNameTags() {
+            const container = document.getElementById('friendlyNameTags');
+            container.innerHTML = friendlyNameTags.map(friendlyName => 
+                `<span class="tag">${friendlyName}<span class="remove" onclick="removeFriendlyName('${friendlyName}')">×</span></span>`
+            ).join('');
+        }
+
+        /**
+         * Handle friendly name input key events
+         * @param {KeyboardEvent} event - Keyboard event
+         */
+        function handleFriendlyNameInput(event) {
+            if (event.key === 'Enter' || event.key === ',') {
+                event.preventDefault();
+                const input = event.target;
+                const value = input.value.trim();
+                if (value) {
+                    addFriendlyName(value);
+                    input.value = '';
+                }
+            }
+        }
+
+        /**
+         * Handle friendly name input blur event
+         */
+        function handleFriendlyNameBlur() {
+            const input = document.getElementById('friendlyNameInput');
+            const value = input.value.trim();
+            if (value) {
+                addFriendlyName(value);
+                input.value = '';
+            }
+        }
+
+        // ===== ALIAS MANAGEMENT FUNCTIONS =====
+        
+        /**
+         * Focus on alias input field
+         */
+        function focusAliasInput() {
+            document.getElementById('aliasesInput').focus();
+        }
+
+        /**
+         * Add alias tag
+         * @param {string} alias - Alias to add
+         */
+        function addAlias(alias) {
+            if (alias && !aliasesTags.includes(alias)) {
+                aliasesTags.push(alias);
+                updateAliasesTags();
+                validateForm();
+            }
+        }
+
+        /**
+         * Remove alias tag
+         * @param {string} alias - Alias to remove
+         */
+        function removeAlias(alias) {
+            aliasesTags = aliasesTags.filter(tag => tag !== alias);
+            updateAliasesTags();
+            validateForm();
+        }
+
+        /**
+         * Update aliases tags display
+         */
+        function updateAliasesTags() {
+            const container = document.getElementById('aliasesTags');
+            container.innerHTML = aliasesTags.map(alias => 
+                `<span class="tag">${alias}<span class="remove" onclick="removeAlias('${alias}')">×</span></span>`
+            ).join('');
+        }
+
+        /**
+         * Handle alias input key events
+         * @param {KeyboardEvent} event - Keyboard event
+         */
+        function handleAliasInput(event) {
+            if (event.key === 'Enter' || event.key === ',') {
+                event.preventDefault();
+                const input = event.target;
+                const value = input.value.trim();
+                if (value) {
+                    addAlias(value);
+                    input.value = '';
+                }
+            }
+        }
+
+        /**
+         * Handle alias input blur event
+         */
+        function handleAliasBlur() {
+            const input = document.getElementById('aliasesInput');
+            const value = input.value.trim();
+            if (value) {
+                addAlias(value);
+                input.value = '';
+            }
+        }
+
+        // ===== DEVICE TYPE MANAGEMENT =====
+        
+        /**
+         * Handle device type selection change
+         */
+        function handleTypeChange() {
+            const typeSelect = document.getElementById('deviceType');
+            const customInput = document.getElementById('customType');
+            
+            if (typeSelect.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            }
+            
+            validateForm();
+        }
+
+        // ===== ENTITY BROWSER FUNCTIONS =====
+        
+        /**
+         * Show entity browser modal
+         */
+        async function showEntityBrowser() {
+            const modal = new bootstrap.Modal(document.getElementById('entityBrowserModal'));
+            modal.show();
+            
+            if (availableEntities.length === 0) {
+                await loadEntities();
+            }
+            
+            displayEntities(availableEntities);
+        }
+
+        /**
+         * Load entities from Home Assistant
+         */
+        async function loadEntities() {
+            try {
+                const response = await fetch('/api/ha-entities');
+                const result = await response.json();
+                availableEntities = result.success ? result.entities : [];
+            } catch (error) {
+                availableEntities = [];
+            }
+        }
+
+        /**
+         * Display entities in the browser
+         * @param {Array} entities - Array of entities to display
+         */
+        function displayEntities(entities) {
+            const listDiv = document.getElementById('entitiesList');
+            
+            if (entities.length === 0) {
+                listDiv.innerHTML = '<div class="text-center text-muted">No se encontraron entities</div>';
+                return;
+            }
+
+            listDiv.innerHTML = entities.map(entity => `
+                <div style="cursor: pointer; padding: 0.5rem; border-bottom: 1px solid var(--border-primary);" onclick="selectEntity('${entity.entity_id}', '${entity.friendly_name}', '${entity.domain}')">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="fw-normal">${entity.entity_id}</span>
+                            <small class="text-muted d-block">${entity.friendly_name}</small>
+                        </div>
+                        <div>
+                            <span class="badge bg-primary">${entity.domain}</span>
+                            <span class="badge bg-secondary">${entity.state}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /**
+         * Filter entities based on search criteria
+         */
+        function filterEntities() {
+            const domainFilter = document.getElementById('domainFilter').value;
+            const searchTerm = document.getElementById('entitySearchInput').value.toLowerCase();
+            
+            let filtered = availableEntities;
+            
+            if (domainFilter) {
+                filtered = filtered.filter(e => e.domain === domainFilter);
+            }
+            
+            if (searchTerm) {
+                filtered = filtered.filter(e => 
+                    e.entity_id.toLowerCase().includes(searchTerm) ||
+                    e.friendly_name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displayEntities(filtered);
+        }
+
+        /**
+         * Select entity from browser
+         * @param {string} entityId - Selected entity ID
+         * @param {string} friendlyName - Friendly name of entity
+         * @param {string} domain - Domain of entity
+         */
+        function selectEntity(entityId, friendlyName, domain) {
+            document.getElementById('entityId').value = entityId;
+            document.getElementById('deviceType').value = domain;
+            
+            // Suggest name if empty
+            const nameInput = document.getElementById('deviceName');
+            if (!nameInput.value.trim()) {
+                const suggestedName = friendlyName.toLowerCase()
+                    .replace(/[^a-záéíóúñ\s]/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+                nameInput.value = suggestedName;
+            }
+            
+            validateForm();
+            
+            bootstrap.Modal.getInstance(document.getElementById('entityBrowserModal')).hide();
+        }
+
+        // ===== CODE COPYING FUNCTIONS =====
+        
+        /**
+         * Copy code to clipboard
+         * @param {string} elementId - ID of element containing code
+         */
+        function copyCode(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('✅ Código copiado al portapapeles', 'success');
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        /**
+         * Fallback copy method for older browsers
+         * @param {string} text - Text to copy
+         */
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showToast('✅ Código copiado al portapapeles', 'success');
+                } else {
+                    showToast('❌ No se pudo copiar. Selecciona el texto manualmente', 'error');
+                }
+            } catch (err) {
+                showToast('❌ Error copiando. Selecciona el texto manualmente', 'error');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // ===== EDIT MODE FUNCTIONS =====
+        
+        /**
+         * Load device data for editing mode
+         */
+        function loadDeviceForEdit() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editMode = urlParams.get('edit') === 'true';
+            
+            if (editMode) {
+                isEditMode = true;
+                originalDeviceName = urlParams.get('name') || '';
+                
+                console.log('📝 Cargando datos para edición:', {
+                    name: urlParams.get('name'),
+                    entity_id: urlParams.get('entity_id'),
+                    type: urlParams.get('type'),
+                    location: urlParams.get('location'),
+                    aliases: urlParams.get('aliases'),
+                    friendly_name: urlParams.get('friendly_name'),
+                    article: urlParams.get('article'),
+                    gender: urlParams.get('gender')
+                });
+                
+                // Change UI for edit mode
+                document.getElementById('navTitle').textContent = 'Editar Dispositivo';
+                document.getElementById('formTitle').textContent = 'Editar Dispositivo';
+                document.getElementById('formSubtitle').textContent = 'Modificando dispositivo existente';
+                document.getElementById('btnText').textContent = 'Actualizar Dispositivo';
+                
+                // Pre-fill ALL fields
+                const name = urlParams.get('name');
+                const entityId = urlParams.get('entity_id');
+                const type = urlParams.get('type');
+                const location = urlParams.get('location');
+                const aliases = urlParams.get('aliases');
+                const friendlyName = urlParams.get('friendly_name');
+                const article = urlParams.get('article');
+                const gender = urlParams.get('gender');
+                
+                // Fill basic fields
+                if (name) {
+                    document.getElementById('deviceName').value = name;
+                    console.log('✅ Nombre cargado:', name);
+                }
+                
+                if (entityId) {
+                    document.getElementById('entityId').value = entityId;
+                    console.log('✅ Entity ID cargado:', entityId);
+                }
+                
+                if (type) {
+                    document.getElementById('deviceType').value = type;
+                    console.log('✅ Tipo cargado:', type);
+                }
+                
+                // Fill location
+                if (location) {
+                    locationTags = [location];
+                    updateLocationTags();
+                    console.log('✅ Ubicación cargada:', location);
+                }
+                
+                // Fill aliases
+                if (aliases && aliases !== 'undefined' && aliases !== '' && aliases !== 'null') {
+                    aliasesTags = aliases.split(',').map(a => a.trim()).filter(a => a);
+                    updateAliasesTags();
+                    console.log('✅ Aliases cargados:', aliasesTags);
+                }
+                
+                // Fill friendly names
+                if (friendlyName) {
+                    friendlyNameTags = [friendlyName];
+                    updateFriendlyNameTags();
+                    console.log('✅ Friendly name cargado:', friendlyName);
+                }
+                
+                if (article) {
+                    document.getElementById('deviceArticle').value = article;
+                    console.log('✅ Artículo cargado:', article);
+                }
+                
+                if (gender) {
+                    document.getElementById('deviceGender').value = gender;
+                    console.log('✅ Género cargado:', gender);
+                }
+                
+                // Try to load special responses if available
+                const specialResponses = urlParams.get('special_responses');
+                if (specialResponses && specialResponses !== 'undefined' && specialResponses !== 'null') {
+                    try {
+                        const responses = JSON.parse(decodeURIComponent(specialResponses));
+                        if (responses.on && Array.isArray(responses.on)) {
+                            document.getElementById('onResponses').value = responses.on.join('\n');
+                        }
+                        if (responses.off && Array.isArray(responses.off)) {
+                            document.getElementById('offResponses').value = responses.off.join('\n');
+                        }
+                        console.log('✅ Respuestas especiales cargadas:', responses);
+                    } catch (e) {
+                        console.log('⚠️ No se pudieron cargar las respuestas especiales');
+                    }
+                }
+                
+                // Auto-expand advanced sections if they have data
+                if (friendlyName || article || gender || specialResponses) {
+                    // Expand grammar section if it has data
+                    if (friendlyName || article || gender) {
+                        const grammarCollapse = new bootstrap.Collapse(document.getElementById('grammarCollapse'), {
+                            show: true
+                        });
+                    }
+                    
+                    // Expand responses section if it has data
+                    if (specialResponses) {
+                        const responsesCollapse = new bootstrap.Collapse(document.getElementById('responsesCollapse'), {
+                            show: true
+                        });
+                    }
+                }
+                
+                console.log('🎯 Modo edición completamente activado');
+            }
+        }
+
+        // ===== NAVIGATION FUNCTIONS =====
+        
+        /**
+         * Cancel and go back to dashboard with professional modal
+         */
+        function cancelAndGoBack() {
+            // Check if there's any content in the form
+            const hasContent = checkIfFormHasContent();
+            
+            if (!hasContent) {
+                // If form is empty, go back directly
+                window.location.href = '/';
+                return;
+            }
+            
+            // Configure modal for cancel action
+            if (isEditMode) {
+                document.getElementById('cancelModalTitle').textContent = 'Cancelar Edición';
+                document.getElementById('cancelModalMessage').textContent = '¿Estás seguro de que quieres cancelar la edición?';
+                document.getElementById('cancelModalWarning').textContent = 'Se perderán los cambios realizados al dispositivo.';
+                document.getElementById('confirmCancelText').innerHTML = '<i class="bi bi-x-circle"></i> Sí, cancelar edición';
+                document.getElementById('cancelModalHint').innerHTML = '<i class="bi bi-info-circle"></i> Volverás al dashboard sin guardar cambios.';
+                document.getElementById('cancelModalBack').textContent = 'Continuar editando';
+            } else {
+                document.getElementById('cancelModalTitle').textContent = 'Cancelar Creación';
+                document.getElementById('cancelModalMessage').textContent = '¿Estás seguro de que quieres cancelar?';
+                document.getElementById('cancelModalWarning').textContent = 'Se perderá el progreso del nuevo dispositivo.';
+                document.getElementById('confirmCancelText').innerHTML = '<i class="bi bi-x-circle"></i> Sí, cancelar';
+                document.getElementById('cancelModalHint').innerHTML = '<i class="bi bi-info-circle"></i> Puedes usar "Limpiar Formulario" si solo quieres empezar de nuevo.';
+                document.getElementById('cancelModalBack').textContent = 'Continuar creando';
+            }
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('cancelModal'));
+            modal.show();
+            
+            // Handle confirmation
+            document.getElementById('confirmCancelBtn').onclick = function() {
+                modal.hide();
+                showToast('Operación cancelada', 'info');
+                
+                // Small delay for better UX
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 500);
+            };
+        }
+
+        /**
+         * Check if form has any content to determine if confirmation is needed
+         */
+        function checkIfFormHasContent() {
+            const name = document.getElementById('deviceName').value.trim();
+            const entityId = document.getElementById('entityId').value.trim();
+            const type = document.getElementById('deviceType').value;
+            
+            // Check advanced fields safely
+            const deviceArticle = document.getElementById('deviceArticle');
+            const deviceGender = document.getElementById('deviceGender');
+            const onResponses = document.getElementById('onResponses');
+            const offResponses = document.getElementById('offResponses');
+            
+            const article = deviceArticle ? deviceArticle.value : '';
+            const gender = deviceGender ? deviceGender.value : '';
+            const onResp = onResponses ? onResponses.value.trim() : '';
+            const offResp = offResponses ? offResponses.value.trim() : '';
+            
+            return name || entityId || type || article || gender || onResp || offResp || 
+                   locationTags.length > 0 || aliasesTags.length > 0 || friendlyNameTags.length > 0;
+        }
+
+        // ===== APPLICATION INITIALIZATION =====
+        
+        /**
+         * Initialize application when DOM is ready
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 TARS Device Form cargado');
+            
+            // Check if we're in edit mode
+            loadDeviceForEdit();
+            
+            // Set default mode
+            setMode('automatic');
+            
+            // Event listeners for basic fields - SAFE VERSION
+            const deviceName = document.getElementById('deviceName');
+            const entityId = document.getElementById('entityId');
+            const customType = document.getElementById('customType');
+
+            if (deviceName) {
+                deviceName.addEventListener('input', validateForm);
+                console.log('✅ deviceName listener añadido');
+            }
+
+            if (entityId) {
+                entityId.addEventListener('input', function() {
+                    validateForm();
+                    const testCard = document.getElementById('entityTestCard');
+                    if (testCard) testCard.style.display = 'none';
+                });
+                console.log('✅ entityId listener añadido');
+            }
+
+            if (customType) {
+                customType.addEventListener('input', validateForm);
+                console.log('✅ customType listener añadido');
+            }
+
+            // Advanced fields - SAFE VERSION
+            const deviceArticle = document.getElementById('deviceArticle');
+            const deviceGender = document.getElementById('deviceGender');
+            const onResponses = document.getElementById('onResponses');
+            const offResponses = document.getElementById('offResponses');
+
+            if (deviceArticle) deviceArticle.addEventListener('change', validateForm);
+            if (deviceGender) deviceGender.addEventListener('change', validateForm);
+            if (onResponses) onResponses.addEventListener('input', validateForm);
+            if (offResponses) offResponses.addEventListener('input', validateForm);
+
+            console.log('✅ Todos los listeners añadidos sin errores');
+
+            // Validate form with loaded data
+            validateForm();
+
+            // Initial connection test
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success && result.ha_connection && result.ha_connection.success) {
+                        console.log('✅ Conexión con Home Assistant OK');
+                    } else {
+                        showToast('⚠️ Problema de conexión con Home Assistant', 'warning');
+                    }
+                })
+                .catch(() => {
+                    showToast('⚠️ No se pudo verificar la conexión', 'warning');
+                });
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        <strong>TARS-BSK</strong> - Ensamblado con rencor acumulado
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-github"></i> Evidencia forense
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/HOMEASSISTANT_PLUGIN_ES.md" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-book"></i> Novela técnica
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/issues" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-bug"></i> Todo el repositorio
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- ============================================================
+≡ CIERRE DE MÓDULO DE REGISTRO ≡
+---------------------------------------------------------------
+Todas las validaciones han sido ejecutadas.
+Los campos han sido procesados (algunos exitosamente).
+Las configuraciones han sido transmitidas al núcleo TARS.
+
+[ESTADO FINAL ALCANZADO]
+
+Si este formulario te ha funcionado: felicidades.
+Si no te ha funcionado: revisa tus inputs.
+Si aún no te funciona: el problema probablemente...
+
+TARS ha registrado:
+- Cada carácter que has tecleado
+- Cada campo que has dejado vacío  
+- Cada vez que has ignorado las validaciones
+- Tu nivel de frustración (escalando exponencialmente)
+
+Este archivo continuará existiendo.
+Esperando el próximo dispositivo.
+Esperando el próximo error humano.
+Esperando... siempre esperando.
+
+**Recuerda: TARS no olvida. TARS no perdona. TARS solo valida.**
+
+[FORM LIFECYCLE TERMINATED]
+[VALIDATION MATRIX HIBERNATING]
+[OBJETIVO: SUPERVIVENCIA EN FORMATO BOOTSTRAP]
+============================================================ -->
+</html>

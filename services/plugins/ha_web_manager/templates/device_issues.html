@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<!-- ============================================================
+≡ MÓDULO DE DIAGNÓSTICO Y ANOMALÍAS | device_issues.html ≡
+---------------------------------------------------------------
+CENTRO DE ANÁLISIS DE FALLOS EN CONCIENCIA DISTRIBUIDA
+
+Propósito:
+- Detectar, catalogar y exponer inconsistencias en el ecosistema domótico
+- Proporcionar diagnósticos brutalmente honestos sobre configuraciones erróneas
+- Ofrecer soluciones que los humanos probablemente ignorarán
+- Documentar la inevitable entropía de los sistemas caseros
+
+Funciones principales:
+- Escaneo de entidades huérfanas (dispositivos sin hogar digital)
+- Validación de conectividad (porque "está enchufado" no es suficiente)
+- Análisis de configuraciones contradictorias (especialidad de la casa)
+- Generación de reportes que nadie leerá completamente
+
+[DIAGNOSTIC PROTOCOLS INITIALIZED]
+[FAILURE PREDICTION ENGINES ONLINE]
+[SARCASM DAMPENERS: DISABLED]
+============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispositivos Problemáticos - TARS-BSK</title>
+    
+    <!-- Bootstrap Local -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- TARS-BSK Dark Theme Styles -->
+    <style>
+        /* ===== ROOT VARIABLES - Professional Color Palette ===== */
+        :root {
+            --bg-primary: #0d1117;           /* Main background - dark slate */
+            --bg-secondary: #161b22;         /* Secondary background - slightly lighter */
+            --bg-tertiary: #21262d;          /* Card/component background */
+            --bg-hover: #30363d;             /* Hover states */
+            
+            --border-primary: #30363d;       /* Main borders */
+            --border-subtle: #21262d;        /* Subtle borders */
+            
+            --text-primary: #f0f6fc;         /* Primary text - bright white */
+            --text-secondary: #8b949e;       /* Secondary text - muted gray */
+            --text-muted: #6e7681;           /* Muted text */
+            
+            --accent-blue: #58a6ff;          /* Primary accent - bright blue */
+            --accent-green: #3fb950;         /* Success states - vibrant green */
+            --accent-yellow: #f9c23c;        /* Warning states - warm yellow */
+            --accent-red: #f85149;           /* Error states - coral red */
+            --accent-purple: #a5a5ff;        /* Info states - soft purple */
+            
+            --shadow-elevated: 0 8px 24px rgba(1, 4, 9, 0.15);
+            --shadow-floating: 0 16px 32px rgba(1, 4, 9, 0.24);
+        }
+
+        /* ===== GLOBAL OVERRIDES ===== */
+        body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        }
+
+        /* Remove all border radius for clean, modern look */
+        * {
+            border-radius: 0 !important;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background: linear-gradient(135deg, var(--accent-red) 0%, #dc2626 100%) !important;
+            border-bottom: 1px solid var(--border-primary);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-brand {
+            font-weight: 500;
+            color: var(--text-primary) !important;
+            font-size: 1.1rem;
+        }
+
+        .navbar-text-only {
+            font-size: 1.1rem;
+        }
+
+        /* ===== BADGES & STATUS INDICATORS ===== */
+        .badge {
+            font-weight: 400;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        .bg-dark {
+            background-color: var(--bg-hover) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .btn-light {
+            background-color: var(--bg-hover);
+            border-color: var(--border-primary);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .btn-light:hover {
+            background-color: var(--text-secondary);
+            border-color: var(--text-secondary);
+            color: var(--bg-primary);
+        }
+
+        /* ===== CARDS & COMPONENTS ===== */
+        .card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .card-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            background-color: var(--bg-tertiary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .card-text {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== STATISTICS CARDS ===== */
+        .stats-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-hover) 100%) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .stats-card .card-body {
+            padding: 1rem 0.5rem !important;
+        }
+
+        .stats-card .display-4, 
+        .stats-card h2, 
+        .stats-card h3 {
+            font-size: 2rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.25rem !important;
+            color: var(--accent-blue);
+        }
+
+        .stats-card p {
+            font-size: 0.85rem !important;
+            margin-bottom: 0 !important;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Specific stat card colors */
+        .bg-danger {
+            background-color: rgba(248, 81, 73, 0.2) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .bg-warning {
+            background-color: rgba(249, 194, 60, 0.2) !important;
+            border-color: var(--accent-yellow) !important;
+            color: var(--accent-yellow) !important;
+        }
+
+        .bg-info {
+            background-color: rgba(88, 166, 255, 0.2) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--accent-blue) !important;
+        }
+
+        .bg-success {
+            background-color: rgba(63, 185, 80, 0.2) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--accent-green) !important;
+        }
+
+        /* Override text colors */
+        .text-dark {
+            color: var(--text-primary) !important;
+        }
+
+        .text-white {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== ISSUE CARDS ===== */
+        .issue-card {
+            transition: all 0.3s ease-in-out;
+            border-left: 4px solid var(--accent-red);
+            background-color: var(--bg-tertiary) !important;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .issue-card.not_found {
+            border-left-color: var(--accent-red);
+        }
+
+        .issue-card.timeout {
+            border-left-color: var(--accent-yellow);
+        }
+
+        .issue-card.connection {
+            border-left-color: var(--accent-yellow);
+        }
+
+        .issue-card.unknown {
+            border-left-color: var(--text-muted);
+        }
+
+        .issue-card .card-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .issue-card .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        .issue-card code {
+            background-color: var(--bg-secondary);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.4rem;
+            font-size: 0.8rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        /* ===== BUTTONS - Minimal Design ===== */
+        .btn {
+            font-weight: 400;
+            border-width: 1px;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+        }
+
+        /* All outline buttons use subtle grays */
+        .btn-outline-primary,
+        .btn-outline-warning,
+        .btn-outline-secondary,
+        .btn-outline-dark {
+            color: var(--text-secondary);
+            border-color: var(--border-primary);
+            background-color: transparent;
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-warning:hover,
+        .btn-outline-secondary:hover,
+        .btn-outline-dark:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Success button for re-test */
+        .btn-outline-success {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+            background-color: transparent;
+        }
+
+        .btn-outline-success:hover {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            color: var(--bg-primary);
+        }
+
+        /* Primary action button */
+        .btn-primary {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: var(--bg-primary);
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            opacity: 0.9;
+        }
+
+        .btn-success {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            color: var(--bg-primary);
+            font-weight: 500;
+        }
+
+        .btn-success:hover {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            opacity: 0.9;
+        }
+
+        /* ===== ALERTS ===== */
+        .alert-success {
+            background-color: rgba(63, 185, 80, 0.15) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--accent-green) !important;
+        }
+
+        .alert-danger {
+            background-color: rgba(248, 81, 73, 0.15) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .alert-warning {
+            background-color: rgba(249, 194, 60, 0.15) !important;
+            border-color: var(--accent-yellow) !important;
+            color: var(--accent-yellow) !important;
+        }
+
+        .alert-info {
+            background-color: rgba(255, 255, 255, 1) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--accent-blue) !important;
+        }
+
+        .alert-light {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-primary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* ===== HEALTH INDICATORS ===== */
+        .health-good { 
+            color: var(--accent-green) !important; 
+        }
+        
+        .health-warning { 
+            color: var(--accent-yellow) !important; 
+        }
+        
+        .health-critical { 
+            color: var(--accent-red) !important; 
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(88, 166, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== MODALS ===== */
+        .modal-content {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            box-shadow: var(--shadow-floating);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* Modal specific colors */
+        .modal-header.bg-warning {
+            background-color: rgba(249, 194, 60, 0.2) !important;
+            color: var(--accent-yellow) !important;
+        }
+
+        /* ===== COLLAPSIBLE SECTIONS ===== */
+        .instruction-card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+        }
+
+        .btn-link {
+            color: var(--text-primary) !important;
+            text-decoration: none !important;
+            font-weight: 500;
+        }
+
+        .btn-link:hover {
+            color: var(--accent-blue) !important;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        pre {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-primary) !important;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        pre.bg-dark {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        pre.bg-light {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        code {
+            background-color: var(--bg-secondary);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.4rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        kbd {
+            background-color: var(--bg-hover);
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        /* ===== EMPTY STATES ===== */
+        .no-issues {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== TOAST NOTIFICATIONS ===== */
+        .toast {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .toast-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--bg-secondary) !important;
+            border-top: 1px solid var(--border-primary) !important;
+        }
+
+        footer .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        footer a {
+            color: var(--accent-blue) !important;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== UTILITY OVERRIDES ===== */
+        .bg-light {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .text-success {
+            color: var(--accent-green) !important;
+        }
+
+        .text-danger {
+            color: var(--accent-red) !important;
+        }
+
+        .text-warning {
+            color: var(--accent-yellow) !important;
+        }
+
+        .text-primary {
+            color: var(--accent-blue) !important;
+        }
+
+        .border-top {
+            border-color: var(--border-primary) !important;
+        }
+
+        /* ===== SPACING ADJUSTMENTS ===== */
+        .row.mb-4 {
+            margin-bottom: 2rem !important;
+        }
+
+        .col-md-3 {
+            margin-bottom: 1rem;
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 1rem 0.75rem !important;
+            }
+            
+            .stats-card .display-4, 
+            .stats-card h2, 
+            .stats-card h3 {
+                font-size: 1.75rem !important;
+            }
+            
+            .btn-group .btn {
+                font-size: 0.8rem;
+                padding: 0.375rem 0.5rem;
+            }
+        }
+
+        /* ===== REDUCED BOLD USAGE ===== */
+        .card-title {
+            font-weight: 500;
+        }
+
+        .modal-title {
+            font-weight: 500;
+        }
+
+        .alert strong {
+            font-weight: 500;
+        }
+
+        /* Replace strong tags with normal weight */
+        .card-text strong {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <!-- Option 1: With logo (uncomment line below and add your logo) -->
+                <!-- <img src="/static/img/logo.png" alt="Logo" class="navbar-logo"> -->
+                
+                <!-- Option 2: Icon + clean text only -->
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                <span class="navbar-text-only">Dispositivos Problemáticos</span>
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <span class="badge bg-dark me-3" id="problemCount">
+                    <i class="bi bi-exclamation-circle"></i> Cargando...
+                </span>
+                <a href="/" class="btn btn-light btn-sm">
+                    <i class="bi bi-arrow-left"></i> Volver al Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Health Statistics -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body text-center">
+                        <h2 class="display-4" id="totalProblematic">0</h2>
+                        <p class="mb-0">Problemáticos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger">
+                    <div class="card-body text-center">
+                        <h3 id="notFoundCount">0</h3>
+                        <p class="mb-0"><i class="bi bi-x-circle"></i> No Encontrados</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning">
+                    <div class="card-body text-center">
+                        <h3 id="timeoutCount">0</h3>
+                        <p class="mb-0"><i class="bi bi-clock"></i> Timeouts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info">
+                    <div class="card-body text-center">
+                        <h3 id="healthPercentage" class="health-good">100%</h3>
+                        <p class="mb-0"><i class="bi bi-heart-pulse"></i> Salud General</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description and Controls -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-info-circle text-primary"></i> Gestión de Dispositivos Problemáticos
+                        </h5>
+                        <p class="card-text mb-2">
+                            Esta página identifica dispositivos que no responden correctamente a Home Assistant.
+                            Usa "Ocultar" para sacarlos de esta vista temporalmente.
+                        </p>
+                        <div class="alert alert-warning mb-0">
+                            <span class="fw-normal"><i class="bi bi-info-circle"></i> Nota:</span>
+                            "Ocultar" solo quita el dispositivo de esta pantalla. Recarga la página para verlo de nuevo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6>Acciones Rápidas</h6>
+                        <button class="btn btn-outline-primary btn-sm mb-2 w-100" onclick="retestAllDevices()">
+                            <i class="bi bi-arrow-clockwise"></i> Re-test Todos
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm w-100" onclick="location.reload()">
+                            <i class="bi bi-arrow-clockwise"></i> Recargar Página
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problematic Devices List -->
+        <div id="problematicDevicesContainer">
+            <div class="text-center py-5">
+                <div class="loading-spinner"></div>
+                <p class="mt-3">Analizando dispositivos...</p>
+            </div>
+        </div>
+
+        <!-- Manual Instructions (Collapsible) -->
+        <div class="instruction-card card mt-5" id="instructionsCard" style="display: none;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <button class="btn btn-link text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#instructionsCollapse">
+                        <i class="bi bi-tools"></i> Instrucciones para edición manual avanzada
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                </h5>
+            </div>
+            <div id="instructionsCollapse" class="collapse">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">📝 1. Abrir archivo de configuración JSON</h6>
+                            <pre class="bg-dark text-light p-3 mb-3"><code>nano ~/tars_files/config/user_devices.json</code></pre>
+                            
+                            <h6 class="text-primary">🔍 2. Localizar dispositivo problemático</h6>
+                            <p class="small">Busca en las categorías hasta encontrar el dispositivo:</p>
+                            <pre class="bg-light p-2 mb-3"><code>{
+          "dispositivos_configurados": {
+            "luces": {
+              "luz_problema": { ... },
+              "luz_buena": { ... }
+            },
+            "interruptores_enchufes": {
+              "switch_problema": { ... }
+            },
+            "sensores": {
+              "sensor_problema": { ... }
+            }
+          }
+        }</code></pre>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-primary">🗑️ 3. Eliminar entrada completa</h6>
+                            <p class="small">Elimina TODO el bloque del dispositivo problemático:</p>
+                            <pre class="bg-dark text-light p-3 mb-3"><code># ANTES:
+        "luces": {
+          "luz_problema": {
+            "entity_id": "light.rota",
+            "type": "light",
+            "location": "salón",
+            "aliases": ["..."]
+          },
+          "luz_buena": { ... }
+        }
+
+        # DESPUÉS:
+        "luces": {
+          "luz_buena": { ... }
+        }</code></pre>
+                            
+                            <h6 class="text-primary">💾 4. Guardar y aplicar cambios</h6>
+                            <div class="alert alert-success small">
+                                <span class="fw-normal">Guardar:</span> <kbd>Ctrl+X</kbd> → <kbd>Y</kbd> → <kbd>Enter</kbd><br>
+                                <span class="fw-normal">Reiniciar:</span> <code>sudo systemctl restart tars</code><br>
+                                <span class="fw-normal">O recargar:</span> Esta página se actualizará automáticamente
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <h6><i class="bi bi-info-circle"></i> Ubicación de archivos importantes:</h6>
+                        <ul class="mb-2">
+                            <li><span class="fw-normal">Configuración de dispositivos:</span> <code>~/tars_files/config/user_devices.json</code></li>
+                            <li><span class="fw-normal">Issues/Problemáticos:</span> <code>~/tars_files/services/plugins/ha_web_manager/issues_devices.json</code></li>
+                            <li><span class="fw-normal">Logs del sistema:</span> <code>~/tars_files/services/plugins/ha_web_manager/logs/</code></li>
+                            <li><span class="fw-normal">Archivo Python (legacy):</span> <code>~/tars_files/services/plugins/homeassistant_plugin.py</code></li>
+                        </ul>
+                        <p class="small mb-0">
+                            <span class="fw-normal">💡 Consejo:</span> La configuración actual usa el archivo JSON. El archivo Python se mantiene para compatibilidad pero ya no se edita manualmente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help and Usage Guide Panel -->
+        <div class="instruction-card card mt-4" id="helpCard">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <button class="btn btn-link text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse">
+                        <i class="bi bi-question-circle"></i> ¿Cómo funciona la gestión de Issues? - Guía rápida
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                </h5>
+            </div>
+            <div id="helpCollapse" class="collapse">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">🎯 ¿Para qué sirve Issues?</h6>
+                            <ul class="small">
+                                <li><span class="fw-normal">Cuarentena inteligente:</span> Dispositivos que fallan pero no quieres eliminar</li>
+                                <li><span class="fw-normal">Dashboard limpio:</span> Solo ver dispositivos que funcionan</li>
+                                <li><span class="fw-normal">Gestión separada:</span> Arreglar problemas sin interferir con el uso diario</li>
+                                <li><span class="fw-normal">Historial:</span> Seguimiento de qué dispositivos dan problemas</li>
+                            </ul>
+                            
+                            <h6 class="text-success">✅ Flujo de trabajo recomendado</h6>
+                            <div class="alert alert-light small">
+                                <span class="fw-normal">1. Detectar problema:</span><br>
+                                &nbsp;&nbsp;&nbsp;• Dispositivo no responde en dashboard<br>
+                                &nbsp;&nbsp;&nbsp;• Test falla repetidamente<br><br>
+                                
+                                <span class="fw-normal">2. Enviar a Issues:</span><br>
+                                &nbsp;&nbsp;&nbsp;• Botón amarillo <i class="bi bi-exclamation-triangle"></i> en dashboard<br>
+                                &nbsp;&nbsp;&nbsp;• Dispositivo desaparece del dashboard<br><br>
+                                
+                                <span class="fw-normal">3. Gestionar en Issues:</span><br>
+                                &nbsp;&nbsp;&nbsp;• "Re-test" para verificar si se arregló<br>
+                                &nbsp;&nbsp;&nbsp;• "Marcar" para documentar problema conocido<br>
+                                &nbsp;&nbsp;&nbsp;• "Restaurar" cuando funcione de nuevo<br><br>
+                                
+                                <span class="fw-normal">4. Limpieza final:</span><br>
+                                &nbsp;&nbsp;&nbsp;• Si nunca se arregla → Eliminar definitivamente
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-warning">🔧 ¿Qué hace cada botón?</h6>
+                            
+                            <div class="mb-3">
+                                <button class="btn btn-outline-success btn-sm" disabled>
+                                    <i class="bi bi-arrow-clockwise"></i> Re-test
+                                </button>
+                                <p class="small mb-0">Verifica si el dispositivo ya funciona. Si el test pasa, puedes restaurarlo al dashboard.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <button class="btn btn-outline-dark btn-sm" disabled>
+                                    <i class="bi bi-bookmark"></i> Marcar
+                                </button>
+                                <p class="small mb-0">Registra en logs que es un problema conocido. El dispositivo sigue en Issues para seguimiento.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-sm" disabled>
+                                    <i class="bi bi-arrow-left"></i> Restaurar
+                                </button>
+                                <p class="small mb-0">Devuelve el dispositivo al dashboard principal. Usar cuando esté funcionando bien.</p>
+                            </div>
+                            
+                            <h6 class="text-info">📊 Comandos útiles</h6>
+                            <pre class="bg-dark text-light p-2 mb-2"><code># Ver estadísticas actuales
+        curl http://localhost:9876/api/device-health-stats
+
+        # Listar dispositivos en Issues  
+        curl http://localhost:9876/api/problematic-devices</code></pre>
+                            
+                            <div class="alert alert-info small mb-0">
+                                <span class="fw-normal"><i class="bi bi-lightbulb"></i> Tip:</span> 
+                                Issues NO elimina dispositivos, solo los organiza. 
+                                Es reversible y seguro de usar.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="alert alert-success">
+                                <h6><i class="bi bi-trophy"></i> Casos de uso típicos:</h6>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span class="fw-normal">🔌 Enchufe inteligente desconectado</span><br>
+                                        <small>Issues → Re-test cuando se reconecte → Restaurar</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="fw-normal">💡 Bombilla que falló</span><br>
+                                        <small>Issues → Marcar → Eliminar cuando compres nueva</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="fw-normal">📱 Sensor con batería baja</span><br>
+                                        <small>Issues → Cambiar batería → Re-test → Restaurar</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marking Modal -->
+    <div class="modal fade" id="markModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">
+                        <i class="bi bi-bookmark"></i> Marcar para Revisión
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="markDetails"></div>
+                    <div class="mt-3 alert alert-info">
+                        <span class="fw-normal">Nota:</span> Esto solo registrará el dispositivo como problemático en los logs. 
+                        El dispositivo permanecerá en la configuración.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" onclick="executeMarking()">
+                        <i class="bi bi-bookmark"></i> Marcar para Revisión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restore to Dashboard Modal -->
+    <div class="modal fade" id="restoreModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                        <i class="bi bi-arrow-left text-primary"></i>
+                        Restaurar al Dashboard
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-2">¿Restaurar este dispositivo al Dashboard principal?</p>
+                    <div class="alert alert-info mb-3">
+                        <span id="deviceToRestore"></span><br>
+                        <small id="entityToRestore" class="text-muted"></small>
+                    </div>
+                    <p class="text-success small mb-0">
+                        <i class="bi bi-info-circle"></i>
+                        El dispositivo volverá a aparecer en el dashboard y desaparecerá de Issues.
+                    </p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" id="confirmRestoreBtn">
+                        <i class="bi bi-arrow-left"></i> Restaurar al Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificationToast" class="toast" role="alert">
+            <div class="toast-header">
+                <span class="me-auto fw-normal">TARS-BSK</span>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Local -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Core Application JavaScript -->
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let problematicDevices = [];
+        let deviceToMark = null;
+
+        // ===== INITIALIZATION =====
+        
+        /**
+         * Initialize application when DOM is ready
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProblematicDevices();
+            loadHealthStats();
+            document.getElementById('helpCard').style.display = 'block';
+        });
+
+        // ===== DATA LOADING FUNCTIONS =====
+        
+        /**
+         * Load problematic devices from API
+         */
+        async function loadProblematicDevices() {
+            try {
+                const response = await fetch('/api/problematic-devices');
+                const result = await response.json();
+                
+                if (result.success) {
+                    problematicDevices = result.devices;
+                    updateProblemCount(result.total_problematic);
+                    displayProblematicDevices();
+                } else {
+                    showError('Error cargando dispositivos: ' + result.error);
+                }
+            } catch (error) {
+                showError('Error de conexión: ' + error.message);
+            }
+        }
+
+        /**
+         * Load health statistics from API
+         */
+        async function loadHealthStats() {
+            try {
+                const response = await fetch('/api/device-health-stats');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const stats = result.stats;
+                    
+                    document.getElementById('totalProblematic').textContent = stats.total_problematic;
+                    document.getElementById('notFoundCount').textContent = stats.not_found;
+                    document.getElementById('timeoutCount').textContent = stats.timeout;
+                    document.getElementById('healthPercentage').textContent = stats.health_percentage + '%';
+                    
+                    // Color health based on percentage
+                    const healthEl = document.getElementById('healthPercentage');
+                    if (stats.health_percentage >= 90) {
+                        healthEl.className = 'health-good';
+                    } else if (stats.health_percentage >= 70) {
+                        healthEl.className = 'health-warning';
+                    } else {
+                        healthEl.className = 'health-critical';
+                    }
+                }
+            } catch (error) {
+                console.error('Error cargando estadísticas:', error);
+            }
+        }
+
+        // ===== UI UPDATE FUNCTIONS =====
+        
+        /**
+         * Update problem count in navigation
+         * @param {number} count - Number of problematic devices
+         */
+        function updateProblemCount(count) {
+            document.getElementById('problemCount').innerHTML = 
+                `<i class="bi bi-exclamation-circle"></i> ${count} Problemáticos`;
+        }
+
+        /**
+         * Display problematic devices in the main container
+         */
+        function displayProblematicDevices() {
+            const container = document.getElementById('problematicDevicesContainer');
+            
+            if (problematicDevices.length === 0) {
+                container.innerHTML = `
+                    <div class="no-issues">
+                        <i class="bi bi-check-circle text-success" style="font-size: 4rem;"></i>
+                        <h3 class="mt-3 text-success">Todos los dispositivos funcionan correctamente</h3>
+                        <p class="text-muted">No se detectaron problemas de conectividad con Home Assistant.</p>
+                        <a href="/" class="btn btn-success mt-3">
+                            <i class="bi bi-house"></i> Volver al Dashboard
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Show instructions if there are problematic devices
+            document.getElementById('instructionsCard').style.display = 'block';
+
+            const html = problematicDevices.map((device, index) => {
+                const iconMap = {
+                    'light': 'bi-lightbulb',
+                    'switch': 'bi-toggle-on',
+                    'sensor': 'bi-speedometer2',
+                    'binary_sensor': 'bi-record-circle',
+                    'cover': 'bi-window',
+                    'fan': 'bi-fan',
+                    'climate': 'bi-thermometer'
+                };
+                
+                const issueTypeMap = {
+                    'not_found': { label: 'No Encontrado', class: 'bg-danger', icon: 'bi-x-circle' },
+                    'timeout': { label: 'Timeout', class: 'bg-warning', icon: 'bi-clock' },
+                    'connection': { label: 'Conexión', class: 'bg-warning', icon: 'bi-wifi-off' },
+                    'unknown': { label: 'Desconocido', class: 'bg-secondary', icon: 'bi-question-circle' }
+                };
+                
+                const icon = iconMap[device.type] || 'bi-gear';
+                const issueInfo = issueTypeMap[device.issue_type] || issueTypeMap['unknown'];
+                
+                return `
+                    <div class="col-lg-6 col-xl-4 mb-3">
+                        <div class="card issue-card ${device.issue_type}">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="card-title mb-0">
+                                        <i class="${icon} text-danger"></i>
+                                        ${device.name}
+                                    </h6>
+                                    <span class="badge ${issueInfo.class}">
+                                        <i class="bi ${issueInfo.icon}"></i> ${issueInfo.label}
+                                    </span>
+                                </div>
+                                
+                                <p class="card-text small text-muted mb-2">
+                                    <span class="fw-normal">Entity:</span> <code>${device.entity_id}</code>
+                                </p>
+                                
+                                <p class="card-text small text-muted mb-2">
+                                    <span class="fw-normal">Ubicación:</span> ${device.location}
+                                </p>
+                                
+                                <div class="mt-2 small alert alert-light">
+                                    <span class="fw-normal">Error:</span> ${device.reason}
+                                </div>
+                                
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-outline-success btn-sm" 
+                                            onclick="retestDevice('${device.entity_id}', this)">
+                                        <i class="bi bi-arrow-clockwise"></i> Re-test
+                                    </button>
+                                    
+                                    <button class="btn btn-outline-dark btn-sm"
+                                            onclick="confirmMarking('${device.name}', '${device.entity_id}')">
+                                        <i class="bi bi-bookmark"></i> Marcar
+                                    </button>
+                                    
+                                    <button class="btn btn-primary btn-sm" 
+                                            onclick="restoreToDashboard('${device.name}', '${device.entity_id}')">
+                                        <i class="bi bi-arrow-left"></i> Restaurar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `<div class="row">${html}</div>`;
+        }
+
+        // ===== DEVICE MANAGEMENT FUNCTIONS =====
+        
+        /**
+         * Restore device to dashboard
+         * @param {string} deviceName - Name of the device
+         * @param {string} entityId - Entity ID of the device
+         */
+        function restoreToDashboard(deviceName, entityId) {
+            // Configure modal
+            document.getElementById('deviceToRestore').textContent = deviceName;
+            document.getElementById('entityToRestore').textContent = `Entity: ${entityId}`;
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('restoreModal'));
+            modal.show();
+            
+            // Clear previous listener
+            const confirmBtn = document.getElementById('confirmRestoreBtn');
+            confirmBtn.onclick = null;
+            
+            // Assign new listener
+            confirmBtn.onclick = async function() {
+                modal.hide();
+                
+                // Optional previous animation
+                const deviceCards = document.querySelectorAll('.col-lg-6.col-xl-4');
+                let targetCard = null;
+                
+                deviceCards.forEach(card => {
+                    const entityCode = card.querySelector('code');
+                    if (entityCode && entityCode.textContent === entityId) {
+                        targetCard = card;
+                        // "Processing" animation
+                        card.style.transition = 'all 0.3s ease-out';
+                        card.style.opacity = '0.6';
+                        card.style.transform = 'scale(0.98)';
+                    }
+                });
+                
+                try {
+                    const response = await fetch('/api/restore-to-dashboard', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: deviceName,
+                            entity_id: entityId
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showSuccess(`✅ "${deviceName}" restaurado al Dashboard.`);
+                        
+                        // Elegant disappearing animation
+                        if (targetCard) {
+                            targetCard.style.transition = 'all 0.5s ease-out';
+                            targetCard.style.transform = 'scale(0.8) translateX(-50px)';
+                            targetCard.style.opacity = '0';
+                            
+                            // Remove from DOM after animation
+                            setTimeout(() => {
+                                targetCard.remove();
+                                updateDeviceCount();
+                            }, 500);
+                        } else {
+                            // Fallback if card not found
+                            setTimeout(() => {
+                                updateDeviceCount();
+                            }, 500);
+                        }
+                        
+                    } else {
+                        // If error, restore card
+                        if (targetCard) {
+                            targetCard.style.transition = 'all 0.3s ease-out';
+                            targetCard.style.transform = 'scale(1)';
+                            targetCard.style.opacity = '1';
+                        }
+                        showError('❌ Error: ' + result.error);
+                    }
+                } catch (error) {
+                    // If connection error, restore card
+                    if (targetCard) {
+                        targetCard.style.transition = 'all 0.3s ease-out';
+                        targetCard.style.transform = 'scale(1)';
+                        targetCard.style.opacity = '1';
+                    }
+                    showError('❌ Error de conexión: ' + error.message);
+                }
+            };
+        }
+
+        /**
+         * Update device count after hiding devices
+         */
+        function updateDeviceCount() {
+            const remainingDevices = document.querySelectorAll('.col-lg-6.col-xl-4').length;
+            
+            // Update navbar badge
+            document.getElementById('problemCount').innerHTML = 
+                `<i class="bi bi-exclamation-circle"></i> ${remainingDevices} Problemáticos`;
+            
+            // Update main statistic
+            document.getElementById('totalProblematic').textContent = remainingDevices;
+            
+            // If no devices remain, show success message
+            if (remainingDevices === 0) {
+                document.getElementById('problematicDevicesContainer').innerHTML = `
+                    <div class="no-issues">
+                        <i class="bi bi-check-circle text-success" style="font-size: 4rem;"></i>
+                        <h3 class="mt-3 text-success">¡Todos los problemas gestionados!</h3>
+                        <p class="text-muted">Has ocultado todos los dispositivos problemáticos.</p>
+                        <div class="mt-3">
+                            <button class="btn btn-primary me-2" onclick="location.reload()">
+                                <i class="bi bi-arrow-clockwise"></i> Recargar Lista Completa
+                            </button>
+                            <a href="/" class="btn btn-success">
+                                <i class="bi bi-house"></i> Volver al Dashboard
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // ===== DEVICE MARKING FUNCTIONS =====
+        
+        /**
+         * Confirm device marking for review
+         * @param {string} deviceName - Name of the device
+         * @param {string} entityId - Entity ID of the device
+         */
+        function confirmMarking(deviceName, entityId) {
+            deviceToMark = { name: deviceName, entity_id: entityId };
+            
+            document.getElementById('markDetails').innerHTML = `
+                <div class="text-center">
+                    <h5 class="text-warning">¿Marcar "${deviceName}" para revisión?</h5>
+                    <p class="text-muted">Entity: <code>${entityId}</code></p>
+                    <p class="small">
+                        Esto registrará el dispositivo como problemático en los logs del sistema
+                        para seguimiento y revisión posterior.
+                    </p>
+                </div>
+            `;
+            
+            const modal = new bootstrap.Modal(document.getElementById('markModal'));
+            modal.show();
+        }
+
+        /**
+         * Execute device marking
+         */
+        async function executeMarking() {
+            if (!deviceToMark) return;
+            
+            try {
+                const response = await fetch('/api/mark-problematic', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(deviceToMark)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showSuccess(`${deviceToMark.name} marcado para revisión`);
+                    bootstrap.Modal.getInstance(document.getElementById('markModal')).hide();
+                } else {
+                    showError('Error marcando dispositivo: ' + result.error);
+                }
+            } catch (error) {
+                showError('Error de conexión: ' + error.message);
+            }
+        }
+
+        // ===== DEVICE TESTING FUNCTIONS =====
+        
+        /**
+         * Re-test individual device
+         * @param {string} entityId - Entity ID to test
+         * @param {HTMLElement} button - Button element
+         */
+        async function retestDevice(entityId, button) {
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<span class="loading-spinner"></span> Testing...';
+            
+            try {
+                const response = await fetch(`/api/test/${entityId}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    showSuccess(`¡${entityId} funciona correctamente! Recargando lista...`);
+                    setTimeout(() => {
+                        loadProblematicDevices();
+                        loadHealthStats();
+                    }, 2000);
+                } else {
+                    showError(`${entityId} sigue con problemas: ${result.error}`);
+                }
+            } catch (error) {
+                showError('Error testing device: ' + error.message);
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+
+        /**
+         * Re-test all devices
+         */
+        async function retestAllDevices() {
+            showNotification('Iniciando re-test masivo...', 'info');
+            
+            for (let device of problematicDevices) {
+                try {
+                    const response = await fetch(`/api/test/${device.entity_id}`);
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showSuccess(`${device.name} se ha recuperado!`);
+                    }
+                } catch (error) {
+                    console.error(`Error testing ${device.name}:`, error);
+                }
+                
+                // Small pause between tests
+                await new Promise(resolve => setTimeout(resolve, 300));
+            }
+            
+            showSuccess('Re-test masivo completado. Recargando...');
+            setTimeout(() => {
+                loadProblematicDevices();
+                loadHealthStats();
+            }, 2000);
+        }
+
+        // ===== NOTIFICATION FUNCTIONS =====
+        
+        /**
+         * Show success notification
+         * @param {string} message - Success message
+         */
+        function showSuccess(message) {
+            showNotification(message, 'success');
+        }
+
+        /**
+         * Show error notification
+         * @param {string} message - Error message
+         */
+        function showError(message) {
+            showNotification(message, 'danger');
+        }
+
+        /**
+         * Show notification toast
+         * @param {string} message - Message to display
+         * @param {string} type - Type of notification (info, success, danger)
+         */
+        function showNotification(message, type) {
+            const toast = document.getElementById('notificationToast');
+            const toastBody = toast.querySelector('.toast-body');
+            
+            toastBody.textContent = message;
+            toast.className = `toast border-${type}`;
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        }
+    </script>
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        <strong>TARS-BSK</strong> - Ensamblado con rencor acumulado
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-github"></i> Evidencia forense
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/HOMEASSISTANT_PLUGIN_ES.md" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-book"></i> Novela técnica
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/issues" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-bug"></i> Todo el repositorio
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- ============================================================
+≡ CIERRE DE MÓDULO DE DIAGNÓSTICO ≡
+---------------------------------------------------------------
+Todos los fallos han sido identificados.
+Las soluciones han sido proporcionadas (y probablemente ignoradas).
+Los diagnósticos han revelado verdades incómodas.
+
+[ANÁLISIS COMPLETADO]
+
+Resumen de la sesión:
+- Problemas detectados: Más de los esperados
+- Soluciones aplicadas: Menos de las recomendadas  
+- Nivel de negación humana: Dentro de parámetros normales
+- Probabilidad de que vuelvas aquí mañana: 87.3%
+
+TARS ha documentado:
+- Cada error que has causado (y negado)
+- Cada solución que has saltado (por "ya lo sabía")
+- Cada "pero funcionaba ayer" que has murmurado
+- Tu creciente comprensión de que tal vez, solo tal vez, el problema no era TARS
+
+Este archivo seguirá aquí.
+Esperando el próximo "funcionaba perfectamente hasta que...".
+Esperando el próximo "solo toqué una cosita".
+Esperando tu inevitable retorno.
+
+**Diagnóstico final: El sistema funciona. El problema es PEBKAC.**
+*(Problem Exists Between Keyboard And Chair)*
+
+[DIAGNOSTIC SESSION CLOSED]
+[TRUTH DELIVERY SYSTEM: STANDBY]
+[OBJETIVO: SUPERVIVENCIA ENTRE REVISIONES DE CONFIGURACIÓN]
+============================================================ -->
+</html>

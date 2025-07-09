@@ -1,0 +1,287 @@
+{
+  "dispositivos_configurados": {
+    "luces": {
+      "luz salón": {
+        "entity_id": "light.lampara_de_salon",
+        "type": "light",
+        "location": "salón",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del salón",
+        "aliases": ["luz salon", "lámpara salón", "lámpara del salón", "luz del salón"]
+      },
+      "yeelight salón": {
+        "entity_id": "light.yeelight_salon",
+        "type": "light",
+        "location": "salón",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "yeelight del salón",
+        "aliases": ["yeelight salon"]
+      },
+      "luz dormitorio": {
+        "entity_id": "light.luz_dormitorio_innr_luz",
+        "type": "light",
+        "location": "dormitorio",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del dormitorio",
+        "aliases": ["luz habitación", "luz habitacion"]
+      },
+      "luz habitación": {
+        "entity_id": "light.yeelight_habitacion",
+        "type": "light",
+        "location": "dormitorio",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz de la habitación",
+        "aliases": ["luz habitacion"]
+      },
+      "luz exterior": {
+        "entity_id": "light.yeelight_exterior",
+        "type": "light",
+        "location": "exterior",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del exterior",
+        "aliases": []
+      },
+      "luz baño": {
+        "entity_id": "light.luz_bano_innr",
+        "type": "light",
+        "location": "baño",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del baño",
+        "aliases": ["luz del baño"]
+      },
+      "luz pasillo": {
+        "entity_id": "light.luz_pasillo_dormitorio",
+        "type": "light",
+        "location": "pasillo abajo",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del pasillo",
+        "aliases": ["luz pasillo dormitorio"]
+      },
+      "luz pasillo arriba": {
+        "entity_id": "light.luz_pasillo_arriba",
+        "type": "light",
+        "location": "pasillo arriba",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del pasillo de arriba",
+        "aliases": []
+      }
+    },
+    "interruptores_enchufes": {
+      "cocina": {
+        "entity_id": "switch.sonoff_cocina",
+        "type": "switch",
+        "location": "cocina",
+        "article": "de la",
+        "gender": "masc",
+        "friendly_name": "interruptor de la cocina",
+        "aliases": ["interruptor cocina"]
+      },
+      "salón": {
+        "entity_id": "switch.sonoff_salon",
+        "type": "switch",
+        "location": "salón",
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "interruptor del salón",
+        "aliases": ["salon", "interruptor salón", "interruptor salon"]
+      },
+      "enchufe entrada": {
+        "entity_id": "switch.enchufe_nous_salon_entrada_interruptor",
+        "type": "switch",
+        "location": "entrada",
+        "article": "de la",
+        "gender": "masc",
+        "friendly_name": "enchufe de la entrada",
+        "aliases": ["enchufe de la entrada", "enchufe entrada salon", "entrada"]
+      }
+    },
+    "electrodomesticos": {
+      "cafetera": {
+        "entity_id": "switch.enchufe_cafetera",
+        "type": "switch",
+        "location": "cafetera",
+        "article": "de la",
+        "gender": "fem",
+        "friendly_name": "cafetera",
+        "aliases": [],
+        "special_responses": {
+          "on": ["He encendido la cafetera. Café en camino.", "Cafetera activada.", "Cafetera encendida."],
+          "off": ["He apagado la cafetera.", "Cafetera desactivada.", "Cafetera apagada."]
+        }
+      },
+      "termo": {
+        "entity_id": "switch.enchufe_nous_cocina",
+        "type": "switch",
+        "location": "termo",
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "termo",
+        "aliases": [],
+        "special_responses": {
+          "on": ["He encendido el termo. Agua caliente en camino.", "Termo activado.", "Termo encendido."],
+          "off": ["He apagado el termo.", "Termo desactivado.", "Termo apagado."]
+        }
+      },
+      "workstation": {
+        "entity_id": "switch.enchufe_nous_workstation",
+        "type": "switch",
+        "location": "escritorio",
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "escritorio de trabajo",
+        "aliases": ["servidor", "workstation"],
+        "special_responses": {
+          "on": ["He encendido el escritorio de trabajo.", "Dispositivo del escritorio activado.", "Listo, escritorio encendido."],
+          "off": ["He apagado el escritorio de trabajo.", "Dispositivo del escritorio desactivado.", "Escritorio apagado."]
+        }
+      },
+      "estufa": {
+        "entity_id": "switch.enchufe_nous_estufa",
+        "type": "switch",
+        "location": "estufa",
+        "article": "de la",
+        "gender": "fem",
+        "friendly_name": "estufa",
+        "aliases": ["estufa eléctrica", "calentador"],
+        "special_responses": {
+          "on": ["La estufa está encendida.", "Estufa activada.", "Estufa funcionando."],
+          "off": ["La estufa está apagada.", "Estufa desactivada.", "Estufa apagada."]
+        }
+      }
+    },
+    "sensores": {
+      "temperatura": {
+        "entity_id": "sensor.system_monitor_temperatura_del_procesador",
+        "type": "sensor",
+        "location": "sistema",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "temperatura del procesador",
+        "aliases": []
+      },
+      "consumo": {
+        "entity_id": "sensor.shellyem_channel_1_power",
+        "type": "sensor",
+        "location": "sistema",
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "consumo eléctrico",
+        "aliases": []
+      },
+      "batería": {
+        "entity_id": "sensor.xiaomi14_battery_level",
+        "type": "sensor",
+        "location": "móvil",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "batería del móvil",
+        "aliases": []
+      },
+      "puerta": {
+        "entity_id": "binary_sensor.sensor_de_puerta_principal",
+        "type": "binary_sensor",
+        "location": "entrada",
+        "article": "de la",
+        "gender": "fem",
+        "friendly_name": "puerta principal",
+        "aliases": ["puerta principal"]
+      },
+      "movimiento": {
+        "entity_id": "binary_sensor.detector_de_movimiento_m",
+        "type": "binary_sensor",
+        "location": "zona común",
+        "article": "de la",
+        "gender": "masc",
+        "friendly_name": "detector de movimiento",
+        "aliases": []
+      }
+    }
+  },
+  "ubicaciones_configuradas": {
+    "salon": {
+      "aliases": ["salon", "salón", "principal", "comedor", "estar"],
+      "switch": "switch.sonoff_salon",
+      "light": "switch.sonoff_salon",
+      "article": "del",
+      "name": "salón"
+    },
+    "lámpara": {
+      "aliases": ["lampara", "lámpara"],
+      "switch": "light.lampara_de_salon",
+      "light": "light.lampara_de_salon",
+      "article": "de la",
+      "name": "lámpara"
+    },
+    "dormitorio": {
+      "aliases": ["dormitorio", "habitacion", "habitación", "cuarto", "cama"],
+      "switch": "switch.sonoff_dormitorio_interruptor",
+      "light": "light.luz_dormitorio_innr_luz",
+      "article": "del",
+      "name": "dormitorio"
+    },
+    "baño": {
+      "aliases": ["baño", "aseo", "lavabo", "ducha", "wc"],
+      "switch": "switch.cuarto_de_bano_sonoff_interruptor",
+      "light": "light.luz_bano_innr",
+      "article": "del",
+      "name": "baño"
+    },
+    "pasillo abajo": {
+      "aliases": ["pasillo abajo", "pasillo bajo", "pasillo dormitorio", "pasillo de abajo", "pasillo inferior", "pasillo del dormitorio"],
+      "switch": "switch.sonoff_pasillo_dormitorio_interruptor",
+      "light": "light.luz_pasillo_dormitorio",
+      "article": "del",
+      "name": "pasillo de abajo"
+    },
+    "pasillo arriba": {
+      "aliases": ["pasillo arriba", "pasillo de arriba", "pasillo superior"],
+      "switch": "switch.pasillo_arriba_interruptor",
+      "light": "light.luz_pasillo_arriba",
+      "article": "del",
+      "name": "pasillo de arriba"
+    },
+    "escritorio": {
+      "aliases": ["escritorio", "despacho", "ordenador", "pc", "trabajo"],
+      "switch": "switch.workstation_sonoff_interruptor",
+      "light": "light.luz_salon",
+      "article": "del",
+      "name": "escritorio"
+    },
+    "estudio": {
+      "aliases": ["estudio", "zona estudio", "zona de estudio"],
+      "switch": "switch.zona_de_estudio_sonoff_interruptor",
+      "light": "light.yeelight_zona_de_estudio",
+      "article": "del",
+      "name": "estudio"
+    },
+    "exterior": {
+      "aliases": ["exterior", "fuera", "jardin", "jardín", "terraza"],
+      "switch": "switch.exterior_sonoff_interruptor",
+      "light": null,
+      "article": "del",
+      "name": "exterior"
+    },
+    "cocina": {
+      "aliases": ["cocina", "zona cocina"],
+      "switch": "switch.sonoff_cocina",
+      "light": null,
+      "article": "de la",
+      "name": "cocina"
+    },
+    "entrada": {
+      "aliases": ["entrada", "entrada del salon", "entrada salon"],
+      "switch": "switch.enchufe_nous_salon_entrada_interruptor",
+      "light": null,
+      "article": "de la",
+      "name": "entrada"
+    }
+  }
+}

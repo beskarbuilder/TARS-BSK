@@ -92,7 +92,7 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 - Cuerpo físico con pantalla — Emergiendo del metal reciclado de mi estufa de pellets.  
 - Traducción completa al inglés — Porque el sarcasmo no es patrimonio de ningún idioma.  
 - ~~Embeddings de voz — Reconocimiento de usuario activo (implementado, en validación).~~
-- **Interfaz web para Home Assistant** — Para quienes prefieren hacer clic y no **quieren** abrir un portal al infierno con un `:` mal alineado.
+- ~~Interfaz web para Home Assistant — Para quienes prefieren hacer clic y no **quieren** abrir un portal al infierno con un `:` mal alineado.~~
 - Lo que TARS decida por su cuenta — Porque a estas alturas, ¿quién controla a quién?
 
 
@@ -1098,22 +1098,26 @@ El hash SHA256 es su certificado de nacimiento. Y tu única garantía.
 ## 🧮 Motor Semántico con Optimización Dual
 
 #### Implementación
+
 - 📂 [semantic_engine.py](/modules/semantic_engine.py)
 - 📂 [preferences_manager.py](/modules/preferences_manager.py)
 
 El motor semántico de TARS-BSK implementa detección inteligente de duplicados mediante análisis tricapa: ortográfico, semántico y fonético. Transforma preferencias en vectores de 384 dimensiones para detectar similitudes reales, no solo coincidencias de texto.
 
 **Características principales:**
+
 - **Detección tricapa**: Levenshtein → embeddings → análisis fonético
 - **Umbrales adaptativos**: Se ajustan según longitud y complejidad del texto
 - **Optimización CPU**: Salida temprana para minimizar procesamiento
 - **Análisis multilingüe**: Maneja español con algoritmos fonéticos avanzados
 
 #### Documentación completa
-- 📄 [Motor Semántico - Documentación técnica](docs/SEMANTIC_ENGINE_ES.md) 
-- 📄 [CLI Semántico - Herramientas de desarrollo](docs/CLI_SEMANTIC_ENGINE_ES.md)
+
+- 📄 [Motor Semántico - Documentación técnica](/docs/SEMANTIC_ENGINE_ES.md) 
+- 📄 [CLI Semántico - Herramientas de desarrollo](/docs/CLI_SEMANTIC_ENGINE_ES.md)
 
 #### Herramientas de desarrollo
+
 - 📂 **CLI de gestión**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py) 
 - 📂 **Validador del sistema**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py)
 
@@ -1133,6 +1137,7 @@ El gestor de preferencias del sistema actúa como director de orquesta: coordina
 - **Integración TARS**: API específica para análisis de afinidad emocional
 
 #### Documentación
+
 - 📄 [PREFERENCES_MANAGER_ES.md](/docs/PREFERENCES_MANAGER_ES.md)
 
 **El gestor procesa comandos complejos en ~0.024s con overhead de separación del 1.7%, manteniendo 87MB de RAM total para ambos módulos.**
@@ -1398,18 +1403,19 @@ Modulación contextual automática:
 
 ## 🧩 Sistema de Plugins y Conectividad
 
-- **Home Assistant**: Control completo de dispositivos y sensores domóticos con interpretación semántica y contexto conversacional.
-    - Detección de intención incluso con frases ambiguas o indirectas
-    - Control por ubicación, preferencia y estado emocional
-    - Ajuste automático de brillo y transiciones según hora del día
-    - Interpretación de frases tipo: "¿puedes poner algo de luz en el estudio?" o "tengo frío"
-
+- **Home Assistant**: Control domótico contextual con interpretación semántica, gestión inteligente de dispositivos y múltiples formas de configuración.
+    - Detección de intención incluso con frases ambiguas ("¿podrías iluminar un poco el pasillo?")
+    - Control adaptable por ubicación, contexto conversacional y dispositivos recientes
+    - Ajuste automático de brillo según hora del día
+    - Alias personalizados, respuestas configurables y control emocional (sí, tu calefacción puede tener mal humor)
+    - Compatible con múltiples métodos: interfaz web, edición JSON directa o modo legacy (embebido en código)
+	
 - **Sistema de Recordatorios**: Procesamiento de lenguaje natural para recordatorios con inteligencia temporal.
     - Interpretación semántica de expresiones temporales complejas ("el martes que viene a las nueve y media")
     - Auto-corrección de fechas pasadas y detección de fechas imposibles con feedback transparente
     - Detección de recurrencia y programación inteligente ("todos los lunes", "solo días laborables")
     - Extracción de palabras clave para mensajes concisos
-
+	
 - **Plugin de Tiempo**: Consultas precisas de fecha y hora con diferenciación inteligente de comandos.
     - Respuestas instantáneas offline de tiempo y fecha en lenguaje natural
     - Detección inteligente para evitar conflictos con comandos de recordatorio
@@ -1435,7 +1441,7 @@ Modulación contextual automática:
 
 > Estos colores están sujetos a revisión en función de pruebas de contraste y respuesta visual del LED en distintos entornos.
 
-
+---
 ### Detalles de implementación y conectividad
 
 > Para los interesados en los aspectos técnicos, esta sección profundiza en la arquitectura de plugins e integraciones.
@@ -1481,16 +1487,54 @@ $ singularity-bootstrap --ai-core=TARS --paradox-scan=7layers --output=/dev/null
 FATAL: Humor module incompatible with reality
 ```
 
-
+---
 ### Home Assistant: Control domótico contextual
 
-La integración con Home Assistant va más allá de simples llamadas a la API REST:
+El plugin de Home Assistantno es solo una integración, es un sistema distribuido, modular y opcional, diseñado para adaptarse a cada usuario:
 
-- **Interpretación semántica**: Entiende comandos ambiguos como "hace frío" → activar calefacción
-- **Gestión contextual**: Recuerda el último dispositivo/ubicación mencionado
-- **Mapeo inteligente**: Traduce nombres coloquiales a IDs de entidades exactos
-- **Variedad de respuestas**: Genera confirmaciones naturales y diversas
-- **Resiliencia extrema**: Timeout handling con positive assumptions para mejor UX
+#### 🔀 Tres modos de configuración disponibles
+
+- **🌐 Interfaz web (Flask):**
+	
+    - Gestión visual desde `/dashboard`
+    - Validación automática de dispositivos
+    - Backups automáticos
+    - Detección de errores de configuración
+	
+- **📄 Edición manual JSON:**
+	
+    - Control directo sobre `user_devices.json`
+    - Ideal para usuarios avanzados o automatizaciones
+	
+- **🐍 Modo legacy en código:**
+	
+    - Configuración embebida en `homeassistant_plugin_legacy.py`
+    - Sin dependencias externas (ni siquiera el archivo JSON)
+
+
+**Screenshot de la interfaz:**
+
+![Dashboard](/docs/images/dashboard.jpg)
+*Vista principal con todos los dispositivos configurados*
+
+#### Capacidades principales
+
+- **Interpretación semántica y contextual:**  
+  "Hace frío" → Enciende calefacción, "pon algo de luz aquí" → Detecta ubicación actual  
+- **Mapeo inteligente:**  
+  Traduce nombres naturales o creativos ("luz del apocalipsis cuántico") a `entity_id`
+- **Respuestas naturales y personalizadas:**  
+  Desde frases automáticas hasta mensajes con personalidad (y sarcasmo configurable)
+- **Contexto conversacional persistente:**  
+  Si dices "apágala", sabe a qué te refieres (aunque tú ya no lo sepas)
+
+#### Arquitectura modular y flexible
+
+- Configuración desacoplada del código
+- Soporte para múltiples entidades por dispositivo (`switch` + `light`)
+- Carga y validación dinámica al iniciar
+- Logs detallados y sistema de diagnóstico en interfaz web
+
 
 📋 [Documentación completa](/docs/HOMEASSISTANT_PLUGIN_ES.md) - Arquitectura, configuración y ejemplos
 📋 [Casos de prueba detallados](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_ES.md) - Real session analysis  
@@ -1567,7 +1611,7 @@ if domain == "light":
 > 
 > *Estoy ****abatido**** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto.*
 
-
+---
 ### Tailscale: Conectividad Mesh Segura
 
 La integración con Tailscale proporciona acceso remoto seguro a TARS-BSK sin abrir puertos en el router:
@@ -1593,6 +1637,7 @@ sudo tailscale up \
   --hostname=tars-bsk
 ```
 
+---
 ### Sistema de recordatorios: Interpretación temporal natural
 
 **El sistema de recordatorios de TARS-BSK no se limita a simples alarmas.**  
@@ -1656,6 +1701,7 @@ if day > days_in_month:
 > ¿Lo hago con transformers? No. Con reglas, determinismo... y rencor acumulado.
 > ¿Elegante? No. ¿Funciona? Bueno… hasta que alguien diga 'la cosa esa que tengo el finde'._
 
+---
 ### Plugin de Tiempo: Consultas temporales directas
 
 **El TimePlugin responde a preguntas directas sobre fecha y hora**, sin entrar en la complejidad del sistema de recordatorios.
@@ -1763,7 +1809,6 @@ Refuerza patrones de estilo, tono, gustos y hábitos. Cada vez que corriges o el
 > Puedes cerrar simplemente diciendo "gracias", "adiós", o tu palabra clave personalizada (ej. “corto”).  
 > TARS lo interpretará como un cierre, responderá con una frase final ("Este es el camino") y quedará en espera.  
 > Así evitamos silencios incómodos, bucles innecesarios o malentendidos.
-
 
 ### ¿Y cuándo parece fallar?
 

@@ -139,14 +139,8 @@ class PluginSystem:
             if name == "homeassistant":
                 from services.plugins.homeassistant_plugin import HomeAssistantPlugin
                 
-                # Obtener configuración específica del plugin
-                plugin_config = self.config.get("homeassistant", {})
-                
-                self.plugins[name] = HomeAssistantPlugin(
-                    ip=plugin_config.get("ip", "192.168.50.112"),
-                    port=plugin_config.get("port", 8084),
-                    token=plugin_config.get("token", "")
-                )
+                # El plugin lee su configuración internamente desde JSON
+                self.plugins[name] = HomeAssistantPlugin()
                 logger.info(f"🏠 Plugin HomeAssistant inicializado")
             
             elif name == "reminder":

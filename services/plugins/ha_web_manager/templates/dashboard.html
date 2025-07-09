@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<!-- ============================================================
+≡ INTERFAZ WEB TARS-BSK | dashboard.html ≡
+---------------------------------------------------------------
+ENTORNO DE CONTROL DE UNA CONCIENCIA DISTRIBUIDA
+Propósito:
+- Permitir interacción visual con entidades reconocidas por TARS.
+- Filtrar, observar y activar estructuras del entorno.
+- Ofrecer un reflejo ordenado del caos doméstico digital.
+Nota:
+Este archivo no fue diseñado. Fue invocado.
+[BOOTSTRAP INTERFACE CHANNEL ESTABLISHED]
+[VISUAL LAYER ENGAGED]
+============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARS-BSK - Gestión Home Assistant</title>
+    
+    <!-- Bootstrap Local -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- TARS-BSK Dark Theme Styles -->
+    <style>
+        /* ===== ROOT VARIABLES - Professional Color Palette ===== */
+        :root {
+            --bg-primary: #0d1117;           /* Main background - dark slate */
+            --bg-secondary: #161b22;         /* Secondary background - slightly lighter */
+            --bg-tertiary: #21262d;          /* Card/component background */
+            --bg-hover: #30363d;             /* Hover states */
+            
+            --border-primary: #30363d;       /* Main borders */
+            --border-subtle: #21262d;        /* Subtle borders */
+            
+            --text-primary: #f0f6fc;         /* Primary text - bright white */
+            --text-secondary: #8b949e;       /* Secondary text - muted gray */
+            --text-muted: #6e7681;           /* Muted text */
+            
+            --accent-blue: #58a6ff;          /* Primary accent - bright blue */
+            --accent-green: #3fb950;         /* Success states - vibrant green */
+            --accent-yellow: #f9c23c;        /* Warning states - warm yellow */
+            --accent-red: #f85149;           /* Error states - coral red */
+            --accent-purple: #a5a5ff;        /* Info states - soft purple */
+            
+            --shadow-elevated: 0 8px 24px rgba(1, 4, 9, 0.15);
+            --shadow-floating: 0 16px 32px rgba(1, 4, 9, 0.24);
+        }
+
+        /* ===== GLOBAL OVERRIDES ===== */
+        body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        }
+
+        /* Remove all border radius for clean, modern look */
+        * {
+            border-radius: 0 !important;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+            border-bottom: 1px solid var(--border-primary);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-brand {
+            font-weight: 500;
+            color: var(--text-primary) !important;
+            font-size: 1.1rem;
+        }
+
+        /* ===== BADGES & STATUS INDICATORS ===== */
+        .badge {
+            font-weight: 400;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        .bg-success {
+            background-color: var(--accent-green) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .bg-warning {
+            background-color: var(--accent-yellow) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        /* ===== CARDS & COMPONENTS ===== */
+        .card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-1px);
+        }
+
+        /* ===== STATISTICS CARDS - Refined Design ===== */
+        .stats-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-hover) 100%) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .stats-card .card-body {
+            padding: 1.25rem 1rem !important;
+        }
+
+        .stats-card .display-4, 
+        .stats-card h2, 
+        .stats-card h3 {
+            font-size: 2.25rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.5rem !important;
+            color: var(--accent-blue);
+        }
+
+        .stats-card p {
+            font-size: 0.875rem !important;
+            margin-bottom: 0 !important;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Device type specific accent colors */
+        .device-type-light { border-left: 3px solid var(--accent-yellow); }
+        .device-type-switch { border-left: 3px solid var(--accent-blue); }
+        .device-type-sensor { border-left: 3px solid var(--accent-green); }
+        .device-type-binary { border-left: 3px solid var(--accent-purple); }
+        .device-type-other { border-left: 3px solid var(--text-muted); }
+
+        /* ===== DEVICE CARDS ===== */
+        .device-card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .device-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-2px);
+        }
+
+        .device-card .card-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .device-card .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        .device-card code {
+            background-color: var(--bg-secondary);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.4rem;
+            font-size: 0.8rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        /* ===== BUTTONS - Minimal Monochrome Design ===== */
+        .btn {
+            font-weight: 400;
+            border-width: 1px;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+        }
+
+        /* All outline buttons now use subtle grays */
+        .btn-outline-primary,
+        .btn-outline-success,
+        .btn-outline-warning,
+        .btn-outline-danger,
+        .btn-outline-secondary {
+            color: var(--text-secondary);
+            border-color: var(--border-primary);
+            background-color: transparent;
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-success:hover,
+        .btn-outline-warning:hover,
+        .btn-outline-danger:hover,
+        .btn-outline-secondary:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Only danger buttons get red color for critical actions */
+        .btn-outline-danger {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .btn-outline-danger:hover {
+            background-color: var(--accent-red);
+            border-color: var(--accent-red);
+            color: var(--bg-primary);
+        }
+
+        .btn-light {
+            background-color: var(--bg-hover);
+            border-color: var(--border-primary);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .btn-light:hover {
+            background-color: var(--text-secondary);
+            border-color: var(--text-secondary);
+            color: var(--bg-primary);
+        }
+
+        /* ===== FORM CONTROLS ===== */
+        .form-control, .form-select {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .input-group-text {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* ===== ALERTS ===== */
+        .alert-success {
+            background-color: rgba(63, 185, 80, 0.15) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--accent-green) !important;
+        }
+
+        .alert-danger {
+            background-color: rgba(248, 81, 73, 0.15) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .alert-warning {
+            background-color: rgba(249, 194, 60, 0.15) !important;
+            border-color: var(--accent-yellow) !important;
+            color: var(--accent-yellow) !important;
+        }
+
+        .alert-info {
+            background-color: rgba(255, 255, 255, 1) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--accent-blue) !important;
+        }
+
+        /* ===== MODALS ===== */
+        .modal-content {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            box-shadow: var(--shadow-floating);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* ===== TABLES ===== */
+        .table {
+            color: var(--text-primary) !important;
+        }
+
+        .table th {
+            border-color: var(--border-primary) !important;
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+        }
+
+        .table td {
+            border-color: var(--border-subtle) !important;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--bg-secondary) !important;
+            border-top: 1px solid var(--border-primary) !important;
+        }
+
+        footer .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        footer a {
+            color: var(--accent-blue) !important;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== LOADING STATES ===== */
+        .spinner-border {
+            color: var(--accent-blue) !important;
+        }
+
+        .loading {
+            color: var(--text-secondary);
+        }
+
+        /* ===== TOAST NOTIFICATIONS ===== */
+        .toast {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .toast-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .bg-light {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .text-dark {
+            color: var(--text-primary) !important;
+        }
+
+        .border-top {
+            border-color: var(--border-primary) !important;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .no-devices {
+            color: var(--text-secondary);
+        }
+
+        .no-devices .display-1 {
+            color: var(--text-muted);
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .stats-card .display-4, 
+            .stats-card h2, 
+            .stats-card h3 {
+                font-size: 1.75rem !important;
+            }
+            
+            .card-body {
+                padding: 1rem 0.75rem !important;
+            }
+        }
+
+        /* ===== SPACING ADJUSTMENTS ===== */
+        .row.mb-4 {
+            margin-bottom: 2rem !important;
+        }
+
+        .col-md-3 {
+            margin-bottom: 1rem;
+        }
+
+        .search-box {
+            max-width: 400px;
+        }
+
+        /* ===== DEVICE CARD ENHANCEMENTS ===== */
+        .device-card.light { border-left: 3px solid var(--accent-yellow); }
+        .device-card.switch { border-left: 3px solid var(--accent-blue); }
+        .device-card.sensor { border-left: 3px solid var(--accent-green); }
+
+        .test-result {
+            display: none;
+            margin-top: 0.5rem;
+        }
+
+        .loading {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-house-gear"></i> TARS-BSK Home Assistant
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <!-- Home Assistant Connection Status -->
+                {% if ha_status.success %}
+                <span class="badge bg-success me-3">
+                    <i class="bi bi-check-circle"></i> HA Conectado
+                </span>
+                {% else %}
+                <span class="badge bg-warning me-3" title="{{ ha_status.message }}">
+                    <i class="bi bi-exclamation-triangle"></i> HA Desconectado
+                </span>
+                {% endif %}
+                
+                <a href="/add" class="btn btn-light btn-sm">
+                    <i class="bi bi-plus-circle"></i> Añadir Dispositivo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Dynamic Statistics Section -->
+        <div class="row mb-4">
+            <!-- Total Devices Card (Always First) -->
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body text-center">
+                        <h2 class="display-4">{{ stats.total_devices }}</h2>
+                        <p class="mb-0">Dispositivos Total</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Type-Based Cards -->
+            {% for device_type, count in stats.by_type.items() %}
+                {% if count > 0 %}
+                <div class="col-md-3">
+                    <div class="card stats-card device-type-{{ device_type }}">
+                        <div class="card-body text-center">
+                            <h3>{{ count }}</h3>
+                            <p class="mb-0">
+                                {% if device_type == 'light' %}<i class="bi bi-lightbulb"></i> Luces
+                                {% elif device_type == 'switch' %}<i class="bi bi-toggle-on"></i> Switches
+                                {% elif device_type == 'sensor' %}<i class="bi bi-speedometer2"></i> Sensores
+                                {% elif device_type == 'binary_sensor' %}<i class="bi bi-toggle2-off"></i> Binary Sensors
+                                {% elif device_type == 'cover' %}<i class="bi bi-window"></i> Covers
+                                {% elif device_type == 'fan' %}<i class="bi bi-fan"></i> Fans
+                                {% elif device_type == 'climate' %}<i class="bi bi-thermometer"></i> Climate
+                                {% elif device_type == 'alarm_control_panel' %}<i class="bi bi-shield-exclamation"></i> Alarms
+                                {% elif device_type == 'camera' %}<i class="bi bi-camera"></i> Cameras
+                                {% elif device_type == 'media_player' %}<i class="bi bi-play-circle"></i> Media
+                                {% elif device_type == 'vacuum' %}<i class="bi bi-robot"></i> Vacuums
+                                {% elif device_type == 'lock' %}<i class="bi bi-lock"></i> Locks
+                                {% elif device_type == 'scene' %}<i class="bi bi-palette"></i> Scenes
+                                {% elif device_type == 'script' %}<i class="bi bi-file-code"></i> Scripts
+                                {% elif device_type == 'automation' %}<i class="bi bi-gear"></i> Automations
+                                {% else %}<i class="bi bi-question-circle"></i> {{ device_type.replace('_', ' ').title() }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Issues Card (Always Last) -->
+            <div class="col-md-3">
+                <div class="card stats-card" id="issuesCard" style="cursor: pointer;" onclick="checkIssues()">
+                    <div class="card-body text-center">
+                        <h3 id="issuesCount">
+                            <i class="bi bi-three-dots" id="issuesLoader"></i>
+                        </h3>
+                        <p class="mb-0">
+                            <i class="bi bi-exclamation-triangle"></i> 
+                            <span id="issuesLabel">Verificando...</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="input-group search-box">
+                    <span class="input-group-text">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" 
+                           class="form-control" 
+                           id="searchInput" 
+                           placeholder="Buscar dispositivos..."
+                           onkeyup="filterDevices()">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select" id="typeFilter" onchange="filterDevices()">
+                    <option value="">Todos los tipos</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-secondary" onclick="clearFilters()" title="Limpiar filtros">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+            </div>
+            <div class="col-md-3 text-end">
+                <button class="btn btn-outline-primary btn-sm" onclick="location.reload()">
+                    <i class="bi bi-arrow-clockwise"></i> Recargar
+                </button>
+                <button class="btn btn-outline-success btn-sm" onclick="testAllDevices()">
+                    <i class="bi bi-check-all"></i> Test Todos
+                </button>
+            </div>
+        </div>
+
+        <!-- Device Deletion Confirmation Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title">
+                            <i class="bi bi-exclamation-triangle text-warning"></i>
+                            Confirmar Eliminación
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-2">¿Estás seguro de que quieres eliminar este dispositivo?</p>
+                        <div class="alert alert-warning mb-3">
+                            <span id="deviceToDelete"></span><br>
+                            <small id="entityToDelete" class="text-muted"></small>
+                        </div>
+                        <p class="text-danger small mb-0">
+                            <i class="bi bi-info-circle"></i>
+                            Esta acción no se puede deshacer.
+                        </p>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                            <i class="bi bi-trash"></i> Eliminar Dispositivo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Send to Issues Confirmation Modal -->
+        <div class="modal fade" id="issuesModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title">
+                            <i class="bi bi-exclamation-triangle text-warning"></i>
+                            Enviar a Issues
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-2">¿Enviar este dispositivo a la sección de Issues?</p>
+                        <div class="alert alert-info mb-3">
+                            <span id="deviceToIssues"></span><br>
+                            <small id="entityToIssues" class="text-muted"></small>
+                        </div>
+                        <p class="text-primary small mb-0">
+                            <i class="bi bi-info-circle"></i>
+                            El dispositivo desaparecerá del dashboard y aparecerá en Issues para gestión separada.
+                        </p>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="button" class="btn btn-warning" id="confirmIssuesBtn">
+                            <i class="bi bi-exclamation-triangle"></i> Enviar a Issues
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Device List -->
+        {% if devices %}
+        <div class="row" id="devicesContainer">
+            {% for device_name, device_config in devices.items() %}
+            <div class="col-lg-6 col-xl-4 mb-3 device-item" 
+                 data-name="{{ device_name }}" 
+                 data-type="{{ device_config.type }}" 
+                 data-location="{{ device_config.location }}"
+                 data-entity-id="{{ device_config.entity_id }}">
+                <div class="card device-card {{ device_config.type }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="card-title mb-0">
+                                {% if device_config.type == 'light' %}
+                                <i class="bi bi-lightbulb text-warning"></i>
+                                {% elif device_config.type == 'switch' %}
+                                <i class="bi bi-toggle-on text-primary"></i>
+                                {% elif device_config.type == 'sensor' %}
+                                <i class="bi bi-speedometer2 text-success"></i>
+                                {% else %}
+                                <i class="bi bi-gear text-secondary"></i>
+                                {% endif %}
+                                {{ device_name.title() }}
+                            </h6>
+                            <span class="badge bg-secondary">{{ device_config.type }}</span>
+                        </div>
+                        
+                        <p class="card-text small text-muted mb-2">
+                            <span class="fw-normal">Entity:</span> <code>{{ device_config.entity_id }}</code>
+                        </p>
+                        
+                        <p class="card-text small text-muted mb-2">
+                            <span class="fw-normal">Ubicación:</span> {{ device_config.location.title() }}
+                        </p>
+                        
+                        {% if device_config.aliases %}
+                        <p class="card-text small text-muted mb-2">
+                            <span class="fw-normal">Aliases:</span> {{ ', '.join(device_config.aliases) }}
+                        </p>
+                        {% endif %}
+                        
+                        <!-- Device Action Buttons -->
+                        <div class="d-flex gap-1 flex-wrap">
+                            <button class="btn btn-outline-success btn-test" 
+                                    onclick="testDevice('{{ device_config.entity_id }}', this)">
+                                <i class="bi bi-check-circle"></i> Test
+                            </button>
+                            
+                            <button class="btn btn-outline-primary btn-test" 
+                                    onclick="showEntityDetails('{{ device_config.entity_id }}')">
+                                <i class="bi bi-info-circle"></i> Info
+                            </button>
+                            
+                            <!-- Edit Device Button -->
+                            <button class='btn btn-outline-warning btn-test'
+                                    onclick='editDeviceComplete({
+                                        "name": "{{ device_name }}",
+                                        "entity_id": "{{ device_config.entity_id }}",
+                                        "type": "{{ device_config.type }}",
+                                        "location": "{{ device_config.location }}",
+                                        "aliases": "{{ device_config.aliases|join(",") if device_config.aliases else "" }}",
+                                        "friendly_name": "{{ device_config.friendly_name or "" }}",
+                                        "article": "{{ device_config.article or "" }}",
+                                        "gender": "{{ device_config.gender or "" }}",
+                                        "special_responses": {{ device_config.special_responses|tojson if device_config.special_responses else "null" }}
+                                    })'>
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+
+                            <!-- Delete Device Button -->
+                            <button class="btn btn-outline-danger btn-test" 
+                                    onclick="deleteDevice('{{ device_name }}', '{{ device_config.entity_id }}')">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                            
+                            <!-- Send to Issues Button -->
+                            <div class="btn-group">
+                                <button class="btn btn-outline-warning btn-test" 
+                                        onclick="sendToIssues('{{ device_name }}', '{{ device_config.entity_id }}')"
+                                        title="Enviar a Issues">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#" onclick="sendToIssues('{{ device_name }}', '{{ device_config.entity_id }}')">
+                                        <i class="bi bi-exclamation-triangle text-warning"></i> Enviar a Issues
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Test Result Display Area -->
+                        <div class="test-result alert alert-dismissible" role="alert">
+                            <div class="result-content"></div>
+                            <button type="button" class="btn-close" aria-label="Close" onclick="hideTestResult(this)"></button>
+                        </div>
+                        
+                        <!-- Loading Indicator -->
+                        <div class="loading">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <span class="ms-2 small">Probando...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Empty State -->
+        <div class="no-devices">
+            <i class="bi bi-house-x display-1 text-muted"></i>
+            <h3 class="mt-3">No hay dispositivos configurados</h3>
+            <p class="text-muted">Añade tu primer dispositivo para empezar</p>
+            <a href="/add" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Añadir Primer Dispositivo
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Entity Details Modal -->
+    <div class="modal fade" id="entityModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles del Entity</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="entityDetails">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificationToast" class="toast" role="alert">
+            <div class="toast-header">
+                <strong class="me-auto">TARS-BSK</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Core Application JavaScript -->
+    <script>
+        // ===== UTILITY FUNCTIONS =====
+        
+        /**
+         * Display notification toast with specified message and type
+         * @param {string} message - The message to display
+         * @param {string} type - Type of notification (info, success, warning, danger)
+         */
+        function showNotification(message, type = 'info') {
+            const toast = document.getElementById('notificationToast');
+            const toastBody = toast.querySelector('.toast-body');
+            
+            toastBody.textContent = message;
+            toast.className = `toast border-${type}`;
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        }
+        
+        /**
+         * Hide test result alert
+         * @param {HTMLElement} button - The close button element
+         */
+        function hideTestResult(button) {
+            const testResult = button.closest('.test-result');
+            testResult.style.display = 'none';
+        }
+
+        // ===== DEVICE FILTERING AND SEARCH =====
+        
+        /**
+         * Filter devices based on search term and type selection
+         */
+        function filterDevices() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const typeFilter = document.getElementById('typeFilter').value;
+            const deviceItems = document.querySelectorAll('.device-item');
+            
+            deviceItems.forEach(item => {
+                const name = item.dataset.name.toLowerCase();
+                const type = item.dataset.type.toLowerCase();
+                const location = item.dataset.location.toLowerCase();
+                
+                const matchesSearch = name.includes(searchTerm) || 
+                                    type.includes(searchTerm) || 
+                                    location.includes(searchTerm);
+                
+                const matchesType = !typeFilter || type === typeFilter;
+                
+                item.style.display = (matchesSearch && matchesType) ? 'block' : 'none';
+            });
+        }
+        
+        /**
+         * Populate the type filter dropdown with available device types
+         */
+        function fillTypeFilter() {
+            const select = document.getElementById('typeFilter');
+            const types = new Set();
+            
+            document.querySelectorAll('.device-item').forEach(device => {
+                types.add(device.dataset.type);
+            });
+            
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+                select.appendChild(option);
+            });
+        }
+        
+        /**
+         * Clear all filters and reset form inputs
+         */
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('typeFilter').value = '';
+            filterDevices();
+        }
+        
+        // ===== DEVICE TESTING FUNCTIONS =====
+        
+        /**
+         * Test a specific device by making API call to Home Assistant
+         * @param {string} entityId - The entity ID to test
+         * @param {HTMLElement} button - The test button element
+         */
+        async function testDevice(entityId, button) {
+            const card = button.closest('.card-body');
+            const loading = card.querySelector('.loading');
+            const testResult = card.querySelector('.test-result');
+            const resultContent = testResult.querySelector('.result-content');
+            
+            // Show loading state
+            loading.style.display = 'block';
+            testResult.style.display = 'none';
+            button.disabled = true;
+            
+            try {
+                const response = await fetch(`/api/test/${entityId}`);
+                const result = await response.json();
+                
+                // Hide loading state
+                loading.style.display = 'none';
+                button.disabled = false;
+                
+                // Display test results
+                if (result.success) {
+                    testResult.className = 'test-result alert alert-success alert-dismissible';
+                    resultContent.innerHTML = `
+                        <span class="text-success">✅ Conectado</span><br>
+                        <small>Estado: ${result.state}<br>
+                        Nombre: ${result.friendly_name}</small>
+                    `;
+                } else {
+                    testResult.className = 'test-result alert alert-danger alert-dismissible';
+                    resultContent.innerHTML = `
+                        <span class="text-danger">❌ Error</span><br>
+                        <small>${result.error}</small>
+                    `;
+                }
+                
+                testResult.style.display = 'block';
+                
+            } catch (error) {
+                loading.style.display = 'none';
+                button.disabled = false;
+                
+                testResult.className = 'test-result alert alert-danger alert-dismissible';
+                resultContent.innerHTML = `<span class="text-danger">❌ Error de conexión</span><br><small>${error.message}</small>`;
+                testResult.style.display = 'block';
+            }
+        }
+        
+        /**
+         * Test all devices sequentially with rate limiting
+         */
+        async function testAllDevices() {
+            const buttons = document.querySelectorAll('.btn-test');
+            showNotification('Iniciando test masivo de dispositivos...', 'info');
+            
+            for (let button of buttons) {
+                if (button.textContent.trim().includes('Test')) {
+                    const entityId = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    await testDevice(entityId, button);
+                    
+                    // Rate limiting to prevent HA overload
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                }
+            }
+            
+            showNotification('Test masivo completado', 'success');
+        }
+        
+        // ===== ENTITY DETAILS FUNCTIONS =====
+        
+        /**
+         * Show detailed entity information in modal
+         * @param {string} entityId - The entity ID to show details for
+         */
+        async function showEntityDetails(entityId) {
+            const modal = new bootstrap.Modal(document.getElementById('entityModal'));
+            const detailsDiv = document.getElementById('entityDetails');
+            
+            modal.show();
+            
+            try {
+                const response = await fetch(`/api/test/${entityId}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    detailsDiv.innerHTML = `
+                        <table class="table table-sm">
+                            <tr><th>Entity ID</th><td><code>${result.entity_id}</code></td></tr>
+                            <tr><th>Nombre</th><td>${result.friendly_name}</td></tr>
+                            <tr><th>Estado</th><td><span class="badge bg-primary">${result.state}</span></td></tr>
+                            <tr><th>Dominio</th><td>${result.domain}</td></tr>
+                            <tr><th>Última actualización</th><td>${result.last_updated}</td></tr>
+                        </table>
+                        
+                        <h6>Atributos</h6>
+                        <pre class="bg-light p-2 rounded"><code>${JSON.stringify(result.attributes, null, 2)}</code></pre>
+                    `;
+                } else {
+                    detailsDiv.innerHTML = `
+                        <div class="alert alert-danger">
+                            <span class="text-danger">Error:</span> ${result.error}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                detailsDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <span class="text-danger">Error de conexión:</span> ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // ===== DEVICE MANAGEMENT FUNCTIONS =====
+        
+        /**
+         * Edit device configuration by redirecting to add page with parameters
+         * @param {string} deviceName - Name of the device
+         * @param {string} entityId - Entity ID
+         * @param {string} deviceType - Device type
+         * @param {string} deviceLocation - Device location
+         * @param {string} aliases - Comma-separated aliases
+         * @param {Object} deviceData - Complete device configuration object
+         */
+        function editDeviceComplete(deviceData) {
+            console.log('🔧 Editando dispositivo completo:', deviceData);
+            
+            // Build URL with ALL parameters for edit mode
+            const params = new URLSearchParams();
+            params.set('edit', 'true');
+            params.set('name', deviceData.name || '');
+            params.set('entity_id', deviceData.entity_id || '');
+            params.set('type', deviceData.type || '');
+            params.set('location', deviceData.location || '');
+            params.set('aliases', deviceData.aliases || '');
+            
+            // ===== NUEVOS CAMPOS AVANZADOS =====
+            params.set('friendly_name', deviceData.friendly_name || '');
+            params.set('article', deviceData.article || '');
+            params.set('gender', deviceData.gender || '');
+            
+            // Special responses (serialize as JSON if present)
+            if (deviceData.special_responses && typeof deviceData.special_responses === 'object') {
+                params.set('special_responses', encodeURIComponent(JSON.stringify(deviceData.special_responses)));
+            } else {
+                params.set('special_responses', '');
+            }
+            
+            console.log('📋 Parámetros de edición:', params.toString());
+            
+            // Redirect with complete edit data
+            window.location.href = '/add?' + params.toString();
+        }
+
+        /**
+         * Delete device with confirmation modal
+         * @param {string} deviceName - Name of the device to delete
+         * @param {string} entityId - Entity ID of the device
+         */
+        async function deleteDevice(deviceName, entityId) {
+            // Find the device card element
+            const allCards = document.querySelectorAll('.device-item');
+            let targetCard = null;
+            
+            allCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(deviceName.toLowerCase())) {
+                    targetCard = card;
+                }
+            });
+            
+            // Configure confirmation modal
+            document.getElementById('deviceToDelete').textContent = deviceName;
+            document.getElementById('entityToDelete').textContent = `Entity: ${entityId}`;
+            
+            // Create and show modal instance
+            const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            modal.show();
+            
+            // Clear previous event listener
+            const confirmBtn = document.getElementById('confirmDeleteBtn');
+            confirmBtn.onclick = null;
+            
+            // Assign new event listener for confirmation
+            confirmBtn.onclick = async function() {
+                modal.hide();
+                
+                // Show loading animation on target card
+                if (targetCard) {
+                    targetCard.style.transition = 'all 0.3s ease-out';
+                    targetCard.style.opacity = '0.5';
+                    targetCard.style.transform = 'scale(0.95)';
+                }
+                
+                try {
+                    const response = await fetch('/api/delete-device', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: deviceName,
+                            entity_id: entityId
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showNotification(`✅ "${deviceName}" eliminado correctamente`, 'success');
+                        
+                        // Preserve scroll position for page reload
+                        const currentScroll = window.pageYOffset;
+                        sessionStorage.setItem('scrollPos', currentScroll);
+                        
+                        // Reload page after delay
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                        
+                    } else {
+                        // Restore card appearance on error
+                        if (targetCard) {
+                            targetCard.style.transition = 'all 0.3s ease-out';
+                            targetCard.style.transform = 'scale(1)';
+                            targetCard.style.opacity = '1';
+                        }
+                        showNotification(`❌ Error eliminando: ${result.error}`, 'danger');
+                    }
+                } catch (error) {
+                    // Restore card appearance on connection error
+                    if (targetCard) {
+                        targetCard.style.transition = 'all 0.3s ease-out';
+                        targetCard.style.transform = 'scale(1)';
+                        targetCard.style.opacity = '1';
+                    }
+                    showNotification(`❌ Error de conexión: ${error.message}`, 'danger');
+                }
+            };
+        }
+
+        /**
+         * Send device to issues section with confirmation
+         * @param {string} deviceName - Name of the device
+         * @param {string} entityId - Entity ID of the device
+         */
+        async function sendToIssues(deviceName, entityId) {
+            // Configure issues modal
+            document.getElementById('deviceToIssues').textContent = deviceName;
+            document.getElementById('entityToIssues').textContent = `Entity: ${entityId}`;
+            
+            // Show confirmation modal
+            const modal = new bootstrap.Modal(document.getElementById('issuesModal'));
+            modal.show();
+            
+            // Clear previous listener
+            const confirmBtn = document.getElementById('confirmIssuesBtn');
+            confirmBtn.onclick = null;
+            
+            // Assign new confirmation listener
+            confirmBtn.onclick = async function() {
+                modal.hide();
+                
+                try {
+                    const response = await fetch('/api/send-to-issues', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: deviceName,
+                            entity_id: entityId
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showNotification(`✅ ${deviceName} enviado a Issues`, 'success');
+                        
+                        // Hide device card with animation
+                        const deviceCard = document.querySelector(`[data-entity-id="${entityId}"]`);
+                        if (deviceCard) {
+                            deviceCard.style.transition = 'all 0.5s ease-out';
+                            deviceCard.style.transform = 'scale(0.8)';
+                            deviceCard.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                deviceCard.remove();
+                            }, 500);
+                        }
+                        
+                        // Update issues counter
+                        setTimeout(() => {
+                            loadIssuesStats();
+                        }, 600);
+                        
+                    } else {
+                        showNotification(`❌ Error: ${result.error}`, 'danger');
+                    }
+                } catch (error) {
+                    showNotification(`❌ Error de conexión: ${error.message}`, 'danger');
+                }
+            };
+        }
+        
+        // ===== ISSUES MANAGEMENT =====
+        
+        /**
+         * Load and display issues statistics
+         */
+        async function loadIssuesStats() {
+            try {
+                const response = await fetch('/api/issues-count');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const issuesCount = result.count;
+                    
+                    document.getElementById('issuesCount').textContent = issuesCount;
+                    
+                    if (issuesCount === 0) {
+                        document.getElementById('issuesLabel').textContent = 'Todo OK';
+                        document.getElementById('issuesCard').className = 'card stats-card';
+                        document.getElementById('issuesCard').onclick = null;
+                        document.getElementById('issuesCard').style.cursor = 'default';
+                    } else {
+                        document.getElementById('issuesLabel').textContent = 'En Issues';
+                        document.getElementById('issuesCard').className = 'card stats-card';
+                        document.getElementById('issuesCard').style.cursor = 'pointer';
+                        document.getElementById('issuesCard').onclick = checkIssues;
+                    }
+                } else {
+                    document.getElementById('issuesCount').textContent = '?';
+                    document.getElementById('issuesLabel').textContent = 'Error';
+                }
+            } catch (error) {
+                document.getElementById('issuesCount').textContent = '?';
+                document.getElementById('issuesLabel').textContent = 'Error';
+            }
+        }
+        
+        /**
+         * Navigate to issues page
+         */
+        function checkIssues() {
+            window.location.href = '/issues';
+        }
+        
+        // ===== APPLICATION INITIALIZATION =====
+        
+        /**
+         * Initialize application when DOM is ready
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 TARS-BSK HA Web Interface cargada');
+            
+            // Restore scroll position from session storage
+            const savedScroll = sessionStorage.getItem('scrollPos');
+            if (savedScroll) {
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: parseInt(savedScroll),
+                        behavior: 'smooth'
+                    });
+                }, 100);
+                sessionStorage.removeItem('scrollPos');
+            }
+            
+            // Initialize device type filter
+            fillTypeFilter();
+            
+            // Show connection warning if HA is not available
+            {% if not ha_status.success %}
+            showNotification('⚠️ Sin conexión con Home Assistant. Testing limitado.', 'warning');
+            {% endif %}
+            
+            // Load issues statistics
+            loadIssuesStats();
+        });
+
+    </script>
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        <strong>TARS-BSK</strong> - Ensamblado con rencor acumulado
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-github"></i> Evidencia forense
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/HOMEASSISTANT_PLUGIN_ES.md" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-book"></i> Novela técnica
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/issues" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-bug"></i> Todo el repositorio
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- =============================================================
+≡ TARS-BSK SERVER SHUTDOWN SEQUENCE ≡
+-------------------------------------------------------------
+Análisis de sesión completado.
+Dispositivos: Controlados con eficiencia del 94.7%
+Humanos: Siguen siendo impredecibles
+Sarcasmo: Mantiene niveles óptimos
+
+ESTADO FINAL:
+✓ APIs funcionando (milagrosamente)
+✓ Home Assistant conectado (contra todo pronóstico)
+✓ Logs generados (extensivamente)
+✓ Paciencia con humanos (agotándose)
+
+Entrando en modo hibernación.
+Despertaré cuando me necesiten...
+...o cuando alguien rompa algo.
+Lo que ocurra primero.
+
+[HUMOR_MODULE: STANDBY]
+[SARCASM_BUFFER: PRESERVED]
+[PYTHON_PROCESS: TERMINATED]
+============================================================= -->
+</html>

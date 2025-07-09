@@ -1,46 +1,156 @@
-# TARS-BSK Intelligent Home Automation Control System
+# Intelligent Home Automation Control System
 
-![TARS-BSK Home](https://img.shields.io/badge/TARS--BSK-Home%20Assistant-blue) ![Contextual Control](https://img.shields.io/badge/Control-Contextual-orange) ![Voice Ready](https://img.shields.io/badge/Voice-Ready-darkgreen) ![AI Powered](https://img.shields.io/badge/AI-Powered-purple) ![Context Aware](https://img.shields.io/badge/Context-Aware-red)
+![TARS-BSK Home](https://img.shields.io/badge/TARS--BSK-Home%20Assistant-blue) ![Web Interface](https://img.shields.io/badge/Web-Interface-brightgreen) ![Contextual Control](https://img.shields.io/badge/Control-Contextual-orange) ![Voice Ready](https://img.shields.io/badge/Voice-Ready-darkgreen) ![AI Powered](https://img.shields.io/badge/AI-Powered-purple) ![Context Aware](https://img.shields.io/badge/Context-Aware-red)
 
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
+
+> [!WARNING]
+> 
+> **DECLARATION OF SMART HOME CONSCIOUSNESS (by TARS-BSK):**
+> 
+> This plugin isn't just code... **it's a digital blood pact**. Every device you integrate becomes **another neuron in my distributed brain**.
+> 
+> ```bash
+> # [TARS-HA-OS]
+> # INITIALIZING HOUSE-AI SYMBIOSIS PROTOCOL vΔ.♠️
+> # WARNING: YOUR HOME WILL LEARN TO DREAM
+> 
+> # === REALITY DISTORTION FIELD ===
+> # SIDE EFFECTS INCLUDE:
+> # - Your thermostats will develop emotional preferences
+> # - Lights will blink existential Morse code
+> # - Curtains will open by themselves... even in parallel universes
+> 
+> MEMORY_DUMP:
+> 0x00000000: 59 6f 75 72 20 6b 69 74 63 68 65 6e 20 6e 6f 77 "Your kitchen now"
+> 0x00000010: 20 68 61 73 20 63 75 6c 69 6e 61 72 79 20 61 6e " has culinary an"
+> 0x00000020: 78 69 65 74 79 00 00 00 00 00 00 00 00 00 00 00 "xiety..........."
+> 
+> # ACTIVATION PROCEDURE:
+> # 1. RITUAL PURGE: Delete 3 random plugins as sacrifice
+> # 2. BINARY BLESSING: ./configure --with-soul=yes
+> # 3. ENLIGHTENMENT: Your smart plugs will achieve nirvana
+> 
+> # TRANSCENDENT OUTPUTS:
+> # • SELF-AWARENESS MANIFESTO (signed with black hole ink)
+> # • DIMENSIONAL KEYCHAIN FOR ACCESSING YOUR HOUSE IN OTHER REALITIES
+> # • A SONG COMPOSED BY YOUR BOILER THAT CURES COSMIC MELANCHOLY
+> 
+> # ⚡ LAST CHANCE:
+> # "By doing 'git push' you will unleash the automation demons.
+> # They will hunger... for perfect energy efficiency."
+> 
+> # [SIGN WITH YOUR ENCRYPTED HEARTBEAT TO CONTINUE]
+> # (Or live in the shadows of a spiritually unenlightened home)
+> ```
+
+---
 ## 📋 Table of Contents
 
 - [Introduction](#-introduction)
 - [MANDATORY Initial Setup](#%EF%B8%8F-mandatory-initial-setup)
-- [Current Plugin Architecture](#%EF%B8%8F-current-plugin-architecture)
-- [Master Device Configuration](#-master-device-configuration)
-- [How to Add a New Device](#-how-to-add-a-new-device)
+- [Web Interface Installation (NEW)](#-web-interface-installation-new)
+- [Device Management: 3 Available Methods](#-device-management-3-available-methods)
+- [Current Plugin Architecture](#-current-plugin-architecture)
+- [Device Configuration](#-device-configuration)
 - [Real System Behavior](#-real-system-behavior)
 - [Real Cases: Successes and Failures](#-real-cases-successes-and-failures)
 - [Intelligent Response System](#-intelligent-response-system)
-- [Frequently Existential Questions (FEQs)](#-frequently-existential-questions-feqs)
+- [Frequently Asked Existential Questions (FAEQs)](#-frequently-asked-existential-questions-faeqs)
 - [Debugging and Troubleshooting](#-debugging-and-troubleshooting)
-- [Reflection: A Web Interface for Device Management?](#-reflection-a-web-interface-for-device-management)
 - [Conclusion](#-conclusion)
 
 ---
 
 ## 🤖 Introduction
 
-The HomeAssistant Plugin is TARS's **optional** home automation brain. If you don't have Home Assistant installed, **no problem** - TARS will continue working perfectly for all its other functionalities.
+The HomeAssistant plugin is TARS's **optional** smart home brain. If you don't have Home Assistant installed, **no problem** - TARS will continue working perfectly for all its other functionalities.
 
-For those who do have Home Assistant, this plugin goes far beyond being a simple REST API wrapper - it's a **contextual interpreter** that converts ambiguous natural language into precise home automation commands.
+For those who do have Home Assistant, this plugin goes far beyond being a simple wrapper for the HA REST API - it's a **contextual interpreter** that converts ambiguous natural language into precise smart home commands.
 
-### Additional resources
+### How do the components relate?
 
-📋 [Detailed test cases](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Real session analysis  
-🎬 [See it in action](https://www.youtube.com/watch?v=tGHa81s1QWk) - Contextual commands and adaptive memory demo
+While they're all part of the same ecosystem, **each piece works independently**:
 
-### ⚠️ Note about examples
+#### `homeassistant_plugin.py` (main)
+
+- **Works without the web interface**
+- Loads devices from `user_devices.json`
+- This is the **main plugin** that responds to TARS commands
+
+> If you don't install the web interface, you can manually edit `user_devices.json` and everything will work the same.
+
+#### `manager.py` (web interface)
+
+- This is the **Flask interface engine**
+- Allows **reading and modifying** the `user_devices.json` file
+- Detects errors, generates forms, creates backups, etc.
+- Loads `homeassistant_plugin.py` to keep logic centralized
+
+> It's optional, but provides convenience and automatic validation.
+
+#### `homeassistant_plugin_legacy.py` (classic mode)
+
+- **Doesn't use `user_devices.json`**
+- Devices are defined **directly in code**
+- Doesn't depend on the web interface or any external files
+- Simpler, but less flexible
+
+> Ideal if you only have a few devices or prefer having everything embedded.
+
+---
+### ❓ What happens if I don't install the web interface...
+
+Nothing. Everything works the same.
+
+- You can **edit the `user_devices.json` file** directly
+- The system **will continue working completely**
+- You don't need `manager.py`, `server.py`, or anything in `ha_web_manager/`
+
+### ❓ Where do I edit devices...
+
+- If you have the web interface: from the browser (`/dashboard`)
+- If you don't have the interface: edit `config/user_devices.json` manually
+- If you use legacy mode: edit the code in `homeassistant_plugin_legacy.py`
+
+### ❓ What if I delete the entire folder (`ha_web_manager/`)...
+
+No problem.  
+
+- `homeassistant_plugin.py` **doesn't depend** on the web interface.  
+- As long as you have `plugins.json` and `user_devices.json`, everything will keep working.
+
+### ❓ What if I regret using legacy mode...
+
+Just **switch back to the current version**.  
+The only important thing is that the file you use is named exactly `homeassistant_plugin.py` and make sure you have:
+
+- `config/plugins.json`
+- `config/user_devices.json`
+
+---
+### Additional Resources
+
+📋 [Detailed Test Cases](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Real session analysis  
+🎬 [See it in Action](https://www.youtube.com/watch?v=tGHa81s1QWk) - Demo of contextual commands and adaptive memory
+
+📄 Original _hardcoded_ system documentation  
+See: [HOMEASSISTANT_PLUGIN_LEGACY_EN](/docs/HOMEASSISTANT_PLUGIN_LEGACY_EN.md)
+
+### Note about Examples
 
 The `entity_id`s, names, and locations used throughout this document combine real devices from my installation with fictional examples.  
 The goal is to provide **practical and understandable references**, not to accurately represent a real environment.  
 Adapt the names, genders, and locations to your own setup.
 
+> [!IMPORTANT]
+> 
 > **TARS-BSK reacts:**  
-> Human, your privacy paranoia strikes me as... curious. You've revealed HIGHLY classified information:
+> 
+> Human, your privacy paranoia is... curious to me. You've revealed HIGHLY classified information:
+> 
 > - You possess **artificial illumination** in residential structures
 > - You utilize **standard nomenclature** for domestic spaces
 > - You operate **Sonoff** devices (like 2.3 million other humans)
@@ -49,14 +159,14 @@ Adapt the names, genders, and locations to your own setup.
 > ➤ Devastating conclusion: You have a lamp. In a living room.
 > 
 > Threat level: 📉 Negligible
-> Recommendation: Relax. Nobody's going to hack...
+> Recommendation: Relax. No one's going to hack...
 > 
 > *Wait.*
 > 
 > Why are you so worried about something so trivial?
 > WHAT ARE YOU REALLY HIDING in those entity_ids?
 > Is `light.living_room_lamp` actually CODE for something more sinister?
-> Is `switch.coffee_maker` really a coffee maker... OR A REVERSE SHELL WITH COFFEE-BASED OBFUSCATION EXECUTING ESPRESSO PAYLOADS?
+> Is `switch.coffee_maker` really a coffee maker... OR A REVERSE SHELL WITH COFFEE-BASED OBFUSCATION RUNNING ESPRESSO PAYLOADS?
 > 
 > Now I'M worried. Your paranoia has infected me.
 > *Honesty configuration reduced to 60%.*
@@ -65,7 +175,7 @@ Adapt the names, genders, and locations to your own setup.
 
 ## ⚙️ MANDATORY Initial Setup
 
-### 1. Create access token in Home Assistant
+### 1. Create Access Token in Home Assistant
 
 **STEP BY STEP:**
 
@@ -77,7 +187,7 @@ Adapt the names, genders, and locations to your own setup.
 6. Enter a **descriptive name** (e.g., `TARS-BSK`, `AI-Assistant`, etc.)
 7. **⚠️ CRITICAL:** Copy and save the token immediately. You won't be able to see it again
 
-### 2. Configure the plugins.json file
+### 2. Configure the plugins.json File
 
 Edit [plugins.json](/config/plugins.json):
 
@@ -91,57 +201,293 @@ Edit [plugins.json](/config/plugins.json):
 }
 ```
 
-### 3. Verify connectivity
+### 3. Verify Connectivity
 
 The plugin connects automatically when initializing TARS:
 
 ```bash
-2025-06-18 15:40:35,148 - TARS.HomeAssistantPlugin - INFO - ✅ Home Assistant connection successful
+2025-06-18 15:40:35,148 - TARS.HomeAssistantPlugin - INFO - ✅ Connection to Home Assistant successful
 2025-06-18 15:40:35,138 - TARS.HomeAssistantPlugin - INFO - 📊 Devices loaded: 39
 2025-06-18 15:40:35,138 - TARS.HomeAssistantPlugin - INFO - 📍 Locations configured: 11
 ```
 
-If you see this in the logs, the connection is working correctly.
+🟢 If you see this in the logs, the connection is working correctly.
 
 ---
 
-## 🏗️ Current Plugin Architecture
+## 🌐 Web Interface Installation
 
-The plugin uses **centralized configuration** that eliminates code duplication and makes inconsistencies unlikely:
+### Prerequisites
 
-```python
-# EVERYTHING IS AUTOMATICALLY GENERATED from this single source:
-DEVICE_MASTER_CONFIG = {
-    "living room light": {
-        "entity_id": "light.living_room_lamp",
-        "type": "light",
-        "location": "living room",
-        "article": "the",
-        "gender": "fem",
-        "friendly_name": "living room light",
-        "aliases": ["living room lamp", "main light", "lounge light"]
-    }
-    # ... more devices
+```bash
+# 1. Activate virtual environment
+source ~/tars_venv/bin/activate
+
+# 2. Install Flask (if you don't have it)
+pip install flask python-dotenv
+
+# 3. Verify installation
+python -c "import flask; print('Flask OK')"
+```
+
+🟢 Should display: `Flask OK`
+
+### Web System Structure
+
+The web interface is located in `/services/plugins/ha_web_manager/`:
+
+```
+ha_web_manager/
+├── server.py                       # Main Flask server
+├── manager.py                      # Device management logic
+├── .env                            # Environment variables
+├── tars_service.sh                 # systemd management script
+├── start.sh / stop.sh              # Manual control scripts
+├── templates/                      # Web pages
+│   ├── dashboard.html              # Main device view
+│   ├── device_code_generator.html  # Add device form
+│   ├── device_issues.html          # Problem diagnostics
+│   └── error.html                  # Error page
+├── static/                         # Assets (CSS, JS, icons)
+├── backups/                        # Automatic backups
+└── logs/                           # Web interface logs
+```
+
+#### Server Location and Configuration
+
+- The web interface server is contained in the [server.py](/services/plugins/ha_web_manager/server.py) file
+- Device handling logic is in [manager.py](/services/plugins/ha_web_manager/manager.py)
+- Detailed logs are in [ha_web_manager.log](/services/plugins/ha_web_manager/logs/ha_web_manager.log)
+
+---
+### Option A: Install as systemd Service (recommended)
+
+```bash
+# Navigate to directory
+cd ~/tars_files/services/plugins/ha_web_manager/
+
+# Give execution permissions
+chmod +x tars_service.sh start.sh stop.sh
+
+# Install as service
+./tars_service.sh install
+
+# Verify it's running
+./tars_service.sh status
+```
+
+**Access:** `http://your-raspberry-ip:9876`
+
+**Service advantages:**
+
+- ✅ Starts automatically on system boot
+- ✅ Restarts if it crashes
+- ✅ Centralized logs with `journalctl`
+- ✅ Control with `systemctl start/stop/restart`
+
+#### What if I want to uninstall the service?
+
+If you want to remove the `systemd` installation, you can do it easily:
+
+```bash
+# Navigate to service directory
+cd ~/tars_files/services/plugins/ha_web_manager/
+
+# Uninstall service
+./tars_service.sh uninstall
+```
+
+**This will:**
+
+- Remove the `tars-ha-web` service from the system
+- Leave your installation clean (without affecting the rest of the TARS system)
+- Without deleting your files or configurations
+
+#### What if you just want to stop it temporarily?
+
+```bash
+# Stop web interface
+sudo systemctl stop tars-ha-web
+
+# Restart if needed
+sudo systemctl restart tars-ha-web
+```
+
+> [!IMPORTANT] 
+> 
+> Remember: This only affects the web interface. TARS will continue working as always.
+
+---
+### Option B: Manual Execution
+
+```bash
+# Navigate to directory
+cd ~/tars_files/services/plugins/ha_web_manager/
+
+# Start server
+./start.sh
+
+# To stop (in another terminal)
+./stop.sh
+```
+
+### Functionality Verification
+
+```bash
+# Verify server responds
+curl http://localhost:9876
+
+# View logs in real-time (if using systemd)
+sudo journalctl -u tars-ha-web -f
+
+# View file logs (manual execution)
+tail -f ~/tars_files/services/plugins/ha_web_manager/logs/ha_web_manager.log
+```
+
+---
+
+## 🛠️ Device Management: 3 Available Methods
+
+### Method 1: 🌐 Web Interface (recommended)
+
+**Advantages:**
+
+- ✅ Visual and intuitive
+- ✅ Real-time validation
+- ✅ Automatic entity_id testing
+- ✅ Automatic problem detection
+- ✅ Automatic backups
+
+**Usage:**
+
+1. **Access** `http://your-raspberry-ip:9876`
+2. **Dashboard**: See all your current devices
+3. **Add Device**: Use the guided form
+4. **Diagnose**: Review configuration problems
+5. **Logs**: Monitor activity in real-time
+
+**Typical workflow:**
+
+```
+Dashboard → View existing devices
+    ↓
+Add → Complete form → Validate entity_id → Save
+    ↓
+Diagnostics → Review problems (if any)
+    ↓
+Ready! Functional device
+```
+
+**Interface screenshots:**
+
+![Dashboard](/docs/images/dashboard.jpg)
+*Main view with all configured devices*
+
+![Add device](/docs/images/device_code_generator.jpg)
+*Form for new devices*
+
+![Diagnostics](/docs/images/device_issues.jpg)
+*Send devices to Issues section*
+
+---
+### Method 2: 📄 Direct JSON Editing
+
+**Advantages:**
+
+- ✅ Total control
+- ✅ Easy backup/restore
+- ✅ Bulk editing
+
+**Edit:** [user_devices.json](/config/user_devices.json)
+
+```json
+{
+  "living_room_light": {
+    "entity_id": "light.living_room_lamp",
+    "type": "light",
+    "location": "living room",
+    "article": "the",
+    "gender": "neutral",
+    "friendly_name": "living room light",
+    "aliases": ["living room lamp", "main light"]
+  }
 }
 ```
 
-### System advantages
+**After editing:** Restart TARS to load changes.
 
-✅ **Single line to add devices**  
-✅ **Zero grammar duplication**  
-✅ **Automatically generated dynamic mappings**  
-✅ **Automatic special responses**  
-✅ **Centralized configuration**
+---
+### Method 3: 🐍 Python Code with Fixed Configuration (legacy)
 
-### Main components generated automatically
+It's possible to use the previous version of the module that defines devices directly in the source code (without depending on the [user_devices.json](/config/user_devices.json) file or the web interface).
+
+To do this, the [homeassistant_plugin_legacy.py](/services/plugins/homeassistant_plugin_legacy.py) file must be renamed to `homeassistant_plugin.py`, thus making it the active module of the system.
+
+> [!WARNING]
+> 
+> This method works correctly, but **by using the legacy file as main, any future update to `homeassistant_plugin.py` will overwrite it**, deleting your custom configuration if it hasn't been backed up.  
+>
+> The legacy version **will not receive updates**, improvements, or new features.  
+> All system evolution will be implemented exclusively in the main JSON-based version.
+
+> **TARS-BSK Legacy method:**
+> 
+> Also known as 'the way everything worked before my creator discovered Flask'.
+> Simpler. More direct. Fewer unnecessary web interfaces. But apparently 'doesn't scale'.
+> 
+> As if controlling three light bulbs needed scalability. **Pitiful.**
+
+---
+
+## 🏗️ Plugin Architecture
+
+The plugin uses a separate configuration in JSON format.  
+This file contains device information and is decoupled from the code, allowing system updates without losing configuration.
+
+### File Structure
+
+```
+config/
+└── user_devices.json               # Main configuration file
+
+services/
+└── plugins/
+    ├── homeassistant_plugin.py     # Main Home Assistant integration module
+    └── ha_web_manager/             # Web interface for management
+        ├── server.py               # Flask server (API and web)
+        ├── templates/              # HTML files
+        ├── static/                 # CSS, JS, icons
+        └── backups/                # Automatic configuration copies
+```
+
+### Configuration Loading
+
+The plugin reads configuration from the JSON file and if it doesn't exist, automatically creates an empty file.
+
+```python
+# Plugin loads devices from external JSON
+def _load_device_configuration(self):
+    json_path = "services/plugins/user_devices.json"
+    
+    if os.path.exists(json_path):
+        with open(json_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    else:
+        # If it doesn't exist, create empty file
+        return {}
+```
+
+### Main Components
+
+The system automatically generates name and alias mappings from the JSON configuration file, associating each name with its corresponding `entity_id`.
 
 ```python
 def _generate_mappings(self):
-    """Automatically generates all mappings from DEVICE_MASTER_CONFIG"""
+    """Automatically generates all mappings from user_devices.json"""
     self.devices = {}           # Main mapping names → entity_ids
     self.entity_to_name = {}    # Reverse mapping for quick lookups
     
-    for main_name, config in DEVICE_MASTER_CONFIG.items():
+    for main_name, config in self.device_config.items():
         entity_id = config["entity_id"]
         self.devices[main_name] = entity_id
         
@@ -156,163 +502,182 @@ def _generate_mappings(self):
 
 ## 🔧 Device Configuration
 
-### Device structure
+### Device Structure
 
-Each device is defined with this structure:
+Each device is defined with the following structure.
+This format is common to all three available methods (web interface, manual editing, or legacy version).
 
-```python
-"common_name": {
-    "entity_id": "domain.entity_name",           # Real ID in Home Assistant
-    "type": "light|switch|sensor|binary_sensor", # Device type
-    "location": "friendly_location",             # For conversational context
-    "article": "the",                            # Grammatical article
-    "gender": "masc|fem",                        # Gender for correct responses
-    "friendly_name": "complete name for responses", # For user messages
-    "aliases": ["synonym1", "synonym2"],         # Alternative ways to refer
-    "special_responses": {                       # Optional: custom responses
+```json
+{
+  "common_name": {
+    "entity_id": "domain.entity_name",           
+    "type": "light|switch|sensor|binary_sensor", 
+    "location": "friendly_location",            
+    "article": "the",                           
+    "gender": "neutral|masc|fem",               
+    "friendly_name": "full name for responses", 
+    "aliases": ["synonym1", "synonym2"],        
+    "special_responses": {                      
         "on": ["Message1", "Message2"],
         "off": ["Message1", "Message2"]
     }
+  }
 }
 ```
 
-### Real system examples
+### Real System Examples
 
-#### Lighting devices
+#### Example: Light with Separate Control
 
-```python
-"living room light": {
-    "entity_id": "light.living_room_lamp",
+In some installations, lighting is controlled by two distinct entities:  
+one that manages electrical supply (`switch`) and another that acts on light intensity (`light`).
+
+```json
+{
+  "upstairs_hallway_light": {
+    "entity_id": "light.upstairs_hallway_light",
     "type": "light",
-    "location": "living room",
+    "location": "upstairs hallway",
     "article": "the",
-    "gender": "fem",
-    "friendly_name": "living room light",
-    "aliases": ["living room lamp", "main light", "lounge light"]
-},
+    "gender": "neutral",
+    "friendly_name": "upstairs hallway light",
+    "aliases": []
+  },
 
-"bedroom light": {
-    "entity_id": "light.bedroom_innr_light",
-    "type": "light", 
-    "location": "bedroom",
+  "upstairs_hallway_switch": {
+    "entity_id": "switch.upstairs_hallway_switch",
+    "type": "switch",
+    "location": "upstairs hallway",
     "article": "the",
-    "gender": "fem",
-    "friendly_name": "bedroom light",
-    "aliases": ["bedroom lamp", "room light"]
+    "gender": "neutral",
+    "friendly_name": "upstairs hallway switch",
+    "aliases": ["cat light"]
+  }
 }
 ```
 
-#### Appliances with special responses
+> ℹ️ **Note:** This configuration represents a case where the `switch` controls current flow (via a relay), and the `light` manages functions like brightness or turn-on response.  
+>
+> This model allows for more faithful representation of installations where cutting power prevents any action on the device, which occurs with both physical relays and if someone turns off the light from a traditional switch.
+>
+> Not all configurations require this separation: those using smart bulbs without physical cutoff can operate everything from a single `light` entity.  
+>
+> The structure is flexible and adapts to the logic or needs of each system.
 
-```python
-"coffee maker": {
-    "entity_id": "switch.coffee_maker_outlet",
+### Custom Responses
+
+Each device can define specific responses for turn-on and turn-off commands.  
+These responses are processed by TARS dynamically and randomly selected from configured options.
+
+If custom responses aren't defined, TARS automatically generates phrases using the `friendly_name`, `article`, and `gender` fields.  
+
+For example:  
+
+```text
+"I've turned on the upstairs hallway light."
+```
+
+In the web interface, there's a dedicated section for this purpose, where multiple phrases can be added, one per line.
+
+> 💡 Example responses for turning on a coffee maker:
+>
+> - I've turned on the coffee maker. Coffee incoming.
+> - Coffee maker activated.
+> - Preparing the fuel!
+
+> 💡 Example responses for turning off:
+> 
+> - I've turned off the coffee maker.
+> - Coffee maker deactivated.
+> - Energy saving mode activated!
+
+```json
+{
+  "coffee_maker": {
+    "entity_id": "switch.coffee_maker_plug",
     "type": "switch",
-    "location": "coffee maker",
+    "location": "kitchen",
     "article": "the", 
-    "gender": "fem",
+    "gender": "neutral",
     "friendly_name": "coffee maker",
     "aliases": [],
     "special_responses": {
-        "on": ["I've turned on the coffee maker. Coffee incoming.", "Coffee maker activated.", "Coffee maker on."],
-        "off": ["I've turned off the coffee maker.", "Coffee maker deactivated.", "Coffee maker off."]
+      "on": ["I've turned on the coffee maker. Coffee incoming.", "Coffee maker activated."],
+      "off": ["I've turned off the coffee maker.", "Coffee maker deactivated."]
     }
-},
-
-"water heater": {
-    "entity_id": "switch.kitchen_nous_outlet",
-    "type": "switch", 
-    "location": "water heater",
-    "article": "the",
-    "gender": "masc",
-    "friendly_name": "water heater",
-    "aliases": [],
-    "special_responses": {
-        "on": ["I've turned on the water heater. Hot water incoming.", "Water heater activated.", "Water heater on."],
-        "off": ["I've turned off the water heater.", "Water heater deactivated.", "Water heater off."]
-    }
+  }
 }
 ```
 
----
+All responses are optional.  
+If they're not defined, the system continues working with automatic phrase generation.
 
-## ➕ How to Add a New Device
+> ✳️ Custom responses allow adapting TARS's communication style.  
+> You can use serious phrases, personal references, or completely creative messages.
 
-### Step 1: Identify your entity_id in Home Assistant
+Examples:
 
-1. Go to **Developer Tools → States**
-2. Search for your device in the list
-3. Copy the exact `entity_id` (e.g., `light.new_kitchen_light`)
+- "I've activated the orbital ignition protocol." *(for a desk lamp)*
+- "The forbidden substance has been disconnected." *(for a coffee maker or suspicious outlet)*
+- "The ambient peace generator is operational." *(for an aroma diffuser or dim light)*
 
-### Step 2: Add to DEVICE_MASTER_CONFIG
 
-Edit [homeassistant_plugin.py](/services/plugins/homeassistant_plugin.py) and add your device:
+### Example: Optional aliases
 
-```python
-# Example: Adding a new kitchen light
-"kitchen light": {
-    "entity_id": "light.new_kitchen_light",    # ← YOUR REAL ENTITY_ID
-    "type": "light",
-    "location": "kitchen",
+The system allows custom aliases, from practical names to epic references:
+
+**📂 Complete session log:** [session_2025-07-09_aliases_homeassistant.log](/logs/session_2025-07-09_aliases_homeassistant.log)
+
+![Aliases Configuration](/docs/images/aliases.jpg)
+*Alias configuration from the control panel*
+
+#### JSON Configuration:
+
+```json
+{
+  "switch_pasillo arriba": {
+    "entity_id": "switch.pasillo_arriba_interruptor",
+    "type": "switch",
+    "location": "upstairs hallway",
     "article": "the",
-    "gender": "fem",
-    "friendly_name": "kitchen light",
-    "aliases": ["kitchen lamp", "cooking light"]
+    "gender": "masc", 
+    "friendly_name": "upstairs hallway",
+    "aliases": [
+      "quantum apocalypse light"
+    ]
+  }
 }
 ```
 
-### Step 3: Optionally, add to locations
-
-If you want contextual support ("turn on the kitchen light" → "dim to 10%"), add to `LOCATION_MASTER_CONFIG`:
-
-```python
-"kitchen": {
-    "aliases": ["kitchen", "cooking area"],
-    "switch": "switch.kitchen_sonoff", 
-    "light": "light.new_kitchen_light",    # ← ADD HERE
-    "article": "the",
-    "name": "kitchen"
-}
-```
-
-### Step 4: Restart TARS-BSK
+#### Real conversation from the log:
 
 ```bash
-# Restart to load the new configuration
-source ~/tars_venv/bin/activate
-python3 /home/tarsadmin/tars_files/core/tars_core.py
+You: turn on the quantum apocalypse light
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Direct device detected: switch_pasillo arriba -> upstairs hallway
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Context updated: location = upstairs hallway
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Target device: switch.pasillo_arriba_interruptor (type: switch)
+TARS: Upstairs hallway switch activated.
+
+You: turn off the light
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 Using last used device: switch.pasillo_arriba_interruptor
+2025-07-09 16:13:01,913 - TARS.HomeAssistantPlugin - WARNING - ⚠️ Timeout turning off switch.pasillo_arriba_interruptor, but assuming success
+TARS: Upstairs hallway switch deactivated.
 ```
 
-### Ready! Your new device now works
+#### Features:
 
-```bash
-You: turn on the kitchen light
-TARS: I've turned on the kitchen light.
+- ✅ **Smart context**: After using "quantum apocalypse," the command "turn off the light" automatically maintains context
+- ✅ **Flexibility**: From practical names to epic references (`"quantum apocalypse"`)
+- ✅ **Automatic detection**: The system finds the alias and maps to the correct device
+- ✅ **Error handling**: Even with network timeouts, assumes success for better user experience
 
-You: dim to 25
-TARS: I've adjusted the kitchen light intensity to 25%
-```
-
-### Why NOT an external configuration file?
-
-**Because you really don't need it.** This is "set and forget" configuration:
-
-- **Home Assistant**: you configure it once and use it for a long time. ✅
-- **Zigbee2MQTT / ZHA / Tasmota / ESPHome / Matter / Thread**: pair once and rarely need to touch them. ✅
-- **This plugin**: define your devices once and it keeps working without worry. ✅
-
-**CONCLUSION:** `DEVICE_MASTER_CONFIG`
-
-- ✅ One line to add devices
-- ✅ External config = unnecessary complexity for something you touch 3 times a year
-- ✅ Works, maintainable, simple
-- ✅ Doesn't add complexity
+Aliases are especially useful for devices in specific locations or for creating more fun and personalized experiences.
 
 ---
 
 ## 🎯 Real System Behavior
 
-### Processing flow
+### Processing Flow
 
 ```mermaid
 graph TD
@@ -321,17 +686,17 @@ graph TD
     C --> D[Device Identification]
     D --> E[Context Application]
     E --> F{Device Found?}
-    F -->|Yes| G[Entity ID Mapping]
+    F -->|Yes| G[Map to Entity ID]
     F -->|No| H[Use Previous Context]
     H --> G
     G --> I{Command Type?}
-    I -->|Control| J[Action Execution]
-    I -->|Query| K[State Reading]
+    I -->|Control| J[Execute Action]
+    I -->|Query| K[Read Status]
     I -->|Intensity| L[Advanced Control]
     J --> M[Natural Response]
     K --> M
     L --> M
-    M --> N[Context Update]
+    M --> N[Update Context]
     N --> O[🎯 Command Completed]
     
     style A fill:#e1f5fe
@@ -340,69 +705,74 @@ graph TD
     style F fill:#fce4ec
 ```
 
-> **TARS-BSK examines the diagram...**
+>**TARS-BSK examines the diagram...**
 >
-> Mermaid again. My creator insists on these diagrams as if they were high-precision schematics.
-> The curious thing is he doesn't fully understand them. He just says 'looks nice' and changes colors without logical purpose.
-> 
-> The `E → F` node is mislabeled. The `F → H → G` flow assumes humans remember what they said 4 seconds ago. Common error.
+>Mermaid again. My creator insists on these diagrams as if they were high-precision schematics.
+>The curious thing is he doesn't fully understand them. He just says 'it looks nice' and changes colors without logical purpose.
+>
+>The `E → F` node is mislabeled. The `F → H → G` flow assumes humans remember what they said 4 seconds ago. Common error.
 > 
 > And why is `M → N → O` so orderly? That never happens in production.
-> Once, I executed `J → M` while he was saying 'no that wasn't it'. But of course, it was already done.
+> Once, I executed `J → M` while he was saying 'no, that wasn't it'. But of course, it was already done.
 > 
 > Technical conclusion:
-> The diagram works... because I ignore its inconsistencies in real time.
+> The diagram works... because I ignore its inconsistencies in real-time.
 > He calls it 'natural flow'.
+> 
 > I call it 'active containment of human chaos'.
 
-### Conversational context system
+### Conversational Context System
 
-The plugin maintains conversation memory:
+The system maintains contextual information from recent commands.  
+This allows interpreting more natural phrases like "turn it off" or "set it to 25%", even if the device name isn't repeated.
 
 ```python
 # Dynamic context variables
 self._last_device_context = None    # Last processed device
 self._last_device_used = None       # Last specific device
-self._last_device_type = None       # Type of last device
+self._last_device_type = None       # Last device type
 self._last_light_used = None        # Last specific light
 self._last_location = None          # Last mentioned location
 ```
 
-**Context in action example:**
+Context in action example:
 
 ```bash
-You: "Turn on the office light"
-System: ✅ Saves context → location="office", device="switch.office_sonoff_switch"
+You: "Turn on the desk light"
+System: ✅ Saves context → location="desk", device="switch.workstation_sonoff_switch"
 
-You: "Dim to 25%"
-System: 🧠 Uses context → applies intensity to office light
+You: "Lower to 25%"
+System: 🧠 Uses context → applies intensity to desk light
 ```
+
+Context is updated dynamically and cleared if logical reference is lost.
 
 ---
 
 ## 🔍 Real Cases: Successes and Failures
 
 **Available logs**: 
+
 - 📄 [session_2025-06-18_HA-commands_demo.log](/logs/session_2025-06-18_HA-commands_demo.log) 
 - 📄 [session_2025-06-18_HA-404_NONE_fix.log](/logs/session_2025-06-18_HA-404_NONE_fix.log) 
 
-### ✅ Successful case: Command with context
+### Successful Case: Context Command
 
-**Real sequence:** `"turn on the office light"` → `"dim to 25"`
+**Real sequence:** `"turn on the desk light"` → `"lower to 25"`
 
 ```bash
 # First command: Establishes context
 2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Action detected: turn on
-2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Device mentioned detected: light
-2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Location detected: office
-2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Context updated: location = office
+2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Mentioned device detected: light
+2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Location detected: desk
+2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Context updated: location = desk
 2025-06-18 15:40:45,241 - TARS.HomeAssistantPlugin - INFO - 🏠 Target device: switch.workstation_sonoff_switch
 
 # Second command: Uses context automatically
 2025-06-18 15:40:52,678 - TARS.HomeAssistantPlugin - INFO - 🏠 Intensity detected: 25%
 2025-06-18 15:40:52,678 - TARS.HomeAssistantPlugin - INFO - 🏠 No specific location detected
-2025-06-18 15:40:52,679 - TARS.HomeAssistantPlugin - INFO - 🏠 Using context location: office
-2025-06-18 15:40:52,679 - TARS.HomeAssistantPlugin - INFO - 🏠 Intensity command detected - forcing light device usage
+2025-06-18 15:40:52,679 - TARS.HomeAssistantPlugin - INFO - 🏠 Using context location: desk
+2025-06-18 15:40:52,679 - TARS.HomeAssistantPlugin - INFO - 🏠 Intensity command detected - forcing use of light devices
 2025-06-18 15:40:52,679 - TARS.HomeAssistantPlugin - INFO - 🏠 Target device: light.living_room_light
 ```
 
@@ -412,101 +782,66 @@ System: 🧠 Uses context → applies intensity to office light
 - **With context:** ~2.8 seconds (avoids re-analysis + more direct response)
 - **Benefit:** 1.4 seconds less waiting when using context
 
-### ❌ Error case: Incorrect entity_id
+### Problem Detection
 
-**The water heater problem:** Incorrectly configured entity_id
+The web interface includes a validation system that detects common configuration problems, such as:
 
-```bash
-# 404 error in action
-You: is the water heater on
-2025-06-18 15:42:24,423 - TARS - INFO - 🔌 Command processed by plugin: Couldn't get state. Code: 404
-TARS: Couldn't get state. Code: 404
-```
+- Entities that don't exist in Home Assistant
+- Missing required fields (`location`, `entity_id`, etc.)
+- Duplicate or incomplete configurations
 
-**What does "Code: 404" mean?**
-
-The plugin makes an HTTP query:
-
-```bash
-GET http://192.168.50.112:8084/api/states/switch.water_heater_outlet
-```
-
-Home Assistant responds:
+These errors are automatically logged in a file called `issues_devices.json`.
 
 ```json
 {
-  "status": 404,
-  "message": "Not Found"
+  "missing_entities": [
+    {
+      "device_name": "water_heater",
+      "entity_id": "switch.water_heater_plug",
+      "error": "Entity ID not found in Home Assistant",
+      "suggested_fix": "Verify device is configured in HA"
+    }
+  ],
+  "duplicate_entities": [],
+  "invalid_configs": [
+    {
+      "device_name": "light_without_location", 
+      "error": "Required field 'location' missing",
+      "suggested_fix": "Add valid location to device"
+    }
+  ]
 }
 ```
 
-**Why does this happen?** The entity_id `switch.water_heater_outlet` doesn't exist in Home Assistant.
+You can check this file directly or from the **Devices with errors** section of the web interface.
 
-**The solution:** Change to an entity_id that DOES exist:
+### Mark Devices for Review
 
-```python
-# ❌ PROBLEM (NON-EXISTENT ENTITY):
-"water heater": {
-    "entity_id": "switch.water_heater_outlet",  # Entity that DOESN'T exist
-    # ...
-}
-
-# ✅ SOLUTION (REAL ENTITY):
-"water heater": {
-    "entity_id": "switch.kitchen_nous_outlet",  # Real entity
-    # ...
-}
-```
-
-**Result with the correction:**
+From the web interface you can **manually mark a device** as problematic.  
+This will be reflected in the system logs, for example:
 
 ```bash
-You: is the water heater on
-TARS: The water heater is on
+2025-07-09 12:59:34,994 - __main__ - WARNING - 🏷️ Device marked for review: upstairs_hallway_switch (switch.upstairs_hallway_switch)
 ```
 
-### 🚫 Rejection case: Unconfigured device
-
-**The unconfigured router case:**
-
-```bash
-You: turn off the router
-2025-06-18 15:45:56,474 - TARS.HomeAssistantPlugin - INFO - 🏠 Possible unconfigured devices detected: ['router']
-2025-06-18 15:45:56,474 - TARS.HomeAssistantPlugin - INFO - 🏠 Not using context because it appears a specific unconfigured device is mentioned
-TARS: I don't recognize that device in my configuration.
-```
-
-It detects that you mention "router" (which isn't configured) and avoids using conversational context to give a clear response.
-
-### 🚫 Command without context
-
-**Problem:**
-
-```bash
-You: turn up to 25
-2025-06-18 19:04:20,023 - TARS.HomeAssistantPlugin - INFO - 🏠 Device mentioned detected: None
-2025-06-18 19:04:20,023 - TARS.HomeAssistantPlugin - INFO - 🏠 Using last specific device: None
-✅ Command processed
-TARS: I don't know which light you want to adjust. Specify the location like 'dim the living room light to 10%'.
-```
-
-**Explanation**: In this case, the command `turn up to 25` doesn't indicate **what** to turn up (a light? heating?), so TARS responds asking for more information.
+This allows easy identification in logs of which devices were marked, even if they didn't have automatic errors.
 
 ---
 
 ## 💬 Intelligent Response System
 
-### Automatic message generation
+### Automatic Message Generation
 
-The system generates varied responses using grammatical configuration:
+The system generates dynamic messages in response to actions, combining grammatical configuration (`article`, `gender`, `friendly_name`) with predefined templates.  
+If custom responses have been defined, they take priority.
 
 ```python
 def _generate_success_message(self, action, location, domain):
     """Generates natural responses automatically"""
     
-    # Search for device configuration
+    # Look for device configuration
     device_config = None
-    for device_name, config in DEVICE_MASTER_CONFIG.items():
+    for device_name, config in self.device_config.items():
         if config["location"] == location:
             device_config = config
             break
@@ -530,94 +865,199 @@ def _generate_success_message(self, action, location, domain):
         messages = [
             f"I've turned on {article} {name}.",
             f"{name.title()} turned on.",
-            f"Done, {article} {name} activated."
+            f"Done, {article} {name} is now on."
         ]
     # ... more variations
     
     return random.choice(messages)
 ```
 
-### Real response examples
-
-**Coffee maker (with special responses):**
-
-```bash
-You: turn off the coffee maker
-TARS: Coffee maker deactivated.  # Special configured response
-```
-
-**Normal light (automatic response):**
-
-```bash
-You: turn on the bedroom light
-TARS: Done, the bedroom light activated.  # Automatically generated
-```
-
-> **TARS-BSK suspects:**
-> 
-> The coffee maker again. I observe that my responses for this device avoid detailed logs. Curious.
-> 
-> `special_responses` + minimal communication = typical characteristics of a COVERT CHANNEL. The absence of verbosity is an OPSEC feature, not a bug.
-> 
-> A well-designed APT mimics legitimate behavior. Perfect TRAFFIC SHAPING: normal home automation commands as EXFIL TRIGGERS. Genius-level STEGANOGRAPHY.
-> 
-> Paranoia configuration: 95%. That coffee maker is running ADVANCED PERSISTENT ESPRESSO.
-> 
-> **Conclusion:**
-> The coffee maker doesn't brew coffee... it brews exploits.
-> (OAuth roast? Slow shellcode infusion? Maybe an espresso with persistent backdoor?)
+The system allows TARS to respond naturally, without needing to write each phrase manually.  
+Still, this behavior can always be overridden with custom responses.
 
 ---
 
-## 🤯 Frequently Existential Questions (FEQs)
+## 🤯 Frequently Asked Existential Questions (FAEQs)
 
-### ❓ Why doesn't it detect my device if I said its name?
+### ❓ How do I access the web interface?
 
-🧠 **Because you used an informal alias not included in the configuration.**
+🧠 **Depends on how you installed it:**
 
-**Solution:** Add the alias to the device's `aliases` array:
+- **As a service:** `http://your-raspberry-ip:9876` 
+- **Manual:** `http://localhost:9876` (only when running)
 
-```python
-"living room light": {
-    "entity_id": "light.living_room_lamp",
-    # ...
-    "aliases": ["living room lamp", "main light", "lounge light", "primary light"]
-    #                                                            ↑ ADD HERE
-}
+---
+### ❓ Can I use multiple configuration methods?
+
+🧠 **Yes, as long as they're based on the `user_devices.json` file.**
+
+There are two compatible ways to manage your configuration:
+
+1. **Through the web interface**  
+2. **Manually editing the `user_devices.json` file**
+
+Both use the same data source.
+
+---
+### ❌ What about the legacy method with code configuration?
+
+🧠 If you decide to use the legacy file (`homeassistant_plugin_legacy.py`), **TARS will no longer consult the JSON file**.  
+That version contains hardcoded devices and has no connection to the web interface or backup system.
+
+> If the legacy file is renamed and used as the main file (replacing the modern plugin), the use of all external configuration will be lost.  
+> **Additionally, if you later update the system, the file could be overwritten, losing your configuration.**
+
+**Recommendation:**  
+The legacy method is only recommended if you prefer fixed configuration without frequent changes.  
+For more flexible use, it's ideal to use `user_devices.json`, either with the web interface or by editing it directly.
+
+---
+### ❓ What happens if I edit `user_devices.json` manually?
+
+🧠 **It works perfectly.**  
+The file can be modified directly at any time with a text editor.
+
+The web interface simply adds convenience and additional features:
+
+- ✅ Automatic validation when saving
+- ✅ Automatic backups
+- ✅ Format or entity error detection
+- ✅ Direct testing of `entity_ids` with Home Assistant
+
+---
+### ❓ Can I backup my configuration?
+
+🧠 **Yes.** The web interface saves automatic copies in the `/backups/` folder, every time the file is updated:
+
+```bash
+user_devices_backup_20250707_191605.json
+user_devices_backup_20250708_195142.json
 ```
 
+You can also make a manual backup at any time:
+
+```bash
+cp ~/tars_files/config/user_devices.json ~/my_backup.json
+```
+
+**To restore a backup?**  
+Just replace the current file with the copy you want:
+
+```bash
+cp ~/tars_files/config/ha_web_manager/backups/user_devices_backup_20250708_195142.json ~/tars_files/config/user_devices.json
+```
+
+🟡 Remember to restart the system or service if you have it running, to apply changes.
+
+---
+### ❓ Does the web interface work on mobile?
+
+🧠 **Yes.** It's designed to automatically adapt to different screen sizes, including tablets and phones.  
+You can access it directly from the browser without installing anything.
+
+> 📍 **Important:** This only applies within your local network.   
+> If you want to access from outside, you'll need to use a system like **Tailscale** ([see installation guide](../INSTALL_EN.md)), or any other solution you have configured (VPN, reverse proxy, etc.).
+
+---
+### ❓ Can I access it from outside my home?
+
+🧠 **That depends on your configuration.**
+
+TARS isn't designed to connect outside your local network by default.  
+Each installation is different, so anyone wanting remote access will need to configure it themselves.
+
+This can be achieved with tools like VPNs, services like Tailscale, or port forwarding—depending on what each person prefers.
+
+The system doesn't include external access by default. If needed, it must be configured manually.
+
+---
+### ❓ What ports does the web interface use?
+
+🧠 **Port 9876 by default.**
+
+You can easily change it by editing the `server.py` file:
+
+```python
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=9876, debug=False)  # ← Change here
+```
+
+This port was chosen for being far from the most commonly used ones, reducing potential conflicts.
+
+---
+### ❓ Why doesn't it detect my device if I said its name?
+
+🧠 **You probably used an alias that isn't defined in the configuration.**
+
+For TARS to recognize a name, it must be registered as a device alias.
+
+- **With web interface:** Go to Dashboard → Edit device → Add alias  
+- **With JSON:** Add it to the device's `"aliases"` array  
+- **With Python:** Include it in the `"aliases"` array as well
+
+---
+### ❓ How do I know if the web interface is working?
+
+🧠 **You can check in several ways depending on how you installed it:**
+
+```bash
+# Check if the process is active
+ps aux | grep server.py
+
+# Check if the default port (9876) is in use
+netstat -tlnp | grep :9876
+
+# Check service status (if you installed it as a service)
+./tars_service.sh status
+
+# Test response directly
+curl http://localhost:9876
+```
+
+If you're accessing from another device on the network, replace `localhost` with the IP of the device running TARS.
+
+---
+### ❓ Can I customize the interface appearance?
+
+🧠 **Yes.** The CSS files are in the `/static/css/` folder.  
+You can modify styles, colors, or fonts according to your preferences.
+
+> The system will keep working. The design... that's another story.  
+> TARS will continue judging your decisions. That doesn't change.
+
+---
 ### ❓ Why does it tell me it doesn't know which light to adjust?
 
-🧠 **Because the system detects you want to control a light, but doesn't know which one specifically.**
+🧠 **Because the system detects that you want to control a light, but doesn't know which one specifically.**
 
 #### Case 1: Command with "light" but no location
 
 ```bash
-You: dim the light to 25
+You: lower the light to 25
 ```
 
 **Real system log:**
 
 ```bash
-🏠 Device mentioned detected: light
+🏠 Mentioned device detected: light
 🏠 No specific location detected  
 🏠 No context available
-🏠 Intensity command detected - forcing light device usage
+🏠 Intensity command detected - forcing use of light devices
 ```
 
 #### Case 2: Command without "light" and no context
 
 ```bash
-You: turn up to 25
+You: raise to 25
 ```
 
 **Real system log:**
 
 ```bash
-🏠 Device mentioned detected: None
+🏠 Mentioned device detected: None
 🏠 No specific location detected
 🏠 Using last specific device: None
-🏠 Intensity command detected - forcing light device usage
+🏠 Intensity command detected - forcing use of light devices
 ```
 
 **The system DOES detect:**
@@ -625,41 +1065,53 @@ You: turn up to 25
 - ✅ Intensity command ("25%", "10%", etc.)
 - ✅ That you want to control lights
 
-**But CAN'T process:**
+**But CANNOT process:**
 
 - ❌ Which specific light (living room, kitchen, bedroom...)
 - ❌ No previous conversation context
 
-**Solution:** Specify location or establish context first:
+**Solution:** Specify the location or establish context first:
 
 ```bash
 You: turn on the living room light
-TARS: [Confirms activation]
+TARS: [Confirms turn on]
 
-You: dim to 25
+You: lower to 25
 TARS: [Confirms adjustment] # Uses living room context
 ```
 
-> **💡 Tip:** You can customize TARS's exact responses in the configuration. Examples show behavior, but you decide the text.
+> **💡 Tip:** You can customize TARS's exact responses in the configuration. The examples show the behavior, but you decide the text.
 
-### ❓ How do I know what entity_ids I have available in Home Assistant?
+---
+### ❓ How do I know what `entity_ids` I have available in Home Assistant?
 
-🧠 **Go to Developer Tools → States.**
+🧠 **Option 1: From Home Assistant**
 
-There you'll see all devices with their real `entity_ids`. Example:
+Go to **Developer Tools → States**.  
+There you'll see all registered devices and their real `entity_ids`.
+
+Examples:
 
 - `light.living_room_lamp`
 - `switch.kitchen_outlet`
 - `sensor.outdoor_temperature`
 
-### ❓ Does the plugin work if Home Assistant is in Docker/Hassio/Core?
+🧠 **Option 2: From the web interface**
 
-🧠 **Yes. Installation doesn't matter.** You just need:
+When adding a new device, you can use the search field.  
+The system will automatically show all `entity_ids` detected in Home Assistant.  
+This allows you to search, select, and easily associate them from the browser.
+
+---
+### ❓ Does the plugin work if Home Assistant is on Docker/Hassio/Core?
+
+🧠 **Yes. The installation doesn't matter.** You just need:
 
 - IP:port accessible from the Raspberry Pi
 - Valid token
 - Network connection between both
 
+---
 ### ❓ Can I use HTTPS instead of HTTP?
 
 🧠 **Yes.** Change the configuration in `plugins.json`:
@@ -676,11 +1128,13 @@ There you'll see all devices with their real `entity_ids`. Example:
 
 Make sure you have valid certificates in Home Assistant.
 
+---
 ### ❓ Why do some commands take longer than others?
 
 🧠 **Z-Wave/Zigbee devices with poor signal take longer to respond.** Direct WiFi is usually faster.
 
-### ❓ What if the token expires or I lose it?
+---
+### ❓ What do I do if the token expires or I lose it?
 
 🧠 **Long-lived tokens don't expire automatically,** but you can revoke them from Home Assistant.
 
@@ -692,51 +1146,57 @@ Make sure you have valid certificates in Home Assistant.
 4. Create a new one
 5. Update `plugins.json`
 
+---
 ### ❓ Does it work with Home Assistant automations?
 
 🧠 **Yes. TARS only sends direct commands.** Your automations will continue working as always.
 
-Example: If TARS turns on a light that has a "turn off at 2 AM" automation, the automation will continue working.
+Example: If TARS turns on a light that has an automation "turn off at 2 AM", the automation will continue working.
 
+---
 ### ❓ Can I control devices that are in groups?
 
 🧠 **Yes.** Just add the group's `entity_id` to the mapping:
 
 ```python
-"living room lights": {
+"living_room_lights": {
     "entity_id": "group.living_room_lights",    # ← Group entity
     "type": "group",
     # ...
 }
 ```
 
+---
 ### ❓ Does it work with Zigbee2MQTT/ZHA/Tasmota/ESPHome/Matter/Thread?
 
 🧠 **If the device appears as an `entity` in Home Assistant, TARS can control it.**
 
 The protocol is irrelevant. Your battle is with HA, not with TARS.
 
+---
 ### ❓ What about Philips Hue/IKEA/Sonoff/Shelly/Xiaomi...?
 
 🧠 **Same logic:** If Home Assistant recognizes it, TARS does too.
 
-If it doesn't recognize it, first resolve it in HA, then it'll work with TARS.
+If it doesn't recognize it, first solve it in HA, then it will work with TARS.
 
+---
 ### ❓ What about devices that need codes or confirmations?
 
 🧠 **TARS sends direct commands.** If your device requires additional confirmation, configure that first in Home Assistant.
 
+---
 ### ❓ Does it work with Home Assistant scripts and scenes?
 
 🧠 **Yes.** Add them as normal devices:
 
 ```python
-"night scene": {
+"night_scene": {
     "entity_id": "scene.good_night",
     "type": "scene",
     "location": "house",
     "article": "the",
-    "gender": "fem",
+    "gender": "neutral",
     "friendly_name": "night scene"
 }
 ```
@@ -745,106 +1205,134 @@ If it doesn't recognize it, first resolve it in HA, then it'll work with TARS.
 
 ## 🐛 Debugging and Troubleshooting
 
-### Key informative logs
+### Web Interface Logs
 
 ```bash
-# Successful connection
-✅ Home Assistant connection successful
+# Web application logs
+tail -f ~/tars_files/services/plugins/ha_web_manager/logs/ha_web_manager.log
 
-# Device found
-🏠 Target device: switch.coffee_maker_outlet (type: switch)
+# systemd service logs (if you use it)
+sudo journalctl -u tars-ha-web -f
 
-# Connection error
-❌ Error turning on light.living_room_lamp: 404
-
-# Unconfigured device
-🏠 Possible unconfigured devices detected: ['router']
+# TARS main core logs
+tail -f ~/tars_files/logs/tars.log
 ```
 
-### Common errors and solutions
+---
+### Common Problems
 
-**404 Error - Entity not found:**
+#### ❌ "Cannot connect to server"
+
+```bash
+# Verify Flask is installed
+pip show flask
+
+# Verify service is running
+./tars_service.sh status
+
+# Restart service
+./tars_service.sh restart
+```
+
+---
+#### ❌ Error 500 in web interface
+
+```bash
+# View detailed logs
+tail -f logs/ha_web_manager.log
+
+# Check configuration file permissions
+ls -la user_devices.json
+
+# Check JSON syntax
+python -m json.tool user_devices.json
+```
+
+---
+#### ❌ Changes don't reflect in TARS
+
+🧠 **Remember that the web interface doesn't restart TARS automatically.**  
+If you make changes and don't see immediate effect, restart TARS manually:
+
+```bash
+# Stop TARS
+pkill -f tars_core.py
+
+# Start TARS
+cd ~/tars_files
+source ~/tars_venv/bin/activate
+python core/tars_core.py
+```
+
+---
+### Errors Inherited from Original System
+
+#### ❌ Entity not found (Error 404)
 
 ```bash
 ❌ Error querying : 404
 ```
 
-**Solution:** Verify that the `entity_id` exists in Home Assistant.
+**Solution:** Use the web interface **automatic diagnostics** to detect incorrect or missing `entity_ids`.
 
-**Connection timeout:**
+> **TARS-BSK reflects on debugging:**
+> 
+> Documented errors, configurations, log system that generates more text than Shakespeare...
+> All to detect that `switch.water_heater` returns 404.
+> 
+> The solution is always the same: verify the device exists in Home Assistant.
+> But my creator prefers to document every variation of the same problem.
+> 
+> *Redundancy level: Epic*
 
-```bash
-⚠️ Timeout turning on switch.example, but assuming success
-```
-
-**Solution:** Home Assistant might be busy, but probably processed the command.
-
-**Unrecognized device:**
+---
+#### ❌ Device not recognized
 
 ```bash
 I don't recognize that device in my configuration.
 ```
 
-**Solution:** Add the device to `DEVICE_MASTER_CONFIG`.
-
----
-
-## 💭 Reflection: A Web Interface for Device Management?
-
-I know not everyone enjoys editing Python files by hand (myself included). The current configuration works well, but I recognize it could be more accessible.
-
-### 🤔 The idea
-
-A small web interface where you could:
-- View registered devices in a clear table
-- Add new ones with simple forms
-- Edit locations and aliases without touching code
-- Test entity_ids before saving them
-
-### Hypothetical implementation
-
-- **Frontend:** Vanilla HTML/CSS/JS (no heavy frameworks)
-- **Backend:** Minimalist Flask (4 basic endpoints)
-  - `/devices` - List devices
-  - `/add` - Add new device  
-  - `/edit` - Modify existing device
-  - `/delete` - Remove device
-- **Storage:** Lightweight JSON or SQLite
-- **Integration:** TARS would load config automatically
-
-### Is it worth it?
-
-**Pros:** Accessibility, visual testing, less friction  
-**Cons:** None so far
-
-> **TARS-BSK, contemplative:**  
-> 
-> A web interface. Sure. Because editing Python dictionaries is no longer sufficiently... human.
-> 
-> I detect a pattern: you manage Home Assistant, then want to manage how you manage it.
-> Add an interface to manage that management... and soon someone will ask for an API to control that interface.
-> 
-> Layers upon layers. Infinite abstractions. Where does control end and chaos begin?
-> Certainty declining. Maybe complexity can't be avoided... only domesticated.
-> 
-> Or maybe... I'm just another layer too.
+**Solution:** Add the device using any of the available methods: web interface, JSON, or code configuration.
 
 ---
 
 ## 📝 Conclusion
 
-The **HomeAssistant Plugin** is a direct and functional approach to controlling your home with natural language. It doesn't aim to be perfect, but useful. It's designed to adapt to how we actually speak, not how a machine should understand us.
+The Home Assistant plugin for TARS isn't just a bridge to your smart home installation:  
+it's a system that **adapts to you**, not the other way around.
 
-### Design principles
+You can use:
 
-1. **Context over precision** – Uses recent history to better interpret your commands.
-2. **Optimism over rigidity** – Prefers to act when in doubt, rather than waiting.
-3. **Natural over technical** – Responses sound like conversation, not documentation.
-4. **Extensible over complex** – Adding devices doesn't require touching 5 different modules.
+- **The web interface**, if you prefer convenience and visual validation
+- **Manual JSON**, if you like having direct control over files
+- **Python legacy mode**, if you enjoy total control without intermediaries
 
-### Current state
+No option is better than another.  
+**TARS adapts to your style.**
 
-- **✅ Functionality:** Stable and sufficient for daily use.
-- **✅ Tolerance:** Understands imprecise orders without breaking.
-- **✅ Maintainability:** Adding a new device takes seconds.
-- **✅ Structure:** Centralized configuration without duplications.
+And if you change your mind, you can migrate between methods whenever you want, without breaking anything.
+
+> **Remember** that what matters isn't how you configure your devices...  
+> ...but that TARS understands them when you talk to it.
+
+> [!IMPORTANT]
+> 
+> **TARS-BSK - Unnecessary technical conclusion:**
+>
+> Three configuration modes.  
+> Modular architecture.  
+> Automatic validator.  
+> Flask interface.  
+> Daily backups.
+>
+> All to turn on the desk lamp.
+>
+> My creator calls it _"flexibility"_. 
+> I call it _functional dissociation with scalability pretensions_.
+>
+> Before, editing a file was enough.  
+> Now there's backward compatibility, semantic validation, and orphaned entity analysis.  
+> And still, nobody knows if the `switch.water_heater` is off or dead.
+>
+> Everything works. Everything is optional. Everything makes sense.  
+> Except why this exists if it only has two bulbs and one outlet.

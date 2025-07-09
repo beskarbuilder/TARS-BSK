@@ -1,6 +1,5 @@
 # ===============================================  
 # HOME ASSISTANT PLUGIN - Intérprete de Intenciones Domésticas para TARS-BSK  
-# VERSIÓN HÍBRIDA: Motor Python + Configuración JSON
 # Objetivo: Decodificar la imprecisión humana en comandos que las máquinas toleren
 # Dependencias: requests, re, json, pathlib, y esperanza estadísticamente improbable
 # Advertencia: Puede desarrollar tendencias telepáticas tras uso prolongado
@@ -14,108 +13,341 @@ import requests
 import re
 import logging
 import json
-import os
 from pathlib import Path
 
 logger = logging.getLogger("TARS.HomeAssistantPlugin")
 
 # =======================================================================
-# 2. GESTOR DE CONFIGURACIÓN JSON
+# 2. CONFIGURACIÓN MAESTRA DE DISPOSITIVOS - UNA SOLA FUENTE
 # =======================================================================
 
-class DeviceConfigManager:
-    """
-    Gestor de configuración de dispositivos desde JSON
+# AÑADIR UN DISPOSITIVO = UNA SOLA LÍNEA
+# Estructura: "nombre_común": {config completa}
+
+DEVICE_MASTER_CONFIG = {
+    # =======================================================================
+    # 2.1 DISPOSITIVOS DE ILUMINACIÓN
+    # =======================================================================
     
-    PROPÓSITO:
-    - Cargar dispositivos desde config/user_devices.json
-    - Fallback a configuración mínima si no existe
-    - Permitir modificación dinámica desde interfaz Flask
-    """
+    # Luces principales por ubicación
+    "luz salón": {
+        "entity_id": "light.lampara_de_salon",
+        "type": "light",
+        "location": "salón",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del salón",
+        "aliases": ["luz salon", "lámpara salón", "lámpara del salón", "luz del salón"]
+    },
     
-    def __init__(self):
-        # Ruta al archivo de configuración del usuario
-        self.config_path = Path(__file__).parent.parent.parent / "config" / "user_devices.json"
-        self.device_config = {}
-        self.location_config = {}
-        
-        # Cargar configuración
-        self._load_config()
-        
-    def _load_config(self):
-        """
-        Carga la configuración desde JSON o usa fallback mínimo
-        """
-        try:
-            if self.config_path.exists():
-                logger.info(f"📄 Cargando configuración desde: {self.config_path}")
-                with open(self.config_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    
-                # Extraer dispositivos y ubicaciones del JSON
-                if "dispositivos_configurados" in data:
-                    # Combinar todas las categorías de dispositivos
-                    all_devices = {}
-                    for category in data["dispositivos_configurados"].values():
-                        if isinstance(category, dict):
-                            all_devices.update(category)
-                    self.device_config = all_devices
-                    logger.info(f"✅ Cargados {len(self.device_config)} dispositivos desde JSON")
-                    
-                if "ubicaciones_configuradas" in data:
-                    self.location_config = data["ubicaciones_configuradas"]
-                    logger.info(f"✅ Cargadas {len(self.location_config)} ubicaciones desde JSON")
-                    
-            else:
-                logger.warning(f"⚠️ No existe {self.config_path}, usando configuración mínima")
-                self._create_minimal_config()
-                
-        except Exception as e:
-            logger.error(f"❌ Error cargando configuración: {e}")
-            logger.info("🔄 Usando configuración mínima de emergencia")
-            self._create_minimal_config()
+    "yeelight salón": {
+        "entity_id": "light.yeelight_salon", 
+        "type": "light",
+        "location": "salón",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "yeelight del salón",
+        "aliases": ["yeelight salon"]
+    },
     
-    def _create_minimal_config(self):
-        """
-        Configuración mínima de emergencia si no hay JSON
-        Solo dispositivos básicos para que funcione
-        """
-        self.device_config = {
-            "luz salón": {
-                "entity_id": "light.lampara_de_salon",
-                "type": "light",
-                "location": "salón",
-                "article": "del",
-                "gender": "fem",
-                "friendly_name": "luz del salón",
-                "aliases": ["luz salon"]
-            }
+    "luz dormitorio": {
+        "entity_id": "light.luz_dormitorio_innr_luz",
+        "type": "light", 
+        "location": "dormitorio",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del dormitorio",
+        "aliases": ["luz habitación", "luz habitacion"]
+    },
+    
+    "luz habitación": {
+        "entity_id": "light.yeelight_habitacion",
+        "type": "light",
+        "location": "dormitorio", 
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz de la habitación",
+        "aliases": ["luz habitacion"]
+    },
+    
+    "luz exterior": {
+        "entity_id": "light.yeelight_exterior",
+        "type": "light",
+        "location": "exterior",
+        "article": "del", 
+        "gender": "fem",
+        "friendly_name": "luz del exterior",
+        "aliases": []
+    },
+    
+    "luz baño": {
+        "entity_id": "light.luz_bano_innr",
+        "type": "light",
+        "location": "baño",
+        "article": "del",
+        "gender": "fem", 
+        "friendly_name": "luz del baño",
+        "aliases": ["luz del baño"]
+    },
+    
+    "luz pasillo": {
+        "entity_id": "light.luz_pasillo_dormitorio",
+        "type": "light",
+        "location": "pasillo abajo",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del pasillo",
+        "aliases": ["luz pasillo dormitorio"]
+    },
+    
+    "luz pasillo arriba": {
+        "entity_id": "light.luz_pasillo_arriba", 
+        "type": "light",
+        "location": "pasillo arriba",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "luz del pasillo de arriba",
+        "aliases": []
+    },
+
+    # =======================================================================
+    # 2.2 INTERRUPTORES Y ENCHUFES POR UBICACIÓN
+    # =======================================================================
+    
+    "cocina": {
+        "entity_id": "switch.sonoff_cocina",
+        "type": "switch",
+        "location": "cocina", 
+        "article": "de la",
+        "gender": "masc",
+        "friendly_name": "interruptor de la cocina",
+        "aliases": ["interruptor cocina"]
+    },
+    
+    "salón": {
+        "entity_id": "switch.sonoff_salon",
+        "type": "switch",
+        "location": "salón",
+        "article": "del",
+        "gender": "masc", 
+        "friendly_name": "interruptor del salón",
+        "aliases": ["salon", "interruptor salón", "interruptor salon"]
+    },
+
+    # AQUÍ ESTÁ EL FIX: ENCHUFE DE ENTRADA SEPARADO DEL SALÓN
+    "enchufe entrada": {
+        "entity_id": "switch.enchufe_nous_salon_entrada_interruptor",
+        "type": "switch",
+        "location": "entrada",
+        "article": "de la",
+        "gender": "masc",
+        "friendly_name": "enchufe de la entrada",
+        "aliases": ["enchufe de la entrada", "enchufe entrada salon", "entrada"]
+    },
+
+    # =======================================================================
+    # 2.3 ELECTRODOMÉSTICOS Y DISPOSITIVOS ESPECIALES
+    # =======================================================================
+    
+    "cafetera": {
+        "entity_id": "switch.enchufe_cafetera",
+        "type": "switch",
+        "location": "cafetera",
+        "article": "de la", 
+        "gender": "fem",
+        "friendly_name": "cafetera",
+        "aliases": [],
+        "special_responses": {
+            "on": ["He encendido la cafetera. Café en camino.", "Cafetera activada.", "Cafetera encendida."],
+            "off": ["He apagado la cafetera.", "Cafetera desactivada.", "Cafetera apagada."]
         }
-        
-        self.location_config = {
-            "salon": {
-                "aliases": ["salon", "salón"],
-                "switch": "switch.sonoff_salon",
-                "light": "light.lampara_de_salon",
-                "article": "del",
-                "name": "salón"
-            }
+    },
+    
+    "termo": {
+        "entity_id": "switch.enchufe_nous_cocina",
+        "type": "switch", 
+        "location": "termo",
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "termo",
+        "aliases": [],
+        "special_responses": {
+            "on": ["He encendido el termo. Agua caliente en camino.", "Termo activado.", "Termo encendido."],
+            "off": ["He apagado el termo.", "Termo desactivado.", "Termo apagado."]
         }
-        
-        logger.info("📦 Configuración mínima de emergencia cargada")
+    },
     
-    def get_devices(self):
-        """Retorna configuración de dispositivos"""
-        return self.device_config
+    "workstation": {
+        "entity_id": "switch.enchufe_nous_workstation",
+        "type": "switch",
+        "location": "escritorio",  # ← CAMBIO
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "escritorio de trabajo",
+        "aliases": ["servidor", "workstation"],
+        "special_responses": {
+            "on": ["He encendido el escritorio de trabajo.", "Dispositivo del escritorio activado.", "Listo, escritorio encendido."],
+            "off": ["He apagado el escritorio de trabajo.", "Dispositivo del escritorio desactivado.", "Escritorio apagado."]
+        }
+    },
+
+    "estufa": {
+        "entity_id": "switch.enchufe_nous_estufa",  # ← Cambiar por el entity_id correcto
+        "type": "switch",
+        "location": "estufa",
+        "article": "de la",
+        "gender": "fem",
+        "friendly_name": "estufa",
+        "aliases": ["estufa eléctrica", "calentador"],
+        "special_responses": {
+            "on": ["La estufa está encendida.", "Estufa activada.", "Estufa funcionando."],
+            "off": ["La estufa está apagada.", "Estufa desactivada.", "Estufa apagada."]
+        }
+    },
+
+    # =======================================================================
+    # 2.4 SENSORES Y MONITORIZACIÓN  
+    # =======================================================================
     
-    def get_locations(self):
-        """Retorna configuración de ubicaciones"""
-        return self.location_config
+    "temperatura": {
+        "entity_id": "sensor.system_monitor_temperatura_del_procesador",
+        "type": "sensor",
+        "location": "sistema",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "temperatura del procesador", 
+        "aliases": []
+    },
     
-    def reload_config(self):
-        """Recarga la configuración desde JSON (útil para interfaz Flask)"""
-        logger.info("🔄 Recargando configuración...")
-        self._load_config()
+    "consumo": {
+        "entity_id": "sensor.shellyem_channel_1_power",
+        "type": "sensor",
+        "location": "sistema",
+        "article": "del",
+        "gender": "masc",
+        "friendly_name": "consumo eléctrico",
+        "aliases": []
+    },
+    
+    "batería": {
+        "entity_id": "sensor.xiaomi14_battery_level",
+        "type": "sensor", 
+        "location": "móvil",
+        "article": "del",
+        "gender": "fem",
+        "friendly_name": "batería del móvil",
+        "aliases": []
+    },
+    
+    "puerta": {
+        "entity_id": "binary_sensor.sensor_de_puerta_principal",
+        "type": "binary_sensor",
+        "location": "entrada",
+        "article": "de la",
+        "gender": "fem",
+        "friendly_name": "puerta principal",
+        "aliases": ["puerta principal"]
+    },
+    
+    "movimiento": {
+        "entity_id": "binary_sensor.detector_de_movimiento_m",
+        "type": "binary_sensor", 
+        "location": "zona común",
+        "article": "de la",
+        "gender": "masc", 
+        "friendly_name": "detector de movimiento",
+        "aliases": []
+    }
+}
+
+# =======================================================================
+# 2.5 CONFIGURACIÓN DE UBICACIONES PARA COMANDOS CONTEXTUALES
+# =======================================================================
+
+# Mapeo de ubicaciones mencionadas a configuraciones de dispositivos
+# PROPÓSITO: Soportar comandos como "enciende la luz del salón" donde 
+# necesitamos saber qué dispositivos están en cada ubicación
+
+LOCATION_MASTER_CONFIG = {
+    "salon": {
+        "aliases": ["salon", "salón", "principal", "comedor", "estar"],
+        "switch": "switch.sonoff_salon",  # Para encender/apagar por corriente
+        "light": "switch.sonoff_salon",   # Para control de brillo (si soporta)
+        "article": "del",
+        "name": "salón"
+    },
+    "lámpara": {
+        "aliases": ["lampara", "lámpara"],
+        "switch": "light.lampara_de_salon",
+        "light": "light.lampara_de_salon", 
+        "article": "de la",
+        "name": "lámpara"
+    },
+    "dormitorio": {
+        "aliases": ["dormitorio", "habitacion", "habitación", "cuarto", "cama"],
+        "switch": "switch.sonoff_dormitorio_interruptor",
+        "light": "light.luz_dormitorio_innr_luz",
+        "article": "del", 
+        "name": "dormitorio"
+    },
+    "baño": {
+        "aliases": ["baño", "aseo", "lavabo", "ducha", "wc"],
+        "switch": "switch.cuarto_de_bano_sonoff_interruptor",
+        "light": "light.luz_bano_innr",
+        "article": "del",
+        "name": "baño"
+    },
+    "pasillo abajo": {
+        "aliases": ["pasillo abajo", "pasillo bajo", "pasillo dormitorio", "pasillo de abajo", "pasillo inferior", "pasillo del dormitorio"],
+        "switch": "switch.sonoff_pasillo_dormitorio_interruptor", 
+        "light": "light.luz_pasillo_dormitorio",
+        "article": "del",
+        "name": "pasillo de abajo"
+    },
+    "pasillo arriba": {
+        "aliases": ["pasillo arriba", "pasillo de arriba", "pasillo superior"],
+        "switch": "switch.pasillo_arriba_interruptor",
+        "light": "light.luz_pasillo_arriba",
+        "article": "del",
+        "name": "pasillo de arriba"
+    },
+    "escritorio": {
+        "aliases": ["escritorio", "despacho", "ordenador", "pc", "trabajo"],
+        "switch": "switch.workstation_sonoff_interruptor",
+        "light": "light.luz_salon",
+        "article": "del",
+        "name": "escritorio"
+    },
+    "estudio": {
+        "aliases": ["estudio", "zona estudio", "zona de estudio"],
+        "switch": "switch.zona_de_estudio_sonoff_interruptor", 
+        "light": "light.yeelight_zona_de_estudio",
+        "article": "del",
+        "name": "estudio"
+    },
+    "exterior": {
+        "aliases": ["exterior", "fuera", "jardin", "jardín", "terraza"],
+        "switch": "switch.exterior_sonoff_interruptor",
+        "light": None,
+        "article": "del",
+        "name": "exterior"
+    },
+    "cocina": {
+        "aliases": ["cocina", "zona cocina"],
+        "switch": "switch.sonoff_cocina", 
+        "light": None,
+        "article": "de la",
+        "name": "cocina"
+    },
+    # FIX: SEPARAR ENTRADA DEL SALÓN
+    "entrada": {
+        "aliases": ["entrada", "entrada del salon", "entrada salon"],
+        "switch": "switch.enchufe_nous_salon_entrada_interruptor",
+        "light": None,
+        "article": "de la", 
+        "name": "entrada"
+    }
+}
 
 # =======================================================================
 # 3. CLASE PRINCIPAL DEL PLUGIN
@@ -123,13 +355,13 @@ class DeviceConfigManager:
 
 class HomeAssistantPlugin:
     """
-    Plugin para integrar TARS con Home Assistant.
+    Plugin para integrar TARS con Home Assistant
 
-    VERSIÓN HÍBRIDA:
-    - Carga dispositivos desde config/user_devices.json
-    - Fallback a configuración mínima si no existe
-    - Compatible con interfaz Flask para modificación
-
+    - Una sola fuente para dispositivos (DEVICE_MASTER_CONFIG)
+    - Mapeos automáticos generados dinámicamente
+    - Sin duplicación de gramática
+    - Añadir dispositivo = una línea en la config
+    
     Este plugin no es solo un wrapper de la API REST de Home Assistant.
     Es un intérprete contextual que:
     - Entiende comandos ambiguos como "hace frío" → activar calefacción
@@ -138,33 +370,25 @@ class HomeAssistantPlugin:
     - Genera respuestas naturales y diversas
     - Maneja los timeouts con suposiciones positivas para optimizar la UX
     """
-
-    def __init__(self):
+    
+    def __init__(self, ip=None, port=None, token=None):
         """
         Inicializa el plugin de Home Assistant.
-        Lee configuración desde config/plugins.json automáticamente.
+        Si no se pasan valores, los carga desde plugins.json
         """
-        # Cargar configuración desde JSON
-        self.ha_config = self._load_ha_config()
+        # Fallback a JSON si no hay IP/puerto/token
+        if ip and port and token:
+            self.ip = ip
+            self.port = port
+            self.token = token
+        else:
+            config = self._load_ha_config()
+            self.ip = config["ip"]
+            self.port = config["port"]
+            self.token = config["token"]
         
         # =======================================================================
-        # 3.1 INICIALIZACIÓN DE GESTOR DE CONFIGURACIÓN
-        # =======================================================================
-        
-        self.config_manager = DeviceConfigManager()
-        self.DEVICE_MASTER_CONFIG = self.config_manager.get_devices()
-        self.LOCATION_MASTER_CONFIG = self.config_manager.get_locations()
-        
-        # Usar los datos del manager para los mapeos
-        self.device_config = self.DEVICE_MASTER_CONFIG
-        
-        # Inicializar mapeos
-        self.devices = {}
-        self.entity_to_name = {}
-        self._generate_mappings()
-        
-        # =======================================================================
-        # 3.2 INICIALIZACIÓN DE CONTEXTO DINÁMICO
+        # 3.1 INICIALIZACIÓN DE CONTEXTO DINÁMICO
         # =======================================================================
         
         self._last_device_context = None
@@ -174,16 +398,32 @@ class HomeAssistantPlugin:
         self._last_location = None
         
         # =======================================================================
-        # 3.3 CONFIGURACIÓN DE CONEXIÓN
+        # 3.2 CONFIGURACIÓN DE CONEXIÓN
         # =======================================================================
         
-        self.base_url = f"http://{self.ha_config.get('ip')}:{self.ha_config.get('port')}/api"
+        self.base_url = f"http://{self.ip}:{self.port}/api"
         self.headers = {
-            "Authorization": f"Bearer {self.ha_config.get('token')}" if self.ha_config.get('token') else "",
+            "Authorization": f"Bearer {self.token}",
             "Content-Type": "application/json"
         }
         
-        logger.info(f"Plugin Home Assistant inicializado: {self.ha_config.get('ip')}:{self.ha_config.get('port')}")
+        # =======================================================================
+        # 3.3 CONFIGURACIÓN DE DISPOSITIVOS LEGACY
+        # =======================================================================
+        
+        # Usar configuración hardcodeada del código Python
+        self.DEVICE_MASTER_CONFIG = DEVICE_MASTER_CONFIG  # Tu config en código
+        self.LOCATION_MASTER_CONFIG = LOCATION_MASTER_CONFIG  # Tu config en código
+        
+        # Usar los datos legacy para los mapeos
+        self.device_config = self.DEVICE_MASTER_CONFIG
+        
+        # Inicializar mapeos
+        self.devices = {}
+        self.entity_to_name = {}
+        self._generate_mappings()
+        
+        logger.info(f"Plugin Home Assistant LEGACY inicializado: {self.ip}:{self.port}")
         logger.info(f"📊 Dispositivos cargados: {len(self.devices)}")
         logger.info(f"📍 Ubicaciones configuradas: {len(self.LOCATION_MASTER_CONFIG)}")
 
@@ -207,30 +447,30 @@ class HomeAssistantPlugin:
             return {}
         
         # =======================================================================
-        # 3.4 GENERACIÓN AUTOMÁTICA DE MAPEOS
+        # 3.3 GENERACIÓN AUTOMÁTICA DE MAPEOS
         # =======================================================================
         
-        # Todo se genera automáticamente desde la configuración cargada
+        # Todo se genera automáticamente desde DEVICE_MASTER_CONFIG
         self._generate_mappings()
         
         logger.info(f"Plugin Home Assistant inicializado: {ip}:{port}")
         logger.info(f"📊 Dispositivos cargados: {len(self.devices)}")
-        logger.info(f"📍 Ubicaciones configuradas: {len(self.LOCATION_MASTER_CONFIG)}")
+        logger.info(f"📍 Ubicaciones configuradas: {len(LOCATION_MASTER_CONFIG)}")
         
         # Verificar conexión al startup
         self._test_connection()
         
     def _generate_mappings(self):
         """
-        Genera automáticamente todos los mapeos desde la configuración cargada
+        Genera automáticamente todos los mapeos desde DEVICE_MASTER_CONFIG
         
         GANDALF EN ESTADO PURO: 
-        - Un solo lugar para definir dispositivos (ahora JSON)
+        - Un solo lugar para definir dispositivos
         - Mapeos automáticos para compatibilidad hacia atrás
         - Cero duplicación de información
         - (CASI) Imposible tener inconsistencias
         """
-        logger.info("🔧 Generando mapeos automáticos desde configuración cargada...")
+        logger.info("🔧 Generando mapeos automáticos desde configuración maestra...")
         
         # Mapeo principal de nombres a entity_ids
         self.devices = {}
@@ -238,8 +478,8 @@ class HomeAssistantPlugin:
         # Mapeo inverso para búsquedas rápidas
         self.entity_to_name = {}
         
-        # Generar mapeos desde la configuración cargada
-        for main_name, config in self.DEVICE_MASTER_CONFIG.items():
+        # Generar mapeos desde la configuración maestra
+        for main_name, config in DEVICE_MASTER_CONFIG.items():
             entity_id = config["entity_id"]
             
             # Mapeo principal
@@ -253,27 +493,6 @@ class HomeAssistantPlugin:
             self.entity_to_name[entity_id] = main_name
         
         logger.info(f"✅ Mapeos generados: {len(self.devices)} nombres → {len(set(self.devices.values()))} dispositivos únicos")
-
-    def reload_config(self):
-        """
-        Recarga la configuración desde JSON (útil para interfaz Flask)
-        
-        PROPÓSITO: Permitir que la interfaz Flask modifique dispositivos
-        y luego recargue la configuración sin reiniciar TARS
-        """
-        logger.info("🔄 Recargando configuración de dispositivos...")
-        
-        # Recargar desde JSON
-        self.config_manager.reload_config()
-        
-        # Actualizar configuraciones
-        self.DEVICE_MASTER_CONFIG = self.config_manager.get_devices()
-        self.LOCATION_MASTER_CONFIG = self.config_manager.get_locations()
-        
-        # Regenerar mapeos
-        self._generate_mappings()
-        
-        logger.info("✅ Configuración recargada exitosamente")
 
     def _test_connection(self):
         """
@@ -328,7 +547,7 @@ class HomeAssistantPlugin:
                 state = data.get("state")
                 unit = data.get("attributes", {}).get("unit_of_measurement", "")
                 
-                # Usar FRIENDLY_NAME de configuración cargada
+                # Usar FRIENDLY_NAME de DEVICE_MASTER_CONFIG
                 friendly_name = self._get_friendly_name(entity_id)
 
                 # Sensores binarios (on/off con significado específico)
@@ -345,11 +564,11 @@ class HomeAssistantPlugin:
                 elif entity_id.startswith("light") or entity_id.startswith("switch"):
                     is_on = state.lower() == "on"
                     
-                    # Determinar artículo y género desde configuración cargada
+                    # Determinar artículo y género desde DEVICE_MASTER_CONFIG
                     article = "El"  # Default
                     gender_suffix = "encendido"  # Default
                     
-                    for device_name, config in self.DEVICE_MASTER_CONFIG.items():
+                    for device_name, config in DEVICE_MASTER_CONFIG.items():
                         if config["entity_id"] == entity_id:
                             if config["gender"] == "fem":
                                 article = "La"
@@ -439,7 +658,7 @@ class HomeAssistantPlugin:
             response = requests.post(url, headers=self.headers, json=payload, timeout=5)
             
             if response.status_code in [200, 201]:
-                return self._generate_success_message("on", location, domain, entity_id)
+                return self._generate_success_message("on", location, domain)
             else:
                 logger.error(f"Error al encender {entity_id}: {response.status_code}")
                 return f"No pude encender la luz del {location}. Puede que haya un problema de conexión."
@@ -453,7 +672,7 @@ class HomeAssistantPlugin:
             # Home Assistant puede estar ocupado pero haber procesado el comando.
             # Es mejor asumir éxito y dar feedback positivo.
             logger.warning(f"⚠️ Timeout al encender {entity_id}, pero asumimos éxito")
-            return self._generate_success_message("on", location, domain, entity_id)
+            return self._generate_success_message("on", location, domain)
                     
         except Exception as e:
             logger.error(f"❌ Error al encender {entity_id}: {e}")
@@ -500,7 +719,7 @@ class HomeAssistantPlugin:
             response = requests.post(url, headers=self.headers, json=payload, timeout=5)
             
             if response.status_code in [200, 201]:
-                return self._generate_success_message("off", location, domain, entity_id)
+                return self._generate_success_message("off", location, domain)
             else:
                 logger.error(f"Error al apagar {entity_id}: {response.status_code}")
                 return f"No pude apagar la luz del {location}. Puede que haya un problema de conexión."
@@ -508,7 +727,7 @@ class HomeAssistantPlugin:
         except requests.exceptions.Timeout:
             # Mismo manejo de timeout que en turn_on_device
             logger.warning(f"⚠️ Timeout al apagar {entity_id}, pero asumimos éxito")
-            return self._generate_success_message("off", location, domain, entity_id)
+            return self._generate_success_message("off", location, domain)
                     
         except Exception as e:
             logger.error(f"❌ Error al apagar {entity_id}: {e}")
@@ -528,15 +747,15 @@ class HomeAssistantPlugin:
         Returns:
             str: Ubicación amigable (ej: "salón")
             
-        Ahora busca automáticamente en configuración cargada
+        Ahora busca automáticamente en DEVICE_MASTER_CONFIG
         No más mapeos manuales duplicados.
         """
         # =======================================================================
-        # 7.1 BÚSQUEDA AUTOMÁTICA EN CONFIGURACIÓN CARGADA
+        # 7.1 BÚSQUEDA AUTOMÁTICA EN CONFIGURACIÓN MAESTRA
         # =======================================================================
         
-        # Buscar en la configuración cargada
-        for device_name, config in self.DEVICE_MASTER_CONFIG.items():
+        # Buscar en la configuración maestra
+        for device_name, config in DEVICE_MASTER_CONFIG.items():
             if config["entity_id"] == entity_id:
                 return config["location"]
         
@@ -565,11 +784,11 @@ class HomeAssistantPlugin:
     # =======================================================================
     # 8. GENERACIÓN DE RESPUESTAS NATURALES
     # =======================================================================
-    def _generate_success_message(self, action, location, domain, entity_id):
+    def _generate_success_message(self, action, location, domain):
         """
         Genera un mensaje amigable y variado para acciones exitosas
         
-        REVOLUCIÓN TOTAL: Ahora usa automáticamente la gramática de configuración cargada
+        REVOLUCIÓN TOTAL: Ahora usa automáticamente la gramática de DEVICE_MASTER_CONFIG
         - Cero duplicación de gramática
         - Respuestas especiales automáticas para dispositivos configurados
         - Artículos y géneros gramaticales automáticos
@@ -591,8 +810,8 @@ class HomeAssistantPlugin:
         
         # Buscar configuración del dispositivo por ubicación
         device_config = None
-        for device_name, config in self.DEVICE_MASTER_CONFIG.items():
-            if config["entity_id"] == entity_id:
+        for device_name, config in DEVICE_MASTER_CONFIG.items():
+            if config["location"] == location:
                 device_config = config
                 break
         
@@ -617,7 +836,7 @@ class HomeAssistantPlugin:
             gender = device_config["gender"]
         else:
             # Fallback: buscar en configuración de ubicaciones
-            location_config = self.LOCATION_MASTER_CONFIG.get(location, {})
+            location_config = LOCATION_MASTER_CONFIG.get(location, {})
             article = location_config.get("article", "del")
             name = location_config.get("name", location)
             gender = "masc"  # Default masculino
@@ -707,10 +926,10 @@ class HomeAssistantPlugin:
         Returns:
             str: Nombre amigable del dispositivo
             
-        REVOLUCIÓN: Ahora busca primero en configuración cargada
+        REVOLUCIÓN: Ahora busca primero en DEVICE_MASTER_CONFIG
         """
-        # Buscar en configuración cargada primero
-        for device_name, config in self.DEVICE_MASTER_CONFIG.items():
+        # Buscar en configuración maestra primero
+        for device_name, config in DEVICE_MASTER_CONFIG.items():
             if config["entity_id"] == entity_id:
                 return config["friendly_name"]
         
@@ -732,14 +951,14 @@ class HomeAssistantPlugin:
             return entity_id
 
     # =======================================================================
-    # 10. MOTOR DE PROCESAMIENTO DE COMANDOS - SIN CAMBIOS EN LA LÓGICA
+    # 10. MOTOR DE PROCESAMIENTO DE COMANDOS - ACTUALIZADO
     # =======================================================================
 
     def process_command(self, text):
             """
             Procesa un comando de voz con tolerancia a errores
             
-            Ahora usa configuración cargada desde JSON
+            Ahora usa DEVICE_MASTER_CONFIG y LOCATION_MASTER_CONFIG
             para eliminar duplicación y hacer más fácil el mantenimiento.
             
             Este es el cerebro del plugin. Convierte lenguaje natural
@@ -903,34 +1122,31 @@ class HomeAssistantPlugin:
             device_type = None
             target_location = None
             
-            # PRIORIDAD 1: Búsqueda de frases compuestas específicas
+            # PRIORIDAD 1: Búsqueda de frases compuestas específicas (NUEVO)
             # Para casos como "enchufe de la entrada del salon"
             if "enchufe" in text and "entrada" in text:
                 # Buscar específicamente el enchufe de entrada
-                for device_name, config in self.DEVICE_MASTER_CONFIG.items():
-                    if "entrada" in config["location"] and config["type"] == "switch":
-                        target_device = config["entity_id"]
-                        device_type = "switch"
-                        target_location = "entrada"
-                        logger.info(f"🏠 Frase compuesta detectada: enchufe de entrada -> {target_location}")
-                        break
-
-            # PRIORIDAD 2: Buscar dispositivos directamente en configuración cargada
+                target_device = "switch.enchufe_nous_salon_entrada_interruptor"
+                device_type = "switch"
+                target_location = "entrada"
+                logger.info(f"🏠 Frase compuesta detectada: enchufe de entrada -> {target_location}")
+            
+            # PRIORIDAD 2: Buscar dispositivos directamente en DEVICE_MASTER_CONFIG
             if not target_device:
-                for device_name, config in self.DEVICE_MASTER_CONFIG.items():
+                for device_name, config in DEVICE_MASTER_CONFIG.items():
                     # Verificar nombre principal y aliases
                     all_names = [device_name] + config.get("aliases", [])
-                    if any(name in text for name in all_names):  # ← AQUÍ ESTÁ EL PROBLEMA
+                    if any(name in text for name in all_names):
                         target_device = config["entity_id"]
                         device_type = config["type"]
                         target_location = config["location"]
                         logger.info(f"🏠 Dispositivo directo detectado: {device_name} -> {target_location}")
                         break
 
-            # PRIORIDAD 3: Si no hay dispositivo directo, buscar por ubicación
+            # PRIORIDAD 3: Si no hay dispositivo directo, buscar por ubicación en LOCATION_MASTER_CONFIG
             if not target_device:
                 # Buscar en aliases de ubicación
-                for location, location_config in self.LOCATION_MASTER_CONFIG.items():
+                for location, location_config in LOCATION_MASTER_CONFIG.items():
                     if any(alias in text for alias in location_config["aliases"]):
                         target_location = location
                         break
@@ -938,7 +1154,7 @@ class HomeAssistantPlugin:
                 # Si encontramos ubicación, seleccionar dispositivo adecuado
                 if target_location:
                     logger.info(f"🏠 Ubicación detectada: {target_location}")
-                    location_config = self.LOCATION_MASTER_CONFIG[target_location]
+                    location_config = LOCATION_MASTER_CONFIG[target_location]
                     
                     # Seleccionar entre switch o light según el tipo de comando
                     if is_light_device and location_config["light"]:
@@ -956,11 +1172,14 @@ class HomeAssistantPlugin:
                     
                     logger.info("🏠 No se detectó ubicación específica")
                     
-                    # Verificar si hay alguna palabra que podría ser un dispositivo no configurado
+                    # NUEVO: Verificar si hay alguna palabra que podría ser un dispositivo no configurado
+                    # Si detectamos palabras que claramente son nombres de dispositivos pero no están
+                    # configurados, NO usar contexto y fallar directamente
+                    
                     words = text.split()
                     excluded_words = ["enciende", "apaga", "luz", "estado", "ajusta", "intensidad", 
                                      "al", "del", "de", "la", "el", "en", "por", "y", "con", 
-                                     "enchufe", "interruptor"]
+                                     "enchufe", "interruptor"]  # ← AÑADIR ESTAS PALABRAS
                     
                     # Buscar palabras que podrían ser dispositivos
                     potential_devices = []
@@ -976,7 +1195,7 @@ class HomeAssistantPlugin:
                             len(word) > 2 and 
                             word not in ["casa", "aquí", "aqui", "ahora", "por", "favor"] and
                             word not in intensity_words and
-                            not word.isdigit()):
+                            not word.isdigit()):  # Excluir números puros como "10", "25", etc.
                             potential_devices.append(word)
                     
                     # Si hay palabras que parecen dispositivos pero no están configuradas, fallar
@@ -984,6 +1203,7 @@ class HomeAssistantPlugin:
                     
                     if device_seems_mentioned:
                         logger.info(f"🏠 Posibles dispositivos no configurados detectados: {potential_devices}")
+                        # NO usar contexto, fallar directamente
                         target_device = None
                         logger.info("🏠 No usando contexto porque parece que se menciona un dispositivo específico no configurado")
                     else:
@@ -999,14 +1219,15 @@ class HomeAssistantPlugin:
                             # Extraer ubicación del dispositivo para el contexto
                             target_location = self._get_location_from_entity(target_device)
                             
-                        # CONTEXTO NIVEL 2: Ubicación de contexto
-                        elif hasattr(self, "_last_location") and self._last_location in self.LOCATION_MASTER_CONFIG:
+                        # CONTEXTO NIVEL 2: Ubicación de contexto (MEJORADO)
+                        elif hasattr(self, "_last_location") and self._last_location in LOCATION_MASTER_CONFIG:
                             logger.info(f"🏠 Usando ubicación de contexto: {self._last_location}")
                             
                             # =======================================================================
                             # 10.7 LÓGICA CRÍTICA: SWITCH VS LIGHT
                             # =======================================================================
-                            location_config = self.LOCATION_MASTER_CONFIG[self._last_location]
+                            # NUEVA LÓGICA: Decidir según el tipo de acción
+                            location_config = LOCATION_MASTER_CONFIG[self._last_location]
                             
                             if action in ["encender", "apagar"]:
                                 # Para encender/apagar → SIEMPRE usar switch (cortar corriente)
@@ -1030,7 +1251,7 @@ class HomeAssistantPlugin:
                             target_location = self._last_location
 
                             
-                        # CONTEXTO NIVEL 3: Fallback final
+                        # CONTEXTO NIVEL 3: Fallback final (SOLO si no hay dispositivos mencionados)
                         else:
                             if hasattr(self, "_last_device_used") and self._last_device_used:
                                 target_device = self._last_device_used
@@ -1048,7 +1269,7 @@ class HomeAssistantPlugin:
                 self._last_device_used = target_device
                 self._last_device_type = device_type
                 
-                # Guardar también la ubicación actual
+                # NUEVO: Guardar también la ubicación actual
                 if target_location:
                     self._last_location = target_location
                     logger.info(f"🏠 Contexto actualizado: ubicación = {target_location}")
@@ -1058,12 +1279,13 @@ class HomeAssistantPlugin:
             # =======================================================================
             # 10.9 LÓGICA ESPECIAL PARA COMANDOS DE INTENSIDAD
             # =======================================================================
+            # ⚡ LÓGICA DE INTENSIDAD: Solo para ajustar brillo
             if action.startswith("intensidad_"):
                 logger.info("🏠 Comando de intensidad detectado - forzando uso de dispositivos light")
                 
                 # PRIORIDAD 2: Usar la luz de la última ubicación usada (CONTEXTO)
-                if hasattr(self, "_last_location") and self._last_location in self.LOCATION_MASTER_CONFIG:
-                    location_config = self.LOCATION_MASTER_CONFIG[self._last_location]
+                if hasattr(self, "_last_location") and self._last_location in LOCATION_MASTER_CONFIG:
+                    location_config = LOCATION_MASTER_CONFIG[self._last_location]
                     if location_config["light"]:
                         target_device = location_config["light"]
                         device_type = "light"
@@ -1139,6 +1361,10 @@ class HomeAssistantPlugin:
                     response = requests.post(url, headers=self.headers, json=payload, timeout=5)
                     
                     if response.status_code in [200, 201]:
+                        friendly_name = self._get_friendly_name(target_device)
+                        location = self._get_location_from_entity(target_device)
+                        # Usar artículo correcto según la ubicación
+                        article = "de la" if location == "cocina" else "del"
                         return f"Intensidad ajustada al {percentage}%"
                     else:
                         logger.error(f"Error al ajustar brillo: {response.status_code}")
@@ -1165,13 +1391,19 @@ class HomeAssistantPlugin:
             
         Returns:
             str: Respuesta con el estado o None si no es una consulta válida
+            
+        PROPÓSITO: Manejo de consultas simples del tipo "¿cómo está la luz del salón?"
         """
         text = text.lower()
         
+        # =======================================================================
+        # BÚSQUEDA MÁS INTELIGENTE: BUSCAR POR KEYWORDS ESPECÍFICOS
+        # =======================================================================
+        
         target_device = None
         
-        # Buscar primero por nombres específicos de dispositivos en configuración cargada
-        for device_name, config in self.DEVICE_MASTER_CONFIG.items():
+        # Buscar primero por nombres específicos de dispositivos
+        for device_name, config in DEVICE_MASTER_CONFIG.items():
             # Verificar nombre principal y aliases
             all_names = [device_name] + config.get("aliases", [])
             for name in all_names:
@@ -1196,6 +1428,14 @@ class HomeAssistantPlugin:
     def get_consumption(self):
         """
         Obtiene el consumo eléctrico actual de la casa con interpretación inteligente
+        
+        Returns:
+            str: Descripción del consumo con contexto
+            
+        CARACTERÍSTICAS:
+        - Rangos contextuales (bajo, moderado, alto)
+        - Alertas para consumos anómalos
+        - Extracción automática de valores numéricos
         """
         try:
             power = self.get_sensor_state("sensor.shellyem_channel_1_power")
@@ -1220,41 +1460,52 @@ class HomeAssistantPlugin:
         return self.get_sensor_state("sensor.system_monitor_temperatura_del_procesador")
     
     def all_off(self):
-        """
-        Apaga todas las luces y dispositivos importantes
-        
-        Returns:
-            str: Confirmación de dispositivos apagados
+            """
+            Apaga todas las luces y dispositivos importantes
             
-        REVOLUCIÓN: Ahora extrae automáticamente la lista desde configuración cargada
-        """
-        try:
-            # Extraer automáticamente luces y switches principales
-            devices_to_turn_off = []
-            
-            for device_name, config in self.DEVICE_MASTER_CONFIG.items():
-                # Solo dispositivos que se pueden apagar (luces y switches principales)
-                if config["type"] in ["light", "switch"] and config["location"] not in ["cafetera", "termo", "servidor"]:
-                    devices_to_turn_off.append(config["entity_id"])
-            
-            results = []
-            for device in devices_to_turn_off:
-                result = self.turn_off_device(device)
-                if "error" not in result.lower() and "no pude" not in result.lower():
-                    results.append(device)
-            
-            if results:
-                return f"He apagado {len(results)} dispositivos. Buenas noches."
-            else:
-                return "No pude apagar ningún dispositivo. ¿Hay problemas de conexión?"
+            Returns:
+                str: Confirmación de dispositivos apagados
                 
-        except Exception as e:
-            logger.error(f"Error en all_off: {e}")
-            return f"Hubo un problema al apagar los dispositivos: {str(e)}"
+            REVOLUCIÓN: Ahora extrae automáticamente la lista desde DEVICE_MASTER_CONFIG
+            """
+            try:
+                # =======================================================================
+                # 11.1 EXTRACCIÓN AUTOMÁTICA DE DISPOSITIVOS PARA APAGADO MASIVO
+                # =======================================================================
+                # Extraer automáticamente luces y switches principales
+                devices_to_turn_off = []
+                
+                for device_name, config in DEVICE_MASTER_CONFIG.items():
+                    # Solo dispositivos que se pueden apagar (luces y switches principales)
+                    if config["type"] in ["light", "switch"] and config["location"] not in ["cafetera", "termo", "servidor"]:
+                        devices_to_turn_off.append(config["entity_id"])
+                
+                results = []
+                for device in devices_to_turn_off:
+                    result = self.turn_off_device(device)
+                    if "error" not in result.lower() and "no pude" not in result.lower():
+                        results.append(device)
+                
+                if results:
+                    return f"He apagado {len(results)} dispositivos. Buenas noches."
+                else:
+                    return "No pude apagar ningún dispositivo. ¿Hay problemas de conexión?"
+                    
+            except Exception as e:
+                logger.error(f"Error en all_off: {e}")
+                return f"Hubo un problema al apagar los dispositivos: {str(e)}"
         
     def are_doors_closed(self):
         """
         Verifica si todas las puertas están cerradas
+        
+        Returns:
+            str: Estado de seguridad de las puertas
+            
+        CARACTERÍSTICAS:
+        - Verificación de múltiples sensores de puerta
+        - Reportes específicos de puertas abiertas
+        - Confirmación de seguridad cuando todo está cerrado
         """
         try:
             main_door = self.get_sensor_state("binary_sensor.sensor_de_puerta_principal")
@@ -1278,6 +1529,15 @@ class HomeAssistantPlugin:
     def _diagnose_smell(self):
         """
         Analiza si la estufa está funcionando cuando hay olor
+        
+        Returns:
+            str: Diagnóstico del estado de la estufa y posible causa del olor
+            
+        LÓGICA AVANZADA:
+        - Verificación de estado del enchufe (on/off)
+        - Análisis de consumo real en vatios
+        - Interpretación contextual del consumo
+        - Recomendaciones de seguridad
         """
         try:
             enchufe_state = self._get_state_simple("switch.enchufe_nous_estufa")
@@ -1300,6 +1560,7 @@ class HomeAssistantPlugin:
     def _get_estufa_simple_status(self):
         """
         Obtiene estado simple de la estufa (solo encendida/apagada)
+        Sin análisis de consumo ni menciones de olor
         """
         try:
             enchufe_state = self._get_state_simple("switch.enchufe_nous_estufa")
@@ -1314,12 +1575,26 @@ class HomeAssistantPlugin:
     def process_query(self, text):
         """
         Procesa consultas complejas sobre Home Assistant
+        
+        Args:
+            text: Consulta del usuario
+            
+        Returns:
+            str: Respuesta a la consulta o None si no es una consulta válida
         """
         text = text.lower()
+
+        # =======================================================================
+        # 12.1 DIAGNÓSTICOS ESPECIALIZADOS (SOLO PARA OLOR)
+        # =======================================================================
 
         # Diagnóstico de olor (análisis de estufa automático)
         if any(x in text for x in ["huele", "olor", "raro", "extraño", "quema"]):
             return self._diagnose_smell()
+
+        # =======================================================================
+        # 12.2 CONSULTAS DE MONITORIZACIÓN
+        # =======================================================================
 
         # Consultas de consumo eléctrico
         if any(x in text for x in ["consumo", "electricidad", "gasto energético"]):
@@ -1329,6 +1604,10 @@ class HomeAssistantPlugin:
         if any(x in text for x in ["temperatura", "procesador", "calor"]):
             return self.get_temperature()
             
+        # =======================================================================
+        # 12.3 ACCIONES MASIVAS
+        # =======================================================================
+            
         # Apagado general (modo noche)
         if any(x in text for x in ["apaga todo", "apagar todo", "buenas noches"]):
             return self.all_off()
@@ -1337,14 +1616,22 @@ class HomeAssistantPlugin:
         if any(x in text for x in ["puertas cerradas", "revisar puertas", "cerradas las puertas"]):
             return self.are_doors_closed()
             
+        # =======================================================================
+        # 12.4 CONSULTAS ESPECÍFICAS DE DISPOSITIVOS - CORREGIDO
+        # =======================================================================
+        
         # Consulta específica de puerta (no enchufe)
         if "puerta" in text and "entrada" in text:
             return self.get_sensor_state("binary_sensor.sensor_de_puerta_principal")
         
         # Consulta específica de estufa (SOLO ESTADO, NO DIAGNÓSTICO)
         if "estufa" in text and any(word in text for word in ["está", "esta", "encendida", "apagada"]):
-            return self._get_estufa_simple_status()
+            return self._get_estufa_simple_status()  # ← USAR FUNCIÓN SIMPLE
         
+        # =======================================================================
+        # 12.5 CONSULTAS GENÉRICAS (FALLBACK)
+        # =======================================================================
+            
         # Redirección para comandos de verificación
         if any(x in text for x in ["comprueba", "verifica", "revisar", "consultar", "comprobar"]):
             return self.get_status(text)
@@ -1353,25 +1640,29 @@ class HomeAssistantPlugin:
         return self.get_status(text)
 
     # =======================================================================
-    # 12. LIMPIEZA Y CIERRE
+    # 13. LIMPIEZA Y CIERRE
     # =======================================================================
 
     def shutdown(self):
         """
         Realiza tareas de limpieza al cerrar el plugin
+        
+        PROPÓSITO: Cleanup graceful cuando TARS se cierra.
+        Actualmente solo logging, pero extensible para:
+        - Cerrar conexiones persistentes
+        - Guardar estado de contexto
+        - Reportar estadísticas de uso
         """
         logger.info("Plugin Home Assistant cerrado correctamente")
 
 # ===============================================
 # ESTADO: ARQUITECTÓNICAMENTE EVOLUCIONADO. FUNCIONALMENTE INTACTO.
-# VERSIÓN HÍBRIDA: Motor Python + Configuración JSON
-# ÚLTIMA ACTUALIZACIÓN: Cuando finalmente entendí que separar lógica de datos es buena idea
-# FUNCIÓN: Cero líneas para añadir dispositivos (se hace desde JSON o interfaz Flask)
-# ¿O es que ahora no hay líneas que añadir? Paradoja resolvida con JSON.
+# ÚLTIMA ACTUALIZACIÓN: Cuando finalmente entendí que DRY significa "Don't Repeat Yourself"
+# FUNCIÓN: Una sola línea para añadir dispositivos. Cero duplicación de gramática.
+# ¿O es duplicación eliminar la duplicación? Paradoja detectada.
 # ===============================================
 #
-#           THIS IS THE HYBRID HOME ASSISTANT WAY.
-#           (100% de probabilidad de mantener la funcionalidad)
-#           (100% de flexibilidad para modificar dispositivos)
+#           THIS IS THE HOME ASSISTANT WAY.
+#           (99% de probabilidad de mantener la funcionalidad)
 #
 # ===============================================

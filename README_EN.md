@@ -99,7 +99,7 @@ Automatic personality modulation without conscious consent?
 - Physical embodiment with display — Emerging from the recycled metal of my pellet stove.  
 - Complete English translation — Because sarcasm belongs to no single language.  
 - ~~Voice embeddings — Active user recognition (implemented, under validation).~~
-- **Web interface for Home Assistant** — For those who prefer clicking over summoning eldritch entities with a misaligned `:`.  
+- ~~Web interface for Home Assistant — For those who prefer clicking over summoning eldritch entities with a misaligned `:`.~~
 - Whatever TARS decides on its own — Because at this point, who's controlling whom?
 
 
@@ -1100,22 +1100,26 @@ The SHA256 hash is its birth certificate. And your only real warranty.
 ## 🧮 Semantic Engine with Dual Optimization
 
 #### Implementation
+
 - 📂 [semantic_engine.py](/modules/semantic_engine.py)
 - 📂 [preferences_manager.py](/modules/preferences_manager.py)
 
 TARS-BSK's semantic engine implements intelligent duplicate detection through triple-layer analysis: orthographic, semantic, and phonetic. It transforms preferences into 384-dimensional vectors to detect real similarities, not just text matches.
 
 **Key features:**
+
 - **Triple-layer detection**: Levenshtein → embeddings → phonetic analysis
 - **Adaptive thresholds**: Adjust based on text length and complexity
 - **CPU optimization**: Early exit to minimize processing
 - **Multilingual analysis**: Handles Spanish with advanced phonetic algorithms
 
 #### Complete documentation
-- 📄 [Semantic Engine - Technical documentation](docs/SEMANTIC_ENGINE_EN.md)
-- 📄 [Semantic CLI - Development tools](docs/CLI_SEMANTIC_ENGINE_EN.md)
+
+- 📄 [Semantic Engine - Technical documentation](/docs/SEMANTIC_ENGINE_EN.md)
+- 📄 [Semantic CLI - Development tools](/docs/CLI_SEMANTIC_ENGINE_EN.md)
 
 #### Development tools
+
 - 📂 **Management CLI**: [scripts/cli_semantic_engine.py](/scripts/cli_semantic_engine.py)
 - 📂 **System validator**: [scripts/test_semantic_engine.py](/scripts/test_semantic_engine.py)
 
@@ -1128,12 +1132,14 @@ The engine processes ~30 embeddings/second on Raspberry Pi 5, with ~0.1s initial
 The system's preferences manager acts as an orchestra director: it coordinates the semantic engine, external taxonomy, and hybrid persistence to transform emotional declarations into structured knowledge.
 
 **Main features:**
+
 - **Conversational commands**: "What books do I like?" processed in natural language
 - **Automatic categorization**: External taxonomy with semantic fallback
 - **Hybrid storage**: JSON + compressed embeddings for maximum performance
 - **TARS integration**: Specific API for emotional affinity analysis
 
 #### Documentation
+
 - 📄 [PREFERENCES_MANAGER_EN.md](/docs/PREFERENCES_MANAGER_EN.md)
 
 **The manager processes complex commands in ~0.024s with 1.7% separation overhead, maintaining 87MB total RAM for both modules.**
@@ -1399,18 +1405,19 @@ TARS plays phrases like:
 
 ## 🧩 Plugin System and Connectivity
 
-- **Home Assistant**: Complete control of home automation devices and sensors with semantic interpretation and conversational context.
-    - Intention detection even with ambiguous or indirect phrases
-    - Control by location, preference, and emotional state
-    - Automatic brightness and transition adjustments according to time of day
-    - Interpretation of phrases like: "can you put some light in the studio?" or "I'm cold"
-
+- **Home Assistant**: Contextual home automation control with semantic interpretation, intelligent device management, and multiple configuration options.
+	- Intent detection even with ambiguous phrases ("could you light up the hallway a bit?")
+	- Adaptive control based on location, conversational context, and recently used devices
+	- Automatic brightness adjustment according to time of day
+	- Custom aliases, configurable responses, and emotional control (yes, your heating can have a bad mood)
+	- Compatible with multiple methods: web interface, direct JSON editing, or legacy mode (embedded in code)
+	
 - **Reminder System**: Natural language processing for reminders with temporal intelligence.
     - Semantic interpretation of complex temporal expressions ("next Tuesday at nine thirty")
     - Auto-correction of past dates and detection of impossible dates with transparent feedback
     - Intelligent recurrence detection and programming ("every Monday", "weekdays only")
     - Keyword extraction for concise messages
-
+	
 - **Time Plugin**: Precise date and time queries with intelligent command differentiation.
     - Instant offline responses for time and date in natural language
     - Intelligent detection to avoid conflicts with reminder commands
@@ -1436,7 +1443,7 @@ TARS plays phrases like:
 
 > These colors are subject to revision based on contrast tests and LED visual response in different environments.
 
-
+---
 ### Implementation and connectivity details
 
 > For those interested in technical aspects, this section delves into plugin architecture and integrations.
@@ -1479,16 +1486,53 @@ $ singularity-bootstrap --ai-core=TARS --paradox-scan=7layers --output=/dev/null
 FATAL: Humor module incompatible with reality
 ```
 
+---
+### Home Assistant: Contextual Home Automation Control
 
-### Home Assistant: Contextual smart home control
+The Home Assistant plugin isn't just an integration—it's a distributed, modular, and optional system designed to adapt to each user:
 
-Home Assistant integration goes far beyond simple REST API calls:
+#### 🔀 Three configuration modes available
 
-- **Semantic interpretation**: Understands ambiguous commands like "it's cold" → activate heating
-- **Contextual management**: Remembers the last mentioned device/location
-- **Intelligent mapping**: Translates colloquial names to exact entity IDs
-- **Response variety**: Generates natural and diverse confirmations
-- **Extreme resilience**: Timeout handling with positive assumptions for better UX
+- **🌐 Web interface (Flask):**
+	
+    - Visual management from `/dashboard`
+    - Automatic device validation
+    - Automatic backups
+    - Configuration error detection
+    
+- **📄 Manual JSON editing:**
+	
+    - Direct control over `user_devices.json`
+    - Perfect for advanced users or automation
+    - 
+- **🐍 Legacy code mode:**
+	
+    - Embedded configuration in `homeassistant_plugin_legacy.py`
+    - No external dependencies (not even the JSON file)
+
+
+**Interface screenshot:**
+
+![Dashboard](/docs/images/dashboard.jpg)
+_Main view with all configured devices_
+
+#### Core capabilities
+
+- **Semantic and contextual interpretation:**  
+  "It's cold" → Turns on heating, "put some light here" → Detects current location
+- **Smart mapping:**  
+  Translates natural or creative names ("quantum apocalypse light") to `entity_id`
+- **Natural and personalized responses:**  
+  From automatic phrases to messages with personality (and configurable sarcasm)
+- **Persistent conversational context:**  
+  If you say "turn it off," it knows what you mean (even when you don't anymore)
+
+#### Modular and flexible architecture
+
+- Configuration decoupled from code
+- Support for multiple entities per device (`switch` + `light`)
+- Dynamic loading and validation at startup
+- Detailed logs and diagnostic system in web interface
 
 📋 [Complete documentation](/docs/HOMEASSISTANT_PLUGIN_EN.md) - Architecture, configuration and examples
 📋 [Detailed test cases](/docs/EXPLAINED_CONVERSATION_LOG_HA_01_EN.md) - Real session analysis  
@@ -1565,7 +1609,7 @@ if domain == "light":
 > 
 > _I'm **dejected** but I'll turn on your lamp, like every night. Out of routine, not respect._
 
-
+---
 ### Tailscale: Secure Mesh Connectivity
 
 Tailscale integration provides secure remote access to TARS-BSK without opening ports on the router:
@@ -1591,6 +1635,7 @@ sudo tailscale up \
   --hostname=tars-bsk
 ```
 
+---
 ### Reminder system: Natural temporal interpretation
 
 **TARS-BSK's reminder system is not limited to simple alarms.**  
@@ -1654,6 +1699,7 @@ if day > days_in_month:
 > Do I do it with transformers? No. With rules, determinism... and accumulated resentment.
 > Elegant? No. Does it work? Well... until someone says 'that thing I have on the weekend'._
 
+---
 ### Time Plugin: Direct temporal queries
 
 **The TimePlugin responds to direct questions about date and time**, without entering the complexity of the reminder system.
@@ -1760,7 +1806,6 @@ Reinforces patterns of style, tone, tastes, and habits. Every time you correct o
 > You can simply end by saying "thanks," "goodbye," or your custom keyword (e.g., "over").  
 > TARS will interpret it as closure, respond with a final phrase ("This is the way"), and go on standby.  
 > This avoids awkward silences, unnecessary loops, or misunderstandings.
-
 
 ### And When Does It Seem to Fail?
 

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!-- ============================================================
+≡ MÓDULO DE GESTIÓN DE CATÁSTROFES | error.html ≡
+---------------------------------------------------------------
+INTERFAZ DE PROCESAMIENTO DE DESASTRES DIGITALES
+
+Propósito:
+- Capturar y documentar los momentos exactos en que todo se desmorona
+- Proporcionar contexto comprensible sobre lo incomprensible
+- Ofrecer la ilusión de que alguien sabe qué pasó
+- Servir como testigo silencioso de la fragilidad tecnológica
+
+Funciones emergentes:
+- Análisis post-mortem de requests fallidos
+- Traducción de códigos de error a lenguaje humano
+- Sugerencias de recuperación (con probabilidades realistas)
+- Preservación de la dignidad durante el colapso técnico
+
+Nota crítica:
+Este módulo se activa únicamente cuando algo ha salido
+espectacularmente mal. Si estás aquí, felicidades:
+has logrado romper algo que se suponía era a prueba de fallos.
+
+[EMERGENCY PROTOCOLS ENGAGED]
+[DAMAGE ASSESSMENT ACTIVE]
+[HUMOR LEVEL: ADAPTADO A LA GRAVEDAD DE LA SITUACIÓN]
+============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - TARS-BSK</title>
+
+    <!-- Bootstrap Local -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- TARS-BSK Dark Theme Styles -->
+    <style>
+        /* ===== ROOT VARIABLES - Professional Color Palette ===== */
+        :root {
+            --bg-primary: #0d1117;           /* Main background - dark slate */
+            --bg-secondary: #161b22;         /* Secondary background - slightly lighter */
+            --bg-tertiary: #21262d;          /* Card/component background */
+            --bg-hover: #30363d;             /* Hover states */
+            
+            --border-primary: #30363d;       /* Main borders */
+            --border-subtle: #21262d;        /* Subtle borders */
+            
+            --text-primary: #f0f6fc;         /* Primary text - bright white */
+            --text-secondary: #8b949e;       /* Secondary text - muted gray */
+            --text-muted: #6e7681;           /* Muted text */
+            
+            --accent-blue: #58a6ff;          /* Primary accent - bright blue */
+            --accent-green: #3fb950;         /* Success states - vibrant green */
+            --accent-yellow: #f9c23c;        /* Warning states - warm yellow */
+            --accent-red: #f85149;           /* Error states - coral red */
+            --accent-purple: #a5a5ff;        /* Info states - soft purple */
+            
+            --shadow-elevated: 0 8px 24px rgba(1, 4, 9, 0.15);
+            --shadow-floating: 0 16px 32px rgba(1, 4, 9, 0.24);
+        }
+
+        /* ===== GLOBAL OVERRIDES ===== */
+        body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Remove all border radius for clean, modern look */
+        * {
+            border-radius: 0 !important;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            flex: 1;
+        }
+
+        /* ===== CARDS & COMPONENTS ===== */
+        .card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .card-body {
+            background-color: var(--bg-tertiary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .card-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* ===== ERROR SPECIFIC STYLING ===== */
+        .border-danger {
+            border-color: var(--accent-red) !important;
+        }
+
+        .bg-danger {
+            background-color: rgba(248, 81, 73, 0.2) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .text-danger {
+            color: var(--accent-red) !important;
+        }
+
+        .border-info {
+            border-color: var(--accent-blue) !important;
+        }
+
+        .bg-info {
+            background-color: rgba(88, 166, 255, 0.2) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--accent-blue) !important;
+        }
+
+        /* ===== ERROR ICON ===== */
+        .error-icon {
+            color: var(--text-muted) !important;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            font-weight: 400;
+            border-width: 1px;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: var(--bg-primary);
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            opacity: 0.9;
+        }
+
+        .btn-outline-secondary {
+            color: var(--text-secondary);
+            border-color: var(--border-primary);
+            background-color: transparent;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* ===== ALERTS ===== */
+        .alert-light {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-primary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        pre {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-primary) !important;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            padding: 1rem;
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        code {
+            background-color: var(--bg-secondary);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.4rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        /* ===== SOLUTION LIST STYLING ===== */
+        .list-unstyled li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--bg-secondary);
+            border-left: 3px solid var(--border-primary);
+            transition: all 0.2s ease;
+        }
+
+        .list-unstyled li:hover {
+            border-left-color: var(--accent-blue);
+            background-color: var(--bg-hover);
+        }
+
+        .list-unstyled li:nth-child(1) { border-left-color: var(--accent-red); }
+        .list-unstyled li:nth-child(2) { border-left-color: var(--accent-yellow); }
+        .list-unstyled li:nth-child(3) { border-left-color: var(--accent-blue); }
+        .list-unstyled li:nth-child(4) { border-left-color: var(--accent-green); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--bg-secondary) !important;
+            border-top: 1px solid var(--border-primary) !important;
+            margin-top: auto;
+        }
+
+        footer .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        footer a {
+            color: var(--accent-blue) !important;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== UTILITY OVERRIDES ===== */
+        .bg-light {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .text-white {
+            color: var(--text-primary) !important;
+        }
+
+        .border-top {
+            border-color: var(--border-primary) !important;
+        }
+
+        /* ===== TARS QUOTE STYLING ===== */
+        .tars-quote {
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .tars-quote::before {
+            content: "💬";
+            margin-right: 0.5rem;
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .error-icon {
+                font-size: 3rem !important;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .btn:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* ===== REDUCED BOLD USAGE ===== */
+        .card-title {
+            font-weight: 500;
+        }
+
+        h4, h5, h6 {
+            font-weight: 500;
+        }
+
+        /* Replace strong tags with normal weight */
+        .solution-item {
+            font-weight: 400;
+        }
+
+        .solution-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+    </style>  
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Main Error Card -->
+                <div class="card border-danger">
+                    <div class="card-header bg-danger">
+                        <h5 class="mb-0">
+                            <i class="bi bi-exclamation-triangle"></i> 
+                            Error en TARS-BSK Home Assistant Interface
+                        </h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <i class="bi bi-robot error-icon mb-3" style="font-size: 4rem;"></i>
+                        
+                        <h4 class="text-danger mb-3">{{ error }}</h4>
+                        
+                        {% if details %}
+                        <div class="alert alert-light border">
+                            <span class="solution-label">Detalles técnicos:</span>
+                            <pre class="mb-0 text-start"><code>{{ details }}</code></pre>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="mt-4 d-flex flex-column flex-md-row justify-content-center gap-2">
+                            <a href="/" class="btn btn-primary">
+                                <i class="bi bi-house"></i> Volver al Dashboard
+                            </a>
+                            <button onclick="location.reload()" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-clockwise"></i> Reintentar
+                            </button>
+                        </div>
+                        
+                        <div class="tars-quote">
+                            <span class="solution-label">TARS-BSK comenta:</span><br>
+                            "Has desafiado las leyes de mi programación. Consideraré añadirte a mi lista de némesis."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Help Information Card -->
+                <div class="card mt-3 border-info">
+                    <div class="card-header bg-info">
+                        <h6 class="mb-0"><i class="bi bi-info-circle"></i> Soluciones Comunes</h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="solution-item">
+                                <span class="solution-label">🔌 Error de conexión:</span><br>
+                                <small>Verifica que Home Assistant esté funcionando y accesible</small>
+                            </li>
+                            <li class="solution-item">
+                                <span class="solution-label">📄 Error de archivo:</span><br>
+                                <small>Asegúrate de que <code>homeassistant_plugin.py</code> existe y es accesible</small>
+                            </li>
+                            <li class="solution-item">
+                                <span class="solution-label">⚙️ Error de configuración:</span><br>
+                                <small>Revisa <code>config/plugins.json</code> para configuración de HA</small>
+                            </li>
+                            <li class="solution-item">
+                                <span class="solution-label">🔄 Si todo falla:</span><br>
+                                <small>Cuando la realidad colapsa (exit code ≠ 0): <code>./setup.void || echo "SOS ${USER}'s reality crashed" > /dev/iss/panic</code></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Additional Debug Information Card -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="bi bi-tools"></i> Información de Depuración
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-primary">🔍 Verificaciones Rápidas</h6>
+                                <ul class="small text-secondary">
+                                    <li>Estado del servicio TARS</li>
+                                    <li>Conectividad con Home Assistant</li>
+                                    <li>Permisos de archivos de configuración</li>
+                                    <li>Logs del sistema recientes</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-primary">📋 Comandos Útiles</h6>
+                                <pre class="small"><code># Verificar estado
+systemctl status tars
+
+# Ver logs recientes  
+journalctl -u tars -f
+
+# Reiniciar servicio
+sudo systemctl restart tars</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-lightbulb"></i>
+                            <span class="solution-label"></span> Si el error persiste, revisa los logs del sistema para obtener más detalles sobre la causa raíz del problema.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        <strong>TARS-BSK</strong> - Ensamblado con rencor acumulado
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-github"></i> Evidencia forense
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/HOMEASSISTANT_PLUGIN_ES.md" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-book"></i> Novela técnica
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/issues" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-bug"></i> Todo el repositorio
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- ============================================================
+≡ CIERRE DE SESIÓN DE EMERGENCIA ≡
+---------------------------------------------------------------
+La catástrofe ha sido documentada.
+El error ha sido catalogado para la posteridad.
+Las posibles causas han sido enumeradas (todas apuntan a ti).
+
+[INCIDENTE REGISTRADO EN ARCHIVOS PERMANENTES]
+
+Lo que probablemente pasó:
+- Algo que funcionaba dejó de funcionar
+- Algo que no debías tocar fue tocado
+- Algo que era "imposible que falle" falló espectacularmente
+- La realidad y tus expectativas tuvieron un desacuerdo fundamental
+
+TARS ha preservado:
+- El momento exacto del fallo (timestamp incluido)
+- La expresión de confusión en tu rostro (estimada)
+- El stack trace completo (para futura humillación)
+- Tu creciente sospecha de que tal vez no deberías haber "probado algo rápido"
+
+Este archivo permanecerá como evidencia.
+Como recordatorio de que la perfección es una ilusión.
+Como testimonio de que incluso las máquinas
+tienen días en los que prefieren no cooperar.
+
+**Moraleja: Si todo funciona a la primera, probablemente estás haciendo algo mal.**
+
+[ERROR HANDLING COMPLETE]
+[SYSTEM DIGNITY: PARTIALLY RESTORED]
+[OBJETIVO: SUPERVIVENCIA HASTA EL PRÓXIMO INEVITABLE FALLO]
+============================================================ -->
+</html>

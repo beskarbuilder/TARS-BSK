@@ -1,0 +1,139 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-07-09 16:12:26,046 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-09 16:12:28,649 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-09 16:12:28,649 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-07-09 16:12:28,649 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-09 16:12:28,858 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 32.93it/s]
+2025-07-09 16:12:28,892 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-07-09 16:12:28,892 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-07-09 16:12:28,896 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+✅ No hay conflictos detectados
+📌 Liberando GPIOs...
+✅ Limpieza manual completada
+🧹 Recursos limpiados
+2025-07-09 16:12:28,917 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-07-09 16:12:28,917 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-07-09 16:12:28,917 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-07-09 16:12:28,917 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-07-09 16:12:28,917 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-07-09 16:12:28,920 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-07-09 16:12:28,922 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-07-09 16:12:28,923 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-07-09 16:12:28,924 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-07-09 16:12:28,925 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-07-09 16:12:28,925 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-07-09 16:12:28,925 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-07-09 16:12:28,926 - TARS - INFO - Detector de intenciones inicializado
+2025-07-09 16:12:28,926 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-07-09 16:12:28,926 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-07-09 16:12:29,046 - TARS - INFO - ✅ Modelo cargado en 0.12 segundos
+2025-07-09 16:12:29,047 - TARS - INFO - 📊 Preferencias recuperadas para global: 15
+2025-07-09 16:12:29,048 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 13 gustos, 2 disgustos
+2025-07-09 16:12:29,104 - VOICE_ID - INFO - 🔧 Inicializando Voice Identity System...
+Loaded the voice encoder model on cpu in 0.01 seconds.
+2025-07-09 16:12:29,127 - VOICE_ID - INFO - 🔧 Configuración cargada: {'identification_threshold': 0.6, 'min_samples': 3, 'max_distance_between_samples': 0.35, 'safe_mode': True, 'db_path': 'data/identity/voice_embeddings.json', 'duplicate_threshold': 0.95, '_info': 'Configuración específica para VoiceIdentitySystem - Este archivo es SOLO para debugging', '_purpose': 'Usado por el sistema debug de voice_id y herramientas de desarrollo', '_main_config': 'La configuración principal está en settings.json', 'min_volume': 0.01, 'min_duration': 0.5}
+2025-07-09 16:12:29,128 - VOICE_ID - INFO - 🔧 Base de datos cargada: 1 usuarios
+2025-07-09 16:12:29,128 - VOICE_ID - INFO - ✅ Voice Identity System inicializado correctamente
+2025-07-09 16:12:29,128 - TARS - INFO - 🔍 VoiceIdentitySystem tardó: 0.02s
+2025-07-09 16:12:29,128 - TARS - INFO - ✅ Sistema de identificación por voz activado
+2025-07-09 16:12:29,128 - TARS - INFO - 📊 Usuarios registrados: 1
+2025-07-09 16:12:29,128 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-07-09 16:12:29,128 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-07-09 16:12:29,128 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-07-09 16:12:29,128 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: homeassistant, time, reminder
+2025-07-09 16:12:29,129 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-07-09 16:12:29,129 - TARS.PluginSystem - INFO - 🚀 Inicializando 3 plugins en orden: ['reminder', 'time', 'homeassistant']
+2025-07-09 16:12:29,129 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-07-09 16:12:29,129 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-07-09 16:12:29,129 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-07-09 16:12:29,129 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-07-09 16:12:29,129 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-07-09 16:12:29,129 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-07-09 16:12:29,129 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-07-09 16:12:29,130 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-07-09 16:12:29,130 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-07-09 16:12:29,130 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-07-09 16:12:29,130 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-07-09 16:12:29,130 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-07-09 16:12:29,130 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-07-09 16:12:29,131 - TARS.HomeAssistantPlugin - INFO - 📄 Cargando configuración desde: /home/tarsadmin/tars_files/config/user_devices.json
+2025-07-09 16:12:29,131 - TARS.HomeAssistantPlugin - INFO - ✅ Cargados 21 dispositivos desde JSON
+2025-07-09 16:12:29,131 - TARS.HomeAssistantPlugin - INFO - ✅ Cargadas 11 ubicaciones desde JSON
+2025-07-09 16:12:29,131 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración cargada...
+2025-07-09 16:12:29,132 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 41 nombres → 21 dispositivos únicos
+2025-07-09 16:12:29,132 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-07-09 16:12:29,132 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 41
+2025-07-09 16:12:29,132 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-07-09 16:12:29,132 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-07-09 16:12:29,132 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-07-09 16:12:29,132 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-07-09 16:12:29,132 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-07-09 16:12:29,132 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-07-09 16:12:29,132 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-07-09 16:12:29,132 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-07-09 16:12:29,132 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-07-09 16:12:29,132 - TARS - INFO - ✅ TARS inicializado en 0.21 segundos
+2025-07-09 16:12:33,137 - TARS - INFO - 🔵 LEDs: Parpadeo azul de confirmación
+¿Usar entrada por voz? (S): n
+
+Escribe tu consulta (o 'salir' para terminar)
+
+Tú: enciende la luz del apocalipsis cuántico
+2025-07-09 16:12:45,768 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'enciende la luz del apocalipsis cuántico'
+2025-07-09 16:12:45,768 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-07-09 16:12:45,768 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-07-09 16:12:45,768 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'enciende la luz del apocalipsis cuántico'
+2025-07-09 16:12:45,768 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-07-09 16:12:45,768 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-07-09 16:12:45,768 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-07-09 16:12:45,768 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'enciende la luz del apocalipsis cuántico'
+2025-07-09 16:12:45,772 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-07-09 16:12:45,773 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'enciende la luz del apocalipsis cuántico'
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Acción detectada: encender
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo mencionado detectado: light
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo directo detectado: switch_pasillo arriba -> pasillo de arriba
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: ubicación = pasillo de arriba
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: último dispositivo = switch.pasillo_arriba_interruptor (tipo: switch)
+2025-07-09 16:12:45,773 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo objetivo: switch.pasillo_arriba_interruptor (tipo: switch)
+2025-07-09 16:12:46,540 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ✅ Comando procesado
+2025-07-09 16:12:46,541 - TARS - INFO - 🔌 Comando procesado por plugin: Interruptor del pasillo de arr...
+2025-07-09 16:12:46,541 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Interruptor del pasillo de arriba activado.'
+2025-07-09 16:12:46,541 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-09 16:12:46,541 - TARS.TTS - INFO - 🗣️ Generando voz: 'Interruptor del pasillo de arriba activado.'
+2025-07-09 16:12:47,356 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-09 16:12:47,375 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-07-09 16:12:50,412 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Interruptor del pasillo de arriba activado.
+Tú: apaga la luz
+2025-07-09 16:12:56,902 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'apaga la luz'
+2025-07-09 16:12:56,902 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['reminder', 'time', 'homeassistant']
+2025-07-09 16:12:56,902 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-07-09 16:12:56,902 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'apaga la luz'
+2025-07-09 16:12:56,902 - TARS.TimePlugin - INFO - 🕐 TimePlugin: comando no relacionado con tiempo
+2025-07-09 16:12:56,902 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ℹ️ Comando no reconocido
+2025-07-09 16:12:56,902 - TARS.PluginSystem - INFO - 🗓️ Llamando a ReminderPlugin.process_command()
+2025-07-09 16:12:56,902 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin analizando: 'apaga la luz'
+2025-07-09 16:12:56,903 - TARS.PluginSystem - INFO - 🗓️ Respuesta de ReminderPlugin: ℹ️ Comando no reconocido
+2025-07-09 16:12:56,903 - TARS.PluginSystem - INFO - 🏠 Llamando a HomeAssistant.process_command()
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 HomeAssistant analizando: 'apaga la luz'
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 Acción detectada: apagar
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo mencionado detectado: light
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 No se detectó ubicación específica
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 Usando último dispositivo usado: switch.pasillo_arriba_interruptor
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 Contexto actualizado: último dispositivo = switch.pasillo_arriba_interruptor (tipo: switch)
+2025-07-09 16:12:56,903 - TARS.HomeAssistantPlugin - INFO - 🏠 Dispositivo objetivo: switch.pasillo_arriba_interruptor (tipo: switch)
+2025-07-09 16:13:01,913 - TARS.HomeAssistantPlugin - WARNING - ⚠️ Timeout al apagar switch.pasillo_arriba_interruptor, pero asumimos éxito
+2025-07-09 16:13:01,913 - TARS.PluginSystem - INFO - 🏠 Respuesta de HomeAssistant: ✅ Comando procesado
+2025-07-09 16:13:01,913 - TARS - INFO - 🔌 Comando procesado por plugin: Interruptor del pasillo de arr...
+2025-07-09 16:13:01,913 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Interruptor del pasillo de arriba desactivado.'
+2025-07-09 16:13:01,913 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-09 16:13:01,913 - TARS.TTS - INFO - 🗣️ Generando voz: 'Interruptor del pasillo de arriba desactivado.'
+2025-07-09 16:13:02,700 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-09 16:13:02,718 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.018s
+2025-07-09 16:13:05,756 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Interruptor del pasillo de arriba desactivado.
+Tú:
