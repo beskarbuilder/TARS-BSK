@@ -126,7 +126,7 @@ Automatic personality modulation without conscious consent?
 - [Dual Memory System](#%EF%B8%8F-dual-memory-system)
 - [Emotional and Personality System](#-emotional-and-personality-system)
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
-- [Backup System (yes, you read that right)](#-backup-system-yes-you-read-that-right)
+- [Backup System (yes, you read that right)](#%EF%B8%8F-backup-system-yes-you-read-that-right)
 - [More Than a Smart Home Assistant](#-more-than-a-smart-home-assistant)
 - [Software Components](#-software-components)
 - [Audio Processing](#-audio-processing)

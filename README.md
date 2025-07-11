@@ -118,7 +118,7 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 - [Sistema de Memoria Dual](#%EF%B8%8F-sistema-de-memoria-dual)
 - [Sistema Emocional y de Personalidad](#-sistema-emocional-y-de-personalidad)
 - [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
-- [Sistema de Backup (sí, has leído bien)](#-sistema-de-backup-sí-has-leído-bien)
+- [Sistema de Backup (sí, has leído bien)](#%EF%B8%8F-sistema-de-backup-sí-has-leído-bien)
 - [Más que un asistente domótico](#-m%C3%A1s-que-un-asistente-dom%C3%B3tico)
 - [Componentes de Software](#-componentes-de-software)
 - [Procesamiento de Audio](#-procesamiento-de-audio)
