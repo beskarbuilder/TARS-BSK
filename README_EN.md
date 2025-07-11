@@ -126,6 +126,7 @@ Automatic personality modulation without conscious consent?
 - [Dual Memory System](#%EF%B8%8F-dual-memory-system)
 - [Emotional and Personality System](#-emotional-and-personality-system)
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
+- [Backup System (yes, you read that right)](#-backup-system-yes-you-read-that-right)
 - [More Than a Smart Home Assistant](#-more-than-a-smart-home-assistant)
 - [Software Components](#-software-components)
 - [Audio Processing](#-audio-processing)
@@ -1491,6 +1492,13 @@ FATAL: Humor module incompatible with reality
 
 The Home Assistant plugin isn't just an integration—it's a distributed, modular, and optional system designed to adapt to each user:
 
+#### ⚡ Quick Access
+
+🔹 Home Assistant Panel:  [http://localhost:9876](http://localhost:9876) or [http://<your_local_ip>:9876](http://192.168.X.X:9876)
+
+> Not sure about your IP? Run: `hostname -I`
+
+
 #### 🔀 Three configuration modes available
 
 - **🌐 Web interface (Flask):**
@@ -1516,6 +1524,7 @@ The Home Assistant plugin isn't just an integration—it's a distributed, modula
 ![Dashboard](/docs/images/dashboard.jpg)
 _Main view with all configured devices_
 
+---
 #### Core capabilities
 
 - **Semantic and contextual interpretation:**  
@@ -1738,6 +1747,42 @@ response = f"Today is {day_of_week}, {month} {now.day}, {now.year}, and it's {no
 ```
 
 > Although both interpret temporal elements, **TimePlugin** answers _what time is it_, while **ReminderParser + ReminderPlugin** + SchedulerPlugin answer _when should I do something_.
+
+---
+
+## 🗄️ Backup System (yes, you read that right)
+
+And no, it's not a scroll error.  
+This section is here and it shouldn't be. But it exists.  
+Within this chaos, there's something resembling a backup system.  
+
+Don't panic if you break something. TARS doesn't believe in flawless logic... though it pretends otherwise.
+
+📋 **[Complete documentation](/docs/BACKUP_MANAGER_EN.md)** - Instructions and configuration
+
+### A copy just in case?
+
+Lightweight web interface for local backups from any browser.  
+Not mandatory, but convenient if you don't want to type commands every time.
+
+Allows you to:
+
+- Select specific sections (configuration, system, TARS core)
+- Mount and unmount devices directly from the panel
+- See in real time where each backup will be saved, with tree structure
+- Execute backup with immediate `rsync` feedback
+
+The system detects available devices and recommends the most suitable one.  
+Nothing more. Everything else is handled by TARS... and if there's spare CPU, it calculates orbital trajectories for fun.
+
+#### ⚡ Quick Access
+
+🔹 Backup Interface: [http://localhost:9877](http://localhost:9877) or [http://<your_local_ip>:9877](http://192.168.X.X:9877)  
+
+> If you're unsure about the IP, you can use: `hostname -I`
+
+![Backup interface](/docs/images/backup_dashboard.jpg)  
+*Yes, those buttons do real things. Even if it doesn't look like it.*
 
 ---
 

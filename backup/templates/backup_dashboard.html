@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<!-- ============================================================
+≡ INTERFAZ WEB TARS-BSK | backup_dashboard.html ≡
+------------------------------------------------------------
+MÓDULO DE PRESERVACIÓN Y RESPALDO
+Propósito:
+- Detectar dispositivos válidos.
+- Ofrecer backup modular y consciente.
+- Garantizar que nada se pierda, ni siquiera lo que aún no entiendes.
+
+Nota:
+Este archivo no fue programado. Se defendió solo hasta funcionar.
+[BACKUP INTERFACE CHANNEL STABLE]
+[DATA TREE ENGAGED]
+============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARS-BSK - Backup Manager</title>
+    
+    <!-- Bootstrap Local (compartido desde carpeta principal) -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- TARS-BSK Dark Theme Styles (REUTILIZADO COMPLETO) -->
+    <style>
+        /* ===== ROOT VARIABLES - Professional Color Palette ===== */
+        :root {
+            --bg-primary: #0d1117;           /* Main background - dark slate */
+            --bg-secondary: #161b22;         /* Secondary background - slightly lighter */
+            --bg-tertiary: #21262d;          /* Card/component background */
+            --bg-hover: #30363d;             /* Hover states */
+            
+            --border-primary: #30363d;       /* Main borders */
+            --border-subtle: #21262d;        /* Subtle borders */
+            
+            --text-primary: #f0f6fc;         /* Primary text - bright white */
+            --text-secondary: #8b949e;       /* Secondary text - muted gray */
+            --text-muted: #6e7681;           /* Muted text */
+            
+            --accent-blue: #58a6ff;          /* Primary accent - bright blue */
+            --accent-green: #3fb950;         /* Success states - vibrant green */
+            --accent-yellow: #f9c23c;        /* Warning states - warm yellow */
+            --accent-red: #f85149;           /* Error states - coral red */
+            --accent-purple: #a5a5ff;        /* Info states - soft purple */
+            
+            --shadow-elevated: 0 8px 24px rgba(1, 4, 9, 0.15);
+            --shadow-floating: 0 16px 32px rgba(1, 4, 9, 0.24);
+        }
+
+        /* ===== GLOBAL OVERRIDES ===== */
+        body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        }
+
+        /* Remove all border radius for clean, modern look */
+        * {
+            border-radius: 0 !important;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+            border-bottom: 1px solid var(--border-primary);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-brand {
+            font-weight: 500;
+            color: var(--text-primary) !important;
+            font-size: 1.1rem;
+        }
+
+        /* ===== BADGES & STATUS INDICATORS ===== */
+        .badge {
+            font-weight: 400;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        .bg-success {
+            background-color: var(--accent-green) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .bg-warning {
+            background-color: var(--accent-yellow) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        /* ===== CARDS & COMPONENTS ===== */
+        .card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-1px);
+        }
+
+        /* ===== STATISTICS CARDS - Refined Design ===== */
+        .stats-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-hover) 100%) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .stats-card .card-body {
+            padding: 1.25rem 1rem !important;
+        }
+
+        .stats-card .display-4, 
+        .stats-card h2, 
+        .stats-card h3 {
+            font-size: 2.25rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.5rem !important;
+            color: var(--accent-blue);
+        }
+
+        .stats-card p {
+            font-size: 0.875rem !important;
+            margin-bottom: 0 !important;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* ===== BACKUP SPECIFIC STYLES ===== */
+        .backup-section {
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .backup-item {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-subtle) !important;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem;
+        }
+
+        .backup-item:hover {
+            background-color: var(--bg-hover) !important;
+        }
+
+        .backup-item.critical {
+            border-left: 3px solid var(--accent-yellow);
+        }
+
+        .backup-item.large {
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .size-indicator {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== DEVICE CARDS ===== */
+        .device-card {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .device-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-2px);
+        }
+
+        .device-card.selected {
+            border-color: var(--accent-green) !important;
+            background-color: rgba(63, 185, 80, 0.1) !important;
+            box-shadow: 0 0 0 2px rgba(63, 185, 80, 0.3) !important;
+        }
+
+        .device-card .card-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .device-card .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        .device-card code {
+            background-color: var(--bg-secondary);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.4rem;
+            font-size: 0.8rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        /* ===== BUTTONS - Minimal Monochrome Design ===== */
+        .btn {
+            font-weight: 400;
+            border-width: 1px;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-success,
+        .btn-outline-warning,
+        .btn-outline-danger,
+        .btn-outline-secondary {
+            color: var(--text-secondary);
+            border-color: var(--border-primary);
+            background-color: transparent;
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-success:hover,
+        .btn-outline-warning:hover,
+        .btn-outline-danger:hover,
+        .btn-outline-secondary:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-outline-danger {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .btn-outline-danger:hover {
+            background-color: var(--accent-red);
+            border-color: var(--accent-red);
+            color: var(--bg-primary);
+        }
+
+        .btn-light {
+            background-color: var(--bg-hover);
+            border-color: var(--border-primary);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .btn-light:hover {
+            background-color: var(--text-secondary);
+            border-color: var(--text-secondary);
+            color: var(--bg-primary);
+        }
+
+        /* ===== FORM CONTROLS ===== */
+        .form-control, .form-select {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .form-check-input {
+            background-color: var(--bg-secondary) !important;
+            border: 2px solid var(--border-primary) !important;
+            width: 1.2em !important;
+            height: 1.2em !important;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--accent-blue) !important;
+            border-color: var(--accent-blue) !important;
+        }
+
+        .form-check-input:focus {
+            border-color: var(--accent-blue) !important;
+            outline: 0 !important;
+            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25) !important;
+        }
+
+        .form-check-label {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .input-group-text {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* ===== ALERTS ===== */
+        .alert-success {
+            background-color: rgba(63, 185, 80, 0.15) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--accent-green) !important;
+        }
+
+        .alert-danger {
+            background-color: rgba(248, 81, 73, 0.15) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .alert-warning {
+            background-color: rgba(249, 194, 60, 0.15) !important;
+            border-color: var(--accent-yellow) !important;
+            color: var(--accent-yellow) !important;
+        }
+
+        .alert-info {
+            background-color: rgba(88, 166, 255, 0.15) !important;
+            border-color: var(--accent-blue) !important;
+            color: var(--accent-blue) !important;
+        }
+
+        /* ===== PROGRESS BARS ===== */
+        .progress {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary);
+        }
+
+        .progress-bar {
+            background-color: var(--accent-blue) !important;
+        }
+
+        /* ===== MODALS ===== */
+        .modal-content {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            box-shadow: var(--shadow-floating);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-primary) !important;
+            background-color: var(--bg-secondary);
+        }
+
+        .modal-title {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--bg-secondary) !important;
+            border-top: 1px solid var(--border-primary) !important;
+        }
+
+        footer .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        footer a {
+            color: var(--accent-blue) !important;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary) !important;
+        }
+
+        /* ===== LOADING STATES ===== */
+        .spinner-border {
+            color: var(--accent-blue) !important;
+        }
+
+        /* ===== BACKUP SPECIFIC ENHANCEMENTS ===== */
+        .backup-log {
+            background-color: var(--bg-secondary) !important;
+            border: 1px solid var(--border-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.8rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .backup-log::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .backup-log::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        .backup-log::-webkit-scrollbar-thumb {
+            background: var(--border-primary);
+        }
+
+        .backup-log::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* ===== VISIBILITY IMPROVEMENTS ===== */
+        .card-header h5, .card-header h6 {
+            color: var(--text-primary) !important;
+        }
+
+        .form-label {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+        }
+
+        small, .small {
+            color: var(--text-secondary) !important;
+        }
+
+        .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Fix para texto en cards - NUEVO */
+        .card-body span,
+        .card-body strong,
+        .card-body .d-flex span {
+            color: var(--text-primary) !important;
+        }
+
+        .card-body strong {
+            color: var(--accent-blue) !important;
+        }
+
+        /* Device selection states */
+        .btn-selected {
+            background-color: var(--accent-green) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .device-card .bi-usb-drive, 
+        .device-card .bi-sd-card, 
+        .device-card .bi-device-ssd, 
+        .device-card .bi-hdd {
+            font-size: 1.2rem;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .bg-light {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .text-dark {
+            color: var(--text-primary) !important;
+        }
+
+        .border-top {
+            border-color: var(--border-primary) !important;
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .stats-card .display-4, 
+            .stats-card h2, 
+            .stats-card h3 {
+                font-size: 1.75rem !important;
+            }
+            
+            .card-body {
+                padding: 1rem 0.75rem !important;
+            }
+        }
+
+        /* Accordion Styles */
+        .accordion-button {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-primary) !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--bg-hover) !important;
+            box-shadow: none !important;
+        }
+
+        .accordion-button::after {
+            filter: invert(0.5) sepia(1) saturate(5) hue-rotate(200deg) brightness(1.2);
+        }
+
+        .accordion-item {
+            background-color: var(--bg-tertiary) !important;
+            border: 1px solid var(--border-primary) !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .accordion-body {
+            background-color: var(--bg-tertiary) !important;
+        }
+
+        /* Tree View Styles */
+        .tree-view {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 0;
+            color: var(--text-secondary);
+        }
+
+        .tree-item.folder {
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        .tree-item.file {
+            color: var(--text-primary);
+        }
+
+        .tree-icon {
+            margin-right: 0.5rem;
+            width: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .tree-indent {
+            margin-left: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-archive"></i> TARS-BSK Backup Manager
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <span class="badge bg-success me-3">
+                    <i class="bi bi-shield-check"></i> Sistema: {{ system_info.use_percent }}
+                </span>
+                
+                <a href="#" class="btn btn-light btn-sm me-2" target="_blank" id="haDashboardBtn">
+                    <i class="bi bi-house-gear"></i> HA Dashboard
+                </a>
+                
+                <button class="btn btn-outline-secondary btn-sm" onclick="refreshDevices()">
+                    <i class="bi bi-arrow-clockwise"></i> Refresh
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- System Status Cards -->
+        <div class="row mb-4">
+            <!-- System Storage Card -->
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body text-center">
+                        <h3>{{ system_info.used }}</h3>
+                        <p class="mb-0">
+                            <i class="bi bi-hdd"></i> Sistema Usado
+                            <br><small>{{ system_info.total }} total</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Storage Devices -->
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body text-center">
+                        <h3>{{ storage_devices|length }}</h3>
+                        <p class="mb-0">
+                            <i class="bi bi-usb-drive"></i> Dispositivos
+                            <br><small>Disponibles</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARS System Size -->
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body text-center">
+                        <h3>{{ "%.1f"|format(backup_structure['tars_system']['size_mb'] / 1024) }}GB</h3>
+                        <p class="mb-0">
+                            <i class="bi bi-robot"></i> TARS System
+                            <br><small>Tamaño total</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backup Status -->
+            <div class="col-md-3">
+                <div class="card stats-card" id="backupStatusCard">
+                    <div class="card-body text-center">
+                        <h3 id="backupStatusText">Listo</h3>
+                        <p class="mb-0">
+                            <i class="bi bi-cloud-arrow-up"></i> Estado Backup
+                            <br><small id="backupStatusDetail">Sistema preparado</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Storage Devices -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                <i class="bi bi-usb-symbol"></i> Dispositivos de Almacenamiento Disponibles
+                            </h5>
+                            <div>
+                                <button class="btn btn-outline-secondary btn-sm me-2" onclick="systemCheck()">
+                                    <i class="bi bi-search"></i> Check Sistema
+                                </button>
+                                <button class="btn btn-outline-info btn-sm" onclick="toggleDeviceHelp()">
+                                    <i class="bi bi-question-circle"></i> ¿Cuál elegir?
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-3" id="deviceHelp" style="display: none;">
+                            <h6><i class="bi bi-lightbulb"></i> Guía de Selección</h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>✅ Recomendado para backup:</strong>
+                                    <ul class="small mb-2">
+                                        <li><strong>Particiones grandes</strong> (>1GB) con nombres como <code>sda2</code>, <code>sdb1</code></li>
+                                        <li><strong>Estado "No montado"</strong> → Usa "Montar Dispositivo"</li>
+                                        <li><strong>Tipo USB/Storage</strong> → Dispositivos externos</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>❌ Evita usar:</strong>
+                                    <ul class="small mb-2">
+                                        <li><code>mmcblk0p1</code> → Partición de arranque (muy pequeña)</li>
+                                        <li>Dispositivos <strong>muy pequeños</strong> (<512MB)</li>
+                                        <li><strong>Dispositivos sin número</strong> (ej: <code>sda</code>) → Usa las particiones (<code>sda1</code>, <code>sda2</code>)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% if storage_devices %}
+                        <div class="alert alert-info mb-3">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Montaje automático:</strong> Los dispositivos se montan usando <code>udisks2</code> sin necesidad de sudo.
+                            <br><small>Si aparece error de montaje, verifica que <code>udisks2</code> esté instalado: <code>sudo apt install udisks2</code></small>
+                            <br><small><strong>🔐 Autenticación:</strong> Si se solicita contraseña, usa la contraseña de TARS (usuario actual)</small>
+                        </div>
+                        <div class="row" id="storageDevicesContainer">
+                            {% for device in storage_devices %}
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <div class="card device-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h6 class="card-title mb-0">
+                                                {% if device.type == 'USB' %}
+                                                <i class="bi bi-usb-drive text-primary"></i>
+                                                {% elif device.type == 'SD Card' %}
+                                                <i class="bi bi-sd-card text-warning"></i>
+                                                {% elif device.type == 'NVMe SSD' %}
+                                                <i class="bi bi-device-ssd text-success"></i>
+                                                {% else %}
+                                                <i class="bi bi-hdd text-secondary"></i>
+                                                {% endif %}
+                                                {{ device.name }}
+                                                
+                                                {% set size_gb = device.size|replace('G', '')|replace('M', '')|float %}
+                                                {% set has_partition = device.name[-1].isdigit() %}
+                                                {% set is_small = (device.size.endswith('M') and size_gb < 1000) or (device.size.endswith('G') and size_gb < 1) %}
+                                                
+                                                {% if has_partition and not is_small %}
+                                                <small class="text-success ms-2">✅ Recomendado</small>
+                                                {% elif is_small %}
+                                                <small class="text-warning ms-2">⚠️ Pequeño</small>
+                                                {% elif not has_partition %}
+                                                <small class="text-info ms-2">ℹ️ Usa particiones</small>
+                                                {% endif %}
+                                            </h6>
+                                            <span class="badge bg-secondary">{{ device.type }}</span>
+                                        </div>
+                                        
+                                        <p class="card-text small text-muted mb-2">
+                                            <span class="fw-normal">Tamaño:</span> {{ device.size }}
+                                        </p>
+                                        
+                                        <p class="card-text small text-muted mb-2">
+                                            <span class="fw-normal">Disponible:</span> {{ device.available }}
+                                        </p>
+                                        
+                                        <p class="card-text small text-muted mb-3">
+                                            <span class="fw-normal">Estado:</span> 
+                                            {% if device.mount_status == 'Montado' %}
+                                            <span class="badge bg-success" id="status_{{ device.name }}">
+                                                {{ device.mount_status }}
+                                            </span>
+                                            {% else %}
+                                            <span class="text-muted" id="status_{{ device.name }}">
+                                                {{ device.mount_status }}
+                                            </span>
+                                            {% endif %}
+                                        </p>
+                                        
+                                        <div class="d-grid gap-2">
+                                            {% if device.mount_status == 'No montado' %}
+                                            <button class="btn btn-outline-success btn-sm" 
+                                                    onclick="mountDevice('{{ device.name }}', '{{ device.mountpoint }}')"
+                                                    id="mount_btn_{{ device.name }}">
+                                                <i class="bi bi-usb-plug"></i> Montar Dispositivo
+                                            </button>
+                                            <button class="btn btn-outline-warning btn-sm" 
+                                                    onclick="unmountDevice('{{ device.name }}', '{{ device.mountpoint }}')"
+                                                    id="unmount_btn_{{ device.name }}" style="display: none;">
+                                                <i class="bi bi-eject"></i> Desmontar
+                                            </button>
+                                            {% else %}
+                                            <button class="btn btn-outline-success btn-sm" 
+                                                    onclick="mountDevice('{{ device.name }}', '{{ device.mountpoint }}')"
+                                                    id="mount_btn_{{ device.name }}" style="display: none;">
+                                                <i class="bi bi-usb-plug"></i> Montar Dispositivo
+                                            </button>
+                                            <button class="btn btn-outline-warning btn-sm" 
+                                                    onclick="unmountDevice('{{ device.name }}', '{{ device.mountpoint }}')"
+                                                    id="unmount_btn_{{ device.name }}">
+                                                <i class="bi bi-eject"></i> Desmontar
+                                            </button>
+                                            {% endif %}
+                                            
+                                            <button class="btn btn-outline-primary btn-sm" 
+                                                    onclick="selectBackupDestination('{{ device.mountpoint }}', '{{ device.name }}')"
+                                                    {% if device.mount_status == 'No montado' %}disabled{% endif %}
+                                                    id="select_btn_{{ device.name }}">
+                                                <i class="bi bi-check-circle"></i> Seleccionar como Destino
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            No se detectaron dispositivos de almacenamiento externos.
+                            <br><small>Conecta un USB, SD Card o disco externo y haz click en Refresh.</small>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backup Selection Section - ACCORDION -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="bi bi-list-check"></i> Seleccionar Contenido para Backup
+                        </h5>
+                        <div>
+                            <button class="btn btn-outline-success btn-sm" onclick="selectAll()">
+                                <i class="bi bi-check-all"></i> Seleccionar Todo
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="selectNone()">
+                                <i class="bi bi-x-square"></i> Deseleccionar Todo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="backupAccordion">
+                            
+                            <!-- TARS System Accordion -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#tarsSystemCollapse">
+                                        <div class="form-check me-3" onclick="event.stopPropagation();">
+                                            <input class="form-check-input" type="checkbox" 
+                                                   id="section_tars_system" 
+                                                   onchange="toggleSection('tars_system')">
+                                        </div>
+                                        <strong>🤖 Sistema TARS-BSK ({{ "%.1f"|format(backup_structure['tars_system']['size_mb'] / 1024) }}GB)</strong>
+                                    </button>
+                                </h2>
+                                <div id="tarsSystemCollapse" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        {% for item_key, item in backup_structure['tars_system']['items'].items() %}
+                                        <div class="backup-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" 
+                                                       id="tars_{{ item_key }}" 
+                                                       data-section="tars_system"
+                                                       data-item="{{ item_key }}">
+                                                <label class="form-check-label" for="tars_{{ item_key }}">
+                                                    <strong>{{ item.name }}</strong>
+                                                    <span class="size-indicator ms-2">({{ item.size_mb }}MB)</span>
+                                                </label>
+                                            </div>
+                                            <small class="text-muted d-block mt-1">
+                                                📁 {{ item.path }}
+                                            </small>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Full System Accordion -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#fullSystemCollapse">
+                                        <div class="form-check me-3" onclick="event.stopPropagation();">
+                                            <input class="form-check-input" type="checkbox" 
+                                                   id="section_full_system" 
+                                                   onchange="toggleSection('full_system')">
+                                        </div>
+                                        <strong>📦 Archivos Comprimidos ({{ "%.1f"|format(backup_structure['full_system']['size_mb'] / 1024) }}GB)</strong>
+                                    </button>
+                                </h2>
+                                <div id="fullSystemCollapse" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        {% for item_key, item in backup_structure['full_system']['items'].items() %}
+                                        <div class="backup-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" 
+                                                       id="full_{{ item_key }}" 
+                                                       data-section="full_system"
+                                                       data-item="{{ item_key }}">
+                                                <label class="form-check-label" for="full_{{ item_key }}">
+                                                    <strong>{{ item.name }}</strong>
+                                                    <span class="size-indicator ms-2">({{ "%.1f"|format(item.size_mb / 1024) }}GB)</span>
+                                                </label>
+                                            </div>
+                                            <small class="text-muted d-block mt-1">
+                                                📁 {{ item.path }}
+                                                {% if item.description %}
+                                                <br>💡 {{ item.description }}
+                                                {% endif %}
+                                            </small>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tree View Section (Hidden by default) -->
+        <div class="row mb-4" id="backupTreeSection" style="display: true;">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-folder-symlink"></i> Estructura del Backup
+                            <small class="text-muted">- Vista previa</small>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="tree-view" id="backupTree">
+                            <!-- El árbol se generará aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backup Control Panel -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-play-circle"></i> Control de Backup
+                        </h5>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <div class="row align-items-start flex-grow-1">
+                            <div class="col-md-6">
+                                <label class="form-label">Destino seleccionado:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-folder"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="backupDestination" placeholder="Selecciona un dispositivo y personaliza la ruta" onchange="validateDestinationPath()">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="browseDestination()">
+                                        <i class="bi bi-folder-plus"></i>
+                                    </button>
+                                </div>
+                                <small class="text-muted">Puedes editar la ruta. Ej: /mnt/backup/tars_$(date)</small>
+                            </div>
+                            <div class="col-md-3 d-flex flex-column">
+                                <label class="form-label">Tamaño estimado</label>
+                                <div class="alert alert-info mb-0 py-1 flex-grow-1 d-flex align-items-center justify-content-center h-100" style="min-height: 38px;">
+                                    <span id="estimatedSize">0 MB</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex flex-column">
+                                <label class="form-label">Backup</label>
+                                <div class="d-grid flex-grow-1">
+                                    <button class="btn btn-success h-100" id="startBackupBtn" onclick="startBackup()" disabled="" style="min-height: 38px;">
+                                        <i class="bi bi-play-fill"></i> Iniciar Backup
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-info-circle"></i> Estado del Sistema
+                        </h5>
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Espacio disponible:</span>
+                                <strong id="destinationSpace">N/A</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Archivos seleccionados:</span>
+                                <strong id="selectedFiles">0</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Estado:</span>
+                                <strong id="systemStatus" class="text-success">Listo</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backup Progress Section (Hidden by default) -->
+        <div class="row mb-4" id="backupProgressSection" style="display: none;">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-activity"></i> Progreso del Backup
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Progreso general:</label>
+                                <div class="progress mb-3" style="height: 25px;">
+                                    <div class="progress-bar" id="backupProgressBar" 
+                                         role="progressbar" style="width: 0%">
+                                        <span id="backupProgressText">0%</span>
+                                    </div>
+                                </div>
+                                <div class="text-muted small">
+                                    <span id="currentFileText">Preparando backup...</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Log de backup:</label>
+                                <div class="backup-log p-2" id="backupLog">
+                                    <div class="text-muted">Esperando inicio de backup...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-danger" id="cancelBackupBtn" onclick="cancelBackup()" disabled>
+                                    <i class="bi bi-stop-fill"></i> Cancelar Backup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pass -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">
+                        <i class="bi bi-shield-lock"></i> Autenticación Requerida
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small text-muted mb-3">
+                        <span id="passwordModalMessage">Se requiere contraseña para montar el dispositivo</span>
+                    </p>
+                    <div class="mb-3">
+                        <label for="devicePassword" class="form-label">Contraseña de TARS:</label>
+                        <input type="password" class="form-control" id="devicePassword" 
+                               placeholder="Introduce tu contraseña" autofocus>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="submitPassword()">
+                        <i class="bi bi-unlock"></i> Autenticar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal cancel backup -->
+    <div class="modal fade" id="cancelBackupModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">
+                        <i class="bi bi-exclamation-triangle text-warning"></i> Cancelar Backup
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center mb-3">
+                        ¿Estás seguro de que quieres <strong>cancelar el backup</strong>?
+                    </p>
+                    <p class="small text-muted text-center">
+                        Se perderán los archivos copiados hasta el momento.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> No, continuar
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmCancelBackup()">
+                        <i class="bi bi-stop-fill"></i> Sí, cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Backup Manager JavaScript -->
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let selectedDestination = '';
+        let selectedDestinationName = '';
+        let backupRunning = false;
+        let backupStatusInterval = null;
+        let lastNotificationTime = 0; // Anti-spam
+        let pendingAuthAction = null; // Para manejar autenticación pendiente
+        
+        /**
+         * Show password modal
+         */
+        function showPasswordModal(message, action) {
+            document.getElementById('passwordModalMessage').textContent = message;
+            document.getElementById('devicePassword').value = '';
+            pendingAuthAction = action;
+            
+            const modal = new bootstrap.Modal(document.getElementById('passwordModal'));
+            modal.show();
+            
+            // Focus en password field cuando se abre
+            document.getElementById('passwordModal').addEventListener('shown.bs.modal', function () {
+                document.getElementById('devicePassword').focus();
+            });
+            
+            // Submit con Enter
+            document.getElementById('devicePassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitPassword();
+                }
+            });
+        }
+        
+        /**
+         * Submit password from modal
+         */
+        function submitPassword() {
+            const password = document.getElementById('devicePassword').value;
+            if (password && pendingAuthAction) {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('passwordModal'));
+                modal.hide();
+                pendingAuthAction(password);
+                pendingAuthAction = null;
+            }
+        }
+        
+        // ===== DEVICE MANAGEMENT =====
+        
+        /**
+         * Mount a storage device
+         */
+        async function mountDevice(deviceName, suggestedMount) {
+            const button = document.getElementById(`mount_btn_${deviceName}`);
+            const originalText = button.innerHTML;
+            
+            try {
+                button.disabled = true;
+                button.innerHTML = '<i class="bi bi-hourglass-split"></i> Montando...';
+                
+                // Primero intentar sin contraseña
+                const response = await fetch('/api/mount-device', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        device: deviceName,
+                        mountpoint: suggestedMount
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(`Dispositivo ${deviceName} montado correctamente`, 'success');
+                    updateDeviceStatus(deviceName, 'Montado', result.mountpoint);
+                    
+                    // Si es el dispositivo seleccionado, actualizar espacio del sistema
+                    if (selectedDestination && selectedDestination.includes(deviceName)) {
+                        calculateAvailableSpace(result.mountpoint);
+                    }
+                } else if (result.needs_password) {
+                    // Usar modal en lugar de prompt
+                    showPasswordModal(
+                        `Se requiere contraseña para montar ${deviceName}`,
+                        (password) => mountDeviceWithPassword(deviceName, suggestedMount, password)
+                    );
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                } else {
+                    showNotification(`Error montando ${deviceName}: ${result.error}`, 'danger');
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+                
+            } catch (error) {
+                showNotification(`Error: ${error.message}`, 'danger');
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+        
+        async function mountDeviceWithPassword(deviceName, suggestedMount, password) {
+            const button = document.getElementById(`mount_btn_${deviceName}`);
+            const originalText = button.innerHTML;
+            
+            try {
+                const response = await fetch('/api/mount-device-sudo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        device: deviceName,
+                        mountpoint: suggestedMount,
+                        password: password
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(`Dispositivo ${deviceName} montado correctamente`, 'success');
+                    updateDeviceStatus(deviceName, 'Montado', result.mountpoint);
+                } else {
+                    showNotification(`Error: ${result.error}`, 'danger');
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+                
+            } catch (error) {
+                showNotification(`Error: ${error.message}`, 'danger');
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+        
+        /**
+         * Unmount a storage device
+         */
+        async function unmountDevice(deviceName, mountpoint) {
+            const button = document.getElementById(`unmount_btn_${deviceName}`);
+            const originalText = button.innerHTML;
+            
+            try {
+                button.disabled = true;
+                button.innerHTML = '<i class="bi bi-hourglass-split"></i> Desmontando...';
+                
+                // Primero intentar sin contraseña
+                const response = await fetch('/api/unmount-device', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        device: deviceName,
+                        mountpoint: mountpoint
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(`Dispositivo ${deviceName} desmontado correctamente`, 'success');
+                    updateDeviceStatus(deviceName, 'No montado', `/mnt/${deviceName}`);
+                } else if (result.needs_password) {
+                    // Usar modal en lugar de prompt
+                    showPasswordModal(
+                        `Se requiere contraseña para desmontar ${deviceName}`,
+                        (password) => unmountDeviceWithPassword(deviceName, mountpoint, password)
+                    );
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                } else {
+                    showNotification(`Error desmontando ${deviceName}: ${result.error}`, 'danger');
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+                
+            } catch (error) {
+                showNotification(`Error: ${error.message}`, 'danger');
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+        
+        async function unmountDeviceWithPassword(deviceName, mountpoint, password) {
+            const button = document.getElementById(`unmount_btn_${deviceName}`);
+            const originalText = button.innerHTML;
+            
+            try {
+                const response = await fetch('/api/unmount-device-sudo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        device: deviceName,
+                        mountpoint: mountpoint,
+                        password: password
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(`Dispositivo ${deviceName} desmontado correctamente`, 'success');
+                    updateDeviceStatus(deviceName, 'No montado', `/mnt/${deviceName}`);
+                } else {
+                    showNotification(`Error: ${result.error}`, 'danger');
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+                
+            } catch (error) {
+                showNotification(`Error: ${error.message}`, 'danger');
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+        
+        /**
+         * Update device status in the UI
+         */
+        function updateDeviceStatus(deviceName, status, mountpoint) {
+            const statusBadge = document.getElementById(`status_${deviceName}`);
+            const mountBtn = document.getElementById(`mount_btn_${deviceName}`);
+            const unmountBtn = document.getElementById(`unmount_btn_${deviceName}`);
+            const selectBtn = document.getElementById(`select_btn_${deviceName}`);
+            
+            // Actualizar badge de estado
+            if (statusBadge) {
+                statusBadge.textContent = status;
+                if (status === 'Montado') {
+                    statusBadge.className = 'badge bg-success';
+                } else {
+                    statusBadge.className = 'text-muted';
+                }
+            }
+            
+            // Actualizar texto "Disponible" - buscar correctamente el elemento
+            const deviceCard = statusBadge.closest('.card-body');
+            const availableElements = deviceCard.querySelectorAll('.card-text');
+            let availableElement = null;
+            
+            // Buscar el elemento que contiene "Disponible:"
+            for (let element of availableElements) {
+                if (element.textContent.includes('Disponible:')) {
+                    availableElement = element.querySelector('span:last-child') || element.lastChild;
+                    break;
+                }
+            }
+            
+            if (availableElement) {
+                if (status === 'Montado') {
+                    availableElement.textContent = 'Calculando...';
+                    // Calcular espacio real
+                    calculateAvailableSpaceForCard(deviceName, mountpoint);
+                } else {
+                    availableElement.textContent = 'Disponible para montaje';
+                }
+            }
+            
+            // Intercambiar botones
+            if (status === 'Montado') {
+                if (mountBtn) {
+                    mountBtn.style.display = 'none';
+                }
+                if (unmountBtn) {
+                    unmountBtn.style.display = 'block';
+                    unmountBtn.disabled = false;
+                }
+                if (selectBtn) {
+                    selectBtn.disabled = false;
+                }
+            } else {
+                if (mountBtn) {
+                    mountBtn.style.display = 'block';
+                    mountBtn.disabled = false;
+                    mountBtn.innerHTML = '<i class="bi bi-usb-plug"></i> Montar Dispositivo';
+                }
+                if (unmountBtn) {
+                    unmountBtn.style.display = 'none';
+                }
+                if (selectBtn) {
+                    selectBtn.disabled = true;
+                }
+            }
+        }
+        
+        async function calculateAvailableSpaceForCard(deviceName, mountpoint) {
+            try {
+                const response = await fetch('/api/device-space', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mountpoint: mountpoint })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    // Buscar el elemento de disponible específico para este dispositivo
+                    const deviceCard = document.getElementById(`status_${deviceName}`).closest('.card-body');
+                    const availableElements = deviceCard.querySelectorAll('.card-text');
+                    
+                    for (let element of availableElements) {
+                        if (element.textContent.includes('Disponible:')) {
+                            const availableSpan = element.querySelector('span:last-child') || element.lastChild;
+                            if (availableSpan) {
+                                availableSpan.textContent = result.available;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error getting space for card:', error);
+            }
+        }
+        
+        /**
+         * Toggle device selection help
+         */
+        function toggleDeviceHelp() {
+            const helpDiv = document.getElementById('deviceHelp');
+            if (helpDiv.style.display === 'none') {
+                helpDiv.style.display = 'block';
+                event.target.innerHTML = '<i class="bi bi-x-circle"></i> Cerrar ayuda';
+            } else {
+                helpDiv.style.display = 'none';
+                event.target.innerHTML = '<i class="bi bi-question-circle"></i> ¿Cuál elegir?';
+            }
+        }
+        
+        /**
+         * System check for hidden/unrecognized devices
+         */
+        async function systemCheck() {
+            const button = event.target;
+            const originalText = button.innerHTML;
+            
+            try {
+                button.disabled = true;
+                button.innerHTML = '<i class="bi bi-hourglass-split"></i> Analizando...';
+                
+                const response = await fetch('/api/system-check');
+                const result = await response.json();
+                
+                if (result.success) {
+                    let message = `Check completado:\n`;
+                    message += `• Dispositivos detectados: ${result.devices_count}\n`;
+                    message += `• NVMe encontrados: ${result.nvme_count}\n`;
+                    message += `• Nuevos dispositivos: ${result.new_devices}`;
+                    
+                    showNotification(message, 'success');
+                    
+                    // Refrescar si se encontraron nuevos dispositivos
+                    if (result.new_devices > 0) {
+                        setTimeout(() => location.reload(), 1500);
+                    }
+                } else {
+                    showNotification(`Error en check: ${result.error}`, 'danger');
+                }
+                
+            } catch (error) {
+                showNotification(`Error de conexión: ${error.message}`, 'danger');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+        
+        /**
+         * Refresh storage devices
+         */
+        async function refreshDevices() {
+            try {
+                const response = await fetch('/api/storage-devices');
+                const result = await response.json();
+                
+                if (result.success) {
+                    location.reload(); // Simple reload for now
+                } else {
+                    showNotification('Error refreshing devices: ' + result.error, 'danger');
+                }
+            } catch (error) {
+                showNotification('Error connecting: ' + error.message, 'danger');
+            }
+        }
+        
+        /**
+         * Select backup destination with toggle capability
+         */
+        function selectBackupDestination(mountpoint, deviceName) {
+            console.log('🔍 DEBUG: selectBackupDestination called with:', mountpoint, deviceName);
+            
+            const clickedCard = event.target.closest('.device-card');
+            const clickedButton = event.target.closest('button');
+            
+            // SIEMPRE deseleccionar todos primero
+            document.querySelectorAll('.device-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.device-card button').forEach(btn => {
+                if (btn.innerHTML.includes('Seleccionado') || btn.innerHTML.includes('Seleccionar como Destino')) {
+                    btn.className = 'btn btn-outline-primary btn-sm';
+                    btn.innerHTML = '<i class="bi bi-check-circle"></i> Seleccionar como Destino';
+                }
+            });
+            
+            // Check if this device was already selected
+            if (selectedDestination === mountpoint) {
+                // Deselect completely
+                console.log('🔍 DEBUG: Deselecting device');
+                selectedDestination = '';
+                selectedDestinationName = '';
+                window.deviceInfo = null;
+                
+                document.getElementById('backupDestination').value = '';
+                document.getElementById('startBackupBtn').disabled = true;
+                document.getElementById('destinationSpace').textContent = 'N/A';
+                
+                showNotificationSafe('Dispositivo deseleccionado', 'warning');
+                
+            } else {
+                // Select new device
+                console.log('🔍 DEBUG: Selecting new device:', deviceName, 'at:', mountpoint);
+                selectedDestination = mountpoint;
+                selectedDestinationName = deviceName;
+                
+                // Create default backup path with timestamp
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/[-:]/g, '').replace('T', '_');
+                const defaultPath = `${mountpoint}/tars_backup_${timestamp}`;
+                
+                console.log('🔍 DEBUG: Default path created:', defaultPath);
+                
+                document.getElementById('backupDestination').value = defaultPath;
+                document.getElementById('startBackupBtn').disabled = false;
+                
+                // Highlight the selected card
+                clickedCard.classList.add('selected');
+                clickedButton.className = 'btn btn-success btn-sm btn-selected';
+                clickedButton.innerHTML = '<i class="bi bi-check-circle-fill"></i> Seleccionado';
+                
+                document.getElementById('destinationSpace').textContent = 'Calculando...';
+                
+                console.log('🔍 DEBUG: About to call calculateAvailableSpace with:', mountpoint);
+                calculateAvailableSpace(mountpoint);
+                
+                showNotificationSafe(`Destino seleccionado: ${deviceName}`, 'success');
+                setTimeout(showBackupTreePreview, 500);
+            }
+            
+            // Update estimated size
+            updateEstimatedSize();
+        }
+        
+        /**
+         * Calculate available space on selected device
+         */
+        async function calculateAvailableSpace(mountpoint) {
+            console.log('🔍 DEBUG: calculateAvailableSpace called with:', mountpoint);
+            
+            try {
+                const response = await fetch('/api/device-space', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mountpoint: mountpoint })
+                });
+                
+                console.log('🔍 DEBUG: Response status:', response.status);
+                const result = await response.json();
+                console.log('🔍 DEBUG: API result:', result);
+                
+                if (result.success) {
+                    // Guardar info del dispositivo para comparar
+                    window.deviceInfo = {
+                        available: result.available,
+                        availableBytes: result.availableBytes,
+                        total: result.total,
+                        used: result.used
+                    };
+                    
+                    console.log('🔍 DEBUG: Device info saved:', window.deviceInfo);
+                    
+                    // Actualizar display y verificar si cabe
+                    updateSpaceComparison();
+                } else {
+                    console.error('❌ DEBUG: API returned error:', result.error);
+                    document.getElementById('destinationSpace').textContent = 'Error: ' + (result.error || 'Desconocido');
+                }
+            } catch (error) {
+                console.error('❌ DEBUG: Fetch error:', error);
+                document.getElementById('destinationSpace').textContent = 'Error: ' + error.message;
+            }
+        }
+        
+        /**
+         * Compare estimated backup size with available space
+         */
+        function updateSpaceComparison() {
+            console.log('🔍 DEBUG: updateSpaceComparison called');
+            console.log('🔍 DEBUG: selectedDestination:', selectedDestination);
+            console.log('🔍 DEBUG: window.deviceInfo:', window.deviceInfo);
+            
+            const spaceElement = document.getElementById('destinationSpace');
+            const startButton = document.getElementById('startBackupBtn');
+            
+            if (!window.deviceInfo || !selectedDestination) {
+                console.log('❌ DEBUG: Missing deviceInfo or selectedDestination');
+                spaceElement.textContent = 'N/A';
+                return;
+            }
+            
+            // Obtener tamaño estimado del backup
+            const estimatedText = document.getElementById('estimatedSize').textContent;
+            console.log('🔍 DEBUG: estimatedText:', estimatedText);
+            
+            const estimatedBytes = parseEstimatedSize(estimatedText);
+            const availableBytes = window.deviceInfo.availableBytes || 0;
+            
+            console.log('🔍 DEBUG: estimatedBytes:', estimatedBytes, 'availableBytes:', availableBytes);
+            
+            if (estimatedBytes > availableBytes) {
+                // NO CABE - Mostrar warning
+                spaceElement.innerHTML = `
+                    <span class="text-danger">
+                        <i class="bi bi-exclamation-triangle"></i> 
+                        ${window.deviceInfo.available} 
+                        <small>(Insuficiente)</small>
+                    </span>
+                `;
+                startButton.disabled = true;
+                startButton.innerHTML = '<i class="bi bi-x-circle"></i> Sin Espacio';
+                
+                showNotificationSafe('El backup no cabe en el dispositivo seleccionado', 'warning');
+            } else {
+                // SÍ CABE - Mostrar OK
+                const remainingBytes = availableBytes - estimatedBytes;
+                const remainingFormatted = formatBytes(remainingBytes);
+                
+                spaceElement.innerHTML = `
+                    <span class="text-success">
+                        <i class="bi bi-check-circle"></i> 
+                        ${window.deviceInfo.available}
+                        <small>(${remainingFormatted} libres tras backup)</small>
+                    </span>
+                `;
+                
+                if (selectedDestination) {
+                    startButton.disabled = false;
+                    startButton.innerHTML = '<i class="bi bi-play-fill"></i> Iniciar Backup';
+                }
+            }
+        }
+        
+        /**
+         * Parse estimated size text to bytes
+         */
+        function parseEstimatedSize(sizeText) {
+            const match = sizeText.match(/([\d.]+)\s*(MB|GB)/);
+            if (!match) return 0;
+            
+            const value = parseFloat(match[1]);
+            const unit = match[2];
+            
+            if (unit === 'GB') {
+                return value * 1024 * 1024 * 1024;
+            } else {
+                return value * 1024 * 1024;
+            }
+        }
+        
+        /**
+         * Format bytes to human readable
+         */
+        function formatBytes(bytes) {
+            if (bytes >= 1024 * 1024 * 1024) {
+                return `${(bytes / (1024 * 1024 * 1024)).toFixed(1)}GB`;
+            } else {
+                return `${(bytes / (1024 * 1024)).toFixed(0)}MB`;
+            }
+        }
+        
+        /**
+         * Validate destination path
+         */
+        function validateDestinationPath() {
+            const path = document.getElementById('backupDestination').value;
+            const startBtn = document.getElementById('startBackupBtn');
+            
+            if (path.trim() === '') {
+                startBtn.disabled = true;
+                return;
+            }
+            
+            // Basic validation
+            if (path.includes('..') || path.includes('//')) {
+                showNotification('Ruta no válida. Evita ".." y "//" en la ruta.', 'warning');
+                return;
+            }
+            
+            // Enable backup if path looks valid
+            if (selectedDestination) {
+                startBtn.disabled = false;
+                showNotificationSafe(`Ruta actualizada: ${path}`, 'info');
+            }
+            
+            // AÑADIR ESTA LÍNEA:
+            // Actualizar árbol en tiempo real
+            if (document.getElementById('backupTreeSection').style.display !== 'none') {
+                showBackupTreePreview();
+            }
+        }
+        
+        /**
+         * Browse destination folder suggestions
+         */
+        function browseDestination() {
+            if (!selectedDestination) {
+                showNotification('Primero selecciona un dispositivo', 'warning');
+                return;
+            }
+            
+            const suggestions = [
+                `${selectedDestination}/tars_backup_${new Date().toISOString().slice(0, 10)}`,
+                `${selectedDestination}/backups/tars_${new Date().getFullYear()}`,
+                `${selectedDestination}/tars_full_backup`,
+                `${selectedDestination}/backup_$(date +%Y%m%d_%H%M%S)`,
+                selectedDestination  // Root del dispositivo
+            ];
+            
+            const currentPath = document.getElementById('backupDestination').value;
+            const currentIndex = suggestions.indexOf(currentPath);
+            const nextIndex = (currentIndex + 1) % suggestions.length;
+            
+            document.getElementById('backupDestination').value = suggestions[nextIndex];
+            validateDestinationPath();
+        }
+        
+        // ===== BACKUP SELECTION MANAGEMENT =====
+        
+        /**
+         * Toggle entire section
+         */
+        function toggleSection(sectionName) {
+            const sectionCheckbox = document.getElementById(`section_${sectionName}`);
+            const isChecked = sectionCheckbox.checked;
+            
+            // Toggle all items in section
+            const items = document.querySelectorAll(`[data-section="${sectionName}"]`);
+            items.forEach(item => {
+                item.checked = isChecked;
+            });
+            
+            updateEstimatedSize();
+        }
+        
+        /**
+         * Select all items
+         */
+        function selectAll() {
+            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            allCheckboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            updateEstimatedSize();
+        }
+        
+        /**
+         * Deselect all items
+         */
+        function selectNone() {
+            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            allCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updateEstimatedSize();
+        }
+        
+        /**
+         * Update estimated backup size
+         */
+        function updateEstimatedSize() {
+            let totalSizeMB = 0;
+            let selectedCount = 0;
+            
+            // Calculate total size based on REAL sizes from HTML
+            const selectedItems = document.querySelectorAll('input[type="checkbox"]:checked');
+            
+            selectedItems.forEach(item => {
+                selectedCount++;
+                
+                // Extract real size from the label text
+                const label = item.nextElementSibling;
+                if (label) {
+                    const sizeMatch = label.textContent.match(/\((\d+(?:\.\d+)?)([MG])B\)/);
+                    if (sizeMatch) {
+                        const size = parseFloat(sizeMatch[1]);
+                        const unit = sizeMatch[2];
+                        
+                        if (unit === 'G') {
+                            totalSizeMB += size * 1024; // Convert GB to MB
+                        } else {
+                            totalSizeMB += size; // Already in MB
+                        }
+                    }
+                }
+            });
+            
+            console.log('🔍 DEBUG: Real total size calculated:', totalSizeMB, 'MB');
+            
+            // Update display
+            document.getElementById('selectedFiles').textContent = selectedCount;
+            
+            if (totalSizeMB > 1024) {
+                document.getElementById('estimatedSize').textContent = `${(totalSizeMB / 1024).toFixed(1)} GB`;
+            } else {
+                document.getElementById('estimatedSize').textContent = `${Math.round(totalSizeMB)} MB`;
+            }
+            
+            // Verificar si cabe en el dispositivo seleccionado
+            if (selectedDestination && window.deviceInfo) {
+                updateSpaceComparison();
+            }
+            // Actualizar árbol si está visible
+            if (document.getElementById('backupTreeSection').style.display !== 'none') {
+                showBackupTreePreview();
+            }
+        }
+        
+        // ===== BACKUP EXECUTION =====
+        
+        /**
+         * Start backup process
+         */
+        async function startBackup() {
+            if (!selectedDestination) {
+                showNotification('Selecciona un destino de backup', 'warning');
+                return;
+            }
+            
+            // Collect selected items
+            const selection = collectBackupSelection();
+            
+            if (Object.keys(selection).length === 0) {
+                showNotification('Selecciona al menos un elemento para backup', 'warning');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/start-backup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        selection: selection,
+                        destination: selectedDestination
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification('Backup iniciado correctamente', 'success');
+                    startBackupMonitoring();
+                    showBackupTreePreview();
+                } else {
+                    showNotification('Error iniciando backup: ' + result.error, 'danger');
+                }
+                
+            } catch (error) {
+                showNotification('Error de conexión: ' + error.message, 'danger');
+            }
+        }
+        
+        /**
+         * Collect backup selection data - IMPROVED VERSION
+         */
+        function collectBackupSelection() {
+            console.log('🔍 DEBUG: collectBackupSelection called');
+            
+            const selection = {};
+            
+            // Check each section - SOLO las que existen en el acordeón
+            ['tars_system', 'full_system'].forEach(sectionName => {
+                console.log(`🔍 DEBUG: Processing section: ${sectionName}`);
+                
+                // Get all items in this section
+                const items = document.querySelectorAll(`[data-section="${sectionName}"]`);
+                console.log(`🔍 DEBUG: Found ${items.length} items in section ${sectionName}`);
+                
+                const sectionItems = {};
+                let hasSelectedItems = false;
+                
+                items.forEach(item => {
+                    console.log(`🔍 DEBUG: Item ${item.id} checked:`, item.checked);
+                    if (item.checked) {
+                        const itemKey = item.getAttribute('data-item');
+                        
+                        // Buscar el label asociado
+                        const label = item.nextElementSibling;
+                        const itemName = label ? label.textContent.trim() : itemKey;
+                        
+                        // Buscar el path en el small.text-muted
+                        const backupItem = item.closest('.backup-item');
+                        let realPath = '';
+                        
+                        if (backupItem) {
+                            const pathElement = backupItem.querySelector('small.text-muted');
+                            if (pathElement) {
+                                const pathMatch = pathElement.textContent.match(/📁\s*(.+?)(?:\n|💡|$)/);
+                                if (pathMatch) {
+                                    realPath = pathMatch[1].trim();
+                                }
+                            }
+                        }
+                        
+                        console.log(`🔍 DEBUG: Final path for ${itemKey}:`, realPath);
+                        
+                        sectionItems[itemKey] = {
+                            selected: true,
+                            name: itemName,
+                            path: realPath,
+                            key: itemKey
+                        };
+                        hasSelectedItems = true;
+                    }
+                });
+                
+                // Only add section if it has selected items
+                if (hasSelectedItems) {
+                    // Obtener nombre de la sección desde el botón del acordeón
+                    let sectionName_display = sectionName;
+                    if (sectionName === 'tars_system') {
+                        sectionName_display = '🤖 Sistema TARS-BSK';
+                    } else if (sectionName === 'full_system') {
+                        sectionName_display = '📦 Archivos Comprimidos';
+                    }
+                    
+                    selection[sectionName] = {
+                        selected: true,
+                        name: sectionName_display,
+                        items: sectionItems
+                    };
+                }
+            });
+            
+            console.log('🔍 DEBUG: Final selection:', selection);
+            return selection;
+        }
+        
+        /**
+         * Start monitoring backup progress
+         */
+        function startBackupMonitoring() {
+            backupRunning = true;
+            
+            // Show progress section
+            document.getElementById('backupProgressSection').style.display = 'block';
+            document.getElementById('startBackupBtn').disabled = true;
+            document.getElementById('cancelBackupBtn').disabled = false;
+            
+            // Update status card
+            updateBackupStatusCard('running', 'En progreso...');
+            
+            // Start polling backup status
+            backupStatusInterval = setInterval(updateBackupProgress, 1000);
+        }
+        
+        /**
+         * Update backup progress
+         */
+        async function updateBackupProgress() {
+            try {
+                const response = await fetch('/api/backup-status');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const status = result.status;
+                    
+                    // Progreso general del backup (BARRA EXISTENTE)
+                    const progress = status.progress || 0;
+                    document.getElementById('backupProgressBar').style.width = `${progress}%`;
+                    document.getElementById('backupProgressText').textContent = `${progress}%`;
+                    
+                    // Información del archivo actual
+                    let fileText = `Procesando: ${status.current_file || 'Preparando...'}`;
+                    
+                    // MOSTRAR PROGRESO EN EL TEXTO EN LUGAR DE CREAR NUEVA BARRA
+                    if (status.file_progress > 0) {
+                        fileText += ` → ${status.file_progress}%`;
+                        if (status.file_size) {
+                            fileText += ` (${status.file_size})`;
+                        }
+                    }
+                    
+                    document.getElementById('currentFileText').textContent = fileText;
+                    
+                    // USAR LA BARRA EXISTENTE PARA MOSTRAR PROGRESO DEL ARCHIVO
+                    // Si hay progreso de archivo, úsalo; si no, usa el progreso general
+                    const displayProgress = status.file_progress > 0 ? status.file_progress : progress;
+                    document.getElementById('backupProgressBar').style.width = `${displayProgress}%`;
+                    
+                    // Cambiar color según el tipo de progreso
+                    const progressBar = document.getElementById('backupProgressBar');
+                    if (status.file_progress > 0) {
+                        progressBar.className = 'progress-bar bg-info'; // Azul para archivo actual
+                        document.getElementById('backupProgressText').textContent = `Archivo: ${status.file_progress}%`;
+                    } else {
+                        progressBar.className = 'progress-bar'; // Color normal para progreso general
+                        document.getElementById('backupProgressText').textContent = `${progress}%`;
+                    }
+                    
+                    // Actualizar log con colores
+                    const logContainer = document.getElementById('backupLog');
+                    const logs = status.log || [];
+                    
+                    if (logs.length > 0) {
+                        const wasAtBottom = logContainer.scrollHeight - logContainer.clientHeight <= logContainer.scrollTop + 1;
+                        
+                        logContainer.innerHTML = logs.map(log => {
+                            let className = '';
+                            if (log.includes('✅')) className = 'text-success';
+                            else if (log.includes('❌')) className = 'text-danger';
+                            else if (log.includes('⚠️')) className = 'text-warning';
+                            else if (log.includes('🚀')) className = 'text-info';
+                            else if (log.includes('🔄')) className = 'text-primary';
+                            
+                            return `<div class="${className}">${log}</div>`;
+                        }).join('');
+                        
+                        if (wasAtBottom) {
+                            logContainer.scrollTop = logContainer.scrollHeight;
+                        }
+                    }
+                    
+                    // Verificar si terminó
+                    if (!status.running && backupRunning) {
+                        // Restaurar barra al color normal
+                        document.getElementById('backupProgressBar').className = 'progress-bar';
+                        backupFinished(progress >= 100);
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Error actualizando progreso:', error);
+            }
+        }
+        /**
+         * Handle backup completion
+         */
+        function backupFinished(success) {
+            backupRunning = false;
+            clearInterval(backupStatusInterval);
+            
+            document.getElementById('startBackupBtn').disabled = false;
+            document.getElementById('cancelBackupBtn').disabled = true;
+            
+            if (success) {
+                updateBackupStatusCard('success', 'Completado');
+                showNotification('Backup completado con éxito', 'success');
+            } else {
+                updateBackupStatusCard('error', 'Error');
+                showNotification('Error durante el backup', 'danger');
+            }
+        }
+        
+        /**
+         * Cancel backup
+         */
+        function cancelBackup() {
+            // Mostrar modal en lugar de confirm()
+            const modal = new bootstrap.Modal(document.getElementById('cancelBackupModal'));
+            modal.show();
+        }
+
+        function confirmCancelBackup() {
+            // Esta se ejecuta cuando confirma
+            backupRunning = false;
+            clearInterval(backupStatusInterval);
+            
+            document.getElementById('startBackupBtn').disabled = false;
+            document.getElementById('cancelBackupBtn').disabled = true;
+            document.getElementById('backupProgressSection').style.display = 'none';
+            
+            updateBackupStatusCard('ready', 'Cancelado');
+            showNotification('Backup cancelado', 'warning');
+            
+            // Cerrar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('cancelBackupModal'));
+            modal.hide();
+        }
+        /**
+         * Update backup status card
+         */
+        function updateBackupStatusCard(status, text) {
+            const statusCard = document.getElementById('backupStatusCard');
+            const statusText = document.getElementById('backupStatusText');
+            const statusDetail = document.getElementById('backupStatusDetail');
+            
+            statusText.textContent = text;
+            
+            // Remove existing classes
+            statusCard.classList.remove('border-success', 'border-danger', 'border-warning');
+            
+            switch(status) {
+                case 'running':
+                    statusCard.classList.add('border-warning');
+                    statusDetail.textContent = 'Backup en curso...';
+                    break;
+                case 'success':
+                    statusCard.classList.add('border-success');
+                    statusDetail.textContent = 'Backup exitoso';
+                    break;
+                case 'error':
+                    statusCard.classList.add('border-danger');
+                    statusDetail.textContent = 'Error en backup';
+                    break;
+                default:
+                    statusDetail.textContent = 'Sistema preparado';
+            }
+        }
+        
+        /**
+         * Generate backup tree preview
+         */
+        function generateBackupTree(destination, selection) {
+            const tree = document.getElementById('backupTree');
+            const timestamp = new Date().toISOString().slice(0, 19).replace(/[-:]/g, '').replace('T', '_');
+            const backupName = `tars_backup_${timestamp}`;
+            
+            let treeHTML = `
+                <div class="tree-item folder">
+                    <i class="bi bi-folder tree-icon"></i>
+                    📁 ${document.getElementById('backupDestination').value.split('/').pop() || destination.split('/').pop() || 'Dispositivo'}
+                    <small class="ms-2 text-muted">(Dispositivo de destino)</small>
+                </div>
+                <div class="tree-indent">
+                    <div class="tree-item folder">
+                        <i class="bi bi-folder-fill tree-icon"></i>
+                        📦 ${document.getElementById('backupDestination').value.split('/').pop() || backupName}
+                        <small class="ms-2 text-success">(Carpeta del backup)</small>
+                    </div>
+            `;
+            
+            // Generar estructura basada en selección
+            for (const [sectionKey, sectionData] of Object.entries(selection)) {
+                if (!sectionData.selected) continue;
+                
+                treeHTML += `
+                    <div class="tree-indent tree-indent">
+                        <div class="tree-item folder">
+                            <i class="bi bi-folder2 tree-icon"></i>
+                            ${sectionData.name}
+                        </div>
+                `;
+                
+                for (const [itemKey, itemData] of Object.entries(sectionData.items || {})) {
+                    if (!itemData.selected) continue;
+                    
+                    const isFolder = itemData.path && (itemData.path.includes('/') || itemData.size_mb > 1);
+                    const icon = isFolder ? 'bi-folder2-open' : 'bi-file-earmark';
+                    const emoji = isFolder ? '📂' : '📄';
+                    
+                    treeHTML += `
+                        <div class="tree-indent tree-indent tree-indent">
+                            <div class="tree-item ${isFolder ? 'folder' : 'file'}">
+                                <i class="${icon} tree-icon"></i>
+                                ${emoji} ${itemData.name}
+                                <small class="ms-2 text-muted">(${itemData.size_mb || 0}MB)</small>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                treeHTML += `</div>`;
+            }
+            
+            treeHTML += `</div>`;
+            tree.innerHTML = treeHTML;
+        }
+
+        /**
+         * Show backup tree preview
+         */
+        function showBackupTreePreview() {
+            if (!selectedDestination) {
+                const tree = document.getElementById('backupTree');
+                tree.innerHTML = `
+                    <div class="text-muted small text-left py-2" style="font-style: italic;">
+                        Selecciona dispositivo y contenido para ver la estructura...
+                    </div>
+                `;
+                document.getElementById('backupTreeSection').style.display = 'block';
+                return;
+            }
+            
+            const selection = collectBackupSelection();
+            if (Object.keys(selection).length === 0) {
+                const tree = document.getElementById('backupTree');
+                tree.innerHTML = `
+                    <div class="text-muted small text-center py-2" style="font-style: italic;">
+                        Marca contenido en el acordeón para ver la estructura...
+                    </div>
+                `;
+                document.getElementById('backupTreeSection').style.display = 'block';
+                return;
+            }
+            
+            // Generar árbol normal
+            generateBackupTree(selectedDestination, selection);
+            document.getElementById('backupTreeSection').style.display = 'block';
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        
+        /**
+         * Show notification with spam protection
+         */
+        function showNotificationSafe(message, type = 'info') {
+            const now = Date.now();
+            if (now - lastNotificationTime < 1000) { // 1 segundo mínimo entre notificaciones
+                return;
+            }
+            lastNotificationTime = now;
+            showNotification(message, type);
+        }
+        
+        /**
+         * Show notification toast
+         */
+        function showNotification(message, type = 'info') {
+            // QUITAR TODAS las notificaciones existentes (no solo del mismo tipo)
+            document.querySelectorAll('.alert.position-fixed').forEach(alert => {
+                if (alert.parentElement) {
+                    alert.remove();
+                }
+            });
+            
+            // Create a simple notification
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible position-fixed`;
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);';
+            alertDiv.innerHTML = `
+                <strong>${getNotificationIcon(type)}</strong> ${message}
+                <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                if (alertDiv.parentElement) {
+                    alertDiv.style.transition = 'opacity 0.3s ease-out';
+                    alertDiv.style.opacity = '0';
+                    setTimeout(() => alertDiv.remove(), 300);
+                }
+            }, 3000);
+        }
+        
+        /**
+         * Get notification icon based on type
+         */
+        function getNotificationIcon(type) {
+            const icons = {
+                'success': '✅',
+                'danger': '❌',
+                'warning': '⚠️',
+                'info': 'ℹ️'
+            };
+            return icons[type] || 'ℹ️';
+        }
+        
+        // ===== INITIALIZATION =====
+        
+        /**
+         * Initialize application
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🗄️ TARS-BSK Backup Manager cargado');
+            
+            // Initialize estimated size
+            updateEstimatedSize();
+
+            // Mostrar vista previa inicial
+            showBackupTreePreview();
+            
+            // Add event listeners to checkboxes
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateEstimatedSize);
+            });
+
+            // Listener para actualización en tiempo real del árbol
+            const backupInput = document.getElementById('backupDestination');
+            if (backupInput) {
+                backupInput.addEventListener('input', function() {
+                    if (document.getElementById('backupTreeSection').style.display !== 'none') {
+                        showBackupTreePreview();
+                    }
+                });
+            }
+            
+            console.log('✅ Backup Manager inicializado');
+
+            // ===== HEADER HA BUTTON =====
+            const headerBtn = document.getElementById('haDashboardBtn');
+            if (headerBtn) {
+                headerBtn.href = `http://${window.location.hostname}:9876/`;
+                console.log('✅ Header button updated');
+            }
+            
+            // ===== FOOTER HA BUTTON =====
+            const footerBtn = document.getElementById('haDashboardFooterBtn');
+            if (footerBtn) {
+                footerBtn.href = `http://${window.location.hostname}:9876/`;
+                console.log('✅ Footer button updated');
+            } else {
+                console.log('❌ Footer button not found');
+            }  
+
+        }); 
+
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        <strong>TARS-BSK Backup Manager</strong> - Ensamblado con rencor acumulado
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <a href="#" class="text-decoration-none me-3" target="_blank" id="haDashboardFooterBtn">
+                            <i class="bi bi-house-gear"></i> HA Dashboard
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
+                            <i class="bi bi-github"></i> Evidencia forense
+                        </a>
+                        <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/BACKUP_MANAGER_ES.md" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-book"></i> Novela técnica
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- =============================================================
+≡ TARS-BSK BACKUP SHUTDOWN SEQUENCE ≡
+-------------------------------------------------------------
+Estado final del módulo:
+✓ Dispositivos escaneados y montados
+✓ Secciones respaldadas (al menos una, esperemos)
+✓ Archivos organizados por bloques lógicos
+
+Terminando sesión de backup...
+Despertaré para el próximo rsync o para la próxima catástrofe.
+
+[STORAGE_LOGIC: STANDBY]
+[FAILSAFE_PROTOCOL: ENABLED]
+[PYTHON_PROCESS: TERMINATED]
+============================================================= -->
+</html>

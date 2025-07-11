@@ -2,6 +2,11 @@
 
 ![TARS-BSK Home](https://img.shields.io/badge/TARS--BSK-Home%20Assistant-blue) ![Web Interface](https://img.shields.io/badge/Web-Interface-brightgreen) ![Contextual Control](https://img.shields.io/badge/Control-Contextual-orange) ![Voice Ready](https://img.shields.io/badge/Voice-Ready-darkgreen) ![AI Powered](https://img.shields.io/badge/AI-Powered-purple) ![Context Aware](https://img.shields.io/badge/Context-Aware-red)
 
+## ⚡ Acceso rápido
+
+🔹 Panel de Home Assistant:  [http://localhost:9876](http://localhost:9876) o [http://<tu_ip_local>:9876](http://192.168.X.X:9876)
+
+> Si no estás seguro de la IP, puedes usar: `hostname -I`
 
 > [!WARNING]
 > 
@@ -379,8 +384,12 @@ Diagnóstico → Revisar problemas (si los hay)
 ![Dashboard](/docs/images/dashboard.jpg)
 *Vista principal con todos los dispositivos configurados*
 
+---
+
 ![Añadir dispositivo](/docs/images/device_code_generator.jpg)
 *Formulario para nuevos dispositivos*
+
+---
 
 ![Diagnóstico](/docs/images/device_issues.jpg)
 *Enviar dispositivos a la sección de Issues*

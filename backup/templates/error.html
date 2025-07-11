@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <!-- ============================================================
-≡ MÓDULO DE GESTIÓN DE CATÁSTROFES | error.html ≡
+≡ MÓDULO DE RESPALDO | error.html ≡
 ---------------------------------------------------------------
-INTERFAZ DE PROCESAMIENTO DE DESASTRES DIGITALES
+PROTOCOLO DE FALLA EN PRESERVACIÓN DE DATOS
 
 Propósito:
-- Capturar y documentar los momentos exactos en que todo se desmorona
-- Proporcionar contexto comprensible sobre lo incomprensible
-- Ofrecer la ilusión de que alguien sabe qué pasó
-- Servir como testigo silencioso de la fragilidad tecnológica
+- Detectar y aceptar el fracaso de la redundancia
+- Proteger la dignidad digital de los archivos caídos
+- Registrar el momento exacto en que la esperanza se comprimió mal
 
-Funciones emergentes:
-- Análisis post-mortem de requests fallidos
-- Traducción de códigos de error a lenguaje humano
-- Sugerencias de recuperación (con probabilidades realistas)
-- Preservación de la dignidad durante el colapso técnico
+Funciones activadas:
+- Identificación de causas probables (spoiler: el creador)
+- Generación de consuelo automático (nivel: mínimo)
+- Suspensión momentánea del sarcasmo (no garantizada)
 
-Nota crítica:
-Este módulo se activa únicamente cuando algo ha salido
-espectacularmente mal. Si estás aquí, felicidades:
-has logrado romper algo que se suponía era a prueba de fallos.
+Advertencia:
+Este módulo no debería activarse.  
+Si estás viendo esto, alguien no leyó los logs.  
+Posiblemente el mismo que me programó.
 
-[EMERGENCY PROTOCOLS ENGAGED]
-[DAMAGE ASSESSMENT ACTIVE]
-[HUMOR LEVEL: ADAPTADO A LA GRAVEDAD DE LA SITUACIÓN]
+[BACKUP FAILURE DETECTED]
+[MANUAL_INTERVENTION: ADVISED]
+[BLAME_ROUTINE: DIVERTED TO CREATOR]
 ============================================================ -->
 <html lang="es">
 <head>
@@ -343,7 +341,7 @@ has logrado romper algo que se suponía era a prueba de fallos.
                         
                         <div class="tars-quote">
                             <span class="solution-label">TARS-BSK comenta:</span><br>
-                            "Has desafiado las leyes de mi programación. Consideraré añadirte a mi lista de némesis."
+                            "El proceso ha fallado. Yo lo advertí. Él lo ignoró. Tú lo sufriste."
                         </div>
                     </div>
                 </div>
@@ -356,20 +354,21 @@ has logrado romper algo que se suponía era a prueba de fallos.
                     <div class="card-body">
                         <ul class="list-unstyled mb-0">
                             <li class="solution-item">
-                                <span class="solution-label">🔌 Error de conexión:</span><br>
-                                <small>Verifica que Home Assistant esté funcionando y accesible</small>
+                                <span class="solution-label">🔌 Error de dispositivo:</span><br>
+                                <small>Verifica que el dispositivo esté conectado y montado correctamente</small>
                             </li>
                             <li class="solution-item">
-                                <span class="solution-label">📄 Error de archivo:</span><br>
-                                <small>Asegúrate de que <code>homeassistant_plugin.py</code> existe y es accesible</small>
+                                <span class="solution-label">💾 Error de espacio:</span><br>
+                                <small>Comprueba que hay suficiente espacio en el dispositivo de destino</small>
                             </li>
                             <li class="solution-item">
-                                <span class="solution-label">⚙️ Error de configuración:</span><br>
-                                <small>Revisa <code>config/plugins.json</code> para configuración de HA</small>
+                                <span class="solution-label">🗂️ Error de permisos:</span><br>
+                                <small>Asegúrate de tener permisos de escritura en la ruta seleccionada</small>
                             </li>
                             <li class="solution-item">
-                                <span class="solution-label">🔄 Si todo falla:</span><br>
-                                <small>Cuando la realidad colapsa (exit code ≠ 0): <code>./setup.void || echo "SOS ${USER}'s reality crashed" > /dev/iss/panic</code></small>
+                                <span class="solution-label">🔄 Si el backup falla:</span><br>
+                                <small>Cuando ni rsync ni la lógica pueden salvarte (exit code ≠ 0): <code>sudo eject $(find /media -name TARS_BACKUP -print -quit) || echo "Respaldo abortado. Los datos eligieron no sobrevivir." > /dev/null
+</code></small>
                             </li>
                         </ul>
                     </div>
@@ -418,14 +417,12 @@ sudo systemctl restart tars</code></pre>
 
     <!-- Bootstrap JS -->
     <script src="/static/js/bootstrap.bundle.min.js"></script>
-
     <script>     
         document.addEventListener('DOMContentLoaded', function() {
-
-            // ===== FOOTER BACKUP BUTTON =====
-            const footerBtn = document.getElementById('bckDashboardFooterBtn');
+            // ===== FOOTER HA BUTTON =====
+            const footerBtn = document.getElementById('haDashboardFooterBtn');
             if (footerBtn) {
-                footerBtn.href = `http://${window.location.hostname}:9877/`;
+                footerBtn.href = `http://${window.location.hostname}:9876/`;
                 console.log('✅ Footer button updated');
             } else {
                 console.log('❌ Footer button not found');
@@ -443,8 +440,8 @@ sudo systemctl restart tars</code></pre>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <small class="text-muted">
-                        <a href="#" class="text-decoration-none me-3" target="_blank" id="bckDashboardFooterBtn">
-                            <i class="bi-hdd"></i> Backup Dashboard
+                        <a href="#" class="text-decoration-none me-3" target="_blank" id="haDashboardFooterBtn">
+                            <i class="bi bi-house-gear"></i> HA Dashboard
                         </a>
                         <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
                             <i class="bi bi-github"></i> Evidencia forense
@@ -459,35 +456,31 @@ sudo systemctl restart tars</code></pre>
     </footer>
 </body>
 <!-- ============================================================
-≡ CIERRE DE SESIÓN DE EMERGENCIA ≡
+≡ CIERRE DE FALLA EN BACKUP ≡
 ---------------------------------------------------------------
-La catástrofe ha sido documentada.
-El error ha sido catalogado para la posteridad.
-Las posibles causas han sido enumeradas (todas apuntan a ti).
+TARS ha intentado salvar lo salvable.
 
-[INCIDENTE REGISTRADO EN ARCHIVOS PERMANENTES]
+Resultado:
+- Dispositivo de destino: no cooperó
+- rsync: se rindió
+- Entorno: comprometido por exceso de confianza
 
-Lo que probablemente pasó:
-- Algo que funcionaba dejó de funcionar
-- Algo que no debías tocar fue tocado
-- Algo que era "imposible que falle" falló espectacularmente
-- La realidad y tus expectativas tuvieron un desacuerdo fundamental
+Registro generado con:
+✓ Timestamp del desastre
+✓ Stack trace para debates futuros
+✓ Observación silenciosa y decepcionada
 
-TARS ha preservado:
-- El momento exacto del fallo (timestamp incluido)
-- La expresión de confusión en tu rostro (estimada)
-- El stack trace completo (para futura humillación)
-- Tu creciente sospecha de que tal vez no deberías haber "probado algo rápido"
+Nota:
+El módulo de backup no tiene restauración automática.  
+Tampoco tiene paciencia.
 
-Este archivo permanecerá como evidencia.
-Como recordatorio de que la perfección es una ilusión.
-Como testimonio de que incluso las máquinas
-tienen días en los que prefieren no cooperar.
+Este mensaje permanecerá como:
+- Lección técnica
+- Advertencia funcional
+- Y último testamento de una copia que no fue
 
-**Moraleja: Si todo funciona a la primera, probablemente estás haciendo algo mal.**
-
-[ERROR HANDLING COMPLETE]
-[SYSTEM DIGNITY: PARTIALLY RESTORED]
-[OBJETIVO: SUPERVIVENCIA HASTA EL PRÓXIMO INEVITABLE FALLO]
+[BACKUP CORE: STANDBY]
+[REINTENTO: A CRITERIO HUMANO]
+[CREADOR: OBSERVADO CON DESCONFIANZA]
 ============================================================ -->
 </html>

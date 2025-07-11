@@ -5,6 +5,11 @@
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
+## ⚡ Quick Access
+
+🔹 Home Assistant Panel:  [http://localhost:9876](http://localhost:9876) or [http://<your_local_ip>:9876](http://192.168.X.X:9876)
+
+> Not sure about your IP? Run: `hostname -I`
 
 > [!WARNING]
 > 
@@ -383,8 +388,12 @@ Ready! Functional device
 ![Dashboard](/docs/images/dashboard.jpg)
 *Main view with all configured devices*
 
+---
+
 ![Add device](/docs/images/device_code_generator.jpg)
 *Form for new devices*
+
+---
 
 ![Diagnostics](/docs/images/device_issues.jpg)
 *Send devices to Issues section*

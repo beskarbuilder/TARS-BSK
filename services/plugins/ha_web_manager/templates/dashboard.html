@@ -1220,7 +1220,17 @@ Este archivo no fue diseñado. Fue invocado.
             
             // Load issues statistics
             loadIssuesStats();
-        });
+
+            // ===== FOOTER BACKUP BUTTON =====
+            const footerBtn = document.getElementById('bckDashboardFooterBtn');
+            if (footerBtn) {
+                footerBtn.href = `http://${window.location.hostname}:9877/`;
+                console.log('✅ Footer button updated');
+            } else {
+                console.log('❌ Footer button not found');
+            }  
+
+        }); 
 
     </script>
     <!-- Footer -->
@@ -1234,14 +1244,14 @@ Este archivo no fue diseñado. Fue invocado.
                 </div>
                 <div class="col-md-6 text-md-end">
                     <small class="text-muted">
+                        <a href="#" class="text-decoration-none me-3" target="_blank" id="bckDashboardFooterBtn">
+                            <i class="bi-hdd"></i> Backup Dashboard
+                        </a>
                         <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
                             <i class="bi bi-github"></i> Evidencia forense
                         </a>
                         <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/HOMEASSISTANT_PLUGIN_ES.md" target="_blank" class="text-decoration-none me-3">
                             <i class="bi bi-book"></i> Novela técnica
-                        </a>
-                        <a href="https://github.com/beskarbuilder/TARS-BSK/issues" target="_blank" class="text-decoration-none">
-                            <i class="bi bi-bug"></i> Todo el repositorio
                         </a>
                     </small>
                 </div>

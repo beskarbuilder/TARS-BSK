@@ -641,7 +641,7 @@ Funciones principales:
                             Esta página identifica dispositivos que no responden correctamente a Home Assistant.
                             Usa "Ocultar" para sacarlos de esta vista temporalmente.
                         </p>
-                        <div class="alert alert-warning mb-0">
+                        <div class="alert alert-light mb-0">
                             <span class="fw-normal"><i class="bi bi-info-circle"></i> Nota:</span>
                             "Ocultar" solo quita el dispositivo de esta pantalla. Recarga la página para verlo de nuevo.
                         </div>
@@ -947,7 +947,17 @@ Funciones principales:
             loadProblematicDevices();
             loadHealthStats();
             document.getElementById('helpCard').style.display = 'block';
-        });
+
+            // ===== FOOTER BACKUP BUTTON =====
+            const footerBtn = document.getElementById('bckDashboardFooterBtn');
+            if (footerBtn) {
+                footerBtn.href = `http://${window.location.hostname}:9877/`;
+                console.log('✅ Footer button updated');
+            } else {
+                console.log('❌ Footer button not found');
+            }  
+
+        }); 
 
         // ===== DATA LOADING FUNCTIONS =====
         
@@ -1380,6 +1390,8 @@ Funciones principales:
             const bsToast = new bootstrap.Toast(toast);
             bsToast.show();
         }
+
+             
     </script>
     <!-- Footer -->
     <footer class="bg-light border-top mt-5">
@@ -1392,14 +1404,14 @@ Funciones principales:
                 </div>
                 <div class="col-md-6 text-md-end">
                     <small class="text-muted">
+                        <a href="#" class="text-decoration-none me-3" target="_blank" id="bckDashboardFooterBtn">
+                            <i class="bi-hdd"></i> Backup Dashboard
+                        </a>
                         <a href="https://github.com/beskarbuilder/TARS-BSK" target="_blank" class="text-decoration-none me-3">
                             <i class="bi bi-github"></i> Evidencia forense
                         </a>
                         <a href="https://github.com/beskarbuilder/TARS-BSK/blob/main/docs/HOMEASSISTANT_PLUGIN_ES.md" target="_blank" class="text-decoration-none me-3">
                             <i class="bi bi-book"></i> Novela técnica
-                        </a>
-                        <a href="https://github.com/beskarbuilder/TARS-BSK/issues" target="_blank" class="text-decoration-none">
-                            <i class="bi bi-bug"></i> Todo el repositorio
                         </a>
                     </small>
                 </div>

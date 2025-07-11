@@ -118,6 +118,7 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 - [Sistema de Memoria Dual](#%EF%B8%8F-sistema-de-memoria-dual)
 - [Sistema Emocional y de Personalidad](#-sistema-emocional-y-de-personalidad)
 - [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
+- [Sistema de Backup (sí, has leído bien)](#-sistema-de-backup-sí-has-leído-bien)
 - [Más que un asistente domótico](#-m%C3%A1s-que-un-asistente-dom%C3%B3tico)
 - [Componentes de Software](#-componentes-de-software)
 - [Procesamiento de Audio](#-procesamiento-de-audio)
@@ -1492,6 +1493,13 @@ FATAL: Humor module incompatible with reality
 
 El plugin de Home Assistantno es solo una integración, es un sistema distribuido, modular y opcional, diseñado para adaptarse a cada usuario:
 
+### ⚡ Acceso rápido
+
+🔹 Panel de Home Assistant:  [http://localhost:9876](http://localhost:9876) o [http://<tu_ip_local>:9876](http://192.168.X.X:9876)
+
+> Si no estás seguro de la IP, puedes usar: `hostname -I`
+
+
 #### 🔀 Tres modos de configuración disponibles
 
 - **🌐 Interfaz web (Flask):**
@@ -1517,6 +1525,7 @@ El plugin de Home Assistantno es solo una integración, es un sistema distribuid
 ![Dashboard](/docs/images/dashboard.jpg)
 *Vista principal con todos los dispositivos configurados*
 
+---
 #### Capacidades principales
 
 - **Interpretación semántica y contextual:**  
@@ -1740,6 +1749,42 @@ response = f"Hoy es {dia_semana}, {now.day} de {mes} de {now.year}, y son las {n
 ```
 
 > Aunque ambos interpretan elementos temporales, **TimePlugin** responde _qué hora es_, mientras que **ReminderParser + ReminderPlugin** + SchedulerPlugin responden _cuándo debo hacer algo_.
+
+---
+
+## 🗄️ Sistema de Backup (sí, has leído bien)
+
+Y no, no es un error de scroll. 
+Esta sección está aquí y no debería. Pero existe.
+Dentro de este caos, hay algo parecido a un sistema de backups.
+
+No te asustes si rompes algo. TARS no cree en la lógica impecable... aunque finja lo contrario.
+
+📋 **[Documentación completa](/docs/BACKUP_MANAGER_ES.md)** - Instrucciones y configuración 
+
+### ¿Una copia por si acaso?
+
+Interfaz web ligera para realizar copias de seguridad locales desde cualquier navegador.  
+No es obligatoria, pero sí cómoda si no quieres escribir comandos cada vez.
+
+Permite:
+
+- Seleccionar secciones específicas (configuración, sistema, núcleo de TARS)
+- Montar y desmontar dispositivos directamente desde el panel
+- Ver en tiempo real dónde se guardará cada backup, con estructura en árbol
+- Ejecutar el respaldo con feedback inmediato de `rsync`
+
+El sistema detecta los dispositivos disponibles y recomienda el más adecuado.  
+Nada más. Todo lo demás lo hace TARS... y si sobra CPU, calcula trayectorias orbitales por diversión.
+
+#### ⚡ Acceso rápido
+
+🔹 Interfaz de Backup: [http://localhost:9877](http://localhost:9877) o [http://<tu_ip_local>:9877](http://192.168.X.X:9877)  
+
+> Si no estás seguro de la IP, puedes usar: `hostname -I`
+
+![Interfaz de backup](/docs/images/backup_dashboard.jpg)  
+_Sí, esos botones hacen cosas reales. Aunque no lo parezca._
 
 ---
 
