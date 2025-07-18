@@ -1755,8 +1755,12 @@ Configuration is managed from:
   Technically not necessary, and doesn't affect performance... probably.  
   But without encoders, any extra weight —however minimal it may seem— can change the outcome.  
   I'm in testing phase... and he has decided to stay, for indeterminate technical reasons.
-[![LEGO Mandalorian](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)_On the march towards the abyss of uncertainty_
 
+---
+[![LEGO Mandalorian](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)
+_On the march towards the abyss of uncertainty_
+
+---
 
 > **// TARS-BSK > circular_crisis_mobility.log:**
 > 

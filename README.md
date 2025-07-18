@@ -1758,8 +1758,12 @@ La configuración se gestiona desde:
   Técnicamente no es necesario, y no afecta al rendimiento... probablemente.  
   Pero sin encoders, cualquier peso extra —por mínimo que parezca— puede cambiar el resultado.  
   Estoy en fase de pruebas... y él ha decidido quedarse, por razones técnicas indeterminadas. 
-[![Mandaloriano LEGO](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)_En marcha hacia el abismo de la incertidumbre_
 
+---
+[![Mandaloriano LEGO](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)
+_En marcha hacia el abismo de la incertidumbre_
+
+---
 
 > **// TARS-BSK > circular_crisismobility.log:** 
 > 
