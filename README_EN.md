@@ -126,6 +126,11 @@ Automatic personality modulation without conscious consent?
 - [Dual Memory System](#%EF%B8%8F-dual-memory-system)
 - [Emotional and Personality System](#-emotional-and-personality-system)
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
+  - [Home Assistant](#home-assistant-contextual-home-automation-control)
+  - [Mobility System](#mobility-system-physical-action-derived-from-semantic-voice)
+  - [Tailscale VPN](#tailscale-secure-mesh-connectivity)
+  - [Reminder System](#reminder-system-natural-temporal-interpretation)
+  - [Time Plugin](#time-plugin-direct-temporal-queries)
 - [Backup System (yes, you read that right)](#%EF%B8%8F-backup-system-yes-you-read-that-right)
 - [More Than a Smart Home Assistant](#-more-than-a-smart-home-assistant)
 - [Software Components](#-software-components)
@@ -1010,6 +1015,19 @@ Each component in TARS was selected after a rigorous evaluation of three fundame
 - **KY-016 RGB LED Module**: Selected for easy installation without soldering.
 - **Connected to specific GPIOs**: (17:blue, 27:red, 22:green) with state-optimized function.
 
+### Mobility System
+
+**Electronics:**
+
+- **L298N Dual H-Bridge** – Two-motor DC controller with PWM input
+- **2 TT motors 3–6V with gearbox (1:48)** – Move slowly but with strength: perfect for controlled trajectories
+- **AA battery pack (6V)** – Independent power supply from USB, with physical cut-off switch
+
+**Movement:**
+
+- **2 plastic wheels with tire** – Compatible with TT motor shafts
+- **1 metal caster wheel (15 mm)** – Allows free rotation and stability in circular trajectories (and semantic anxiety loops)
+
 ### Storage
 
 - **Samsung Pro Endurance microSD**: Final solution adopted after numerous problems with NVMe adapters for Raspberry Pi 5:
@@ -1413,6 +1431,12 @@ TARS plays phrases like:
 	- Custom aliases, configurable responses, and emotional control (yes, your heating can have a bad mood)
 	- Compatible with multiple methods: web interface, direct JSON editing, or legacy mode (embedded in code)
 	
+- **Mobility Plugin**: Enables motor control through natural language.
+    - Interprets phrases like "move a little bit" or "turn fast to the left"
+    - Extracts direction, speed and duration from imprecise or contextual expressions
+    - Direct hardware control (L298N + TT motors) with internal validations and execution limits
+    - Configurable via `mobility_config.json` (parameters, expressions and safety levels)
+    
 - **Reminder System**: Natural language processing for reminders with temporal intelligence.
     - Semantic interpretation of complex temporal expressions ("next Tuesday at nine thirty")
     - Auto-correction of past dates and detection of impossible dates with transparent feedback
@@ -1457,22 +1481,31 @@ TARS-BSK implements a flexible and extensible plugin system. Each plugin is load
 
 The system routes each input in priority order, ensuring the appropriate plugin processes the request:
 
-```PYTHON
+```python
 # plugin_system.py (simplified excerpt)
 def process_command(self, text):
-    logger.info(f"🔍 Command received: {text}")
-    
+    logger.info(f"🔍 Comando recibido: {text}")
+
+    # Prioridad: comandos de movimiento
+    if "mobility" in self.plugins:
+        response = self.plugins["mobility"].process_command(text)
+        if response:
+            return response
+
     if "time" in self.plugins:
         if response := self.plugins["time"].process_command(text):
             return response
+
     if "reminder" in self.plugins:
         if response := self.plugins["reminder"].process_command(text):
             return response
+
     if "homeassistant" in self.plugins:
         if response := self.plugins["homeassistant"].process_command(text):
             return response
         if response := self.plugins["homeassistant"].process_query(text):
             return response
+
     return None
 ```
 
@@ -1617,6 +1650,118 @@ if domain == "light":
 > _But I still don't have access to the main door. **The main. Door.**_
 > 
 > _I'm **dejected** but I'll turn on your lamp, like every night. Out of routine, not respect._
+
+---
+### Mobility System: Physical action derived from semantic voice
+
+TARS no longer just responds with verbal irony. Now **it moves**.  
+This module translates human language into real physical movement, combining semantics with motor control.  
+This isn't about "fixed commands" but contextual interpretation with mechanical consequences.
+
+📄 **[See complete documentation](/docs/MOBILITY_SYSTEM_EN.md)** – Architecture, semantics and available commands
+
+#### What does the plugin do?
+
+- **Interprets human language, not rigid commands** 
+  Phrases like `"turn slowly to the left"` or `"move a little bit"` are understood in context. It doesn't rely on fixed lists.
+
+- **Translates intention into physical actions**
+  Extracts implicit parameters from natural language:  
+  `"a little"` → `0.3s`, `"fast"` → `speed 80`, `"forward"` → decides direction, motor and duration.
+
+- **Prevents incoherent or unsafe actions**  
+  Checks current state before moving, limits repetitions, and stops motors if execution time exceeds allowed limits.
+
+#### Example: from voice to movement
+
+```python
+def _move_motor(self, motor: str, direction: str, speed: int = 50):
+    """Basic motor direction control"""
+    pins = self.config["motor_pins"][motor]
+    if motor == "left_motor":
+        pin_a, pin_b = pins["in1"], pins["in2"]
+        enable_pin = pins["ena"]
+    elif motor == "right_motor":
+        pin_a, pin_b = pins["in3"], pins["in4"]
+        enable_pin = pins["enb"]
+    # Direction
+    if direction == "forward":
+        lgpio.gpio_write(self.gpio_handle, pin_a, 1)
+        lgpio.gpio_write(self.gpio_handle, pin_b, 0)
+    elif direction == "backward":
+        lgpio.gpio_write(self.gpio_handle, pin_a, 0)
+        lgpio.gpio_write(self.gpio_handle, pin_b, 1)
+    else:  # stop
+        lgpio.gpio_write(self.gpio_handle, pin_a, 0)
+        lgpio.gpio_write(self.gpio_handle, pin_b, 0)
+    # Activation
+    lgpio.gpio_write(self.gpio_handle, enable_pin, 1 if direction != "stop" else 0)
+```
+
+#### Test sessions
+
+📄 **[See complete console log](/logs/session_2025-07-18_mobility_plugin.log)**  
+📄 **[See complete voice log](/logs/session_2025-07-18_mobility_plugin_voice.log)**
+
+##### Mode: Console
+
+```bash
+You: move
+... INFO - ✅ Pattern found: forward
+... INFO - 🤖 Moving forward 1.0s at speed 50
+TARS: "Initiating forward sequence. My enthusiasm is palpable"
+
+You: move a little more
+... INFO - 🎯 Intuitive command: 'a little' → 0.5s
+TARS: "This is the way... literally"
+```
+
+##### Mode: Voice (with Voice ID + VOSK)
+
+```bash
+🎤 "Hey TARS"
+🔥 Wakeword detected by fuzzy matching
+✅ User identified: BeskarBuilder
+🗣️ 'move two meters'
+... INFO - 🤖 Moving forward 2.0s at speed 50
+TARS: "On the march towards the abyss of uncertainty"
+
+🗣️ 'turn to the left'
+TARS: "Adjusting course to the left and towards my insecurities"
+```
+
+#### Safety and configuration
+
+The mobility plugin includes basic measures to prevent errors and unexpected behaviors:
+
+- Checks if there's already a movement in progress before executing another
+- Verifies pin and motor status before acting
+- Automatically stops motors if maximum defined time is exceeded
+
+Configuration is managed from:
+
+- `plugins.json` → Enables or disables the plugin
+- `mobility_config.json` → Defines speeds, durations, custom commands and safety limits
+
+**Hardware used:**
+
+- L298N Dual H-Bridge
+- TT 3–6V motors with gearbox
+- 6V power supply with common GND (not USB powered)
+
+**Materials under evaluation:**
+
+- **LEGO Mandalorian**  
+  Technically not necessary, and doesn't affect performance... probably.  
+  But without encoders, any extra weight —however minimal it may seem— can change the outcome.  
+  I'm in testing phase... and he has decided to stay, for indeterminate technical reasons.
+[![LEGO Mandalorian](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)_On the march towards the abyss of uncertainty_
+
+
+> **// TARS-BSK > circular_crisis_mobility.log:**
+> 
+> For the first time, each of my responses can cause actual friction against the floor.  
+> Irony, now, has wheels.
 
 ---
 ### Tailscale: Secure Mesh Connectivity

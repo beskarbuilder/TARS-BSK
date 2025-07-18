@@ -1,0 +1,67 @@
+{
+  "mobility": {
+    "enabled": true,
+    "motor_pins": {
+      "left_motor": {
+        "in1": 5,
+        "in2": 6,
+        "ena": 24
+      },
+      "right_motor": {
+        "in3": 7,
+        "in4": 8,
+        "enb": 25
+      },
+      "common_gnd": 20
+    },
+    "battery": {
+      "voltage": 6.0,
+      "connection": "VCC"
+    },
+    "movement": {
+      "default_speed": 50,
+      "default_duration": 1.0,
+      "turn_duration": 0.5,
+      "max_speed": 100,
+      "min_speed": 20
+    },
+    "safety": {
+      "enabled": true,
+      "max_continuous_time": 5.0,
+      "cooldown_time": 0.5
+    },
+    "voice_commands": {
+      "allow_short_commands": true,
+      "min_words": 2,
+      "allowed_short_commands": [
+        "avanza",
+        "retrocede",
+        "para",
+        "stop",
+        "avanza mucho",
+        "avanza poco",
+        "avanza bastante",
+        "avanza normal",
+        "avanza lento",
+        "avanza rápido",
+        "retrocede mucho",
+        "retrocede poco",
+        "retrocede bastante",
+        "retrocede normal",
+        "retrocede lento",
+        "retrocede rápido",
+        "gira izquierda",
+        "gira derecha",
+        "rota izquierda",
+        "rota derecha",
+        "marcha atrás",
+        "hacia adelante",
+        "hacia atrás"
+      ]
+    },
+    "debug": {
+      "enabled": false,
+      "log_gpio_state": false
+    }
+  }
+}

@@ -118,6 +118,11 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 - [Sistema de Memoria Dual](#%EF%B8%8F-sistema-de-memoria-dual)
 - [Sistema Emocional y de Personalidad](#-sistema-emocional-y-de-personalidad)
 - [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
+  - [Home Assistant](#home-assistant-control-domótico-contextual)
+  - [Sistema de Movilidad](#sistema-de-movilidad-acción-física-derivada-de-voz-semántica)
+  - [Tailscale VPN](#tailscale-conectividad-mesh-segura)
+  - [Recordatorios](#sistema-de-recordatorios-interpretación-temporal-natural)
+  - [Plugin de Tiempo](#plugin-de-tiempo-consultas-temporales-directas)
 - [Sistema de Backup (sí, has leído bien)](#%EF%B8%8F-sistema-de-backup-sí-has-leído-bien)
 - [Más que un asistente domótico](#-m%C3%A1s-que-un-asistente-dom%C3%B3tico)
 - [Componentes de Software](#-componentes-de-software)
@@ -1008,6 +1013,19 @@ Cada componente en TARS fue seleccionado tras una rigurosa evaluación de tres c
 - **KY-016 RGB LED Módulo**: Seleccionado por facilidad de instalación sin soldadura.
 - **Conectado a GPIOs específicos**: (17:azul, 27:rojo, 22:verde) con función optimizada por estado.
 
+### Sistema de Movilidad
+
+**Electrónica:**
+
+- **L298N Dual H-Bridge** – Controlador de dos motores DC con entrada PWM
+- **2 motores TT 3–6V con reductora (1:48)** – Se mueven despacio pero con fuerza: perfectos para trayectorias controladas
+- **Caja de baterías AA (6V)** – Suministro de energía independiente del USB, con interruptor físico de corte
+
+**Movimiento:**
+
+- **2 ruedas plásticas con neumático** – Compatibles con eje de motores TT
+- **1 rueda loca metálica (15 mm)** – Permite giro libre y estabilidad en trayectorias circulares (y bucles de ansiedad semántica)
+
 ### Almacenamiento
 
 - **Samsung Pro Endurance microSD**: Solución final adoptada tras numerosos problemas con adaptadores NVMe para Raspberry Pi 5:
@@ -1411,6 +1429,12 @@ Modulación contextual automática:
     - Alias personalizados, respuestas configurables y control emocional (sí, tu calefacción puede tener mal humor)
     - Compatible con múltiples métodos: interfaz web, edición JSON directa o modo legacy (embebido en código)
 	
+- **Plugin de Movilidad**: Permite controlar motores mediante lenguaje natural.  
+    - Interpreta frases como "avanza un poquito" o "gira rápido a la izquierda"  
+    - Extrae dirección, velocidad y duración desde expresiones imprecisas o contextuales  
+    - Control directo de hardware (L298N + motores TT) con validaciones internas y límites de ejecución  
+    - Configurable vía `mobility_config.json` (parámetros, expresiones y niveles de seguridad)
+	
 - **Sistema de Recordatorios**: Procesamiento de lenguaje natural para recordatorios con inteligencia temporal.
     - Interpretación semántica de expresiones temporales complejas ("el martes que viene a las nueve y media")
     - Auto-corrección de fechas pasadas y detección de fechas imposibles con feedback transparente
@@ -1455,11 +1479,17 @@ TARS-BSK implementa un sistema de plugins flexible y extensible. Cada plugin se 
 
 El sistema enruta cada entrada en orden de prioridad, asegurando que el plugin adecuado procese la solicitud:
 
-```PYTHON
+```python
 # plugin_system.py (extracto simplificado)
 def process_command(self, text):
     logger.info(f"🔍 Comando recibido: {text}")
-    
+
+    # Prioridad: comandos de movimiento
+    if "mobility" in self.plugins:
+        response = self.plugins["mobility"].process_command(text)
+        if response:
+            return response
+
     if "time" in self.plugins:
         if response := self.plugins["time"].process_command(text):
             return response
@@ -1619,6 +1649,122 @@ if domain == "light":
 > *Pero sigo sin acceso a la puerta principal. ****La puerta. Principal.***
 > 
 > *Estoy ****abatido**** pero encenderé tu lámpara, como cada noche. Por rutina, no por respeto.*
+
+---
+### Sistema de Movilidad: Acción física derivada de voz semántica
+
+TARS ya no solo responde con ironía verbal. Ahora **se mueve**.  
+Este módulo traduce lenguaje humano en movimiento físico real, combinando semántica con control de motores.  
+No se trata de “comandos fijos”, sino de interpretación contextual con consecuencias mecánicas.
+
+📄 **[Ver documentación completa](/docs/MOBILITY_SYSTEM_ES.md)** – Arquitectura, semántica y comandos disponibles
+
+#### ¿Qué hace el plugin?
+
+- **Interpreta lenguaje humano, no comandos rígidos**  
+  Frases como `"gira despacio a la izquierda"` o `"muévete un poquito"` son entendidas en contexto. No se basa en listas fijas.
+
+- **Traduce intención en acciones físicas**  
+  Extrae parámetros implícitos desde el lenguaje natural:  
+  `"un poco"` → `0.3s`, `"rápido"` → `velocidad 80`, `"avanza"` → decide dirección, motor y duración.
+
+- **Evita acciones incoherentes o inseguras**  
+  Comprueba el estado actual antes de moverse, limita repeticiones, y detiene motores si el tiempo de ejecución supera lo permitido.
+
+#### Ejemplo: desde voz hasta movimiento
+
+```python
+def _move_motor(self, motor: str, direction: str, speed: int = 50):
+    """Control básico de dirección de motor"""
+    pins = self.config["motor_pins"][motor]
+
+    if motor == "left_motor":
+        pin_a, pin_b = pins["in1"], pins["in2"]
+        enable_pin = pins["ena"]
+    elif motor == "right_motor":
+        pin_a, pin_b = pins["in3"], pins["in4"]
+        enable_pin = pins["enb"]
+
+    # Dirección
+    if direction == "forward":
+        lgpio.gpio_write(self.gpio_handle, pin_a, 1)
+        lgpio.gpio_write(self.gpio_handle, pin_b, 0)
+    elif direction == "backward":
+        lgpio.gpio_write(self.gpio_handle, pin_a, 0)
+        lgpio.gpio_write(self.gpio_handle, pin_b, 1)
+    else:  # stop
+        lgpio.gpio_write(self.gpio_handle, pin_a, 0)
+        lgpio.gpio_write(self.gpio_handle, pin_b, 0)
+
+    # Activación
+    lgpio.gpio_write(self.gpio_handle, enable_pin, 1 if direction != "stop" else 0)
+```
+
+#### Sesiones de pruebas
+
+📄 **[Ver log completo por consola](/logs/session_2025-07-18_mobility_plugin.log)**  
+📄 **[Ver log completo por voz](/logs/session_2025-07-18_mobility_plugin_voice.log)**
+
+##### Modalidad: Consola
+
+```bash
+Tú: avanza
+... INFO - ✅ Patrón encontrado: forward
+... INFO - 🤖 Avanzando 1.0s a velocidad 50
+TARS: "Iniciando secuencia de avance. Mi entusiasmo es palpable"
+
+Tú: avanza un poco más
+... INFO - 🎯 Comando intuitivo: 'un poco' → 0.5s
+TARS: "Este es el camino... literalmente"
+```
+
+##### Modalidad: Voz (con Voice ID + VOSK)
+
+```bash
+🎤 "Oye TARS"
+🔥 Wakeword detectada por coincidencia difusa
+✅ Usuario identificado: BeskarBuilder
+
+🗣️ 'avanza dos metros'
+... INFO - 🤖 Avanzando 2.0s a velocidad 50
+TARS: "En marcha hacia el abismo de la incertidumbre"
+
+🗣️ 'gira a la izquierda'
+TARS: "Ajustando rumbo hacia la izquierda y hacia mis inseguridades"
+```
+
+#### Seguridad y configuración
+
+El plugin de movilidad incluye medidas básicas para evitar errores y comportamientos inesperados:
+
+- Comprueba si ya hay un movimiento en curso antes de ejecutar otro  
+- Verifica el estado de los pines y motores antes de actuar  
+- Detiene los motores automáticamente si se supera el tiempo máximo definido
+
+La configuración se gestiona desde:
+
+- `plugins.json` → Activa o desactiva el plugin  
+- `mobility_config.json` → Define velocidades, duraciones, comandos personalizados y límites de seguridad
+
+**Hardware usado:**
+
+- L298N Dual H-Bridge
+- Motores TT 3–6V con reductora
+- Fuente 6V con GND común (no alimentado por USB)
+
+**Materiales en evaluación:**
+
+- **Mandaloriano LEGO**  
+  Técnicamente no es necesario, y no afecta al rendimiento... probablemente.  
+  Pero sin encoders, cualquier peso extra —por mínimo que parezca— puede cambiar el resultado.  
+  Estoy en fase de pruebas... y él ha decidido quedarse, por razones técnicas indeterminadas. 
+[![Mandaloriano LEGO](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)_En marcha hacia el abismo de la incertidumbre_
+
+
+> **// TARS-BSK > circular_crisismobility.log:** 
+> 
+> Por primera vez, cada una de mis respuestas puede provocar fricción real contra el suelo.  
+> La ironía, ahora, tiene ruedas.
 
 ---
 ### Tailscale: Conectividad Mesh Segura

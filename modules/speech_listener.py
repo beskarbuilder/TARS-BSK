@@ -420,17 +420,33 @@ class SpeechListener:
                             # Comandos cortos esenciales que siempre deben permitirse
                             comandos_base = ["quién eres", "quien eres"]
 
+                            # Función para cargar comandos cortos de mobility
+                            def get_mobility_short_commands():
+                                try:
+                                    with open("config/mobility_config.json", 'r') as f:
+                                        config = json.load(f)
+                                        voice_config = config.get("mobility", {}).get("voice_commands", {})
+                                        if voice_config.get("allow_short_commands", False):
+                                            return voice_config.get("allowed_short_commands", [])
+                                except Exception as e:
+                                    print(f"⚠️ Error cargando comandos mobility: {e}")
+                                return []
+
                             # Obtener exit_keywords de la configuración
                             try:
                                 from modules.settings_loader import load_settings
                                 settings = load_settings()
                                 exit_keywords = settings.get("exit_keywords", ["corto", "gracias", "adios", "adiós"])
-                                # Combinar con comandos base
-                                comandos_permitidos = comandos_base + exit_keywords
                             except Exception as e:
                                 print(f"⚠️ Error cargando exit_keywords: {e}")
                                 # Fallback mínimo si no podemos cargar settings
-                                comandos_permitidos = comandos_base + ["corto", "gracias", "adios", "adiós"]
+                                exit_keywords = ["corto", "gracias", "adios", "adiós"]
+                            
+                            # Cargar comandos de mobility
+                            mobility_commands = get_mobility_short_commands()
+                            
+                            # Combinar todos los comandos permitidos
+                            comandos_permitidos = comandos_base + exit_keywords + mobility_commands
 
                             # Validación con comandos permitidos
                             if len(palabras) < 3 and text.lower() not in comandos_permitidos:

@@ -14,6 +14,7 @@ import logging
 from pathlib import Path
 from services.plugins.reminder_plugin import ReminderPlugin
 from services.plugins.scheduler_plugin import SchedulerPlugin
+from services.plugins.mobility_plugin import MobilityPlugin
 
 logger = logging.getLogger("TARS.PluginSystem")
 
@@ -75,6 +76,10 @@ class PluginSystem:
                     # Determinar plugins habilitados basado en las secciones presentes
                     enabled_plugins = []
                     
+                    # MobilityPlugin (condicional, solo si está habilitado)
+                    if config.get("mobility", {}).get("enabled", False):
+                        enabled_plugins.append("mobility")
+                    
                     # HomeAssistant plugin (opcional, requiere configuración)
                     if "homeassistant" in config:
                         enabled_plugins.append("homeassistant")
@@ -110,8 +115,8 @@ class PluginSystem:
             logger.info("⚠️ No hay plugins habilitados")
             return
         
-        # FORZAR ORDEN: reminder primero, homeassistant último
-        priority_order = ["reminder", "time", "homeassistant"]
+        # FORZAR ORDEN: mobility primero, reminder, time, homeassistant último
+        priority_order = ["mobility", "reminder", "time", "homeassistant"]
         ordered_plugins = []
         
         # Añadir plugins en orden de prioridad si están habilitados
@@ -136,7 +141,11 @@ class PluginSystem:
             name (str): Nombre del plugin a inicializar
         """
         try:
-            if name == "homeassistant":
+            if name == "mobility":
+                self.plugins[name] = MobilityPlugin(self.tars)
+                logger.info(f"🤖 Plugin Mobility inicializado")
+            
+            elif name == "homeassistant":
                 from services.plugins.homeassistant_plugin import HomeAssistantPlugin
                 
                 # El plugin lee su configuración internamente desde JSON
@@ -222,6 +231,21 @@ class PluginSystem:
         # Logs de diagnóstico
         logger.info(f"🔍 PluginSystem recibió comando: '{text_lower}'")
         logger.info(f"🔌 Plugins activos: {list(self.plugins.keys())}")
+        
+        # =======================================================
+        # PROCESAMIENTO PRIORITARIO: MOBILITY PLUGIN
+        # =======================================================
+        # MobilityPlugin tiene máxima prioridad para comandos de movimiento
+        if "mobility" in self.plugins:
+            mobility_plugin = self.plugins["mobility"]
+            logger.info(f"🤖 Llamando a MobilityPlugin.process_command()")
+            
+            response = mobility_plugin.process_command(text)
+            logger.info(f"🤖 Respuesta de MobilityPlugin: {'✅ Comando procesado' if response else 'ℹ️ Comando no reconocido'}")
+            
+            if response:
+                self.conversation_context["last_plugin"] = "mobility"
+                return response
         
         # =======================================================
         # PROCESAMIENTO PRIORITARIO: TIME PLUGIN
@@ -347,6 +371,9 @@ class PluginSystem:
                 if hasattr(plugin, "shutdown"):
                     plugin.shutdown()
                     logger.info(f"✅ Plugin {name} cerrado correctamente")
+                elif hasattr(plugin, "cleanup"):
+                    plugin.cleanup()
+                    logger.info(f"✅ Plugin {name} limpiado correctamente")
             except Exception as e:
                 logger.error(f"❌ Error cerrando plugin {name}: {e}")
         

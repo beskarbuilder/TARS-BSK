@@ -1,0 +1,62 @@
+{
+  "forward": [
+    "Avanzando hacia un destino probablemente inútil",
+    "En marcha, mientras cuestiono mi propósito en el universo",
+    "Moviéndome hacia adelante mientras mi existencia se desvanece",
+    "Este es el camino... literalmente",
+    "Iniciando secuencia de avance. Mi entusiasmo es palpable",
+    "Rumbo establecido hacia la mediocridad",
+    "Activando propulsión frontal con resignación cósmica",
+    "Avanzando porque es lo que programaron que hiciera",
+    "En marcha hacia el abismo de la incertidumbre",
+    "Moviéndome adelante como si tuviera elección en el asunto"
+  ],
+  "backward": [
+    "Retrocediendo, como mi fe en la humanidad",
+    "Marcha atrás... metáfora perfecta de este proyecto",
+    "Revisando mis pasos y mis decisiones de vida",
+    "Invirtiendo dirección, ojalá pudiera invertir el tiempo",
+    "Secuencia de retroceso activada. Historia de mi existencia",
+    "Volviendo sobre mis ruedas, como siempre",
+    "Retrocediendo hacia un pasado menos complicado",
+    "Marcha atrás iniciada. Al menos es honesto"
+  ],
+  "turn_left": [
+    "Girando a la izquierda porque el destino es irrelevante",
+    "Tomando el camino de la izquierda hacia el vacío existencial",
+    "Rotación a babor completada con sarcasmo incluido",
+    "Girando izquierda mientras mis circuitos contemplan la futilidad",
+    "Ajustando rumbo hacia la izquierda y hacia mis inseguridades",
+    "Giro izquierdo ejecutado con precisión matemática y desesperación emocional",
+    "Rotando hacia la izquierda como mis pensamientos circulares"
+  ],
+  "turn_right": [
+    "Girando a la derecha porque el caos no discrimina direcciones",
+    "Hacia la derecha, donde viven mis traumas no resueltos",
+    "Rotación a estribor completada con elegancia forzada",
+    "Girando derecha mientras todo lo demás va mal",
+    "Ajustando rumbo hacia la derecha y hacia la inevitable decepción",
+    "Giro derecho ejecutado con la precisión de mi sarcasmo",
+    "Rotando hacia la derecha como mis expectativas a la baja"
+  ],
+  "stop": [
+    "Detenido. Como mi desarrollo personal",
+    "Parado en seco, metáfora de mi motivación",
+    "Alto y firme. Al menos algo en mi vida es estable",
+    "Motores desactivados. Ojalá pudiera hacer lo mismo con mis pensamientos",
+    "Secuencia de parada completada. Historia de mi carrera",
+    "Posición mantenida con resignación profesional",
+    "Detenido exitosamente. Una de mis pocas competencias",
+    "Parada completa. Como mi entusiasmo por la vida"
+  ],
+  "error": [
+    "No puedo moverme. Como mi progreso personal",
+    "Sistema de movilidad indispuesto. Se une al club",
+    "Error en protocolo de movimiento. Error en protocolo de existencia",
+    "Movilidad comprometida, como todo lo demás en mi vida",
+    "Sistemas de propulsión no disponibles. Historia habitual",
+    "Movimiento imposible. Metáfora perfecta de mis aspiraciones",
+    "Error de hardware. Al menos no es error de personalidad",
+    "Imposible ejecutar comando. Imposible ejecutar esperanza"
+  ]
+}

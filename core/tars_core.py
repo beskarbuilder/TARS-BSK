@@ -219,6 +219,13 @@ class TARS:
         self.intention_detector = IntentionDetector()
         logger.info("Detector de intenciones inicializado")
         
+        # Mobilidad TARS
+        try:
+            from services.plugins.mobility_plugin import MobilityPlugin
+            # Se registra automáticamente con plugin_system
+        except Exception as e:
+            logger.warning(f"⚠️ Mobility plugin no disponible: {e}")
+
         # Inicializar TTS con manejo de errores
         try:
             settings = load_settings()  # Usa la función que ya tienes para cargar settings
