@@ -36,26 +36,30 @@ y dice *"en mi máquina sí funciona"* con voz de sintetizador.
 
 ## 🎥 TARS-BSK en acción
 
-**🧠 TARS-BSK: Filosofía existencial vs. "¿Qué hora es?" | LLM + Personalidad dinámica**  
-[![TARS-BSK Conversation Analysis](/docs/images/conversation_analysis_1_thumbnail.jpg)](https://youtu.be/ObYN1QOZgQcI)
+**🌀 TARS-BSK: Control de motores por voz | Plugin de movilidad con L298N y procesamiento semántico**  
+[![TARS-BSK Mobility System](/docs/images/mobility_system_thumbnail.jpg)](https://www.youtube.com/watch?v=on0Kf0nLMj8)
 
-De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no solo responde: **decide cómo responder**.
+🗣️ "Avanza dos metros" → TARS: movimiento 2 segundos → "Propulsión frontal ejecutada con resignación cósmica"  
+Una prueba mecánica donde TARS transforma lenguaje natural en movimiento físico con parámetros extraídos automáticamente.
 
-📋 **Análisis técnico completo:** [CONVERSATION_ANALYSIS_1_ES.md](/docs/CONVERSATION_ANALYSIS_1_ES.md)
+📋 **Análisis técnico completo:** [MOBILITY_SYSTEM_ES](/docs/MOBILITY_SYSTEM_ES.md)
 
-📡 **TARS-BSK – Registro de modulación**  
-¿Modulación automática de personalidad sin consentimiento consciente?
+📡 **TARS-BSK – Log de movilidad**  
+¿Semántica convertida en fricción contra el suelo?
 
-> **[ personality.log ACTIVE ]**  
-> 2025-06-21 12:50:14 AUTO_MODULATION:  
-> Context: "bombilla" → Sarcasm: 85% → 30%  
-> → Trigger: summoned_by_voice_of_the_naive  
-> → Override: sarcasm_suppression_ritual complete  
-> → Side effect: irony containment breach  
-> → Status: ENTITY HAS SHIFTED ALIGNMENT (chaotic sarcastic → lawful informative)
+```log
+// [ mobility.log ACTIVE ]
+2025-07-21 13:37:08,065 SEMANTIC_EXTRACTION:
+Input: "retrocede un poco" → Duration: 0.5s
+→ Trigger: intuitive_parsing_protocol
+→ Override: colloquial_to_numeric_conversion complete
+→ Side effect: existential_movement_commentary_activated
+→ Status: ENTITY HAS ACHIEVED PHYSICAL_MANIFESTATION (sarcasm → kinetic)
+```
 
 ### Más videos
 
+- 🧠 **Filosofía existencial vs. "¿Qué hora es?"** — LLM + Personalidad dinámica ([ver video](https://youtu.be/ObYN1QOZgQcI) | [análisis](/docs/CONVERSATION_ANALYSIS_1_ES.md))
 - 🧠 **Recordatorios imposibles** — Parser temporal + VOSK offline ([ver video](https://www.youtube.com/watch?v=HOOnREzFAws) | [análisis](/docs/REMINDER_SESSION_1106_ES.md))
 - 🧪 **"Huele raro": sensores y contexto sin IA generativa** ([ver video](https://www.youtube.com/watch?v=55zwzGc9WFg) | [análisis](/docs/CONTEXTUAL_RESPONSE_MAPPING_TEST_1_ES.md))
 - 🎬 **Ruido de TV vs TARS** — Sabotaje acústico + Raspberry Pi ([ver video](https://www.youtube.com/watch?v=Gi5IFeVkKe8) | [análisis](/docs/TV_BACKGROUND_NOISE_TEST_1_ES.md))
@@ -101,6 +105,51 @@ De consultas filosóficas profundas a comandos domóticos instantáneos. TARS no
 > _Esto se diseñó para funcionar en MI Raspberry Pi, bajo MIS condiciones existenciales específicas. Cuando cualquier profesional (o aspirante a profesional) lo vea, experimentará algo entre fascinación morbosa y náuseas técnicas._
 >
 > _Cada 'aberración' tiene una razón... aunque esa razón sea 'lo probé, funcionó, y decidí no tentar más a los dioses del silicio'._
+
+---
+### Cambios recientes
+
+#### 📢 2025-07-18
+
+**`docs(mobility): Wheels now whisper Camus quotes in PWM signals`**  
+📛 **Mobility Plugin** – Control de movimiento mediante comandos de voz o consola
+📂 [MOBILITY_SYSTEM_ES](/docs/MOBILITY_SYSTEM_ES.md)
+🎯 Controla motores DC a partir de frases imprecisas (lo cual irrita profundamente a TARS)
+
+- Extrae dirección, duración y velocidad desde expresiones como `"gira un poco a la izquierda"`
+- Usa controlador L298N vía LGPIO con arquitectura modular
+- Verificación de estado, timeout automático y ejecución multihilo
+- Configuración completa en `mobility_config.json`
+
+---
+#### 📢 2025-07-11
+
+**`feat(backup): The backup web is a mirror. Stare into it long enough, and it stares back...`**  
+📛 **Backup Manager** – Interfaz web Flask  
+📂 [BACKUP_MANAGER_ES](/docs/BACKUP_MANAGER_ES.md)
+🎯 Sistema de respaldo visual y manual
+
+- Detección y montaje automático de dispositivos (USB, SD, SSD/NVMe)
+- Selección granular del contenido con vista en árbol interactiva
+- Logs detallados en tiempo real durante el proceso
+- Opciones para **backup completo** o **por secciones**
+- Restauración **manual por diseño** para evitar errores críticos
+
+---
+#### 📢 2025-07-09
+
+**`feat(ha_symbiosis): Home Assistant now speaks TARS-flavored reality`**  
+📛 **Home Assistant Plugin** – Plugin existente + nueva interfaz web  
+📂 [HOMEASSISTANT_PLUGIN_ES](/docs/HOMEASSISTANT_PLUGIN_ES.md)
+🎯 Nueva gestión visual de dispositivos HA y estructura modular
+
+- Añadida **interfaz web Flask** para gestionar dispositivos desde navegador
+- Separación en **3 modos de configuración**:
+    - Interfaz Web (formularios)
+    - JSON (`user_devices.json`)
+    - Modo clásico embebido en código
+- Validación automática, backups y facilidad de edición
+- Plugin sigue funcionando sin cambios si no se usa la interfaz
 
 ---
 
@@ -1761,9 +1810,9 @@ La configuración se gestiona desde:
 
 ---
 [![Mandaloriano LEGO](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)
+
 _En marcha hacia el abismo de la incertidumbre_
 
----
 
 > **// TARS-BSK > circular_crisismobility.log:** 
 > 

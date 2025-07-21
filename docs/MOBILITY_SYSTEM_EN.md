@@ -58,6 +58,11 @@
 > 
 > *— System activated. May the silicon gods protect us all.*
 
+#### Video session log
+
+- 🎬 [Watch demonstration](https://www.youtube.com/watch?v=on0Kf0nLMj8)
+- 📄 Video session log [Video session log](/logs/session_2025-07-21_mobility_plugin_vid_voice.log)
+
 ---
 
 ## 📋 Table of Contents

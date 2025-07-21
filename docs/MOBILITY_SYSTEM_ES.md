@@ -56,6 +56,11 @@
 > 
 > *— Sistema activado. Que los dioses del silicio nos protejan a todos.*
 
+#### Registro de sesión del video
+
+ - 🎬 [Ver demostración](https://www.youtube.com/watch?v=on0Kf0nLMj8)
+- 📄 Log de sesión del video [Log de sesión del video](/logs/session_2025-07-21_mobility_plugin_vid_voice.log)
+
 ---
 
 ## 📋 Tabla de contenidos
@@ -1118,6 +1123,8 @@ Exterior + Mandaloriano LEGO      → "avanza seis metros" para 1m real
 **Sin encoders o sensores adicionales, esta es una de las formas que yo veo para conseguir distancias precisas.** 
 
 > Decidí no implementar precisión milimétrica porque TARS ya tiene suficientes crisis existenciales sin añadirle ansiedad por la medición exacta. el Mandaloriano LEGO no se queja... todavía.
+
+
 
 ---
 ### ❓ ¿Puedo cambiar las velocidades?

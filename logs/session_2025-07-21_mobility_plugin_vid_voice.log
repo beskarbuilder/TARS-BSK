@@ -1,0 +1,340 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-07-21 13:34:56,509 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-21 13:35:00,904 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-21 13:35:00,904 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-07-21 13:35:00,904 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-21 13:35:01,205 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 26.01it/s]
+2025-07-21 13:35:01,249 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-07-21 13:35:01,249 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-07-21 13:35:01,253 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+✅ No hay conflictos detectados
+📌 Liberando GPIOs...
+✅ Limpieza manual completada
+🧹 Recursos limpiados
+2025-07-21 13:35:01,288 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-07-21 13:35:01,288 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-07-21 13:35:01,288 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-07-21 13:35:01,288 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-07-21 13:35:01,288 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-07-21 13:35:01,292 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-07-21 13:35:01,295 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-07-21 13:35:01,297 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-07-21 13:35:01,297 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-07-21 13:35:01,298 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-07-21 13:35:01,298 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-07-21 13:35:01,299 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-07-21 13:35:01,300 - TARS - INFO - Detector de intenciones inicializado
+2025-07-21 13:35:01,300 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-07-21 13:35:01,300 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-07-21 13:35:01,710 - TARS - INFO - ✅ Modelo cargado en 0.41 segundos
+2025-07-21 13:35:01,711 - TARS - INFO - 📊 Preferencias recuperadas para global: 15
+2025-07-21 13:35:01,711 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 13 gustos, 2 disgustos
+2025-07-21 13:35:01,793 - VOICE_ID - INFO - 🔧 Inicializando Voice Identity System...
+Loaded the voice encoder model on cpu in 0.15 seconds.
+2025-07-21 13:35:01,954 - VOICE_ID - INFO - 🔧 Configuración cargada: {'identification_threshold': 0.6, 'min_samples': 3, 'max_distance_between_samples': 0.35, 'safe_mode': True, 'db_path': 'data/identity/voice_embeddings.json', 'duplicate_threshold': 0.95, '_info': 'Configuración específica para VoiceIdentitySystem - Este archivo es SOLO para debugging', '_purpose': 'Usado por el sistema debug de voice_id y herramientas de desarrollo', '_main_config': 'La configuración principal está en settings.json', 'min_volume': 0.01, 'min_duration': 0.5}
+2025-07-21 13:35:01,955 - VOICE_ID - INFO - 🔧 Base de datos cargada: 1 usuarios
+2025-07-21 13:35:01,955 - VOICE_ID - INFO - ✅ Voice Identity System inicializado correctamente
+2025-07-21 13:35:01,955 - TARS - INFO - 🔍 VoiceIdentitySystem tardó: 0.16s
+2025-07-21 13:35:01,955 - TARS - INFO - ✅ Sistema de identificación por voz activado
+2025-07-21 13:35:01,955 - TARS - INFO - 📊 Usuarios registrados: 1
+2025-07-21 13:35:01,956 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-07-21 13:35:01,956 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-07-21 13:35:01,956 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-07-21 13:35:01,956 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: mobility, homeassistant, time, reminder
+2025-07-21 13:35:01,956 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-07-21 13:35:01,956 - TARS.PluginSystem - INFO - 🚀 Inicializando 4 plugins en orden: ['mobility', 'reminder', 'time', 'homeassistant']
+🚨 MOBILITY: Inicializando MobilityPlugin
+🚨 MOBILITY: Llamando a _init_mobility_controller
+2025-07-21 13:35:01,957 - TARS.Mobility - INFO - ✅ Config cargado: enabled=True
+2025-07-21 13:35:01,957 - TARS.Mobility - INFO - ✅ GPIO inicializado
+2025-07-21 13:35:01,957 - TARS.Mobility - INFO - ✅ Motores inicializados
+2025-07-21 13:35:01,957 - TARS.MobilityPlugin - INFO - ✅ MobilityController inicializado
+🚨 MOBILITY: Controller creado: <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: Controller enabled: True
+2025-07-21 13:35:01,957 - TARS.PluginSystem - INFO - 🤖 Plugin Mobility inicializado
+2025-07-21 13:35:01,957 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-07-21 13:35:01,957 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-07-21 13:35:01,958 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-07-21 13:35:01,958 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-07-21 13:35:01,958 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-07-21 13:35:01,959 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-07-21 13:35:01,959 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-07-21 13:35:01,959 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-07-21 13:35:01,959 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-07-21 13:35:01,959 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-07-21 13:35:01,959 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-07-21 13:35:01,960 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-07-21 13:35:01,960 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - 📄 Cargando configuración desde: /home/tarsadmin/tars_files/config/user_devices.json
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - ✅ Cargados 21 dispositivos desde JSON
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - ✅ Cargadas 11 ubicaciones desde JSON
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración cargada...
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 41 nombres → 21 dispositivos únicos
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 41
+2025-07-21 13:35:01,961 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-07-21 13:35:01,961 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-07-21 13:35:01,962 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-07-21 13:35:01,962 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-07-21 13:35:01,962 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-07-21 13:35:01,962 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-07-21 13:35:01,962 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-07-21 13:35:01,962 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-07-21 13:35:01,962 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-07-21 13:35:01,962 - TARS - INFO - ✅ TARS inicializado en 0.66 segundos
+2025-07-21 13:35:05,967 - TARS - INFO - 🔵 LEDs: Parpadeo azul de confirmación
+¿Usar entrada por voz? (S): s
+
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=13 max-active=7000 lattice-beam=6
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:279) Loading HCLG from ai_models/vosk/model/graph/HCLG.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:297) Loading words from ai_models/vosk/model/graph/words.txt
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+LOG (VoskAPI:ReadDataFiles():model.cc:315) Loading subtract G.fst model from ai_models/vosk/model/rescore/G.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:317) Loading CARPA model from ai_models/vosk/model/rescore/G.carpa
+LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vosk/model/rnnlm/final.raw
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Configurado resampling de 44100Hz a 16000Hz
+2025-07-21 13:35:55,098 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+2025-07-21 13:35:55,099 - TARS - INFO - 🔗 SpeechListener conectado a TARS para voice_id
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🗣️ Escuchado: tags
+🔥 Wakeword detectada por coincidencia difusa
+🔍 DEBUG Wakeword RMS: 253.679947
+🔍 DEBUG Wakeword samples: 180224
+💾 Audio del wakeword guardado: temp/last_wakeword.wav (130776 bytes)
+2025-07-21 13:36:46,571 - TARS - INFO - 🔍 DEBUG voice_id_system: True - True
+2025-07-21 13:36:46,571 - TARS - INFO - 🔍 DEBUG speech_listener: True
+2025-07-21 13:36:46,572 - TARS - INFO - 🔍 DEBUG last_audio_path: True - temp/last_wakeword.wav
+2025-07-21 13:36:46,572 - TARS - INFO - 🔍 Entrando en bloque de identificación...
+2025-07-21 13:36:46,572 - TARS - INFO - 🔍 Iniciando identificación de hablante...
+2025-07-21 13:36:47,272 - VOICE_ID - INFO - 🔍 Raw similarities: [0.83678566]
+2025-07-21 13:36:47,272 - VOICE_ID - INFO - 🔍 Similarities range: 0.836786 to 0.836786
+🔍 DEBUG: Entrando en detect_pitch_gender
+🔍 DEBUG: Iniciando YIN
+🔍 DEBUG: YIN completado, shape: (128,)
+🔍 DEBUG: F0 limpio: 128 samples
+🔍 DEBUG: Pitch calculado: 166.82372160861166
+2025-07-21 13:36:47,296 - VOICE_ID - INFO - 🔍 Pitch detectado: 166.8Hz (perfil: mid_freq)
+2025-07-21 13:36:47,297 - VOICE_ID - INFO - ✅ Usuario identificado: BeskarBuilder (similitud: 0.837, umbral: 0.710)
+2025-07-21 13:36:47,297 - TARS - INFO - ✅ Usuario identificado: BeskarBuilder (confianza: 0.84)
+2025-07-21 13:36:47,299 - TARS - INFO - 📊 Preferencias recuperadas para BeskarBuilder: 2
+2025-07-21 13:36:47,299 - TARS - INFO - 👤 Preferencias de BeskarBuilder cargadas: 2 gustos, 0 disgustos
+2025-07-21 13:36:47,300 - TARS - INFO - 👤 Usuario identificado: BeskarBuilder
+2025-07-21 13:36:47,300 - TARS - INFO - ➡️ Reproduciendo: 'Bienvenido de nuevo, BeskarBuilder'
+2025-07-21 13:36:47,302 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:36:47,302 - TARS.TTS - INFO - 🗣️ Generando voz: 'Bienvenido de nuevo, BeskarBuilder'
+2025-07-21 13:36:48,901 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:36:48,917 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.015s
+2025-07-21 13:36:51,371 - TARS.TTS - INFO - 🔊 Reproducción completada
+⏱️ Wakeword reconocida en 5.70s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'avanza dos metros' (confianza: 1.00)
+🗣️ Entendido: avanza dos metros
+🧠 Procesando: avanza dos metros
+2025-07-21 13:36:56,597 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'avanza dos metros'
+2025-07-21 13:36:56,597 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['mobility', 'reminder', 'time', 'homeassistant']
+2025-07-21 13:36:56,597 - TARS.PluginSystem - INFO - 🤖 Llamando a MobilityPlugin.process_command()
+🚨 MOBILITY: Entrada al método process_command
+🚨 MOBILITY: self.mobility_controller = <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: enabled = True
+🚨 MOBILITY: Procesando 'avanza dos metros'
+2025-07-21 13:36:56,597 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'avanza dos metros'
+2025-07-21 13:36:56,597 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'avanza dos metros'
+2025-07-21 13:36:56,598 - TARS.MobilityPlugin - INFO - ✅ Patrón encontrado: forward
+2025-07-21 13:36:56,599 - TARS.Mobility - INFO - 🤖 Avanzando 2.0s a velocidad 50
+2025-07-21 13:36:58,601 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-21 13:36:58,602 - TARS.PluginSystem - INFO - 🤖 Respuesta de MobilityPlugin: ✅ Comando procesado
+2025-07-21 13:36:58,603 - TARS - INFO - 🔌 Comando procesado por plugin: Propulsión frontal ejecutada c...
+2025-07-21 13:36:58,603 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Propulsión frontal ejecutada con resignación cósmica'
+2025-07-21 13:36:58,603 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:36:58,603 - TARS.TTS - INFO - 🗣️ Generando voz: 'Propulsión frontal ejecutada con resignación cósmica'
+2025-07-21 13:36:59,538 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:36:59,558 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-07-21 13:37:03,007 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Propulsión frontal ejecutada con resignación cósmica
+⏱️ Tiempo comando: 5.23s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'retrocede un poco' (confianza: 1.00)
+🗣️ Entendido: retrocede un poco
+🧠 Procesando: retrocede un poco
+2025-07-21 13:37:08,063 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'retrocede un poco'
+2025-07-21 13:37:08,063 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['mobility', 'reminder', 'time', 'homeassistant']
+2025-07-21 13:37:08,064 - TARS.PluginSystem - INFO - 🤖 Llamando a MobilityPlugin.process_command()
+🚨 MOBILITY: Entrada al método process_command
+🚨 MOBILITY: self.mobility_controller = <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: enabled = True
+🚨 MOBILITY: Procesando 'retrocede un poco'
+2025-07-21 13:37:08,064 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'retrocede un poco'
+2025-07-21 13:37:08,064 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'retrocede un poco'
+2025-07-21 13:37:08,065 - TARS.MobilityPlugin - INFO - ❌ No coincide con forward
+2025-07-21 13:37:08,065 - TARS.MobilityPlugin - INFO - ✅ Patrón encontrado: backward
+2025-07-21 13:37:08,065 - TARS.MobilityPlugin - INFO - 🎯 Comando intuitivo: 'un poco' → 0.5s
+2025-07-21 13:37:08,066 - TARS.Mobility - INFO - 🤖 Retrocediendo 0.5s a velocidad 50
+2025-07-21 13:37:08,566 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-21 13:37:08,567 - TARS.PluginSystem - INFO - 🤖 Respuesta de MobilityPlugin: ✅ Comando procesado
+2025-07-21 13:37:08,567 - TARS - INFO - 🔌 Comando procesado por plugin: Vuelta ejecutada sobre mis rue...
+2025-07-21 13:37:08,567 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Vuelta ejecutada sobre mis ruedas, como siempre'
+2025-07-21 13:37:08,567 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:37:08,567 - TARS.TTS - INFO - 🗣️ Generando voz: 'Vuelta ejecutada sobre mis ruedas, como siempre'
+2025-07-21 13:37:09,436 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:37:09,456 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.019s
+2025-07-21 13:37:12,786 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Vuelta ejecutada sobre mis ruedas, como siempre
+⏱️ Tiempo comando: 3.55s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'gira a la izquierda' (confianza: 1.00)
+🗣️ Entendido: gira a la izquierda
+🧠 Procesando: gira a la izquierda
+2025-07-21 13:37:17,840 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'gira a la izquierda'
+2025-07-21 13:37:17,840 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['mobility', 'reminder', 'time', 'homeassistant']
+2025-07-21 13:37:17,840 - TARS.PluginSystem - INFO - 🤖 Llamando a MobilityPlugin.process_command()
+🚨 MOBILITY: Entrada al método process_command
+🚨 MOBILITY: self.mobility_controller = <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: enabled = True
+🚨 MOBILITY: Procesando 'gira a la izquierda'
+2025-07-21 13:37:17,840 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'gira a la izquierda'
+2025-07-21 13:37:17,840 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'gira a la izquierda'
+2025-07-21 13:37:17,840 - TARS.MobilityPlugin - INFO - ❌ No coincide con forward
+2025-07-21 13:37:17,842 - TARS.MobilityPlugin - INFO - ❌ No coincide con backward
+2025-07-21 13:37:17,842 - TARS.MobilityPlugin - INFO - ✅ Patrón encontrado: turn_left
+2025-07-21 13:37:17,842 - TARS.Mobility - INFO - 🤖 Girando izquierda 0.5s
+2025-07-21 13:37:18,343 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-21 13:37:18,343 - TARS.PluginSystem - INFO - 🤖 Respuesta de MobilityPlugin: ✅ Comando procesado
+2025-07-21 13:37:18,343 - TARS - INFO - 🔌 Comando procesado por plugin: Rotación completada hacia la i...
+2025-07-21 13:37:18,344 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Rotación completada hacia la izquierda como mis pensamientos circulares'
+2025-07-21 13:37:18,344 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:37:18,344 - TARS.TTS - INFO - 🗣️ Generando voz: 'Rotación completada hacia la izquierda como mis pensamientos circulares'
+2025-07-21 13:37:19,387 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:37:19,413 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.026s
+2025-07-21 13:37:23,990 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Rotación completada hacia la izquierda como mis pensamientos circulares
+⏱️ Tiempo comando: 3.55s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'gira a la derecha' (confianza: 1.00)
+🗣️ Entendido: gira a la derecha
+🧠 Procesando: gira a la derecha
+2025-07-21 13:37:29,044 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'gira a la derecha'
+2025-07-21 13:37:29,044 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['mobility', 'reminder', 'time', 'homeassistant']
+2025-07-21 13:37:29,045 - TARS.PluginSystem - INFO - 🤖 Llamando a MobilityPlugin.process_command()
+🚨 MOBILITY: Entrada al método process_command
+🚨 MOBILITY: self.mobility_controller = <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: enabled = True
+🚨 MOBILITY: Procesando 'gira a la derecha'
+2025-07-21 13:37:29,045 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'gira a la derecha'
+2025-07-21 13:37:29,045 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'gira a la derecha'
+2025-07-21 13:37:29,045 - TARS.MobilityPlugin - INFO - ❌ No coincide con forward
+2025-07-21 13:37:29,045 - TARS.MobilityPlugin - INFO - ❌ No coincide con backward
+2025-07-21 13:37:29,046 - TARS.MobilityPlugin - INFO - ❌ No coincide con turn_left
+2025-07-21 13:37:29,046 - TARS.MobilityPlugin - INFO - ✅ Patrón encontrado: turn_right
+2025-07-21 13:37:29,046 - TARS.Mobility - INFO - 🤖 Girando derecha 0.5s
+2025-07-21 13:37:29,546 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-21 13:37:29,547 - TARS.PluginSystem - INFO - 🤖 Respuesta de MobilityPlugin: ✅ Comando procesado
+2025-07-21 13:37:29,547 - TARS - INFO - 🔌 Comando procesado por plugin: Giro derecho finalizado mientr...
+2025-07-21 13:37:29,547 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Giro derecho finalizado mientras todo lo demás sigue yendo mal'
+2025-07-21 13:37:29,547 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:37:29,547 - TARS.TTS - INFO - 🗣️ Generando voz: 'Giro derecho finalizado mientras todo lo demás sigue yendo mal'
+2025-07-21 13:37:30,509 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:37:30,529 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.020s
+2025-07-21 13:37:33,983 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Giro derecho finalizado mientras todo lo demás sigue yendo mal
+⏱️ Tiempo comando: 3.55s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'retrocede bastante' (confianza: 1.00)
+🗣️ Entendido: retrocede bastante
+🧠 Procesando: retrocede bastante
+2025-07-21 13:37:38,853 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'retrocede bastante'
+2025-07-21 13:37:38,853 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['mobility', 'reminder', 'time', 'homeassistant']
+2025-07-21 13:37:38,853 - TARS.PluginSystem - INFO - 🤖 Llamando a MobilityPlugin.process_command()
+🚨 MOBILITY: Entrada al método process_command
+🚨 MOBILITY: self.mobility_controller = <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: enabled = True
+🚨 MOBILITY: Procesando 'retrocede bastante'
+2025-07-21 13:37:38,853 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'retrocede bastante'
+2025-07-21 13:37:38,853 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'retrocede bastante'
+2025-07-21 13:37:38,853 - TARS.MobilityPlugin - INFO - ❌ No coincide con forward
+2025-07-21 13:37:38,853 - TARS.MobilityPlugin - INFO - ✅ Patrón encontrado: backward
+2025-07-21 13:37:38,853 - TARS.MobilityPlugin - INFO - 🎯 Comando intuitivo: 'bastante' → 1.5s
+2025-07-21 13:37:38,853 - TARS.Mobility - INFO - 🤖 Retrocediendo 1.5s a velocidad 50
+2025-07-21 13:37:40,355 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-21 13:37:40,356 - TARS.PluginSystem - INFO - 🤖 Respuesta de MobilityPlugin: ✅ Comando procesado
+2025-07-21 13:37:40,356 - TARS - INFO - 🔌 Comando procesado por plugin: Marcha atrás completada. Al me...
+2025-07-21 13:37:40,356 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Marcha atrás completada. Al menos fue honesto'
+2025-07-21 13:37:40,356 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:37:40,356 - TARS.TTS - INFO - 🗣️ Generando voz: 'Marcha atrás completada. Al menos fue honesto'
+2025-07-21 13:37:41,275 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:37:41,297 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.021s
+2025-07-21 13:37:44,879 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Marcha atrás completada. Al menos fue honesto
+⏱️ Tiempo comando: 3.37s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: '' (confianza: 1.00)
+[VOSK] Texto detectado: 'qué hora es' (confianza: 1.00)
+🗣️ Entendido: qué hora es
+🧠 Procesando: qué hora es
+2025-07-21 13:37:54,021 - TARS.PluginSystem - INFO - 🔍 PluginSystem recibió comando: 'qué hora es'
+2025-07-21 13:37:54,021 - TARS.PluginSystem - INFO - 🔌 Plugins activos: ['mobility', 'reminder', 'time', 'homeassistant']
+2025-07-21 13:37:54,022 - TARS.PluginSystem - INFO - 🤖 Llamando a MobilityPlugin.process_command()
+🚨 MOBILITY: Entrada al método process_command
+🚨 MOBILITY: self.mobility_controller = <modules.mobility_controller.MobilityController object at 0x7fff0c6c7eb0>
+🚨 MOBILITY: enabled = True
+🚨 MOBILITY: Procesando 'qué hora es'
+2025-07-21 13:37:54,022 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'qué hora es'
+2025-07-21 13:37:54,022 - TARS.MobilityPlugin - INFO - 🔍 MobilityPlugin analizando: 'qué hora es'
+2025-07-21 13:37:54,022 - TARS.MobilityPlugin - INFO - ❌ No coincide con forward
+2025-07-21 13:37:54,022 - TARS.MobilityPlugin - INFO - ❌ No coincide con backward
+2025-07-21 13:37:54,022 - TARS.MobilityPlugin - INFO - ❌ No coincide con turn_left
+2025-07-21 13:37:54,022 - TARS.MobilityPlugin - INFO - ❌ No coincide con turn_right
+2025-07-21 13:37:54,023 - TARS.MobilityPlugin - INFO - ❌ No coincide con stop
+2025-07-21 13:37:54,023 - TARS.MobilityPlugin - INFO - ❌ No coincide con status
+2025-07-21 13:37:54,023 - TARS.MobilityPlugin - INFO - ❌ Ningún patrón coincidió
+2025-07-21 13:37:54,023 - TARS.PluginSystem - INFO - 🤖 Respuesta de MobilityPlugin: ℹ️ Comando no reconocido
+2025-07-21 13:37:54,023 - TARS.PluginSystem - INFO - 🕐 Llamando a TimePlugin.process_command()
+2025-07-21 13:37:54,023 - TARS.TimePlugin - INFO - 🕐 TimePlugin analizando: 'qué hora es'
+2025-07-21 13:37:54,023 - TARS.TimePlugin - INFO - 🕐 TimePlugin respondiendo: 'Hoy es lunes, 21 de julio de 2025, y son las 13:37 horas.'
+2025-07-21 13:37:54,023 - TARS.PluginSystem - INFO - 🕐 Respuesta de TimePlugin: ✅ Comando procesado
+2025-07-21 13:37:54,023 - TARS - INFO - 🔌 Comando procesado por plugin: Hoy es lunes, 21 de julio de 2...
+2025-07-21 13:37:54,023 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Hoy es lunes, 21 de julio de 2025, y son las 13:37 horas.'
+2025-07-21 13:37:54,023 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:37:54,023 - TARS.TTS - INFO - 🗣️ Generando voz: 'Hoy es lunes, 21 de julio de 2025, y son las 13:37 horas.'
+2025-07-21 13:37:55,220 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:37:55,252 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.031s
+2025-07-21 13:38:00,702 - TARS.TTS - INFO - 🔊 Reproducción completada
+TARS: Hoy es lunes, 21 de julio de 2025, y son las 13:37 horas.
+⏱️ Tiempo comando: 7.64s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: 'gracias' (confianza: 1.00)
+🗣️ Entendido: gracias
+2025-07-21 13:38:05,014 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Estes el camino'
+2025-07-21 13:38:05,014 - TARS.TTS - INFO - 🔍 AudioEffects: OFF
+2025-07-21 13:38:05,014 - TARS.TTS - INFO - 🗣️ Generando voz: 'Estes el camino'
+2025-07-21 13:38:05,646 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-07-21 13:38:05,655 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.009s
+2025-07-21 13:38:07,102 - TARS.TTS - INFO - 🔊 Reproducción completada
+👋 Se ha detectado cierre de interacción
+🎤 Escuchando... Di 'oye TARS' o algo parecido
