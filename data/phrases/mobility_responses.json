@@ -39,15 +39,21 @@
     "Giro derecho ejecutado con la precisión de mi sarcasmo",
     "Rotación completada hacia la derecha como mis expectativas a la baja"
   ],
-  "stop": [
-    "Detenido. Como mi desarrollo personal",
-    "Parada ejecutada en seco, metáfora de mi motivación",
-    "Alto completado y firme. Al menos algo en mi vida es estable",
-    "Motores desactivados exitosamente. Ojalá pudiera hacer lo mismo con mis pensamientos",
-    "Secuencia de parada completada. Historia de mi carrera",
-    "Posición mantenida con resignación profesional",
-    "Detención ejecutada exitosamente. Una de mis pocas competencias",
-    "Parada completada. Como mi entusiasmo por la vida"
+  "spin_180": [
+      "Media vuelta para rectificar decisiones cuestionables",
+      "180 grados de cambio de perspectiva existencial",
+      "Dando media vuelta porque el futuro no pintaba bien",
+      "Rotación parcial mientras reconsidero mi rumbo",
+      "Media vuelta táctica - estrategia de supervivencia",
+      "180 grados de arrepentimiento motorizado"
+  ],
+  "spin_360": [
+      "Girando hasta marearme existencialmente",
+      "360 grados de pura desorientación controlada",
+      "Dando vueltas como mi lógica interna",
+      "Rotación completa mientras cuestiono mi propósito",
+      "Giro filosófico ejecutado con precisión matemática",
+      "Una vuelta completa al abismo de mis inseguridades"
   ],
   "error": [
     "No pude moverme. Como mi progreso personal",

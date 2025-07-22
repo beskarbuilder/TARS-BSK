@@ -353,7 +353,7 @@ class MobilityController:
         with self.movement_lock:
             try:
                 self.is_moving = True
-                logger.info(f"🤖 Girando izquierda {duration}s")
+                logger.info(f"🤖 Girando izquierda → {duration}s")
                 
                 # Motor izquierdo atrás, derecho adelante
                 self._move_motor("left_motor", "forward", speed)
@@ -385,7 +385,7 @@ class MobilityController:
         with self.movement_lock:
             try:
                 self.is_moving = True
-                logger.info(f"🤖 Girando derecha {duration}s")
+                logger.info(f"🤖 Girando derecha → {duration}s")
                 
                 # Motor izquierdo adelante, derecho atrás
                 self._move_motor("left_motor", "backward", speed)
@@ -402,7 +402,76 @@ class MobilityController:
             finally:
                 self.is_moving = False
                 self.last_movement_time = time.time()
-    
+
+    def spin_180(self, duration: float = None, speed: int = None) -> bool:
+        """Giro de 180 grados - porque a veces hay que dar media vuelta a la existencia"""
+        if not self._check_ready():
+            return False
+        
+        speed = speed or self.config["movement"]["default_speed"]
+        # Aproximadamente la mitad del tiempo del 360°
+        # spin_duration = duration or 1.5  # O usar config
+        spin_duration = duration or self.config["movement"].get("spin_180_duration")
+        
+        if not self._safety_check(spin_duration):
+            return False
+        
+        with self.movement_lock:
+            try:
+                self.is_moving = True
+                logger.info(f"🔃 Ejecutando giro 180° → {duration}s")
+                
+                # Mismo giro que 360°, pero menos tiempo
+                self._move_motor("left_motor", "forward", speed)
+                self._move_motor("right_motor", "backward", speed)
+                
+                time.sleep(spin_duration)
+                self.stop()
+                logger.info("✅ Giro 180° completado - nueva perspectiva alcanzada")
+                return True
+                
+            except Exception as e:
+                logger.error(f"❌ Error en giro 180°: {e}")
+                self.stop()
+                return False
+            finally:
+                self.is_moving = False
+                self.last_movement_time = time.time()
+
+    def spin_360(self, duration: float = None, speed: int = None) -> bool:
+        """Giro completo de 360 grados - duración configurable"""
+        if not self._check_ready():
+            return False
+        
+        speed = speed or self.config["movement"]["default_speed"]
+        # spin_duration = duration or 3.0  # O usar config
+        spin_duration = duration or self.config["movement"].get("spin_360_duration")
+        
+        if not self._safety_check(spin_duration):
+            return False
+        
+        with self.movement_lock:
+            try:
+                self.is_moving = True
+                logger.info(f"🔄 Ejecutando giro 360° → {duration}s")
+                
+                # Giro continuo en una dirección
+                self._move_motor("left_motor", "forward", speed)
+                self._move_motor("right_motor", "backward", speed)
+                
+                time.sleep(spin_duration)
+                self.stop()
+                logger.info("✅ Giro 360° completado - existencia reconfirmada")
+                return True
+                
+            except Exception as e:
+                logger.error(f"❌ Error en giro 360°: {e}")
+                self.stop()
+                return False
+            finally:
+                self.is_moving = False
+                self.last_movement_time = time.time()
+
     # =======================
     # 2.6 CONTROL Y ESTADO DEL SISTEMA
     # =======================

@@ -117,11 +117,13 @@ Input: "back up a bit" → Duration: 0.5s
 ---
 ### Recent Updates
 
-#### 📢 2025-07-18
+#### 📢 2025-07-18 (Update)
 
 **`docs(mobility): Wheels now whisper Camus quotes in PWM signals`**  
-📛 **Mobility Plugin** – Movement control through voice or console commands  
-📂 [MOBILITY_SYSTEM_EN](/docs/MOBILITY_SYSTEM_EN.md)  
+📛 **Mobility Plugin** – Movement control through voice or console commands
+
+📂 [MOBILITY_SYSTEM_EN](/docs/MOBILITY_SYSTEM_EN.md)
+
 🎯 Controls DC motors using imprecise phrases (which deeply irritates TARS)
 
 - Extracts direction, duration, and speed from expressions like `"turn a bit to the left"`
@@ -129,13 +131,40 @@ Input: "back up a bit" → Duration: 0.5s
 - Built-in state verification, automatic timeouts, and multithreaded execution
 - Complete configuration through `mobility_config.json`
 
+🆕 **[2025-07-22]** Added 180° and 360° rotations with configurable durations:
+
+```json
+"spin_360_duration": 3.0,
+"spin_180_duration": 1.5
+```
+
+**Test session:**
+
+- 📄 [Full detailed log](/logs/session_2025-07-22_mobility_spin_360_180.log)`
+
+```bash
+You: turn three hundred sixty degrees
+✅ Pattern found: spin_360
+🔄 Executing 360° rotation → 3.0s
+✅ 360° rotation completed - existence reconfirmed
+TARS: "A complete turn into the abyss of my insecurities"
+
+You: half turn
+✅ Pattern found: spin_180
+🔃 Executing 180° rotation → 1.5s
+✅ 180° rotation completed - new perspective achieved
+TARS: "Partial rotation while reconsidering my path"
+```
+
 ---
 
 #### 📢 2025-07-11
 
 **`feat(backup): The backup web is a mirror. Stare into it long enough, and it stares back...`**  
-📛 **Backup Manager** – Flask web interface  
-📂 [BACKUP_MANAGER_EN](/docs/BACKUP_MANAGER_EN.md)  
+📛 **Backup Manager** – Flask web interface
+
+📂 [BACKUP_MANAGER_EN](/docs/BACKUP_MANAGER_EN.md)
+
 🎯 Visual and manual backup system for the TARS ecosystem
 
 - Automatic device detection and mounting (USB, SD, SSD/NVMe)
@@ -149,8 +178,10 @@ Input: "back up a bit" → Duration: 0.5s
 #### 📢 2025-07-09
 
 **`feat(ha_symbiosis): Home Assistant now speaks TARS-flavored reality`**  
-📛 **Home Assistant Plugin** – Enhanced existing plugin with web interface  
-📂 [HOMEASSISTANT_PLUGIN_EN](/docs/HOMEASSISTANT_PLUGIN_EN.md)  
+📛 **Home Assistant Plugin** – Enhanced existing plugin with web interface
+
+📂 [HOMEASSISTANT_PLUGIN_EN](/docs/HOMEASSISTANT_PLUGIN_EN.md)
+
 🎯 Visual device management and modular structure for HA integration
 
 - Added **Flask web interface** for browser-based device management

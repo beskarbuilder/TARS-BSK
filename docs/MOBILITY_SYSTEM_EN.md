@@ -133,7 +133,7 @@ The system functions differently depending on how you interact with TARS:
   "allowed_short_commands": [
     "move",           // ← Allowed short command
     "back",           // ← Allowed short command
-    "stop",           // ← Allowed short command
+    "half turn",      // ← Allowed short command
     "your command"    // ← Add yours here
   ]
 }
@@ -149,7 +149,7 @@ The system functions differently depending on how you interact with TARS:
 
 #### Option B: Configure favorite short commands
 
-- ✅ Add `"move"`, `"back"`, `"stop"` to JSON
+- ✅ Add `"move"`, `"back"` to JSON
 - ✅ **Works both by voice and console**
 - ✅ **Maximum flexibility**
 
@@ -159,7 +159,7 @@ The system functions differently depending on how you interact with TARS:
 
 ```json
 "allowed_short_commands": [
-  "move", "back", "stop",                // ← Basic commands
+  "move", "back",                // ← Basic commands
   "move much", "move little",            // ← Useful variations  
   "turn left", "turn right"              // ← Direct turns
 ]
@@ -620,7 +620,10 @@ This approach ensures that commands like `"move a little"` are processed by the 
 
 - **L298N Dual H-Bridge** – DC motor controller
 - **2 TT 3–6V motors with gearbox** – 1:48 ratio recommended
-- **6V AA battery pack** – With ON/OFF switch
+- **6V AA Battery Pack** – With ON/OFF switch  
+  🔧 *Alternative: Power bank supply using a 2-wire USB 2.0 cable (USB-A male to bare ends, 22 AWG, 0.3m), connected directly to the L298N (VCC and GND).*
+
+[![TARS-BSK Mobility System](/docs/images/L298N_USB_thumbnail.jpg)](/docs/images/L298N_USB_thumbnail.jpg)
 
 #### Movement
 
@@ -789,6 +792,8 @@ This file contains all mobility system specific parameters:
       "default_speed": 50,
       "default_duration": 1.0,
       "turn_duration": 0.5,
+      "spin_360_duration": 3.0,
+      "spin_180_duration": 1.5,
       "max_speed": 100,
       "min_speed": 20
     },
@@ -801,29 +806,30 @@ This file contains all mobility system specific parameters:
       "allow_short_commands": true,
       "min_words": 2,
       "allowed_short_commands": [
-        "move",
-        "back",
-        "stop",
-        "halt",
-        "move much",
-        "move little",
-        "move quite",
-        "move normal",
-        "move slow",
-        "move fast",
-        "back much",
-        "back little",
-        "back quite",
-        "back normal",
-        "back slow",
-        "back fast",
+        "move forward",
+        "go ahead", 
+        "move back",
+        "go back",
         "turn left",
         "turn right",
         "rotate left",
         "rotate right",
-        "reverse",
+        "move backward",
         "go forward",
-        "go backward"
+        "go backward",
+        "spin 360",
+        "turn 360",
+        "three sixty",
+        "full turn", 
+        "spin 180",
+        "turn 180",
+        "one eighty",
+        "half turn",
+        "complete turn",
+        "about face",
+        "turn around",
+        "spin",
+        "circle"
       ]
     },
     "debug": {
@@ -871,16 +877,22 @@ This function defines basic pins, default speed and duration, and enables the se
 
 These are some examples of commands the system can interpret, both by console and voice. For more details about differences between modalities and how to configure short commands, return to the [Important: Differences between modalities](#%E2%9A%A0%EF%B8%8F-important-differences-between-modalities) section.
 
-| Command               | Duration | Speed | Result              |
-| --------------------- | -------- | ----- | ------------------- |
-| `move`                | 1.0s     | 50    | Standard movement   |
-| `move a little`       | 0.5s     | 50    | Short movement      |
-| `move quite`          | 1.5s     | 50    | Long movement       |
-| `move slowly`         | 1.0s     | 30    | Reduced speed       |
-| `turn to the left`    | 0.5s     | 50    | Standard turn       |
-| `back`                | 1.0s     | 50    | Standard reverse    |
-| `back much`           | 2.0s     | 50    | Long reverse        |
-| `stop`                | N/A      | N/A   | Immediate stop      |
+| Command               | Duration | Speed | Result             |
+| --------------------- | -------- | ----- | ------------------ |
+| `move forward`        | 1.0s     | 50    | Standard movement  |
+| `go ahead a little`   | 0.5s     | 50    | Short movement     |
+| `move forward a lot`  | 1.5s     | 50    | Long movement      |
+| `move forward slowly` | 1.0s     | 30    | Reduced speed      |
+| `turn left`           | 0.5s     | 50    | Standard turn      |
+| `move back`           | 1.0s     | 50    | Standard reverse   |
+| `go back a lot`       | 2.0s     | 50    | Long reverse       |
+| `spin 360`            | 3.0s     | 50    | Full 360° rotation |
+| `turn three sixty`    | 3.0s     | 50    | Full 360° rotation |
+| `full turn`           | 3.0s     | 50    | Full 360° rotation |
+| `half turn`           | 1.5s     | 50    | 180° rotation      |
+| `turn 180`            | 1.5s     | 50    | 180° rotation      |
+| `about face`          | 1.5s     | 50    | 180° rotation      |
+| `spin`                | 3.0s     | 50    | Full 360° rotation |
 
 ### Advanced combinations
 
@@ -1129,6 +1141,20 @@ Outdoor + Mandalorian LEGO       → "move six meters" for 1m real
 > I decided not to implement millimetric precision because TARS already has enough existential crises without adding anxiety about exact measurement. The Mandalorian LEGO doesn't complain... yet.
 
 ---
+### ❓ Why aren't the rotations precise?
+
+🧠 Rotation times are approximate and depend on weight, surface, and battery level.
+
+Calibrate `spin_360_duration` and `spin_180_duration` in the JSON according to your setup.
+
+```json
+"movement": {
+  "spin_360_duration": 3.0,
+  "spin_180_duration": 1.5
+}
+```
+
+---
 ### ❓ Can I change the speeds?
 
 🧠 Yes, by editing [mobility_config.json](/config/mobility_config.json): 
@@ -1168,8 +1194,6 @@ You can adjust it in [mobility_config.json](/config/mobility_config.json).
 
 🧠 Response:
 
-- By voice: `"stop now"` or `"halt immediately"`
-- By console: `"stop"` or `"halt"`
 - Automatically: safety timeout after 5s
 - Physically: disconnecting external battery
 

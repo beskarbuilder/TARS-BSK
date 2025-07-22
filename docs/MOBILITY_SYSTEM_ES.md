@@ -131,7 +131,7 @@ El sistema funciona de manera diferente según cómo interactúes con TARS:
   "allowed_short_commands": [
     "avanza",          // ← Comando corto permitido
     "retrocede",       // ← Comando corto permitido
-    "para",            // ← Comando corto permitido
+    "media vuelta",            // ← Comando corto permitido
     "tu comando aquí"  // ← Añade los tuyos
   ]
 }
@@ -147,7 +147,7 @@ El sistema funciona de manera diferente según cómo interactúes con TARS:
 
 #### Opción B: Configurar comandos cortos favoritos
 
-- ✅ Añadir `"avanza"`, `"retrocede"`, `"para"` al JSON
+- ✅ Añadir `"avanza"`, `"retrocede"` al JSON
 - ✅ **Funciona tanto por voz como por consola**
 - ✅ **Máxima flexibilidad**
 
@@ -157,7 +157,7 @@ El sistema funciona de manera diferente según cómo interactúes con TARS:
 
 ```json
 "allowed_short_commands": [
-  "avanza", "retrocede", "para",          // ← Comandos básicos
+  "avanza", "retrocede",          // ← Comandos básicos
   "avanza mucho", "avanza poco",          // ← Variaciones útiles  
   "gira izquierda", "gira derecha"        // ← Giros directos
 ]
@@ -194,8 +194,6 @@ A través del archivo [mobility_config.json](/config/mobility_config.json), pued
       "allowed_short_commands": [
         "avanza",
         "retrocede", 
-        "para",
-        "stop",
         "avanza mucho",
         "avanza poco",
         "avanza bastante",
@@ -618,7 +616,11 @@ Este enfoque garantiza que comandos como `"avanza un poco"` sean procesados por 
 
 - **L298N Dual H-Bridge** – Controlador de motores DC
 - **2 motores TT 3–6V con reductora** – Relación 1:48 recomendada
-- **Caja de baterías AA 6V** – Con interruptor ON/OFF
+- **Caja de baterías AA 6V** – Con interruptor ON/OFF  
+  🔧 *Alternativa: alimentación por power bank usando cable USB 2.0 de 2 hilos (USB A macho a extremos pelados, 22 AWG, 0.3 m), conectado directamente al L298N (VCC y GND).*
+
+[![TARS-BSK Mobility System](/docs/images/L298N_USB_thumbnail.jpg)](/docs/images/L298N_USB_thumbnail.jpg)
+
 
 #### Movimiento
 
@@ -787,6 +789,8 @@ Este archivo contiene todos los parámetros específicos del sistema de movilida
       "default_speed": 50,
       "default_duration": 1.0,
       "turn_duration": 0.5,
+      "spin_360_duration": 3.0,
+      "spin_180_duration": 1.5,
       "max_speed": 100,
       "min_speed": 20
     },
@@ -800,28 +804,31 @@ Este archivo contiene todos los parámetros específicos del sistema de movilida
       "min_words": 2,
       "allowed_short_commands": [
         "avanza",
+        "avance", 
         "retrocede",
-        "para",
-        "stop",
-        "avanza mucho",
-        "avanza poco",
-        "avanza bastante",
-        "avanza normal",
-        "avanza lento",
-        "avanza rápido",
-        "retrocede mucho",
-        "retrocede poco",
-        "retrocede bastante",
-        "retrocede normal",
-        "retrocede lento",
-        "retrocede rápido",
+        "retroceda",
         "gira izquierda",
-        "gira derecha",
+        "gire izquierda",
+        "gira derecha", 
+        "gire derecha",
         "rota izquierda",
         "rota derecha",
         "marcha atrás",
         "hacia adelante",
-        "hacia atrás"
+        "hacia atrás",
+        "gira 360",
+        "gire 360",
+        "gira trescientos sesenta",
+        "gire trescientos sesenta", 
+        "gira 180",
+        "gire 180",
+        "gira ciento ochenta",
+        "gire ciento ochenta",
+        "vuelta completa",
+        "media vuelta",
+        "da vuelta",
+        "spin",
+        "círculo"
       ]
     },
     "debug": {
@@ -869,16 +876,23 @@ Esta función define pines básicos, velocidad y duración por defecto, y habili
 
 Estos son algunos ejemplos de comandos que el sistema puede interpretar, tanto por consola como por voz. Para más detalles sobre las diferencias entre modalidades y cómo configurar comandos cortos, vuelve a la sección [Importante: Diferencias entre modalidades](#%E2%9A%A0%EF%B8%8F-importante-diferencias-entre-modalidades).
 
-| Comando               | Duración | Velocidad | Resultado           |
-| --------------------- | -------- | --------- | ------------------- |
-| `avanza`              | 1.0s     | 50        | Movimiento estándar |
-| `avanza un poco`      | 0.5s     | 50        | Movimiento corto    |
-| `avanza bastante`     | 1.5s     | 50        | Movimiento largo    |
-| `avanza lentamente`   | 1.0s     | 30        | Velocidad reducida  |
-| `gira a la izquierda` | 0.5s     | 50        | Giro estándar       |
-| `retrocede`           | 1.0s     | 50        | Retroceso estándar  |
-| `retrocede mucho`     | 2.0s     | 50        | Retroceso largo     |
-| `para`                | N/A      | N/A       | Parada inmediata    |
+| Comando                    | Duración | Velocidad | Resultado           |
+| -------------------------- | -------- | --------- | ------------------- |
+| `avanza`                   | 1.0s     | 50        | Movimiento estándar |
+| `avanza un poco`           | 0.5s     | 50        | Movimiento corto    |
+| `avanza bastante`          | 1.5s     | 50        | Movimiento largo    |
+| `avanza lentamente`        | 1.0s     | 30        | Velocidad reducida  |
+| `gira a la izquierda`      | 0.5s     | 50        | Giro estándar       |
+| `retrocede`                | 1.0s     | 50        | Retroceso estándar  |
+| `retrocede mucho`          | 2.0s     | 50        | Retroceso largo     |
+| `gira 360`                 | 3.0s     | 50        | Giro completo 360°  |
+| `gire trescientos sesenta` | 3.0s     | 50        | Giro completo 360°  |
+| `vuelta completa`          | 3.0s     | 50        | Giro completo 360°  |
+| `media vuelta`             | 1.5s     | 50        | Giro de 180°        |
+| `gira 180`                 | 1.5s     | 50        | Giro de 180°        |
+| `da media vuelta`          | 1.5s     | 50        | Giro de 180°        |
+| `spin`                     | 3.0s     | 50        | Giro completo 360°  |
+
 ### Combinaciones avanzadas
 
 ```bash
@@ -1124,7 +1138,19 @@ Exterior + Mandaloriano LEGO      → "avanza seis metros" para 1m real
 
 > Decidí no implementar precisión milimétrica porque TARS ya tiene suficientes crisis existenciales sin añadirle ansiedad por la medición exacta. el Mandaloriano LEGO no se queja... todavía.
 
+---
+### ❓ ¿Por qué los giros no son exactos?
 
+🧠 Los tiempos de giro son aproximados y dependen del peso, superficie y batería.
+
+Calibra `spin_360_duration` y `spin_180_duration` en el JSON según tu setup.
+
+```json
+"movement": {
+  "spin_360_duration": 3.0,
+  "spin_180_duration": 1.5
+}
+```
 
 ---
 ### ❓ ¿Puedo cambiar las velocidades?
@@ -1166,8 +1192,6 @@ Puedes ajustarlo en [mobility_config.json](/config/mobility_config.json).
 
 🧠 Respuesta:
 
-- Por voz: `"para ahora"` o `"detente ya"`
-- Por consola: `"para"` o `"stop"`
 - Automáticamente: timeout de seguridad tras 5s
 - Físicamente: desconectando la batería externa
 

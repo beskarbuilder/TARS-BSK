@@ -109,11 +109,13 @@ Input: "retrocede un poco" → Duration: 0.5s
 ---
 ### Cambios recientes
 
-#### 📢 2025-07-18
+#### 📢 2025-07-18 (Update)
 
 **`docs(mobility): Wheels now whisper Camus quotes in PWM signals`**  
 📛 **Mobility Plugin** – Control de movimiento mediante comandos de voz o consola
+
 📂 [MOBILITY_SYSTEM_ES](/docs/MOBILITY_SYSTEM_ES.md)
+
 🎯 Controla motores DC a partir de frases imprecisas (lo cual irrita profundamente a TARS)
 
 - Extrae dirección, duración y velocidad desde expresiones como `"gira un poco a la izquierda"`
@@ -121,12 +123,39 @@ Input: "retrocede un poco" → Duration: 0.5s
 - Verificación de estado, timeout automático y ejecución multihilo
 - Configuración completa en `mobility_config.json`
 
+🆕 **[2025-07-22]** Añadidos giros de 180° y 360° con duraciones configurables:
+
+```json
+"spin_360_duration": 3.0,
+"spin_180_duration": 1.5
+```
+
+**Sesión de prueba:**
+
+- 📄 [Log detallado completo](/logs/session_2025-07-22_mobility_spin_360_180.log)
+
+```bash
+Tú: gira trescientos sesenta grados
+✅ Patrón encontrado: spin_360
+🔄 Ejecutando giro 360° → 3.0s
+✅ Giro 360° completado - existencia reconfirmada
+TARS: "Una vuelta completa al abismo de mis inseguridades"
+
+Tú: media vuelta  
+✅ Patrón encontrado: spin_180
+🔃 Ejecutando giro 180° → 1.5s
+✅ Giro 180° completado - nueva perspectiva alcanzada
+TARS: "Rotación parcial mientras reconsidero mi rumbo"
+```
+  
 ---
 #### 📢 2025-07-11
 
 **`feat(backup): The backup web is a mirror. Stare into it long enough, and it stares back...`**  
-📛 **Backup Manager** – Interfaz web Flask  
+📛 **Backup Manager** – Interfaz web Flask
+
 📂 [BACKUP_MANAGER_ES](/docs/BACKUP_MANAGER_ES.md)
+
 🎯 Sistema de respaldo visual y manual
 
 - Detección y montaje automático de dispositivos (USB, SD, SSD/NVMe)
@@ -139,8 +168,10 @@ Input: "retrocede un poco" → Duration: 0.5s
 #### 📢 2025-07-09
 
 **`feat(ha_symbiosis): Home Assistant now speaks TARS-flavored reality`**  
-📛 **Home Assistant Plugin** – Plugin existente + nueva interfaz web  
+📛 **Home Assistant Plugin** – Plugin existente + nueva interfaz web
+
 📂 [HOMEASSISTANT_PLUGIN_ES](/docs/HOMEASSISTANT_PLUGIN_ES.md)
+
 🎯 Nueva gestión visual de dispositivos HA y estructura modular
 
 - Añadida **interfaz web Flask** para gestionar dispositivos desde navegador

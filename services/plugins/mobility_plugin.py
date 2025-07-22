@@ -85,24 +85,22 @@ class MobilityPlugin:
         # Patrones de comandos optimizados
         self.command_patterns = {
             "forward": [
-                r"\b(avanza|adelante|muévete|camina|ve)\b",
+                r"\b(avanza|avance|adelante|muévete|camina|ve)\b",
                 r"\b(move forward|go ahead|advance)\b",
-                r"avanza\s*\d*\s*(?:metro|segundo|m|s)?",  # Captura "avanza 2 metros"
-                r"hacia?\s*adelante",  # "hacia adelante"
-                # NUEVOS PATRONES INTUITIVOS:
-                r"avanza\s+(un\s+)?poco(s|ito)?",          # "avanza un poco", "avanza un poquito"
-                r"avanza\s+(un\s+poco\s+)?más",            # "avanza un poco más", "avanza más" 
-                r"avanza\s+mucho(\s+más)?",                # "avanza mucho", "avanza mucho más"
-                r"avanza\s+(algo|bastante)(\s+más)?",      # "avanza bastante", "avanza algo más"
-                r"avanza\s+(muy\s+)?poco",                 # "avanza muy poco"
-                r"avanza\s+normal"                         # "avanza normal"
+                r"avanza\s*\d*\s*(?:metro|segundo|m|s)?", 
+                r"hacia?\s*adelante", 
+                r"avanza\s+(un\s+)?poco(s|ito)?",      
+                r"avanza\s+(un\s+poco\s+)?más",        
+                r"avanza\s+mucho(\s+más)?",             
+                r"avanza\s+(algo|bastante)(\s+más)?",     
+                r"avanza\s+(muy\s+)?poco",                
+                r"avanza\s+normal"                     
             ],
             "backward": [
-                r"\b(retrocede|atrás|vuelve|retorna)\b",
+                r"\b(retrocede|retroceda|atrás|vuelve|retorna)\b",
                 r"\b(move back|go back|retreat)\b",
                 r"retrocede\s*\d*\s*(?:metro|segundo|m|s)?",
                 r"hacia?\s*atrás",
-                # NUEVOS PATRONES INTUITIVOS:
                 r"retrocede\s+(un\s+)?poco(s|ito)?",
                 r"retrocede\s+(un\s+poco\s+)?más",
                 r"retrocede\s+mucho(\s+más)?",
@@ -111,22 +109,40 @@ class MobilityPlugin:
                 r"retrocede\s+normal"
             ],
             "turn_left": [
-                r"\b(gira.{0,10}izquierda|izquierda|turn.{0,10}left)\b",
+                r"\b((gira|gire).{0,10}izquierda|izquierda|turn.{0,10}left)\b",
                 r"\b(rota.{0,10}izquierda|hacia.{0,10}izquierda)\b",
-                # NUEVOS PATRONES INTUITIVOS:
                 r"gira\s+(un\s+)?poco(\s+a)?\s+la\s+izquierda",
                 r"gira\s+mucho(\s+a)?\s+la\s+izquierda"
             ],
             "turn_right": [
-                r"\b(gira.{0,10}derecha|derecha|turn.{0,10}right)\b",
+                r"\b((gira|gire).{0,10}derecha|derecha|turn.{0,10}right)\b",
                 r"\b(rota.{0,10}derecha|hacia.{0,10}derecha)\b",
-                # NUEVOS PATRONES INTUITIVOS:
                 r"gira\s+(un\s+)?poco(\s+a)?\s+la\s+derecha",
                 r"gira\s+mucho(\s+a)?\s+la\s+derecha"
             ],
-            "stop": [
-                r"\b(para|detente|stop|alto)\b",
-                r"\b(frena|quieto|parar)\b"
+            "spin_180": [
+                r"\b(gira|gire|giro)\s*(?:de\s*)?(?:180|ciento\s*ochenta)\s*(?:grados|°)?\b",
+                r"\b(media\s*vuelta|medio\s*giro)\b",
+                r"\b(da\s*)?media\s*vuelta\b",
+                r"\b(gira|gire)\s*(?:la\s*)?mitad\b",
+                r"\b(180|ciento\s*ochenta)\s*(?:grados|°)?\b"
+            ],
+            "spin_360": [
+                r"\b(gira|gire|giro)\s+(?:de\s+)?(?:360|trescientos\s+sesenta)(?:\s+grados|°)?\b",
+                r"\b(gira|gire|giro)\s+(?:360|trescientos\s+sesenta)\s+(?:grados|°)\b",
+                r"\b(?:360|trescientos\s+sesenta)\s*(?:grados|°)?\b",
+                r"\b(vuelta|giro)\s*(?:completa|entera|total)\b",
+                r"\b(da|haz)\s*una\s*vuelta\s*(?:completa|entera)?\b",
+                r"\b(gira|gire|rota)\s*(?:en\s*)?(?:un\s*)?círculo\s*(?:completo|entero)?\b",
+                r"\bcírculo\s*(?:completo|entero)\b",
+                r"\b(spin|spinning)\s*(?:completo|360)?\b",
+                r"\b(rota|rotación)\s*(?:completa|entera|360|de\s*360)?\b",
+                r"\bgira\s*(?:como\s*)?(?:un\s*)?trompo\b",
+                r"\bgira\s*sobre\s*ti\s*mismo\b",
+                r"\b(?:haz|da)\s*un\s*(?:360|trescientos\s*sesenta)\b",
+                r"\b(turn|rotate)\s*360\b",
+                r"\b(full\s*turn|complete\s*rotation)\b",
+                r"\bturn\s*around\s*completely\b"
             ],
             "status": [
                 r"\b(estado.{0,10}movilidad|puedes.{0,10}mover|mobility.{0,10}status)\b",
@@ -173,7 +189,7 @@ class MobilityPlugin:
                 "backward": "Retrocediendo", 
                 "turn_left": "Girando a la izquierda",
                 "turn_right": "Girando a la derecha",
-                "stop": "Detenido"
+                "spin_360": "Girando 360 grados"
             }
             return fallbacks.get(action, "Ejecutando movimiento")
 
@@ -283,8 +299,8 @@ class MobilityPlugin:
     # =======================
     def process_command(self, command: str) -> Optional[str]:
         """Procesar comandos de movilidad con prioridad"""
-        print(f"🚨 MOBILITY: Entrada al método process_command")
-        print(f"🚨 MOBILITY: self.mobility_controller = {self.mobility_controller}")
+        # print(f"🚨 MOBILITY: Entrada al método process_command")
+        # print(f"🚨 MOBILITY: self.mobility_controller = {self.mobility_controller}")
         print(f"🚨 MOBILITY: enabled = {getattr(self.mobility_controller, 'enabled', 'NO_ATTR')}")
         
         if not self.mobility_controller:
@@ -305,10 +321,10 @@ class MobilityPlugin:
         # Buscar patrones de comandos
         for action, patterns in self.command_patterns.items():
             if self._matches_patterns(command_lower, patterns):
-                logger.info(f"✅ Patrón encontrado: {action}")  # ← DEBUG
+                logger.info(f"✅ Patrón encontrado: {action}") 
                 return self._execute_action(action, command_lower)
             else:
-                logger.info(f"❌ No coincide con {action}")  # ← DEBUG
+                logger.info(f"❌ No coincide con {action}") 
         
         logger.info("❌ Ningún patrón coincidió")  # ← DEBUG
         return None
@@ -336,23 +352,32 @@ class MobilityPlugin:
                 duration = self._extract_intuitive_duration(command)
                 speed = self._extract_speed(command)
                 success = self.mobility_controller.move_backward(duration, speed)
-                return self._get_random_response("backward", success)  # ← AÑADIR return
+                return self._get_random_response("backward", success) 
             
             elif action == "turn_left":
                 duration = self._extract_duration(command, default=0.5)
                 speed = self._extract_speed(command)
                 success = self.mobility_controller.turn_left(duration, speed)
-                return self._get_random_response("turn_left", success)  # ← AÑADIR return
+                return self._get_random_response("turn_left", success) 
             
             elif action == "turn_right":
                 duration = self._extract_duration(command, default=0.5)
                 speed = self._extract_speed(command)
                 success = self.mobility_controller.turn_right(duration, speed)
-                return self._get_random_response("turn_right", success)  # ← AÑADIR return
+                return self._get_random_response("turn_right", success)
+
+            elif action == "spin_180":
+                duration = self._extract_duration(command, default=self.mobility_controller.config["movement"].get("spin_180_duration", 1.5))
+
+                speed = self._extract_speed(command)
+                success = self.mobility_controller.spin_180(duration, speed)
+                return self._get_random_response("spin_180", success)
             
-            elif action == "stop":
-                success = self.mobility_controller.stop()
-                return self._get_random_response("stop", success)  # ← AÑADIR return
+            elif action == "spin_360":
+                duration = self._extract_duration(command, default=self.mobility_controller.config["movement"].get("spin_360_duration", 3.0))
+                speed = self._extract_speed(command)
+                success = self.mobility_controller.spin_360(duration, speed)
+                return self._get_random_response("spin_360", success)
             
             elif action == "status":
                 status = self.mobility_controller.get_status()
@@ -378,13 +403,15 @@ Comandos de movilidad disponibles:
 • retrocede [duración] [velocidad] - Mover hacia atrás  
 • gira izquierda [duración] - Girar a la izquierda
 • gira derecha [duración] - Girar a la derecha
-• para / detente - Parar movimiento
+• gira 360 / spin - Giro completo de 360 grados
 • estado movilidad - Ver estado del sistema
 
 Ejemplos:
 • "avanza 2 segundos"
 • "gira izquierda rápido"
 • "retrocede lento"
+• "gira 360"
+• "spin completo"
 """
     
     # =======================
