@@ -1,0 +1,76 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 scripts/test_presence_diagnostics.py
+🎯 TARS-BSK PRESENCE SYSTEM - DIAGNÓSTICO COMPLETO
+🔍 Verificando hardware, configuración y dependencias
+
+============================================================
+🎯 VERIFICACIÓN DE GPIO
+============================================================
+✅ lgpio disponible
+✅ GPIO chip accesible
+
+============================================================
+🎯 VERIFICACIÓN DE CONFIGURACIÓN
+============================================================
+✅ presence_config.json encontrado
+   📊 Configuración PIR:
+      front: GPIO 16 (prioridad 1)
+      back: GPIO 26 (prioridad 3)
+      left: GPIO 19 (prioridad 2)
+      right: GPIO 20 (prioridad 2)
+✅ plugins.json encontrado
+   📊 Plugin presence enabled: True
+
+============================================================
+🎯 VERIFICACIÓN DE IMPORTACIÓN
+============================================================
+✅ PresenceController importado correctamente
+✅ MobilityController disponible
+
+============================================================
+🎯 TEST DE SENSORES INDIVIDUALES
+============================================================
+🔍 Configurando sensores...
+✅ FRONT (GPIO 16) configurado
+✅ LEFT (GPIO 19) configurado
+✅ RIGHT (GPIO 20) configurado
+✅ BACK (GPIO 26) configurado
+
+📡 MONITOREANDO durante 15 segundos...
+   👋 Mueve la mano frente a cada sensor
+   Presiona Ctrl+C para salir antes
+🚶 ¡DETECCIÓN FRONT! GPIO 16 = HIGH
+🚶 ¡DETECCIÓN FRONT! GPIO 16 = HIGH
+🚶 ¡DETECCIÓN FRONT! GPIO 16 = HIGH
+🚶 ¡DETECCIÓN FRONT! GPIO 16 = HIGH
+🚶 ¡DETECCIÓN RIGHT! GPIO 20 = HIGH
+🚶 ¡DETECCIÓN RIGHT! GPIO 20 = HIGH
+🚶 ¡DETECCIÓN LEFT! GPIO 19 = HIGH
+🚶 ¡DETECCIÓN RIGHT! GPIO 20 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN LEFT! GPIO 19 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+🚶 ¡DETECCIÓN FRONT! GPIO 16 = HIGH
+🚶 ¡DETECCIÓN BACK! GPIO 26 = HIGH
+
+📊 RESUMEN DE DETECCIONES:
+   ✅ FRONT: 5 detecciones
+   ✅ LEFT: 2 detecciones
+   ✅ RIGHT: 3 detecciones
+   ✅ BACK: 9 detecciones
+
+============================================================
+🎯 RESUMEN FINAL
+============================================================
+✅ PASS GPIO Availability
+✅ PASS Config Files
+✅ PASS Controller Import
+✅ PASS Individual Sensors
+
+🎉 SISTEMA LISTO
+👍 Puedes proceder con test_presence_functional.py

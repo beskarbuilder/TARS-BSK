@@ -1,0 +1,213 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-07-25 11:24:50,496 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-25 11:24:54,380 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-25 11:24:54,380 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-07-25 11:24:54,380 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-07-25 11:24:54,667 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 24.08it/s]
+2025-07-25 11:24:54,712 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-07-25 11:24:54,712 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-07-25 11:24:54,717 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+✅ No hay conflictos detectados
+📌 Liberando GPIOs...
+✅ Limpieza manual completada
+🧹 Recursos limpiados
+2025-07-25 11:24:54,743 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-07-25 11:24:54,743 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-07-25 11:24:54,743 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-07-25 11:24:54,744 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-07-25 11:24:54,744 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-07-25 11:24:54,747 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-07-25 11:24:54,749 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-07-25 11:24:54,751 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-07-25 11:24:54,751 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-07-25 11:24:54,752 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-07-25 11:24:54,752 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-07-25 11:24:54,753 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-07-25 11:24:54,753 - TARS - INFO - Detector de intenciones inicializado
+2025-07-25 11:24:54,754 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-07-25 11:24:54,754 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3-mini-4k-instruct.Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+2025-07-25 11:25:03,577 - TARS - INFO - ✅ Modelo cargado en 8.82 segundos
+2025-07-25 11:25:03,580 - TARS - INFO - 📊 Preferencias recuperadas para global: 15
+2025-07-25 11:25:03,580 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 13 gustos, 2 disgustos
+2025-07-25 11:25:03,664 - VOICE_ID - INFO - 🔧 Inicializando Voice Identity System...
+Loaded the voice encoder model on cpu in 0.18 seconds.
+2025-07-25 11:25:03,858 - VOICE_ID - INFO - 🔧 Configuración cargada: {'identification_threshold': 0.6, 'min_samples': 3, 'max_distance_between_samples': 0.35, 'safe_mode': True, 'db_path': 'data/identity/voice_embeddings.json', 'duplicate_threshold': 0.95, '_info': 'Configuración específica para VoiceIdentitySystem - Este archivo es SOLO para debugging', '_purpose': 'Usado por el sistema debug de voice_id y herramientas de desarrollo', '_main_config': 'La configuración principal está en settings.json', 'min_volume': 0.01, 'min_duration': 0.5}
+2025-07-25 11:25:03,859 - VOICE_ID - INFO - 🔧 Base de datos cargada: 1 usuarios
+2025-07-25 11:25:03,859 - VOICE_ID - INFO - ✅ Voice Identity System inicializado correctamente
+2025-07-25 11:25:03,859 - TARS - INFO - 🔍 VoiceIdentitySystem tardó: 0.20s
+2025-07-25 11:25:03,859 - TARS - INFO - ✅ Sistema de identificación por voz activado
+2025-07-25 11:25:03,859 - TARS - INFO - 📊 Usuarios registrados: 1
+2025-07-25 11:25:03,859 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-07-25 11:25:03,859 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-07-25 11:25:03,860 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-07-25 11:25:03,860 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: mobility, presence, homeassistant, time, reminder
+2025-07-25 11:25:03,860 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-07-25 11:25:03,860 - TARS.PluginSystem - INFO - 🚀 Inicializando 5 plugins en orden: ['mobility', 'presence', 'reminder', 'time', 'homeassistant']
+🚨 MOBILITY: Inicializando MobilityPlugin
+🚨 MOBILITY: Llamando a _init_mobility_controller
+2025-07-25 11:25:03,861 - TARS.Mobility - INFO - ✅ Config cargado: enabled=True
+2025-07-25 11:25:03,861 - TARS.Mobility - INFO - ✅ GPIO inicializado
+2025-07-25 11:25:03,861 - TARS.Mobility - INFO - ✅ Motores inicializados
+2025-07-25 11:25:03,861 - TARS.MobilityPlugin - INFO - ✅ MobilityController inicializado
+🚨 MOBILITY: Controller creado: <modules.mobility_controller.MobilityController object at 0x7fff6212ee20>
+🚨 MOBILITY: Controller enabled: True
+2025-07-25 11:25:03,861 - TARS.PluginSystem - INFO - 🤖 Plugin Mobility inicializado
+🔍 PRESENCE_PLUGIN: Entrando en initialize() [SMART VERSION]
+🔍 PRESENCE_PLUGIN: Import exitoso
+2025-07-25 11:25:03,862 - modules.presence_controller - INFO - Configuración de presencia cargada desde config/presence_config.json
+🔍 PRESENCE_PLUGIN: PresenceController creado (sin mobility)
+2025-07-25 11:25:03,862 - modules.presence_controller - INFO - 🤝 Integración tardía con MobilityController establecida
+2025-07-25 11:25:03,862 - modules.presence_controller - INFO - ✅ PresenceController ahora puede orientarse físicamente
+2025-07-25 11:25:03,862 - TARS.PresencePlugin - INFO - 🤝 Smart Integration: MobilityController integrado exitosamente
+🔍 PRESENCE_PLUGIN: Llamando controller.initialize()...
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR front: GPIO 16 configurado para polling
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR front: Polling iniciado
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - ✅ Sensor PIR 'front' configurado en GPIO 16
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR back: GPIO 26 configurado para polling
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR back: Polling iniciado
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - ✅ Sensor PIR 'back' configurado en GPIO 26
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR left: GPIO 19 configurado para polling
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR left: Polling iniciado
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - ✅ Sensor PIR 'left' configurado en GPIO 19
+2025-07-25 11:25:03,863 - modules.presence_controller - INFO - PIR right: GPIO 20 configurado para polling
+2025-07-25 11:25:03,864 - modules.presence_controller - INFO - PIR right: Polling iniciado
+2025-07-25 11:25:03,864 - modules.presence_controller - INFO - ✅ Sensor PIR 'right' configurado en GPIO 20
+2025-07-25 11:25:03,864 - modules.presence_controller - INFO - 🤝 Usando MobilityController externo (Smart Integration)
+2025-07-25 11:25:03,864 - modules.presence_controller - INFO - 🎯 Sistema de presencia inicializado correctamente
+🔍 PRESENCE_PLUGIN: controller.initialize() = True
+2025-07-25 11:25:03,864 - TARS.PresencePlugin - INFO - 🎯 Plugin de presencia inicializado correctamente (CON mobility)
+2025-07-25 11:25:03,864 - TARS.PluginSystem - INFO - 🎯 Plugin Presence inicializado correctamente
+2025-07-25 11:25:03,864 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-07-25 11:25:03,864 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-07-25 11:25:03,864 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-07-25 11:25:03,864 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-07-25 11:25:03,865 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-07-25 11:25:03,865 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-07-25 11:25:03,865 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-07-25 11:25:03,866 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-07-25 11:25:03,866 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-07-25 11:25:03,866 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-07-25 11:25:03,866 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-07-25 11:25:03,867 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-07-25 11:25:03,867 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-07-25 11:25:03,868 - TARS.HomeAssistantPlugin - INFO - 📄 Cargando configuración desde: /home/tarsadmin/tars_files/config/user_devices.json
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - ✅ Cargados 21 dispositivos desde JSON
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - ✅ Cargadas 11 ubicaciones desde JSON
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración cargada...
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 41 nombres → 21 dispositivos únicos
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 41
+2025-07-25 11:25:03,869 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-07-25 11:25:03,869 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-07-25 11:25:03,869 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-07-25 11:25:03,869 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-07-25 11:25:03,869 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-07-25 11:25:03,869 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-07-25 11:25:03,869 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-07-25 11:25:03,870 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-07-25 11:25:03,870 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-07-25 11:25:03,870 - TARS - INFO - ✅ TARS inicializado en 9.12 segundos
+2025-07-25 11:25:07,876 - TARS - INFO - 🔵 LEDs: Parpadeo azul de confirmación
+¿Usar entrada por voz? (S): s
+
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=13 max-active=7000 lattice-beam=6
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:279) Loading HCLG from ai_models/vosk/model/graph/HCLG.fst
+2025-07-25 11:25:14,928 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:14,929 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: left
+2025-07-25 11:25:15,278 - modules.presence_controller - INFO - 🚶 PIR front: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:15,429 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia left
+2025-07-25 11:25:15,429 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia left (sutil) - 0.5s
+2025-07-25 11:25:15,430 - modules.presence_controller - INFO - 🔄 Ejecutando turn_left()
+2025-07-25 11:25:15,430 - TARS.Mobility - INFO - 🤖 Girando izquierda → 0.5s
+2025-07-25 11:25:15,930 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:15,930 - modules.presence_controller - INFO - ✅ Orientación hacia left completada
+2025-07-25 11:25:16,130 - modules.presence_controller - INFO - 🚶 PIR right: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:16,431 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+LOG (VoskAPI:ReadDataFiles():model.cc:297) Loading words from ai_models/vosk/model/graph/words.txt
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+LOG (VoskAPI:ReadDataFiles():model.cc:315) Loading subtract G.fst model from ai_models/vosk/model/rescore/G.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:317) Loading CARPA model from ai_models/vosk/model/rescore/G.carpa
+2025-07-25 11:25:22,840 - modules.presence_controller - INFO - 🚶 PIR right: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:22,840 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: right
+2025-07-25 11:25:23,340 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia right
+2025-07-25 11:25:23,341 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia right (sutil) - 0.5s
+2025-07-25 11:25:23,341 - modules.presence_controller - INFO - 🔄 Ejecutando turn_right()
+2025-07-25 11:25:23,341 - TARS.Mobility - INFO - 🤖 Girando derecha → 0.5s
+2025-07-25 11:25:23,841 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:23,841 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:23,841 - modules.presence_controller - INFO - ✅ Orientación hacia right completada
+2025-07-25 11:25:24,692 - modules.presence_controller - INFO - 🚶 PIR front: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:27,147 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:27,148 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: left
+2025-07-25 11:25:27,648 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia left
+2025-07-25 11:25:27,649 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia left (sutil) - 0.5s
+2025-07-25 11:25:27,649 - modules.presence_controller - INFO - 🔄 Ejecutando turn_left()
+2025-07-25 11:25:27,649 - TARS.Mobility - INFO - 🤖 Girando izquierda → 0.5s
+2025-07-25 11:25:28,149 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:28,150 - modules.presence_controller - INFO - ✅ Orientación hacia left completada
+2025-07-25 11:25:31,253 - modules.presence_controller - INFO - 🚶 PIR right: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:31,254 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: right
+2025-07-25 11:25:31,604 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:31,755 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia right
+2025-07-25 11:25:31,755 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia right (sutil) - 0.5s
+2025-07-25 11:25:31,755 - modules.presence_controller - INFO - 🔄 Ejecutando turn_right()
+2025-07-25 11:25:31,755 - TARS.Mobility - INFO - 🤖 Girando derecha → 0.5s
+2025-07-25 11:25:31,955 - modules.presence_controller - INFO - 🚶 PIR front: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:32,256 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:32,256 - modules.presence_controller - INFO - ✅ Orientación hacia right completada
+LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vosk/model/rnnlm/final.raw
+2025-07-25 11:25:35,510 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:35,511 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: left
+2025-07-25 11:25:36,011 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia left
+2025-07-25 11:25:36,012 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia left (sutil) - 0.5s
+2025-07-25 11:25:36,012 - modules.presence_controller - INFO - 🔄 Ejecutando turn_left()
+2025-07-25 11:25:36,012 - TARS.Mobility - INFO - 🤖 Girando izquierda → 0.5s
+2025-07-25 11:25:36,512 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:36,512 - modules.presence_controller - INFO - ✅ Orientación hacia left completada
+2025-07-25 11:25:36,911 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Configurado resampling de 44100Hz a 16000Hz
+2025-07-25 11:25:41,052 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+2025-07-25 11:25:41,052 - TARS - INFO - 🔗 SpeechListener conectado a TARS para voice_id
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+⚠️ Input overflow - considera aumentar el blocksize
+2025-07-25 11:25:50,636 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:50,636 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: back
+2025-07-25 11:25:51,137 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia back
+2025-07-25 11:25:51,137 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia back (sutil) - 0.5s
+2025-07-25 11:25:51,137 - modules.presence_controller - INFO - 🔄 Ejecutando spin_180()
+2025-07-25 11:25:51,137 - TARS.Mobility - INFO - 🔃 Ejecutando giro 180° → Nones
+2025-07-25 11:25:51,487 - modules.presence_controller - INFO - 🚶 PIR front: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:51,683 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:52,639 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:52,639 - TARS.Mobility - INFO - ✅ Giro 180° completado - nueva perspectiva alcanzada
+2025-07-25 11:25:52,639 - modules.presence_controller - INFO - ✅ Orientación hacia back completada
+2025-07-25 11:25:52,639 - modules.presence_controller - INFO - 🚶 PIR right: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 11:25:52,639 - modules.presence_controller - INFO - 🎯 Movimiento detectado en posición: right
+2025-07-25 11:25:53,140 - modules.presence_controller - INFO - 🔍 Modo vigilancia pasiva: orientando hacia right
+2025-07-25 11:25:53,140 - modules.presence_controller - INFO - 🔄 Ejecutando orientación hacia right (sutil) - 0.5s
+2025-07-25 11:25:53,140 - modules.presence_controller - INFO - 🔄 Ejecutando turn_right()
+2025-07-25 11:25:53,140 - TARS.Mobility - INFO - 🤖 Girando derecha → 0.5s
+2025-07-25 11:25:53,641 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 11:25:53,641 - modules.presence_controller - INFO - ✅ Orientación hacia right completada
+^C
+👋 Saliendo...

@@ -9,5 +9,8 @@
     },
     "mobility": {
         "enabled": true
+    },
+    "presence": {
+        "enabled": true
     }
 }

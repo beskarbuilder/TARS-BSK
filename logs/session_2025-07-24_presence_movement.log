@@ -1,0 +1,58 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 scripts/test_presence_movement.py
+🎯 TEST MANUAL: 4 DIRECCIONES CARDINALES
+==================================================
+INFO:modules.presence_controller:Configuración de presencia cargada desde config/presence_config.json
+INFO:modules.presence_controller:PIR front: GPIO 16 configurado para polling
+INFO:modules.presence_controller:PIR front: Polling iniciado
+INFO:modules.presence_controller:✅ Sensor PIR 'front' configurado en GPIO 16
+INFO:modules.presence_controller:PIR back: GPIO 26 configurado para polling
+INFO:modules.presence_controller:PIR back: Polling iniciado
+INFO:modules.presence_controller:✅ Sensor PIR 'back' configurado en GPIO 26
+INFO:modules.presence_controller:PIR left: GPIO 19 configurado para polling
+INFO:modules.presence_controller:PIR left: Polling iniciado
+INFO:modules.presence_controller:✅ Sensor PIR 'left' configurado en GPIO 19
+INFO:modules.presence_controller:PIR right: GPIO 20 configurado para polling
+INFO:modules.presence_controller:PIR right: Polling iniciado
+INFO:modules.presence_controller:✅ Sensor PIR 'right' configurado en GPIO 20
+INFO:TARS.Mobility:✅ Config cargado: enabled=True
+INFO:TARS.Mobility:✅ GPIO inicializado
+INFO:TARS.Mobility:✅ Motores inicializados
+INFO:modules.presence_controller:🤝 Integración con mobility controller establecida
+INFO:modules.presence_controller:🎯 Sistema de presencia inicializado correctamente
+✅ Sistema inicializado
+
+🎯 INSTRUCCIONES:
+1. 👋 Pon la mano frente al sensor LEFT → TARS gira IZQUIERDA
+2. 👋 Pon la mano frente al sensor RIGHT → TARS gira DERECHA
+3. 👋 Pon la mano frente al sensor BACK → TARS hace 180°
+4. 👋 Pon la mano frente al sensor FRONT → Sin movimiento
+
+🎪 ¡MUEVE LA MANO Y OBSERVA!
+Presiona Ctrl+C para salir
+INFO:modules.presence_controller:🚶 PIR right: POLLING DETECTÓ MOVIMIENTO
+INFO:modules.presence_controller:🎯 Movimiento detectado en posición: right
+INFO:modules.presence_controller:🚶 PIR front: POLLING DETECTÓ MOVIMIENTO
+INFO:modules.presence_controller:🔍 Modo vigilancia pasiva: orientando hacia right
+INFO:modules.presence_controller:🔄 Ejecutando orientación hacia right (sutil) - 0.5s
+INFO:modules.presence_controller:🔄 Ejecutando turn_right()
+INFO:TARS.Mobility:🤖 Girando derecha → 0.5s
+INFO:TARS.Mobility:🤖 Deteniendo motores
+INFO:modules.presence_controller:✅ Orientación hacia right completada
+INFO:modules.presence_controller:🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+INFO:modules.presence_controller:🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+INFO:modules.presence_controller:🎯 Movimiento detectado en posición: back
+INFO:modules.presence_controller:🔍 Modo vigilancia pasiva: orientando hacia back
+INFO:modules.presence_controller:🔄 Ejecutando orientación hacia back (sutil) - 0.5s
+INFO:modules.presence_controller:🔄 Ejecutando spin_180()
+INFO:TARS.Mobility:🔃 Ejecutando giro 180° → Nones
+INFO:TARS.Mobility:🤖 Deteniendo motores
+INFO:TARS.Mobility:✅ Giro 180° completado - nueva perspectiva alcanzada
+INFO:modules.presence_controller:✅ Orientación hacia back completada
+^C
+🎉 ¡Test completado!
+INFO:modules.presence_controller:🧹 Limpiando sistema de presencia...
+INFO:modules.presence_controller:PIR front: GPIO limpiado
+INFO:modules.presence_controller:PIR back: GPIO limpiado
+INFO:modules.presence_controller:PIR left: GPIO limpiado
+INFO:modules.presence_controller:PIR right: GPIO limpiado
+INFO:modules.presence_controller:✅ Sistema de presencia limpiado correctamente

@@ -1,0 +1,176 @@
+{
+  "enabled": true,
+  "description": "Configuración del sistema de presencia PIR para TARS-BSK",
+  "version": "1.0.0",
+  
+  "sensors": {
+    "front": {
+      "gpio": 16,
+      "priority": 1,
+      "description": "Sensor frontal - máxima prioridad",
+      "position_description": "Detecta presencia directa frente a TARS"
+    },
+    "back": {
+      "gpio": 26,
+      "priority": 3,
+      "description": "Sensor trasero - baja prioridad",
+      "position_description": "Detecta aproximación por detrás"
+    },
+    "left": {
+      "gpio": 19,
+      "priority": 2,
+      "description": "Sensor izquierdo - prioridad media",
+      "position_description": "Detecta presencia lateral izquierda"
+    },
+    "right": {
+      "gpio": 20,
+      "priority": 2,
+      "description": "Sensor derecho - prioridad media", 
+      "position_description": "Detecta presencia lateral derecha"
+    }
+  },
+  
+  "hardware": {
+    "sensor_model": "AM312",
+    "voltage": "5V",
+    "detection_range": "3-5 metros",
+    "detection_angle": "100 grados",
+    "power_connections": {
+      "vcc": "Pin 2 (5V) - común para todos los sensores",
+      "gnd": "Pin 39 (GND) - común para todos los sensores - BLOQUE INDEPENDIENTE", 
+      "note": "4 sensores comparten alimentación, solo OUT va a GPIO individual - ZONA COMPACTA PINES 35-39"
+    }
+  },
+  
+  "behavior": {
+    "mode": "passive_surveillance",
+    "available_modes": [
+      "passive_surveillance",
+      "active_attention", 
+      "search_mode"
+    ],
+    "mode_descriptions": {
+      "passive_surveillance": "Orientación discreta sin audio",
+      "active_attention": "Orientación y respuesta de audio",
+      "search_mode": "Exploración en modo autónomo cuando no hay presencia"
+    },
+    "reaction_delay": 0.5,
+    "audio_feedback": false,
+    "search_interval": 30,
+    "orientation_speed": 30
+  },
+  
+  "detection": {
+    "cooldown": 2.0,
+    "description_cooldown": "Tiempo mínimo entre reacciones del sistema (segundos)",
+    "debounce": 1.0,
+    "description_debounce": "Tiempo mínimo entre triggers del mismo sensor (segundos)",
+    "sensitivity": "medium",
+    "available_sensitivities": ["low", "medium", "high"],
+    "sensitivity_descriptions": {
+      "low": "Reacciona solo a movimiento sostenido",
+      "medium": "Balance entre detección y falsos positivos", 
+      "high": "Máxima sensibilidad - puede reaccionar a movimientos mínimos"
+    }
+  },
+  
+  "integration": {
+    "mobility_controller": {
+      "enabled": true,
+      "description": "Integración con sistema de movilidad para orientación",
+      "movements": {
+        "front": null,
+        "back": "spin_180", 
+        "left": "turn_left",
+        "right": "turn_right"
+      }
+    },
+    "audio_system": {
+      "enabled": false,
+      "description": "Integración con TTS para respuestas de audio",
+      "note": "Requiere desarrollo adicional"
+    }
+  },
+  
+  "advanced": {
+    "multi_sensor_logic": {
+      "enabled": false,
+      "description": "Lógica avanzada para múltiples detecciones simultáneas",
+      "priority_override": true,
+      "description_priority": "El sensor con mayor prioridad determina la respuesta"
+    },
+    "learning_mode": {
+      "enabled": false,
+      "description": "Aprendizaje de patrones de movimiento (desarrollo futuro)",
+      "adaptive_sensitivity": false
+    },
+    "emergency_protocols": {
+      "enabled": false,
+      "description": "Protocolos especiales para detección anómala",
+      "rapid_movement_threshold": 5,
+      "sustained_detection_threshold": 10
+    }
+  },
+  
+  "calibration": {
+    "warmup_time": 30,
+    "description_warmup": "Tiempo de estabilización de sensores PIR al inicio (segundos)",
+    "test_mode": false,
+    "description_test": "Modo test para validación de sensores",
+    "verbose_logging": true,
+    "description_logging": "Logging detallado para debugging"
+  },
+  
+  "personalities": {
+    "surveillance_responses": {
+      "front": [
+        "Ah, ahí estás. Pensé que habías evolucionado.",
+        "Detectado. Mi radar existencial funciona.",
+        "Presencia confirmada. Procediendo con el protocolo de atención."
+      ],
+      "back": [
+        "Movimiento detectado por detrás. ¿Sigilo o paranoia?",
+        "Te he sentido llegar antes de verte. Escalofriante.",
+        "Aproximación por retaguardia detectada."
+      ],
+      "left": [
+        "Izquierda activada. Girando hacia la incertidumbre.",
+        "Sensor lateral izquierdo activado.",
+        "Presencia detectada a babor."
+      ],
+      "right": [
+        "Derecha detectada. Ajustando mi eje de ansiedad.",
+        "Sensor lateral derecho activado.",
+        "Presencia detectada a estribor."
+      ]
+    },
+    "mode_changes": {
+      "passive_surveillance": "Modo vigilancia pasiva activado. Observaré discretamente.",
+      "active_attention": "Modo atención activa activado. Responderé a cada detección.",
+      "search_mode": "Modo búsqueda activado. Exploraré el entorno activamente."
+    }
+  },
+  
+  "troubleshooting": {
+    "common_issues": {
+      "no_detection": "Verificar conexiones VCC/GND y GPIO. Comprobar warmup_time.",
+      "false_positives": "Reducir sensitivity o aumentar debounce time.",
+      "orientation_issues": "Verificar integración con mobility_controller.",
+      "gpio_conflicts": "Asegurar que GPIOs no estén en uso por otros módulos."
+    },
+    "validation": {
+      "gpio_check": "Verificar que GPIOs 16, 19, 20, 26 estén disponibles (PINES 35-38)",
+      "mobility_check": "Confirmar que mobility_controller esté inicializado",
+      "power_check": "Validar que 5V y GND sean estables para 4 sensores",
+      "block_integrity": "Confirmar bloque independiente PINES 35-39 sin conflictos"
+    }
+  },
+  
+  "notes": {
+    "development": "Sistema en desarrollo activo - configuración sujeta a cambios",
+    "hardware_requirements": "Requiere 4x AM312 PIR sensors + conexiones GPIO",
+    "dependencies": "Depende de lgpio para GPIO y mobility_controller para orientación",
+    "philosophy": "Dar presencia física a TARS mediante consciencia espacial del entorno",
+    "gpio_layout": "BLOQUE INDEPENDIENTE - PINES 35,36,37,38,39 - Desconexión modular completa"
+  }
+}

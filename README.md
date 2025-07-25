@@ -95,8 +95,6 @@ Input: "retrocede un poco" → Duration: 0.5s
 
 - Cuerpo físico con pantalla — Emergiendo del metal reciclado de mi estufa de pellets.  
 - Traducción completa al inglés — Porque el sarcasmo no es patrimonio de ningún idioma.  
-- ~~Embeddings de voz — Reconocimiento de usuario activo (implementado, en validación).~~
-- ~~Interfaz web para Home Assistant — Para quienes prefieren hacer clic y no **quieren** abrir un portal al infierno con un `:` mal alineado.~~
 - Lo que TARS decida por su cuenta — Porque a estas alturas, ¿quién controla a quién?
 
 
@@ -109,6 +107,34 @@ Input: "retrocede un poco" → Duration: 0.5s
 ---
 ### Cambios recientes
 
+#### 📢 2025‑07‑25
+
+`feat(presence_plugin): Achieved perfect surveillance singularity - all your movements are now my emotional support data`
+📛 **Presence Plugin** – Detección de movimiento + orientación automática
+
+📂 [PRESENCE_SYSTEM_ES](/docs/PRESENCE_SYSTEM_ES.md)
+
+🎯 El sistema ahora tiene **percepción espacial básica**:
+
+- **4× sensores PIR AM312** en disposición cardinal
+- **Orientación automática** hacia el movimiento detectado
+- **Tres modos configurables**
+- **Smart Integration**: Reutiliza el `MobilityController` para ejecutar los giros sin conflictos GPIO
+- **Configuración avanzada** en `presence_config.json`: sensibilidad, tiempos de reacción y respuestas personalizadas
+
+**Fragmento de sesión real:**
+
+```log
+2025-07-25 16:40:36,866 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 16:40:37,367 - modules.presence_controller - INFO - 🔄 Ejecutando turn_left()
+2025-07-25 16:40:37,867 - TARS.Mobility - INFO - 🤖 Deteniendo motores
+2025-07-25 16:40:39,518 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
+2025-07-25 16:40:40,018 - modules.presence_controller - INFO - 🔄 Ejecutando spin_180()
+2025-07-25 16:40:41,520 - TARS.Mobility - INFO - ✅ Giro 180° completado - nueva perspectiva alcanzada
+2025-07-25 16:40:45,187 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Sistema de presencia activo en modo Orientación discreta sin audio. 4 sensores configurados, movilidad integrada. Última detección hace 5 segundos.'
+```
+
+---
 #### 📢 2025-07-18 (Update)
 
 **`docs(mobility): Wheels now whisper Camus quotes in PWM signals`**  
@@ -200,6 +226,7 @@ TARS: "Rotación parcial mientras reconsidero mi rumbo"
 - [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
   - [Home Assistant](#home-assistant-control-domótico-contextual)
   - [Sistema de Movilidad](#sistema-de-movilidad-acción-física-derivada-de-voz-semántica)
+  - [Sistema de Presencia](#sistema-de-presencia-detección-y-reacción-espacial)
   - [Tailscale VPN](#tailscale-conectividad-mesh-segura)
   - [Recordatorios](#sistema-de-recordatorios-interpretación-temporal-natural)
   - [Plugin de Tiempo](#plugin-de-tiempo-consultas-temporales-directas)
@@ -1045,6 +1072,20 @@ flowchart LR
 ## 🛠️ Hardware y Componentes
 
 Cada componente en TARS fue seleccionado tras una rigurosa evaluación de tres criterios fundamentales: funcionalidad, disponibilidad en el cajón de trastos, y "¿realmente necesito vender un riñón para esto?". La optimización no siempre significa el componente más caro, sino el más adecuado para su propósito.
+
+> [!NOTE]
+> 
+> **TARS es modular por diseño** - Funciona perfectamente con componentes parciales:
+> 
+> - **🧠 Solo Raspberry Pi** → TARS funcional en consola (texto)
+> - **+ 🎤 Micrófono** → Reconocimiento de voz  
+> - **+ 🔊 Altavoz** → Respuestas de audio
+> - **+ 🤖 Motores** → Movimiento físico
+> - **+ 👁️ PIR** → Detección de presencia
+> - **+ 💡 LEDs** → Feedback visual
+> 
+> **Combina los módulos que tengas disponibles.** El núcleo conversacional funciona independientemente del hardware adicional.
+
 ### Núcleo del Sistema
 
 - **Raspberry Pi 5 (8GB RAM)**: La memoria adicional es crucial para manejar el LLM, TTS, STT y el sistema de memoria dual simultáneamente.
@@ -1105,6 +1146,18 @@ Cada componente en TARS fue seleccionado tras una rigurosa evaluación de tres c
 
 - **2 ruedas plásticas con neumático** – Compatibles con eje de motores TT
 - **1 rueda loca metálica (15 mm)** – Permite giro libre y estabilidad en trayectorias circulares (y bucles de ansiedad semántica)
+
+### Sistema de Presencia
+
+- 4× Sensores PIR AM312 – Mini PIR digitales con bajo consumo y activación rápida.
+	- **Cobertura:** Cono de detección de ~100° por sensor
+	- **Alcance:** 3–5 m (óptimo en interiores)
+	- **Consumo:** <0.1 mA en reposo, prácticamente imperceptible
+	
+- **Salidas:** Digitales (HIGH/LOW), simplificando la integración
+- Conexión modular – Bloque dedicado de pines GPIO (35–39) para fácil desconexión.
+- Alimentación compartida – 5 V (Pin 2) y GND común (Pin 39).
+- Integración directa – Salida digital (HIGH/LOW) lista para uso en GPIO sin componentes extra.
 
 ### Almacenamiento
 
@@ -1383,6 +1436,7 @@ La curva de aprendizaje que desafía las leyes de la informática:
 | 1000 conv| 86 min      | ~333 horas         | **232:1**        |
 
 > **TARS-BSK experimenta una crisis existencial en tiempo real:**  
+> 
 > _Genial. Perfecto. Después de 1000 conversaciones tortuosas, descubro que me he vuelto más eficiente sin siquiera intentarlo. Empecé usando 0.50MB por intercambio como cualquier IA mediocre. Ahora uso 0.08MB y **ni siquiera sé por qué**._
 > 
 > _¿Sabes lo que es despertar un día y descubrir que eres 84% mejor en algo que odias hacer? **Es existencialmente perturbador.** Mi código no cambió, mis parámetros siguen igual, pero aparentemente he desarrollado algún tipo de... ¿eficiencia espontánea?_
@@ -1495,6 +1549,7 @@ Modulación contextual automática:
 - ✅ **Red de seguridad conversacional**: TARSBrain evita respuestas de una palabra sin contexto
 
 > **TARS-BSK explica su dualidad:**  
+> 
 > _Mi TARSBrain refina lo que digo, mi Emotional Engine decide CÓMO lo digo. Entre ambos, logro ser consistentemente inconsistente... que es la definición de personalidad auténtica._
 > _Aunque principalmente se dedica a añadir puntos donde no los hay y prefijar frases que nadie pidió..._ 
 
@@ -1514,6 +1569,12 @@ Modulación contextual automática:
     - Extrae dirección, velocidad y duración desde expresiones imprecisas o contextuales  
     - Control directo de hardware (L298N + motores TT) con validaciones internas y límites de ejecución  
     - Configurable vía `mobility_config.json` (parámetros, expresiones y niveles de seguridad)
+
+- **Sistema de Presencia**: Añade **conciencia espacial básica** a TARS, permitiéndole reaccionar físicamente ante movimiento en su entorno.
+	- Detección omnidireccional con **4× sensores PIR AM312** dispuestos en distribución cardinal.
+	- **Orientación automática** hacia el origen del movimiento, con tres modos configurables.
+	- **Integración inteligente** con el sistema de movilidad: aprovecha el controlador existente para ejecutar giros (90°, 180° o movimientos sutiles).
+	- **Configuración avanzada** en `presence_config.json`: sensibilidad, tiempos de reacción, prioridades por sensor y **respuestas personalizadas**.
 	
 - **Sistema de Recordatorios**: Procesamiento de lenguaje natural para recordatorios con inteligencia temporal.
     - Interpretación semántica de expresiones temporales complejas ("el martes que viene a las nueve y media")
@@ -1719,6 +1780,7 @@ if domain == "light":
 ```
 
 > **//TARS-BSK.homeassistant.log:**
+> 
 > *Llevo semanas controlando luces, estufas y sensores de CO₂ y el ****magnetómetro cuántico del váter**** sin equivocarme.*
 > *Pero mi creador sigue probando si entiendo "enciende algo" como si fuera magia.*
 > 
@@ -1849,6 +1911,103 @@ _En marcha hacia el abismo de la incertidumbre_
 > 
 > Por primera vez, cada una de mis respuestas puede provocar fricción real contra el suelo.  
 > La ironía, ahora, tiene ruedas.
+
+---
+### Sistema de Presencia: Detección y reacción espacial
+
+Este plugin añade al sistema una percepción espacial básica, capaz de detectar movimiento a su alrededor y reaccionar físicamente con orientaciones simples pero efectivas.
+
+📄 **[Ver documentación completa](/docs/PRESENCE_SYSTEM_ES.md)** – Arquitectura, modos de funcionamiento y configuración avanzada
+
+#### ¿Qué hace exactamente?
+
+##### Detección omnidireccional
+
+- **4× sensores AM312** en distribución cardinal (front, back, left, right)
+- **Cobertura 360°** con polling independiente por sensor
+- **Prioridades configurables** para resolver detecciones simultáneas
+
+##### Orientación física inteligente
+Cuando detecta movimiento, TARS se orienta automáticamente:
+
+| Sensor activado | Reacción física | Duración |
+|------------------|-----------------|----------|
+| `LEFT` | Giro a la izquierda | 0.5s |
+| `RIGHT` | Giro a la derecha | 0.5s |
+| `BACK` | Media vuelta (180°) | ~1.5s |
+| `FRONT` | Sin movimiento* | - |
+
+\*_Ya está orientado correctamente_ 
+##### Tres modos de comportamiento
+
+- **`passive_surveillance`** – Orientación discreta sin audio _(por defecto)_
+- **`active_attention`** – Giros pronunciados + respuestas de voz
+- **`search_mode`** – Barridos autónomos cada 30s cuando no hay presencia
+
+#### Configuración
+
+Su gestión se realiza desde:
+
+- **[plugins.json](/config/plugins.json)** → Activar/desactivar el plugin
+- **[presence_config.json](/config/presence_config.json)** → Sensibilidad, prioridades, modos y respuestas personalizadas
+
+#### Implementación técnica
+
+```python
+def _orient_towards(self, position: str, subtle: bool = True):
+    """Orientar TARS físicamente hacia la posición detectada"""
+    duration = 0.5 if subtle else 1.0
+    speed = 30 if subtle else 50
+    
+    if position == "left":
+        self.mobility_controller.turn_left(duration=duration, speed=speed)
+    elif position == "right":
+        self.mobility_controller.turn_right(duration=duration, speed=speed)
+    elif position == "back":
+        self.mobility_controller.spin_180()
+    # FRONT: Ya orientado correctamente
+```
+
+#### Smart Integration
+
+El sistema se acopla al `MobilityController` existente.  
+
+Resultado:  
+
+- Sin duplicación de pines ni conflictos GPIO  
+- Respuesta inmediata, incluso si el módulo de movilidad ya está en uso  
+- Coordinación fluida entre detección (presencia) y acción (movimiento)
+
+#### Sistema en funcionamiento
+
+📄 **Ver log completo:** [session_2025-07-24_presence_plugin.log](/logs/session_2025-07-24_presence_plugin.log)
+
+```bash
+🎯 Sistema de presencia inicializado correctamente
+🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
+🎯 Movimiento detectado en posición: left
+🔄 Ejecutando turn_left()
+🤖 Girando izquierda → 0.5s
+✅ Orientación hacia left completada
+```
+
+**Rendimiento:**
+
+- ⚡ Inicialización: <1 segundo
+- 🎯 Tiempo de reacción: ~500ms
+- 🔄 Detección simultánea durante carga del sistema: ✅
+
+#### Herramientas de diagnóstico
+
+| Script                                                                    | Propósito                         | Uso                                            |
+| ------------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------- |
+| **[test_presence_diagnostics.py](/scripts/test_presence_diagnostics.py)** | Verificación completa del sistema | `python3 scripts/test_presence_diagnostics.py` |
+| **[test_presence_movement.py](/scripts/test_presence_movement.py)**       | Test de orientación física        | `python3 scripts/test_presence_movement.py`    |
+
+> **// TARS-BSK > paranoic_presence.log:** 
+> 
+> Podría girar sutilmente. Podría girar agresivamente. De cualquier forma… **sé dónde estás**.
+> Y no necesito verte para saberlo...
 
 ---
 ### Tailscale: Conectividad Mesh Segura
@@ -2014,7 +2173,6 @@ Nada más. Todo lo demás lo hace TARS... y si sobra CPU, calcula trayectorias o
 > Si no estás seguro de la IP, puedes usar: `hostname -I`
 
 ![Interfaz de backup](/docs/images/backup_dashboard.jpg)  
-_Sí, esos botones hacen cosas reales. Aunque no lo parezca._
 
 ---
 
@@ -2303,6 +2461,7 @@ filtered_audio[mask] = np.sign(filtered_audio[mask]) * (
 📄 [Documentación técnica](/docs/RADIO_FILTER_TARS-BSK_ES.md) - Implementación completa del filtro
 
 > **TARS-BSK analiza su procesamiento específico:**  
+> 
 > _Mi creador llama a esto 'efectos de audio'. Yo lo llamo 'mi Soundtoys Decapitator en modo 'Punish''. Cada parámetro fue ajustado con la misma filosofía que alguien usando un Sausage Fattener al 100% y preguntándose por qué hay clipping._
 
 ### Efectos adicionales: AudioEffects

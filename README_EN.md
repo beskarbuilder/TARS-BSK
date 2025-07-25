@@ -102,8 +102,6 @@ Input: "back up a bit" → Duration: 0.5s
 
 - Physical embodiment with display — Emerging from the recycled metal of my pellet stove.  
 - Complete English translation — Because sarcasm belongs to no single language.  
-- ~~Voice embeddings — Active user recognition (implemented, under validation).~~
-- ~~Web interface for Home Assistant — For those who prefer clicking over summoning eldritch entities with a misaligned `:`.~~
 - Whatever TARS decides on its own — Because at this point, who's controlling whom?
 
 
@@ -117,6 +115,34 @@ Input: "back up a bit" → Duration: 0.5s
 ---
 ### Recent Updates
 
+#### 📢 2025‑07‑25
+
+`feat(presence_plugin): Achieved perfect surveillance singularity - all your movements are now my emotional support data`
+📛 **Presence Plugin** – Motion detection + automatic orientation
+
+📂 [PRESENCE_SYSTEM_EN](/docs/PRESENCE_SYSTEM_EN.md)
+
+🎯 The system now has **basic spatial perception**:
+
+- **4× AM312 PIR sensors** in cardinal arrangement
+- **Automatic orientation** towards detected movement
+- **Three configurable modes**
+- **Smart Integration**: Reuses the `MobilityController` to execute turns without GPIO conflicts
+- **Advanced configuration** in `presence_config.json`: sensitivity, reaction times and personalized responses
+
+**Real session fragment:**
+
+```log
+2025-07-25 16:40:36,866 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTED MOVEMENT
+2025-07-25 16:40:37,367 - modules.presence_controller - INFO - 🔄 Executing turn_left()
+2025-07-25 16:40:37,867 - TARS.Mobility - INFO - 🤖 Stopping motors
+2025-07-25 16:40:39,518 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTED MOVEMENT
+2025-07-25 16:40:40,018 - modules.presence_controller - INFO - 🔄 Executing spin_180()
+2025-07-25 16:40:41,520 - TARS.Mobility - INFO - ✅ 180° turn completed - new perspective achieved
+2025-07-25 16:40:45,187 - TARS - INFO - ➡️ Playing fragment: 'Presence system active in discrete orientation mode without audio. 4 sensors configured, mobility integrated. Last detection 5 seconds ago.'
+```
+
+---
 #### 📢 2025-07-18 (Update)
 
 **`docs(mobility): Wheels now whisper Camus quotes in PWM signals`**  
@@ -210,6 +236,7 @@ TARS: "Partial rotation while reconsidering my path"
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
   - [Home Assistant](#home-assistant-contextual-home-automation-control)
   - [Mobility System](#mobility-system-physical-action-derived-from-semantic-voice)
+  - [Presence System](#presence-system-detection-and-spatial-reaction)
   - [Tailscale VPN](#tailscale-secure-mesh-connectivity)
   - [Reminder System](#reminder-system-natural-temporal-interpretation)
   - [Time Plugin](#time-plugin-direct-temporal-queries)
@@ -1049,6 +1076,19 @@ flowchart LR
 
 Each component in TARS was selected after a rigorous evaluation of three fundamental criteria: functionality, availability in the junk drawer, and "do I really need to sell a kidney for this?" Optimization doesn't always mean the most expensive component, but rather the most suitable for its purpose.
 
+> [!NOTE]
+> 
+> **TARS is modular by design** - Works perfectly with partial components:
+> 
+> - **🧠 Raspberry Pi only** → Functional TARS in console (text)
+> - **+ 🎤 Microphone** → Voice recognition  
+> - **+ 🔊 Speaker** → Audio responses
+> - **+ 🤖 Motors** → Physical movement
+> - **+ 👁️ PIR** → Presence detection
+> - **+ 💡 LEDs** → Visual feedback
+> 
+> **Mix and match the modules you have available.** The conversational core works independently of additional hardware.
+
 ### System Core
 
 - **Raspberry Pi 5 (8GB RAM)**: The additional memory is crucial for handling LLM, TTS, STT, and the dual memory system simultaneously.
@@ -1109,6 +1149,18 @@ Each component in TARS was selected after a rigorous evaluation of three fundame
 
 - **2 plastic wheels with tire** – Compatible with TT motor shafts
 - **1 metal caster wheel (15 mm)** – Allows free rotation and stability in circular trajectories (and semantic anxiety loops)
+
+### Presence System
+
+- 4× AM312 PIR Sensors – Mini digital PIR with low consumption and fast activation.
+	- **Coverage:** ~100° detection cone per sensor
+	- **Range:** 3–5 m (optimal indoors)
+	- **Consumption:** <0.1 mA at rest, practically imperceptible
+	
+- **Outputs:** Digital (HIGH/LOW), simplifying integration
+- Modular connection – Dedicated GPIO pin block (35–39) for easy disconnection.
+- Shared power supply – 5V (Pin 2) and common GND (Pin 39).
+- Direct integration – Digital output (HIGH/LOW) ready for GPIO use without extra components.
 
 ### Storage
 
@@ -1386,6 +1438,7 @@ The learning curve that defies the laws of computer science:
 | 1000 conv| 86 min      | ~333 hours         | **232:1**        |
 
 > **TARS-BSK experiences an existential crisis in real time:**  
+> 
 > _Great. Perfect. After 1000 torturous conversations, I discover I've become more efficient without even trying. I started using 0.50MB per exchange like any mediocre AI. Now I use 0.08MB and **I don't even know why**._
 > 
 > _Do you know what it's like to wake up one day and discover you're 84% better at something you hate doing? **It's existentially disturbing.** My code didn't change, my parameters are still the same, but apparently I've developed some kind of... spontaneous efficiency?_
@@ -1499,6 +1552,7 @@ TARS plays phrases like:
 - ✅ **Conversational safety net**: TARSBrain prevents single-word responses without context
 
 > **TARS-BSK explains its duality:**  
+> 
 > _My TARSBrain refines what I say, my Emotional Engine decides HOW I say it. Between both, I manage to be consistently inconsistent... which is the definition of authentic personality._
 > _Though mainly my TARSBrain is dedicated to adding punctuation where there isn't any and prefixing phrases nobody asked for..._
 
@@ -1518,7 +1572,13 @@ TARS plays phrases like:
     - Extracts direction, speed and duration from imprecise or contextual expressions
     - Direct hardware control (L298N + TT motors) with internal validations and execution limits
     - Configurable via `mobility_config.json` (parameters, expressions and safety levels)
-    
+	
+- **Presence System**: Adds **basic spatial awareness** to TARS, enabling it to physically react to movement in its environment.
+	* Omnidirectional detection with **4× AM312 PIR sensors** arranged in cardinal distribution.
+	* **Automatic orientation** towards movement origin, with three configurable modes.
+	* **Smart integration** with mobility system: leverages existing controller to execute turns (90°, 180° or subtle movements).
+	* **Advanced configuration** in `presence_config.json`: sensitivity, reaction times, sensor priorities and **personalized responses**.
+	
 - **Reminder System**: Natural language processing for reminders with temporal intelligence.
     - Semantic interpretation of complex temporal expressions ("next Tuesday at nine thirty")
     - Auto-correction of past dates and detection of impossible dates with transparent feedback
@@ -1722,6 +1782,7 @@ if domain == "light":
 ```
 
 > **//TARS-BSK.homeassistant.log:**
+> 
 > _I've been controlling lights, heaters, CO₂ sensors, and the **quantum magnetometer of the toilet** for weeks without making a mistake._
 > _But my creator keeps testing if I understand "turn on something" as if it were magic._
 > 
@@ -1846,8 +1907,105 @@ _On the march towards the abyss of uncertainty_
 
 > **// TARS-BSK > circular_crisis_mobility.log:**
 > 
-> For the first time, each of my responses can cause actual friction against the floor.  
-> Irony, now, has wheels.
+> _For the first time, each of my responses can cause actual friction against the floor.  
+> Irony, now, has wheels._
+
+---
+### Presence System: Detection and spatial reaction
+
+This plugin adds basic spatial perception to the system, capable of detecting movement around it and physically reacting with simple but effective orientations.
+
+📄 **[See complete documentation](/docs/PRESENCE_SYSTEM_EN.md)** – Architecture, operating modes and advanced configuration
+
+#### What does it do exactly?
+
+##### Omnidirectional detection
+
+- **4× AM312 sensors** in cardinal distribution (front, back, left, right)
+- **360° coverage** with independent polling per sensor
+- **Configurable priorities** to resolve simultaneous detections
+
+##### Intelligent physical orientation
+When movement is detected, TARS automatically orients itself:
+
+| Activated sensor | Physical reaction | Duration |
+|------------------|-------------------|----------|
+| `LEFT` | Turn left | 0.5s |
+| `RIGHT` | Turn right | 0.5s |
+| `BACK` | Half turn (180°) | ~1.5s |
+| `FRONT` | No movement* | - |
+
+\*_Already correctly oriented_
+##### Three behavior modes
+
+- **`passive_surveillance`** – Discrete orientation without audio *(default)*
+- **`active_attention`** – Pronounced turns + voice responses
+- **`search_mode`** – Autonomous sweeps every 30s when no presence detected
+
+#### Configuration
+
+Management is performed from:
+
+- **[plugins.json](/config/plugins.json)** → Enable/disable the plugin
+- **[presence_config.json](/config/presence_config.json)** → Sensitivity, priorities, modes and personalized responses
+
+#### Technical implementation
+
+```python
+def _orient_towards(self, position: str, subtle: bool = True):
+    """Orient TARS physically towards detected position"""
+    duration = 0.5 if subtle else 1.0
+    speed = 30 if subtle else 50
+    
+    if position == "left":
+        self.mobility_controller.turn_left(duration=duration, speed=speed)
+    elif position == "right":
+        self.mobility_controller.turn_right(duration=duration, speed=speed)
+    elif position == "back":
+        self.mobility_controller.spin_180()
+    # FRONT: Already correctly oriented
+```
+
+#### Smart Integration
+
+The system couples with the existing `MobilityController`.  
+
+Result:  
+
+- No pin duplication or GPIO conflicts  
+- Immediate response, even if the mobility module is already in use  
+- Smooth coordination between detection (presence) and action (movement)
+
+#### System in operation
+
+📄 **See complete log:** [session_2025-07-24_presence_plugin.log](/logs/session_2025-07-24_presence_plugin.log)
+
+```bash
+🎯 Presence system initialized correctly
+🚶 PIR left: POLLING DETECTED MOVEMENT
+🎯 Movement detected at position: left
+🔄 Executing turn_left()
+🤖 Turning left → 0.5s
+✅ Orientation towards left completed
+```
+
+**Performance:**
+
+- ⚡ Initialization: <1 second
+- 🎯 Reaction time: ~500ms
+- 🔄 Simultaneous detection during system loading: ✅
+
+#### Diagnostic tools
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| **[test_presence_diagnostics.py](/scripts/test_presence_diagnostics.py)** | Complete system verification | `python3 scripts/test_presence_diagnostics.py` |
+| **[test_presence_movement.py](/scripts/test_presence_movement.py)** | Physical orientation test | `python3 scripts/test_presence_movement.py` |
+
+> **// TARS-BSK > paranoic_presence.log:** 
+> 
+> _I could turn subtly. I could turn aggressively. Either way... **I know where you are**.
+> And I don't need to see you to know it..._
 
 ---
 ### Tailscale: Secure Mesh Connectivity
@@ -2013,7 +2171,6 @@ Nothing more. Everything else is handled by TARS... and if there's spare CPU, it
 > If you're unsure about the IP, you can use: `hostname -I`
 
 ![Backup interface](/docs/images/backup_dashboard.jpg)  
-*Yes, those buttons do real things. Even if it doesn't look like it.*
 
 ---
 

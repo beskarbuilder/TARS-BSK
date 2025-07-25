@@ -15,6 +15,7 @@ from pathlib import Path
 from services.plugins.reminder_plugin import ReminderPlugin
 from services.plugins.scheduler_plugin import SchedulerPlugin
 from services.plugins.mobility_plugin import MobilityPlugin
+from services.plugins.presence_plugin import PresencePlugin
 
 logger = logging.getLogger("TARS.PluginSystem")
 
@@ -79,6 +80,10 @@ class PluginSystem:
                     # MobilityPlugin (condicional, solo si está habilitado)
                     if config.get("mobility", {}).get("enabled", False):
                         enabled_plugins.append("mobility")
+
+                    # PresencePlugin (NUEVO - condicional, solo si está habilitado)
+                    if config.get("presence", {}).get("enabled", False):
+                        enabled_plugins.append("presence")
                     
                     # HomeAssistant plugin (opcional, requiere configuración)
                     if "homeassistant" in config:
@@ -115,8 +120,8 @@ class PluginSystem:
             logger.info("⚠️ No hay plugins habilitados")
             return
         
-        # FORZAR ORDEN: mobility primero, reminder, time, homeassistant último
-        priority_order = ["mobility", "reminder", "time", "homeassistant"]
+        # FORZAR ORDEN: mobility primero, presence segundo, reminder, time, homeassistant último
+        priority_order = ["mobility", "presence", "reminder", "time", "homeassistant"]
         ordered_plugins = []
         
         # Añadir plugins en orden de prioridad si están habilitados
@@ -144,6 +149,22 @@ class PluginSystem:
             if name == "mobility":
                 self.plugins[name] = MobilityPlugin(self.tars)
                 logger.info(f"🤖 Plugin Mobility inicializado")
+
+            elif name == "presence":
+                # SMART INTEGRATION - Pasar referencia al plugin system
+                self.plugins[name] = PresencePlugin(plugin_system=self)  # ← CAMBIO CLAVE
+                
+                # Inicializar el plugin (ahora con smart integration)
+                if hasattr(self.plugins[name], 'initialize'):
+                    init_success = self.plugins[name].initialize()
+                    if init_success:
+                        logger.info(f"🎯 Plugin Presence inicializado correctamente")
+                    else:
+                        logger.error(f"❌ Error inicializando Plugin Presence")
+                        # COMENTAR ESTA LÍNEA para debugging temporal:
+                        # del self.plugins[name]
+                else:
+                    logger.info(f"🎯 Plugin Presence cargado (sin método initialize)")
             
             elif name == "homeassistant":
                 from services.plugins.homeassistant_plugin import HomeAssistantPlugin
@@ -248,6 +269,21 @@ class PluginSystem:
                 return response
         
         # =======================================================
+        # PROCESAMIENTO PRIORITARIO: PRESENCE PLUGIN (NUEVO)
+        # =======================================================
+        # PresencePlugin tiene segunda prioridad después de mobility
+        if "presence" in self.plugins:
+            presence_plugin = self.plugins["presence"]
+            logger.info(f"🎯 Llamando a PresencePlugin.process_command()")
+            
+            response = presence_plugin.process_command(text)
+            logger.info(f"🎯 Respuesta de PresencePlugin: {'✅ Comando procesado' if response else 'ℹ️ Comando no reconocido'}")
+            
+            if response:
+                self.conversation_context["last_plugin"] = "presence"
+                return response
+
+        # =======================================================
         # PROCESAMIENTO PRIORITARIO: TIME PLUGIN
         # =======================================================
         # TimePlugin tiene prioridad por ser rápido y específico
@@ -312,6 +348,21 @@ class PluginSystem:
         #         self.conversation_context["last_plugin"] = "spotify"
         #         return response
         # =======================================================
+
+        # =======================================================
+        # PROCESAMIENTO DE QUERIES PARA PRESENCE (NUEVO)
+        # =======================================================
+        # Intentar process_query para presence plugin
+        if "presence" in self.plugins:
+            presence_plugin = self.plugins["presence"]
+            logger.info(f"🎯 Llamando a PresencePlugin.process_query()")
+            
+            response = presence_plugin.process_query(text)
+            logger.info(f"🎯 Respuesta de query PresencePlugin: {'✅ Query procesada' if response else 'ℹ️ Query no reconocida'}")
+            
+            if response:
+                self.conversation_context["last_plugin"] = "presence"
+                return response
         
         # Diagnóstico final
         logger.info("🔍 Ningún plugin procesó el comando")
@@ -368,7 +419,11 @@ class PluginSystem:
         
         for name, plugin in self.plugins.items():
             try:
-                if hasattr(plugin, "shutdown"):
+                # Cleanup específico para presence plugin (GPIO crítico)
+                if name == "presence" and hasattr(plugin, "cleanup"):
+                    plugin.cleanup()
+                    logger.info(f"🎯 Plugin Presence limpiado correctamente (GPIO liberado)")
+                elif hasattr(plugin, "shutdown"):
                     plugin.shutdown()
                     logger.info(f"✅ Plugin {name} cerrado correctamente")
                 elif hasattr(plugin, "cleanup"):
@@ -415,6 +470,36 @@ class PluginSystem:
             "conversation_context": self.conversation_context,
             "plugin_status": self.get_plugin_status()
         }
+
+    def debug_mobility_integration(self):
+        """
+        Método de diagnóstico para verificar el estado de integración mobility-presence
+        """
+        debug_info = {
+            "mobility_plugin_loaded": "mobility" in self.plugins,
+            "presence_plugin_loaded": "presence" in self.plugins,
+            "mobility_controller_available": False,
+            "presence_controller_available": False,
+            "integration_status": "unknown"
+        }
+        
+        # Verificar MobilityPlugin
+        if "mobility" in self.plugins:
+            mobility_plugin = self.plugins["mobility"]
+            debug_info["mobility_controller_available"] = hasattr(mobility_plugin, 'controller')
+            if hasattr(mobility_plugin, 'controller'):
+                controller = mobility_plugin.controller
+                debug_info["mobility_controller_initialized"] = getattr(controller, 'is_initialized', False)
+        
+        # Verificar PresencePlugin  
+        if "presence" in self.plugins:
+            presence_plugin = self.plugins["presence"]
+            debug_info["presence_controller_available"] = hasattr(presence_plugin, 'controller')
+            if hasattr(presence_plugin, 'controller') and presence_plugin.controller:
+                status = presence_plugin.controller.get_status()
+                debug_info["integration_status"] = "integrated" if status.get("mobility_integrated") else "standalone"
+        
+        return debug_info
 
 # =======================================================================
 # ESTADO: FUNCIONANDO... contra todo pronóstico

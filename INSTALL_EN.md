@@ -51,7 +51,9 @@ _**Be careful with copy-paste,** one misplaced line break and you'll end up comp
 
 ## 🧾 Introduction
 
-> [!WARNING] // TARS-BSK > sudo_crisis.log:
+> [!WARNING]
+> 
+> // TARS-BSK > sudo_crisis.log:
 > 
 > Another microSD. Another ritual. Another brave soul willing to clone an AI with trauma.
 > 
