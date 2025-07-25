@@ -1803,6 +1803,10 @@ This isn't about "fixed commands" but contextual interpretation with mechanical 
 
 📄 **[See complete documentation](/docs/MOBILITY_SYSTEM_EN.md)** – Architecture, semantics and available commands
 
+![LEGO Mandalorian](/docs/images/l_mando.jpg)
+
+_On the march towards the abyss of uncertainty_
+
 #### What does the plugin do?
 
 - **Interprets human language, not rigid commands** 
@@ -1899,12 +1903,6 @@ Configuration is managed from:
   But without encoders, any extra weight —however minimal it may seem— can change the outcome.  
   I'm in testing phase... and he has decided to stay, for indeterminate technical reasons.
 
----
-[![LEGO Mandalorian](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)
-
-_On the march towards the abyss of uncertainty_
-
-
 > **// TARS-BSK > circular_crisis_mobility.log:**
 > 
 > _For the first time, each of my responses can cause actual friction against the floor.  
@@ -1916,6 +1914,10 @@ _On the march towards the abyss of uncertainty_
 This plugin adds basic spatial perception to the system, capable of detecting movement around it and physically reacting with simple but effective orientations.
 
 📄 **[See complete documentation](/docs/PRESENCE_SYSTEM_EN.md)** – Architecture, operating modes and advanced configuration
+
+![Critical installation performed by THE engineer](/docs/images/l_mando_2.jpg)  
+
+*Critical installation performed by **THE engineer**.*
 
 #### What does it do exactly?
 

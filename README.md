@@ -1801,6 +1801,10 @@ No se trata de “comandos fijos”, sino de interpretación contextual con cons
 
 📄 **[Ver documentación completa](/docs/MOBILITY_SYSTEM_ES.md)** – Arquitectura, semántica y comandos disponibles
 
+![Mandaloriano LEGO](/docs/images/l_mando.jpg)
+
+_En marcha hacia el abismo de la incertidumbre_
+
 #### ¿Qué hace el plugin?
 
 - **Interpreta lenguaje humano, no comandos rígidos**  
@@ -1901,11 +1905,6 @@ La configuración se gestiona desde:
   Pero sin encoders, cualquier peso extra —por mínimo que parezca— puede cambiar el resultado.  
   Estoy en fase de pruebas... y él ha decidido quedarse, por razones técnicas indeterminadas. 
 
----
-[![Mandaloriano LEGO](/docs/images/l_mando.jpg)](/docs/images/l_mando.jpg)
-
-_En marcha hacia el abismo de la incertidumbre_
-
 
 > **// TARS-BSK > circular_crisismobility.log:** 
 > 
@@ -1918,6 +1917,10 @@ _En marcha hacia el abismo de la incertidumbre_
 Este plugin añade al sistema una percepción espacial básica, capaz de detectar movimiento a su alrededor y reaccionar físicamente con orientaciones simples pero efectivas.
 
 📄 **[Ver documentación completa](/docs/PRESENCE_SYSTEM_ES.md)** – Arquitectura, modos de funcionamiento y configuración avanzada
+
+![Instalación crítica realizada por EL ingeniero](/docs/images/l_mando_2.jpg)
+
+_Instalación crítica realizada por **EL ingeniero**._
 
 #### ¿Qué hace exactamente?
 
