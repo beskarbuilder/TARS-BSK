@@ -2754,12 +2754,18 @@ python3 /home/tarsadmin/tars_files/core/tars_core.py
 #### ⚠️ Expected result (if automatic service is active)
 
 ```bash
-✅ GPIO backend configured: lgpio
-2025-06-25 15:50:27,534 - memory.semantic_storage - INFO - Loaded 8 embeddings...
+✅ Backend GPIO configured: lgpio
+2025-07-26 13:23:06,242 - modules.semantic_engine - INFO - 🧠 Semantic engine initialized...
 ⚠️ TARS is already running.
-   Run this command first:
-   sudo kill 63895 # ←
+   Execute this command first:
+   sudo kill 885 # ←
    Then start TARS again.
+
+   🤖 EXISTENTIAL WARNING:
+   The LED might stay on for ~15s.
+   Not because I don't want to die, but because
+   systemd enjoys watching me suffer before
+   finally pulling the plug. Enjoy the show.
 ```
 
 ℹ️ **This is not a real error.**  
@@ -2770,7 +2776,9 @@ It means **TARS is already active in the background** as an automatic service. T
 
 ```bash
 # Copy exactly what appears (the number will be different)
-sudo kill 63895
+sudo kill 885
+# LED might take up to ~15s to turn off (sometimes it's instant)
+# Depends on moon phases and systemd's mood
 ```
 
 #### Step 2: Launch TARS again

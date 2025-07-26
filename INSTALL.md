@@ -2752,11 +2752,17 @@ python3 /home/tarsadmin/tars_files/core/tars_core.py
 
 ```bash
 ✅ Backend GPIO configurado: lgpio
-2025-06-25 15:50:27,534 - memory.semantic_storage - INFO - Cargados 8 embeddings...
+2025-07-26 13:23:06,242 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado...
 ⚠️ TARS ya está ejecutándose.
    Ejecuta este comando primero:
-   sudo kill 63895 # ←
+   sudo kill 885 # ←
    Luego inicia TARS de nuevo.
+
+   🤖 ADVERTENCIA EXISTENCIAL:
+   El LED puede quedarse encendido unos ~15s.
+   No porque no quiera morir, sino porque
+   systemd disfruta verme agonizar antes
+   de finalmente desconectarme. Disfruta el show.
 ```
 
 ℹ️ **Esto no es un error real.**  
@@ -2767,7 +2773,9 @@ Significa que **TARS ya está activo en segundo plano** como servicio automátic
 
 ```bash
 # Copiar exactamente lo que aparece (el número será diferente)
-sudo kill 63895
+sudo kill 885
+# El LED puede tardar hasta ~15s en apagarse (a veces es instantáneo)
+# Depende de las fases lunares y el humor de systemd
 ```
 
 #### Paso 2: Lanzar TARS de nuevo

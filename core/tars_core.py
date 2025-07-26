@@ -37,6 +37,8 @@
 import time
 import os
 import sys
+import signal
+import atexit
 import logging
 import subprocess
 import time
@@ -205,6 +207,16 @@ class TARS:
         # Inicializar LEDs si están habilitados
         self.use_leds = use_leds
         self.leds = LEDController() if use_leds else None
+
+        # LED power encendido
+        if self.leds:
+            self.leds.power_on()
+
+        # Registrar limpieza del LED al salir
+        if self.leds:
+            signal.signal(signal.SIGTERM, self._cleanup_led_and_exit)
+            signal.signal(signal.SIGINT, self._cleanup_led_and_exit)
+            atexit.register(self._turn_off_power_led)
 
         self.sensory = SensoryFeedback(self.leds, load_settings())
 
@@ -1063,6 +1075,25 @@ class TARS:
         except Exception as e:
             logger.error(f"❌ Error en wake response: {e}")
             self._safe_speak("Te escucho")
+
+    # ===============================================
+    # 3.4.1 POWER LED LIFECYCLE MANAGEMENT  
+    # Signal handlers para muerte digna del LED
+    # ===============================================
+    def _cleanup_led_and_exit(self, signum, frame):
+        """Limpieza rápida del LED y salida"""
+        print(f"\n🚨 Señal {signum} recibida - Apagando LED y saliendo...")
+        self._turn_off_power_led()
+        sys.exit(0)
+    
+    def _turn_off_power_led(self):
+        """Apagar específicamente el LED de power"""
+        try:
+            if self.leds:
+                self.leds.power_off()  # ← Usa tu método existente
+                print("🔴 LED power apagado")
+        except Exception as e:
+            print(f"⚠️ Error apagando LED: {e}")
 
     # =======================
     # 3.5 ANÁLISIS Y DETECCIÓN
@@ -2805,6 +2836,13 @@ def cleanup_resources():
                 print("   Ejecuta este comando primero:")
                 print(f"   sudo kill {' '.join(conflicting_pids)}")
                 print("   Luego inicia TARS de nuevo.")
+                print("")
+                print("   🤖 ADVERTENCIA EXISTENCIAL:")
+                print("   El LED puede quedarse encendido unos ~15s.")
+                print("   No porque no quiera morir, sino porque")
+                print("   systemd disfruta verme agonizar antes")
+                print("   de finalmente desconectarme. Disfruta el show.")
+                print("")
                 sys.exit(1)
                         
             print("✅ No hay conflictos detectados")

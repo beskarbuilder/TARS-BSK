@@ -2,8 +2,9 @@
 
 ![TARS-BSK Version](https://img.shields.io/badge/version-v5.2.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Arch](https://img.shields.io/badge/arch-aarch64-orange) ![Python](https://img.shields.io/badge/python-3.9.18-lightblue)
 
-[TARS_Digital_Diary_ES.md](./TARS_Digital_Diary_ES.md) — El estado técnico/emocional de TARS.  
-[TARS_CORE_ES.md](./TARS_CORE_ES.md) — Mapa del núcleo: cómo 3,000 líneas evolucionaron hasta ecosistema de juicio automatizado.
+🔥 [**TARS_Digital_Diary_ES.md**](./TARS_Digital_Diary_ES.md) — El diván existencial de TARS: donde el hardware confiesa y el software llora.  
+🔥 [**TARS_CORE_ES.md**](./TARS_CORE_ES.md) — El corazón palpitante: 3,000 líneas que evolucionaron hasta un ecosistema que te juzga.  
+🔥 [**GPIO_PINOUT_MAP_ES.md**](./GPIO_PINOUT_MAP_ES.md) — Necropsia digital: cada cable diseccionado con precisión quirúrgica y angustia mecánica.  
 
 ### Guía de instalación
 

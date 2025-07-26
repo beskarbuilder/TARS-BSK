@@ -32,6 +32,7 @@ class LEDController:
         self.logger = logging.getLogger("TARS.LED")
         pins = pins or {"azul": 17, "rojo": 27, "verde": 22}
 
+        # LEDs KY-016 original (para TARS)
         self.leds = {}
         for color, gpio in pins.items():
             try:
@@ -39,6 +40,14 @@ class LEDController:
                 self.logger.info(f"✅ LED '{color}' inicializado en GPIO{gpio}")
             except Exception as e:
                 self.logger.error(f"❌ Error al inicializar LED '{color}': {e}")
+
+        # LED KY-016 power independiente       
+        try:
+            self.power_led = LED(13)  # GPIO 13 (PIN33) → KY-016 pin B
+            self.logger.info("✅ Power LED inicializado en GPIO13")
+        except Exception as e:
+            self.logger.error(f"❌ Error al inicializar Power LED: {e}")
+            self.power_led = None
 
         self.off_all()
 
@@ -113,6 +122,21 @@ class LEDController:
 
     def error(self):
         self.blink("rojo", times=2, interval=0.3)
+
+    # =======================
+    # 2.5 POWER ON/OFF
+    # =======================
+    def power_on(self):
+        """Enciende LED de power (independiente)"""
+        if self.power_led:
+            self.power_led.on()
+            self.logger.info("💡 Power LED: ON")
+
+    def power_off(self):
+        """Apaga LED de power (independiente)"""
+        if self.power_led:
+            self.power_led.off()
+            self.logger.info("🔴 Power LED: OFF")
 
 # ===============================================
 # $ git log --format="%h %s" -1 [current_file]  

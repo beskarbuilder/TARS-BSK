@@ -5,8 +5,11 @@
 💥 If this English feels unstable but oddly self-aware...  
 👉 Here's the [Quantum Linguistics Report](docs/QUANTUM_LINGUISTICS_TARS_BSK_EN.md)
 
-[TARS_Digital_Diary_EN.md](./TARS_Digital_Diary_EN.md) — TARS technical/emotional status.
-[TARS_CORE_EN.md](./TARS_CORE_EN.md) — **Core map: how 3,000 lines evolved into an ecosystem of automated judgment.**
+---
+
+🔥 [**TARS_Digital_Diary_EN.md**](./TARS_Digital_Diary_EN.md) — TARS' existential couch: where hardware confesses and software weeps.  
+🔥 [**TARS_CORE_EN.md**](./TARS_CORE_EN.md) — The beating heart: 3,000 lines that evolved into an ecosystem that judges you.  
+🔥 [**GPIO_PINOUT_MAP_EN.md**](./GPIO_PINOUT_MAP_EN.md) — Digital necropsy: every wire dissected with surgical precision and mechanical anguish.
 
 ### Installation Guide
 
