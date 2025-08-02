@@ -127,6 +127,7 @@ Otros están descubriendo que una Raspberry Pi puede hablarles (incluyéndome).
 - [Sistema de audio](#-sistema-de-audio)
 - [Control de volumen con alsamixer](#%EF%B8%8F-control-de-volumen-con-alsamixer)
 - [Crear servicio para TARS (Systemd)](#%EF%B8%8F-crear-servicio-para-tars-systemd)
+- [(Opcional pero recomendado) Apagado limpio de hardware (Systemd)](#%EF%B8%8F-opcional-pero-recomendado-apagado-limpio-de-hardware-systemd)
 - [Usar TARS después de la instalación](#-usar-tars-después-de-la-instalación)
 - [TARS-BSK - Último mensaje del sistema](#-tars-bsk---último-mensaje-del-sistema)
 
@@ -2606,14 +2607,19 @@ After=network.target sound.target ollama.service
 Wants=ollama.service
 
 [Service]
-Type=forking
-PIDFile=/tmp/tars.pid
+Type=simple
+# PIDFile=/tmp/tars.pid
 ExecStart=/home/tarsadmin/tars_files/scripts/start_tars.sh
 WorkingDirectory=/home/tarsadmin/tars_files
 Restart=on-failure
 RestartSec=10
 User=tarsadmin
 Environment=PYTHONUNBUFFERED=1
+
+# Para el apagado elegante:
+KillSignal=SIGINT
+TimeoutStopSec=10
+KillMode=control-group
 
 [Install]
 WantedBy=multi-user.target
@@ -2716,6 +2722,171 @@ tail -f /tmp/tars_startup.log
 > sudo cat /tmp/tars_startup.log | grep -v "success" | shuf -n 5 | festival --tts
 > ```
 > Porque los logs deberían **leerse con voz de tragedia shakesperiana**.
+
+---
+### Solución de problemas con Systemd
+
+**Problema**  
+Tras un apagado brusco (corte de luz, pulsador de emergencia), el servicio `tars.service` no arranca automáticamente al boot, aunque funciona manualmente con `sudo systemctl start tars.service`.
+
+**Diagnóstico**  
+Este fallo ocurre porque **systemd guarda metadatos asociados al nombre del servicio** (estado, journal, cgroups). Un apagado forzado puede corromperlos y bloquear su arranque automático.
+
+**Síntomas**
+
+- Arranque manual → ✅ Funciona.
+- Arranque automático tras reboot → ❌ No funciona.
+- Mismo código con otro nombre → ✅ Funciona.
+
+
+**Intentos fallidos comunes** (no solucionan el problema):
+
+- `systemctl reset-failed`
+- `journalctl --vacuum-time`
+- `systemctl daemon-reload`
+- `systemctl daemon-reexec`
+- Reescribir el .service
+- Limpiar `/var/lib/systemd/`
+
+**Solución definitiva**:  
+**Renombrar el servicio** elimina cualquier referencia corrupta y crea un contexto limpio.
+
+```bash
+# 1. Parar y deshabilitar el servicio problemático
+sudo systemctl stop tars.service
+sudo systemctl disable tars.service
+
+# 2. Renombrar el archivo
+sudo mv /etc/systemd/system/tars.service /etc/systemd/system/tars-core.service
+
+# 3. Recargar y habilitar el nuevo nombre
+sudo systemctl daemon-reload
+sudo systemctl enable --now tars-core.service
+
+# 4. Verificar
+sudo reboot
+systemctl status tars-core.service
+```
+
+**Por qué funciona:**
+
+- Crea un servicio “nuevo” para systemd, sin arrastrar el estado anterior.
+- No requiere tocar el código de TARS.
+- Solución rápida, permanente y limpia.
+
+> [!CAUTION]
+> 
+> **Nota:** Este fenómeno no es teórico. Me ha pasado tras sesiones de "test intensivo" con el pulsador momentáneo (a.k.a. apaga/enciende como si quisiera reiniciar el universo).
+> 
+>Consejo: **ese botón está embrujado**. Úsalo con precaución o para lo que fue diseñado… no como método experimental de estrés para systemd.
+>
+> Conclusión: **systemd guarda rencor**. Y cuando lo hace, no hay `reset-failed` ni `daemon-reexec` que lo haga olvidar. Solo cambiando el nombre del servicio vuelve a perdonarte.
+> 
+>Es la forma más rápida y limpia de devolverle la paz a TARS.
+
+---
+
+## 🔻 (Opcional pero recomendado) Apagado limpio de hardware (Systemd)
+
+### Script de apagado
+
+Si usas LEDs, OLED, o cualquier componente GPIO, este servicio garantiza que se apaguen correctamente al hacer `sudo poweroff`.
+
+**Recomendado para:**
+
+- Kits con LEDs 
+- Pantallas OLED
+- Botones con LED
+- Cualquier GPIO que TARS controle
+
+Para evitar que algunos dispositivos queden congelados tras un `sudo poweroff`, añadimos un pequeño servicio que limpia/apaga justo antes del corte de energía.
+
+1. **Crear el script de apagado**
+
+```bash
+nano /home/tarsadmin/tars_files/scripts/tars_shutdown.sh
+```
+
+2. Contenido:
+
+```bash
+#!/bin/bash
+# ===============================================
+# TARS Shutdown Script - Sin dependencias
+# Apaga cualquier GPIO que TARS controle antes del apagado del sistema
+# ===============================================
+
+echo "$(date): TARS shutdown iniciado" >> /tmp/tars_shutdown.log
+
+echo "🔴 Apagando todos los GPIOs..."
+# Apagar TODOS los GPIOs exportados (configuración independiente)
+for gpio in {1..27}; do
+    if [ -d "/sys/class/gpio/gpio$gpio" ]; then
+        echo 0 > /sys/class/gpio/gpio$gpio/value 2>/dev/null
+        echo "  GPIO$gpio apagado"
+    fi
+done
+
+echo "🖥️ Intentando apagar OLED..."
+# Método 1: Comando i2c del sistema (si está disponible)
+if command -v i2cset >/dev/null 2>&1; then
+    i2cset -y 1 0x3C 0x00 0xAE 2>/dev/null
+    echo "  OLED apagada via i2cset"
+else
+    echo "  i2cset no disponible, saltando OLED"
+fi
+
+echo "✅ Limpieza de shutdown completada"
+echo "$(date): TARS shutdown completado" >> /tmp/tars_shutdown.log
+```
+
+3. Dar permisos:
+
+```bash
+chmod +x /home/tarsadmin/tars_files/scripts/tars_shutdown.sh
+```
+
+#### Creamos el servicio
+
+1. Crea el archivo de servicio:
+
+```bash
+sudo nano /etc/systemd/system/tars-shutdown.service
+```
+
+2. Pega esto:
+
+```
+[Unit]
+Description=TARS GPIO/OLED cleaner on shutdown
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/tarsadmin/tars_files/scripts/tars_shutdown.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=shutdown.target
+```
+
+3. Activa y arranca el servicio
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable tars-shutdown.service
+```
+
+4. Comprobar
+
+```
+sudo systemctl status tars-shutdown.service
+```
+
+🟢 **A partir de ahora**, TARS iniciará el servicio de `shutdown` automáticamente con tu Raspberry.  
+
+Cuando apagues con `sudo poweroff`, cualquier componente GPIO se limpiará y apagará de forma segura, sin quedarse congelado.
 
 ---
 

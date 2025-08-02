@@ -28,15 +28,15 @@ The color symbols 🟠🔵🟢🔴⚫⚪🟡🟤🟣 in this document represent 
 
 ```
 +----------------------+---------------------+
-| 3V3 POWER       ( 1) | ( 2)  5V POWER      | <-- 🟠 PIR VCC (×4) PIN 2 (5V)
-| GPIO 2 (SDA)    ( 3) | ( 4)  5V POWER      |
-| GPIO 3 (SCL)    ( 5) | ( 6)  GND           |
-| GPIO 4          ( 7) | ( 8)  GPIO 14 (TXD) | 
-| GND             ( 9) | (10)  GPIO 15 (RXD) | <-- ⚫ Common LEDs GND (PIN 9)
+| 3V3 POWER       ( 1) | ( 2)  5V POWER      | <-- 🟠 VCC PIR (×4) PIN 2 (5V)
+| GPIO 2 (SDA)    ( 3) | ( 4)  5V POWER      | <-- 🟪 OLED SDA (GPIO2) PIN 3 (I2C Data)
+| GPIO 3 (SCL)    ( 5) | ( 6)  GND           | <-- 🟫 OLED SCK/SCL (GPIO3) PIN 5 (I2C Clock) | 🟩 OLED GND PIN 6
+| GPIO 4          ( 7) | ( 8)  GPIO 14 (TXD) | <-- 🔴 LED PIN + BUTTON PIN (GPIO4) (PIN 7)
+| GND             ( 9) | (10)  GPIO 15 (RXD) | <-- ⚫ Common GND LEDs (PIN 9)
 | GPIO 17         (11) | (12)  GPIO 18 (PWM) | <-- 🔵 BLUE LED (GPIO17) (PIN 11)
-| GPIO 27         (13) | (14)  GND           | <-- 🔴 RED LED (GPIO27) (PIN 13)
+| GPIO 27         (13) | (14)  GND           | <-- 🔴 RED LED (GPIO27) (PIN 13) ⚫ LED PIN - GND BUTTON (PIN 14) 
 | GPIO 22         (15) | (16)  GPIO 23       | <-- 🟢 GREEN LED (GPIO22) (PIN 15)
-| 3V3 POWER       (17) | (18)  GPIO 24       | <-- ⚪ ENA (GPIO24) (PIN 18) 
+| 3V3 POWER       (17) | (18)  GPIO 24       | <-- 🟥 OLED VDD/VCC PIN 17 (3.3V) | ⚪ ENA (GPIO24) (PIN 18)
 | GPIO 10 (MOSI)  (19) | (20)  GND           | <-- ⚫ GND (L298N) (PIN 20) 
 | GPIO 9 (MISO)   (21) | (22)  GPIO 25       | <-- ⚪ ENB (GPIO25) (PIN 22) 
 | GPIO 11 (SCLK)  (23) | (24)  GPIO 8 (CE0)  | <-- 🟡 IN4 (GPIO8) (PIN 24)
@@ -44,7 +44,7 @@ The color symbols 🟠🔵🟢🔴⚫⚪🟡🟤🟣 in this document represent 
 | ID_SD           (27) | (28)  ID_SC         |
 | GPIO 5          (29) | (30)  GND           | <-- 🟣 IN1 (GPIO5) (PIN 29)
 | GPIO 6          (31) | (32)  GPIO 12       | <-- 🟠 IN2 (GPIO6) (PIN 31)
-| GPIO 13         (33) | (34)  GND           | <-- ⚪ LED ON/OFF (GPIO13) (PIN 33) ⚪ LED ON/OFF GND (PIN 34)
+| GPIO 13         (33) | (34)  GND           | <-- ⚪ POWER LED (GPIO13) (PIN 33) 🟠 POWER LED GND (PIN 34)
 | GPIO 19         (35) | (36)  GPIO 16       | <-- 🟤 PIR_LEFT (PIN 35) 🔵 PIR_FRONT (PIN 36)
 | GPIO 26         (37) | (38)  GPIO 20       | <-- ⚫ PIR_BACK (PIN 37) 🟣 PIR_RIGHT (PIN 38)
 | GND             (39) | (40)  GPIO 21       | <-- 🟡 PIR GND (PIN 39) (×4)
@@ -225,6 +225,186 @@ grep -rl --include="*.py" --include="*.json" \
 - **Power:** Independent 6V battery (4× AA batteries)
 - **Control:** PWM for variable speed, directional via IN1-IN4 combination
 
+### `BLOCK 5`: OLED SSH1106 Display
+
+```
+├── PIN 17 (3.3V)    → VDD/VCC OLED 🟥
+├── PIN 6  (GND)     → GND OLED 🟩  
+├── GPIO2  (PIN 3)   → SDA OLED 🟪 → I2C Data
+└── GPIO3  (PIN 5)   → SCK/SCL OLED 🟫 → I2C Clock
+```
+
+- **Hardware:** OLED 1.3" SSH1106 128×64 pixels
+- **I2C Address:** 0x3C (default)
+- **Purpose:** Real-time system status display
+
+### `BLOCK 6`: Momentary Button 3V-9V
+
+```
+├── GPIO4 (PIN 7))   → LED PIN + 🔴
+└── GND (PIN 14) → LED PIN - ⚫
+
+├── SWITCH PIN (Green wire) → RUN (J2 RPi) 🟢
+└── SWITCH PIN (Green wire) → GND (J2 RPi) 🟢
+```
+
+- **Hardware:** **Gebildet 12mm** metallic momentary button (integrated blue LED)
+- **LED Range:** 3‑9 V (powered at 5V for optimal brightness)
+- **Switch Type:** 1NO SPST (normally open, momentary)
+- **Max Current:** 5 A
+- **Protection:** Waterproof (IP65)
+- **Purpose:**
+    
+    - **Button:** Power on or restart the Raspberry Pi 5 via the **RUN** header.
+    - **LED:** Visual indicator that the Pi has power.
+    
+- **Note:** The stated current (5 A) is the **maximum capacity of the button**, **not the actual current flowing through RUN (minimal and harmless to the Pi)**.
+
+#### Connection: "Sandwich" method, no soldering required
+
+**Option A**
+
+```
+   [Button with its wires]
+			  ↓
+	      █████████
+          █       █ 
+          █████████
+              │
+              │   ← Stripped wire
+		     ~~~  ← Coiled wire (stopper) + heat shrink (camouflage and reinforcement)
+             ---  ← (Copper ring) ← Contact zone
+ ┌──────────────────────────┐
+ │          PCB             │  ← Raspberry Pi (horizontal)
+ └──────────────────────────┘
+             ---  ← (Copper ring) ← Contact zone
+              │
+              │   ← Stripped wire going through pad
+              │
+            [___] ← 1st heat shrink layer (thin)
+           [_____] ← 2nd heat shrink layer (medium)
+          [_______] ← 3rd heat shrink layer (large)
+```
+
+> [!IMPORTANT]
+> 
+> Benefits of this assembly:
+> 
+> - **Pre-made loop on top:** the coiling is done **before mounting** to measure and present the wire without handling the Raspberry.
+>     
+> - **Complete contact with copper:** the upper loop **forces the wire to press against the copper ring of the pad**.
+>     
+>     - _Note:_ Here, the coiling replaces the soldering effect, ensuring **constant electrical contact**.
+> - **Rigid block below:** the **3 heat shrink layers** underneath heat up and push against the PCB, forming a **"solid sandwich"** that immobilizes the wire.
+>     
+> - **Camouflage and reinforcement:** the upper coiling is also **covered with heat shrink**, so there's no exposed copper and the loop is reinforced, preventing breakage from flexing.
+>     
+> - **Reversible and practical:** requires no soldering and can be easily removed, but **doesn't offer the same mechanical resistance as a soldered joint**.
+>     
+
+**Option B**
+
+```
+   [Button with its wires]
+              ↓
+          █████████
+          █       █ 
+          █████████
+              │
+              │   ← Stripped wire
+             ~~~  ← Coiled wire (upper stopper) + heat shrink (camouflage/reinforcement)
+             ---  ← (Copper ring) ← Contact zone
+ ┌──────────────────────────┐
+ │          PCB             │  ← Raspberry Pi (horizontal)
+ └──────────────────────────┘
+             ---  ← (Copper ring) ← Contact zone
+              ∩    ← Wire bent upward (hook) 
+             ~~~   ← Coiled joint with upper wire
+            [███]  ← Thick heat shrink joining both parts
+```
+
+> [!IMPORTANT]
+> 
+> **Benefits of this alternative assembly:**
+> 
+> - **Security hook:** the bent wire acts as a "hook," adding **mechanical resistance** to the assembly.
+> - **Combined coiling:** the upper and lower parts are **joined under the same heat shrink**, creating a single rigid block.
+> - **Harder to come loose:** the double contact point (top and hook) keeps the wire firm even with vibrations.
+> - **Reversible:** just like the other method, requires no soldering and can be removed if necessary.
+
+![RUN Header - 1 cable](/docs/images/run_header.jpg)
+
+I tested **both fixation methods**:  
+– **Classic coiling**: faster, sufficient if there's not much movement.  
+– **Hook + coiling**: more secure, ideal if the assembly will experience vibrations.
+
+#### Enable push-button LED from boot
+
+To keep the integrated LED active even before the system starts up:
+
+```bash
+sudo nano /boot/config.txt
+```
+
+Add at the end:
+
+```
+# Push-button LED active from boot
+gpio=4=op,dh
+```
+
+This configures **GPIO4 (PIN 7)** as output with high level by default.
+
+> **Special behavior:**
+> 
+> - **Power on:** The LED doesn't light up immediately; it does so about **20‑30s later**, when the firmware initializes the GPIO (doesn't indicate "ready to use", just that boot has started).
+> - **Power off:** It doesn't turn off completely, but remains with a **dim glow** ("ghost"), confirming that the Raspberry is still powered (like the board's built-in LED).
+
+**Why use GPIO4?**  
+Normally this behavior would be annoying (residual glow), but here **we take advantage of it as a power indicator** even with the system shut down.
+
+> **Alternative:**  
+> If you want the LED to be **always on** while there's power (without depending on GPIO), connect it directly between **5V (PIN 4)** and **GND (PIN 14)**.
+
+---
+### Why not solder?
+
+Because there's a very fine line between "creative engineering" and "vandalism with a soldering iron."
+
+My Pi 5 is worth more than my self-esteem—it's in another league—and my previous soldering experience is limited to LEDs that, if I burn them, are "acceptable collateral damage."  
+But touching the RUN header pads is like performing open-heart surgery with boxing gloves: technically possible, but inadvisable (at least for me).
+
+Until I reach the Mandalorian level of soldering, the **sandwich** method gives me perfect electrical contact without the existential risk of turning my project into a memorial to technical overconfidence.
+
+### Murphy's Law of hardware
+
+```python
+def murphy_law_soldering():
+    if component.price < 2:
+        success_rate = 0.95  # "Comes out perfect, even pretty"
+        confidence_level = "Precision surgeon"
+    elif component.price > 80:
+        success_rate = 0.05  # "Butter fingers activated"
+        confidence_level = "Existential panic"
+    
+    return "Difficulty is inversely proportional to price × anxiety²"
+```
+
+#### The inevitable internal dialogue:
+
+```
+Brain.exe: "Remember the MOSFET? Came out perfect"
+Hands.exe: "Yeah, but this COSTS SOMETHING MORE"
+Brain.exe: "It's the same procedure..."
+Hands.exe: "ACTIVATING PANIC MODE"
+Soldador.exe: "Why am I shaking? I'm a tool!"
+Reality.exe: "Welcome to premium component syndrome"
+```
+
+#### Technical-philosophical conclusion:
+
+Heat shrink doesn't judge prices. It's **economically agnostic** and **immune to maker anxiety**. That's why it works.
+
 ---
 
 ## 🔧 Default reserved pins (can be disabled)
@@ -248,7 +428,6 @@ grep -rl --include="*.py" --include="*.json" \
 
 | GPIO   | PIN | Status               | Possible Use                                                       |
 | ------ | --- | -------------------- | ------------------------------------------------------------------ |
-| GPIO4  | 7   | **USE WITH CAUTION** | May maintain active states at boot (possible phantom glow in LEDs) |
 | GPIO12 | 32  | **FREE**             | Additional sensor / Control                                        |
 | GPIO21 | 40  | **FREE**             | Future expansion                                                   |
 | GPIO23 | 16  | **FREE**             | Future expansion                                                   |
@@ -260,11 +439,11 @@ In documentation, we usually mark some pins as **"reserved"** (I²C, SPI, UART) 
 **Does this mean they're forbidden?** No.
 **It means if you want to use those buses in the future, you'll need to free up those pins.**
 
-In my current layout:
+**In my current layout:**
 
-- **GPIO9, GPIO10, GPIO11 (SPI)** → I use them for the motor controller. Since **I don't plan to use SPI**, there's no conflict.
-- **GPIO14, GPIO15 (UART)** → Currently unused, but available if I ever want serial communication.
-- **GPIO2, GPIO3 (I²C)** → Not in use, so the I²C bus remains free.
+- **GPIO2, GPIO3 (I²C)** → **In use for the OLED**. The I²C bus is occupied.
+- **GPIO9, GPIO10, GPIO11 (SPI)** → **In use for the motor controller**. Since I don't plan to use SPI, there's no conflict.
+- **GPIO14, GPIO15 (UART)** → **Currently unused**, available if I ever want serial communication.
 
 **Conclusion:**
 

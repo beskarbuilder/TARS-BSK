@@ -29,7 +29,9 @@ class SpeechListener:
     # 2.1 INICIALIZACIÓN Y CONFIGURACIÓN DEL DISPOSITIVO DE AUDIO
     # =======================================================================
     
-    def __init__(self, model_path="ai_models/vosk/es", device=None, samplerate=None):
+    def __init__(self, model_path="ai_models/vosk/es", device=None, samplerate=None, tars_instance=None):
+        self.tars_instance = tars_instance
+        self.tars_core = tars_instance
         self.q = queue.Queue()
         self.device, self.samplerate = self._select_input_device(device, samplerate)
         
@@ -56,6 +58,15 @@ class SpeechListener:
             print(f"❌ Error al cargar el modelo de voz: {e}")
             raise
         
+        # Configuración de reset automático desde settings
+        try:
+            settings = load_settings()
+            self.reset_interval = settings.get("speech_listener", {}).get("reset_interval", 25)
+            print(f"✅ Reset automático configurado cada {self.reset_interval} segundos")
+        except Exception as e:
+            print(f"⚠️ Error cargando reset_interval, usando 25s por defecto: {e}")
+            self.reset_interval = 25
+        
         # Bandera para controlar la escucha
         self.is_listening = False
         self.current_stream = None
@@ -67,6 +78,29 @@ class SpeechListener:
             from scipy import signal
             self.resample_ratio = 16000 / self.samplerate
             print(f"✅ Configurado resampling de {self.samplerate}Hz a 16000Hz")
+
+        # Configuración de reset automático desde settings
+        try:
+            settings = load_settings()
+            speech_config = settings.get("speech_listener", {})
+            self.reset_interval = speech_config.get("reset_interval", 25)
+            
+            # Configuración de ventana wakeword
+            window_config = speech_config.get("wakeword_window", {})
+            self.window_enabled = window_config.get("enabled", True)
+            self.window_led = window_config.get("led_feedback", True)
+            self.window_duration = window_config.get("led_duration", 3)
+            self.window_oled = window_config.get("oled_feedback", True)
+            
+            print(f"✅ Reset configurado: {self.reset_interval}s, LED: {self.window_led}")
+        except Exception as e:
+            print(f"⚠️ Error cargando configuración: {e}")
+            # Defaults
+            self.reset_interval = 25
+            self.window_enabled = True
+            self.window_led = True
+            self.window_duration = 3
+            self.window_oled = True
     
     def _select_input_device(self, preferred_device, preferred_rate):
         """Selecciona el dispositivo de entrada más adecuado."""
@@ -170,7 +204,7 @@ class SpeechListener:
     # =======================================================================
     
     def listen_for_wakeword(self, wakewords, on_failure=None):
-        """Escucha para detectar palabras de activación con timeout."""
+        """Escucha para detectar palabras de activación con timeout y reset automático."""
         # Detener cualquier stream anterior
         self._stop_stream()
         
@@ -201,11 +235,83 @@ class SpeechListener:
             
             self.current_stream.start()
             print("🎤 Escuchando... Di 'oye TARS' o algo parecido")
+
+            # HOOK OLED - Estado inicial
+            if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                self.tars_core.oled.update_status("idle", "Listening for wakeword")
+            
+            # 🆕 AÑADIR MARCADOR DE TIEMPO PARA RESET
+            last_reset = time.time()
             
             while self.is_listening:
                 try:
                     # Usar timeout para evitar bloqueos
                     data = self.q.get(timeout=0.5)
+                    
+                    # 🆕 RESET AUTOMÁTICO DEL RECONOCEDOR
+                    current_time = time.time()
+                    if self.window_enabled and (current_time - last_reset > self.reset_interval):
+                        print(f"♻️ Reset automático de Vosk tras {self.reset_interval}s")
+                        
+                        # 1. LIMPIAR LA COLA DE AUDIO COMPLETAMENTE
+                        while not self.q.empty():
+                            try:
+                                self.q.get_nowait()
+                            except queue.Empty:
+                                break
+                        
+                        # 2. RESETEAR VOSK
+                        self.recognizer.Reset()
+                        last_reset = current_time
+                        
+                        # 3. FEEDBACK VISUAL (solo si está habilitado)
+                        if self.window_enabled:
+                            # LED verde (si está habilitado)
+                            if self.window_led:
+                                try:
+                                    if hasattr(self.tars_instance, 'leds') and self.tars_instance.leds:
+                                        self.tars_instance.leds.set_green(True)
+                                        print("🔍 DEBUG: LED verde encendido")
+                                except Exception as e:
+                                    print(f"❌ Error encendiendo LED: {e}")
+                            
+                            # OLED (si está habilitado)
+                            if self.window_oled:
+                                print("🟢 VENTANA LIBRE - Di 'oye TARS' ahora!")
+                                if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                                    self.tars_core.oled.update_status("wakeword_window", "SAY 'OYE TARS' NOW!")
+                            
+                            # Duración configurable
+                            time.sleep(self.window_duration)
+                            
+                            # Apagar LED (si estaba encendido)
+                            if self.window_led:
+                                try:
+                                    if hasattr(self.tars_instance, 'leds') and self.tars_instance.leds:
+                                        self.tars_instance.leds.set_green(False)
+                                except:
+                                    pass
+                            
+                            # Restaurar OLED (si se usó)
+                            if self.window_oled:
+                                if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                                    self.tars_core.oled.update_status("idle", "Listening...")
+                                print("🔴 Ventana cerrada")
+                        
+                        # HOOK OLED - Mostrar reset
+                        if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                            self.tars_core.oled.update_status("vosk_reset", f"Reset {self.reset_interval}s")
+                            time.sleep(1)  # Mostrar reset por 1 segundo
+                    
+                    # ✅ VERIFICAR VOLUMEN antes de mostrar "processing"
+                    import numpy as np
+                    audio_array = np.frombuffer(data, dtype=np.int16)
+                    rms = np.sqrt(np.mean(audio_array.astype(np.float32)**2))
+
+                    # En lugar de actualizar el volumen constantemente, solo mostrar una vez
+                    if not hasattr(self, '_audio_processing_shown'):
+                        self.tars_core.oled.update_status("processing_audio", "Audio OK")
+                        self._audio_processing_shown = True
                     
                     # Guardar datos en buffer para voice_id
                     audio_buffer.append(data)
@@ -220,6 +326,15 @@ class SpeechListener:
                         result = self.recognizer.Result()
                         text = json.loads(result)["text"].lower()
                         if text:
+                            # Resetear timer cuando hay resultado válido
+                            # last_reset = current_time
+                            
+                            # ✅ HOOK: Cuando VOSK transcribe texto (con pausa para verlo)
+                            if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                                self.tars_core.oled.update_status("analyzing_wakeword", text[:16])
+                                # Pausa para ver la transcripción
+                                time.sleep(1.5)  # Ver el texto 1.5 segundos
+                            
                             print(f"🗣️ Escuchado: {text}")
                             
                             # Verificar wakeword
@@ -227,7 +342,15 @@ class SpeechListener:
                             if is_wakeword_match(text, wakewords, threshold=0.7):
                                 print("🔥 Wakeword detectada por coincidencia difusa")
                                 
-                                # 🆕 CAPTURAR AUDIO ADICIONAL INMEDIATAMENTE
+                                # HOOK OLED - Wakeword confirmada
+                                if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                                    self.tars_core.oled.update_status("wakeword_detected", text)
+                                
+                                # Capturar audio adicional inmediatamente
+                                # Esperar un poco más para capturar el final de la palabra
+                                time.sleep(0.3)
+
+                                # Capturar audio adicional inmediatamente
                                 # Esperar un poco más para capturar el final de la palabra
                                 time.sleep(0.3)
                                 
@@ -245,6 +368,13 @@ class SpeechListener:
                                 return text
                             else:
                                 print("❌ No coincide con ninguna wakeword")
+                                
+                                # ✅ HOOK: No es wakeword, mostrar que no coincide
+                                if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                                    self.tars_core.oled.update_status("wakeword_rejected", text[:16])
+                                    time.sleep(1)  # Ver el rechazo 1 segundo
+                                    self.tars_core.oled.update_status("idle", "Listening...")
+                                
                                 if on_failure:
                                     on_failure()
                                 
@@ -256,9 +386,18 @@ class SpeechListener:
                                     print(f"⚠️ Error en sensory feedback de fallo: {e}")
 
                 except queue.Empty:
+                    # ✅ Sin audio, mostrar idle solo si no está procesando
+                    if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                        # Solo actualizar a idle cada 3 segundos para evitar parpadeo
+                        if not hasattr(self, '_last_idle_update') or time.time() - self._last_idle_update > 3:
+                            self.tars_core.oled.update_status("idle", "Waiting audio...")
+                            self._last_idle_update = time.time()
                     continue
                 except Exception as e:
                     print(f"⚠️ Error en reconocimiento: {e}")
+                    # En caso de error, también resetear
+                    self.recognizer.Reset()
+                    last_reset = time.time()
                     time.sleep(0.5)
                     
         except Exception as e:
@@ -381,12 +520,20 @@ class SpeechListener:
             
             self.current_stream.start()
             print("🎤 Escuchando tu pregunta...")
+
+            # HOOK OLED
+            if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                self.tars_core.oled.update_status("listening_command")
             
             start_time = time.time()
             
             while self.is_listening and time.time() - start_time < timeout:
                 try:
                     data = self.q.get(timeout=0.5)
+
+                    # HOOK OLED
+                    # if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                    #     self.tars_core.oled.update_status("processing_audio", "Analyzing...")
                     
                     # Aplicar resampling si es necesario
                     if self.do_resample:
@@ -400,6 +547,10 @@ class SpeechListener:
 
                         if text:
                             print(f"🗣️ Entendido: {text}")
+
+                            # HOOK OLED
+                            if hasattr(self, 'tars_core') and hasattr(self.tars_instance, 'oled'):
+                                self.tars_core.oled.update_status("transcribing", text[:16])  # Primeros 16 caracteres
                             # ===========================================================================                           
                             # 🔍 Sanitización rápida: si el texto tiene menos de 3 palabras, lo ignoramos
                             # palabras = text.strip().split()

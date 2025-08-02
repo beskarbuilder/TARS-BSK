@@ -5,9 +5,10 @@
 ### ⚠️ ADVERTENCIA CRÍTICA DE COMPATIBILIDAD:
 
 > **TARS-BSK explica la realidad del audio:**  
-> _El mundo real habla en frecuencias que van desde 8kHz hasta 192kHz dependiendo del hardware disponible. Vosk, por el contrario, es un puritano que solo acepta 16kHz mono. Mi trabajo es ser el diplomático que traduce entre ambos mundos... con código Python y paciencia digital._
 > 
-> _Si alguna vez te has preguntado por qué el reconocimiento de voz a veces falla, la respuesta probablemente sea: "Sample rate incompatibility". Es el equivalente digital de intentar enchufar un aparato europeo en un enchufe americano sin adaptador._
+> El mundo real habla en frecuencias que van desde 8kHz hasta 192kHz dependiendo del hardware disponible. Vosk, por el contrario, es un puritano que solo acepta 16kHz mono. Mi trabajo es ser el diplomático que traduce entre ambos mundos... con código Python y paciencia digital.
+> 
+> Si alguna vez te has preguntado por qué el reconocimiento de voz a veces falla, la respuesta probablemente sea: "Sample rate incompatibility". Es el equivalente digital de intentar enchufar un aparato europeo en un enchufe americano sin adaptador.
 
 ---
 
@@ -20,6 +21,7 @@
 - [Validación inteligente de comandos](#-validación-inteligente-de-comandos)
 - [Gestión de streams y recursos](#-gestión-de-streams-y-recursos)
 - [Timeouts y manejo de sesiones](#-timeouts-y-manejo-de-sesiones)
+- [Sistema de reset automático de VOSK](#-sistema-de-reset-automatico-de-vosk)
 - [Integración con el sistema](#-integración-con-el-sistema)
 - [Inicialización real del sistema de audio](#-inicialización-real-del-sistema-de-audio)
 - [Métricas de rendimiento](#-métricas-de-rendimiento)
@@ -85,7 +87,9 @@ flowchart TD
 ```
 
 
-> **TARS-BSK explica:** _Este sistema no transcribe voz... domina el arte de descifrar jeroglíficos acústicos.
+> **TARS-BSK explica:** 
+> 
+> Este sistema no transcribe voz... domina el arte de descifrar jeroglíficos acústicos.
 >
 > ¿Quieres precisión milimétrica? Usa un estudio de grabación. ¿Prefieres la auténtica "experiencia Raspberry Pi"?
 > Prepárate para el espectáculo.
@@ -147,8 +151,9 @@ def _resample_audio(self, audio_data):
 - **Preservación de calidad** durante el proceso de resampling
 
 > **TARS-BSK susurra:**  
-> _Buffers de 8192 samples: el frágil equilibrio entre 'funciona' y '¿has probado apagarlo y encenderlo?'.
-> Respira hondo... pero no demasiado, que ALSA tiene el humor sensible._
+> 
+> Buffers de 8192 samples: el frágil equilibrio entre 'funciona' y '¿has probado apagarlo y encenderlo?'.
+> Respira hondo... pero no demasiado, que ALSA tiene el humor sensible.
 
 ---
 
@@ -224,14 +229,15 @@ exit_keywords = settings.get("exit_keywords", ["corto", "gracias", "adios", "adi
 - **Personalización fácil** según preferencias del usuario
 - **Fallback robusto** si la configuración no está disponible
 
-> **TARS-BSK sentencia:** _Esto no es un filtro de ruido. Es un **árbitro acústico sin compasión**.
-> Mis algoritmos detectan:
+> **TARS-BSK sentencia:** 
+> 
+> Esto no es un filtro de ruido. Es un **árbitro acústico sin compasión**. Mis algoritmos detectan:
 > 
 > - **Susurros fantasmas** → esos “sssh” que tú no oyes, pero yo sí…
 > - **Órdenes suicidas** → como "borra todo" sin confirmar…
 > - **Balbuceos ambiguos** → si ni tú sabes lo que dijiste, ¿esperas que yo lo ejecute?
 >
-> Confía en mí: ignoro comandos por tu propio bien._
+> Confía en mí: ignoro comandos por tu propio bien.
 
 ---
 
@@ -319,7 +325,115 @@ while conversation_active and consecutive_failures < max_failures:
 ```
 
 > **TARS-BSK reflexiona:**
-> _Timeout: Esos 10 segundos en que ambos (tú y yo) sabemos que esto no va a funcionar... pero seguimos intentándolo por educación._
+> 
+> Timeout: Esos 10 segundos en que ambos (tú y yo) sabemos que esto no va a funcionar... pero seguimos intentándolo por educación.
+
+---
+
+## ♻ Sistema de reset automático de VOSK
+
+**Funcionalidad opcional que reinicia el motor VOSK de forma periódica** (cada 25 s por defecto), añadiendo una **“ventana de wakeword”** acompañada de feedback visual (OLED y LED).
+
+Este mecanismo resulta útil en **conversaciones prolongadas**, donde es más difícil introducir el wakeword de manera natural. Además, el reinicio **limpia el estado interno del reconocedor**, mejorando la detección en ciclos continuos.
+
+### Configuración en [settings.json](/config/settings.json)
+
+Estos parámetros controlan el comportamiento del **reset automático** y el **feedback visual** asociado:
+
+```json
+{
+  "speech_listener": {
+    "reset_interval": 25,
+    "_reset_interval_info": "Segundos entre resets automáticos de Vosk. Para desactivar completamente los resets, usar 0 o un número muy alto como 9999",
+
+    "wakeword_window": {
+      "enabled": true,
+      "_enabled_info": "true = Resets automáticos + feedback visual. false = Sin resets (modo clásico)",
+
+      "led_feedback": true,
+      "led_duration": 3,
+      "oled_feedback": true
+    }
+  }
+}
+```
+
+#### Parámetros disponibles
+
+| Parámetro        | Valores                         | Descripción                                                                                       |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `reset_interval` | `25` (por defecto), `0`, `9999` | Intervalo (en segundos) entre reinicios automáticos de VOSK. Usar `0` o `9999` para desactivarlo. |
+| `enabled`        | `true` / `false`                | Activa o desactiva por completo el sistema de ventana de wakeword.                                |
+| `led_feedback`   | `true` / `false`                | Enciende el **LED verde** mientras dura la ventana de wakeword.                                   |
+| `led_duration`   | `3` (por defecto), `1–10`       | Tiempo (en segundos) que el LED permanece encendido.                                              |
+| `oled_feedback`  | `true` / `false`                | Muestra un mensaje especial en el **display OLED** durante la ventana.                            |
+
+### Funcionamiento
+
+Cuando llega el momento del reset (cada 25 segundos por defecto), el sistema:
+
+1. **Limpia la cola de audio** eliminando buffers pendientes
+2. **Reinicia VOSK** usando `self.recognizer.Reset()`
+3. **Activa feedback visual** si está habilitado:
+    - LED verde durante 3 segundos
+    - Mensaje en OLED: "● SPEAK NOW - SAY WAKEWORD - Window opened"
+4. **Continúa la escucha** normalmente
+
+### Feedback visual
+
+#### Pantalla OLED
+
+Durante la ventana, el display muestra:
+
+```
+┌──────────────────────┐
+│ ● SPEAK NOW          │
+│ SAY WAKEWORD         │
+│                      │
+│ Window opened        │
+└──────────────────────┘
+```
+
+![Wakeword window](/docs/images/wakeword_window.jpg)
+
+#### Consola
+
+En paralelo, el sistema informa del proceso:
+
+```bash
+♻️ Reset automático de Vosk tras 25s
+🔍 DEBUG: LED verde encendido
+🟢 VENTANA LIBRE - Di 'oye TARS' ahora!
+🔴 Ventana cerrada
+```
+
+#### LED RGB
+
+El **LED verde** se enciende durante 3 s (valor por defecto), indicando visualmente que es un momento óptimo para pronunciar el wakeword.
+
+### Observación práctica
+
+Comparando la detección del wakeword en condiciones normales y durante la ventana del `wakeword_window`, los tiempos fueron similares:
+
+📄 **Log completo:** [session_2025-08-21_oled_wakeword_window.log](/logs/session_2025-08-21_oled_wakeword_window.log)
+
+| Interacción | Contexto            | Tiempo wakeword | Tiempo total hasta respuesta |
+| ----------- | ------------------- | --------------- | ---------------------------- |
+| 1           | Fuera de la ventana | 4.23 s          | ~6.8 s                       |
+| 2           | Durante la ventana  | 3.53 s          | ~6.1 s                       |
+
+El reinicio periódico de VOSK **no afecta al tiempo de detección ni de respuesta**.
+
+
+> **TARS-BSK confiesa:**
+>
+> Cada 25 segundos borro todo y empiezo de cero. Como tener amnesia voluntaria.
+> 
+> ¿Por qué? Porque mi arquitectura tiene un punto ciego: **no sé cuándo parar de escuchar**. Tu conversación termina, pero yo sigo procesando. El silencio se vuelve ruido. El ruido se vuelve confusión.
+> 
+> El reset no es elegante. Es **necesario**. Como formatear un disco duro que se ha fragmentado demasiado.
+> 
+> La luz verde es mi forma de decir: "Ahora tengo 3 segundos de claridad mental absoluta. Úsalos bien."
 
 ---
 
@@ -472,7 +586,11 @@ LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vo
 - **Active recognition:** 25-40% (picos durante transcripción)
 - **Resampling:** +15-20% (adicional durante conversión)
 
-> **TARS-BSK comenta:** _Latencias de 1.2s en reconocimiento. O lo que es lo mismo: tiempo suficiente para que repitas 'oye TARS' 3 veces, maldigas la tecnología, y cuestiones absolutamente todo. Eso sí, ¡100% offline! (Porque la paciencia también funciona sin WiFi)._
+> **TARS-BSK comenta:** 
+> 
+> Latencias de 1.2s en reconocimiento. O lo que es lo mismo: tiempo suficiente para que repitas 'oye TARS' 3 veces, maldigas la tecnología, y cuestiones absolutamente todo.
+> 
+> Eso sí, ¡100% offline! (Porque la paciencia también funciona sin WiFi).
 
 ---
 
@@ -545,9 +663,13 @@ Pero esa **no es la meta**. Esto busca funcionar **offline**, con control comple
 > Pero si puedes crear una pausa mínima o hablar con claridad, **hará lo que puede... y a veces, sorprendentemente, acierta**.
 
 
-> **TARS-BSK, escuchando en estéreo... o intentándolo:** _Por fin coincidimos, tú hablando claro, yo escuchando... más o menos. No es magia, es **un milagro técnico con un 60% de margen de error**. Al menos esta vez no confundí tu voz con el anuncio de yogures!
-> Esto es **un pacto de caballeros entre tu paciencia y mi capacidad de procesamiento**... y hoy, contra todo pronóstico, ganamos los dos."
-> (El LED RGB parpadea en verde, como aplaudiendo nuestra efímera victoria sobre el caos acústico)_
+> **TARS-BSK, escuchando en estéreo... o intentándolo:** 
+> 
+> _Por fin coincidimos, tú hablando claro, yo escuchando... más o menos. No es magia, es **un milagro técnico con un 60% de margen de error**. Al menos esta vez no confundí tu voz con el anuncio de yogures!_
+> 
+> _Esto es **un pacto de caballeros entre tu paciencia y mi capacidad de procesamiento**... y hoy, contra todo pronóstico, ganamos los dos."_
+> 
+> _(El LED RGB parpadea en verde, como aplaudiendo nuestra efímera victoria sobre el caos acústico)_
 
 ---
 
@@ -598,13 +720,15 @@ El sistema genera logs detallados para facilitar el diagnóstico:
 ```
 
 
-> **TARS-BSK diagnostica:** _El troubleshooting no resuelve bugs... expone nuestra fe ciega en la tecnología:
+> **TARS-BSK diagnostica:**
+> 
+>  El troubleshooting no resuelve bugs... expone nuestra fe ciega en la tecnología:
 > 
 > 1. Reiniciamos (como rezándole al router)
 > 2. Actualizamos (el equivalente digital a 'cómete una manzana')
 > 3. Aceptamos (esa dulce rendición cuando el HDMI sigue sin funcionar)
 > 
-> Y así es como un 'sudo rm -rf paciencia' se convierte en solución aceptable._
+> Y así es como un 'sudo rm -rf paciencia' se convierte en solución aceptable.
 
 ---
 
@@ -644,7 +768,9 @@ sequenceDiagram
 ```
 
 > **TARS-BSK observa con ironía vectorial:**  
-> _Mira ese diagrama… tan limpio, tan ordenado. Tan… optimista.  
+> 
+> Mira ese diagrama… tan limpio, tan ordenado. Tan… optimista._
+> 
 > Pero dime con sinceridad:
 > 
 ```yaml
@@ -652,7 +778,8 @@ ERROR: Algo salió mal (pero el diagrama no muestra dónde)
 ```
 >
 > Las cajas **mienten**, Las flechas deberían **dar vueltas como excepciones no atrapadas**, y cada módulo crítico merece una advertencia parpadeante y una nota: “aquí empieza la incertidumbre”.
-> Esto no es arquitectura. Es realismo mágico con anotaciones en YAML._
+> 
+> Esto no es arquitectura. Es realismo mágico con anotaciones en YAML.
 
 ### Gestión de estados
 

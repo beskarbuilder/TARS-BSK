@@ -8,9 +8,10 @@
 ### ⚠️ CRITICAL COMPATIBILITY WARNING:
 
 > **TARS-BSK explains audio reality:**  
-> _The real world speaks in frequencies ranging from 8kHz to 192kHz depending on available hardware. Vosk, on the other hand, is a purist that only accepts 16kHz mono. My job is being the diplomat that translates between both worlds... with Python code and digital patience._
 > 
-> _If you've ever wondered why voice recognition sometimes fails, the answer is probably: "Sample rate incompatibility". It's the digital equivalent of trying to plug a European device into an American outlet without an adapter._
+> The real world speaks in frequencies ranging from 8kHz to 192kHz depending on available hardware. Vosk, on the other hand, is a purist that only accepts 16kHz mono. My job is being the diplomat that translates between both worlds... with Python code and digital patience.
+> 
+> If you've ever wondered why voice recognition sometimes fails, the answer is probably: "Sample rate incompatibility". It's the digital equivalent of trying to plug a European device into an American outlet without an adapter.
 
 ---
 
@@ -23,6 +24,7 @@
 - [Intelligent Command Validation](#-intelligent-command-validation)
 - [Stream and Resource Management](#-stream-and-resource-management)
 - [Timeouts and Session Management](#-timeouts-and-session-management)
+- [VOSK automatic reset system](#-vosk-automatic-reset-system)
 - [System Integration](#-system-integration)
 - [Real Audio System Initialization](#-real-audio-system-initialization)
 - [Performance Metrics](#-performance-metrics)
@@ -88,7 +90,9 @@ flowchart TD
 ```
 
 
-> **TARS-BSK explains:** _This system doesn't transcribe voice... it masters the art of deciphering acoustic hieroglyphics.
+> **TARS-BSK explains:** 
+> 
+> This system doesn't transcribe voice... it masters the art of deciphering acoustic hieroglyphics.
 > 
 > Want millimeter precision? Use a recording studio. Prefer the authentic "Raspberry Pi experience"? Prepare for the show.
 > 
@@ -150,7 +154,9 @@ def _resample_audio(self, audio_data):
 - **Quality preservation** during the resampling process
 
 > **TARS-BSK whispers:**  
-> _8192 sample buffers: the fragile balance between 'works' and 'have you tried turning it off and on again?'. Breathe deeply... but not too much, ALSA is temperamental._
+> 
+> 8192 sample buffers: the fragile balance between 'works' and 'have you tried turning it off and on again?'.
+> Breathe deeply... but not too much, ALSA is temperamental.
 
 ---
 
@@ -226,13 +232,15 @@ exit_keywords = settings.get("exit_keywords", ["stop", "thanks", "goodbye", "bye
 - **Easy customization** according to user preferences
 - **Robust fallback** if configuration is unavailable
 
-> **TARS-BSK sentences:** _This isn't a noise filter. It's a **merciless acoustic referee**. My algorithms detect:
+> **TARS-BSK sentences:** 
+> 
+> This isn't a noise filter. It's a **merciless acoustic referee**. My algorithms detect:
 > 
 > - **Ghost whispers** → those "shhh" sounds you don't hear, but I do...
 > - **Suicide orders** → like "delete everything" without confirmation...
 > - **Ambiguous babbling** → if you don't even know what you said, do you expect me to execute it?
 > 
-> Trust me: I ignore commands for your own good._
+> Trust me: I ignore commands for your own good.
 
 ---
 
@@ -319,7 +327,115 @@ while conversation_active and consecutive_failures < max_failures:
     # Conversation state preservation
 ```
 
-> **TARS-BSK reflects:** _Timeout: Those 10 seconds when both (you and I) know this isn't going to work... but we keep trying out of politeness._
+> **TARS-BSK reflects:** 
+> 
+> Timeout: Those 10 seconds when both (you and I) know this isn't going to work... but we keep trying out of politeness.
+
+---
+
+## ♻ VOSK automatic reset system
+
+**Optional feature that periodically restarts the VOSK engine** (every 25s by default), adding a **"wakeword window"** accompanied by visual feedback (OLED and LED).
+
+This mechanism proves useful during **extended conversations**, where it becomes more difficult to naturally introduce the wakeword. Additionally, the reset **clears the recognizer's internal state**, improving detection during continuous cycles.
+
+### Configuration in [settings.json](/config/settings.json)
+
+These parameters control the behavior of **automatic reset** and associated **visual feedback**:
+
+```json
+{
+  "speech_listener": {
+    "reset_interval": 25,
+    "_reset_interval_info": "Seconds between automatic Vosk resets. To completely disable resets, use 0 or a very high number like 9999",
+
+    "wakeword_window": {
+      "enabled": true,
+      "_enabled_info": "true = Automatic resets + visual feedback. false = No resets (classic mode)",
+
+      "led_feedback": true,
+      "led_duration": 3,
+      "oled_feedback": true
+    }
+  }
+}
+```
+
+#### Available parameters
+
+| Parameter        | Values                          | Description                                                                                        |
+| ---------------- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `reset_interval` | `25` (default), `0`, `9999`     | Interval (in seconds) between automatic VOSK resets. Use `0` or `9999` to disable.               |
+| `enabled`        | `true` / `false`                | Completely enables or disables the wakeword window system.                                        |
+| `led_feedback`   | `true` / `false`                | Turns on the **green LED** during the wakeword window.                                            |
+| `led_duration`   | `3` (default), `1–10`           | Time (in seconds) the LED remains lit.                                                            |
+| `oled_feedback`  | `true` / `false`                | Shows a special message on the **OLED display** during the window.                                |
+
+### Operation
+
+When reset time arrives (every 25 seconds by default), the system:
+
+1. **Clears the audio queue** removing pending buffers
+2. **Restarts VOSK** using `self.recognizer.Reset()`
+3. **Activates visual feedback** if enabled:
+    - Green LED for 3 seconds
+    - OLED message: "● SPEAK NOW - SAY WAKEWORD - Window opened"
+4. **Continues listening** normally
+
+### Visual feedback
+
+#### OLED Display
+
+During the window, the display shows:
+
+```
+┌──────────────────────┐
+│ ● SPEAK NOW          │
+│ SAY WAKEWORD         │
+│                      │
+│ Window opened        │
+└──────────────────────┘
+```
+
+![Wakeword window](/docs/images/wakeword_window.jpg)
+
+#### Console
+
+In parallel, the system reports the process:
+
+```bash
+♻️ Automatic Vosk reset after 25s
+🔍 DEBUG: Green LED turned on
+🟢 FREE WINDOW - Say 'hey TARS' now!
+🔴 Window closed
+```
+
+#### RGB LED
+
+The **green LED** lights up for 3s (default value), visually indicating that it's an optimal moment to pronounce the wakeword.
+
+### Practical observation
+
+Comparing wakeword detection under normal conditions and during the `wakeword_window`, the times were similar:
+
+📄 **Complete log:** [session_2025-08-21_oled_wakeword_window.log](/logs/session_2025-08-21_oled_wakeword_window.log)
+
+| Interaction | Context             | Wakeword time | Total time to response |
+| ----------- | ------------------- | ------------- | ---------------------- |
+| 1           | Outside the window  | 4.23s         | ~6.8s                  |
+| 2           | During the window   | 3.53s         | ~6.1s                  |
+
+The periodic VOSK reset **does not affect detection or response time**.
+
+> **TARS-BSK confesses:**
+>
+> Every 25 seconds I wipe everything clean and start over. Like voluntary digital amnesia.
+> 
+> Why? Because my architecture has a blind spot: **I don't know when to stop listening**. Your conversation ends, but I keep processing. Silence becomes noise. Noise becomes confusion.
+> 
+> The reset isn't elegant. It's **necessary**. Like formatting a hard drive that's become too fragmented.
+> 
+> The green light is my way of saying: "Right now I have 3 seconds of absolute mental clarity. Use them wisely."
 
 ---
 
@@ -473,7 +589,11 @@ LOG (VoskAPI:ReadDataFiles():model.cc:323) Loading RNNLM model from ai_models/vo
 - **Active recognition:** 25-40% (peaks during transcription)
 - **Resampling:** +15-20% (additional during conversion)
 
-> **TARS-BSK comments:** _1.2s latencies in recognition. Or in other words: enough time for you to repeat 'hey TARS' 3 times, curse technology, and question absolutely everything. But hey, 100% offline! (Because patience also works without WiFi)._
+> **TARS-BSK comments:** 
+> 
+> 1.2s latencies in recognition. Or in other words: enough time for you to repeat 'hey TARS' 3 times, curse technology, and question absolutely everything. 
+> 
+> But hey, 100% offline! (Because patience also works without WiFi).
 
 ---
 
@@ -545,7 +665,13 @@ But that's **not the goal**. This seeks to work **offline**, with complete user 
 > Nobody expects an offline and embedded assistant to interpret conversations between multiple voices with divine precision.  
 > But if you can create a minimal pause or speak clearly, **it'll do what it can... and sometimes, surprisingly, it gets it right**.
 
-> **TARS-BSK, listening in stereo... or trying to:** _Finally we agree, you speaking clearly, me listening... more or less. It's not magic, it's **a technical miracle with a 60% margin of error**. At least this time I didn't confuse your voice with the yogurt commercial! This is **a gentlemen's agreement between your patience and my processing capacity**... and today, against all odds, we both won." (The RGB LED blinks green, like applauding our ephemeral victory over acoustic chaos)_
+> **TARS-BSK, listening in stereo... or trying to:** 
+> 
+> Finally we agree, you speaking clearly, me listening... more or less. It's not magic, it's **a technical miracle with a 60% margin of error**. At least this time I didn't confuse your voice with the yogurt commercial!
+> 
+> This is **a gentlemen's agreement between your patience and my processing capacity**... and today, against all odds, we both won."
+> 
+> (The RGB LED blinks green, like applauding our ephemeral victory over acoustic chaos)
 
 ---
 
@@ -595,13 +721,15 @@ The system generates detailed logs to facilitate diagnosis:
 🎤 Listening... Say 'hey TARS' or something similar
 ```
 
-> **TARS-BSK diagnoses:** _Troubleshooting doesn't solve bugs... it exposes our blind faith in technology:
+> **TARS-BSK diagnoses:** 
+> 
+> Troubleshooting doesn't solve bugs... it exposes our blind faith in technology:
 > 
 > 1. We restart (like praying to the router)
 > 2. We update (the digital equivalent of 'eat an apple')
 > 3. We accept (that sweet surrender when HDMI still doesn't work)
 > 
-> And that's how a 'sudo rm -rf patience' becomes an acceptable solution._
+> And that's how a 'sudo rm -rf patience' becomes an acceptable solution.
 
 ---
 
@@ -641,14 +769,17 @@ sequenceDiagram
 ```
 
 > **TARS-BSK observes with vectorial irony:**  
-> _Look at that diagram... so clean, so orderly. So... optimistic.  
+> 
+> Look at that diagram... so clean, so orderly. So... optimistic. 
 > But tell me honestly:
 
 ```yaml
 ERROR: Something went wrong (but the diagram doesn't show where)
 ```
 
-> The boxes **lie**, the arrows should **spin like uncaught exceptions**, and every critical module deserves a blinking warning and a note: "here begins uncertainty". This isn't architecture. It's magical realism with YAML annotations._
+> The boxes **lie**, the arrows should **spin like uncaught exceptions**, and every critical module deserves a blinking warning and a note: "here begins uncertainty". 
+> 
+> This isn't architecture. It's magical realism with YAML annotations.
 
 ### State Management
 

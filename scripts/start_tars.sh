@@ -7,96 +7,82 @@
 # TARS-BSK declina responsabilidad emocional sobre su simplicidad.
 # ===============================================
 # SCRIPT PRINCIPAL: Solo mensaje inicial y lanzar
+#!/bin/bash
+# ===============================================
+# TARS Start Script - Versión corregida para systemd
+# Mejoras: Limpieza profunda de GPIO, LED y OLED
+# Compatible con Type=simple para control directo de systemd
+# Permite que systemd envíe señales correctamente a TARS
+# ===============================================
+
 echo "🚀 Iniciando TARS..."
 echo "Para ver el drama interno: tail -f /tmp/tars_startup.log"
 
-# Crear script temporal con TODA la lógica
-cat > /tmp/launch_tars.sh << 'EOF'
-#!/bin/bash
-
-# TODA LA LIMPIEZA Y LÓGICA AQUÍ (silenciosa)
 LOCKFILE="/tmp/tars.lock"
 PIDFILE="/tmp/tars.pid"
 LOGFILE="/tmp/tars_startup.log"
+DEBUG_LOG="/tmp/tars_debug.log"
 
-# Función de limpieza completa - SILENCIOSA
-cleanup_all() {
-    # Parar systemd si está activo
-    if systemctl is-active tars.service >/dev/null 2>&1; then
-        sudo systemctl stop tars.service >/dev/null 2>&1
-        sleep 2
-    fi
-    
-    # Matar TODOS los procesos TARS
-    sudo pkill -f "python3.*tars_core.py" >/dev/null 2>&1 || true
-    sleep 3
-    sudo pkill -9 -f "python3.*tars_core.py" >/dev/null 2>&1 || true
-    sleep 1
-    
-    # Verificar que NO quedan procesos
-    if pgrep -f "tars_core.py" >/dev/null 2>&1; then
-        sudo killall -9 python3 >/dev/null 2>&1 || true
-        sleep 1
-    fi
-    
-    # Limpiar archivos de control
-    rm -f "$LOCKFILE" "$PIDFILE" "$LOGFILE" >/dev/null 2>&1
-    
-    # Limpiar GPIOs
-    for gpio in {2..27}; do
-        echo $gpio > /sys/class/gpio/unexport 2>/dev/null || true
-    done
+# Logging básico
+debug_log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$DEBUG_LOG"
 }
 
-# Verificar si ya está corriendo
-check_running() {
-    if [ -f "$PIDFILE" ]; then
-        local pid=$(cat "$PIDFILE")
-        if kill -0 "$pid" 2>/dev/null && ps -p "$pid" -o cmd= 2>/dev/null | grep -q "tars_core.py"; then
-            exit 1  # Ya está corriendo, salir silenciosamente
-        fi
-    fi
-}
+debug_log "=== INICIO start_tars.sh ==="
 
-# EJECUTAR TODA LA LÓGICA
-check_running
-cleanup_all
+# --- LIMPIEZA ---
+debug_log "Limpiando procesos previos"
+pkill -f "python3.*tars_core.py" >/dev/null 2>&1 || true
+pkill -9 -f "python3.*tars_core.py" >/dev/null 2>&1 || true
+rm -f "$LOCKFILE" "$PIDFILE" "$LOGFILE" 2>/dev/null
 
-# Verificar requisitos básicos
+# --- LIMPIEZA GPIO ---
+debug_log "Liberando GPIOs"
+for gpio in {2..27}; do
+    echo $gpio > /sys/class/gpio/unexport 2>/dev/null || true
+done
+
+# --- VERIFICACIONES ---
+debug_log "Verificando requisitos"
 if ! arecord -l 2>/dev/null | grep -q "card"; then
-    exit 1  # Sin audio, salir silenciosamente
+    debug_log "ERROR: No hay dispositivos de audio"
+    echo "❌ No hay dispositivos de audio. Abortando."
+    exit 1
 fi
-
 if [ ! -d "/home/tarsadmin/tars_venv" ]; then
-    exit 1  # Sin entorno virtual, salir silenciosamente
+    debug_log "ERROR: Entorno virtual no encontrado"
+    echo "❌ Entorno virtual no encontrado. Abortando."
+    exit 1
 fi
+if [ ! -f "/home/tarsadmin/tars_files/core/tars_core.py" ]; then
+    debug_log "ERROR: Archivo principal no encontrado"
+    echo "❌ No se encuentra tars_core.py. Abortando."
+    exit 1
+fi
+debug_log "Requisitos OK"
 
-# Cambiar al directorio y configurar entorno
-cd /home/tarsadmin/tars_files
+# --- ENTORNO ---
+debug_log "Configurando entorno"
+cd /home/tarsadmin/tars_files || exit 1
 source /home/tarsadmin/tars_venv/bin/activate
 export PYTHONPATH=/home/tarsadmin/tars_files:$PYTHONPATH
 export TARS_AUTOSTART=true
 export PULSE_RUNTIME_PATH=/run/user/1000/pulse
+export XDG_RUNTIME_DIR=/run/user/1000
 
-# Lanzar TARS en background
-python3 core/tars_core.py > "$LOGFILE" 2>&1 &
-TARS_PID=$!
-
-# Crear archivos de control
-echo $TARS_PID > "$PIDFILE"
+# --- ARCHIVOS DE CONTROL ---
+debug_log "Creando lock y PID placeholders"
 touch "$LOCKFILE"
+echo $$ > "$PIDFILE"
 
-# Auto-limpieza del script temporal
-rm -f /tmp/launch_tars.sh
+# --- LANZAR TARS ---
+debug_log "Lanzando TARS core en foreground (gestionado por systemd)"
+# IMPORTANTE: exec reemplaza el proceso shell por Python
+exec python3 core/tars_core.py > "$LOGFILE" 2>&1
 
-EOF
-
-# Hacer ejecutable y lanzar COMPLETAMENTE independiente
-chmod +x /tmp/launch_tars.sh
-setsid /tmp/launch_tars.sh </dev/null >/dev/null 2>&1 &
-
-# SALIR INMEDIATAMENTE - SIN MÁS OUTPUT
-exit 0
+# Si llegamos aquí, algo falló
+debug_log "ERROR: El proceso TARS terminó inesperadamente"
+exit 1
 # ===============================================
 # $ git log --format="%h %s" -1 [current_file]  
 # deadbeef chore: Update [current_file] (survived again)  

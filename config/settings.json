@@ -26,6 +26,28 @@
     "record_device": "plughw:0,0"
   },
 
+  "speech_listener": {
+    "reset_interval": 25,
+    "_reset_interval_info": "Segundos entre resets automáticos de Vosk. Para desactivar completamente los resets, usar 0 o un número muy alto como 9999",
+
+    "wakeword_window": {
+      "enabled": true,
+      "_enabled_info": "true = Resets automáticos + feedback visual. false = Sin resets (modo clásico)",
+
+      "led_feedback": true,
+      "led_duration": 3,
+      "oled_feedback": true
+    }
+  },
+
+  "oled_display": {
+    "enabled": true,
+    "i2c_address": "0x3C",
+    "refresh_rate": 2,
+    "sleep_timeout": 300,
+    "auto_clock": true
+  },
+
   "piper_tuning": {
     "length_scale": 1.1,
     "noise_scale": 1.0,

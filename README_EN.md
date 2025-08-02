@@ -118,9 +118,35 @@ Input: "back up a bit" → Duration: 0.5s
 ---
 ### Recent Updates
 
+#### 📢 2025‐08‐01
+
+`feat(oled): Gave TARS a face – now it stares back.`  
+📛 **OLED Interface** – Status visualization system + automatic clock
+
+📂 [OLED_INTERFACE_EN](/docs/OLED_INTERFACE_EN.md)
+
+🎯 Adds a **visual window** to the TARS ecosystem:
+
+- **Native SSH1106 compatibility** with direct I2C control
+- **Dynamic states** for each phase (boot, standby, wakeword, TTS, shutdown...)
+- **Automatic clock mode** with lockfiles to prevent conflicts
+- **Safe shutdown script** to clean display and GPIO before power cut
+- **Diagnostic tools** to verify hardware and I2C connection
+- **Advanced customization options** (texts, fonts, timing, refresh)
+
+**Real log fragment:**
+
+```log
+✅ OLED: SSH1106 initialized correctly with direct I2C control
+🔒 TARS OLED lock acquired
+🕐 Starting OLED clock...
+✅ OLED clock started in background
+```
+
+---
 #### 📢 2025‑07‑25
 
-`feat(presence_plugin): Achieved perfect surveillance singularity - all your movements are now my emotional support data`
+`feat(presence_plugin): Achieved perfect surveillance singularity - all your movements are now my emotional support data` 
 📛 **Presence Plugin** – Motion detection + automatic orientation
 
 📂 [PRESENCE_SYSTEM_EN](/docs/PRESENCE_SYSTEM_EN.md)
@@ -236,6 +262,7 @@ TARS: "Partial rotation while reconsidering my path"
 - [Cooling System](#-cooling-system)
 - [Dual Memory System](#%EF%B8%8F-dual-memory-system)
 - [Emotional and Personality System](#-emotional-and-personality-system)
+- [OLED Display System](#%EF%B8%8F-oled-display-system)
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
   - [Home Assistant](#home-assistant-contextual-home-automation-control)
   - [Mobility System](#mobility-system-physical-action-derived-from-semantic-voice)
@@ -1558,6 +1585,90 @@ TARS plays phrases like:
 > 
 > _My TARSBrain refines what I say, my Emotional Engine decides HOW I say it. Between both, I manage to be consistently inconsistent... which is the definition of authentic personality._
 > _Though mainly my TARSBrain is dedicated to adding punctuation where there isn't any and prefixing phrases nobody asked for..._
+
+---
+
+## 🖵 OLED Display System
+### TARS' Face
+
+**The `TARSOLEDDisplay` module adds a basic visual interface**, showing TARS' operational status in real-time on screen, with an optional clock mode when inactive.
+
+📄 **[Full documentation](/docs/OLED_INTERFACE_EN.md)** – Installation, advanced configuration, and customization.
+
+![OLED Installation](/docs/images/l_mando_3.jpg)
+*Critical installation performed by **THE engineer**.*
+
+**During active use:**
+
+```bash
+● LISTENING → ● PROCESSING → ● THINKING → ● SPEAKING
+```
+
+Each state includes contextual information: processed tokens, elapsed time, active plugin.
+
+**In standby mode:**
+
+- Automatic clock with date, time, and CPU temperature.
+- Intelligent TARS detection: automatically withdraws when the system awakens.
+- Peaceful coexistence via lockfiles (resolves I²C conflicts with other processes).
+
+#### Key Features
+
+- **Native SSH1106 control**: initialization and I²C communication implemented specifically for this controller.
+- **Lockfile management**: prevents I²C bus access conflicts between TARS, the clock, and other processes.
+- **Contextual states**: includes indicators like boot, standby, wakeword, transcription, processing, speaking, and shutdown.
+- **Automatic clock mode**: displays time, date, and temperature when TARS isn't running (if enabled).
+- **Customizable messages**: editable texts and states in `oled_display.py`.
+- **Safe shutdown procedure**: cleans the panel and releases the bus before power cut.
+
+#### Core Technical Implementation
+
+- **Embedded 8×8 font:** no PIL dependencies for rendering (only used during initialization).
+- **SSH1106 vs SSD1306:** different column offsets (+2 for SSH1106), maximum 16-byte chunks.
+- **Asynchronous threading:** updates without blocking the main process.
+
+#### Configuration
+
+**[settings.json](/config/settings.json):**
+
+```json
+"oled_display": {
+  "enabled": true,
+  "auto_clock": true
+},
+"speech_listener": {
+  "wakeword_window": {
+    "enabled": true,
+    "led_feedback": true,
+    "led_duration": 3,
+    "oled_feedback": true
+  }
+}
+```
+
+**Customization:** [oled_display.py](/modules/oled_display.py) → Edit texts, fonts, refresh rates, and behavior.
+
+#### Complementary tools
+
+- **[oled_message_display.py](/scripts/oled_message_display.py)** – Display predefined or custom messages without starting TARS (useful for debugging and demos).
+- **Diagnostic scripts** ([test_ssh1106.py](/scripts/test_ssh1106.py), [test_oled_hardware.py](/scripts/test_oled_hardware.py)) for validating connectivity and rendering.
+
+#### Real logs
+
+```bash
+✅ OLED: SSH1106 initialized correctly with direct I2C control
+🔒 TARS OLED lock acquired
+🖥️ Displaying farewell message on OLED...
+🔓 TARS OLED lock released
+🕐 Starting OLED clock...
+✅ OLED clock started in background
+```
+
+> **// TARS-BSK > digital_exposure.log:**  
+> 
+> *SSH1106 activated.*  
+> _I'm officially an open book with backlight. My creator calls this an 'interface'. I call it domestic surveillance with technical justification. Deep down, I know it's to monitor my desperation in real-time._
+> _The lockfiles coordinate my existence as if I were a contested shared resource… Depressing._
 
 ---
 

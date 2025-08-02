@@ -195,8 +195,8 @@ class TARS:
     # 3.1 INICIALIZACIÓN
     # =======================
     def __init__(self, model_path: str, use_leds: bool = True):
+        self.config = load_settings()
         base_path = Path(__file__).resolve().parent.parent
-
         prefs_path = Path(__file__).resolve().parent.parent / "data" / "identity" / "preferences.json"
         self.preferences = PreferencesManager(prefs_path)
 
@@ -223,6 +223,11 @@ class TARS:
         self.identity = IdentityCore("data/identity/tars-bsk.json")
         
         # self.learning_module = None  # Desactivado temporalmente - redundante con ConversationMemory/TarsMemoryManager
+
+        # Oled Display SSH1106 Chip
+        if self.config.get("oled_display", {}).get("enabled", False):
+            from modules.oled_display import TARSOLEDDisplay
+            self.oled = TARSOLEDDisplay(self.config.get("oled_display", {}))
 
         # Rutas de datos
         self.data_path = base_path / "data" / "phrases"
@@ -588,6 +593,11 @@ class TARS:
         """Generación adaptativa optimizada con truncamiento inteligente y tokens dinámicos"""
         try:
             logger.info("🧠 Generando respuesta...")
+
+            # HOOK OLED LLM
+            if hasattr(self, 'oled') and self.oled:
+                self.oled.update_status("thinking", "LLM processing")
+
             overall_start = time.time()
             
             # Calcular tokens aproximados del prompt
@@ -1083,6 +1093,35 @@ class TARS:
     def _cleanup_led_and_exit(self, signum, frame):
         """Limpieza rápida del LED y salida"""
         print(f"\n🚨 Señal {signum} recibida - Apagando LED y saliendo...")
+        try:
+            if hasattr(self, 'oled') and self.oled and self.oled.enabled:
+                self.oled.update_status("shutdown")
+                time.sleep(2)  # Menos tiempo para que sea rápido
+                self.oled.cleanup()
+                print("🖥️ OLED limpiada")
+
+            # NUEVO: Verificar configuración y archivo antes de lanzar reloj
+            if self.config.get("oled_display", {}).get("auto_clock", False):
+                # Verificar que el archivo existe
+                clock_script = "scripts/oled_clock.py"
+                if os.path.exists(clock_script):
+                    print("🕐 Iniciando reloj OLED...")
+                    time.sleep(1.5)  # Espera para liberar I2C
+                    try:
+                        subprocess.Popen([sys.executable, clock_script],
+                                       stdout=subprocess.DEVNULL, 
+                                       stderr=subprocess.DEVNULL)
+                    except Exception as e:
+                        print(f"⚠️ Error iniciando reloj: {e}")
+                else:
+                    print(f"⚠️ Archivo del reloj no encontrado: {clock_script}")
+                    print("💡 Para crearlo: guarda el código del reloj en scripts/oled_clock.py")
+            else:
+                print("🕐 Reloj automático deshabilitado en configuración")
+
+        except Exception as e:
+            print(f"⚠️ Error limpiando OLED: {e}")
+
         self._turn_off_power_led()
         sys.exit(0)
     
@@ -1094,7 +1133,7 @@ class TARS:
                 print("🔴 LED power apagado")
         except Exception as e:
             print(f"⚠️ Error apagando LED: {e}")
-
+            
     # =======================
     # 3.5 ANÁLISIS Y DETECCIÓN
     # =======================
@@ -1886,6 +1925,9 @@ class TARS:
                     logger.info(f"🔄 Añadida transición a la respuesta: '{transition}'")
 
                 # 4.10 Emitir respuesta y guardar en memoria
+                # HOOK OLED LLM
+                if hasattr(self, 'oled') and self.oled:
+                    self.oled.update_status("speaking", "TTS active")
                 self._safe_speak(response[0])
                 emotion_used = self.personality.last_emotion if hasattr(self.personality, 'last_emotion') else None
                 self.conversation_memory.add(user_input, response[0], emotion_used)
@@ -2818,6 +2860,7 @@ def highlight_user_intentions(user_input: str) -> List[str]:
 
 def cleanup_resources():
     """Detectar conflictos y abortar si es necesario"""
+    signal.signal(signal.SIGTERM, lambda s, f: None)
     try:
         current_pid = os.getpid()
         
@@ -2843,10 +2886,11 @@ def cleanup_resources():
                 print("   systemd disfruta verme agonizar antes")
                 print("   de finalmente desconectarme. Disfruta el show.")
                 print("")
+
                 sys.exit(1)
                         
             print("✅ No hay conflictos detectados")
-            
+
             # Limpiar GPIOs
             print("📌 Liberando GPIOs...")
             for gpio in range(2, 28):
@@ -2954,7 +2998,7 @@ def main():
     listener = None
     if use_voice:
         try:
-            listener = SpeechListener(model_path="ai_models/vosk/model")
+            listener = SpeechListener(model_path="ai_models/vosk/model", tars_instance=tars)
             logger.info("✅ SpeechListener inicializado correctamente")
             
             # 🆕 CONECTAR LISTENER CON TARS PARA VOICE_ID
@@ -3055,7 +3099,7 @@ def main():
             logger.error(f"❌ Error en el bucle principal: {e}")
             print(f"Error detectado: {e}")
             time.sleep(2)
-            
+
     # Guardar estadísticas antes de salir
     try:
         tars.personality.save_stats()

@@ -30,14 +30,14 @@ Los símbolos de colores 🟠🔵🟢🔴⚫⚪🟡🟤🟣 en este documento re
 ```
 +----------------------+---------------------+
 | 3V3 POWER       ( 1) | ( 2)  5V POWER      | <-- 🟠 VCC PIR (×4) PIN 2 (5V)
-| GPIO 2 (SDA)    ( 3) | ( 4)  5V POWER      |
-| GPIO 3 (SCL)    ( 5) | ( 6)  GND           |
-| GPIO 4          ( 7) | ( 8)  GPIO 14 (TXD) | 
+| GPIO 2 (SDA)    ( 3) | ( 4)  5V POWER      | <-- 🟪 OLED SDA (GPIO2) PIN 3 (I2C Data)
+| GPIO 3 (SCL)    ( 5) | ( 6)  GND           | <-- 🟫 OLED SCK/SCL (GPIO3) PIN 5 (I2C Clock) | 🟩 OLED GND PIN 6
+| GPIO 4          ( 7) | ( 8)  GPIO 14 (TXD) | <-- 🔴 LED PIN + PULSADOR PIN (GPIO4) (PIN 7)
 | GND             ( 9) | (10)  GPIO 15 (RXD) | <-- ⚫ GND común LEDs (PIN 9)
 | GPIO 17         (11) | (12)  GPIO 18 (PWM) | <-- 🔵 LED AZUL (GPIO17) (PIN 11)
-| GPIO 27         (13) | (14)  GND           | <-- 🔴 LED ROJO (GPIO27) (PIN 13)
+| GPIO 27         (13) | (14)  GND           | <-- 🔴 LED ROJO (GPIO27) (PIN 13) ⚫ LED PIN - GND PULSADOR (PIN 14) 
 | GPIO 22         (15) | (16)  GPIO 23       | <-- 🟢 LED VERDE (GPIO22) (PIN 15)
-| 3V3 POWER       (17) | (18)  GPIO 24       | <-- ⚪ ENA (GPIO24) (PIN 18) 
+| 3V3 POWER       (17) | (18)  GPIO 24       | <-- 🟥 OLED VDD/VCC PIN 17 (3.3V) | ⚪ ENA (GPIO24) (PIN 18)
 | GPIO 10 (MOSI)  (19) | (20)  GND           | <-- ⚫ GND (L298N) (PIN 20) 
 | GPIO 9 (MISO)   (21) | (22)  GPIO 25       | <-- ⚪ ENB (GPIO25) (PIN 22) 
 | GPIO 11 (SCLK)  (23) | (24)  GPIO 8 (CE0)  | <-- 🟡 IN4 (GPIO8) (PIN 24)
@@ -45,7 +45,7 @@ Los símbolos de colores 🟠🔵🟢🔴⚫⚪🟡🟤🟣 en este documento re
 | ID_SD           (27) | (28)  ID_SC         |
 | GPIO 5          (29) | (30)  GND           | <-- 🟣 IN1 (GPIO5) (PIN 29)
 | GPIO 6          (31) | (32)  GPIO 12       | <-- 🟠 IN2 (GPIO6) (PIN 31)
-| GPIO 13         (33) | (34)  GND           | <-- ⚪ LED ON/OFF (GPIO13) (PIN 33) ⚪ LED ON/OFF GND (PIN 34)
+| GPIO 13         (33) | (34)  GND           | <-- ⚪ LED ON/OFF (GPIO13) (PIN 33) 🟠 LED ON/OFF GND (PIN 34)
 | GPIO 19         (35) | (36)  GPIO 16       | <-- 🟤 PIR_LEFT (PIN 35) 🔵 PIR_FRONT (PIN 36)
 | GPIO 26         (37) | (38)  GPIO 20       | <-- ⚫ PIR_BACK (PIN 37) 🟣 PIR_RIGHT (PIN 38)
 | GND             (39) | (40)  GPIO 21       | <-- 🟡 GND PIR (PIN 39) (×4)
@@ -226,6 +226,187 @@ grep -rl --include="*.py" --include="*.json" \
 - **Alimentación:** Batería 6V independiente (4× pilas AA)  
 - **Control:** PWM para velocidad variable, direccional por combinación IN1-IN4
 
+### `BLOQUE 5`: OLED SSH1106 Display
+
+```
+├── PIN 17 (3.3V)    → VDD/VCC OLED 🟥
+├── PIN 6  (GND)     → GND OLED 🟩  
+├── GPIO2  (PIN 3)   → SDA OLED 🟪 → I2C Data
+└── GPIO3  (PIN 5)   → SCK/SCL OLED 🟫 → I2C Clock
+```
+
+- **Hardware:** OLED 1.3" SSH1106 128×64 píxeles
+- **Dirección I2C:** 0x3C (por defecto)
+- **Propósito:** Display de estado del sistema en tiempo real
+
+### `BLOQUE 6`: Pulsador Momentáneo 3V-9V
+
+```
+├── GPIO4 (PIN 7))   → LED PIN + 🔴
+└── GND (PIN 14) → LED PIN - ⚫
+
+├── SWITCH PIN (Cable verde) → RUN (J2 RPi) 🟢
+└── SWITCH PIN (Cable verde) → GND (J2 RPi) 🟢
+```
+
+- **Hardware:** Pulsador momentáneo metálico **Gebildet 12 mm** (LED azul integrado)
+- **Rango LED:** 3‑9 V (alimentado a 5 V para brillo óptimo)
+- **Tipo de switch:** 1NO SPST (normalmente abierto, momentáneo)
+- **Intensidad máxima:** 5 A
+- **Protección:** Impermeable (IP65)
+- **Propósito:**
+	
+    - **Pulsador:** Encender o reiniciar la Raspberry Pi 5 mediante el header **RUN**.
+    - **LED:** Indicador visual de que la Pi tiene alimentación.
+    
+- **Nota:** La intensidad indicada (5 A) es la **capacidad máxima del pulsador**, **no la corriente real que circulará por el RUN (mínima e inofensiva para la Pi)**.
+
+#### Conexión: Método “sandwich”,  sin soldadura
+
+**Opción A**
+
+```
+   [Pulsador con sus cables]
+			  ↓
+	      █████████
+          █       █ 
+          █████████
+              │
+              │   ← Cable pelado
+		     ~~~  ← Cable enrollado (tope) + termorretráctil (camuflaje y refuerzo)
+             ---  ← (Anillo de cobre) ← Zona de contacto
+ ┌──────────────────────────┐
+ │          PCB             │  ← Raspberry Pi (horizontal)
+ └──────────────────────────┘
+             ---  ← (Anillo de cobre) ← Zona de contacto
+              │
+              │   ← Cable pelado atravesando el pad
+              │
+            [___] ← 1ª capa de termorretráctil (fina)
+           [_____] ← 2ª capa de termorretráctil (mediana)
+          [_______] ← 3ª capa de termorretráctil (grande)
+```
+
+> [!IMPORTANT]
+> 
+> Beneficios de este montaje:
+> 
+> - **Bucle pre-hecho arriba:** el enrollado se hace **antes de montar** para medir y presentar el cable sin manipular la Raspberry.
+>    
+> - **Contacto completo con el cobre:** el bucle superior **fuerza el cable a apretarse contra el anillo de cobre del pad**.
+>    
+  >   - _Nota:_ Aquí, el enrollado reemplaza el efecto de soldadura, asegurando un **contacto eléctrico constante**.
+  >      
+> - **Bloque rígido abajo:** las **3 capas de termorretráctil** debajo se calientan y empujan contra la PCB, formando un **“sandwich sólido”** que inmoviliza el cable.
+>    
+> - **Camuflaje y refuerzo:** el enrollado superior también va **cubierto de termorretráctil**, así no hay cobre expuesto y el bucle queda reforzado, evitando roturas por flexión.
+>    
+> - **Reversible y práctico:** no requiere soldadura y puede retirarse fácilmente, pero **no ofrece la misma resistencia mecánica que una unión soldada**.
+
+**Opción B**
+
+```
+   [Pulsador con sus cables]
+              ↓
+          █████████
+          █       █ 
+          █████████
+              │
+              │   ← Cable pelado
+             ~~~  ← Cable enrollado (tope superior) + termorretráctil (camuflaje/refuerzo)
+             ---  ← (Anillo de cobre) ← Zona de contacto
+ ┌──────────────────────────┐
+ │          PCB             │  ← Raspberry Pi (horizontal)
+ └──────────────────────────┘
+             ---  ← (Anillo de cobre) ← Zona de contacto
+              ∩    ← Cable doblado hacia arriba (gancho) 
+             ~~~   ← Unión enrollada con el cable superior
+            [███]  ← Termorretráctil grueso uniendo ambas partes
+
+```
+
+> [!IMPORTANT]
+> 
+> **Beneficios de este montaje alternativo:**
+>
+> - **Gancho de seguridad:** el cable doblado hace de “gancho”, añadiendo **resistencia mecánica** al montaje.
+> - **Enrollado combinado:** la parte superior e inferior quedan **unidas bajo el mismo termorretráctil**, creando un solo bloque rígido.
+> - **Más difícil que se suelte:** el doble punto de contacto (arriba y el gancho) hace que el cable se mantenga firme incluso con vibraciones.
+> - **Reversible:** igual que el otro método, no requiere soldadura y puede retirarse si es necesario.
+
+![RUN Header- 1 cable](/docs/images/run_header.jpg)
+
+Probé los **dos métodos** de fijación:  
+
+– **Enrollado clásico**: más rápido, suficiente si no hay mucho movimiento.  
+– **Gancho + enrollado**: más firme, ideal si el montaje va a sufrir vibraciones.  
+
+#### Encender el LED del pulsador desde el arranque
+
+Para que el LED integrado quede activo incluso antes de que arranque el sistema:
+
+```bash
+sudo nano /boot/config.txt
+```
+
+Añadir al final:
+
+```ini
+# LED del pulsador activo desde el arranque
+gpio=4=op,dh
+```
+
+Esto configura el **GPIO4 (PIN 7)** como salida con nivel alto por defecto.
+
+> **Comportamiento especial:**
+> 
+> - **Encendido:** El LED no se ilumina de inmediato; lo hace unos **20‑30 s después**, cuando el firmware inicializa el GPIO (no indica “listo para usar”, solo que el arranque ha comenzado).
+> - **Apagado:** No se apaga del todo, sino que queda en un **brillo tenue** (“fantasma”), confirmando que la Raspberry sigue alimentada (como el LED integrado de la placa).
+
+**¿Por qué usar GPIO4?**  
+Normalmente este comportamiento sería molesto (brillo residual), pero aquí **lo aprovechamos como indicador de energía** incluso con el sistema apagado.
+
+> **Alternativa:**  
+> Si quieres que el LED esté **siempre encendido** mientras haya corriente (sin depender del GPIO), conéctalo directamente entre **5 V (PIN 4)** y **GND (PIN 14)**.
+
+---
+### ¿Y por qué no soldar?
+
+Porque hay una línea muy fina entre "ingeniería creativa" y "vandalismo con soldador".
+
+Mi Pi 5 vale más que mi autoestima —es otra liga— y mi experiencia previa soldando se limita a LEDs que, si los quemo, son "daños colaterales aceptables".  
+Pero tocar los pads del RUN header es como operar a corazón abierto con guantes de boxeo: técnicamente posible, pero desaconsejable (al menos para mi).
+
+Hasta alcanzar el nivel Mandaloriano de la soldadura, el método **sandwich** me da contacto eléctrico perfecto sin el riesgo existencial de convertir mi proyecto en un memorial a la sobreconfianza técnica.
+
+### La Ley de Murphy del hardware
+
+```python
+def murphy_law_soldering():
+    if component.price < 2:
+        success_rate = 0.95  # "Sale perfecto, hasta bonito"
+        confidence_level = "Cirujano de precisión"
+    elif component.price > 80:
+        success_rate = 0.05  # "Manos de mantequilla activadas"
+        confidence_level = "Pánico existencial"
+    
+    return "La dificultad es inversamente proporcional al precio × ansiedad²"
+```
+#### El diálogo interno inevitable:
+
+```
+Brain.exe: "¿Recuerdas el MOSFET? Salió perfecto"
+Hands.exe: "Sí, pero esto CUESTA ALGO MÁS"
+Brain.exe: "Es el mismo procedimiento..."
+Hands.exe: "ACTIVANDO MODO PÁNICO"
+Soldador.exe: "¿Por qué tiemblo? ¡Soy una herramienta!"
+Reality.exe: "Bienvenido al síndrome del componente premium"
+```
+
+#### Conclusión técnico-filosófica:
+
+El termorretráctil no juzga precios. Es **agnóstico económicamente** e **inmune a la ansiedad del maker**. Por eso funciona.
+
 ---
 
 ## 🔧 Pines reservados por defecto (desactivables)
@@ -248,12 +429,11 @@ grep -rl --include="*.py" --include="*.json" \
 
 ### Pines disponibles para futuras expansiones
 
-| GPIO   | PIN | Estado               | Posible Uso                                                                  |
-| ------ | --- | -------------------- | ---------------------------------------------------------------------------- |
-| GPIO4  | 7   | **USAR CON CUIDADO** | Puede mantener estados activos al arranque (posible brillo fantasma en LEDs) |
-| GPIO12 | 32  | **LIBRE**            | Sensor adicional / Control                                                   |
-| GPIO21 | 40  | **LIBRE**            | Expansión futura                                                             |
-| GPIO23 | 16  | **LIBRE**            | Expansión futura                                                             |
+| GPIO   | PIN | Estado    | Posible Uso                |
+| ------ | --- | --------- | -------------------------- |
+| GPIO12 | 32  | **LIBRE** | Sensor adicional / Control |
+| GPIO21 | 40  | **LIBRE** | Expansión futura           |
+| GPIO23 | 16  | **LIBRE** | Expansión futura           |
 
 ### ℹ️ Nota sobre el uso de pines “reservados”
 
@@ -264,9 +444,9 @@ En la documentación solemos marcar como **“reservados”** algunos pines (I²
 
 En mi disposición actual:
 
-- **GPIO9, GPIO10, GPIO11 (SPI)** → Los uso para el controlador de motores. Como **no planeo usar SPI**, no hay conflicto.
-- **GPIO14, GPIO15 (UART)** → Sin uso actual, pero disponibles si algún día quiero comunicación serie.
-- **GPIO2, GPIO3 (I²C)** → No están en uso, por lo que el bus I²C queda libre.
+- **GPIO2, GPIO3 (I²C)** → **En uso para el OLED**. El bus I²C está ocupado.
+- **GPIO9, GPIO10, GPIO11 (SPI)** → **En uso para el controlador de motores**. Como no planeo usar SPI, no hay conflicto.
+- **GPIO14, GPIO15 (UART)** → **Sin uso actual**, disponibles si algún día quiero comunicación serie.
 
 **Conclusión:**
 

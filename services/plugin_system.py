@@ -252,6 +252,10 @@ class PluginSystem:
         # Logs de diagnóstico
         logger.info(f"🔍 PluginSystem recibió comando: '{text_lower}'")
         logger.info(f"🔌 Plugins activos: {list(self.plugins.keys())}")
+
+        # HOOK OLED
+        if hasattr(self.tars, 'oled') and self.tars.oled:
+            self.tars.oled.update_status("processing", "Plugin System")
         
         # =======================================================
         # PROCESAMIENTO PRIORITARIO: MOBILITY PLUGIN
@@ -266,6 +270,9 @@ class PluginSystem:
             
             if response:
                 self.conversation_context["last_plugin"] = "mobility"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "Mobility")
                 return response
         
         # =======================================================
@@ -281,6 +288,9 @@ class PluginSystem:
             
             if response:
                 self.conversation_context["last_plugin"] = "presence"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "Presence")
                 return response
 
         # =======================================================
@@ -296,6 +306,9 @@ class PluginSystem:
             
             if response:
                 self.conversation_context["last_plugin"] = "time"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "Time")
                 return response
         
         # =======================================================
@@ -311,6 +324,9 @@ class PluginSystem:
             
             if response:
                 self.conversation_context["last_plugin"] = "reminder"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "Reminder")
                 return response
         
         # =======================================================
@@ -327,6 +343,9 @@ class PluginSystem:
             
             if response:
                 self.conversation_context["last_plugin"] = "homeassistant"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "HomeAssistant")
                 return response
                 
             # Si no es un comando directo, intentar procesarlo como consulta
@@ -336,6 +355,9 @@ class PluginSystem:
             
             if response:
                 self.conversation_context["last_plugin"] = "homeassistant"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "HomeAssistant")
                 return response
         
         # =======================================================
@@ -367,6 +389,9 @@ class PluginSystem:
         # Diagnóstico final
         logger.info("🔍 Ningún plugin procesó el comando")
         self.conversation_context["last_plugin"] = None
+        # HOOK OLED - Volver a estado idle
+        if hasattr(self.tars, 'oled') and self.tars.oled:
+            self.tars.oled.update_status("idle", "No plugin match")
         return None
 
     def add_plugin(self, name, plugin_instance):
