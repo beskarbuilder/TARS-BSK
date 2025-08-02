@@ -267,7 +267,7 @@ grep -rl --include="*.py" --include="*.json" \
 ```
    [Button with its wires]
 			  ↓
-	      █████████
+          █████████
           █       █ 
           █████████
               │

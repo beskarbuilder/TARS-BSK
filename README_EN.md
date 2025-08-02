@@ -262,7 +262,7 @@ TARS: "Partial rotation while reconsidering my path"
 - [Cooling System](#-cooling-system)
 - [Dual Memory System](#%EF%B8%8F-dual-memory-system)
 - [Emotional and Personality System](#-emotional-and-personality-system)
-- [OLED Display System](#%EF%B8%8F-oled-display-system)
+- [OLED Display System](#-oled-display-system)
 - [Plugin System and Connectivity](#-plugin-system-and-connectivity)
   - [Home Assistant](#home-assistant-contextual-home-automation-control)
   - [Mobility System](#mobility-system-physical-action-derived-from-semantic-voice)
@@ -1596,6 +1596,7 @@ TARS plays phrases like:
 📄 **[Full documentation](/docs/OLED_INTERFACE_EN.md)** – Installation, advanced configuration, and customization.
 
 ![OLED Installation](/docs/images/l_mando_3.jpg)
+
 *Critical installation performed by **THE engineer**.*
 
 **During active use:**

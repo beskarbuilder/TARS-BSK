@@ -25,7 +25,7 @@
 - [Stream and Resource Management](#-stream-and-resource-management)
 - [Timeouts and Session Management](#-timeouts-and-session-management)
 - [VOSK automatic reset system](#-vosk-automatic-reset-system)
-- [System Integration](#-system-integration)
+- [System Integration](#%EF%B8%8F-system-integration)
 - [Real Audio System Initialization](#-real-audio-system-initialization)
 - [Performance Metrics](#-performance-metrics)
 - [Real Environment Test: Voice vs. Television](#-real-environment-test-voice-vs-television)

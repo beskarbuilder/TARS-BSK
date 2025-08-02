@@ -268,7 +268,7 @@ grep -rl --include="*.py" --include="*.json" \
 ```
    [Pulsador con sus cables]
 			  ↓
-	      █████████
+          █████████
           █       █ 
           █████████
               │

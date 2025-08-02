@@ -250,7 +250,7 @@ TARS: "Rotación parcial mientras reconsidero mi rumbo"
 - [Sistema de Refrigeración](#-sistema-de-refrigeraci%C3%B3n)
 - [Sistema de Memoria Dual](#%EF%B8%8F-sistema-de-memoria-dual)
 - [Sistema Emocional y de Personalidad](#-sistema-emocional-y-de-personalidad)
-- [Sistema de Visualización OLED](#%EF%B8%8F-sistema-de-visualización-oled)
+- [Sistema de Visualización OLED](#-sistema-de-visualización-oled)
 - [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
   - [Home Assistant](#home-assistant-control-domótico-contextual)
   - [Sistema de Movilidad](#sistema-de-movilidad-acción-física-derivada-de-voz-semántica)
@@ -1592,6 +1592,7 @@ Modulación contextual automática:
 📄 **[Ver documentación completa](/docs/OLED_INTERFACE_ES.md)** – Instalación, configuración avanzada y personalización.
 
 ![Instalación del OLED](/docs/images/l_mando_3.jpg)
+
 _Instalación crítica realizada por **EL ingeniero**._
 
 **Durante uso activo:**
