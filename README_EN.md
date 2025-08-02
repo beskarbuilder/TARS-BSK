@@ -118,9 +118,9 @@ Input: "back up a bit" → Duration: 0.5s
 ---
 ### Recent Updates
 
-#### 📢 2025‐08‐01
+#### 📢 2025‐08‐02
 
-`feat(oled): Gave TARS a face – now it stares back.`  
+`docs(oled_obituary): SSH1106's full confession - 14 emotional states, I2C voodoo & clock-powered afterlife in 128x64 monochrome`  
 📛 **OLED Interface** – Status visualization system + automatic clock
 
 📂 [OLED_INTERFACE_EN](/docs/OLED_INTERFACE_EN.md)

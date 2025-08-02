@@ -108,9 +108,9 @@ Input: "retrocede un poco" → Duration: 0.5s
 ---
 ### Cambios recientes
 
-#### 📢 2025‑08‑01
+#### 📢 2025‑08‑02
 
-`feat(oled): Gave TARS a face – now it stares back.`  
+`docs(oled_obituary): SSH1106's full confession - 14 emotional states, I2C voodoo & clock-powered afterlife in 128x64 monochrome`  
 📛 **Interfaz OLED** – Sistema de visualización de estados + reloj automático
 
 📂 [OLED_INTERFACE_ES](/docs/OLED_INTERFACE_ES.md)
