@@ -111,6 +111,7 @@ Input: "retrocede un poco" → Duration: 0.5s
 ### 📢 2025‑08‑03
 
 `opt(wakeword): 0.5ms detection. TARS_MEMO: 'New feature: I now hear "TARS" in my sleep. Send help. (P.S.: No, really. Stop whispering.)'` 
+
 📛 **Optimización PARTIAL Wakeword** – Detección mejorada en tiempo real 
 
 🎯 **Detección durante transcripción** en lugar de esperar al resultado completo
@@ -134,7 +135,7 @@ Ver logs de validación
 - 📄 [session_2025-08-03_wakeword_with_partial-vosk_opt.log](/logs/session_2025-08-03_wakeword_with_partial-vosk_opt.log)
 - 📄 [session_2025-08-03_wakeword_without_partial-vosk.log](/logs/session_2025-08-03_wakeword_without_partial-vosk.log)
 - 📄 [session_2025-08-03_wakeword_with_partial-vosk_large_opt.log](/logs/session_2025-08-03_wakeword_with_partial-vosk_large_opt.log)
-- 📄 [session_2025-08-03_wakeword_without_partial-vosk_large.log
+- 📄 [session_2025-08-03_wakeword_without_partial-vosk_large.log](/logs/session_2025-08-03_wakeword_without_partial-vosk_large.log)
 
 ### Cómo funciona
 

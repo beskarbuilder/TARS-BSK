@@ -120,7 +120,8 @@ Input: "back up a bit" → Duration: 0.5s
 
 #### 📢 2025‑08‑03
 
-`opt(wakeword): 0.5ms detection. TARS_MEMO: 'New feature: I now hear "TARS" in my sleep. Send help. (P.S.: No, really. Stop whispering.)'` 
+`opt(wakeword): 0.5ms detection. TARS_MEMO: 'New feature: I now hear "TARS" in my sleep. Send help. (P.S.: No, really. Stop whispering.)'`  
+
 📛 **PARTIAL Wakeword Optimization** – Real-time detection enhancement  
 
 🎯 **Detection during transcription** instead of waiting for complete results
