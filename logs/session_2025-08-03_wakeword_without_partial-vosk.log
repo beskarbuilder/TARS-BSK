@@ -1,0 +1,181 @@
+(tars_venv) tarsadmin@tarspi:~/tars_files $ python3 /home/tarsadmin/tars_files/core/tars_core.py
+✅ Backend GPIO configurado: lgpio
+2025-08-03 15:46:51,553 - modules.semantic_engine - INFO - 🧠 Motor semántico inicializado con modelo en: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-08-03 15:46:54,146 - modules.semantic_engine - INFO - 📂 Cargando modelo desde: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-08-03 15:46:54,147 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-03 15:46:54,147 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: /home/tarsadmin/tars_files/ai_models/sentence_transformers/all-MiniLM-L6-v2
+2025-08-03 15:46:54,357 - modules.semantic_engine - INFO - ✅ Modelo cargado correctamente
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 31.75it/s]
+2025-08-03 15:46:54,392 - modules.semantic_engine - INFO - 🧪 Test de inferencia exitoso: vector de dimensión 384
+2025-08-03 15:46:54,393 - memory.semantic_storage - INFO - Almacenamiento semántico inicializado en: /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+2025-08-03 15:46:54,396 - memory.semantic_storage - INFO - Cargados 8 embeddings desde /home/tarsadmin/tars_files/memory/embeddings_preferencias.npz
+✅ No hay conflictos detectados
+📌 Liberando GPIOs...
+✅ Limpieza manual completada
+🧹 Recursos limpiados
+2025-08-03 15:46:54,415 - modules.preferences_manager - INFO - Afinidades de TARS cargadas: 5 total
+2025-08-03 15:46:54,416 - modules.preferences_manager - INFO -    ✨ Entusiasmo (nivel 2+): 2
+2025-08-03 15:46:54,416 - modules.preferences_manager - INFO -    😐 Neutro (nivel 0-1): 0
+2025-08-03 15:46:54,416 - modules.preferences_manager - INFO -    🙄 Sarcasmo (nivel <0): 3
+2025-08-03 15:46:54,416 - modules.preferences_manager - INFO - Gestor de preferencias inicializado con 5 afinidades
+2025-08-03 15:46:54,419 - TARS.emotion - INFO - ✅ Cargado sarcasmo: 11 temas, 8 patrones, 9 keywords
+2025-08-03 15:46:54,421 - TARS.emotion - INFO - ✅ Cargado empatia: 7 temas, 5 patrones, 5 keywords
+2025-08-03 15:46:54,422 - TARS.emotion - INFO - ✅ Cargado legacy: 7 temas, 4 patrones, 7 keywords
+2025-08-03 15:46:54,422 - TARS - INFO - ✅ Estado emocional inicial: sarcasmo: 85%, empatia: 10%, legacy: 40%
+2025-08-03 15:46:54,423 - TARS.LED - INFO - ✅ LED 'azul' inicializado en GPIO17
+2025-08-03 15:46:54,423 - TARS.LED - INFO - ✅ LED 'rojo' inicializado en GPIO27
+2025-08-03 15:46:54,424 - TARS.LED - INFO - ✅ LED 'verde' inicializado en GPIO22
+2025-08-03 15:46:54,424 - TARS.LED - INFO - ✅ Power LED inicializado en GPIO13
+2025-08-03 15:46:54,424 - TARS.LED - INFO - 💡 Power LED: ON
+🔒 TARS OLED lock adquirido
+✅ OLED: SSH1106 inicializada correctamente con control I2C directo
+2025-08-03 15:46:55,432 - TARS - INFO - Detector de intenciones inicializado
+2025-08-03 15:46:55,432 - TARS.TTS - INFO - 🎛️ Filtro de radio activado: banda=[200, 3500], ruido=True, compresión=True, efecto_mando=False, ganancia=0.0dB
+2025-08-03 15:46:55,432 - TARS - INFO - ✅ Cargando modelo desde ai_models/phi3/Phi-3.5-mini-instruct-Q4_K_M.gguf...
+llama_init_from_model: n_ctx_per_seq (160) < n_ctx_train (131072) -- the full capacity of the model will not be utilized
+2025-08-03 15:46:55,563 - TARS - INFO - ✅ Modelo cargado en 0.13 segundos
+2025-08-03 15:46:55,564 - TARS - INFO - 📊 Preferencias recuperadas para global: 15
+2025-08-03 15:46:55,564 - TARS - INFO - 🧠 Preferencias cargadas al inicio: 13 gustos, 2 disgustos
+2025-08-03 15:46:55,622 - VOICE_ID - INFO - 🔧 Inicializando Voice Identity System...
+Loaded the voice encoder model on cpu in 0.01 seconds.
+2025-08-03 15:46:55,644 - VOICE_ID - INFO - 🔧 Configuración cargada: {'identification_threshold': 0.6, 'min_samples': 3, 'max_distance_between_samples': 0.35, 'safe_mode': True, 'db_path': 'data/identity/voice_embeddings.json', 'duplicate_threshold': 0.95, '_info': 'Configuración específica para VoiceIdentitySystem - Este archivo es SOLO para debugging', '_purpose': 'Usado por el sistema debug de voice_id y herramientas de desarrollo', '_main_config': 'La configuración principal está en settings.json', 'min_volume': 0.01, 'min_duration': 0.5}
+2025-08-03 15:46:55,645 - VOICE_ID - INFO - 🔧 Base de datos cargada: 1 usuarios
+2025-08-03 15:46:55,645 - VOICE_ID - INFO - ✅ Voice Identity System inicializado correctamente
+2025-08-03 15:46:55,645 - TARS - INFO - 🔍 VoiceIdentitySystem tardó: 0.02s
+2025-08-03 15:46:55,645 - TARS - INFO - ✅ Sistema de identificación por voz activado
+2025-08-03 15:46:55,645 - TARS - INFO - 📊 Usuarios registrados: 1
+2025-08-03 15:46:55,645 - TARS.BRAIN - INFO - 🧠 TARSBrain iniciado - simple=False, forzado=False
+2025-08-03 15:46:55,645 - TARS - INFO - 🔌 Inicializando sistema de plugins...
+2025-08-03 15:46:55,645 - TARS.PluginSystem - INFO - 📋 Configuración de plugins cargada correctamente
+2025-08-03 15:46:55,645 - TARS.PluginSystem - INFO - ✅ Plugins habilitados: mobility, presence, homeassistant, time, reminder
+2025-08-03 15:46:55,645 - TARS.PluginSystem - INFO - 🔌 Sistema de plugins inicializado
+2025-08-03 15:46:55,645 - TARS.PluginSystem - INFO - 🚀 Inicializando 5 plugins en orden: ['mobility', 'presence', 'reminder', 'time', 'homeassistant']
+🚨 MOBILITY: Inicializando MobilityPlugin
+🚨 MOBILITY: Llamando a _init_mobility_controller
+2025-08-03 15:46:55,646 - TARS.Mobility - INFO - ✅ Config cargado: enabled=True
+2025-08-03 15:46:55,646 - TARS.Mobility - INFO - ✅ GPIO inicializado
+2025-08-03 15:46:55,646 - TARS.Mobility - INFO - ✅ Motores inicializados
+2025-08-03 15:46:55,646 - TARS.MobilityPlugin - INFO - ✅ MobilityController inicializado
+🚨 MOBILITY: Controller creado: <modules.mobility_controller.MobilityController object at 0x7fff283c4e80>
+🚨 MOBILITY: Controller enabled: True
+2025-08-03 15:46:55,646 - TARS.PluginSystem - INFO - 🤖 Plugin Mobility inicializado
+🔍 PRESENCE_PLUGIN: Entrando en initialize() [SMART VERSION]
+🔍 PRESENCE_PLUGIN: Import exitoso
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - Configuración de presencia cargada desde config/presence_config.json
+🔍 PRESENCE_PLUGIN: PresenceController creado (sin mobility)
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - 🤝 Integración tardía con MobilityController establecida
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - ✅ PresenceController ahora puede orientarse físicamente
+2025-08-03 15:46:55,647 - TARS.PresencePlugin - INFO - 🤝 Smart Integration: MobilityController integrado exitosamente
+🔍 PRESENCE_PLUGIN: Llamando controller.initialize()...
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - PIR front: GPIO 16 configurado para polling
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - PIR front: Polling iniciado
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - ✅ Sensor PIR 'front' configurado en GPIO 16
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - PIR back: GPIO 26 configurado para polling
+2025-08-03 15:46:55,647 - modules.presence_controller - INFO - PIR back: Polling iniciado
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - ✅ Sensor PIR 'back' configurado en GPIO 26
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - PIR left: GPIO 19 configurado para polling
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - PIR left: Polling iniciado
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - ✅ Sensor PIR 'left' configurado en GPIO 19
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - PIR right: GPIO 20 configurado para polling
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - PIR right: Polling iniciado
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - ✅ Sensor PIR 'right' configurado en GPIO 20
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - 🤝 Usando MobilityController externo (Smart Integration)
+2025-08-03 15:46:55,648 - modules.presence_controller - INFO - 🎯 Sistema de presencia inicializado correctamente
+🔍 PRESENCE_PLUGIN: controller.initialize() = True
+2025-08-03 15:46:55,648 - TARS.PresencePlugin - INFO - 🎯 Plugin de presencia inicializado correctamente (CON mobility)
+2025-08-03 15:46:55,649 - TARS.PluginSystem - INFO - 🎯 Plugin Presence inicializado correctamente
+2025-08-03 15:46:55,649 - TARS.PluginSystem - WARNING - ⚠️ SchedulerPlugin no encontrado, creando uno básico
+2025-08-03 15:46:55,649 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-08-03 15:46:55,649 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-08-03 15:46:55,649 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-08-03 15:46:55,649 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-08-03 15:46:55,649 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-08-03 15:46:55,649 - TARS.PluginSystem - INFO - ✅ SchedulerPlugin básico creado
+2025-08-03 15:46:55,650 - TARS.ReminderParser - WARNING - No se pudo configurar el locale en español
+2025-08-03 15:46:55,650 - TARS.ReminderParser - INFO - 🗓️ ReminderParser inicializado
+2025-08-03 15:46:55,650 - TARS.ReminderPlugin - INFO - 🗓️ ReminderPlugin inicializado
+2025-08-03 15:46:55,650 - TARS.PluginSystem - INFO - 🗓️ Plugin Reminder inicializado
+2025-08-03 15:46:55,650 - TARS.TimePlugin - INFO - 🕐 TimePlugin inicializado
+2025-08-03 15:46:55,651 - TARS.PluginSystem - INFO - 🕐 Plugin Time inicializado
+2025-08-03 15:46:55,651 - TARS.HomeAssistantPlugin - INFO - 📄 Cargando configuración desde: /home/tarsadmin/tars_files/config/user_devices.json
+2025-08-03 15:46:55,651 - TARS.HomeAssistantPlugin - INFO - ✅ Cargados 21 dispositivos desde JSON
+2025-08-03 15:46:55,651 - TARS.HomeAssistantPlugin - INFO - ✅ Cargadas 11 ubicaciones desde JSON
+2025-08-03 15:46:55,651 - TARS.HomeAssistantPlugin - INFO - 🔧 Generando mapeos automáticos desde configuración cargada...
+2025-08-03 15:46:55,651 - TARS.HomeAssistantPlugin - INFO - ✅ Mapeos generados: 41 nombres → 21 dispositivos únicos
+2025-08-03 15:46:55,652 - TARS.HomeAssistantPlugin - INFO - Plugin Home Assistant inicializado: 192.168.50.112:8084
+2025-08-03 15:46:55,652 - TARS.HomeAssistantPlugin - INFO - 📊 Dispositivos cargados: 41
+2025-08-03 15:46:55,652 - TARS.HomeAssistantPlugin - INFO - 📍 Ubicaciones configuradas: 11
+2025-08-03 15:46:55,652 - TARS.PluginSystem - INFO - 🏠 Plugin HomeAssistant inicializado
+2025-08-03 15:46:55,652 - TARS - INFO - ✅ Sistema de plugins inicializado correctamente
+2025-08-03 15:46:55,652 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: plugin_system recibido: True
+2025-08-03 15:46:55,652 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: tipo plugin_system: <class 'services.plugin_system.PluginSystem'>
+2025-08-03 15:46:55,652 - TARS.SchedulerPlugin - INFO - 🐛 CONSTRUCTOR DEBUG: self.plugin_system asignado: True
+2025-08-03 15:46:55,652 - TARS.SchedulerPlugin - INFO - 📂 Cargados 77 trabajos existentes
+2025-08-03 15:46:55,652 - TARS.SchedulerPlugin - INFO - 🗓️ SchedulerPlugin básico inicializado
+2025-08-03 15:46:55,652 - TARS - INFO - ✅ SchedulerPlugin inicializado
+2025-08-03 15:46:55,652 - TARS - INFO - ✅ TARS inicializado en 0.22 segundos
+2025-08-03 15:46:59,657 - TARS - INFO - 🔵 LEDs: Parpadeo azul de confirmación
+¿Usar entrada por voz? (S): s
+🎤 Dispositivos de audio disponibles:
+  [0] USB Audio Device: - (hw:0,0) - 44100Hz
+  [1] sysdefault - 48000Hz
+  [5] spdif - 44100Hz
+  [6] default - 48000Hz
+✅ Seleccionado automáticamente: [0] USB Audio Device: - (hw:0,0)
+⚠️ Dispositivo no admite 16000 Hz, usando 44100 Hz con resampling
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from ai_models/vosk/model/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from ai_models/vosk/model/graph/HCLr.fst ai_models/vosk/model/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo ai_models/vosk/model/graph/phones/word_boundary.int
+✅ Modelo de voz cargado desde ai_models/vosk/model
+✅ Reset automático configurado cada 25 segundos
+✅ Configurado resampling de 44100Hz a 16000Hz
+✅ Reset configurado: 25s, LED: True
+2025-08-03 15:47:00,094 - TARS - INFO - ✅ SpeechListener inicializado correctamente
+2025-08-03 15:47:00,094 - TARS - INFO - 🔗 SpeechListener conectado a TARS para voice_id
+
+🎤 Di 'oye tars' para comenzar (Ctrl+C para salir)
+
+🎤 Escuchando... Di 'oye TARS' o algo parecido
+🎤 VOZ FUERTE DETECTADA - timer iniciado (RMS: 1238.2)
+🔥 WAKEWORD DETECTADO en 1706.5ms desde inicio de voz
+🗣️ Escuchado: tas
+🔥 Wakeword detectada por coincidencia difusa (MODO COMPLETO)
+🔍 DEBUG Wakeword RMS: 238.195892
+🔍 DEBUG Wakeword samples: 245760
+💾 Audio del wakeword guardado: temp/last_wakeword.wav (178330 bytes)
+⏱️ TIEMPO TOTAL (usuario habla → wakeword detectada): 3.90s
+2025-08-03 15:47:08,262 - TARS - INFO - 🔍 DEBUG voice_id_system: True - True
+2025-08-03 15:47:08,262 - TARS - INFO - 🔍 DEBUG speech_listener: True
+2025-08-03 15:47:08,262 - TARS - INFO - 🔍 DEBUG last_audio_path: True - temp/last_wakeword.wav
+2025-08-03 15:47:08,262 - TARS - INFO - 🔇 Identificación de voz desactivada por configuración
+2025-08-03 15:47:08,263 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Aquí estoy.'
+2025-08-03 15:47:08,264 - TARS.TTS - INFO - 🎚️ AudioEffects: ON (wide_chorus)
+2025-08-03 15:47:08,264 - TARS.TTS - INFO - 🗣️ Generando voz: 'Aquí estoy.'
+2025-08-03 15:47:08,850 - TARS.TTS - INFO - 🎛️ Aplicando Filtro de radio estándar [banda: 200-3500Hz]...
+2025-08-03 15:47:08,858 - TARS.RadioFilter - INFO - 🕒 Tiempo de procesamiento de filtro Mandaloriano: 0.008s
+2025-08-03 15:47:08,869 - TARS.TTS - INFO - 🎚️ Aplicando audio effects: wide_chorus
+2025-08-03 15:47:08,869 - TARS.AudioEffects - INFO - 🎚️ Audio Effects (calidad): wide_chorus
+2025-08-03 15:47:09,014 - TARS.AudioEffects - INFO - ✅ Audio effects (wide_chorus) aplicados en 0.145s
+2025-08-03 15:47:10,169 - TARS.TTS - INFO - 🔊 Reproducción completada
+⏱️ Wakeword reconocida en 3.81s
+🎤 Ahora puedes hablar...
+🎤 Escuchando tu pregunta...
+[VOSK] Texto detectado: '' (confianza: 1.00)
+⏳ Tiempo agotado esperando comando
+^C
+🚨 Señal 2 recibida - Apagando LED y saliendo...
+✅ OLED: Pantalla limpiada
+🔓 TARS OLED lock liberado
+🖥️ OLED limpiada
+🕐 Iniciando reloj OLED...
+2025-08-03 15:47:26,782 - TARS.LED - INFO - 🔴 Power LED: OFF
+🔴 LED power apagado
+2025-08-03 15:47:26,786 - TARS.LED - INFO - 🔴 Power LED: OFF
+🔴 LED power apagado
+(tars_venv) tarsadmin@tarspi:~/tars_files $

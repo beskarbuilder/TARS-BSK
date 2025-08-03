@@ -639,7 +639,7 @@ To evaluate its performance, I tested the wakeword in two conditions:
 - Normally, without active window.
 - During the window, with the reset just applied and the state visible on screen.
 
-📄 **Complete log:** [session_2025-08-21_oled_wakeword_window.log](/logs/session_2025-08-21_oled_wakeword_window.log)
+📄 **Complete log:** [session_2025-08-02_oled_wakeword_window.log](/logs/session_2025-08-02_oled_wakeword_window.log)
 
 | Interaction | Context             | Wakeword time | Total time to response |
 | ----------- | ------------------- | ------------- | ---------------------- |

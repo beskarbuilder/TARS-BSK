@@ -273,7 +273,7 @@ grep -rl --include="*.py" --include="*.json" \
           █████████
               │
               │   ← Cable pelado
-		     ~~~  ← Cable enrollado (tope) + termorretráctil (camuflaje y refuerzo)
+             ~~~  ← Cable enrollado (tope) + termorretráctil (camuflaje y refuerzo)
              ---  ← (Anillo de cobre) ← Zona de contacto
  ┌──────────────────────────┐
  │          PCB             │  ← Raspberry Pi (horizontal)

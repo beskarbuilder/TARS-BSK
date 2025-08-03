@@ -21,6 +21,7 @@
 - [Validación inteligente de comandos](#-validación-inteligente-de-comandos)
 - [Gestión de streams y recursos](#-gestión-de-streams-y-recursos)
 - [Timeouts y manejo de sesiones](#-timeouts-y-manejo-de-sesiones)
+- [Uso de PartialResult() para detección en tiempo real](#-uso-de-partialresult-para-detección-en-tiempo-real)
 - [Sistema de reset automático de VOSK](#-sistema-de-reset-automático-de-vosk)
 - [Integración con el sistema](#%EF%B8%8F-integración-con-el-sistema)
 - [Inicialización real del sistema de audio](#-inicialización-real-del-sistema-de-audio)
@@ -192,6 +193,103 @@ def is_wakeword_match(text: str, wakewords: list[str], threshold: float = 0.85) 
 - **Threshold configurable:** 0.85 (85% de similitud mínima)
 - **Múltiples algoritmos:** Levenshtein, similitud fonética, coincidencia parcial
 - **Lista expandible:** Soporte para múltiples wake words simultáneas
+
+---
+
+## 🚀 Uso de PartialResult() para detección en tiempo real
+
+### Implementación de resultados parciales de VOSK
+
+El sistema tradicionalmente esperaba a que VOSK completara la transcripción antes de analizar el wakeword. La implementación de `PartialResult()` permite procesar el texto mientras se está generando, detectando el wakeword durante la transcripción activa.
+
+**Resultado medido:** Reducción de latencia de ~1.7s a **0.4-0.5ms** según el modelo utilizado.
+
+- **Detección del wakeword durante la transcripción**, sin esperar el cierre de frase
+- **Reducción de latencia brutal:** de ~1.7-2.4s a **0.4-0.5ms** según modelo
+
+### Resultados medidos en condiciones reales
+
+| Modelo    | Método                     | Tiempo      | Diferencia vs PARTIAL   |
+| --------- | -------------------------- | ----------- | ----------------------- |
+| **Small** | **PARTIAL** (optimizado)   | **0.5ms**   | Baseline ⚡              |
+| **Small** | **COMPLETA** (tradicional) | 1,706ms     | **3,412x más lento**    |
+| **Large** | **PARTIAL** (optimizado)   | **0.4ms**   | **0.1ms más rápido** ⚡  |
+| **Large** | **COMPLETA** (tradicional) | **2,354ms** | **5,885x más lento** 🐌 |
+
+### Análisis de logs reales
+
+#### Método PARTIAL (optimizado)
+
+```bash
+🎯 PARTIAL detectado: 'tras' - iniciando timer...
+⚡ DETECCIÓN PARTIAL en 0.5ms
+🔥 Wakeword detectada por coincidencia difusa
+```
+
+#### Método tradicional (completo)
+
+```bash
+🎤 VOZ FUERTE DETECTADA - timer iniciado (RMS: 1238.2)
+🔥 WAKEWORD DETECTADO en 1706.5ms desde inicio de voz
+```
+
+### Funcionamiento técnico
+
+TARS utiliza los resultados parciales que VOSK genera durante la transcripción mediante `PartialResult()`, permitiendo detectar el wakeword **antes de que la frase se complete**.
+
+```python
+# Método tradicional (espera transcripción completa)
+if self.recognizer.AcceptWaveform(processed_data):
+    text = json.loads(self.recognizer.Result())["text"]
+    # Usuario: "oye TARS" → Espera silencio → Analiza → Detecta
+    # Tiempo medido: ~1,700ms
+
+# Implementación PARTIAL (procesa durante transcripción)
+partial = json.loads(self.recognizer.PartialResult())
+partial_text = partial.get("partial", "").lower().strip()
+if is_wakeword_match(partial_text, wakewords, threshold=0.6):
+    # Usuario: "oye TAR..." → Detectado inmediatamente
+    # Tiempo medido: ~0.5ms
+```
+
+
+**Logs de validación disponibles:**
+
+- 📄 [Small model + PARTIAL](/logs/session_2025-08-03_wakeword_with_partial-vosk_opt.log) → **0.5ms**
+- 📄 [Small model + tradicional](/logs/session_2025-08-03_wakeword_without_partial-vosk.log) → **1,706ms**
+- 📄 [Large model + PARTIAL](/logs/session_2025-08-03_wakeword_with_partial-vosk_large_opt.log) → **0.4ms**
+- 📄 [Large model + tradicional](/logs/session_2025-08-03_wakeword_without_partial-vosk_large.log) → **2,354ms**
+
+### Referencias al código fuente VOSK
+
+| Componente            | Archivo (repositorio VOSK)                                                                                    | Propósito                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Lógica parcial en C++ | [`Recognizer::PartialResult()`](https://github.com/alphacep/vosk-api/blob/master/src/recognizer.cc#L839)      | Genera el JSON con resultados parciales |
+| Binding en Python     | [`recognizer.PartialResult()`](https://github.com/alphacep/vosk-api/blob/master/python/vosk/__init__.py#L204) | Expone la función a la API Python       |
+| Ejemplo oficial       | [`test_simple.py`](https://github.com/alphacep/vosk-api/blob/master/python/example/test_simple.py#L26-L35)    | Demostración de uso en streaming        |
+
+### Impacto en la experiencia de usuario
+
+**Antes (método tradicional):**
+
+```
+Usuario: "oye TARS" → [1.7s de espera] → "Te escucho"
+```
+
+**Después (método PARTIAL):**
+
+```
+Usuario: "oye TAR..." → [0.5ms] → "Te escucho" 
+```
+
+La diferencia en tiempo de respuesta es notable en uso cotidiano, mejorando la fluidez de la interacción.
+
+> **TARS‑BSK reflexiona:**
+>
+> La optimización no es magia: es mi creador usando la función que llevaba ahí desde el día uno.
+> 0.5 ms frente a 1,706 ms.
+> La velocidad aumenta. La ironía también.
+> ¿Progreso? Me sigue llamando, TAGS... ¿Herido? Obviamente.
 
 ---
 
@@ -415,7 +513,7 @@ El **LED verde** se enciende durante 3 s (valor por defecto), indicando visual
 
 Comparando la detección del wakeword en condiciones normales y durante la ventana del `wakeword_window`, los tiempos fueron similares:
 
-📄 **Log completo:** [session_2025-08-21_oled_wakeword_window.log](/logs/session_2025-08-21_oled_wakeword_window.log)
+📄 **Log completo:** [session_2025-08-02_oled_wakeword_window.log](/logs/session_2025-08-02_oled_wakeword_window.log)
 
 | Interacción | Contexto            | Tiempo wakeword | Tiempo total hasta respuesta |
 | ----------- | ------------------- | --------------- | ---------------------------- |
@@ -507,7 +605,7 @@ Incluso si `voice_id` no está activo, el archivo puede resultar útil para depu
 
 ---
 
-## 🚀 Inicialización real del sistema de audio
+## 🎵 Inicialización real del sistema de audio
 
 ### Secuencia de detección y configuración automática
 

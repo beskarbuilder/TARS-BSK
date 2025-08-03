@@ -318,11 +318,27 @@ class SpeechListener:
                     # Mantener más audio para voice_id (12 chunks = ~6 segundos)
                     if len(audio_buffer) > 20:
                         audio_buffer.pop(0)
-                    
+
                     # Aplicar resampling si es necesario
                     processed_data = self._resample_audio(data) if self.do_resample else data
-                            
-                    if self.recognizer.AcceptWaveform(processed_data):
+
+                    # Una sola llamada a AcceptWaveform
+                    waveform_complete = self.recognizer.AcceptWaveform(processed_data)
+
+                    # Verificar resultado parcial
+                    partial = json.loads(self.recognizer.PartialResult())
+                    partial_text = partial.get("partial", "").lower().strip()
+
+                    if partial_text:
+                        from modules.wakeword import is_wakeword_match
+                        if is_wakeword_match(partial_text, wakewords, threshold=0.6):
+                            print(f"⚡ PARTIAL: {partial_text}")
+                            self._save_wakeword_audio(audio_buffer)
+                            self._stop_stream()
+                            return partial_text
+
+                    # Solo verificar resultado completo si está listo (usando la variable)
+                    if waveform_complete:
                         result = self.recognizer.Result()
                         text = json.loads(result)["text"].lower()
                         if text:

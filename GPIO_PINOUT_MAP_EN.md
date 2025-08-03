@@ -272,7 +272,7 @@ grep -rl --include="*.py" --include="*.json" \
           █████████
               │
               │   ← Stripped wire
-		     ~~~  ← Coiled wire (stopper) + heat shrink (camouflage and reinforcement)
+             ~~~  ← Coiled wire (stopper) + heat shrink (camouflage and reinforcement)
              ---  ← (Copper ring) ← Contact zone
  ┌──────────────────────────┐
  │          PCB             │  ← Raspberry Pi (horizontal)

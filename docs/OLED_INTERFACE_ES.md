@@ -636,7 +636,7 @@ Para evaluar su funcionamiento, he probado el wakeword en dos condiciones:
 - De manera habitual, sin ventana activa.
 - Durante la ventana, con el reset recién aplicado y el estado visible en pantalla.
 
-📄 **Log completo:** [session_2025-08-21_oled_wakeword_window.log](/logs/session_2025-08-21_oled_wakeword_window.log)
+📄 **Log completo:** [session_2025-08-02_oled_wakeword_window.log](/logs/session_2025-08-02_oled_wakeword_window.log)
 
 | Interacción | Contexto             | Tiempo wakeword | Tiempo total hasta respuesta |
 | ----------- | -------------------- | --------------- | ---------------------------- |

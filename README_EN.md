@@ -118,6 +118,75 @@ Input: "back up a bit" → Duration: 0.5s
 ---
 ### Recent Updates
 
+#### 📢 2025‑08‑03
+
+`opt(wakeword): 0.5ms detection. TARS_MEMO: 'New feature: I now hear "TARS" in my sleep. Send help. (P.S.: No, really. Stop whispering.)'` 
+📛 **PARTIAL Wakeword Optimization** – Real-time detection enhancement  
+
+🎯 **Detection during transcription** instead of waiting for complete results
+
+**What's improved?**
+
+- Wakeword detection **during live transcription**, without waiting for phrase completion.
+- **Latency reduction:** from ~1.7s to **0.4–0.5ms** depending on model.
+
+**Measured results:**
+
+|Model|Method|Time|Difference vs PARTIAL|
+|---|---|---|---|
+|**Small**|**PARTIAL** (optimized)|**0.5ms**|Baseline ⚡|
+|**Small**|**COMPLETE** (traditional)|1,706ms|**3,412x slower**|
+|**Large**|**PARTIAL** (optimized)|**0.4ms**|**0.1ms faster** ⚡|
+|**Large**|**COMPLETE** (traditional)|**2,354ms**|**5,885x slower** 🐌|
+
+**Validation logs**
+- 📄 [session_2025-08-03_wakeword_with_partial-vosk_opt.log](/logs/session_2025-08-03_wakeword_with_partial-vosk_opt.log)
+- 📄 [session_2025-08-03_wakeword_without_partial-vosk.log](/logs/session_2025-08-03_wakeword_without_partial-vosk.log)
+- 📄 [session_2025-08-03_wakeword_with_partial-vosk_large_opt.log](/logs/session_2025-08-03_wakeword_with_partial-vosk_large_opt.log)
+- 📄 [session_2025-08-03_wakeword_without_partial-vosk_large.log](/logs/session_2025-08-03_wakeword_without_partial-vosk_large.log)
+
+### How it works
+
+> TARS analyzes partial results provided by VOSK through `PartialResult()` to **detect the wakeword before the phrase ends**, dramatically reducing latency compared to waiting for complete results.
+
+**Code snippet:**
+
+```python
+# Traditional detection (waits for complete phrase)
+if self.recognizer.AcceptWaveform(processed_data):
+    text = json.loads(self.recognizer.Result())["text"]
+    # User: "hey TARS" → Wait for silence → Analyze → Detect
+    # Time: ~1,700ms
+
+# PARTIAL optimization (detects while speaking)
+partial = json.loads(self.recognizer.PartialResult())
+partial_text = partial.get("partial", "").lower().strip()
+if is_wakeword_match(partial_text, wakewords, threshold=0.6):
+    # User: "hey TAR..." → Already detected!
+    # Time: ~0.5ms
+```
+
+### VOSK code references
+
+| Component | File (VOSK repository) | Purpose |
+|---|---|---|
+| C++ partial logic | [`Recognizer::PartialResult()`](https://github.com/alphacep/vosk-api/blob/master/src/recognizer.cc#L839) | Generates JSON with partial results |
+| Python binding | [`recognizer.PartialResult()`](https://github.com/alphacep/vosk-api/blob/master/python/vosk/__init__.py#L204) | Exposes function to Python API |
+| Official example | [`test_simple.py`](https://github.com/alphacep/vosk-api/blob/master/python/example/test_simple.py#L26-L35) | Streaming usage demonstration |
+
+> [!NOTE]
+> Current TARS configuration
+>
+> **STT Model:** [vosk-model-small-es-0.42](https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip) (compact Spanish model)
+> - Load time: ~1.4s (log: "Loading i-vector extractor" → "Loading winfo")
+> - Advantage: Fast loading ideal for development and testing
+> - **Consideration:** "TARS" wakeword recognition always presents higher difficulty since it's not a native Spanish word, which may affect detection accuracy.
+>
+> **LLM Model:** [Phi-3.5-mini-instruct-Q4_K_M.gguf](https://huggingface.co/bartowski/Phi-3.5-mini-instruct-GGUF/resolve/main/Phi-3.5-mini-instruct-Q4_K_M.gguf?download=true)
+> - Load time: ~0.12s (log: "Model loaded in 0.12 seconds")
+> - Results: Very good coherence and response speed
+
+---
 #### 📢 2025‐08‐02
 
 `docs(oled_obituary): SSH1106's full confession - 14 emotional states, I2C voodoo & clock-powered afterlife in 128x64 monochrome`  
@@ -210,42 +279,6 @@ You: half turn
 ✅ 180° rotation completed - new perspective achieved
 TARS: "Partial rotation while reconsidering my path"
 ```
-
----
-
-#### 📢 2025-07-11
-
-**`feat(backup): The backup web is a mirror. Stare into it long enough, and it stares back...`**  
-📛 **Backup Manager** – Flask web interface
-
-📂 [BACKUP_MANAGER_EN](/docs/BACKUP_MANAGER_EN.md)
-
-🎯 Visual and manual backup system for the TARS ecosystem
-
-- Automatic device detection and mounting (USB, SD, SSD/NVMe)
-- Granular content selection with interactive tree view
-- Detailed real-time logging throughout the process
-- Options for **full system** or **selective backups**
-- **Manual restoration by design** to prevent critical errors
-
----
-
-#### 📢 2025-07-09
-
-**`feat(ha_symbiosis): Home Assistant now speaks TARS-flavored reality`**  
-📛 **Home Assistant Plugin** – Enhanced existing plugin with web interface
-
-📂 [HOMEASSISTANT_PLUGIN_EN](/docs/HOMEASSISTANT_PLUGIN_EN.md)
-
-🎯 Visual device management and modular structure for HA integration
-
-- Added **Flask web interface** for browser-based device management
-- Now supports **3 configuration modes**:
-    - Web Interface (forms)
-    - JSON (`user_devices.json`)
-    - Classic embedded mode (hardcoded)
-- Automatic validation, backup support, and easy editing
-- Plugin continues working unchanged if web interface isn't used
 
 ---
 

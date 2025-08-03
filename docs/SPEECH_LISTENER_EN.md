@@ -24,6 +24,7 @@
 - [Intelligent Command Validation](#-intelligent-command-validation)
 - [Stream and Resource Management](#-stream-and-resource-management)
 - [Timeouts and Session Management](#-timeouts-and-session-management)
+- [Using PartialResult() for real-time detection](#-using-partialresult-for-real-time-detection)
 - [VOSK automatic reset system](#-vosk-automatic-reset-system)
 - [System Integration](#%EF%B8%8F-system-integration)
 - [Real Audio System Initialization](#-real-audio-system-initialization)
@@ -195,6 +196,102 @@ def is_wakeword_match(text: str, wakewords: list[str], threshold: float = 0.85) 
 - **Configurable threshold:** 0.85 (85% minimum similarity)
 - **Multiple algorithms:** Levenshtein, phonetic similarity, partial matching
 - **Expandable list:** Support for multiple simultaneous wake words
+
+---
+
+## 🚀 Using PartialResult() for real-time detection
+
+### VOSK Partial Results Implementation
+
+The system traditionally waited for VOSK to complete transcription before analyzing the wakeword. Implementing `PartialResult()` allows processing text while it's being generated, detecting the wakeword during active transcription.
+
+**Measured result:** Latency reduction from ~1.7s to **0.4-0.5ms** depending on the model used.
+
+- **Wakeword detection during transcription**, without waiting for phrase completion
+- **Brutal latency reduction:** from ~1.7-2.4s to **0.4-0.5ms** depending on model
+
+### Results measured under real conditions
+
+| Model     | Method                     | Time        | Difference vs PARTIAL   |
+| --------- | -------------------------- | ----------- | ----------------------- |
+| **Small** | **PARTIAL** (optimized)    | **0.5ms**   | Baseline ⚡              |
+| **Small** | **COMPLETE** (traditional) | 1,706ms     | **3,412x slower**       |
+| **Large** | **PARTIAL** (optimized)    | **0.4ms**   | **0.1ms faster** ⚡      |
+| **Large** | **COMPLETE** (traditional) | 2,354ms     | **5,885x slower** 🐌     |
+
+### Real log analysis
+
+#### PARTIAL method (optimized)
+
+```bash
+🎯 PARTIAL detected: 'tras' - starting timer...
+⚡ PARTIAL DETECTION in 0.5ms
+🔥 Wakeword detected by fuzzy matching
+```
+
+#### Traditional method (complete)
+
+```bash
+🎤 STRONG VOICE DETECTED - timer started (RMS: 1238.2)
+🔥 WAKEWORD DETECTED in 1706.5ms from voice start
+```
+
+### Technical implementation
+
+TARS uses the partial results that VOSK generates during transcription through `PartialResult()`, allowing wakeword detection **before the phrase completes**.
+
+```python
+# Traditional method (waits for complete transcription)
+if self.recognizer.AcceptWaveform(processed_data):
+    text = json.loads(self.recognizer.Result())["text"]
+    # User: "hey TARS" → Wait for silence → Analyze → Detect
+    # Measured time: ~1,700ms
+
+# PARTIAL implementation (processes during transcription)
+partial = json.loads(self.recognizer.PartialResult())
+partial_text = partial.get("partial", "").lower().strip()
+if is_wakeword_match(partial_text, wakewords, threshold=0.6):
+    # User: "hey TAR..." → Detected immediately
+    # Measured time: ~0.5ms
+```
+
+**Available validation logs:**
+
+- 📄 [Small model + PARTIAL](/logs/session_2025-08-03_wakeword_with_partial-vosk_opt.log) → **0.5ms**
+- 📄 [Small model + traditional](/logs/session_2025-08-03_wakeword_without_partial-vosk.log) → **1,706ms**
+- 📄 [Large model + PARTIAL](/logs/session_2025-08-03_wakeword_with_partial-vosk_large_opt.log) → **0.4ms**
+- 📄 [Large model + traditional](/logs/session_2025-08-03_wakeword_without_partial-vosk_large.log) → **2,354ms**
+
+### VOSK source code references
+
+| Component             | File (VOSK repository)                                                                                     | Purpose                              |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| C++ partial logic     | [`Recognizer::PartialResult()`](https://github.com/alphacep/vosk-api/blob/master/src/recognizer.cc#L839)      | Generates JSON with partial results  |
+| Python binding        | [`recognizer.PartialResult()`](https://github.com/alphacep/vosk-api/blob/master/python/vosk/__init__.py#L204) | Exposes function to Python API      |
+| Official example      | [`test_simple.py`](https://github.com/alphacep/vosk-api/blob/master/python/example/test_simple.py#L26-L35)    | Streaming usage demonstration       |
+
+### Impact on user experience
+
+**Before (traditional method):**
+
+```
+User: "hey TARS" → [1.7s wait] → "I'm listening"
+```
+
+**After (PARTIAL method):**
+
+```
+User: "hey TAR..." → [0.5ms] → "I'm listening" 
+```
+
+The difference in response time is noticeable in daily use, improving interaction fluency.
+
+> **TARS‑BSK reflects:**
+>
+> Optimization isn't magic: it's my creator using the function that was there from day one.
+> 0.5ms versus 1,706ms.
+> Speed increases. So does the irony.
+> Progress? He still calls me TAGS... Hurt? Obviously.
 
 ---
 
@@ -418,7 +515,7 @@ The **green LED** lights up for 3s (default value), visually indicating that it'
 
 Comparing wakeword detection under normal conditions and during the `wakeword_window`, the times were similar:
 
-📄 **Complete log:** [session_2025-08-21_oled_wakeword_window.log](/logs/session_2025-08-21_oled_wakeword_window.log)
+📄 **Complete log:** [session_2025-08-02_oled_wakeword_window.log](/logs/session_2025-08-02_oled_wakeword_window.log)
 
 | Interaction | Context             | Wakeword time | Total time to response |
 | ----------- | ------------------- | ------------- | ---------------------- |
@@ -509,7 +606,7 @@ Even if `voice_id` is not active, the file can be useful for debugging errors, a
 
 ---
 
-## 🚀 Real Audio System Initialization
+## 🎵 Real Audio System Initialization
 
 ### Automatic Detection and Configuration Sequence
 
