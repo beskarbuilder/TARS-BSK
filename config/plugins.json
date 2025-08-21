@@ -8,9 +8,12 @@
         "token": "TU_TOKEN_AQUI"
     },
     "mobility": {
-        "enabled": true
+        "enabled": false
+    },
+    "gamepad": {
+        "enabled": false
     },
     "presence": {
-        "enabled": true
+        "enabled": false
     }
 }

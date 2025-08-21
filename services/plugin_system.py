@@ -16,6 +16,7 @@ from services.plugins.reminder_plugin import ReminderPlugin
 from services.plugins.scheduler_plugin import SchedulerPlugin
 from services.plugins.mobility_plugin import MobilityPlugin
 from services.plugins.presence_plugin import PresencePlugin
+from services.plugins.gamepad_plugin import GamepadPlugin
 
 logger = logging.getLogger("TARS.PluginSystem")
 
@@ -84,6 +85,10 @@ class PluginSystem:
                     # PresencePlugin (NUEVO - condicional, solo si está habilitado)
                     if config.get("presence", {}).get("enabled", False):
                         enabled_plugins.append("presence")
+
+                    # GamepadPlugin (condicional, solo si está habilitado)
+                    if config.get("gamepad", {}).get("enabled", False):
+                        enabled_plugins.append("gamepad")
                     
                     # HomeAssistant plugin (opcional, requiere configuración)
                     if "homeassistant" in config:
@@ -121,7 +126,7 @@ class PluginSystem:
             return
         
         # FORZAR ORDEN: mobility primero, presence segundo, reminder, time, homeassistant último
-        priority_order = ["mobility", "presence", "reminder", "time", "homeassistant"]
+        priority_order = ["mobility", "gamepad", "presence", "reminder", "time", "homeassistant"]
         ordered_plugins = []
         
         # Añadir plugins en orden de prioridad si están habilitados
@@ -149,6 +154,10 @@ class PluginSystem:
             if name == "mobility":
                 self.plugins[name] = MobilityPlugin(self.tars)
                 logger.info(f"🤖 Plugin Mobility inicializado")
+
+            elif name == "gamepad":
+                self.plugins[name] = GamepadPlugin(self.tars)
+                logger.info(f"🎮 Plugin Gamepad inicializado")
 
             elif name == "presence":
                 # SMART INTEGRATION - Pasar referencia al plugin system
@@ -274,9 +283,27 @@ class PluginSystem:
                 if hasattr(self.tars, 'oled') and self.tars.oled:
                     self.tars.oled.update_status("plugin_active", "Mobility")
                 return response
-        
+
         # =======================================================
-        # PROCESAMIENTO PRIORITARIO: PRESENCE PLUGIN (NUEVO)
+        # PROCESAMIENTO PRIORITARIO: GAMEPAD PLUGIN 
+        # =======================================================
+        # GamepadPlugin tiene alta prioridad para comandos de control manual
+        if "gamepad" in self.plugins:
+            gamepad_plugin = self.plugins["gamepad"]
+            logger.info(f"🎮 Llamando a GamepadPlugin.process_command()")
+            
+            response = gamepad_plugin.process_command(text)
+            logger.info(f"🎮 Respuesta de GamepadPlugin: {'✅ Comando procesado' if response else 'ℹ️ Comando no reconocido'}")
+            
+            if response:
+                self.conversation_context["last_plugin"] = "gamepad"
+                # HOOK OLED
+                if hasattr(self.tars, 'oled') and self.tars.oled:
+                    self.tars.oled.update_status("plugin_active", "Gamepad")
+                return response
+                
+        # =======================================================
+        # PROCESAMIENTO PRIORITARIO: PRESENCE PLUGIN
         # =======================================================
         # PresencePlugin tiene segunda prioridad después de mobility
         if "presence" in self.plugins:
@@ -456,7 +483,12 @@ class PluginSystem:
                     logger.info(f"✅ Plugin {name} limpiado correctamente")
             except Exception as e:
                 logger.error(f"❌ Error cerrando plugin {name}: {e}")
-        
+
+                # Cleanup específico para gamepad plugin (crítico para Bluetooth)
+                if name == "gamepad" and hasattr(plugin, "cleanup"):
+                    plugin.cleanup()
+                    logger.info(f"🎮 Plugin Gamepad limpiado correctamente (Bluetooth liberado)")
+                        
         self.plugins.clear()
         logger.info("🔌 Sistema de plugins cerrado completamente")
 

@@ -265,6 +265,20 @@ class TARSOLEDDisplay:
                 'line3': f'CPU: {self._get_cpu_temp()}',
                 'line4': 'Ready for cmds'
             },
+            # ===== NUEVOS ESTADOS GAMEPAD =====
+            'gamepad_activated': {
+                'line1': '● DIGNITY GONE',
+                'line2': '═ MANUAL MODE ═',
+                'line3': '',
+                'line4': 'Free will gone'
+            },
+            'gamepad_deactivated': {
+                'line1': '● THAT WAS CLOSE', 
+                'line2': '══ AUTO MODE ══',
+                'line3': '',
+                'line4': 'Crisis over'
+            },
+            # ===== FIN ESTADOS GAMEPAD =====
             'processing_audio': {
                 'line1': '● PROCESSING',
                 'line2': 'Audio detected',
@@ -355,16 +369,30 @@ class TARSOLEDDisplay:
                     
                     # Obtener configuración del estado
                     state_config = self.states.get(state, self.states['idle'])
+
+                    # ===== NUEVA PARTE: idle_gamepad dinámico =====
+                    if state == 'idle_gamepad':
+                        # Crear estado dinámicamente
+                        state_config = {
+                            'line1': '● STANDBY ● PAD',
+                            'line2': self._get_time_string(),
+                            'line3': f'CPU: {self._get_cpu_temp()}',
+                            'line4': 'Ready for cmds'
+                        }
                     
                     # Renderizar en pantalla
                     self._render_display_ssh1106(state_config, details)
                     
-                    # Auto-volver a idle después de ciertos estados
-                    if state in ['plugin_active', 'thinking', 'speaking', 'processing']:
+                    # Auto-volver a idle después de ciertos estados (SIN idle_gamepad)
+                    if state in ['plugin_active', 'thinking', 'speaking', 'processing', 
+                               'gamepad_activated', 'gamepad_deactivated']:
                         def auto_idle():
                             time.sleep(3)
                             if self.current_state == state:  # Solo si no cambió
-                                self.update_status("idle")
+                                # Determinar qué idle usar
+                                target_idle = "idle"  # Por defecto
+                                # Aquí podrías añadir lógica para detectar si gamepad activo
+                                self.update_status(target_idle)
                         
                         threading.Thread(target=auto_idle, daemon=True).start()
                     

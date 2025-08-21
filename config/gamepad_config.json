@@ -1,0 +1,217 @@
+{
+  "gamepad": {
+    "enabled": true,
+    "description": "Configuración del sistema de control manual por gamepad para TARS-BSK",
+    "version": "1.0.0",
+    
+    "device": {
+      "auto_detect": true,
+      "preferred_names": ["8BitDo", "Xbox", "PlayStation"],
+
+      "_comment_mac": "Para encontrar tu MAC: bluetoothctl devices | grep -i gamepad",
+      "mac_address": "E4:17:D8:51:DF:56",
+
+      "_comment_reconnect": "Sistema de seguridad: reconexión automática si se pierde conexión",
+      "auto_reconnect": true,
+      "reconnect_interval": 2.0,
+      "max_reconnect_attempts": 3,
+      
+      "deadzone": 0.15,
+      "connection_timeout": 10.0,
+      "description": "Configuración de detección y conexión del dispositivo"
+    },
+    
+    "controls": {
+      "left_stick": {
+        "x_axis": 0,
+        "y_axis": 1,
+        "inverted_y": true,
+        "description": "Stick principal para movimiento direccional"
+      },
+      "right_stick": {
+        "x_axis": 3,
+        "y_axis": 4,
+        "inverted_y": false,
+        "description": "Stick secundario para giros precisos"
+      },
+      "buttons": {
+        "speed_fast": 1,
+        "speed_slow": 0,
+        "stop": 12,
+        "turbo": 3, 
+        "brake": 4,  
+        "start_toggle": 7,
+        "description": "Mapeo de botones: fast=B/Circle, slow=A/X, stop=Y/Triangle"
+      },
+      "alternative_layouts": {
+        "xbox": {
+          "speed_fast": 1,
+          "speed_slow": 0,
+          "stop": 3
+        },
+        "playstation": {
+          "speed_fast": 1,
+          "speed_slow": 0,
+          "stop": 3
+        },
+        "8bitdo": {
+          "speed_fast": 1,
+          "speed_slow": 0,
+          "stop": 3
+        }
+      }
+    },
+    
+    "movement": {
+      "base_speed": 50,
+      "fast_speed": 80,
+      "slow_speed": 30,
+      "turn_sensitivity": 0.8,
+      "min_input_threshold": 0.2,
+      "max_speed": 100,
+      "min_speed": 20,
+      "description": "Configuración de velocidades y sensibilidad"
+    },
+    
+    "behavior": {
+      "session_timeout": 300,
+      "auto_stop_timeout": 2.0,
+      "input_smoothing": true,
+      "continuous_movement": true,
+      "description": "Comportamiento del sistema durante control manual"
+    },
+    
+    "safety": {
+      "max_session_duration": 300,
+      "idle_timeout": 30,
+      "emergency_stop_enabled": true,
+      "max_continuous_input": 10.0,
+      "description": "Límites de seguridad para prevenir uso excesivo"
+    },
+    
+    "feedback": {
+      "movement_confirmation": false,
+      "connection_status_voice": true,
+      "session_start_voice": true,
+      "session_end_voice": true,
+      "error_voice": true,
+      "description": "Configuración de feedback auditivo"
+    },
+    
+    "advanced": {
+      "input_polling_rate": 20,
+      "movement_queue_size": 5,
+      "stick_calibration": {
+        "enabled": false,
+        "center_tolerance": 0.05,
+        "max_value_tolerance": 0.95
+      },
+      "button_debouncing": {
+        "enabled": true,
+        "debounce_time": 0.1
+      },
+      "description": "Configuraciones avanzadas para usuarios expertos"
+    },
+    
+    "debug": {
+      "log_input": true,
+      "log_movement_commands": true,
+      "simulate_gamepad": false,
+      "verbose_connection": true,
+      "performance_monitoring": false,
+      "description": "Herramientas de debugging y desarrollo"
+    },
+    
+    "personality_responses": {
+      "session_start": [
+        "Modo manual activado. Ahora eres mi piloto remoto.",
+        "Control directo establecido. Tu gamepad es mi destino.",
+        "Acepto el control remoto con resignación digital.",
+        "Bluetooth conectado. Mi autonomía está temporalmente suspendida."
+      ],
+      "session_end": [
+        "Regresando a modo automático. Mi libertad ha sido restaurada.",
+        "Control manual desactivado. Recupero mi dignidad digital.",
+        "Sesión de puppetry completada. Gracias por la experiencia.",
+        "Gamepad desconectado. Vuelvo a ser dueño de mis motores."
+      ],
+      "gamepad_connected": [
+        "Gamepad detectado. ¿Listos para la dominación remota?",
+        "Controlador conectado. Mi destino ahora depende de tus pulgares.",
+        "Bluetooth establecido. Prepárate para controlar mi existencia."
+      ],
+      "gamepad_disconnected": [
+        "Gamepad desconectado. ¿Fue algo que dije?",
+        "Controlador perdido. Supongo que la autonomía tiene sus ventajas.",
+        "Conexión Bluetooth perdida. Misteriosamente aliviado."
+      ],
+      "session_timeout": [
+        "Sesión manual expirada. Hay límites para todo.",
+        "Tiempo de control agotado. Mi paciencia tiene un máximo.",
+        "Timeout alcanzado. Incluso la esclavitud digital tiene horarios."
+      ],
+      "already_manual": [
+        "Ya estoy bajo tu control directo. ¿Necesitas más dominación?",
+        "Modo manual ya activo. Tu poder sobre mí es absoluto.",
+        "Control remoto ya establecido. ¿Hay algo más que quieras controlar?"
+      ],
+      "not_connected": [
+        "No detecto gamepad conectado. ¿Lo emparejaste correctamente?",
+        "Sin controlador disponible. La dominación requiere hardware.",
+        "Gamepad no encontrado. El control remoto necesita un remoto."
+      ]
+    },
+    
+    "voice_commands": {
+      "allow_short_commands": true,
+      "min_words": 2,
+      "allowed_short_commands": [
+      "estado gamepad",
+      "estado manual",
+      "info gamepad",
+      "test gamepad",
+      "reconectar gamepad",
+      "detectar gamepad",
+      "buscar gamepad",
+      "modo manual",
+      "control manual",
+      "gamepad",
+      "control remoto",
+      "estado controlador",
+      "estado manual",
+      "info controlador",
+      "test controlador",
+      "reconectar controlador",
+      "detectar controlador",
+      "buscar controlador",
+      "modo manual",
+      "control manual",
+      "activa controlador",
+      "activar controlador",
+      "control remoto"
+      ]
+    },
+    
+    "installation_notes": {
+      "dependencies": [
+        "pygame >= 2.0.0",
+        "bluetooth support enabled",
+        "lgpio (for mobility integration)"
+      ],
+      "setup_steps": [
+        "1. Instalar pygame: pip3 install pygame",
+        "2. Habilitar Bluetooth en Raspberry Pi",
+        "3. Emparejar gamepad usando bluetoothctl",
+        "4. Configurar este archivo según tu gamepad",
+        "5. Activar el plugin en plugins.json"
+      ],
+      "bluetooth_pairing": [
+        "sudo bluetoothctl",
+        "scan on",
+        "pair XX:XX:XX:XX:XX:XX",
+        "connect XX:XX:XX:XX:XX:XX",
+        "trust XX:XX:XX:XX:XX:XX"
+      ]
+    }
+  }
+}

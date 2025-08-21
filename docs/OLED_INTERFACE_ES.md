@@ -663,6 +663,50 @@ La ventana y sus elementos visuales se gestionan desde `settings.json`:
 }
 ```
 
+### Estados de control manual
+_Disponibles solo con sistema de gamepad configurado y activo_
+
+#### 15. Pantalla de activación (3 segundos)
+_Se activa al presionar START en el gamepad_
+
+```
+┌──────────────────────┐
+│ ● DIGNITY GONE       │
+│ ═ MANUAL MODE ═      │
+│                      │
+│ Free will gone       │
+└──────────────────────┘
+```
+
+#### 16. Pantalla de desactivación (3 segundos)
+_Se activa al desactivar modo manual_
+
+```
+┌──────────────────────┐
+│ ● THAT WAS CLOSE     │
+│ ══ AUTO MODE ══      │
+│                      │
+│ Crisis over          │
+└──────────────────────┘
+```
+
+#### 17. Indicador permanente durante modo manual
+_Reemplaza el idle normal cuando el gamepad está activo_
+
+Durante el modo manual activo, la pantalla idle muestra un indicador para recordar el estado:
+
+```
+┌──────────────────────┐
+│ ● STANDBY ● PAD      │
+│ 14:32                │
+│ CPU: 42.1°C          │
+│ Ready for cmds       │
+└──────────────────────┘
+```
+
+> Para configuración y uso del control manual, consulta [GAMEPAD_SYSTEM_ES.md](/docs/GAMEPAD_SYSTEM_ES.md)
+
+---
 ### Personalización de estados
 
 Los mensajes de cada estado se definen en `_load_display_states()` dentro de [oled_display.py](/modules/oled_display.py).

@@ -112,6 +112,11 @@ class PresencePlugin:
             
             # PASO 2: Smart Integration con MobilityController existente
             mobility_integration_success = self._attempt_smart_mobility_integration()
+
+            # NUEVO: PASO 2.5 - Pasar referencia para coordinación con gamepad
+            if self.plugin_system:
+                self.controller.plugin_system_ref = self.plugin_system
+                logger.info("🤝 PresenceController vinculado con plugin_system para coordinación")      
             
             # PASO 3: Inicializar sistema de presencia
             print("🔍 PRESENCE_PLUGIN: Llamando controller.initialize()...")

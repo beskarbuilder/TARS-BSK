@@ -1100,7 +1100,7 @@ class TARS:
                 self.oled.cleanup()
                 print("🖥️ OLED limpiada")
 
-            # NUEVO: Verificar configuración y archivo antes de lanzar reloj
+            # Verificar configuración y archivo antes de lanzar reloj
             if self.config.get("oled_display", {}).get("auto_clock", False):
                 # Verificar que el archivo existe
                 clock_script = "scripts/oled_clock.py"
@@ -1121,6 +1121,16 @@ class TARS:
 
         except Exception as e:
             print(f"⚠️ Error limpiando OLED: {e}")
+
+            # Cleanup específico de gamepad (crítico para Bluetooth)
+            if (hasattr(self, 'plugin_system') and 
+                self.plugin_system and 
+                "gamepad" in self.plugin_system.plugins):
+                try:
+                    self.plugin_system.plugins["gamepad"].cleanup()
+                    logger.info("🎮 Gamepad limpiado en shutdown")
+                except Exception as e:
+                    logger.error(f"❌ Error limpiando gamepad: {e}")
 
         self._turn_off_power_led()
         sys.exit(0)
@@ -1686,8 +1696,8 @@ class TARS:
                 if hasattr(self, "sensory"):
                     audio_thread = self.sensory.play_phrase_async("continuation_responses")
                 
-                # Timeout más corto para continuaciones - 15 segundos máximo
-                got_response = response_ready.wait(15.0)
+                # Timeout más corto para continuaciones - 25 segundos máximo
+                got_response = response_ready.wait(25.0)
                 
                 if not got_response:
                     logger.warning("⚠️ Timeout en la generación de continuación")

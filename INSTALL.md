@@ -1402,6 +1402,10 @@ Si prefieres otro modelo `.gguf`, simplemente:
 | -------------------------- | ------- | ------------------------------------------- | ----------------------------------------------------------------------------- |
 | `vosk-model-small-es-0.42` | ~39 MB  | Raspberry Pi / CPU limitada (menos preciso) | [Descargar](https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip) |
 | `vosk-model-es-0.42`       | ~1.4 GB | Alta precisión (requiere más RAM y CPU)     | [Descargar](https://alphacephei.com/vosk/models/vosk-model-es-0.42.zip)       |
+**SHA256**
+- `vosk-model-small-es-0.42.zip`: `09b239888f633ef2f0b4e09736e3d9936acfd810bc65d53fad45261762c6511f`  
+- `vosk-model-es-0.42.zip`: `bbbfaf9239bed5dcb0d140886b5834fcc13c13c7fb2f2799ae790f03ff20bfce` 
+
 **Repositorio oficial:** https://alphacephei.com/vosk/models/
 
 > Este modelo NO está incluido en el repositorio debido a su tamaño (~1.4GB).
@@ -2287,26 +2291,7 @@ nano ~/.asoundrc
 
 Contenido del archivo:
 
-```bash
-pcm.!default {
-    type asym
-    playback.pcm "audio_out"
-    capture.pcm "audio_in"
-}
-ctl.!default {
-    type hw
-    card 0    # ← Tarjeta de control principal
-}
-pcm.audio_out {
-    type hw
-    card 0    # ← Aquí pondrías tu tarjeta de SALIDA
-    device 0
-}
-pcm.audio_in {
-    type hw
-    card 0    # ← Aquí pondrías tu tarjeta de ENTRADA
-    device 0
-}
+ 
 ```
 
 🟢 **Adapta los números de `card` según tu salida de `arecord -l` y `aplay -l`**
@@ -2819,11 +2804,36 @@ nano /home/tarsadmin/tars_files/scripts/tars_shutdown.sh
 echo "$(date): TARS shutdown iniciado" >> /tmp/tars_shutdown.log
 
 echo "🔴 Apagando todos los GPIOs..."
-# Apagar TODOS los GPIOs exportados (configuración independiente)
+
+# Usar Python para GPIOs
+python3 -c "
+import RPi.GPIO as GPIO
+import sys
+
+try:
+    GPIO.setmode(GPIO.BCM)
+    # Lista de GPIOs que TARS puede usar según tu pinout
+    gpios_tars = [4, 5, 6, 7, 8, 13, 16, 17, 19, 20, 22, 24, 25, 26, 27]
+    
+    for gpio in gpios_tars:
+        try:
+            GPIO.setup(gpio, GPIO.OUT)
+            GPIO.output(gpio, 0)
+            print(f'  GPIO{gpio} apagado')
+        except:
+            pass  # GPIO no configurado o no disponible
+    
+    GPIO.cleanup()
+    print('✅ Todos los GPIOs apagados via Python')
+except Exception as e:
+    print(f'⚠️ Error en GPIO cleanup: {e}')
+" 2>/dev/null
+
+# Método legacy: intentar sysfs como backup (por si funciona)
 for gpio in {1..27}; do
     if [ -d "/sys/class/gpio/gpio$gpio" ]; then
         echo 0 > /sys/class/gpio/gpio$gpio/value 2>/dev/null
-        echo "  GPIO$gpio apagado"
+        echo "  GPIO$gpio apagado (sysfs)"
     fi
 done
 

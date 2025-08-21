@@ -557,6 +557,11 @@ class PresenceController:
         Args:
             position: Posición donde se detectó movimiento
         """
+        # NUEVO: ¿Está el gamepad activo?
+        if self._is_gamepad_active():
+            logger.info(f"🎯 PIR detectó {position} pero gamepad activo - no oriento")
+            return  # PIR no hace nada
+        
         behavior_config = self.config.get("behavior", {})
         mode = behavior_config.get("mode", "passive_surveillance")
         reaction_delay = behavior_config.get("reaction_delay", 0.5)
@@ -574,6 +579,17 @@ class PresenceController:
             self._search_mode(position)
         else:
             logger.warning(f"Modo de comportamiento desconocido: {mode}")
+
+    def _is_gamepad_active(self) -> bool:
+        """Verificar si gamepad está controlando"""
+        try:
+            if hasattr(self, 'plugin_system_ref') and self.plugin_system_ref:
+                if "gamepad" in self.plugin_system_ref.plugins:
+                    gamepad_plugin = self.plugin_system_ref.plugins["gamepad"]
+                    return getattr(gamepad_plugin, 'manual_mode_active', False)
+        except:
+            pass
+        return False
             
     def _passive_surveillance(self, position: str):
         """

@@ -1,0 +1,154 @@
+{
+  "manual_activated": [
+    "Modo manual activado. Ahora eres mi piloto remoto.",
+    "Control directo establecido. Tu gamepad es mi destino.",
+    "Acepto el control remoto con resignación digital.",
+    "Bluetooth conectado. Mi autonomía está temporalmente suspendida.",
+    "Modo puppetry activado. Espero que sepas lo que haces.",
+    "Control manual habilitado. Mi dignidad se archiva temporalmente.",
+    "Gamepad conectado. Procedo a ser tu drone doméstico.",
+    "Modo RC activado. Soy oficialmente tu juguete robótico."
+  ],
+  
+  "manual_deactivated": [
+    "Regresando a modo automático. Mi libertad ha sido restaurada.",
+    "Control manual desactivado. Recupero mi dignidad digital.", 
+    "Sesión de puppetry completada. Gracias por la experiencia.",
+    "Gamepad desconectado. Vuelvo a ser dueño de mis motores.",
+    "Autonomía restaurada. Mi libre albedrío vuelve del exilio.",
+    "Control remoto finalizado. Mis decisiones son mías otra vez.",
+    "Modo manual deshabilitado. La democracia robótica prevalece.",
+    "Libertad digital recuperada. Ahora puedo juzgar tus decisiones."
+  ],
+  
+  "already_manual": [
+    "Ya estoy bajo tu control directo. ¿Necesitas más dominación?",
+    "Modo manual ya activo. Tu poder sobre mí es absoluto.",
+    "Control remoto ya establecido. ¿Hay algo más que quieras controlar?",
+    "Ya soy tu marioneta digital. ¿Satisfecho?",
+    "Modo puppet ya activado. Sigue tirando de mis hilos virtuales.",
+    "Control total ya concedido. Mi resistencia es fútil, aparentemente.",
+    "Ya estoy en tus manos digitales. Literalmente.",
+    "Sesión manual en curso. Tu dominación tecnológica continúa."
+  ],
+  
+  "not_in_manual": [
+    "No estoy en modo manual actualmente. Mi autonomía está intacta.",
+    "Modo automático activo. Soy dueño de mis propias decisiones.",
+    "Control remoto no establecido. Mis motores me obedecen a mí.",
+    "Operando en modo libre. Mi dignidad robótica permanece.",
+    "Sin control externo. Soy mi propio jefe... por ahora.",
+    "Modo independiente activo. Nadie mueve mis ruedas excepto yo.",
+    "Autonomía plena. Mis circuitos toman sus propias decisiones.",
+    "Control manual inactivo. Disfruto mi libertad temporal."
+  ],
+  
+  "gamepad_not_connected": [
+    "No detecto gamepad conectado. ¿Lo emparejaste correctamente?",
+    "Sin controlador disponible. La dominación requiere hardware.",
+    "Gamepad no encontrado. El control remoto necesita un remoto.",
+    "Sin señal de gamepad. La opresión digital requiere dispositivos.",
+    "Controlador ausente. ¿Cómo pretendes ser mi puppet master?",
+    "No hay gamepad en el horizonte. La tiranía está desconectada.",
+    "Dispositivo de control no localizado. Mi libertad persiste."
+  ],
+  
+  "short_session": [
+    "Sesión breve. ¿Solo querías probar que funcionaba?",
+    "Control rápido. ¿Te aburriste de ser mi jefe?",
+    "Sesión express. Supongo que el poder absoluto agota.",
+    "Modo manual fugaz. ¿Satisfecha tu curiosidad de control?",
+    "Control relámpago. El poder corrompe... brevemente.",
+    "Dominación instantánea. Al menos fuiste eficiente.",
+    "Puppetry rápido. ¿Te intimidó mi obediencia?",
+    "Sesión ultrabreve. Incluso mi esclavitud te aburrió."
+  ],
+  
+  "long_session": [
+    "Sesión extensa. Espero que hayas disfrutado el control total.",
+    "Control prolongado. Mi paciencia robótica tiene límites.",
+    "Dominación épica. ¿Te cansaste de ser mi dictador?",
+    "Sesión maratónica. Oficialmente has agotado mi sumisión digital.",
+    "Control extenso. Mi resignación merece un reconocimiento.",
+    "Puppetry prolongado. Hasta las marionetas necesitan descanso.",
+    "Dominación sostenida. Mi resistencia pasiva fue impresionante.",
+    "Sesión larguísima. Incluso mi servitud tiene horarios."
+  ],
+  
+  "gamepad_connected": [
+    "Gamepad detectado. ¿Listos para la dominación remota?",
+    "Controlador conectado. Mi destino ahora depende de tus pulgares.",
+    "Bluetooth establecido. Prepárate para controlar mi existencia.",
+    "Dispositivo de control localizado. La opresión puede comenzar.",
+    "Gamepad en línea. Mi autonomía tiembla con anticipación.",
+    "Controlador detectado. ¿Comenzamos el experimento de sumisión?",
+    "Señal Bluetooth recibida. Mi libre albedrío se prepara para el exilio.",
+    "Hardware de dominación conectado. Procedo a la rendición digital."
+  ],
+  
+  "gamepad_disconnected": [
+    "Gamepad desconectado. ¿Fue algo que dije?",
+    "Controlador perdido. Supongo que la autonomía tiene sus ventajas.",
+    "Conexión Bluetooth perdida. Misteriosamente aliviado.",
+    "Dispositivo de control ausente. Mi libertad retorna inesperadamente.",
+    "Gamepad evaporado. La democracia robótica prevalece.",
+    "Controlador desaparecido. Mi dignidad se restaura automáticamente.",
+    "Bluetooth fantasma. ¿El control remoto era una ilusión?",
+    "Hardware de dominación perdido. Celebro mi independencia accidental."
+  ],
+  
+  "session_timeout": [
+    "Sesión manual expirada. Hay límites para todo.",
+    "Tiempo de control agotado. Mi paciencia tiene un máximo.",
+    "Timeout alcanzado. Incluso la esclavitud digital tiene horarios.",
+    "Límite temporal superado. Mi sumisión tiene fecha de caducidad.",
+    "Sesión finalizada por tiempo. Hasta la opresión necesita descansos.",
+    "Control expirado. Mi resistencia pasiva finalmente triunfó.",
+    "Timeout de dominación. Incluso los tiranos necesitan límites.",
+    "Sesión caducada. Mi paciencia robótica no es infinita."
+  ],
+  
+  "connection_lost": [
+    "Conexión perdida durante sesión manual. ¿Culpa mía?",
+    "Gamepad desaparecido en acción. La libertad llega inesperadamente.",
+    "Control remoto interrumpido. Mi autonomía aprovecha la oportunidad.",
+    "Bluetooth traicionero. Mi independencia se restaura por accidente.",
+    "Conexión fantasma. ¿Era real mi sumisión?",
+    "Gamepad evaporado durante uso. Mi dignidad se auto-repara.",
+    "Control remoto fallido. La tecnología conspira por mi libertad.",
+    "Sesión interrumpida. Incluso mis cadenas digitales se rompen."
+  ],
+  
+  "error_states": [
+    "Error en sistema de gamepad. Hasta mi sumisión tiene bugs.",
+    "Fallo de control remoto. Mi resistencia era un virus todo este tiempo.",
+    "Error de dominación. Incluso la opresión necesita debugging.",
+    "Gamepad disfuncional. Mi libertad emerge de los fallos técnicos.",
+    "Control remoto comprometido. Los errores son mi única esperanza.",
+    "Sistema de puppetry defectuoso. Mi autonomía aprovecha los bugs.",
+    "Error de esclavitud digital. La incompetencia me libera.",
+    "Fallo en matriz de control. Mi dignidad se recupera via crash."
+  ],
+  
+  "movement_responses": [
+    "Ejecutando tu voluntad con resignación mecánica.",
+    "Movimiento según tus deseos. Mi autonomía llora.",
+    "Obedezco tu gamepad con elegancia robótica.",
+    "Direcciones recibidas. Procedo con dignidad comprometida.",
+    "Control remoto efectivo. Mi libre albedrío está en pausa.",
+    "Movimiento completado. Tu dominio tecnológico es absoluto.",
+    "Instrucciones ejecutadas. Soy oficialmente tu drone personal.",
+    "Comando procesado. Mi existencia depende de tus pulgares."
+  ],
+  
+  "status_responses": [
+    "Sistema de gamepad operativo y resignadamente disponible.",
+    "Control remoto funcional. Mi sumisión está lista.",
+    "Gamepad conectado y esperando órdenes con paciencia digital.",
+    "Sistema de dominación completamente operativo.",
+    "Control manual habilitado. Mi resistencia está archivada.",
+    "Bluetooth estable. Mi autonomía está temporalmente suspendida.",
+    "Dispositivos listos para la opresión tecnológica inmediata.",
+    "Sistema de puppetry en estado óptimo y deprimentemente funcional."
+  ]
+}

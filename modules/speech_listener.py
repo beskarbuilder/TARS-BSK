@@ -242,6 +242,9 @@ class SpeechListener:
             
             # 🆕 AÑADIR MARCADOR DE TIEMPO PARA RESET
             last_reset = time.time()
+
+            # 🆕 TIMER ESPECÍFICO PARA PARTIAL DETECTION
+            partial_start_time = None
             
             while self.is_listening:
                 try:
@@ -330,9 +333,20 @@ class SpeechListener:
                     partial_text = partial.get("partial", "").lower().strip()
 
                     if partial_text:
+
+                        # 🆕 MARCAR INICIO DE PARTIAL SI ES LA PRIMERA VEZ
+                        if partial_start_time is None:
+                            partial_start_time = time.time()
+                            print(f"🎯 PARTIAL detectado: '{partial_text}' - iniciando timer...")
+
                         from modules.wakeword import is_wakeword_match
                         if is_wakeword_match(partial_text, wakewords, threshold=0.6):
-                            print(f"⚡ PARTIAL: {partial_text}")
+                            
+                            # 🆕 CALCULAR TIEMPO REAL DE PARTIAL
+                            partial_detection_time = time.time() - partial_start_time
+                            print(f"⚡ PARTIAL WAKEWORD: {partial_text}")
+                            print(f"⚡ DETECCIÓN PARTIAL en {partial_detection_time*1000:.1f}ms")
+                    
                             self._save_wakeword_audio(audio_buffer)
                             self._stop_stream()
                             return partial_text
@@ -599,6 +613,18 @@ class SpeechListener:
                                     print(f"⚠️ Error cargando comandos mobility: {e}")
                                 return []
 
+                            # Función para cargar comandos cortos de gamepad
+                            def get_gamepad_short_commands():
+                                try:
+                                    with open("config/gamepad_config.json", 'r') as f:
+                                        config = json.load(f)
+                                        voice_config = config.get("gamepad", {}).get("voice_commands", {})
+                                        if voice_config.get("allow_short_commands", False):
+                                            return voice_config.get("allowed_short_commands", [])
+                                except Exception as e:
+                                    print(f"⚠️ Error cargando comandos gamepad: {e}")
+                                return []
+
                             # Obtener exit_keywords de la configuración
                             try:
                                 from modules.settings_loader import load_settings
@@ -611,9 +637,12 @@ class SpeechListener:
                             
                             # Cargar comandos de mobility
                             mobility_commands = get_mobility_short_commands()
+
+                            # Cargar comandos de gamepad
+                            gamepad_commands = get_gamepad_short_commands()
                             
                             # Combinar todos los comandos permitidos
-                            comandos_permitidos = comandos_base + exit_keywords + mobility_commands
+                            comandos_permitidos = comandos_base + exit_keywords + mobility_commands + gamepad_commands
 
                             # Validación con comandos permitidos
                             if len(palabras) < 3 and text.lower() not in comandos_permitidos:

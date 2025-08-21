@@ -1405,6 +1405,10 @@ If you prefer another `.gguf` model, simply:
 | ------------------------- | ----- | ------------------------------------------- | -------------------------------------------------------------------------- |
 | `vosk-model-small-es-0.42` | ~39 MB  | Raspberry Pi / limited CPU (less precise) | [Download](https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip) |
 | `vosk-model-es-0.42`       | ~1.4 GB | High precision (requires more RAM and CPU)     | [Download](https://alphacephei.com/vosk/models/vosk-model-es-0.42.zip)       |
+**SHA256**
+- `vosk-model-small-es-0.42.zip`: `09b239888f633ef2f0b4e09736e3d9936acfd810bc65d53fad45261762c6511f`  
+- `vosk-model-es-0.42.zip`: `bbbfaf9239bed5dcb0d140886b5834fcc13c13c7fb2f2799ae790f03ff20bfce` 
+
 **Official repository:** https://alphacephei.com/vosk/models/
 
 > This model is NOT included in the repository due to its size (~1.4GB).
@@ -2815,22 +2819,46 @@ nano /home/tarsadmin/tars_files/scripts/tars_shutdown.sh
 #!/bin/bash
 # ===============================================
 # TARS Shutdown Script - No dependencies
-# Powers off LEDs and OLED before system shutdown
+# Powers off any GPIO that TARS controls before system shutdown
 # ===============================================
 
 echo "$(date): TARS shutdown initiated" >> /tmp/tars_shutdown.log
-
 echo "🔴 Powering off all GPIOs..."
-# Power off ALL exported GPIOs (configuration independent)
+
+# Use Python for GPIOs
+python3 -c "
+import RPi.GPIO as GPIO
+import sys
+
+try:
+    GPIO.setmode(GPIO.BCM)
+    # List of GPIOs that TARS can use according to your pinout
+    gpios_tars = [4, 5, 6, 7, 8, 13, 16, 17, 19, 20, 22, 24, 25, 26, 27]
+    
+    for gpio in gpios_tars:
+        try:
+            GPIO.setup(gpio, GPIO.OUT)
+            GPIO.output(gpio, 0)
+            print(f'  GPIO{gpio} powered off')
+        except:
+            pass  # GPIO not configured or not available
+    
+    GPIO.cleanup()
+    print('✅ All GPIOs powered off via Python')
+except Exception as e:
+    print(f'⚠️ Error in GPIO cleanup: {e}')
+" 2>/dev/null
+
+# Legacy method: try sysfs as backup (in case it works)
 for gpio in {1..27}; do
     if [ -d "/sys/class/gpio/gpio$gpio" ]; then
         echo 0 > /sys/class/gpio/gpio$gpio/value 2>/dev/null
-        echo "  GPIO$gpio powered off"
+        echo "  GPIO$gpio powered off (sysfs)"
     fi
 done
 
 echo "🖥️ Attempting to power off OLED..."
-# I2C system command (if available)
+# Method 1: System i2c command (if available)
 if command -v i2cset >/dev/null 2>&1; then
     i2cset -y 1 0x3C 0x00 0xAE 2>/dev/null
     echo "  OLED powered off via i2cset"
@@ -2887,7 +2915,6 @@ sudo systemctl status tars-shutdown.service
 ```
 
 🟢 **From now on**, TARS will automatically run the shutdown service with your Raspberry Pi.  
-
 When you power off with `sudo poweroff`, any GPIO components will be cleaned up and powered off safely, preventing them from staying frozen.
 
 ---

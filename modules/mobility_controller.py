@@ -204,7 +204,7 @@ class MobilityController:
     # 2.4 CONTROL DE MOTORES DE BAJO NIVEL
     # =======================
     def _set_motor_speed(self, motor: str, speed: int):
-        """Establecer velocidad PWM (simplificado para esta versión)"""
+        """DEBUGGING: Forzar prints de PWM"""
         if not self._check_ready():
             return False
         
@@ -212,42 +212,68 @@ class MobilityController:
             import lgpio
             pins = self.config["motor_pins"][motor]
             
-            # Determinar pin enable correcto
             if motor == "left_motor":
-                enable_pin = pins["ena"]
+                enable_pin = pins["ena"]  # Pin 24
             elif motor == "right_motor":
-                enable_pin = pins["enb"]
+                enable_pin = pins["enb"]  # Pin 25
             else:
                 return False
             
-            # Para esta versión, speed > 0 = ON, speed = 0 = OFF
-            lgpio.gpio_write(self.gpio_handle, enable_pin, 1 if speed > 0 else 0)
+            print(f"🔧 DEBUG {motor}: pin={enable_pin}, speed={speed}")
+            
+            # 🧪 INTENTAR PWM con debugging
+            if speed > 0:
+                try:
+                    pwm_value = int((speed / 100) * 255)
+                    print(f"🎯 Intentando PWM: pin={enable_pin}, pwm={pwm_value}")
+                    
+                    lgpio.gpio_set_PWM_frequency(self.gpio_handle, enable_pin, 1000)
+                    result = lgpio.gpio_set_PWM_dutycycle(self.gpio_handle, enable_pin, pwm_value)
+                    print(f"✅ PWM resultado: {result}")
+                    
+                except Exception as pwm_err:
+                    print(f"❌ PWM FALLÓ: {pwm_err}")
+                    print(f"🔄 Fallback a ON/OFF")
+                    lgpio.gpio_write(self.gpio_handle, enable_pin, 1)
+            else:
+                print(f"⏹️ STOP motor {motor}")
+                lgpio.gpio_write(self.gpio_handle, enable_pin, 0)
+            
             return True
             
         except Exception as e:
-            logger.error(f"❌ Error configurando velocidad: {e}")
+            print(f"❌ ERROR TOTAL: {e}")
             return False
     
     def _move_motor(self, motor: str, direction: str, speed: int = 50):
-        """Control básico de dirección de motor"""
+        """Control de motor SIN SPAM de logs"""
         if not self._check_ready():
             return False
+        
+        # Variable de clase para rastrear estado anterior (añadir al __init__ si no existe)
+        if not hasattr(self, '_last_motor_state'):
+            self._last_motor_state = {}
         
         try:
             import lgpio
             pins = self.config["motor_pins"][motor]
             
+            # Crear clave única para este motor
+            state_key = f"{motor}_{direction}_{speed}"
+            
+            # Solo logear si cambió el estado
+            if self._last_motor_state.get(motor) != state_key:
+                print(f"🔧 {motor}: {direction} speed={speed}")
+                self._last_motor_state[motor] = state_key
+            
             # Usar los pines correctos según el motor
             if motor == "left_motor":
-                # Motor izquierdo: usa in1, in2
                 pin_a, pin_b = pins["in1"], pins["in2"]
                 enable_pin = pins["ena"]
             elif motor == "right_motor":
-                # Motor derecho: usa in3, in4
                 pin_a, pin_b = pins["in3"], pins["in4"]
                 enable_pin = pins["enb"]
             else:
-                logger.error(f"❌ Motor desconocido: {motor}")
                 return False
             
             # Configurar dirección
@@ -261,12 +287,25 @@ class MobilityController:
                 lgpio.gpio_write(self.gpio_handle, pin_a, 0)
                 lgpio.gpio_write(self.gpio_handle, pin_b, 0)
             
-            # Activar motor (simplificado: ON/OFF)
-            lgpio.gpio_write(self.gpio_handle, enable_pin, 1 if direction != "stop" else 0)
+            # Control de velocidad (sin logs repetitivos)
+            if direction != "stop" and speed > 0:
+                if speed >= 70:
+                    lgpio.gpio_write(self.gpio_handle, enable_pin, 1)
+                elif speed <= 40:
+                    lgpio.gpio_write(self.gpio_handle, enable_pin, 1)
+                    time.sleep(0.05)
+                    lgpio.gpio_write(self.gpio_handle, enable_pin, 0)
+                    time.sleep(0.05)
+                    lgpio.gpio_write(self.gpio_handle, enable_pin, 1)
+                else:
+                    lgpio.gpio_write(self.gpio_handle, enable_pin, 1)
+            else:
+                lgpio.gpio_write(self.gpio_handle, enable_pin, 0)
+                
             return True
             
         except Exception as e:
-            logger.error(f"❌ Error moviendo motor {motor}: {e}")
+            print(f"❌ ERROR {motor}: {e}")
             return False
     
     # =======================
@@ -481,7 +520,7 @@ class MobilityController:
             return False
         
         try:
-            logger.info("🤖 Deteniendo motores")
+            # logger.info("🤖 Deteniendo motores")
             self._move_motor("left_motor", "stop")
             self._move_motor("right_motor", "stop")
             self.is_moving = False
@@ -514,6 +553,41 @@ class MobilityController:
                 logger.info("✅ GPIO limpiado")
             except Exception as e:
                 logger.error(f"❌ Error en limpieza: {e}")
+
+    # =======================
+    # 2.8 CONTROL DIRECTO PARA GAMEPAD (NUEVO)
+    # =======================
+    def set_motor_speeds_direct(self, left_speed: int, right_speed: int):
+        """🆕 Control directo para gamepad (SIN duración)"""
+        if not self._check_ready():
+            return False
+        
+        try:
+            # Motor izquierdo
+            if left_speed > 0:
+                self._move_motor("left_motor", "forward", abs(left_speed))
+            elif left_speed < 0:
+                self._move_motor("left_motor", "backward", abs(left_speed))
+            else:
+                self._move_motor("left_motor", "stop", 0)
+            
+            # Motor derecho  
+            if right_speed > 0:
+                self._move_motor("right_motor", "forward", abs(right_speed))
+            elif right_speed < 0:
+                self._move_motor("right_motor", "backward", abs(right_speed))
+            else:
+                self._move_motor("right_motor", "stop", 0)
+            
+            return True
+                
+        except Exception as e:
+            logger.error(f"❌ Error en control directo: {e}")
+            return False
+
+    def stop_immediate(self):
+        """🆕 Parada inmediata para gamepad"""
+        return self.stop()
 
 # -----------------------------------------------
 # ≫ MOBILITY FINAL TRANSMISSION ≪  

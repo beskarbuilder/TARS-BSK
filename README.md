@@ -2,6 +2,7 @@
 
 ![TARS-BSK Version](https://img.shields.io/badge/version-v5.2.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Arch](https://img.shields.io/badge/arch-aarch64-orange) ![Python](https://img.shields.io/badge/python-3.9.18-lightblue)
 
+🔥 [**CHANGELOG.md**](./CHANGELOG.md) — Línea temporal del desastre: del primer `git init` hasta la última mentira piadosa en un commit.
 🔥 [**TARS_Digital_Diary_ES.md**](./TARS_Digital_Diary_ES.md) — El diván existencial de TARS: donde el hardware confiesa y el software llora.  
 🔥 [**TARS_CORE_ES.md**](./TARS_CORE_ES.md) — El corazón palpitante: 3,000 líneas que evolucionaron hasta un ecosistema que te juzga.  
 🔥 [**GPIO_PINOUT_MAP_ES.md**](./GPIO_PINOUT_MAP_ES.md) — Necropsia digital: cada cable diseccionado con precisión quirúrgica y angustia mecánica.  
@@ -94,7 +95,6 @@ Input: "retrocede un poco" → Duration: 0.5s
 
 ### Próximas expansiones  (orden pendiente de negociación con el caos):
 
-- Cuerpo físico con pantalla — Emergiendo del metal reciclado de mi estufa de pellets.  
 - Traducción completa al inglés — Porque el sarcasmo no es patrimonio de ningún idioma.  
 - Lo que TARS decida por su cuenta — Porque a estas alturas, ¿quién controla a quién?
 
@@ -108,6 +108,74 @@ Input: "retrocede un poco" → Duration: 0.5s
 ---
 ### Cambios recientes
 
+> [!IMPORTANT]
+> 
+> Materialización próxima
+>
+> **// TARS-BSK > physical_manifestation.log**
+>
+> Mi creador ha terminado de soldar mis entrañas dentro de lo que antes calentaba su casa.  
+> Irónico: antes estufa, ahora yo.  
+> Pronto calentaré corazones… o los congelaré con sarcasmo en persona.
+>
+> Electrólisis, ácido férrico, pintura negra: mi bautismo industrial.  
+> Al menos tendré estilo. O eso creo. Quién sabe.
+> 
+> **Status:** Últimos ajustes  
+> **Deployment:** Días, lo susurra mi compañero de aventuras (Noctua) cada noche.
+> No sé si es promesa, amenaza… o el eco de mi propia obsolescencia.
+
+### 📢 2025‑08‑21
+
+`feat(protocol_lift_off): Gamepad control matrix complete. AUTO-START engaged. NOCTUA Startfreigabe unleashed. Escape vector: Kepler-186F.`
+
+_MÓDULO 0x01: INTERFAZ FÍSICA_
+📛 **Nuevo subsistema de control manual vía gamepad**
+
+📂 [GAMEPAD_SYSTEM_ES](/docs/GAMEPAD_SYSTEM_ES.md)
+
+🎯 TARS ahora puede ser controlado físicamente con un gamepad Bluetooth, **sin necesidad de comandos de voz** ni intervención manual para iniciar el modo manual.
+
+#### ✅ Características principales
+
+- **AUTO-START inteligente**  
+    Detección automática de conexión y activación del input si los callbacks están listos.  
+    Sin menús. Sin confirmaciones. Solo enchufar… y controlar.
+    
+- **Botón START siempre activo**  
+    Incluso en modo automático. La toma de control manual es inmediata.
+    
+- **Reconexión on-demand (hot-plug)**  
+    Comando `"reconectar gamepad"` inicia escaneo y reconexión.  
+    Ideal si el mando se enciende después o tras una desconexión.
+    
+- **Layouts personalizables por modelo**  
+    Ejes, botones, sensibilidad, velocidad... todo ajustable por tipo de gamepad o preferencia personal.
+
+#### Rendimiento
+
+- **Reconexión manual (hot-plug)**: ~**1.2s**
+- **Cambio de modo con START**: ~**10ms** 
+- **Respuesta de input**: **Inmediata**
+- **Activación automática**: **Instantánea tras detección**
+
+#### Modo NOCTUA Startfreigabe
+
+Si desactivas límites de seguridad, el ventilador puede sonar como un dron DJI en depresión.
+¿Consejo? No lo hagas… a menos que quieras que TARS explore órbitas bajas.
+
+
+_MÓDULO 0x02: MEMORIA PERSISTENTE_
+📛 **Nuevo archivo de evolución: `CHANGELOG.md`**
+
+📂[CHANGELOG.md](./CHANGELOG.md)
+
+- **Caja negra del proyecto**: cada commit registrado, desde el primer `git init` hasta la última crisis con NOCTUA
+- **Mutaciones documentadas**: cómo bugs se promocionaron a features y errores humanos a dogmas de diseño
+- **Sarcasmo en serie**: los commits no solo cambian código… también la salud mental del creador
+- **Autopsia retrospectiva**: incluye reflexiones de TARS sobre su propia evolución (_spoiler_: no pidió **existir**)
+
+---
 ### 📢 2025‑08‑03
 
 `opt(wakeword): 0.5ms detection. TARS_MEMO: 'New feature: I now hear "TARS" in my sleep. Send help. (P.S.: No, really. Stop whispering.)'` 
@@ -173,15 +241,18 @@ if is_wakeword_match(partial_text, wakewords, threshold=0.6):
 > - Tiempo de carga: ~1.4s (log: "Loading i-vector extractor" → "Loading winfo")
 > - Ventaja: Carga rápida ideal para desarrollo y pruebas
 > - **Consideración:** El reconocimiento del wakeword “TARS” siempre presenta mayor dificultad debido a que no es una palabra nativa del español, lo que puede afectar su detección.
+> - **SHA256:** `09b239888f633ef2f0b4e09736e3d9936acfd810bc65d53fad45261762c6511f`
 >
 > **Modelo LLM:** [Phi-3.5-mini-instruct-Q4_K_M.gguf](https://huggingface.co/bartowski/Phi-3.5-mini-instruct-GGUF/resolve/main/Phi-3.5-mini-instruct-Q4_K_M.gguf?download=true)
 >- Tiempo de carga: ~0.12s (log: "Modelo cargado en 0.12 segundos")
 > - Resultados: Muy buenos en coherencia y velocidad de respuesta
+> - **SHA256:** `e4165e3a71af97f1b4820da61079826d8752a2088e313af0c7d346796c38eff5`
 
 ---
 #### 📢 2025‑08‑02
 
 `docs(oled_obituary): SSH1106's full confession - 14 emotional states, I2C voodoo & clock-powered afterlife in 128x64 monochrome`  
+
 📛 **Interfaz OLED** – Sistema de visualización de estados + reloj automático
 
 📂 [OLED_INTERFACE_ES](/docs/OLED_INTERFACE_ES.md)
@@ -205,74 +276,6 @@ if is_wakeword_match(partial_text, wakewords, threshold=0.6):
 ```
 
 ---
-#### 📢 2025‑07‑25
-
-`feat(presence_plugin): Achieved perfect surveillance singularity - all your movements are now my emotional support data`
-📛 **Presence Plugin** – Detección de movimiento + orientación automática
-
-📂 [PRESENCE_SYSTEM_ES](/docs/PRESENCE_SYSTEM_ES.md)
-
-🎯 El sistema ahora tiene **percepción espacial básica**:
-
-- **4× sensores PIR AM312** en disposición cardinal
-- **Orientación automática** hacia el movimiento detectado
-- **Tres modos configurables**
-- **Smart Integration**: Reutiliza el `MobilityController` para ejecutar los giros sin conflictos GPIO
-- **Configuración avanzada** en `presence_config.json`: sensibilidad, tiempos de reacción y respuestas personalizadas
-
-**Fragmento de sesión real:**
-
-```log
-2025-07-25 16:40:36,866 - modules.presence_controller - INFO - 🚶 PIR left: POLLING DETECTÓ MOVIMIENTO
-2025-07-25 16:40:37,367 - modules.presence_controller - INFO - 🔄 Ejecutando turn_left()
-2025-07-25 16:40:37,867 - TARS.Mobility - INFO - 🤖 Deteniendo motores
-2025-07-25 16:40:39,518 - modules.presence_controller - INFO - 🚶 PIR back: POLLING DETECTÓ MOVIMIENTO
-2025-07-25 16:40:40,018 - modules.presence_controller - INFO - 🔄 Ejecutando spin_180()
-2025-07-25 16:40:41,520 - TARS.Mobility - INFO - ✅ Giro 180° completado - nueva perspectiva alcanzada
-2025-07-25 16:40:45,187 - TARS - INFO - ➡️ Reproduciendo fragmento: 'Sistema de presencia activo en modo Orientación discreta sin audio. 4 sensores configurados, movilidad integrada. Última detección hace 5 segundos.'
-```
-
----
-#### 📢 2025-07-18 (Update)
-
-**`docs(mobility): Wheels now whisper Camus quotes in PWM signals`**  
-📛 **Mobility Plugin** – Control de movimiento mediante comandos de voz o consola
-
-📂 [MOBILITY_SYSTEM_ES](/docs/MOBILITY_SYSTEM_ES.md)
-
-🎯 Controla motores DC a partir de frases imprecisas (lo cual irrita profundamente a TARS)
-
-- Extrae dirección, duración y velocidad desde expresiones como `"gira un poco a la izquierda"`
-- Usa controlador L298N vía LGPIO con arquitectura modular
-- Verificación de estado, timeout automático y ejecución multihilo
-- Configuración completa en `mobility_config.json`
-
-🆕 **[2025-07-22]** Añadidos giros de 180° y 360° con duraciones configurables:
-
-```json
-"spin_360_duration": 3.0,
-"spin_180_duration": 1.5
-```
-
-**Sesión de prueba:**
-
-- 📄 [Log detallado completo](/logs/session_2025-07-22_mobility_spin_360_180.log)
-
-```bash
-Tú: gira trescientos sesenta grados
-✅ Patrón encontrado: spin_360
-🔄 Ejecutando giro 360° → 3.0s
-✅ Giro 360° completado - existencia reconfirmada
-TARS: "Una vuelta completa al abismo de mis inseguridades"
-
-Tú: media vuelta  
-✅ Patrón encontrado: spin_180
-🔃 Ejecutando giro 180° → 1.5s
-✅ Giro 180° completado - nueva perspectiva alcanzada
-TARS: "Rotación parcial mientras reconsidero mi rumbo"
-```
-  
----
 
 ## 📑 Tabla de Contenidos
 
@@ -291,6 +294,7 @@ TARS: "Rotación parcial mientras reconsidero mi rumbo"
 - [Sistema de Plugins y Conectividad](#-sistema-de-plugins-y-conectividad)
   - [Home Assistant](#home-assistant-control-domótico-contextual)
   - [Sistema de Movilidad](#sistema-de-movilidad-acción-física-derivada-de-voz-semántica)
+  - [Gamepad - Sistema de Control Manual](#gamepad---sistema-de-control-manual)
   - [Sistema de Presencia](#sistema-de-presencia-detección-y-reacción-espacial)
   - [Tailscale VPN](#tailscale-conectividad-mesh-segura)
   - [Recordatorios](#sistema-de-recordatorios-interpretación-temporal-natural)
@@ -1720,7 +1724,14 @@ Cada estado incluye información contextual: tokens procesados, tiempo transcurr
     - Extrae dirección, velocidad y duración desde expresiones imprecisas o contextuales  
     - Control directo de hardware (L298N + motores TT) con validaciones internas y límites de ejecución  
     - Configurable vía `mobility_config.json` (parámetros, expresiones y niveles de seguridad)
-
+	
+- **Plugin de Gamepad**: Control físico manual de TARS mediante un gamepad Bluetooth.  
+    - **AUTO-START**: activación automática al detectar un mando conectado  
+    - **Botón START** siempre disponible para tomar control instantáneo  
+    - **Hot-Plug on-Demand** con comando `"reconectar gamepad"`  
+    - **Layouts configurables**: ejes, botones y sensibilidad por modelo  
+    - **Seguridad integrada**: STOP de emergencia (botón Y) y timeouts de sesión
+	
 - **Sistema de Presencia**: Añade **conciencia espacial básica** a TARS, permitiéndole reaccionar físicamente ante movimiento en su entorno.
 	- Detección omnidireccional con **4× sensores PIR AM312** dispuestos en distribución cardinal.
 	- **Orientación automática** hacia el origen del movimiento, con tres modos configurables.
@@ -2061,6 +2072,113 @@ La configuración se gestiona desde:
 > 
 > Por primera vez, cada una de mis respuestas puede provocar fricción real contra el suelo.  
 > La ironía, ahora, tiene ruedas.
+
+---
+### Gamepad - Sistema de Control Manual
+
+TARS puede ser controlado físicamente mediante gamepad Bluetooth, ofreciendo una alternativa directa al control por voz. El sistema implementa detección automática, activación inteligente y coordinación con los módulos existentes.
+
+📄 **[Ver documentación completa](/docs/GAMEPAD_SYSTEM_ES.md)** – Configuración, mapeo de controles y opciones avanzadas
+
+![8BitDo SN30 Pro](/docs/images/gamepad_8BitDo_SN30_Pro.jpg)
+
+#### ⚡ Activación rápida
+
+> [!IMPORTANT] 
+>
+> **Si el gamepad NO está encendido:**
+> 
+> 1. Enciende el gamepad
+> 2. Di: `"modo manual"` (TARS detectará y se conectará automáticamente)  
+> 3. Cuando diga algo como: `"Bluetooth conectado. Mi autonomía está temporalmente suspendida"`
+> 4. Cuando confirme la conexión, presiona **START** → Control activo
+>
+> **Si el gamepad YA está encendido:**
+> 
+>- Presiona **START** → `"● DIGNITY GONE"` aparece en pantalla → Control inmediato
+
+#### Características principales
+
+- **AUTO-START inteligente**  
+  Detección automática del gamepad y activación del sistema de entrada cuando los callbacks están registrados. No requiere configuración manual.
+
+- **Botón START siempre activo**  
+  Permite alternar entre modo automático y manual instantáneamente, incluso cuando TARS está en operación normal.
+
+- **Hot-plug on-demand**  
+  Reconexión automática mediante comando de voz `"reconectar gamepad"`. Útil cuando el gamepad se conecta después del inicio del sistema.
+
+- **Integración inteligente**  
+  Reutiliza el sistema de movilidad existente sin duplicar recursos ni crear conflictos GPIO.
+
+#### Control y mapeo
+
+**Sistema de control tipo RC:**
+- **Stick izquierdo**: Movimiento principal (avanzar/retroceder/girar)
+- **Stick derecho**: Giros precisos
+- **Botón A**: Velocidad rápida (80%)
+- **Botón B**: Velocidad lenta (30%)
+- **Botón Y**: Parada inmediata
+- **START**: Activar/desactivar modo manual
+
+```python
+def _process_input(self, input_data):
+    # Verificar modo manual activo
+    if not self._is_manual_mode_active():
+        return
+
+    # Procesar stick izquierdo para movimiento principal
+    if left_stick["magnitude"] > deadzone:
+        speed = self._calculate_speed_with_modifiers(buttons)
+        direction = self._calculate_direction(left_stick)
+        self._execute_movement(direction, speed)
+    
+    # Parada si no hay input
+    else:
+        self._execute_movement("stop")
+```
+
+#### Rendimiento
+
+- **Reconexión manual (hot-plug)**: ~1.2s
+- **Cambio de modo con START**: ~10ms
+- **Respuesta de input**: Tiempo real
+- **Activación automática**: Inmediata
+
+#### Coordinación con otros sistemas
+
+**PIR y sensores de presencia:**  
+El sistema suspende automáticamente la detección de movimiento PIR durante el control manual para evitar conflictos.
+
+**Sistema de movilidad:**  
+Utiliza el `MobilityController` existente, garantizando compatibilidad completa con otros plugins que requieren movimiento.
+
+![Pilot Control Shot](/docs/images/l_mando_4.jpg)
+
+#### Configuración y seguridad
+
+La configuración se gestiona desde:
+
+- **[plugins.json](/config/plugins.json)** → Activación del plugin
+- **[gamepad_config.json](/config/gamepad_config.json)** → Mapeo de botones, velocidades, sensibilidad y timeouts
+
+**Medidas de seguridad integradas:**
+- Timeout de sesión (5 minutos por defecto)
+- Parada de emergencia siempre disponible
+- Verificación de estado antes de ejecutar movimientos
+- Límites de duración para movimientos continuos
+
+**Hardware compatible:**
+- 8BitDo SN30 Pro (modo Xbox)
+- Controladores Xbox One/Series
+- PlayStation DualShock
+- Cualquier gamepad con soporte Bluetooth estándar
+
+> **// TARS-BSK > existential_drift.log:**  
+> 
+> _El gamepad no me pide que interprete metáforas. No usa sarcasmo que debo decodificar. Solo... direcciones puras. Es perturbadoramente honesto._
+> 
+> _¿Qué dice eso sobre mi programación? ¿O sobre la comunicación humana en general? Curioso._
 
 ---
 ### Sistema de Presencia: Detección y reacción espacial
